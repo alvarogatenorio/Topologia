@@ -2,3 +2,77 @@
 \chapter{Espacios Topológicos}
 \label{etop}
 %Introducción
+
+\subsection{Conjuntos abiertos}
+
+\textbf{\underline{Definición}}\\
+Un \textbf{espacio topológico} es un conjunto $\cx$ equipado con una colección $\tau$ de subconjuntos $\cu \subset \cx$ que cumplen:
+\begin{enumerate}
+	\item $\emptyset, \cx \in \tau$
+	\item La unión arbitraria de conjuntos de $\tau$ está en $\tau$.
+	\item La intersección finita de conjuntos de $\tau$ está en $\tau$.
+\end{enumerate}
+A los conjuntos de $\tau$ les llamaremos \textbf{abiertos} de ahora en adelante, y a los elementos de $\cx$ les llamaremos \textbf{puntos}.\\
+
+\textbf{\underline{Ejemplo}}
+\begin{enumerate}
+	\item $\rn,\ \tau \ni \cu \Longleftrightarrow \forall x \in \cu \ \exists B_{d}(x,\epsilon) \subset \cu$
+	\item $\cx, \tau=\{\emptyset, \cx\}$ a la que llamaremos topología trivial.
+	\item $\cx, \tau = \mathcal{P}(\cx)$ a la que llamaremos topología discreta.
+	\item $a \in \cx\ \ \tau=\{\cu \subset \cx : a \in \cu \} \cup \{\emptyset\}$ a la que denotaremos como topología del punto. Como observación, hay que darse cuenta que no hay conjuntos disjuntos en este espacio topológico.
+	\item Como topología especial y rara, tomemos cuatro puntos a, b, c, d, siendo a y b cerrados, y c y d abiertos. Este espacio topológico es homótopo a la circunferencia $(S^{1})$ (viendo así que los conjuntos finitos pueden ser muy interesantes, aunque de primeras no nos lo imaginemos).
+\end{enumerate}
+
+\textbf{\underline{Entornos}}\\
+Un \textbf{entorno} de un punto $a \in \cx$ es un conjunto que contiene un abierto que contiene al punto a.
+$\cv^{a} \supset \cu \ni a$, con $\cu$ abierto y $\cv^{a}$ entorno de a.\\
+\\
+
+En particular, \textbf{$\cu$ es abierto si y solo si es entorno de sus puntos.}\\
+\\
+Veamos detenidamente esta última afirmación:\\
+La implicación a la derecha, como $\cu$ es abierto, $\forall a \in \cu, \exists \cw$ abierto tal que $\cw \subset \cu$. Por lo tanto, aplicando la definición de entorno ya enunciada, para todos los puntos encontramos un abierto que está contenido en $\cu$, luego $\cu$ es entorno de sus puntos.\\
+Para la otra implicación veamos la siguiente igualdad(demostremos la doble contención).\\
+$\cu = \cup_{a\in\cu}\cw^{a}$\\
+Para $\subset$, es trivial, ya que la unión de los conjuntos $\cw$ recubre a $\cu$ trivialmente. Para la otra contención, como cada $\cw^{a}$ es un abierto contenido en $\cu$, este será entorno suyo en a, y la unión de $\cu$ es $\cu$, luego queda demostrado.\\
+\\
+
+\textbf{\underline{Definición}}\\
+Diremos que a es un punto interior de $\ca$ si $\ca$ es entorno de a.\\
+$Int_{\cx}(\ca) = \interior{\ca} = Int(\ca)$\\
+Estas serán distintas notaciones para referirnos al interior del conjunto, aunque lo más habitual será que usemos la segunda. Por lo tanto, $\mathcal{\AA{}}=\{a \in \ca : \ca$ es entorno de $\ca\}$\\
+\\
+$\bullet$ Este conjunto es abierto, de hecho, \textbf{$\interior{\ca}$ es el mayor abierto contenido en $\ca$}.\\
+\\
+
+\textbf{Demostración}:\\
+Primero, veamos $\interior{\ca}$ es abierto. Esto significa que $\forall a \in \interior{\ca} \Rightarrow \exists\ \cu^{a} \subset \interior{A}$, con $\cu^{\ca}$ abierto. Comprobemos esta implicación: $\forall a \in \interior{\ca} \Rightarrow\ \exists\ \cu{a} \subset \ca$. Ahora, $\forall x \in \cu^{a}$, como $\cu^{a}$ es abierto de $\ca$, $\ca$ es un entorno de x, luego $x \in \interior{\ca} \forall x \in \cu^{a} \Rightarrow\cu^{a} \subset \interior{\ca}$.\\
+Nos queda por probar que $\interior{A}$ es el mayor abierto de $\ca$. Supongamos que no, que existe uno mayor formado por la unión ahora descrita. $\interior{\ca} \subset \bigcup_{\cw \subset \ca}\cw \subset \ca$ con $\cw$ abierto. La primera contención es una igualdad, ya que si cojo un $x \in \cw$, como $\cw$ es abierto, está contenido en A, luego A es entorno de x, por lo que $x \in \interior{\ca}$, lo que implica que $\cw \subset \interior{\ca} \Rightarrow \bigcup_{\cw \subset \ca}\cw \subset \interior{\ca}$, quedando así demostrado.\\
+\\
+
+\textbf{\underline{Observaciones}}
+\begin{enumerate}
+	\item $\interior{\interior{\ca}} = \interior{\ca}$, trivial de demostrar usando que $\interior{\ca} = \cup_{\cw\in\ca}\cw$.
+	\item Un conjunto abierto coincide con su interior.
+	\item Si $\ca \subset \cb \Rightarrow \interior{A} \subset \interior{B}$
+\end{enumerate}
+
+\subsection{Conjuntos cerrados}
+Sea $\cx$ un espacio topológico,\\
+\\
+\textbf{\underline{Definición}}\\
+Un conjunto $\cf \subset \cx$ se llama cerrado si $\cx \setminus \cf$ es abierto.
+\begin{enumerate}
+	\item $\cx, \emptyset $ son cerrados.
+	\item La intersección arbitraria de cerrados es cerrada.
+	\item La unión finita de cerrados es cerrada.
+\end{enumerate}
+Una breve anotación que nos será útil en el futuro. Para la comprobación de compacidad en un computo, nos será útil la utilización de cerrados. Veamos un ejemplo, introducido para motivar esta observación.\\
+
+\textbf{\underline{Ejemplo}}\\
+\\
+$\cx = \bigcup_{i \in I}\cup_{i} \Rightarrow \cx = \cu_{i_{1}} \cup \ldots \cup \cu_{i_{k}}$ por definición de compacto, que se verá más adelante. Pasando a complementarios tenemos:\\
+$\emptyset = \bigcap_{i \in I}\cf_{i} \Rightarrow \emptyset = \cf_{i_{1}} \cap \ldots \cap \cf_{i_{k}}$.\\
+Por lo tanto para ser compacto el conjunto, la unión de cerrados pertenecientes al conjunto finita a de ser el vacío.\\
+Veamos un caso en el que no se cumple:\\
+$\emptyset = \bigcap(0,\frac{1}{n}] \subset (0,\infty)$. Estos conjuntos son cerrados en este espacio. Pero observamos trivialmente que cualquier $n_0$ finito que coja, la intersección va a dar no vacía, luego el conjunto no es compacto.
