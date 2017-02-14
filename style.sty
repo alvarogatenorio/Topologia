@@ -1,0 +1,128 @@
+%Versión 1.0.1
+%Álvaro García Tenorio
+%Clara Isabel López González
+%Iván Prada Cazalla
+%Versión post-geometría documentada.
+
+%Las mejoras realizadas en este paquete han de ser, en la medida de lo posible, retrocompatibles (para mejorar la flexibilidad).
+
+%Paquete de Estilo
+\ProvidesPackage{style}
+
+%Paquetes de Márgenes
+\usepackage[a4paper,margin=3cm]{geometry}
+
+%Paquetes de Idioma
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Paquetes para Referencias Cruzadas
+%Posiblemente se Añadan Modificaciones
+\usepackage[linktoc=all]{hyperref}
+
+%Imagenes
+\usepackage{graphicx}
+\usepackage{graphics}
+%Varias imagenes en una misma figura.
+\usepackage{subfigure}
+
+%Símbolos Adicionales
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+
+%Cajas.
+\usepackage{fancybox}
+
+%Diagramas.
+\usepackage[all]{xy}
+
+%Color.
+\usepackage{color}
+
+%Paquetes para Entornos.
+\usepackage{amsthm}
+%Entornos personalizados.
+\usepackage{thmtools}
+
+%Entornos especiales (Rombitos en los ejemplos y las observaciones).
+\declaretheoremstyle[
+  spaceabove=\topsep, spacebelow=\topsep,
+  notefont=\mdseries, notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  qed={$\diamondsuit$}]{examplestyle}
+
+\declaretheorem[style=examplestyle,name=Ejemplo,numberwithin=section]{exa}
+\declaretheorem[style=examplestyle,name=Observación,numberwithin=section]{obs}
+
+%Entornos sin Cursiva
+\theoremstyle{definition}
+\newtheorem{defi}{Definición}[section]
+\newtheorem{prob}{Problema}[chapter]
+\newtheorem{exerc}{Ejercicio}[chapter]
+\newtheorem{impor}[defi]{Importante}
+
+%Entornos con Cursiva
+\theoremstyle{plain}
+\newtheorem{theo}{Teorema}[section]
+\newtheorem{lem}[theo]{Lema}
+\newtheorem{prop}[theo]{Proposición}
+\newtheorem{cor}[theo]{Corolario}
+
+%Tachar
+\usepackage{cancel}
+
+%Cuadrado Negro Relleno
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Conjuntos Usuales
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+%Implicaciones
+\newcommand{\ra}{\Rightarrow}
+\newcommand{\la}{\Leftarrow}
+\newcommand{\sii}{\Leftrightarrow}
+\newcommand{\siidef}{\stackrel{\textrm{def.}}{\sii}}
+
+%Igualdades Especiales
+\newcommand{\equals}[1]{\stackrel{\textrm{#1}}{=}}
+
+%Implicaciones y Contenidos con Recuadros
+\newcommand{\bra}{\fbox{$\ra$}}
+\newcommand{\bla}{\fbox{$\la$}}
+\newcommand{\bsubset}{\fbox{$\subset$}}
+\newcommand{\bsetsub}{\fbox{$\supset$}}
+
+%Tal Que de Anibal (Deprecated)
+\newcommand{\tq}{\shortparallel}
+
+%Tipos de Letra
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\ti}[1]{\textit{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+%Cero y Vacío
+\newcommand{\smz}{\setminus\{0\}}
+\newcommand{\zset}{\{0\}}
+
+%Cosas Específicas (Geometría Lineal)
+\newcommand{\class}[1]{	 \left [ #1 \right ]}
+\newcommand{\proy}{\mathbb{P}}
+\newcommand{\haz}{\mathscr{H}}
+\newcommand{\engen}[1]{\mc{V}(#1)}
+\newcommand{\lengen}[1]{\mc{L}(#1)}
+\newcommand{\an}[1]{\text{an}(#1)}
+\newcommand{\afin}{\mathcal{A}}
+
+%Cosas Específicas (Topología) (En previsión de que haya)

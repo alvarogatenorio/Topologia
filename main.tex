@@ -1,0 +1,22 @@
+\documentclass[a4paper, 10pt, oneside, titlepage, openany, onecolumn, final]{book}
+
+\usepackage{style}
+
+\title{\tb{Topología Elemental}}
+\author{Álvaro García Tenorio \and Iván Prada Cazalla}
+\date{\today}
+
+\begin{document}
+	%Título e Índice
+	\maketitle
+	\tableofcontents
+	
+	%Capítulos
+	%Investigar para que el prefacio sea un capítulo distinguido.
+	\include{./tex/Prefacio}
+	%Capítulos.
+	\include{./tex/EspaciosTopologicos}
+	
+	\appendix
+	%A partir de aquí los capítulos son apéndices.
+\end{document}
