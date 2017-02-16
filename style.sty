@@ -1,8 +1,8 @@
-%Versión 1.0.1
+%Versión 1.1
 %Álvaro García Tenorio
 %Clara Isabel López González
 %Iván Prada Cazalla
-%Versión post-geometría documentada.
+%Clara Rodríguez Núñez
 
 %Las mejoras realizadas en este paquete han de ser, en la medida de lo posible, retrocompatibles (para mejorar la flexibilidad).
 
@@ -112,9 +112,14 @@
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 
-%Cero y Vacío
+%Negrita y Cursiva (introducción de términos novedosos).
+\newcommand{\tbi}[1]{\tb{\ti{#1}}}
+
+%Cero y Vacío.
 \newcommand{\smz}{\setminus\{0\}}
 \newcommand{\zset}{\{0\}}
+
+
 
 %Cosas Específicas (Geometría Lineal)
 \newcommand{\class}[1]{	 \left [ #1 \right ]}
@@ -126,13 +131,17 @@
 \newcommand{\afin}{\mathcal{A}}
 
 %Cosas Específicas (Topología) (En previsión de que haya)
-\newcommand{\cx}{\mathcal{X}}
-\newcommand{\cu}{\mathcal{U}}
-\newcommand{\cv}{\mathcal{V}}
-\newcommand{\cw}{\mathcal{W}}
-\newcommand{\ca}{\mathcal{A}}
-\newcommand{\cb}{\mathcal{B}}
-\newcommand{\cf}{\mathcal{F}}
-\newcommand{\rn}{\mathbb{R}^{n}}
-\newcommand{\partes}{\mathcal{P}}
+%Comandos en pruebas.
+\newcommand{\X}{\mc{X}}
+\newcommand{\U}{\mc{U}}
+\newcommand{\V}{\mc{V}}
+\newcommand{\W}{\mc{W}}
+\newcommand{\F}{\mc{F}}
+\newcommand{\partes}{\mc{P}}
+
+\newcommand{\Int}{\text{Int}}
 \newcommand{\interior}[1]{\stackrel{\ \circ}{#1}}
+\newcommand{\inter}[1]{{#1}^\circ}
+
+\newcommand{\Adh}{\text{Adh}}
+\newcommand{\adher}[1]{\overline{#1}}

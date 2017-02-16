@@ -1,78 +1,341 @@
-%Para este capítulo se usará la abreviatura "etop"
+%---CAPITULO DOCUMENTADO CON PAUTAS Y PIJOTERÍAS DE ESTILO
+
+%Generalidades:
+%--Usar los entornos predefinidos en el style para teoremas y demás.
+%--Cuanto más cosas se etiqueten mejor.
+%--Nunca usar \\ para saltar de línea, en su lugar, dar a ENTER dos veces.
+%--Redactar.
+%Cuidado al usar interiores pues es algo que lamentablemente jode el interlineado. Usar el comando reducido \inter cuando se quiera poner un abierto en medio del texto.
+
+%Para este capítulo se usará la abreviatura "etop".
 \chapter{Espacios Topológicos}
+%Todo capítulo será etiquetado con una abreviatura especificada al inicio del archivo.
 \label{etop}
-%Introducción
+%Todo capítulo comienza con una breve introducción, ya sea a modo de breve motivación o a modo de resumen de contenidos (o ambas).
+Al comienzo de este capítulo introducimos la noción de espacio topológico, introduciendo unos cuantos ejemplos, a continuación, presentaremos la dualidad entre conjuntos abiertos y cerrados.%Continuará.
+\section{Espacios Topológicos. Definición y Ejemplos.}
+%Etiquetaremos tanto secciones como subsecciones.
+\label{etop_definicionEjemplos}
+%Es recomendable redactar un poco entre entorno y entorno y soltar un chascarrillo de vez en cuando para dejar reflexionar al lector y que no le parezca un ladrillo.
+Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la que trabajaremos a lo largo de todas estas notas, los llamados espacios topológicos.
+%Es recomendable titular cada entorno entre corchetes.
+\begin{defi}[Espacio Topológico]
+	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
+	\label{etop_def_espacioTopologico}
+	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
+	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\tau$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades
+	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
+	\begin{enumerate}
+		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
+		\item[\tb{T1}] El vacío y el total están en la colección $\tau$, es decir, $\{\emptyset, \X\} \subset \tau$
+		\item[\tb{T2}] La unión arbitraria de conjuntos de $\tau$ está en $\tau$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
+		$\bigcup_{i\in I}\U_i\in\tau$ donde cada $\U_i\in\tau$.
+		\item[\tb{T3}] La intersección finita de conjuntos de $\tau$ está en $\tau$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\tau$ donde cada $\U_i\in\tau$.
+	\end{enumerate}
+\end{defi}
+%Siempre viene bien algún chascarrillo para liberar tensiones.
+Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
+\begin{obs}[Sutilezas]
+	\label{etop_obs_sutilezas}
+	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \tau)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (Espacios Vectoriales, Grupos, Anillos,...).
+\end{obs}
+Introducimos ahora un poco de terminología con la que el lector no tiene más remedio que hacerse familiar.
+\begin{obs}[Terminología]
+	\label{etop_obs_terminologia}
+	A la familia de conjuntos $\tau$ que conforman un espacio topológico $\X$ se la denomina \tbi{topología} de $\X$.
+	
+	Asimismo, a los conjuntos que conforman $\tau$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
+	
+	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi{puntos}.
+\end{obs}
+Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto de espacio topológico. Viendo lo general que puede llegar a ser.
+\begin{exa}[Topologías]
+	\label{etop_exa_topologias}
+	Las demostraciones de que, efectivamente, se cumplen las restricciones impuestas por la definición \ref{etop_def_espacioTopologico}, o bien ya se han hecho en cursos anteriores, o bien se dejan al lector como ejercicio inmediato.
+	\begin{enumerate}
+		\item El espacio ordinario $\R^n$ es un espacio topológico con la topología definida por los conjuntos abiertos en el sentido usual cuando hablamos de espacios métricos, es decir
+		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
+		\begin{equation}
+			\label{etop_eq_topologiaRn}
+			\tau = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B(x,\varepsilon)\subset\U\}
+		\end{equation}
+		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbi{topología trivial}, que viene definida por \begin{equation}
+		\label{etop_eq_topologiaTrivial}
+			\tau=\{\emptyset, \X\}
+		\end{equation}
+		\item Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topología que también toda de estructura topológica a cualquier conjunto no vacío $\X$. Esta topología viene dada por
+		\begin{equation}
+		\label{etop_eq_topologiaDiscreta}
+			\tau = \partes(\X)
+		\end{equation}
+		A esta topología la llamaremos \tbi{topología discreta}.
+		\item Como último ejemplo curioso nos queda la llamada \tbi{topología del punto}. Que consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
+		\begin{equation}
+		\label{etop_eq_topologiaPunto}
+			\tau_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
+		\end{equation}
+		
+		%Comento este ejemplo porque no se entiende un zipote lo que explicó este señor.
+		
+		%\item Como topología especial y rara, tomemos cuatro puntos a, b, c, d, siendo a y b cerrados, y c y d abiertos. Este espacio topológico es homótopo a la circunferencia $(S^{1})$ (viendo así que los conjuntos finitos pueden ser muy interesantes, aunque de primeras no nos lo imaginemos).
+	\end{enumerate}
+	Con lo que ya tenemos una gama lo suficientemente amplia de ejemplos como para ir tirando.
+\end{exa}
+En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del curso.
+\section{Conjuntos Abiertos e Interior}
+\label{etop_entornos}
+En esta sección introducimos el concepto de entorno, cuya utilidad inmediata es caracterizar a los conjuntos abiertos de un espacio topológico $\X$.
+\begin{defi}[Entorno de un Punto]
+	\label{etop_def_entorno}
+	Un \tbi{entorno} de un punto $a\in\X$ es un conjunto que contiene a un abierto que contiene al punto $a$.
+\end{defi}
+Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe a un galicismo. %¿cuál?
 
-\subsection{Conjuntos abiertos}
+Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda
+\begin{equation}
+	\label{etop_eq_entorno}
+	\V\supset\U\ni a
+\end{equation}
 
-\textbf{\underline{Definición}}\\
-Un \textbf{espacio topológico} es un conjunto $\cx$ equipado con una colección $\tau$ de subconjuntos $\cu \subset \cx$ que cumplen:
-\begin{enumerate}
-	\item $\emptyset, \cx \in \tau$
-	\item La unión arbitraria de conjuntos de $\tau$ está en $\tau$.
-	\item La intersección finita de conjuntos de $\tau$ está en $\tau$.
-\end{enumerate}
-A los conjuntos de $\tau$ les llamaremos \textbf{abiertos} de ahora en adelante, y a los elementos de $\cx$ les llamaremos \textbf{puntos}.\\
+Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema.
+\begin{lem}[Caracterización de Abiertos]
+	\label{etop_lem_caracterizacionAbiertos}
+	$\U$ es abierto si y solo si es entorno de todos sus puntos.
+\end{lem}
+\begin{proof}
+	Supongamos que $\U$ es abierto, entonces, dado un punto $a\in\U$ es evidente que $\U$ contiene a un abierto (él mismo) que contiene al punto $a$. Luego $\U$ es, trivialmente, entorno de todos sus puntos.
+	
+	Recíprocamente, si $\U$ es entorno de todos sus puntos, entonces, para cada punto $a\in\U$ se cumple que
+	\begin{equation*}
+		\U\supset\U_a\ni a
+	\end{equation*}
+	de donde se desprende que
+	\begin{equation*}
+		\U\supset\bigcup_{a\in\U}\U_a=:A
+	\end{equation*}
+	Más aún, se da la otra contención, y además, de forma trivial, ya que todo punto de $\U$ pertenece a algún $\U_a$, luego también a la unión de todos. Luego
+	\begin{equation*}
+		\U=A
+	\end{equation*}
+	Como la unión arbitraria de abiertos es abierto, $A$ es abierto, con lo que se sigue el resultado.
+\end{proof}
+En general, un conjunto será entorno de algunos de sus puntos, en principio no de todos. De esta idea surge la siguiente definición.
+\begin{defi}[Punto Interior]
+	\label{etop_def_puntoInterior}
+	Dado un conjunto $A\subset\X$, diremos que un punto $a\in\X$ es un \tbi{punto interior} de $A$ si $A$ es entorno de $a$.
+\end{defi}
+Será algo habitual de ahora en adelante tratar de determinar el conjunto de puntos interiores de un determinado conjunto $A\subset\X$, a este conjunto se le denomina \tbi{interior} de $\X$.
 
-\textbf{\underline{Ejemplo}}
-\begin{enumerate}
-	\item $\rn,\ \tau \ni \cu \Longleftrightarrow \forall x \in \cu \ \exists B_{d}(x,\epsilon) \subset \cu$
-	\item $\cx, \tau=\{\emptyset, \cx\}$ a la que llamaremos topología trivial.
-	\item $\cx, \tau = \mathcal{P}(\cx)$ a la que llamaremos topología discreta.
-	\item $a \in \cx\ \ \tau=\{\cu \subset \cx : a \in \cu \} \cup \{\emptyset\}$ a la que denotaremos como topología del punto. Como observación, hay que darse cuenta que no hay conjuntos disjuntos en este espacio topológico.
-	\item Como topología especial y rara, tomemos cuatro puntos a, b, c, d, siendo a y b cerrados, y c y d abiertos. Este espacio topológico es homótopo a la circunferencia $(S^{1})$ (viendo así que los conjuntos finitos pueden ser muy interesantes, aunque de primeras no nos lo imaginemos).
-\end{enumerate}
+Antes de continuar, fijemos unas cuantas notaciones que utilizaremos según el contexto para referirnos al interior de un conjunto.
+\begin{equation}
+\label{etop_eq_notacionInterior}
+	\Int_{\X}(A)=\inter{A}=\Int(A)
+\end{equation}
+Antes de continuar, merece la pena notar que el interior de un conjunto puede ser el conjunto vacío, así como que trivialmente se da la desigualdad conjuntista
+\begin{equation}
+\label{etop_eq_desigualdadInterior1}
+	\inter{A}\subset A
+\end{equation}
+Veamos ahora unos resultados elementales, pero a la vez cruciales del interior de un conjunto.
+\begin{lem}[Apertura]
+	\label{etop_lem_aperturaInterior}
+	El interior de un conjunto $A$ es un abierto.
+\end{lem}
+\begin{proof}
+	Para probar esto haremos uso del lema \ref{etop_lem_caracterizacionAbiertos}, es decir, trataremos de ver que es entorno de todos sus puntos.
+	
+	En efecto, dado un punto $a\in\inter{A}$, existe un abierto $\U_a\subset A$ de manera que $a\in\U_a$. Luego para ver que $\inter{A}$ es un entorno de $a$ basta demostrar la inclusión $\U_a\subset\inter{A}$, hagámoslo.
+	
+	Sea $x\in\U_a\subset A$, es claro que $A$ es entorno de $x$, luego $x\in\inter{A}$.
+	
+	Con lo cual hemos demostrado que $\inter{A}$ es entorno de todos sus puntos.
+\end{proof}
 
-\textbf{\underline{Entornos}}\\
-Un \textbf{entorno} de un punto $a \in \cx$ es un conjunto que contiene un abierto que contiene al punto a.
-$\cv^{a} \supset \cu \ni a$, con $\cu$ abierto y $\cv^{a}$ entorno de a.\\
-\\
+El otro resultado elemental que caracteriza al interior de un conjunto $A$, es que es el mayor abierto contenido en $A$.
 
-En particular, \textbf{$\cu$ es abierto si y solo si es entorno de sus puntos.}\\
-\\
-Veamos detenidamente esta última afirmación:\\
-La implicación a la derecha, como $\cu$ es abierto, $\forall a \in \cu, \exists \cw$ abierto tal que $\cw \subset \cu$. Por lo tanto, aplicando la definición de entorno ya enunciada, para todos los puntos encontramos un abierto que está contenido en $\cu$, luego $\cu$ es entorno de sus puntos.\\
-Para la otra implicación veamos la siguiente igualdad(demostremos la doble contención).\\
-$\cu = \cup_{a\in\cu}\cw^{a}$\\
-Para $\subset$, es trivial, ya que la unión de los conjuntos $\cw$ recubre a $\cu$ trivialmente. Para la otra contención, como cada $\cw^{a}$ es un abierto contenido en $\cu$, este será entorno suyo en a, y la unión de $\cu$ es $\cu$, luego queda demostrado.\\
-\\
+Presentamos aquí los primeros pasos de la demostración por ser especialmente útiles y omnipresentes en las matemáticas en general.
 
-\textbf{\underline{Definición}}\\
-Diremos que a es un punto interior de $\ca$ si $\ca$ es entorno de a.\\
-$Int_{\cx}(\ca) = \interior{\ca} = Int(\ca)$\\
-Estas serán distintas notaciones para referirnos al interior del conjunto, aunque lo más habitual será que usemos la segunda. Por lo tanto, $\mathcal{\AA{}}=\{a \in \ca : \ca$ es entorno de $\ca\}$\\
-\\
-$\bullet$ Este conjunto es abierto, de hecho, \textbf{$\interior{\ca}$ es el mayor abierto contenido en $\ca$}.\\
-\\
+Como la unión de abiertos es abierto, es claro que una forma de construir el mayor abierto contenido en cierto conjunto es, coleccionar los abiertos contenidos en dicho conjunto y unirlos. Escrito formalmente, tomamos el conjunto
+\begin{equation}
+\label{etop_eq_mayorAbierto}
+	B:=\bigcup_{\W\subset A}\W
+\end{equation}
+Es claro que $B\subset A$, ya que es una unión de conjuntos contenidos en $A$, además, si hubiera un abierto más grande contenido en $A$ que $B$, este pertenecería a la familia de conjuntos que estamos uniendo, lo cual es absurdo.
 
-\textbf{Demostración}:\\
-Primero, veamos $\interior{\ca}$ es abierto. Esto significa que $\forall a \in \interior{\ca} \Rightarrow \exists\ \cu^{a} \subset \interior{A}$, con $\cu^{\ca}$ abierto. Comprobemos esta implicación: $\forall a \in \interior{\ca} \Rightarrow\ \exists\ \cu{a} \subset \ca$. Ahora, $\forall x \in \cu^{a}$, como $\cu^{a}$ es abierto de $\ca$, $\ca$ es un entorno de x, luego $x \in \interior{\ca} \forall x \in \cu^{a} \Rightarrow\cu^{a} \subset \interior{\ca}$.\\
-Nos queda por probar que $\interior{A}$ es el mayor abierto de $\ca$. Supongamos que no, que existe uno mayor formado por la unión ahora descrita. $\interior{\ca} \subset \bigcup_{\cw \subset \ca}\cw \subset \ca$ con $\cw$ abierto. La primera contención es una igualdad, ya que si cojo un $x \in \cw$, como $\cw$ es abierto, está contenido en A, luego A es entorno de x, por lo que $x \in \interior{\ca}$, lo que implica que $\cw \subset \interior{\ca} \Rightarrow \bigcup_{\cw \subset \ca}\cw \subset \interior{\ca}$, quedando así demostrado.\\
-\\
+Presentamos el final de la demostración en forma de lema.
+\begin{lem}[Caracterización del Interior]
+	\label{etop_lem_caracterizacionInterior}
+	El interior de un conjunto $A$ es el mayor abierto contenido en $A$.
+\end{lem}
+\begin{proof}
+	Por el lema \ref{etop_lem_aperturaInterior} sabemos que $\inter{A}$ es abierto, luego, por la ecuación \eqref{etop_eq_mayorAbierto} solo queda probar la igualdad
+	\begin{equation*}
+		\inter{A}=\bigcup_{\W\subset A}\W\subset A
+	\end{equation*}
+	Y esto es prácticamente trivial, veámoslo.
+	
+	Por una parte, $\inter{A}$ es un abierto contenido en $A$, luego está contenido en la unión de los abiertos contenidos en $A$.
+	
+	Por otra parte, dado $x\in\bigcup_{\W\subset A}\W$, es claro que, como $\bigcup_{\W\subset A}\W\subset A$ es un abierto, $A$ es entorno de $x$, luego $x\in\inter{A}$, lo que concluye la demostración.
+\end{proof}
 
-\textbf{\underline{Observaciones}}
-\begin{enumerate}
-	\item $\interior{\interior{\ca}} = \interior{\ca}$, trivial de demostrar usando que $\interior{\ca} = \cup_{\cw\in\ca}\cw$.
-	\item Un conjunto abierto coincide con su interior.
-	\item Si $\ca \subset \cb \Rightarrow \interior{A} \subset \interior{B}$
-\end{enumerate}
+El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algunos corolarios interesantes que presentamos a modo de observaciones.
+\begin{obs}[Propiedades del Interior]
+	\label{etop_obs_propiedadesInterior}
+	Enumeramos algunas propiedades del interior.
+	\begin{enumerate}
+		\item El interior del interior de un conjunto es el interior de dicho conjunto. Si lo escribimos sin que suene como un trabalenguas tenemos
+		\begin{equation}
+		\label{etop_eq_dobleInterior}
+			\inter{\inter{A}}=\inter{A}
+		\end{equation}
+		Esto es trivial ya que al ser $\inter{A}$ un abierto, el mayor abierto contenido en él es él mismo.
+		\item Un abierto coincide con su interior, es decir
+		\begin{equation}
+			\label{etop_eq_abiertoInterior}
+			A=\inter{A}
+		\end{equation}
+		Esto es cierto por la misma razón que lo es la ecuación \eqref{etop_eq_dobleInterior}.
+		\item Los interiores preservan las contenciones. O lo que es lo mismo
+		\begin{equation}
+			\label{etop_eq_interiorContencion}
+			A\subset B\ra \inter{A}\subset\inter{B}
+		\end{equation}
+		Esto es claro ya que, como $B$ contiene a $A$, el mayor abierto contenido en $B$ serán en general más grande que el mayor abierto contenido en cualquier subconjunto suyo.
+	\end{enumerate}
+	Esto ya nos da cierta artillería para defendernos con estos conjuntos.
+\end{obs}
+Con esto podemos decir que ya hemos liquidado todo lo referente a conjuntos abiertos.
+\section{Conjuntos Cerrados y Adherencia}
+\label{etop_cerradosAdherencia}
+En esta sección estudiaremos los conjuntos cerrados.
 
-\subsection{Conjuntos cerrados}
-Sea $\cx$ un espacio topológico,\\
-\\
-\textbf{\underline{Definición}}\\
-Un conjunto $\cf \subset \cx$ se llama cerrado si $\cx \setminus \cf$ es abierto.
-\begin{enumerate}
-	\item $\cx, \emptyset $ son cerrados.
-	\item La intersección arbitraria de cerrados es cerrada.
-	\item La unión finita de cerrados es cerrada.
-\end{enumerate}
-Una breve anotación que nos será útil en el futuro. Para la comprobación de compacidad en un computo, nos será útil la utilización de cerrados. Veamos un ejemplo, introducido para motivar esta observación.\\
+Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la de ser abierto, ya que, como veremos más adelante, hay conjuntos que no son ni abiertos ni cerrados así como conjuntos que son abiertos y cerrados a la vez.
 
-\textbf{\underline{Ejemplo}}\\
-\\
-$\cx = \bigcup_{i \in I}\cup_{i} \Rightarrow \cx = \cu_{i_{1}} \cup \ldots \cup \cu_{i_{k}}$ por definición de compacto, que se verá más adelante. Pasando a complementarios tenemos:\\
-$\emptyset = \bigcap_{i \in I}\cf_{i} \Rightarrow \emptyset = \cf_{i_{1}} \cap \ldots \cap \cf_{i_{k}}$.\\
-Por lo tanto para ser compacto el conjunto, la unión de cerrados pertenecientes al conjunto finita a de ser el vacío.\\
-Veamos un caso en el que no se cumple:\\
-$\emptyset = \bigcap(0,\frac{1}{n}] \subset (0,\infty)$. Estos conjuntos son cerrados en este espacio. Pero observamos trivialmente que cualquier $n_0$ finito que coja, la intersección va a dar no vacía, luego el conjunto no es compacto.
+\begin{defi}[Conjunto Cerrado]
+	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi{cerrado} si su complementario, $\X\setminus\F$, es abierto.
+\end{defi}
+
+Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
+
+Usando propiedades básicas de teoría de conjuntos se obtienen algunas propiedades elementales de los conjuntos cerrados.
+\begin{lem}[Propiedades de los Cerrados]
+	\label{etop_lem_propiedadesCerrados}
+	\begin{enumerate}
+		\item El vacío y el total son cerrados.
+		\item La intersección arbitraria de cerrados es cerrada.
+		\item La unión finita de cerrados es cerrada.
+	\end{enumerate}
+\end{lem}
+\begin{proof}Vayamos caso por caso.
+	\begin{enumerate}
+		\item $\X$ es cerrado pues $\X\setminus\X=\emptyset$ es abierto.
+		
+		Asimismo, $\emptyset$ es cerrado pues $\X\setminus\emptyset=\X$ es abierto.
+		\item $\bigcap_{i\in I}\F_i$ es cerrado ya que
+		\begin{equation*}
+			\X\setminus\left(\bigcap_{i\in I}\F_i\right)=\bigcup_{i\in I}\X\setminus\F_i
+		\end{equation*}
+		es abierto por ser la unión arbitraria de abiertos un abierto.
+		\item $\bigcup_{i=1}^n\F_i$ es cerrado, basta tomar el complementario y ver que es abierto por ser intersección finita de abiertos.
+		\begin{equation*}
+			\X\setminus\left(\bigcup_{i=1}^{n}\F_i\right)=\bigcap_{i=1}^n\X\setminus\F_i
+		\end{equation*}
+	\end{enumerate}
+	Con lo que concluye la demostración.
+\end{proof}
+\begin{obs}[Abiertos y Cerrados a la Vez]
+	\label{etop_obs_abiertoCerrado}
+	Basta con mirar con atención este lema \ref{etop_lem_propiedadesCerrados} para darse cuenta de que hemos encontrado dos conjuntos que son abiertos y cerrados a la vez, el vacío y el total.
+\end{obs}
+%----DEJO ESTO COMENTADO HASTA QUE SE DE LA DEFINICIÓN DE COMPACTO----
+%Una breve anotación que nos será útil en el futuro. Para la comprobación de compacidad en un computo, nos será útil la utilización de cerrados. Veamos un ejemplo, introducido para motivar esta observación.\\
+%\textbf{\underline{Ejemplo}}\\
+%\\
+%$\cx = \bigcup_{i \in I}\cup_{i} \Rightarrow \cx = \cu_{i_{1}} \cup \ldots \cup \cu_{i_{k}}$ por definición de compacto, que se verá más adelante. Pasando a complementarios tenemos:\\
+%$\emptyset = \bigcap_{i \in I}\cf_{i} \Rightarrow \emptyset = \cf_{i_{1}} \cap \ldots \cap \cf_{i_{k}}$.\\
+%Por lo tanto para ser compacto el conjunto, la unión de cerrados pertenecientes al conjunto finita a de ser el vacío.\\
+%Veamos un caso en el que no se cumple:\\
+%$\emptyset = \bigcap(0,\frac{1}{n}] \subset (0,\infty)$. Estos conjuntos son cerrados en este espacio. Pero observamos trivialmente que cualquier $n_0$ finito que coja, la intersección va a dar no vacía, luego el conjunto no es compacto.
+%----FIN----
+Introducimos ahora un concepto elemental pero interesante, el concepto de puntos adherentes y adherencia.
+\begin{defi}[Punto Adherente]
+	\label{etop_defi_puntoAdherente}
+	Un punto $a\in\X$ se dice \tbi{adherente} a un conjunto $A\subset\X$ si todo entorno de $a$ corta al conjunto $A$.
+\end{defi}
+Como ya es habitual, coleccionaremos los puntos adherentes a un conjunto dado y estudiaremos las propiedades del conjunto de puntos adherentes. Introduzcamos una definición para verlo formalmente.
+\begin{defi}[Adherencia]
+	\label{etop_defi_adherencia}
+	Se define la \tbi{adherencia} o \tbi{clausura} de un conjunto $A\subset\X$ como el conjunto de los puntos adherentes de $A$.
+\end{defi}
+
+Usualmente denotaremos a la adherencia de alguna de las siguientes formas
+\begin{equation}
+\label{etop_eq_adherencia}
+\Adh_{\X}(A)=\Adh(A)=\adher{A}
+\end{equation}
+
+Vamos a desgranar ahora una serie de resultados que nos van a hacer ver que adherencia e interior de un conjunto son, de alguna manera, conceptos duales.
+
+Comenzamos en primer lugar con algo casi trivial.
+\begin{obs}[Adherencia y Conjunto]
+	\label{etop_obs_adherenciaConjunto}
+	Es claro que se verifica que
+	\begin{equation}
+	\label{etop_eq_adherenciaConjunto}
+		A\subset\adher{A}
+	\end{equation}
+	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al conjunto $a$, luego, por definición, corta al conjunto $A$.
+\end{obs}
+
+\begin{lem}[Clausura de la Adherencia]
+	\label{etop_lem_clausuraAdherencia}
+	La adherencia de un conjunto $A$ es un cerrado.
+\end{lem}
+\begin{proof}
+	Usaremos lo único que tenemos, es decir, la definición de conjunto cerrado. Por ende, probaremos que $\X\setminus\adher{A}$ es abierto, para lo cual veremos que es entorno de todos sus puntos, haciendo buen uso del lema \ref{etop_lem_caracterizacionAbiertos}.
+	
+	Dado $x\in\X\setminus\adher{A}$, como $x$ no es un punto adherente, entonces existirá un entorno $\V(\ni x)$, el cual podemos escoger abierto sin pérdida de generalidad tal que se verifica
+	\begin{equation*}
+		\V\cap A=\emptyset
+	\end{equation*}
+	Si consiguiéramos demostrar que se de la igualdad
+	\begin{equation*}
+		\V\cap \adher{A}=\emptyset
+	\end{equation*}
+	habríamos acabado ya que tendríamos que $x\in\V\subset\X\setminus\adher{A}$, que es, por definición que $\X\setminus \adher{A}$ sea entorno de $x$.
+	
+	En efecto, la comprobación de esta igualdad es muy fácil, ya que, si tomamos un $y\in\V$, al ser $\V$ abierto, es entorno de $y$, y, por tanto, tendríamos que el punto $y$ no es adherente, ya que existe un entorno, el propio $\V$ que no corta con el conjunto $A$, incumpliendo así la definición \ref{etop_defi_puntoAdherente}.
+\end{proof}
+Continuamos esta dualización de conceptos dándonos cuenta de que la adherencia es el menor cerrado que contiene a $A$. Como antes, parte de la demostración se basa en un procedimiento estándar que pasamos a explicar.
+
+Es fácil darse cuenta de que, como la intersección arbitraria de cerrados es un cerrado, el menor conjunto cerrado que contiene a uno dado puede ser construido de la siguiente manera
+\begin{equation}
+\label{etop_eq_menorCerrado}
+	B:=\bigcap_{\mc{H}\supset A}\mc{H}
+\end{equation}
+En efecto es un conjunto que contiene a $A$ ya que todos los conjuntos de la familia a intersecar contienen a $A$, además, es el menor de ellos, ya que, de haber uno más pequeño, pertenecería a la familia que se está intersecando, lo cual es absurdo (¡compruébese!).
+
+Presentamos, otra vez, en forma de lema, el resto de la demostración.
+\begin{lem}[Caracterización de la Adherencia]
+	\label{etop_lem_caracterizacionAdherencia}
+	La adherencia de un conjunto $A$ es el menor cerrado que contiene a $A$.
+\end{lem}
+\begin{proof}
+	Por la ecuación \eqref{etop_eq_menorCerrado} la demostración se reduce a comprobar que
+	\begin{equation*}
+		\adher{A}=\bigcap_{\mc{H}\supset A}\mc{H}
+	\end{equation*}
+	Y esto es una comprobación inmediata.
+	
+	Por lado, como $\adher{A}$ es un cerrado que contiene a $A$, es claro que $\adher{A}$ se encuentra en la familia a intersecar, luego contiene a la intersección de la familia.
+	
+	Recíprocamente, dado un punto adherente $x$, si hubiera un conjunto $\mc{H}$ de la familia tal que $x\not\in \mc{H}$, entonces tendríamos que $x\in\X\setminus\mc{H}\subset\X\setminus A$.
+	
+	Como $\mc{H}$ es cerrado, $\X\setminus\mc{H}$ es abierto, y, por tanto existirá un entorno $\V$ de $x$ de manera que \begin{equation*}
+		x\in\V\subset\X\setminus\mc{H}\subset\X\setminus A
+	\end{equation*}
+	
+	Y, por ende, $\V\cap A=\emptyset$, contra la definición de punto adherente.
+\end{proof}
+%Faltan algunas cosillas que tengo a medias.
