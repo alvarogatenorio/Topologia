@@ -1,1 +1,8 @@
 En esta carpeta se irán recopilando errores, erratas, y posibles mejoras de estilo.
+
+Es adecuado recopilar aquí los temas que sean simplemente erratas pequeñas.
+Sin embargo, para problemas más grandes (por ejemplo, falta una definición), es más cómodo añadir
+un nuevo issue en Github, para poder asignar la tarea. En particular, asuntos que requieran una
+discusión se tratan mucho mejor en un issue.
+
+Guía-resumen sobre issues: https://guides.github.com/features/issues/
