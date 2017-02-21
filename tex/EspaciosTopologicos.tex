@@ -26,28 +26,28 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
 	\label{etop_def_espacioTopologico}
 	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
-	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\tau$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades
+	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades
 	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
 	\begin{enumerate}
 		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
-		\item[\tb{T1}] El vacío y el total están en la colección $\tau$, es decir, $\{\emptyset, \X\} \subset \tau$
-		\item[\tb{T2}] La unión arbitraria de conjuntos de $\tau$ está en $\tau$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
-		$\bigcup_{i\in I}\U_i\in\tau$ donde cada $\U_i\in\tau$.
-		\item[\tb{T3}] La intersección finita de conjuntos de $\tau$ está en $\tau$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\tau$ donde cada $\U_i\in\tau$.
+		\item[\tb{T1}] El vacío y el total están en la colección $\T$, es decir, $\{\emptyset, \X\} \subset \T$
+		\item[\tb{T2}] La unión arbitraria de conjuntos de $\T$ está en $\T$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
+		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$.
+		\item[\tb{T3}] La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
 	\end{enumerate}
 \end{defi}
 %Siempre viene bien algún chascarrillo para liberar tensiones.
 Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
 \begin{obs}[Sutilezas]
 	\label{etop_obs_sutilezas}
-	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \tau)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (Espacios Vectoriales, Grupos, Anillos,...).
+	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \T)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (Espacios Vectoriales, Grupos, Anillos,...).
 \end{obs}
 Introducimos ahora un poco de terminología con la que el lector no tiene más remedio que hacerse familiar.
 \begin{obs}[Terminología]
 	\label{etop_obs_terminologia}
-	A la familia de conjuntos $\tau$ que conforman un espacio topológico $\X$ se la denomina \tbi{topología} de $\X$.
+	A la familia de conjuntos $\T$ que conforman un espacio topológico $\X$ se la denomina \tbi{topología} de $\X$.
 	
-	Asimismo, a los conjuntos que conforman $\tau$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
+	Asimismo, a los conjuntos que conforman $\T$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
 	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi{puntos}.
 \end{obs}
@@ -60,22 +60,22 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
 		\begin{equation}
 			\label{etop_eq_topologiaRn}
-			\tau = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
+			\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbi{topología trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
-			\tau=\{\emptyset, \X\}
+			\T=\{\emptyset, \X\}
 		\end{equation}
 		\item Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topología que también toda de estructura topológica a cualquier conjunto no vacío $\X$. Esta topología viene dada por
 		\begin{equation}
 		\label{etop_eq_topologiaDiscreta}
-			\tau = \partes(\X)
+			\T = \partes(\X)
 		\end{equation}
 		A esta topología la llamaremos \tbi{topología discreta}.
 		\item Como último ejemplo curioso nos queda la llamada \tbi{topología del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
 		\begin{equation}
 		\label{etop_eq_topologiaPunto}
-			\tau_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
+			\T_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
 		\end{equation}
 		
 		%Comento este ejemplo porque no se entiende un zipote lo que explicó este señor.
