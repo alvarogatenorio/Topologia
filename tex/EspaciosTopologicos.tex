@@ -342,3 +342,33 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	Y, por ende, $\V\cap A=\emptyset$, contra la definición de punto adherente.
 \end{proof}
 %Faltan algunas cosillas que tengo a medias.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% FALTA LO ANTERIOR A LA SECCIÓN 5
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Topología relativa}
+
+\begin{defi}[Topología relativa]
+	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X$. Definimos la \tbi{topología relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$. Se verifica que esta es una topología en $\mc{Y}$, y entonces decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}.
+\end{defi}
+
+\begin{prop}
+	Los cerrados de $\mc{Y}$ son las intersecciones de los cerrados de $\X$ con $\mc{Y}$. Es decir, $C\subset\mc{Y}$ es cerrado si existe $F\subset\X$ cerrado tal que $C = F\cap\mc{Y}$.
+	
+	\begin{proof}
+		Sea $W\subset\X$ un abierto de $X$. Entonces, $\X\setminus W$ es cerrado, y queremos ver si $C=\mc{Y}\cap(\X\setminus W)$ es cerrado. Pero esto es lo mismo que ver si $\mc{Y}\setminus F$ es abierto, y:
+		\[\mc{Y}\setminus C=\mc{Y}\setminus (\mc{Y}\cap(\X\setminus W))=\mc{Y}\setminus ((\mc{Y}\cap\X)\setminus W)=\mc{Y}\setminus (\mc{Y}\setminus W) = \mc{Y}\cap W\]
+		donde para las igualdades anteriores se han utilizado relaciones conocidas de teoría de conjuntos. Entonces, como $\mc{Y}\cap W$ es abierto por definición de topología relativa, $\mc{Y}\setminus C$ también lo es, y por tanto $C$ es cerrado.
+	\end{proof}
+\end{prop}
+
+\begin{obs}
+	En particular, se verifican las siguientes propiedades:
+	\begin{enumerate}
+		\item Sea $A\subset\X$ abierto. Si $A\cap U$ es un abierto en la topología $\T\restriction_A$ (es decir, $U$ es abierto en $\T_\X$), entonces $A\cap U$ es también abierto en $\T_\X$.
+		\item Sea $F\subset\X$ cerrado. Si $F\cap C$ es un cerrado en la topología $\T\restriction_F$ (es decir, $C$ es cerrado en $\T_\X$), entonces $F\cap C$ es también cerrado en $\T_\X$. \qedhere
+	\end{enumerate}
+\end{obs}
