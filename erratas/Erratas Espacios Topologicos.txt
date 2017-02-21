@@ -1,0 +1,16 @@
+Observacion 1.1.2
+A la familia de conjuntos  que conforman un espacio topol
+ogico X se LE denomina topologa de X
+Asimismo,(a) los conjuntos que conforman  reciben el nombre de abiertos de X
+
+Ejemplo 1.1.1
+3. Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topologa que
+tambien DOTA de estructura topologica
+
+Observacion 1.3.2
+cualquier entorno de a contiene al PUNTO a, luego, por
+denicion, corta al conjunto A.
+
+
+Lema 1.3.3
+Por UN lado
