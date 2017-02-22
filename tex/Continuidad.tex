@@ -3,3 +3,51 @@
 
 La continuidad es la propiedad por excelencia que queremos que nuestras funciones verifiquen. En este breve capítulo vamos a generalizar la noción de continuidad que ya conocemos y dominamos para espacios como $\R^n$, de forma que la podamos aplicar a cualquier espacio métrico conocido. La continuidad, además, será clave para definir más adelante la noción de homeomorfismo: las aplicaciones que preservan las propiedades topológicas de un espacio dado.
 
+\section{Continuidad en un punto}
+
+En el espacio euclídeo usual, cuando teníamos una función $f:A\subset\mb{R}^m\to\mb{R}^n$, con un punto $a\in A$, decíamos que $f$ es continua en $a$ si y solo si $\forall\epsilon > 0\;\exists\delta > 0$ tal que si $x\in A,\norm{x-a}<\delta$, entonces $\norm{f(x)-f(a)}<\epsilon$. Podemos reescribir esta condición como que si $x\in A\cap\bola(a,\delta)$, entonces $f(x)\in\bola(f(a),\epsilon)$. Pero de nuevo, esto es equivalente a que para cualquier $\bola^a$ (bola centrada en $a$), $A\cap \bola^a\subset f^{-1}(\bola^{f(a)})$ para cierta $\bola^{f(a)}$.
+
+De esta forma, vamos a proceder ahora a generalizar esta definición para espacios topológicos arbitrarios.
+
+\begin{defi}
+	Sean $\X,\mc{Y}$ espacios topológicos, $f:\X\to\mc{Y}$. $f$ es \tbi{continua} en $x_0\in\X$ si para todo entorno $V^{f(x_0)}$ la imagen inversa $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$. 
+\end{defi}
+
+\begin{obs}
+	\label{cont_obs_continuidad_discreta_trivial}
+	Si la topología de $\X$ es grosera, o la topología de $\mc{Y}$ es muy fina, la continuidad suele ser más fácil de comprobar. Podemos pensar en $\X$ con la topología discreta como ejemplo de lo primero y en $\mc{Y}$ con la topología trivial como ejemplo de lo segundo:
+	
+	\begin{enumerate}
+		\item En la topología discreta, cualquier conjunto es abierto, con lo cual $\{x_0\}$ es abierto y por tanto cualquier conjunto que contenga a $x_0$ es entorno suyo. Entonces, para cualquier entorno de $f(x_0)$ su imagen inversa contendrá a $x_0$ y por lo anterior será entorno suyo. Es decir, cualquier función que nazca en $\X$ con la topología discreta es continua.
+		
+		\item En la topología trivial, los únicos abiertos son el vacío y el total, con lo cual dado un punto su único entorno es el total. Entonces, si $\mc{Y}$ con la topología trivial es el espacio de llegada de una función $f$, $f$ es continua, pues la imagen inversa del total es el total, y este es abierto (y por tanto entorno) en cualquier topología. \qedhere 
+	\end{enumerate}
+\end{obs}
+
+\begin{obs}
+	Hay algunas funciones muy simples cuya continuidad se puede estudiar de forma más o menos general.
+	
+	\begin{enumerate}
+		\item Si $f:\X\to\mc{Y}$ es la aplicación constante $f=b$, entonces $f$ es continua con cualquier topología. En efecto, la imagen inversa de cualquier subconjunto (y en particular de cualquier entorno) de $\mc{Y}$ que contenga a $b$ es el total, que es entorno de todos los puntos.
+		
+		\item La continuidad de la aplicación identidad depende de los espacios topológicos sobre los que está definida, al contrario de lo que pueda parecer. En efecto, sea $f:(\X,\T_\text{discreta})\to (\X,\T_\text{trivial})$. Esta sí es continua, por la observación \ref{cont_obs_continuidad_discreta_trivial}. Sin embargo, su inversa, que también es la aplicación identidad, no es continua. Esto se sigue directamente de que, por ser la topología del espacio de llegada la discreta, $\{f(x_0)\}$ es abierto y por tanto entorno de $f(x_0)$, pero su imagen inversa es $\{x_0\}$ que con la topología trivial del espacio de salida no es entorno.
+	\end{enumerate}
+\end{obs}
+
+Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
+
+\begin{prop}
+	Dada $f:\X\to\mc{Y}$, continua en $x_0\in\X$, si $A\subset\X$ tal que $x_0\in A$, entonces $f\restriction_A:A\to\mc{Y}$ es continua en $x_0$.
+	
+	\begin{proof}
+		Sea $V^{f(x_0)}$ un entorno de $x_0$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V^{f(x_0)}) = A\cap f^{-1}(V^{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $A$.
+	\end{proof}
+\end{prop}
+
+\begin{prop}
+	La continuidad es una propiedad local, es decir, $f:\X\to\mc{Y}$ es continua en $x_0\in\X$ si $\exists V^{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$.
+	
+	\begin{proof}
+		Sea $V^{f(x_0)}$ un entorno de $f(x_0)$. Si $\exists V^{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$, entonces $(f\restriction_{V^{x_0}})(V^{f(x_0)}) = f^{-1}(V^{f(x_0)})\cap V^{x_0}$, luego es entorno de $x_0$ en $V^{x_0}$. Entonces es entorno de $x_0$ en $\X$ y por tanto $f$ es continua.
+	\end{proof}
+\end{prop}

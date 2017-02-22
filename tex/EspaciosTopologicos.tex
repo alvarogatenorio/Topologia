@@ -355,6 +355,10 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X$. Definimos la \tbi{topología relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$. Se verifica que esta es una topología en $\mc{Y}$, y entonces decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}.
 \end{defi}
 
+Gracias a esta definición, siempre que hablemos en adelante de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa para dotarlo de estructura de espacio topológico.
+
+Vamos a ver ahora que la topología relativa también preserva esa ``dualidad'' de la que hablábamos antes entre abiertos y cerrados. En particular, también los cerrados relativos son las intersecciones de los cerrados de $\X$.
+
 \begin{prop}
 	Los cerrados de $\mc{Y}$ son las intersecciones de los cerrados de $\X$ con $\mc{Y}$. Es decir, $C\subset\mc{Y}$ es cerrado si existe $F\subset\X$ cerrado tal que $C = F\cap\mc{Y}$.
 	

@@ -27,12 +27,13 @@
 %Varias imagenes en una misma figura.
 \usepackage{subfigure}
 
-%Símbolos Adicionales
+%Símbolos Adicionales y Mates
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{latexsym}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
 
 %Cajas.
 \usepackage{fancybox}
@@ -120,9 +121,15 @@
 \newcommand{\smz}{\setminus\{0\}}
 \newcommand{\zset}{\{0\}}
 
-% Nuevo alfabeto matemático (con una buena T de topología)
+% Nuevo alfabeto matemático (en el que está la T de topología y la B de base)
 \DeclareMathAlphabet{\matheuler}{U}{eus}{m}{n}
 
+% Arreglar el comando restriction para que no salga más separado de lo que debe
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+
+% Valor absoluto y norma
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
 
 %Cosas Específicas (Geometría Lineal)
@@ -143,6 +150,8 @@
 \newcommand{\W}{\mc{W}}
 \newcommand{\F}{\mc{F}}
 \newcommand{\partes}{\mc{P}}
+
+\DeclareMathOperator{\bola}{B}
 
 \newcommand{\Int}{\text{Int}}
 \newcommand{\inter}[1]{\mathring{#1}}
