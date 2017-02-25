@@ -1,1 +1,75 @@
 %Cosas Pendientes de Manuel Navarro García
+
+\textbf{Número 1.1.} Sea $X$ un conjunto, y $\mathcal{T}_{\text{CF}}$ la familia de todos los subconjuntos de $X$ cuyo complementario es finito, más el conjunto vacío. Probar que $\mathcal{T}_{\text{CF}}$ es una topología en $X$. Esta topología se llama, por razones evidentes, \textit{topología de los complementarios finitos}. ?`Qué topología obtenemos si $X$ es un conjunto finito?  \\
+
+A partir del enunciado se deduce que los abiertos de esta topología son los elementos de la colección 
+
+\[\mathcal{T}_{\text{CF}}= \{U \subset X : U= \emptyset \text{ o } X \backslash U\equiv U^c \text{ es finito}\}.\]
+
+Veamos que efectivamente $\mathcal{T}_{\text{CF}}$ es una topología al verificar las condiciones necesarias. 
+
+\begin{itemize}
+\item En primer lugar, el vacío pertenece a esta por definición. Además, el complementario del total $X$ (el vacío) es finito, luego $X$ también pertenece a $\mathcal{T}_{\text{CF}}$. 
+
+\item Por otro lado, sea $\{U_\alpha\}_{\alpha \in I}$ para un cierto conjunto de índices $I$ una colección arbitraria de elementos de $\mathcal{T}_{\text{CF}}$, teniéndose que 
+
+\[X \backslash \bigcup_{\alpha}U_\alpha = \bigcap_{\alpha} (X\backslash U_\alpha).\]
+
+Pero $X-U_\alpha$ es finito para cada $\alpha \in I$, luego la intersección numerable de ellos también lo será. De este modo, la unión numerable de abiertos de $\mathcal{T}_{\text{CF}}$ pertenece a ella.
+
+\item Por último, consideremos $U_1$ y $U_2$ dos abiertos de $\mathcal{T}_{\text{CF}}$. Analógamente al caso anterior, 
+
+\[X \backslash (U_1 \cap U_2) = \bigcup_{i=1}^2 (X\backslash U_i).\]
+
+Sin embargo, $X \backslash U_i$ es finito para $i\in\{1,2\}$, luego la unión finita de conjuntos finitos es finita.
+\end{itemize}
+
+Para finalizar, se nos pregunta qué topología se obtendría en caso de que $X$ fuese un conjunto finito. Si damos por cierta esta suposición, es claro que $\mathcal{T}_{\text{CF}}$ coincide con la topología discreta, ya que el complementario de todo conjunto es finito. \\
+
+A pesar de haber terminado con lo requerido del ejercicio, podemos ir más allá estudiando más a fondo esta topología. Para comenzar, nótese que si $X$ es numerable trivialmente el conjunto es separable y primer y segundo axioma de numerabilidad. El caso en el que $X$ no es numerable ya no es tan sencillo. Vayamos por partes.
+
+\begin{itemize}
+\item $X$ es separable. Es más, todo conjunto numerable es denso en $X$. En efecto, supongamos que existiese un conjunto $A \subset X$ numerable pero que no es denso en $X$. Esto implica que existe un abierto $B\in \mathcal{T}_{\text{CF}}$ tal que $B\cap A = \emptyset$. De este modo, 
+
+\[(X\backslash B)\cup (X\backslash A)=X.\]
+
+Pero los conjuntos del primer miembro son finitos, y la unión de finitos es finita, lo que conllevaría a que $X$ también lo sea. Esto nos conduce a la  contradicción buscada. 
+
+\item $X$ no es primer axioma de numerabilidad, lo que implica que tampoco es segundo. Para corroborar esto, comprobemos que para cada punto $a\in X$ no existe una base de entornos abiertos numerable centrada en $a$. Razonaremos de nuevo por reducción al absurdo. \\
+
+Supongamos que sí que existe esa base y sea esta 
+
+\[\mathcal{U}^a=\{V_k \in\mathcal{T}_{\text{CF}}: k \geq 1\}.\]
+
+La intersección 
+
+\[\left(\bigcap_{k\geq 1} V_k\right)\backslash \{a\}\]
+
+es no vacía puesto que, al tomar los complementarios y aplicar las leyes de De Morgan se tiene que 
+
+\[X \backslash \left(\bigcap_{k\geq 1} V_k\right)= \left(\bigcup_{k\geq 1} X \backslash V_k\right), \]
+
+y esta unión es numerable ya que $X \backslash V_k$ es finito (recordemos que $V_k \in \mathcal{T}_{\text{CF}}$). Al ser $X$ no numerable y 
+
+\[X= \left(\bigcap_{k\geq 1} V_k\right) \cup \left(\bigcup_{k\geq 1} X\backslash V_k\right),\]
+
+la intersección anterior ha de ser no numerable. \\
+
+Tomemos ahora un punto cualquiera $b$ de esta intersección con la condición de que sea distinto de $a$ y consideremos el entorno abierto de $a$ dado por $W:=X\backslash \{b\}$. Claramente, $a\in W$ y es abierto puesto que su complementario es finito.  De forma evidente la condición $V_k \subset W$ no se verifica para ningún $k$ ya que $b\in V_k$ para todo $k$. Esto verifica que $\mathcal{U}^a$ no puede ser base, concluyendo así que cuando $X$ no es numerable $\mathcal{T}_{\text{CF}}$ no es primer axioma de numerabilidad.
+
+\item $X$ es compacto. En efecto, supongamos que $\{V_k : k \geq 1\}$ es un recubrimiento por abiertos de $X$ y tomemos un $V_{k_0}$ arbitrario. Como este abierto pertenece a $\mathcal{T}_{\text{CF}}$ su complementario es finito, luego 
+
+\[X \backslash V_{k_0} := \{x_1, \ldots, x_r\}\]
+
+con $x_j \in X$ y $j=\{1,\ldots, r\}$ tales que $x_j\in V_{k_j}$ para cierto $k_j$, pues la unión de $V_k$ recubre $X$ según lo hemos definido. De este modo, podemos tomar $X$ como la unión de $V_{k_0}$ con los $V_{k_j}$ que contienen a los puntos $x_j$, esto es,
+
+\[X=\bigcup_{j=0}^r V_{k_j},\]
+
+lo que prueba que $X$ es compacto. 
+
+\item $X$ es conexo. Un modo de probar esto es comprobar que no existen conjuntos abiertos y cerrados simultáneamente. En caso de que esto ocurriese, lo que quiere decir que $A\in \mathcal{T}_{\text{CF}}$ y $X\backslash A \in \mathcal{T}_{\text{CF}}$, se tiene que $X \backslash A$ y $X\backslash (X\backslash A)=A$ son finitos, luego
+
+\[X=A \cup (X\backslash A)\]
+
+sería finito, y esto contradice que sea no numerable. 
+\end{itemize}
