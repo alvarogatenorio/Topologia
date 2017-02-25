@@ -12,10 +12,14 @@
 %Todo capítulo será etiquetado con una abreviatura especificada al inicio del archivo.
 \label{etop}
 %Todo capítulo comienza con una breve introducción, ya sea a modo de breve motivación o a modo de resumen de contenidos (o ambas).
-La necesidad del estudio de la proximidad y continuidad, de la forma más abstracta posible, (absteniéndose de la noción de distancia) dio origen a la Topología.  Los idea de espacio topológico se comenzó a desarrollar durante los siglos XIX y XX por matemáticos como Fréchet, Kuratowski, Alexandroff y Hausdorff entre otros. La definición inicial de estos espacios se puede encontrar en el libro \tbi{"Grundzüge der Mengenlehre"}\footnote{"Teoría abstracta de conjuntos", publicado en 1914 por \tbi{Felix Hausdorff}(1868-1942) .} publicado por este último autor.
+La necesidad del estudio de la proximidad y continuidad, de la forma más abstracta posible, (absteniéndose del uso de la noción de distancia) dio origen a la Topología.
+
+La idea de espacio topológico se comenzó a desarrollar durante los siglos XIX y XX por matemáticos como Fréchet, Kuratowski, Alexandroff y Hausdorff entre otros.
+
+La definición inicial de estos espacios se puede encontrar en el libro \tbi{``Grundzüge der Mengenlehre''}\footnote{``Teoría abstracta de conjuntos'', publicado en $1914$ por \tbi{Félix Hausdorff}(1868-1942).} publicado por este último autor.
 
 
-Al comienzo de este capítulo introducimos la noción de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos la dualidad entre conjuntos abiertos y cerrados.%Continuará.
+Al comienzo de este capítulo introducimos la noción moderna de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos los conjuntos abiertos y cerrados y sus relaciones.%Continuará.
 \section{Espacios Topológicos. Definición y Ejemplos.}
 %Etiquetaremos tanto secciones como subsecciones.
 \label{etop_definicionEjemplos}
@@ -45,9 +49,9 @@ Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién
 Introducimos ahora un poco de terminología con la que el lector no tiene más remedio que hacerse familiar.
 \begin{obs}[Terminología]
 	\label{etop_obs_terminologia}
-	A la familia de conjuntos $\T$ que conforman un espacio topológico $\X$ se la denomina \tbi{topología} de $\X$.
+	A la familia de conjuntos $\T$ que conforman un espacio topológico $\X$ se le denomina \tbi{topología} de $\X$.
 	
-	Asimismo, a los conjuntos que conforman $\T$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
+	Asimismo, los conjuntos que conforman $\T$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
 	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi{puntos}.
 \end{obs}
@@ -66,7 +70,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaTrivial}
 			\T=\{\emptyset, \X\}
 		\end{equation}
-		\item Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topología que también toda de estructura topológica a cualquier conjunto no vacío $\X$. Esta topología viene dada por
+		\item Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topología que también dota de estructura topológica a cualquier conjunto no vacío $\X$. Esta topología viene dada por
 		\begin{equation}
 		\label{etop_eq_topologiaDiscreta}
 			\T = \partes(\X)
@@ -134,12 +138,12 @@ Antes de continuar, fijemos unas cuantas notaciones que utilizaremos según el c
 \label{etop_eq_notacionInterior}
 	\Int_{\X}(A)=\inter{A}=\Int(A)
 \end{equation}
-Antes de continuar, merece la pena notar que el interior de un conjunto puede ser el conjunto vacío, así como que trivialmente se da la desigualdad conjuntista
+Merece la pena notar que el interior de un conjunto puede ser el conjunto vacío, así como que trivialmente se da la desigualdad conjuntista
 \begin{equation}
 \label{etop_eq_desigualdadInterior1}
 	\inter{A}\subset A
 \end{equation}
-Veamos ahora unos resultados elementales, pero a la vez cruciales del interior de un conjunto.
+Veamos ahora unos resultados elementales, pero a la vez cruciales, del interior de un conjunto.
 \begin{lem}[Apertura]
 	\label{etop_lem_aperturaInterior}
 	El interior de un conjunto $A$ es un abierto.
@@ -175,7 +179,7 @@ Presentamos el final de la demostración en forma de lema.
 	\begin{equation*}
 		\inter{A}=\bigcup_{\W\subset A}\W\subset A
 	\end{equation*}
-	Y esto es prácticamente trivial, veámoslo.
+	Y esto es prácticamente trivial. Veámoslo.
 	
 	Por una parte, $\inter{A}$ es un abierto contenido en $A$, luego está contenido en la unión de los abiertos contenidos en $A$.
 	
@@ -204,7 +208,7 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 			\label{etop_eq_interiorContencion}
 			A\subset B\ra \inter{A}\subset\inter{B}
 		\end{equation}
-		Esto es claro ya que, como $B$ contiene a $A$, el mayor abierto contenido en $B$ serán en general más grande que el mayor abierto contenido en cualquier subconjunto suyo.
+		Esto es claro ya que, como $B$ contiene a $A$, el mayor abierto contenido en $B$ será en general más grande que el mayor abierto contenido en cualquier subconjunto suyo.
 	\end{enumerate}
 	Esto ya nos da cierta artillería para defendernos con estos conjuntos.
 \end{obs}
@@ -224,6 +228,7 @@ Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
 Usando propiedades básicas de teoría de conjuntos se obtienen algunas propiedades elementales de los conjuntos cerrados.
 \begin{lem}[Propiedades de los Cerrados]
 	\label{etop_lem_propiedadesCerrados}
+	Dado un espacio topológico $\X$ se verifica
 	\begin{enumerate}
 		\item El vacío y el total son cerrados.
 		\item La intersección arbitraria de cerrados es cerrada.
@@ -288,7 +293,7 @@ Comenzamos en primer lugar con algo casi trivial.
 	\label{etop_eq_adherenciaConjunto}
 		A\subset\adher{A}
 	\end{equation}
-	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al conjunto $a$, luego, por definición, corta al conjunto $A$.
+	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al punto $a$, luego, por definición, corta al conjunto $A$.
 \end{obs}
 
 \begin{lem}[Clausura de la Adherencia]
@@ -308,7 +313,9 @@ Comenzamos en primer lugar con algo casi trivial.
 	\end{equation*}
 	habríamos acabado ya que tendríamos que $x\in\V\subset\X\setminus\adher{A}$, que es, por definición que $\X\setminus \adher{A}$ sea entorno de $x$.
 	
-	En efecto, la comprobación de esta igualdad es muy fácil, ya que, si tomamos un $y\in\V$, al ser $\V$ abierto, es entorno de $y$, y, por tanto, tendríamos que el punto $y$ no es adherente, ya que existe un entorno, el propio $\V$ que no corta con el conjunto $A$, incumpliendo así la definición \ref{etop_defi_puntoAdherente}.
+	En efecto, la comprobación de esta igualdad es muy fácil, ya que, si tomamos un $y\in\V$, al ser $\V$ abierto, es entorno de $y$.
+	
+	Por tanto, tendríamos que el punto $y$ no es adherente, ya que existe un entorno, el propio $\V$ que no corta con el conjunto $A$, incumpliendo así la definición \ref{etop_defi_puntoAdherente}.
 \end{proof}
 Continuamos esta dualización de conceptos dándonos cuenta de que la adherencia es el menor cerrado que contiene a $A$. Como antes, parte de la demostración se basa en un procedimiento estándar que pasamos a explicar.
 
@@ -331,7 +338,7 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	\end{equation*}
 	Y esto es una comprobación inmediata.
 	
-	Por lado, como $\adher{A}$ es un cerrado que contiene a $A$, es claro que $\adher{A}$ se encuentra en la familia a intersecar, luego contiene a la intersección de la familia.
+	Por un lado, como $\adher{A}$ es un cerrado que contiene a $A$, es claro que $\adher{A}$ se encuentra en la familia a intersecar, luego contiene a la intersección de la familia.
 	
 	Recíprocamente, dado un punto adherente $x$, si hubiera un conjunto $\mc{H}$ de la familia tal que $x\not\in \mc{H}$, entonces tendríamos que $x\in\X\setminus\mc{H}\subset\X\setminus A$.
 	
@@ -340,6 +347,58 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	\end{equation*}
 	
 	Y, por ende, $\V\cap A=\emptyset$, contra la definición de punto adherente.
+\end{proof}
+Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resultar bastante útiles al lector.
+\begin{prop}[Complementario de la Adherencia]
+	\label{etop_prop_compAdher}
+	\begin{equation*}
+		\X\setminus\adher{A}=\Int(X\setminus A)
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Procedemos por doble contención.
+	\begin{enumerate}
+		\item[\bsubset] Sea $z\in\X\setminus\adher{A}$. Como $z$ no es adherente a $A$, por definición \eqref{etop_defi_adherencia} habrá un entorno $\V_z$ de $z$ de manera que $\V_z\cap A=\emptyset$. En particular, podremos extraer un entorno abierto $\U_z$ tal que verifique
+		\begin{equation*}
+			\U_z\cap A =\emptyset
+		\end{equation*}
+		Tratamos de demostrar que $z$ es punto interior de $\X\setminus A$, esto es, por definición \eqref{etop_def_puntoInterior}, que $\X\setminus A$ sea entorno de $z$, esto a su vez significa que hay un abierto $\U_z'$ contenido en $\X\setminus A$ de forma que $z\in\U_z'$. Así pues el problema se reduce a encontrar dicho entorno, sin embargo, es trivial comprobar el entorno $\U_z$ anteriormente definido cumple los requisitos.
+		\item[\bsetsub] Sea $z\in\Int(\X\setminus A)$, demostremos que $z$ no es adherente a $A$, para lo cual debemos encontrar un entorno de $z$, al que llamaremos $\V_z$, de manera que no corte al conjunto $A$. Esto es trivial, ya que $z$ es punto interior de $\X\setminus A$, luego el propio $\X\setminus A$ es entorno de $z$, y, evidentemente, no corta a $A$.
+	\end{enumerate}
+	Con lo que concluye la prueba.
+\end{proof}
+
+Insistiendo es esta dualidad vía complementación entre abiertos y cerrados, presentamos un corolario inmediato.
+\begin{cor}[Complementario del Interior]
+	\label{etop_cor_compInter}
+	\begin{equation*}
+		\X\setminus\inter{B}=\Adh(\X \setminus B)
+	\end{equation*}
+\end{cor}
+\begin{proof}
+	Nos limitaremos a comprobar que ambos conjuntos tienen el mismo complementario. En efecto, por una parte
+	\begin{equation*}
+		\X \setminus (\X \setminus \inter{B}) = \inter{B}
+	\end{equation*}
+	Por otro lado, denotando $A:=\X \setminus B$ tenemos
+	\begin{equation*}
+		\X \setminus \Adh(\X \setminus B)=\X \setminus \adher{A}\stackrel{\textrm{Prp.\ref{etop_prop_compAdher}}}{=}\Int(\X \setminus A)=\Int(\X \setminus (\X \setminus B))=\Int(B)=\inter{B}
+	\end{equation*}
+	Con lo que se tiene el resultado.
+\end{proof}
+Una última identidad notable, un poco más difícil y la profunda que las anteriores es la que relaciona la unión de las adherencias con la adherencia de las uniones.
+\begin{prop}[Unión de Adherencias]
+	contenidos...
+\end{prop}
+\begin{proof}
+	contenidos...
+\end{proof}
+Por supuesto, este resultado presenta un dual inmediato.
+\begin{cor}[Intersección de Interiores]
+	contenidos...
+\end{cor}
+\begin{proof}
+	contenidos...
 \end{proof}
 %Faltan algunas cosillas que tengo a medias.
 
