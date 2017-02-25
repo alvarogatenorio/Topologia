@@ -352,7 +352,7 @@ Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resu
 \begin{prop}[Complementario de la Adherencia]
 	\label{etop_prop_compAdher}
 	\begin{equation*}
-		\X\setminus\adher{A}=\Int(X\setminus A)
+		\X\setminus\adher{A}=\Int(\X\setminus A)
 	\end{equation*}
 \end{prop}
 \begin{proof}
@@ -386,20 +386,133 @@ Insistiendo es esta dualidad vía complementación entre abiertos y cerrados, pr
 	\end{equation*}
 	Con lo que se tiene el resultado.
 \end{proof}
-Una última identidad notable, un poco más difícil y la profunda que las anteriores es la que relaciona la unión de las adherencias con la adherencia de las uniones.
+Una última identidad notable, un poco más profunda que las anteriores es la que relaciona la unión de las adherencias con la adherencia de las uniones.
 \begin{prop}[Unión de Adherencias]
-	contenidos...
+	La unión de las adherencias es la adherencia de las uniones.
+	\label{etop_prop_unionAdher}
+	\begin{equation*}
+		\adher{A\cup B}=\adher{A}\cup\adher{B}
+	\end{equation*}
 \end{prop}
 \begin{proof}
-	contenidos...
+	Procedemos por doble contención.
+	\begin{enumerate}
+		\item[\bsubset] 
+		Dado $z\in \adher{A\cup B}$, todo entorno $\V_z$ de $z$ corta a $A\cup B$. Veamos que $z$ es, o bien adherente a $A$, o bien adherente a $B$ (quizá a ambos). Para ello supondremos que no es adherente a ninguno de ellos, es decir, que existe un entorno $\W_z$ de $z$ que no corta ni a $A$ ni a $B$. Si este entorno existiera tampoco cortaría a la unión (compruébese), lo cual es absurdo.
+		\item[\bsupset]
+		Dado un punto $z\in\adher{A}\cup\adher{B}$, veamos que todo entorno de $\V_z$ de $z$ corta a $A\cup B$, si no lo hiciera, para cada punto $x\in\V_z$, $x$ no estaría en $A$, luego $A\cap \V_z=\emptyset$, análogamente ocurriría con $B$, lo cual contradice nuestra hipótesis.
+	\end{enumerate}
+	Con lo que finaliza la demostración.
 \end{proof}
 Por supuesto, este resultado presenta un dual inmediato.
 \begin{cor}[Intersección de Interiores]
-	contenidos...
+	El interior de la intersección es la intersección de los anteriores.
+	\begin{equation*}
+		\Int(A\cap B)=\inter{A}\cap\inter{B}
+	\end{equation*}
 \end{cor}
 \begin{proof}
-	contenidos...
+	Comprobaremos, como ya hicimos anteriormente, que ambos conjuntos tienen el mismo complementario.
+	
+	Por un lado
+	\begin{equation*}
+		\X \setminus \Int(A\cap B)=\Adh(X\setminus (A\cap B))
+	\end{equation*}
+	Recíprocamente
+	\begin{multline*}
+		\X \setminus (\inter{A}\cap \inter{B})=(\X \setminus \inter{A})\cup(\X \setminus \inter{B})=\Adh(\X \setminus A)\cup \Adh(\X \setminus B))=\\=\Adh((\X \setminus A) \cup (\X \setminus B))=\Adh(X\setminus (A\cap B))
+	\end{multline*}
+	Así, el resultado se sigue.
 \end{proof}
+El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la intersección no se da, tal y como muestra el siguiente ejemplo.
+\begin{exa}[Cuadrados Abiertos]
+	\label{etop_ejem_cuadradosAbiertos}
+	Si consideramos los conjuntos
+	\begin{equation*}
+		\begin{array}{cc}
+		A:=(0,1)\times(0,1)\qquad&\qquad B:=(1,2)\times(0,1)
+		\end{array}
+	\end{equation*}
+	En $\R^2$ con la topología usual, es fácil demostrar (se deja al lector) que $\adher{A\cap B}=\emptyset$ mientras que $\adher{A}\cap\adher{B}=\{1\}\times[0,1]$.
+\end{exa}
+Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop_obs_propiedadesInterior}, caractericemos los conjuntos cerrados a partir del concepto de adherencia.
+\begin{prop}[Cerrados y Adherencia]
+	\label{etop_prop_cerradosAdher}
+	Un conjunto es $A$ cerrado si y solo si coincide con su adherencia. Es decir
+	\begin{equation*}
+		A=\adher{A}
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Si $A$ es cerrado, como $\adher{A}$ es el mayor cerrado contenido en $A$, es claro que se tiene que dar la igualdad $A=\adher{A}$.
+	
+	Recíprocamente, si se da la igualdad $A=\adher{A}$, como $\adher{A}$ es cerrado, también lo será $A$.
+\end{proof}
+Añadimos una observación final trivial, simplemente por curiosidad.
+\begin{obs}[Doble Adherencia]
+	Dado un conjunto $A$, se tiene que
+	\begin{equation*}
+		\adher{A}=\adher{\adher{A}}
+	\end{equation*}
+	Esto es inmediato ya que, como $\adher{A}$ es un cerrado, coincide con su adherencia.
+\end{obs}
+\section{Puntos de Acumulación y Conjuntos Densos}
+En esta sección presentamos el concepto de punto de acumulación, que es muy útil para trabajar con sucesiones, como veremos más adelante. Además, definiremos la idea de que un conjunto sea denso de varias maneras que nos serán muy útiles a la hora de resolver problemas.
+\begin{defi}[Punto de Acumulación]
+	\label{etop_defi_puntoAcumulacion}
+	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
+	\begin{equation*}
+		(\V_x\setminus\{x\})\cap A\not=\emptyset
+	\end{equation*}
+\end{defi}
+Presentemos un poco de terminología para el conjunto de los puntos de acumulación.
+\begin{defi}[Conjunto Derivado]
+	Al conjunto de los puntos de acumulación de un conjunto $A$ se le denomina \tbi{conjunto derivado}. Usualmente denotaremos al conjunto derivado por $A'$.
+\end{defi}
+\begin{obs}[Entornos Perforados]
+	Cuando consideramos un entorno $\V_x$ de un punto $x\in\X$, a veces (sobre todo cuando hablamos de puntos de acumulación) es útil no considerar el entorno entero, sino el entorno salvo un punto.
+	
+	Por ejemplo $\V_x\setminus\{x\}$. A este último conjunto se le suele denominar \tbi{entorno perforado} o \tbi{entorno pinchado} de $x$.
+\end{obs}
+Una propiedad interesante de los conjuntos derivados se presenta en el siguiente lema.
+\begin{lem}[Descomposición de la Adherencia]
+	\begin{equation*}
+		\adher{A}=A\cup A'
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	La demostración es inmediata, procedemos por doble contención.
+	\begin{enumerate}
+		\item[\bsubset] Veamos que todos los puntos de $\adher{A}\setminus A$ están en $A'$. En efecto, dado un $x\not\in A$ adherente a $A$ se tiene que para todo entorno $\V_x$ de $x$
+		\begin{equation*}
+			\V_x\cap A\not=\emptyset
+		\end{equation*}
+		Como $x\not\in A$ se tiene que $(\V_x\setminus\{x\})\cap A\not=\emptyset$, cumpliendo la definición de punto de acumulación.
+		\item[\bsupset] Es evidente que $A\subset\adher{A}$, luego solo queda comprobar que $A'\subset \adher{A}$. Esto es trivial y se deja al lector la comprobación.
+	\end{enumerate}
+	Como queríamos demostrar.
+\end{proof}
+Cabe señalar que, claramente, esta descomposición, en general, no es un partición, tal y como muestra es siguiente sencillo ejemplo.
+\begin{exa}[Disco]
+	Si consideramos el disco unidad $D$ en $\R^2$ con la topología usual, es fácil demostrar que sus puntos de acumulación coinciden con su adherencia, con lo que obtenemos que
+	\begin{equation}
+		\adher{D}\setminus D \subsetneq A'
+	\end{equation}
+	En general (compruébese) se verifica que $\adher{A}\setminus A\subset A'$.
+\end{exa}
+Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan ganas de ver qué pasa con aquellos puntos que no cumplen esta definición por los pelos. Para esto introducimos la siguiente definición.
+\begin{defi}[Puntos Aislados]
+	Se llaman \tbi{puntos aislados} de un conjunto $A$, a aquellos puntos de $A$ que no son puntos de acumulación. Es decir, a los puntos $x\in A$ que poseen un entorno que cumple
+	\begin{equation*}
+		\V_x\cap A = \{x\}
+	\end{equation*}
+\end{defi}
+Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparcada por si las moscas.
+
+Pasamos hora a definir el concepto de densidad de un conjunto.
+\begin{defi}[Conjunto Denso]
+	contenidos...
+\end{defi}
 %Faltan algunas cosillas que tengo a medias.
 
 
