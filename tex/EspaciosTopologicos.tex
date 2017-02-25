@@ -511,7 +511,51 @@ Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparc
 
 Pasamos hora a definir el concepto de densidad de un conjunto.
 \begin{defi}[Conjunto Denso]
-	contenidos...
+	\label{etop_def_denso}
+	Decimos que un conjunto $A$ es \tbi{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
+	\begin{equation*}
+		\adher{A}=\X
+	\end{equation*}
+\end{defi}
+Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene es que, con relativamente poco esfuerzo podemos dar una definición equivalente en unos términos un poco más sencillos, tal y como muestra la siguiente proposición.
+\begin{prop}[Caracterización de la Densidad]
+	Son equivalentes:
+	\begin{enumerate}
+		\item $A$ es denso.
+		\item Todo abierto no vacío $\U$ contiene algún punto de $A$.
+	\end{enumerate}
+\end{prop}
+\begin{proof} Veamos ambas implicaciones
+	\begin{enumerate}
+		\item[\bra] Sea $\U$ un abierto de $\X$. Por ser $\U$ abierto, es entorno de todos sus puntos. En particular, si $x\in\U$, $\U$ es entorno de $x$, luego, por ser $A$ denso, $\U\cap A\not= \emptyset$.
+		\item[\bla] Sea $x\in X$ un punto cualquiera, tomemos un entorno arbitrario suyo $\V_x$, por definición de entorno, habrá un abierto $\U_x$ que verifique
+		\begin{equation*}
+			x\in\U_x\subset\V_x
+		\end{equation*}
+		Como $\U_x$ es abierto, contiene, por hipótesis, algún punto de $A$, luego $\V_x\cap A\not=\emptyset$, cumpliendo así $x$ la definición de punto adherente.
+	\end{enumerate}
+	Con lo que ya hemos terminado.
+\end{proof}
+De forma natural surge preguntarse si, como en el caso conocido de $\R^n$, los espacios topológicos en general, poseen algún subconjunto numerable denso. La respuesta a esta pregunta es no, como veremos más adelante, precisamente por eso surge la siguiente definición.
+\begin{defi}[Espacio Topológico Separable]
+	Se dice que un espacio topológico $\X$ es \tbi{separable} si posee un subconjunto numerable denso.
+\end{defi}
+
+Para afianzar la idea de que en la topología la intuición no parará de tendernos trampas, presentamos el siguiente ejemplo.
+\begin{exa}[Espacios Separables]
+	Recordamos en primer lugar por qué $\R^n$ es separable y después presentamos un ejemplo contraintuitivo.
+	\begin{enumerate}
+		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (inducción). Asimismo, la densidad puede probarse fácilmente por inducción sobre $n$.
+		\item Dado un conjunto cualquiera $\X$ equipado con la topología de un punto $a\in X$, el espacio topológico $(\X,\T_a)$ es separable (nótese que $a$ es denso y finito).
+	\end{enumerate}
+	Así se ve que en espacios topológicos puestos con un poco de mala baba pasan cosas que nos descarajan la intuición.
+\end{exa}
+Para finiquitar esta sección presentamos el concepto de frontera de un conjunto, que, de momento, al igual que el concepto de punto aislado, quedará en el baúl de los recuerdos.
+\begin{defi}[Frontera de un Conjunto]
+	Definimos la frontera de un conjunto los puntos adherentes al conjunto que no son interiores. Dicho de otra forma (e introduciendo notación de paso)
+	\begin{equation}
+		\Fr(A)=\adher{A}\setminus\inter{A}
+	\end{equation}
 \end{defi}
 %Faltan algunas cosillas que tengo a medias.
 
