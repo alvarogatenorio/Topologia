@@ -30,7 +30,7 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
 	\label{etop_def_espacioTopologico}
 	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
-	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades
+	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades:
 	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
 	\begin{enumerate}
 		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
@@ -562,8 +562,50 @@ Para finiquitar esta sección presentamos el concepto de frontera de un conjunto
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
-% FALTA LO ANTERIOR A LA SECCIÓN 5
+% FALTA 1.5 y 1.6
 %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Base de entornos}
+\begin{defi}[Base de entornos]
+	\label{etop_bases_entornos}
+	%Rellenable en el futuro
+\end{defi}
+
+\section{Base de abiertos}
+\begin{defi}[Base de abiertos]
+	\label{etop_bases_abiertos}
+	Una \tbi{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión de abiertos de $\B$
+\end{defi}
+Veamos que esta definición nos permite reformular las bases de entornos vistas en \eqref{etop_bases_entornos}, y que caracterizaremos de la siguiente manera:
+
+
+\begin{prop}[Reformulación de bases de entornos]
+	Sea $x$ un punto de $\X$ y sea $\B^{x} = \{B \in \B : x \in B\}$, $\B^{x}$ es una base de entornos.
+\end{prop}
+\begin{proof} Veamos que esto ocurre. Para ello todo entorno de $x$ tiene que contener a alguno de $\B^{x}$. Sea $\V^{x}$ un entorno de $x \ra\ \exists\ \U$ abierto tal que $x \in \U \subset \V^{x}$. Ahora, como $\B$ es base de abiertos $\ra\ \U\ =\ \bigcup_{i\in I}B_i\ \ra\ \exists B_{i} \subset \B^{x}$ tal que $x \in B_{i} \subset \V^{x}$, luego cumple lo buscado.
+	
+	
+Ahora veamos...%Completar, duda en que quiere hacer conn esto 
+\end{proof}
+
+Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
+\begin{defi}[II axioma de numerabilidad]
+	\label{etop_2_axioma_num}
+	Diremos que $\X$ es \tbi{II axioma} (de numerabilidad) si tiene una base numerable.
+\begin{exa}
+	ejemmplos...%Por hacer
+\end{exa}
+\end{defi}
+\begin{obs}
+	Ser II axioma implica ser I axioma. %Prueba
+\end{obs}
+\begin{prop}
+	contenidos...
+\end{prop}
+\begin{exa}[Topología de Sorgenfray en $\R$]
+	contenidos...
+\end{exa}
+
 
 \section{Topología relativa}
 
