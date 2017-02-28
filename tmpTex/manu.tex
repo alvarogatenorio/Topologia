@@ -140,7 +140,7 @@ Consideremos ahora el diagrama
 
 Ahora, sabemos que $f$ es continua por lo visto en el primer problema. Además, como la diagonal es continua, entonces la vertical es continua, luego $\T_Y \subset f^{-1}(\T)$. \\
 
-\textbf{\textit{Obs}} \\
+\begin{obs}[Inyectividad]
 
 (1) Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles. Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades. \\
 
@@ -159,6 +159,8 @@ que es abierto de $Y$ por la definición de topología que hemos tomado. Sin emb
 que es un abierto de $f(Y)$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $Y$ en $X$ es homeomorfismo de $Y$ en $f(Y)$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
 
 \[f:(Y,f^{-1}(\T)) \to (X,\T).\]
+
+\end{obs}
 
 \textbf{Imágenes directas} \\
 
@@ -181,6 +183,8 @@ Y \ar[d]^g & \\
 
 Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $W\subset \T'$ entonces $g^{-1}(W)\subset f(\T)$) y que $f(\T)$ es la topología en $Y$ que cumple esta doble implicación. \\
 
-\textbf{\textit{Obs}}\\
+\begin{obs}[Sobreyectividad]
 
 (1) Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(X)$. Entonces $f^{-1}(Y)$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{Y\backslash f(X)})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $Y\backslash f(X)$ es vacía y es abierta en la imagen. Además, como $f(X)$ es el complementario de $Y\backslash f(X)$, entonces $f(X)$ es cerrado. No obstante, $f(X)$ coincide con el total, luego también es un abierto. 
+
+\end{obs}
