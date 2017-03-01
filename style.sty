@@ -53,6 +53,9 @@
 % Customización de enumeraciones
 \usepackage{enumitem}
 
+% Condicionales
+\usepackage{ifthen}
+
 %Paquetes para Entornos.
 \usepackage{amsthm}
 %Entornos personalizados.
@@ -128,7 +131,7 @@
 
 % Negrita y Cursiva (introducción de términos novedosos).
 % Modificado para añadirlos automáticamente al índice general
-\newcommand{\tbi}[1]{\tb{\ti{#1}} \index[general]{#1}}
+\newcommand{\tbi}[2][]{\ifthenelse{\equal{#1}{}}{\tb{\ti{#2}} \index[general]{#2}}{\tb{\ti{#2}} \index[general]{#1}}}
 
 %Cero y Vacío.
 \newcommand{\smz}{\setminus\{0\}}

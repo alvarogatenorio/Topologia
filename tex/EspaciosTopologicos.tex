@@ -63,23 +63,23 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\item El espacio ordinario $\R^n$ es un espacio topológico con la topología definida por los conjuntos abiertos en el sentido usual cuando hablamos de espacios métricos, es decir
 		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
 		\begin{equation}
-			\label{etop_eq_topologiaRn}
-			\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
+		\label{etop_eq_topologiaRn}
+		\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbi{topología trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
-			\T=\{\emptyset, \X\}
+		\T=\{\emptyset, \X\}
 		\end{equation}
 		\item Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topología que también dota de estructura topológica a cualquier conjunto no vacío $\X$. Esta topología viene dada por
 		\begin{equation}
 		\label{etop_eq_topologiaDiscreta}
-			\T = \partes(\X)
+		\T = \partes(\X)
 		\end{equation}
 		A esta topología la llamaremos \tbi{topología discreta}.
 		\item Como último ejemplo curioso nos queda la llamada \tbi{topología del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
 		\begin{equation}
 		\label{etop_eq_topologiaPunto}
-			\T_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
+		\T_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
 		\end{equation}
 		
 		%Comento este ejemplo porque no se entiende un zipote lo que explicó este señor.
@@ -100,8 +100,8 @@ Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe
 
 Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda
 \begin{equation}
-	\label{etop_eq_entorno}
-	\V\supset\U\ni a
+\label{etop_eq_entorno}
+\V\supset\U\ni a
 \end{equation}
 
 Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema.
@@ -114,15 +114,15 @@ Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los
 	
 	Recíprocamente, si $\U$ es entorno de todos sus puntos, entonces, para cada punto $a\in\U$ se cumple que
 	\begin{equation*}
-		\U\supset\U_a\ni a
+	\U\supset\U_a\ni a
 	\end{equation*}
 	de donde se desprende que
 	\begin{equation*}
-		\U\supset\bigcup_{a\in\U}\U_a=:A
+	\U\supset\bigcup_{a\in\U}\U_a=:A
 	\end{equation*}
 	Más aún, se da la otra contención, y además, de forma trivial, ya que todo punto de $\U$ pertenece a algún $\U_a$, luego también a la unión de todos. Luego
 	\begin{equation*}
-		\U=A
+	\U=A
 	\end{equation*}
 	Como la unión arbitraria de abiertos es abierto, $A$ es abierto, con lo que se sigue el resultado.
 \end{proof}
@@ -136,12 +136,12 @@ Será algo habitual de ahora en adelante tratar de determinar el conjunto de pun
 Antes de continuar, fijemos unas cuantas notaciones que utilizaremos según el contexto para referirnos al interior de un conjunto.
 \begin{equation}
 \label{etop_eq_notacionInterior}
-	\Int_{\X}(A)=\inter{A}=\Int(A)
+\Int_{\X}(A)=\inter{A}=\Int(A)
 \end{equation}
 Merece la pena notar que el interior de un conjunto puede ser el conjunto vacío, así como que trivialmente se da la desigualdad conjuntista
 \begin{equation}
 \label{etop_eq_desigualdadInterior1}
-	\inter{A}\subset A
+\inter{A}\subset A
 \end{equation}
 Veamos ahora unos resultados elementales, pero a la vez cruciales, del interior de un conjunto.
 \begin{lem}[Apertura]
@@ -165,7 +165,7 @@ Presentamos aquí los primeros pasos de la demostración por ser especialmente �
 Como la unión de abiertos es abierto, es claro que una forma de construir el mayor abierto contenido en cierto conjunto es, coleccionar los abiertos contenidos en dicho conjunto y unirlos. Escrito formalmente, tomamos el conjunto
 \begin{equation}
 \label{etop_eq_mayorAbierto}
-	B:=\bigcup_{\W\subset A}\W
+B:=\bigcup_{\W\subset A}\W
 \end{equation}
 Es claro que $B\subset A$, ya que es una unión de conjuntos contenidos en $A$, además, si hubiera un abierto más grande contenido en $A$ que $B$, este pertenecería a la familia de conjuntos que estamos uniendo, lo cual es absurdo.
 
@@ -177,7 +177,7 @@ Presentamos el final de la demostración en forma de lema.
 \begin{proof}
 	Por el lema \ref{etop_lem_aperturaInterior} sabemos que $\inter{A}$ es abierto, luego, por la ecuación \eqref{etop_eq_mayorAbierto} solo queda probar la igualdad
 	\begin{equation*}
-		\inter{A}=\bigcup_{\W\subset A}\W\subset A
+	\inter{A}=\bigcup_{\W\subset A}\W\subset A
 	\end{equation*}
 	Y esto es prácticamente trivial. Veámoslo.
 	
@@ -194,19 +194,19 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 		\item El interior del interior de un conjunto es el interior de dicho conjunto. Si lo escribimos sin que suene como un trabalenguas tenemos
 		\begin{equation}
 		\label{etop_eq_dobleInterior}
-			\inter{\inter{A}}=\inter{A}
+		\inter{\inter{A}}=\inter{A}
 		\end{equation}
 		Esto es trivial ya que al ser $\inter{A}$ un abierto, el mayor abierto contenido en él es él mismo.
 		\item Un abierto coincide con su interior, es decir
 		\begin{equation}
-			\label{etop_eq_abiertoInterior}
-			A=\inter{A}
+		\label{etop_eq_abiertoInterior}
+		A=\inter{A}
 		\end{equation}
 		Esto es cierto por la misma razón que lo es la ecuación \eqref{etop_eq_dobleInterior}.
 		\item Los interiores preservan las contenciones. O lo que es lo mismo
 		\begin{equation}
-			\label{etop_eq_interiorContencion}
-			A\subset B\ra \inter{A}\subset\inter{B}
+		\label{etop_eq_interiorContencion}
+		A\subset B\ra \inter{A}\subset\inter{B}
 		\end{equation}
 		Esto es claro ya que, como $B$ contiene a $A$, el mayor abierto contenido en $B$ será en general más grande que el mayor abierto contenido en cualquier subconjunto suyo.
 	\end{enumerate}
@@ -242,12 +242,12 @@ Usando propiedades básicas de teoría de conjuntos se obtienen algunas propieda
 		Asimismo, $\emptyset$ es cerrado pues $\X\setminus\emptyset=\X$ es abierto.
 		\item $\bigcap_{i\in I}\F_i$ es cerrado ya que
 		\begin{equation*}
-			\X\setminus\left(\bigcap_{i\in I}\F_i\right)=\bigcup_{i\in I}\X\setminus\F_i
+		\X\setminus\left(\bigcap_{i\in I}\F_i\right)=\bigcup_{i\in I}\X\setminus\F_i
 		\end{equation*}
 		es abierto por ser la unión arbitraria de abiertos un abierto.
 		\item $\bigcup_{i=1}^n\F_i$ es cerrado, basta tomar el complementario y ver que es abierto por ser intersección finita de abiertos.
 		\begin{equation*}
-			\X\setminus\left(\bigcup_{i=1}^{n}\F_i\right)=\bigcap_{i=1}^n\X\setminus\F_i
+		\X\setminus\left(\bigcup_{i=1}^{n}\F_i\right)=\bigcap_{i=1}^n\X\setminus\F_i
 		\end{equation*}
 	\end{enumerate}
 	Con lo que concluye la demostración.
@@ -291,7 +291,7 @@ Comenzamos en primer lugar con algo casi trivial.
 	Es claro que se verifica que
 	\begin{equation}
 	\label{etop_eq_adherenciaConjunto}
-		A\subset\adher{A}
+	A\subset\adher{A}
 	\end{equation}
 	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al punto $a$, luego, por definición, corta al conjunto $A$.
 \end{obs}
@@ -305,11 +305,11 @@ Comenzamos en primer lugar con algo casi trivial.
 	
 	Dado $x\in\X\setminus\adher{A}$, como $x$ no es un punto adherente, entonces existirá un entorno $\V(\ni x)$, el cual podemos escoger abierto sin pérdida de generalidad tal que se verifica
 	\begin{equation*}
-		\V\cap A=\emptyset
+	\V\cap A=\emptyset
 	\end{equation*}
 	Si consiguiéramos demostrar que se de la igualdad
 	\begin{equation*}
-		\V\cap \adher{A}=\emptyset
+	\V\cap \adher{A}=\emptyset
 	\end{equation*}
 	habríamos acabado ya que tendríamos que $x\in\V\subset\X\setminus\adher{A}$, que es, por definición que $\X\setminus \adher{A}$ sea entorno de $x$.
 	
@@ -322,7 +322,7 @@ Continuamos esta dualización de conceptos dándonos cuenta de que la adherencia
 Es fácil darse cuenta de que, como la intersección arbitraria de cerrados es un cerrado, el menor conjunto cerrado que contiene a uno dado puede ser construido de la siguiente manera
 \begin{equation}
 \label{etop_eq_menorCerrado}
-	B:=\bigcap_{\mc{H}\supset A}\mc{H}
+B:=\bigcap_{\mc{H}\supset A}\mc{H}
 \end{equation}
 En efecto es un conjunto que contiene a $A$ ya que todos los conjuntos de la familia a intersecar contienen a $A$, además, es el menor de ellos, ya que, de haber uno más pequeño, pertenecería a la familia que se está intersecando, lo cual es absurdo (¡compruébese!).
 
@@ -334,7 +334,7 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 \begin{proof}
 	Por la ecuación \eqref{etop_eq_menorCerrado} la demostración se reduce a comprobar que
 	\begin{equation*}
-		\adher{A}=\bigcap_{\mc{H}\supset A}\mc{H}
+	\adher{A}=\bigcap_{\mc{H}\supset A}\mc{H}
 	\end{equation*}
 	Y esto es una comprobación inmediata.
 	
@@ -343,7 +343,7 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	Recíprocamente, dado un punto adherente $x$, si hubiera un conjunto $\mc{H}$ de la familia tal que $x\not\in \mc{H}$, entonces tendríamos que $x\in\X\setminus\mc{H}\subset\X\setminus A$.
 	
 	Como $\mc{H}$ es cerrado, $\X\setminus\mc{H}$ es abierto, y, por tanto existirá un entorno $\V$ de $x$ de manera que \begin{equation*}
-		x\in\V\subset\X\setminus\mc{H}\subset\X\setminus A
+	x\in\V\subset\X\setminus\mc{H}\subset\X\setminus A
 	\end{equation*}
 	
 	Y, por ende, $\V\cap A=\emptyset$, contra la definición de punto adherente.
@@ -352,7 +352,7 @@ Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resu
 \begin{prop}[Complementario de la Adherencia]
 	\label{etop_prop_compAdher}
 	\begin{equation*}
-		\X\setminus\adher{A}=\Int(\X\setminus A)
+	\X\setminus\adher{A}=\Int(\X\setminus A)
 	\end{equation*}
 \end{prop}
 \begin{proof}
@@ -360,7 +360,7 @@ Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resu
 	\begin{enumerate}
 		\item[\bsubset] Sea $z\in\X\setminus\adher{A}$. Como $z$ no es adherente a $A$, por definición \eqref{etop_defi_adherencia} habrá un entorno $\V_z$ de $z$ de manera que $\V_z\cap A=\emptyset$. En particular, podremos extraer un entorno abierto $\U_z$ tal que verifique
 		\begin{equation*}
-			\U_z\cap A =\emptyset
+		\U_z\cap A =\emptyset
 		\end{equation*}
 		Tratamos de demostrar que $z$ es punto interior de $\X\setminus A$, esto es, por definición \eqref{etop_def_puntoInterior}, que $\X\setminus A$ sea entorno de $z$, esto a su vez significa que hay un abierto $\U_z'$ contenido en $\X\setminus A$ de forma que $z\in\U_z'$. Así pues el problema se reduce a encontrar dicho entorno, sin embargo, es trivial comprobar el entorno $\U_z$ anteriormente definido cumple los requisitos.
 		\item[\bsetsub] Sea $z\in\Int(\X\setminus A)$, demostremos que $z$ no es adherente a $A$, para lo cual debemos encontrar un entorno de $z$, al que llamaremos $\V_z$, de manera que no corte al conjunto $A$. Esto es trivial, ya que $z$ es punto interior de $\X\setminus A$, luego el propio $\X\setminus A$ es entorno de $z$, y, evidentemente, no corta a $A$.
@@ -372,17 +372,17 @@ Insistiendo es esta dualidad vía complementación entre abiertos y cerrados, pr
 \begin{cor}[Complementario del Interior]
 	\label{etop_cor_compInter}
 	\begin{equation*}
-		\X\setminus\inter{B}=\Adh(\X \setminus B)
+	\X\setminus\inter{B}=\Adh(\X \setminus B)
 	\end{equation*}
 \end{cor}
 \begin{proof}
 	Nos limitaremos a comprobar que ambos conjuntos tienen el mismo complementario. En efecto, por una parte
 	\begin{equation*}
-		\X \setminus (\X \setminus \inter{B}) = \inter{B}
+	\X \setminus (\X \setminus \inter{B}) = \inter{B}
 	\end{equation*}
 	Por otro lado, denotando $A:=\X \setminus B$ tenemos
 	\begin{equation*}
-		\X \setminus \Adh(\X \setminus B)=\X \setminus \adher{A}\stackrel{\textrm{Prp.\ref{etop_prop_compAdher}}}{=}\Int(\X \setminus A)=\Int(\X \setminus (\X \setminus B))=\Int(B)=\inter{B}
+	\X \setminus \Adh(\X \setminus B)=\X \setminus \adher{A}\stackrel{\textrm{Prp.\ref{etop_prop_compAdher}}}{=}\Int(\X \setminus A)=\Int(\X \setminus (\X \setminus B))=\Int(B)=\inter{B}
 	\end{equation*}
 	Con lo que se tiene el resultado.
 \end{proof}
@@ -391,7 +391,7 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 	La unión de las adherencias es la adherencia de las uniones.
 	\label{etop_prop_unionAdher}
 	\begin{equation*}
-		\adher{A\cup B}=\adher{A}\cup\adher{B}
+	\adher{A\cup B}=\adher{A}\cup\adher{B}
 	\end{equation*}
 \end{prop}
 \begin{proof}
@@ -408,7 +408,7 @@ Por supuesto, este resultado presenta un dual inmediato.
 \begin{cor}[Intersección de Interiores]
 	El interior de la intersección es la intersección de los anteriores.
 	\begin{equation*}
-		\Int(A\cap B)=\inter{A}\cap\inter{B}
+	\Int(A\cap B)=\inter{A}\cap\inter{B}
 	\end{equation*}
 \end{cor}
 \begin{proof}
@@ -416,11 +416,11 @@ Por supuesto, este resultado presenta un dual inmediato.
 	
 	Por un lado
 	\begin{equation*}
-		\X \setminus \Int(A\cap B)=\Adh(X\setminus (A\cap B))
+	\X \setminus \Int(A\cap B)=\Adh(X\setminus (A\cap B))
 	\end{equation*}
 	Recíprocamente
 	\begin{multline*}
-		\X \setminus (\inter{A}\cap \inter{B})=(\X \setminus \inter{A})\cup(\X \setminus \inter{B})=\Adh(\X \setminus A)\cup \Adh(\X \setminus B))=\\=\Adh((\X \setminus A) \cup (\X \setminus B))=\Adh(X\setminus (A\cap B))
+	\X \setminus (\inter{A}\cap \inter{B})=(\X \setminus \inter{A})\cup(\X \setminus \inter{B})=\Adh(\X \setminus A)\cup \Adh(\X \setminus B))=\\=\Adh((\X \setminus A) \cup (\X \setminus B))=\Adh(X\setminus (A\cap B))
 	\end{multline*}
 	Así, el resultado se sigue.
 \end{proof}
@@ -429,9 +429,9 @@ El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la inters
 	\label{etop_ejem_cuadradosAbiertos}
 	Si consideramos los conjuntos
 	\begin{equation*}
-		\begin{array}{cc}
-		A:=(0,1)\times(0,1)\qquad&\qquad B:=(1,2)\times(0,1)
-		\end{array}
+	\begin{array}{cc}
+	A:=(0,1)\times(0,1)\qquad&\qquad B:=(1,2)\times(0,1)
+	\end{array}
 	\end{equation*}
 	En $\R^2$ con la topología usual, es fácil demostrar (se deja al lector) que $\adher{A\cap B}=\emptyset$ mientras que $\adher{A}\cap\adher{B}=\{1\}\times[0,1]$.
 \end{exa}
@@ -440,7 +440,7 @@ Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop
 	\label{etop_prop_cerradosAdher}
 	Un conjunto es $A$ cerrado si y solo si coincide con su adherencia. Es decir
 	\begin{equation*}
-		A=\adher{A}
+	A=\adher{A}
 	\end{equation*}
 \end{prop}
 \begin{proof}
@@ -452,7 +452,7 @@ Añadimos una observación final trivial, simplemente por curiosidad.
 \begin{obs}[Doble Adherencia]
 	Dado un conjunto $A$, se tiene que
 	\begin{equation*}
-		\adher{A}=\adher{\adher{A}}
+	\adher{A}=\adher{\adher{A}}
 	\end{equation*}
 	Esto es inmediato ya que, como $\adher{A}$ es un cerrado, coincide con su adherencia.
 \end{obs}
@@ -462,7 +462,7 @@ En esta sección presentamos el concepto de punto de acumulación, que es muy ú
 	\label{etop_defi_puntoAcumulacion}
 	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
 	\begin{equation*}
-		(\V_x\setminus\{x\})\cap A\not=\emptyset
+	(\V_x\setminus\{x\})\cap A\not=\emptyset
 	\end{equation*}
 \end{defi}
 Presentemos un poco de terminología para el conjunto de los puntos de acumulación.
@@ -472,12 +472,12 @@ Presentemos un poco de terminología para el conjunto de los puntos de acumulaci
 \begin{obs}[Entornos Perforados]
 	Cuando consideramos un entorno $\V_x$ de un punto $x\in\X$, a veces (sobre todo cuando hablamos de puntos de acumulación) es útil no considerar el entorno entero, sino el entorno salvo un punto.
 	
-	Por ejemplo $\V_x\setminus\{x\}$. A este último conjunto se le suele denominar \tbi{entorno perforado} o \tbi{entorno pinchado} de $x$.
+	Por ejemplo $\V_x\setminus\{x\}$. A este último conjunto se le suele denominar \tbi[entorno!perforado]{entorno perforado} o \tbi[entorno!pinchado]{entorno pinchado} de $x$.
 \end{obs}
 Una propiedad interesante de los conjuntos derivados se presenta en el siguiente lema.
 \begin{lem}[Descomposición de la Adherencia]
 	\begin{equation*}
-		\adher{A}=A\cup A'
+	\adher{A}=A\cup A'
 	\end{equation*}
 \end{lem}
 \begin{proof}
@@ -485,7 +485,7 @@ Una propiedad interesante de los conjuntos derivados se presenta en el siguiente
 	\begin{enumerate}
 		\item[\bsubset] Veamos que todos los puntos de $\adher{A}\setminus A$ están en $A'$. En efecto, dado un $x\not\in A$ adherente a $A$ se tiene que para todo entorno $\V_x$ de $x$
 		\begin{equation*}
-			\V_x\cap A\not=\emptyset
+		\V_x\cap A\not=\emptyset
 		\end{equation*}
 		Como $x\not\in A$ se tiene que $(\V_x\setminus\{x\})\cap A\not=\emptyset$, cumpliendo la definición de punto de acumulación.
 		\item[\bsupset] Es evidente que $A\subset\adher{A}$, luego solo queda comprobar que $A'\subset \adher{A}$. Esto es trivial y se deja al lector la comprobación.
@@ -496,7 +496,7 @@ Cabe señalar que, claramente, esta descomposición, en general, no es un partic
 \begin{exa}[Disco]
 	Si consideramos el disco unidad $D$ en $\R^2$ con la topología usual, es fácil demostrar que sus puntos de acumulación coinciden con su adherencia, con lo que obtenemos que
 	\begin{equation}
-		\adher{D}\setminus D \subsetneq A'
+	\adher{D}\setminus D \subsetneq A'
 	\end{equation}
 	En general (compruébese) se verifica que $\adher{A}\setminus A\subset A'$.
 \end{exa}
@@ -504,7 +504,7 @@ Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan 
 \begin{defi}[Puntos Aislados]
 	Se llaman \tbi{puntos aislados} de un conjunto $A$, a aquellos puntos de $A$ que no son puntos de acumulación. Es decir, a los puntos $x\in A$ que poseen un entorno que cumple
 	\begin{equation*}
-		\V_x\cap A = \{x\}
+	\V_x\cap A = \{x\}
 	\end{equation*}
 \end{defi}
 Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparcada por si las moscas.
@@ -514,7 +514,7 @@ Pasamos hora a definir el concepto de densidad de un conjunto.
 	\label{etop_def_denso}
 	Decimos que un conjunto $A$ es \tbi{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
 	\begin{equation*}
-		\adher{A}=\X
+	\adher{A}=\X
 	\end{equation*}
 \end{defi}
 Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene es que, con relativamente poco esfuerzo podemos dar una definición equivalente en unos términos un poco más sencillos, tal y como muestra la siguiente proposición.
@@ -530,7 +530,7 @@ Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene
 		\item[\bra] Sea $\U$ un abierto de $\X$. Por ser $\U$ abierto, es entorno de todos sus puntos. En particular, si $x\in\U$, $\U$ es entorno de $x$, luego, por ser $A$ denso, $\U\cap A\not= \emptyset$.
 		\item[\bla] Sea $x\in X$ un punto cualquiera, tomemos un entorno arbitrario suyo $\V_x$, por definición de entorno, habrá un abierto $\U_x$ que verifique
 		\begin{equation*}
-			x\in\U_x\subset\V_x
+		x\in\U_x\subset\V_x
 		\end{equation*}
 		Como $\U_x$ es abierto, contiene, por hipótesis, algún punto de $A$, luego $\V_x\cap A\not=\emptyset$, cumpliendo así $x$ la definición de punto adherente.
 	\end{enumerate}
@@ -538,7 +538,7 @@ Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene
 \end{proof}
 De forma natural surge preguntarse si, como en el caso conocido de $\R^n$, los espacios topológicos en general, poseen algún subconjunto numerable denso. La respuesta a esta pregunta es no, como veremos más adelante, precisamente por eso surge la siguiente definición.
 \begin{defi}[Espacio Topológico Separable]
-	Se dice que un espacio topológico $\X$ es \tbi{separable} si posee un subconjunto numerable denso.
+	Se dice que un espacio topológico $\X$ es \tbi[espacio!separable]{separable} si posee un subconjunto numerable denso.
 \end{defi}
 
 Para afianzar la idea de que en la topología la intuición no parará de tendernos trampas, presentamos el siguiente ejemplo.
@@ -554,7 +554,7 @@ Para finiquitar esta sección presentamos el concepto de frontera de un conjunto
 \begin{defi}[Frontera de un Conjunto]
 	Definimos la frontera de un conjunto los puntos adherentes al conjunto que no son interiores. Dicho de otra forma (e introduciendo notación de paso)
 	\begin{equation}
-		\Fr(A)=\adher{A}\setminus\inter{A}
+	\Fr(A)=\adher{A}\setminus\inter{A}
 	\end{equation}
 \end{defi}
 %Faltan algunas cosillas que tengo a medias.
@@ -574,7 +574,7 @@ Para finiquitar esta sección presentamos el concepto de frontera de un conjunto
 \section{Base de abiertos}
 \begin{defi}[Base de abiertos]
 	\label{etop_bases_abiertos}
-	Una \tbi{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión de abiertos de $\B$
+	Una \tbi[base!de abiertos]{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión de abiertos de $\B$
 \end{defi}
 Veamos que esta definición nos permite reformular las bases de entornos vistas en \eqref{etop_bases_entornos}, y que caracterizaremos de la siguiente manera:
 
@@ -585,16 +585,16 @@ Veamos que esta definición nos permite reformular las bases de entornos vistas 
 \begin{proof} Veamos que esto ocurre. Para ello todo entorno de $x$ tiene que contener a alguno de $\B^{x}$. Sea $\V^{x}$ un entorno de $x \ra\ \exists\ \U$ abierto tal que $x \in \U \subset \V^{x}$. Ahora, como $\B$ es base de abiertos $\ra\ \U\ =\ \bigcup_{i\in I}B_i\ \ra\ \exists B_{i} \subset \B^{x}$ tal que $x \in B_{i} \subset \V^{x}$, luego cumple lo buscado.
 	
 	
-Ahora veamos...%Completar, duda en que quiere hacer conn esto 
+	Ahora veamos...%Completar, duda en que quiere hacer conn esto 
 \end{proof}
 
 Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi{II axioma} (de numerabilidad) si tiene una base numerable.
-\begin{exa}
-	ejemmplos...%Por hacer
-\end{exa}
+	Diremos que $\X$ es \tbi[Segundo axioma de numerabilidad]{II axioma} (de numerabilidad) si tiene una base numerable.
+	\begin{exa}
+		ejemmplos...%Por hacer
+	\end{exa}
 \end{defi}
 \begin{obs}
 	Ser II axioma implica ser I axioma. %Prueba
