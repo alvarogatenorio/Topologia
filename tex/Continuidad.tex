@@ -81,7 +81,7 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 		\item $f$ es continua
 		\item La imagen inversa de cualquier abierto es abierta.
 		\item La imagen inversa de cualquier cerrado es cerrada.
-		\item $f(\adher{A})=\adher{f(A)}$ para cualquier subconjunto $A$ de $\X$.
+		\item $f(\adher{A})\subset\adher{f(A)}$ para cualquier subconjunto $A$ de $\X$.
 		\item Existe un recubrimiento abierto arbitrario de $\X$ de la forma:
 			\[\X=\bigcup\limits_{i\in I} U_i\]
 			que verifica que todas las restricciones $f\restriction_{U_i}$ son continuas.
@@ -100,8 +100,14 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 			
 			\item[\fbox{$(1)\Longleftrightarrow (2)$}] $F\subset\mc{Y}$ es cerrado $\iff$ $\mc{Y}\setminus F$ es abierto. Pero entonces por hipótesis $f^{-1}(\mc{Y}\setminus F)$ es abierto, y $f^{-1}(\mc{Y}\setminus F)=\X\setminus f^{-1}(F)$, luego $f^{-1}(F)$ es cerrado. La otra implicación es análoga.
 			
-			\item[\fbox{$(2)\Longleftrightarrow (3)$}] % TODO: completar
+			\item[\fbox{$(2)\implies (3)$}] Basta con ver que cualquier $A$ verifica que $f(\adher{A})\subset \adher{f(A)}$ o, lo que es equivalente, $\adher{A}\subset f^{-1}(\adher{f(A)})$. Sin embargo, la imagen inversa del cerrado $\adher{f(A)}$ es cerrada, con lo que basta con demostrar que $A\subset f^{-1}(\adher{f(A)})$, ya que $\adher{A}$ es el menor cerrado que contiene a $A$. Por tanto, simplemente:
+			\[A\subset f^{-1}(f(A))\subset f^{-1}(\adher{f(A)})\]
+			porque $f(A)\subset\adher{f(A)}$.
 			
+			\item[\fbox{$(3)\implies (2)$}] Sea $F\subset\mc{Y}$ cerrado. Queremos probar que $G=f^{-1}(F)$ también lo es, y tenemos, por hipótesis y por las propiedades de la imagen inversa:
+			\[f(\adher{G})\subset\adher{f(G)}=\adher{f(f^{-1}(F))}\subset\adher{F}=F\]
+			pero entonces $\adher{G}\subset f^{-1}(F)=G$, luego $\adher{G}=G$ y entonces $G$ es cerrado por la proposición \ref{etop_prop_cerradosAdher}.
+						
 			\item[\fbox{$(0)\implies (4)$}] Trivial, con el recubrimiento cuyo único abierto es $\mc{X}$.
 			
 			\item[\fbox{$(4)\implies (1)$}] Vamos a aprovechar que ya hemos demostrado $(0)\implies (1)$. Entonces, sea $U\subset\mc{Y}$ un abierto. Lo podemos escribir como unión de abiertos de forma que cada uno de ellos esté en un $U_i$, de la siguiente forma:
@@ -113,7 +119,7 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 			
 			\item[\fbox{$(0)\implies (5)$}] Trivial, con el recubrimiento cuyo único cerrado es $\mc{X}$.
 			
-			\item[\fbox{$(5)\implies (2)$}] Es análogo a $(4)\implies (1)$.
+			\item[\fbox{$(5)\implies (2)$}] Es análogo a $(4)\implies (1)$. \qedhere
 		\end{enumerate}
 	\end{proof}
 \end{prop}
