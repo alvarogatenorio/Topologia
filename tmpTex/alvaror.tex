@@ -1,1 +1,46 @@
 %Cosas Pendientes de Álvaro Rodríguez García
+
+%%%%%%%%%%
+% Día 28/2
+%%%%%%%%%%
+
+% Después del primer cacho de imágenes directas
+
+Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consideramos el siguiente diagrama:
+\[\xymatrix{
+(\X,\T) \ar[r]^{f} \ar[d]_{p} &
+(\mc{Y}, f\T) \ar@{<->}[ld]^{\bar{f}} \\
+X/\mathord{\sim}
+}\]
+donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Entonces, se verifica que la aplicación $\bar{f}$ entre $X/\mathord{\sim}$ y $(\mc{Y},f\T)$ es una biyección, por cómo hemos definido la relación de equivalencia. Además, tenemos que $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia. Ahora, vamos a definir la topología cociente para $X/\mathord{\sim}$ y vamos a comprobar que, con ella, $\bar{f}$ es homeomorfismo.
+
+\begin{defi}[Topología cociente]
+Definimos la \tbitop[$\T/\mathord{\sim}$]{cociente} en las condiciones anteriores como:
+\[\T/\mathord{\sim} = \{V\midc p^{-1}(V)\in\T\}\]
+\end{defi}
+
+Entonces, se verifica que $\bar{f}$ es homeomorfismo. En efecto, 
+% TODO: Completar demostración
+
+Visto esto, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imágenes por $p$ de abiertos de $\T$ (pero no todas las imágenes de abiertos tienen que estar necesariamente en $\T$). Entonces, definimos:
+
+\begin{defi}[Conjunto saturado]
+En las condiciones anteriores, decimos que $W\in\T$ es \tbi[conjunto!saturado]{saturado} si $W=p^{-1}(p(W))$. Es equivalente decir que $[x]\cap W\neq\emptyset\implies [x]\subset W$, o que $x\in W,y\sim x\implies y\in W$.
+\end{defi}
+
+Entonces, podemos reescribir la topología cociente como:
+\[\T/\mathord{\sim} = \{p(W)\midc W\in\T\text{, } W\text{ saturado}\}\]
+
+Llamamos, entonces, a la aplicación $f$ \tbi{identificación}. Para comprobar si una aplicación es una identificación, podemos usar la siguiente proposición:
+
+\begin{prop}[Condiciones suficientes de identificación]
+Sea $f:\X\to\mc{Y}$ una aplicación. Si se verifica alguna de las siguientes condiciones, $f$ es una identificación:
+\begin{enumerate}
+\item $f$ es una aplicación continua abierta.
+\item $f$ es una aplicación continua cerrada.
+\end{enumerate}
+\end{prop}
+
+\begin{obs}
+Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores.
+\end{obs}
