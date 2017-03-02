@@ -66,7 +66,8 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaRn}
 		\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
-		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbi{topología trivial}, que viene definida por \begin{equation}
+		A esta topología la llamamos \tbitop{usual}.
+		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop{trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
 		\T=\{\emptyset, \X\}
 		\end{equation}
@@ -75,8 +76,8 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaDiscreta}
 		\T = \partes(\X)
 		\end{equation}
-		A esta topología la llamaremos \tbi{topología discreta}.
-		\item Como último ejemplo curioso nos queda la llamada \tbi{topología del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
+		A esta topología la llamaremos \tbitop{discreta}.
+		\item Como último ejemplo curioso nos queda la llamada \tbitop{del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
 		\begin{equation}
 		\label{etop_eq_topologiaPunto}
 		\T_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
@@ -610,7 +611,7 @@ Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entorno
 \section{Topología relativa}
 
 \begin{defi}[Topología relativa]
-	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X$. Definimos la \tbi{topología relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$. Se verifica que esta es una topología en $\mc{Y}$, y entonces decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}.
+	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X$. Definimos la \tbitop{relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$. Se verifica que esta es una topología en $\mc{Y}$, y entonces decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}.
 \end{defi}
 
 Gracias a esta definición, siempre que hablemos en adelante de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa para dotarlo de estructura de espacio topológico.
