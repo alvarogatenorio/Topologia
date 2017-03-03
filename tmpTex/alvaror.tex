@@ -19,8 +19,7 @@ Definimos la \tbitop[$\T/\mathord{\sim}$]{cociente} en las condiciones anteriore
 \[\T/\mathord{\sim} = \{V\midc p^{-1}(V)\in\T\}\]
 \end{defi}
 
-Entonces, se verifica que $\bar{f}$ es homeomorfismo. En efecto, 
-% TODO: Completar demostración
+Entonces, se verifica que $\bar{f}$ es homeomorfismo. Esto se sigue rápidamente de la propiedad universal de la topología imagen, cuyo esquema aparece en la ecuación \ref{cont_propiedad_universal_top_imagen}. En efecto, nótese que la biyectividad de $\bar{f}$ nos permite afirmar que $p=\bar{f}\circ f$. Entonces, por esta propiedad universal, tenemos que $p$ es continua si y solo si lo es $\bar{f}$. Pero como $p$ lo es, entonces necesariamente lo es $\bar{f}$. Para la implicación en el otro sentido, basta darnos cuenta de que hemos definido la topología cociente como una topología imagen, concretamente la topología imagen por $p$. Entonces, se verifica en el cociente la misma propiedad universal y la implicación es totalmente análoga.
 
 Visto esto, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imágenes por $p$ de abiertos de $\T$ (pero no todas las imágenes de abiertos tienen que estar necesariamente en $\T$). Entonces, definimos:
 
@@ -28,10 +27,26 @@ Visto esto, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imáge
 En las condiciones anteriores, decimos que $W\in\T$ es \tbi[conjunto!saturado]{saturado} si $W=p^{-1}(p(W))$. Es equivalente decir que $[x]\cap W\neq\emptyset\implies [x]\subset W$, o que $x\in W,y\sim x\implies y\in W$.
 \end{defi}
 
-Entonces, podemos reescribir la topología cociente como:
+Gracias a esta definición, podemos reescribir la topología cociente como:
 \[\T/\mathord{\sim} = \{p(W)\midc W\in\T\text{, } W\text{ saturado}\}\]
 
-Llamamos, entonces, a la aplicación $f$ \tbi{identificación}. Para comprobar si una aplicación es una identificación, podemos usar la siguiente proposición:
+Además, vamos a dar un nombre a las funciones que envían $X$ en un espacio homeomorfo a un cociente:
+
+\begin{defi}[Identificación]
+	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva, cuando $(Y,\T')$ es homeomorfo a $(X/\mathord{\sim},\T/\mathord{\sim})$ para cierta relación de equivalencia $\mathord{\sim}$.
+\end{defi}
+
+La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. 
+
+\begin{prop}
+	Una identificación $f:(X,\T)\to (\mc{Y},\T')$ es continua.
+	
+	\begin{proof}
+		Como la topología cociente es homeomorfa al espacio $(\mc{Y},\T')$, y hay una aplicación continua de $\X$ en el cociente, entonces hay una aplicación continua de $\X$ en $\mc{Y}$.
+	\end{proof}
+\end{prop}
+
+Para comprobar si una aplicación es una identificación, podemos usar la siguiente proposición:
 
 \begin{prop}[Condiciones suficientes de identificación]
 Sea $f:\X\to\mc{Y}$ una aplicación. Si se verifica alguna de las siguientes condiciones, $f$ es una identificación:
@@ -41,6 +56,6 @@ Sea $f:\X\to\mc{Y}$ una aplicación. Si se verifica alguna de las siguientes con
 \end{enumerate}
 \end{prop}
 
-\begin{obs}
 Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores.
-\end{obs}
+
+Toda esta construcción abstracta debe servirnos para formalizar todo el concepto de cociente de un espacio. Esta es quizá la idea más importante que se va a ver en toda la asignatura, y es excepcionalmente útil para construir una gigantesca variedad de homeomorfismos y encontrar objetos simples homeomorfos a otros mucho más complejos.
