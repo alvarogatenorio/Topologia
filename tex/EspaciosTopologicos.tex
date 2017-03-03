@@ -30,7 +30,7 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
 	\label{etop_def_espacioTopologico}
 	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
-	Un \tbi{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades:
+	Un \tb\ti{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades:
 	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
 	\begin{enumerate}
 		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
@@ -39,6 +39,8 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$.
 		\item[\tb{T3}] La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
 	\end{enumerate}
+	
+	A menudo hablaremos tan solo de \tbi{espacio}.
 \end{defi}
 %Siempre viene bien algún chascarrillo para liberar tensiones.
 Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
@@ -51,9 +53,9 @@ Introducimos ahora un poco de terminología con la que el lector no tiene más r
 	\label{etop_obs_terminologia}
 	A la familia de conjuntos $\T$ que conforman un espacio topológico $\X$ se le denomina \tbi{topología} de $\X$.
 	
-	Asimismo, los conjuntos que conforman $\T$ reciben el nombre de \tbi{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
+	Asimismo, los conjuntos que conforman $\T$ reciben el nombre de \tbi[conjunto!abierto]{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
-	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi{puntos}.
+	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi[punto]{puntos}.
 \end{obs}
 Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto de espacio topológico viendo lo general que puede llegar a ser.
 \begin{exa}[Topologías]
@@ -130,7 +132,7 @@ Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los
 En general, un conjunto será entorno de algunos de sus puntos, en principio no de todos. De esta idea surge la siguiente definición.
 \begin{defi}[Punto Interior]
 	\label{etop_def_puntoInterior}
-	Dado un conjunto $A\subset\X$, diremos que un punto $a\in\X$ es un \tbi{punto interior} de $A$ si $A$ es entorno de $a$.
+	Dado un conjunto $A\subset\X$, diremos que un punto $a\in\X$ es un \tbi[punto!interior]{punto interior} de $A$ si $A$ es entorno de $a$.
 \end{defi}
 Será algo habitual de ahora en adelante tratar de determinar el conjunto de puntos interiores de un determinado conjunto $A\subset\X$, a este conjunto se le denomina \tbi{interior} de $\X$.
 
@@ -221,7 +223,7 @@ En esta sección estudiaremos los conjuntos cerrados.
 Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la de ser abierto, ya que, como veremos más adelante, hay conjuntos que no son ni abiertos ni cerrados así como conjuntos que son abiertos y cerrados a la vez.
 
 \begin{defi}[Conjunto Cerrado]
-	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi{cerrado} si su complementario, $\X\setminus\F$, es abierto.
+	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi[conjunto!cerrado]{cerrado} si su complementario, $\X\setminus\F$, es abierto.
 \end{defi}
 
 Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
@@ -270,7 +272,7 @@ Usando propiedades básicas de teoría de conjuntos se obtienen algunas propieda
 Introducimos ahora un concepto elemental pero interesante, el concepto de puntos adherentes y adherencia.
 \begin{defi}[Punto Adherente]
 	\label{etop_defi_puntoAdherente}
-	Un punto $a\in\X$ se dice \tbi{adherente} a un conjunto $A\subset\X$ si todo entorno de $a$ corta al conjunto $A$.
+	Un punto $a\in\X$ se dice \tbi[punto!adherente]{adherente} a un conjunto $A\subset\X$ si todo entorno de $a$ corta al conjunto $A$.
 \end{defi}
 Como ya es habitual, coleccionaremos los puntos adherentes a un conjunto dado y estudiaremos las propiedades del conjunto de puntos adherentes. Introduzcamos una definición para verlo formalmente.
 \begin{defi}[Adherencia]
@@ -461,14 +463,14 @@ Añadimos una observación final trivial, simplemente por curiosidad.
 En esta sección presentamos el concepto de punto de acumulación, que es muy útil para trabajar con sucesiones, como veremos más adelante. Además, definiremos la idea de que un conjunto sea denso de varias maneras que nos serán muy útiles a la hora de resolver problemas.
 \begin{defi}[Punto de Acumulación]
 	\label{etop_defi_puntoAcumulacion}
-	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
+	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi[punto!de acumulación]{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
 	\begin{equation*}
 	(\V_x\setminus\{x\})\cap A\not=\emptyset
 	\end{equation*}
 \end{defi}
 Presentemos un poco de terminología para el conjunto de los puntos de acumulación.
 \begin{defi}[Conjunto Derivado]
-	Al conjunto de los puntos de acumulación de un conjunto $A$ se le denomina \tbi{conjunto derivado}. Usualmente denotaremos al conjunto derivado por $A'$.
+	Al conjunto de los puntos de acumulación de un conjunto $A$ se le denomina \tbi[conjunto!derivado]{conjunto derivado}. Usualmente denotaremos al conjunto derivado por $A'$.
 \end{defi}
 \begin{obs}[Entornos Perforados]
 	Cuando consideramos un entorno $\V_x$ de un punto $x\in\X$, a veces (sobre todo cuando hablamos de puntos de acumulación) es útil no considerar el entorno entero, sino el entorno salvo un punto.
@@ -503,7 +505,7 @@ Cabe señalar que, claramente, esta descomposición, en general, no es un partic
 \end{exa}
 Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan ganas de ver qué pasa con aquellos puntos que no cumplen esta definición por los pelos. Para esto introducimos la siguiente definición.
 \begin{defi}[Puntos Aislados]
-	Se llaman \tbi{puntos aislados} de un conjunto $A$, a aquellos puntos de $A$ que no son puntos de acumulación. Es decir, a los puntos $x\in A$ que poseen un entorno que cumple
+	Se llaman \tbi[punto!aislado]{puntos aislados} de un conjunto $A$, a aquellos puntos de $A$ que no son puntos de acumulación. Es decir, a los puntos $x\in A$ que poseen un entorno que cumple
 	\begin{equation*}
 	\V_x\cap A = \{x\}
 	\end{equation*}
@@ -513,7 +515,7 @@ Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparc
 Pasamos hora a definir el concepto de densidad de un conjunto.
 \begin{defi}[Conjunto Denso]
 	\label{etop_def_denso}
-	Decimos que un conjunto $A$ es \tbi{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
+	Decimos que un conjunto $A$ es \tbi[conjunto!denso]{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
 	\begin{equation*}
 	\adher{A}=\X
 	\end{equation*}
@@ -592,7 +594,7 @@ Veamos que esta definición nos permite reformular las bases de entornos vistas 
 Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi[Segundo axioma de numerabilidad]{II axioma} (de numerabilidad) si tiene una base numerable.
+	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{II axioma} (de numerabilidad) si tiene una base numerable.
 	\begin{exa}
 		ejemmplos...%Por hacer
 	\end{exa}
