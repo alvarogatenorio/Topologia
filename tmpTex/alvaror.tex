@@ -94,11 +94,91 @@ Toda esta construcción abstracta debe servirnos para formalizar todo el concept
 	y está claro que la aplicación que manda $f$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta.
 	
 	Ahora, nótese que considerando $[0,1]\subset\R$ podemos tomar las restricciones correspondientes con el siguiente esquema:
-	\[\xymatrix @C=0.5pc {
-		[0,1] \ar@{}[r]|{\subset} \ar[dr] &
-		\R \ar[rr] \ar[d] & &
+	\[\xymatrix @C=0.5pc @R=0.5pc @L=-0.2pc {
+	    & \R \ar[rr] \ar[dd] & &
 		\esfera^1 \\
-		& \R/\mathord{\sim}  \ar@{<->}[rru]
+		[0,1] \ar@{}[ur]^*[@]{\subset} \ar[dr] \\
+		& \R/\mathord{\sim}  \ar@{<->}[rruu]
 	}\]
 	y llegar a otra identificación. Ahora la relación de equivalencia asociada es simplemente aquella en la que $1\sim 0$ y todos los demás puntos son solamente equivalentes a sí mismos.
+\end{exa}
+
+Esta posibilidad de encontrar, a veces, un cociente más simple que tiene la misma topología nos motiva a definir:
+
+\begin{defi}[Dominio fundamental]
+	En una construcción como la anterior, llamamos \tbi{dominio fundamental} a la región cerrada más pequeña posible con un representante de cada clase de equivalencia. Según la situación, a veces se exigen también otras propiedades como compacidad.
+\end{defi}
+
+\begin{exa}
+	Ahora, vamos a considerar el toro de revolución que vive en $\R^3$, cuya parametrización es conocida:
+	\[\begin{split}
+	x&=(a\cos(\theta)+b)\cos(\phi),\\
+	y&=(a\cos(\theta)+b)\sin(\phi),\\
+	z&=a\sin(\theta).
+	\end{split}\]
+	
+	Como vemos en la imagen, se trata de una figura generada por revolución de una circunferencia en torno a un eje.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale = 0.15]{img/toro}
+	\end{figure}
+
+	Vamos a hacer pues una construcción similar a la ya vista para la circunferencia unidad. Nos queda un esquema del siguiente tipo:
+	
+	\[\xymatrix @C=0.5pc @R=0.5pc @L=-0.2pc {
+		& \R^2\ar[rr] \ar[dd] & &
+		\toro^2\subset\R^3 \\
+		[0,2\pi]^2 \ar@{}[ur]^*[@]{\subset} \ar[dr] \\
+		& \R^2/\mathord{\sim}  \ar@{<->}[rruu]
+	}\]
+
+	En este caso, la relación de equivalencia está definida como:
+	\[(x,y)\sim (x',y')\iff x-x'\in\Z,\;y-y'\in\Z\]
+	y como dominio fundamental encontramos el cuadrado $[0,2\pi]^2$. 
+	
+	A menudo, los dominios fundamentales se representan con esquemas como el siguiente, que representa el toro que acabamos de describir:
+	
+	% Copiado de https://en.wikipedia.org/wiki/Fundamental_polygon . Querría hacer uno yo pero no ha dado tiempo.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale = 0.1]{img/pol_fund_toro}
+	\end{figure}
+
+	Estos esquemas se llaman \tbi[polígono fundamental]{polígonos fundamentales}. La forma de entenderlos es que la relación de equivalencia ``pega'' los puntos de $A$ y de $B$ en el sentido que indican las flechas.
+\end{exa}
+
+En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes pero sin entrar en tantos detalles como en los ejemplos previos. Para familiarizarnos íntimamente con el espacio cociente, es un buen ejercicio mental tratar de visualizar cómo podemos deformar un objeto del ejemplo siguiente para transformarlo en otro homeomorfo. Al fin y al cabo, la homeomorfia, intuitivamente, es poder deformar sin romper, y los cocientes formalizan la noción de ``pegar'' puntos.
+
+\begin{exa} \
+	\begin{enumerate}
+		\item La esfera $\esfera^2$ se puede identificar con el disco unidad si la relación de equivalencia es la que hace que todos los puntos del borde estén relacionados entre sí y los demás, solo con sí mismos. De la misma forma, la podemos identificar con dos discos donde la relación de equivalencia ``pega'' los bordes. Por último, una esfera tiene como polígono fundamental:
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.1]{img/pol_fund_esfera}
+		\end{figure}
+	
+		\item Podemos identificar el plano proyectivo real $\proy^2$ con un disco y una esfera donde la relación de equivalencia ``pega'' los bordes. También podemos identificarlo con una semiesfera en la que cada punto del borde es equivalente a su antípoda, o con una esfera completa en la que dos puntos están relacionados si y solo si son antipodales. Además, el polígono fundamental del plano proyectivo real sería:
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.1]{img/pol_fund_plano_proy}
+		\end{figure}
+	
+		\item Vamos a ver otros dos polígonos fundamentales más. El de la banda de Möbius sería:
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.09]{img/pol_fund_mobius}
+		\end{figure}
+	
+		Nótese que en este caso hay un lado que no se pegaría, que corresponde al borde de la banda de Möbius. 
+		
+		Por otro lado, el de la botella de Klein sería:
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.1]{img/pol_fund_botella_klein}
+		\end{figure}
+	\end{enumerate}
 \end{exa}
