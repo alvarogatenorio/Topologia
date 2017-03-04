@@ -9,19 +9,40 @@
 Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consideramos el siguiente diagrama:
 \[\xymatrix{
 (\X,\T) \ar[r]^{f} \ar[d]_{p} &
-(\mc{Y}, f\T) \ar@{<->}[ld]^{\bar{f}} \\
-X/\mathord{\sim}
+(\mc{Y}, f\T) \\
+\X/\mathord{\sim}  \ar[ru]^{\bar{f}}
 }\]
-donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Entonces, se verifica que la aplicación $\bar{f}$ entre $X/\mathord{\sim}$ y $(\mc{Y},f\T)$ es una biyección, por cómo hemos definido la relación de equivalencia. Además, tenemos que $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia. Ahora, vamos a definir la topología cociente para $X/\mathord{\sim}$ y vamos a comprobar que, con ella, $\bar{f}$ es homeomorfismo.
+donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Aquí, $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia, y consideramos $\bar{f}$ de forma que verifique que $f=\bar{f}\circ p$.
+
+% Esto no lo nombró él en clase pero lo he encontrado por ahí y es cómodo
+Decimos que una aplicación $f$ que verifica que si $x\sim y$ entonces $f(x)=f(y)$ respeta la relación de equivalencia $\mathord{\sim}$. Nótese que no se exige la equivalencia, solo la implicación.
+
+Como hemos definido la relación de equivalencia como la que verifica $x\sim y\iff f(x)=f(y)$, tenemos que $\bar{f}$ es una biyección. Además, se puede comprobar que si existe $\bar{f}$ tal que $f=\bar{f}\circ p$, entonces $f$ respeta la relación de equivalencia $\mathord{\sim}$.
+
+Ahora, vamos a definir la topología cociente para $\X/\mathord{\sim}$. Buscamos una topología que verifique que la aplicación $p$ es continua y que existe una aplicación continua $\bar{f}$ que respete la relación de equivalencia $\mathord{\sim}$ y que verifique que $f=\bar{f}\circ p$.
 
 \begin{defi}[Topología cociente]
 Definimos la \tbitop[$\T/\mathord{\sim}$]{cociente} en las condiciones anteriores como:
 \[\T/\mathord{\sim} = \{V\midc p^{-1}(V)\in\T\}\]
+es decir, la topología cociente es la topología imagen por $p$.
 \end{defi}
 
-Entonces, se verifica que $\bar{f}$ es homeomorfismo. Esto se sigue rápidamente de la propiedad universal de la topología imagen, cuyo esquema aparece en la ecuación \ref{cont_propiedad_universal_top_imagen}. En efecto, nótese que la biyectividad de $\bar{f}$ nos permite afirmar que $p=\bar{f}\circ f$. Entonces, por esta propiedad universal, tenemos que $p$ es continua si y solo si lo es $\bar{f}$. Pero como $p$ lo es, entonces necesariamente lo es $\bar{f}$. Para la implicación en el otro sentido, basta darnos cuenta de que hemos definido la topología cociente como una topología imagen, concretamente la topología imagen por $p$. Entonces, se verifica en el cociente la misma propiedad universal y la implicación es totalmente análoga.
+Está claro que se verifican nuestros requisitos. Por un lado, $p$ es trivialmente continua (pues la topología imagen por $p$ es precisamente la que verifica esto). Por otro lado, por ser una topología imagen se verifica directamente la continuidad de $\bar{f}$.
 
-Visto esto, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imágenes por $p$ de abiertos de $\T$ (pero no todas las imágenes de abiertos tienen que estar necesariamente en $\T$). Entonces, definimos:
+\begin{prop}
+	En las condiciones de la construcción (cuando la relación $\sim$ está definida como $x\sim y\iff f(x)=f(y)$), $\bar{f}$ es homeomorfismo.
+	
+	\begin{proof}
+		Ya hemos visto que $\bar{f}$ es biyectivo cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$; y que es continuo en el sentido en el que lo hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
+		
+		En efecto, $U\in \X/\mathord{\sim}$ abierto $\iff p^{-1}(U)$ es abierto en $\X$. Pero tenemos que $p^{-1}(U)=f^{-1}(f(S))$, porque:
+		\[x\in p^{-1}(U)\iff p(x)\in S\stackrel{\bar{f}\text{ biy.}}{\iff}\bar{f}(p(x))\in \bar{f}(U)\iff f(x)\in\bar{f}(U)\iff x\in f^{-1}(\bar{f}(U))\]
+		
+		Entonces, como $f(\T)$ es la topología en $\mc{Y}$, $f^{-1}(f(U))$ es abierto en $\X\iff \bar{f}(U)$ es abierto en $\mc{Y}$, pero ya hemos visto que $f^{-1}(f(U))$ es abierto, porque es $p^{-1}(U)$.
+	\end{proof}
+\end{prop}
+
+Por otro lado, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imágenes por $p$ de abiertos de $\T$ (pero no todas las imágenes de abiertos tienen que estar necesariamente en $\T$). Entonces, definimos:
 
 \begin{defi}[Conjunto saturado]
 En las condiciones anteriores, decimos que $W\in\T$ es \tbi[conjunto!saturado]{saturado} si $W=p^{-1}(p(W))$. Es equivalente decir que $[x]\cap W\neq\emptyset\implies [x]\subset W$, o que $x\in W,y\sim x\implies y\in W$.
@@ -33,18 +54,12 @@ Gracias a esta definición, podemos reescribir la topología cociente como:
 Además, vamos a dar un nombre a las funciones que envían $X$ en un espacio homeomorfo a un cociente:
 
 \begin{defi}[Identificación]
-	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva, cuando $(Y,\T')$ es homeomorfo a $(X/\mathord{\sim},\T/\mathord{\sim})$ para cierta relación de equivalencia $\mathord{\sim}$.
+	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva que verifica que $\T'$ es la topología imagen por $f$ $f(\T)$.
 \end{defi}
 
-La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. 
+La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. El hecho de que la topología de $\mc{Y}$ sea la imagen significa que una identificación es continua.
 
-\begin{prop}
-	Una identificación $f:(X,\T)\to (\mc{Y},\T')$ es continua.
-	
-	\begin{proof}
-		Como la topología cociente es homeomorfa al espacio $(\mc{Y},\T')$, y hay una aplicación continua de $\X$ en el cociente, entonces hay una aplicación continua de $\X$ en $\mc{Y}$.
-	\end{proof}
-\end{prop}
+Las identificaciones se llaman a veces en la literatura aplicaciones cociente\index[general]{aplicación!cociente}. Esto está ligado con su utilidad: las identificaciones son aquellas que inducen una relación de equivalencia $\sim$ de forma que podemos desarrollar toda la construcción anterior. De esta forma, nos ``regalan'' un espacio homeomorfo a $\mc{Y}$ que a menudo es más simple y más fácil de entender que él. Este propósito quedará más claro en los ejemplos posteriores.
 
 Para comprobar si una aplicación es una identificación, podemos usar la siguiente proposición:
 
@@ -56,9 +71,11 @@ Sea $f:\X\to\mc{Y}$ una aplicación. Si se verifica alguna de las siguientes con
 \end{enumerate}
 \end{prop}
 
-Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores.
+Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores. Además, como no se exige que las identificaciones sean biyectivas, las dos condiciones anteriores no son equivalentes.
 
 Toda esta construcción abstracta debe servirnos para formalizar todo el concepto de cociente de un espacio. Esta es quizá la idea más importante que se va a ver en toda la asignatura, y es excepcionalmente útil para construir una gigantesca variedad de homeomorfismos y encontrar objetos simples homeomorfos a otros mucho más complejos.
+
+
 
 \begin{exa}[Circunferencia unidad]
 	Definimos la aplicación:
