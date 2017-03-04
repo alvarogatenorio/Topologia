@@ -10,7 +10,7 @@ Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consi
 \[\xymatrix{
 (\X,\T) \ar[r]^{f} \ar[d]_{p} &
 (\mc{Y}, f\T) \\
-\X/\mathord{\sim}  \ar[ru]^{\bar{f}}
+\X/\mathord{\sim}  \ar[ru]_{\bar{f}}
 }\]
 donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Aquí, $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia, y consideramos $\bar{f}$ de forma que verifique que $f=\bar{f}\circ p$.
 
@@ -86,8 +86,19 @@ Toda esta construcción abstracta debe servirnos para formalizar todo el concept
 	y consideramos la relación de equivalencia $s\sim t\iff e^{2\pi is}=e^{2\pi it}\iff s-t\in\Z$. Vamos a ver que la circunferencia unidad $\esfera^1$ es homeomorfa a $\R/\mathord{\sim}$.
 	
 	Nos queda, pues, el siguiente esquema:
+	\[\xymatrix{
+		\R \ar[r] \ar[d] &
+		\esfera^1 \\
+		\R/\mathord{\sim}  \ar@{<->}[ru]
+	}\]
+	y está claro que la aplicación que manda $f$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta.
 	
-	% ESQUEMA
-	y el homeomorfismo se reduce a demostrar que la aplicación que manda $f$ a $\esfera^1$ es una identificación. 
-	
+	Ahora, nótese que considerando $[0,1]\subset\R$ podemos tomar las restricciones correspondientes con el siguiente esquema:
+	\[\xymatrix @C=0.5pc {
+		[0,1] \ar@{}[r]|{\subset} \ar[dr] &
+		\R \ar[rr] \ar[d] & &
+		\esfera^1 \\
+		& \R/\mathord{\sim}  \ar@{<->}[rru]
+	}\]
+	y llegar a otra identificación. Ahora la relación de equivalencia asociada es simplemente aquella en la que $1\sim 0$ y todos los demás puntos son solamente equivalentes a sí mismos.
 \end{exa}
