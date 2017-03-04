@@ -623,6 +623,7 @@ Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entorno
 \end{proof}
 Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hecho no todos los espacios métricos lo cumplen. Será útil ya que muchos espacios que no son familiares lo cumplen, y nos ayudará para probar algunos teoremas.
 \begin{prop}
+	\label{etop_base_top}
 	Una colección de $\B$ de subconjuntos de un conjunto $\X$ es base de una (única) topología en $\X$ si y sólo si:
 	\begin{enumerate}
 		\item $\X = \bigcup_{B \in \B}B$
@@ -635,8 +636,33 @@ Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hech
 	\end{enumerate}
 \end{proof}
 \end{prop}
-\begin{exa}[Topología de Sorgenfray en $\R$]
-	contenidos...
+\begin{exa}[Topología de Sorgenfrey en $\R$]
+	Sea el espacio topológico $(\Re, \T_s)$ espacio topológico, con $\T_s$ la llamada topología de Sorgenfrey. Veamos en que consiste esta topología. 
+	
+	Si tomamos en $\R$ la colección de intervalos $[a,b)$, este conjunto es base de la llamada \tbitop{de Sorgenfrei}.
+	\begin{proof}
+		Para ver que ocurre esto verificaremos que esta base verifica \ref{etop_base_top}
+		
+		Denotemos $\B = \{[a,b) : a,b \in \R\}$. Que $\B$ cumple que la unión de todos sus elementos genera el total es obvio($\R$ es la unión de estos intervalos).
+		
+		Veamos que cumple la segunda propiedad. Sea $\B_1=[a,b)$ y $\B_2=[a',b')$ y sea $x \in B_1 \cap \B_2$ vemos claramente que la intersección de estos dos intervalos sigue siendo de la misma forma, y tendrá como extremo inferior $a" = max\{a,a'\} $ y superior $b"=min\{b,b'\}$ luego es el intervalo $B_1 \cap \B_2 = [a",b")$, por lo que pertenece a la base y se cumple que $x \in B \subset B_1 \cap \B_2$. Luego llegamos a lo buscado.
+	\end{proof}
+	Veremos una serie de propiedades extra de esta topología, que son muy ilustrativas.
+	\begin{enumerate}
+		\item Los abiertos de la topología usual están contenidos en la topología de Sorgenfrei.
+		\begin{proof}
+			Sea el intervalo $(a,b)$. Describamoslo en función de intervalos cerrado-abierto. $(a,b) = \cup_{k\geq 1} [a+\frac{1}{k},b)$. Sabemos que esta unión está en la topología de Sorgenfrei luego ya está.
+		\end{proof}
+	Con esto observamos que la topología de Sorgenfrei es más fina que la usual $(\T \subsetneq \T_{s})$
+	Con esto sabemos que si un conjunto no es compacto con la topología de Sorgenfrei tampoco lo es con la usual, ya que si con una que tiene los mismo y más abiertos no podemos extraer un subrecubrimiento finito,difícilmente podremos hacerlo con una más pequeña.
+	\item Es una base de conjuntos abiertos y cerrados (lo que se llama una topología "\textit{clopen}")
+	\begin{proof}
+		Ver esto es muy sencillo. Si tenemos el abierto (en esta topología) $[a,b)$, tenemos que su complementario es $(-\infty, a)$ que es un abierto de la usual, luego de la de Sorgenfrei, y $[b,\infty)$ que es $[b,\infty) = \cup_{k\geq1} [b, b+k)$ que es un abierto Sorgenfrei. Luego el intervalo $[a,b)$ es un abierto-cerrado.
+	\end{proof}
+	\item No hay conexos(salvo los puntos).
+	\item No es II axioma, ya que en todo conjunto de la base hay racional. SI es separable.
+	\item Es I axioma (tomamos $[a, a+\frac{1}{k})$). Es Lindelöf.
+	\end{enumerate}
 \end{exa}
 
 
