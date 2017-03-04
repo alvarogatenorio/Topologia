@@ -92,7 +92,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 	Con lo que ya tenemos una gama lo suficientemente amplia de ejemplos como para ir tirando.
 \end{exa}
 \begin{defi}
-	Diremos que $\T$ y $\T'$ dos topologías de  un conjunto $\X$ tal que $\T \supset \T'$. Diremos que $\T$ es más \tbi{fina} que $\T'$ y que $\T'$ es más \tbi{gruesa} que $\T$.
+	Diremos que $\T$ y $\T'$ dos topologías de  un conjunto $\X$ tal que $\T \supset \T'$. Diremos que $\T$ es más \tbi[topología más fina]{fina} que $\T'$ y que $\T'$ es más \tbi[topología más gruesa]{gruesa} que $\T$.
 \end{defi}
 En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del curso.
 \section{Conjuntos Abiertos e Interior}
@@ -594,19 +594,46 @@ Veamos que esta definición nos permite reformular las bases de entornos vistas 
 	Ahora veamos...%Completar, duda en que quiere hacer conn esto 
 \end{proof}
 
+Veremos otra condición que podremos usar en lugar de la definición de bases de abiertos \ref{etop_bases_abiertos}.
+\begin{obs}[Reformulación de bases de abiertos]
+	\label{etop_ref_bases_abiertos}
+	Para todo abierto $\U$ de $\X$ y todo punto $x \in \U$, existe un $\V \in \B$ tal que $x \in \V \subset \U$.
+\end{obs}
+\begin{proof}
+	Si se cumple esto, y tomamos $\U$ abierto de de $\X$, entonces para todo $x \in \U$ tomamos $\V^x \in \B$ de tal forma que $x \in \V^x \subset \U$. Al hacer esto, $\U$ coincide con $\bigcup_{x \in \U}V^{x}$, por lo que cualquier abierto que tomemos de $\X$ es unión de elementos de la base. La otra implicación es directa.
+\end{proof}
 Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
 	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{II axioma} (de numerabilidad) si tiene una base numerable.
-	\begin{exa}
-		ejemmplos...%Por hacer
+	\begin{exa}[Bases de abiertos]
+		Veamos varios ejemplos de base de abiertos en el espacio topológico $(\R^{n},\T_{n})$, con $\T_{n}$ la topología usual:
+		\begin{enumerate}
+			\item $\B=\{B(x, \varepsilon)\ :\ x \in \R^n\ y \ \varepsilon > 0\}$
+			\item $\B=\{B(x, \frac{1}{k})\ :\ x \in \R^n\ y \ k \geq 1\}$
+			\item $\B=\{B(q, r)\ :\ q \in \Q^n\ y \ r \in \Q\}$
+		\end{enumerate}
 	\end{exa}
 \end{defi}
 \begin{obs}
-	Ser II axioma implica ser I axioma. %Prueba
+	Ser II axioma implica ser I axioma.
 \end{obs}
+\begin{proof}
+	Si $\B$ es una base numerable para la topología de $\X$, entonces si tomamos el subconjuto de $\B$ formado por los elementos de la base que contienen al punto $x$ entonces es una base numerable en $x$. Luego todo punto tiene una bsae numerable, por lo que es I axioma.
+\end{proof}
+Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hecho no todos los espacios métricos lo cumplen. Será útil ya que muchos espacios que no son familiares lo cumplen, y nos ayudará para probar algunos teoremas.
 \begin{prop}
-	contenidos...
+	Una colección de $\B$ de subconjuntos de un conjunto $\X$ es base de una (única) topología en $\X$ si y sólo si:
+	\begin{enumerate}
+		\item $\X = \bigcup_{B \in \B}B$
+		\item Para todo $B_1$, $B_2 \in \B$ y para todo $x \in B_1 \cap B_2$,  $\exists B \in \B$  y  $B \subset B_1 \cap B2$ tal que $x \in B$.
+	\end{enumerate}
+\begin{proof}
+	\begin{enumerate}
+		\item Como $\X$ es abierto, es unión de elementos de la base. Por lo tanto $X$ es la unión de todos los elementos de $\B$.
+		\item Supongamos que $B_1$, $B_2 \in \B$ y que $x \in B_1 \cap B_2$. Como $B_1$ y $B_2$ son abiertos, su intersección es abierta. Por \ref{etop_ref_bases_abiertos}, existe un $B \in \B$ tal que $x \in B \subset B_1 \cap B_2$.
+	\end{enumerate}
+\end{proof}
 \end{prop}
 \begin{exa}[Topología de Sorgenfray en $\R$]
 	contenidos...
