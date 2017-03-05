@@ -53,7 +53,7 @@ Introducimos ahora un poco de terminología con la que el lector no tiene más r
 	\label{etop_obs_terminologia}
 	A la familia de conjuntos $\T$ que conforman un espacio topológico $\X$ se le denomina \tbi{topología} de $\X$.
 	
-	Asimismo, los conjuntos que conforman $\T$ reciben el nombre de \tbi[conjunto!abierto]{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
+	Asimismo, los conjuntos que constituyen los elementos de $\T$ reciben el nombre de \tbi[conjunto!abierto]{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
 	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi[punto]{puntos}.
 \end{obs}
@@ -62,11 +62,11 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 	\label{etop_exa_topologias}
 	Las demostraciones de que, efectivamente, se cumplen las restricciones impuestas por la definición \ref{etop_def_espacioTopologico}, o bien ya se han hecho en cursos anteriores, o bien se dejan al lector como ejercicio inmediato.
 	\begin{enumerate}
-		\item El espacio ordinario $\R^n$ es un espacio topológico con la topología definida por los conjuntos abiertos en el sentido usual cuando hablamos de espacios métricos, es decir
+		\item Un espacio métrico $(M,d)$ es un espacio topológico con la topología definida por los conjuntos abiertos en el sentido de los espacios métricos, es decir
 		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
 		\begin{equation}
 		\label{etop_eq_topologiaRn}
-		\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
+		\T = \{\U\subset M\tq \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
 		A esta topología la llamamos \tbitop{usual}.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop{trivial}, que viene definida por \begin{equation}
@@ -91,8 +91,11 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 	\end{enumerate}
 	Con lo que ya tenemos una gama lo suficientemente amplia de ejemplos como para ir tirando.
 \end{exa}
-\begin{defi}
-	Diremos que $\T$ y $\T'$ dos topologías de  un conjunto $\X$ tal que $\T \supset \T'$. Diremos que $\T$ es más \tbi[topología más fina]{fina} que $\T'$ y que $\T'$ es más \tbi[topología más gruesa]{gruesa} que $\T$.
+Para finalizar la sección observamos que en un mismo conjunto $\X$ podemos definir diversas topologías. Dichas topologías pueden ``compararse'' en determinado contexto.
+\begin{defi}[Relación de Orden entre Topologías]
+	Consideremos $\T$ y $\T'$ dos topologías definidas sobre un conjunto $\X$.
+	
+	Si se verifica que $\T \supset \T'$ diremos que $\T$ es más \tbi[topología más fina]{fina} que $\T'$ y que $\T'$ es más \tbi[topología más gruesa]{gruesa} que $\T$.
 \end{defi}
 En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del curso.
 \section{Conjuntos Abiertos e Interior}

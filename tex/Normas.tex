@@ -1,0 +1,185 @@
+%Provisional
+\chapter{Espacios Métricos}
+\label{met}
+En este apéndice veremos con detalle las relaciones entre los archiestudiados espacios métricos con los espacios topológicos.
+% Mazo Por Hacer (Algún Día)
+\section{Normas}
+En esta comentamos (entre otras cosas) algunos resultados interesantes (y bonitos) sobre normas que usualmente se usan como mantras satánicos (pues jamás se demuestran).
+\subsection{Conceptos Previos}
+A continuación introducimos la definición de norma y los conceptos que a ella subyacen.
+\begin{defi}[Norma]
+	Es harto conocido, casi desde que Eduardo Aguirre\footnote{En la mitología de los Dobles Grados, profesor de Álgebra Lineal conocido por sus refranes y frases célebres.} llevaba pantalones cortos, que una \tbi[norma]{norma} es una aplicación $\norm{\cdot}:E\to\K$ que verifica
+	\begin{enumerate}
+		\item \label{norma_vector_nulo} Es nula si y solo si el vector es nulo. Es decir, dado $u\in\R^n$
+		\begin{equation*}
+			\norm{u}=0\sii u=0
+		\end{equation*}
+		\item \label{norma_lambda} Tiene un comportamiento lineal respecto a escalares. Esto es
+		\begin{equation*}
+		\norm{\lambda u}=\abs{\lambda}\norm{u}
+		\end{equation*}	
+		\item \label{norma_triangular} Verifica la desigualdad triangular o de Minkowski, es decir, dados dos vectores $u,v\in\R^n$
+		\begin{equation*}
+		\norm{u+v}\le \norm{u}+\norm{v}
+		\end{equation*}
+	\end{enumerate}
+\end{defi}
+Una definición que surge de forma automática es la de espacio vectorial normado.
+\begin{defi}[Espacio Vectorial Normado]
+	Llamamos \tbi[espacio vectorial normado]{espacio vectorial normado} a un espacio vectorial $E$ equipado con una norma $\norm{\cdot}$, es decir, al par $(E,\norm{\cdot})$.
+\end{defi}
+\subsection{Topologización de un Espacio Vectorial Normado}
+Todo espacio vectorial normado puede ser ``metrizado'' de forma canónica, tal y como muestra la siguiente definición.
+\begin{defi}[Métrica Procedente de la Norma]
+	Decimos que una métrica $d$ definida sobre un espacio vectorial $E$ \tbi[metrica! procedente de una norma]{procede de una norma} si existe una norma $\norm{\cdot}$ tal que cumple
+	\begin{equation*}
+		d(x,y)=\norm{x-y}
+	\end{equation*}
+\end{defi}
+Así, como todo espacio métrico es, a su vez, un espacio topológico (ver ejemplo \ref{etop_exa_topologias}), podemos preguntarnos qué relaciones hay entre las topologías engendradas por dos normas. En particular, cabe preguntarse cuándo dos normas generan la misma topología.
+\begin{defi}[Equivalencia de Normas]
+	Decimos que dos normas $\norm{\cdot}_1$ y $\norm{\cdot}_2$ son \tbi[norma!equivalente]{equivalentes} si engendran la misma topología.
+\end{defi}
+\subsection{Teorema General de Equivalencia}
+Esta sección está dedicada a demostrar el siguiente teorema.
+\begin{theo}[Teorema General de Equivalencia]
+	Sea $E$ un espacio vectorial del dimensión finita $n$. Entonces, todas las normas definidas sobre $E$ son equivalentes.
+\end{theo}
+Como la demostración del teorema es un poco larga (tampoco demasiado), la dotaremos de una sección propia.
+\subsubsection{Demostración del Teorema General de Equivalencia}
+Nuestro objetivo es, dadas dos normas arbitrarias, $\norm{\cdot}_1$ y $\norm{\cdot}_2$ de $E$, demostrar que las topologías engendradas por ellas son iguales. Es decir
+\begin{equation*}
+\T_{\norm{\cdot}_1}=\T_{\norm{\cdot}_2}
+\end{equation*}
+Para ello, estudiemos y repasemos algunas propiedades generales de las normas.
+
+Otra propiedad a tener en cuenta es la continuidad. Dado que esta será crucial en la demostración, nos detendremos un poco más en ella.
+
+
+Veamos que una norma $\norm{\cdot}$ es continua en la topología usual. Con esto último queremos decir que en $\R^n$ consideramos la topología definida por la distancia euclídea (que a su vez se define a partir de la norma euclídea $\norm{\cdot}_e$) y en $\R$ la topología definida por el valor absoluto.
+
+
+Por tanto, para demostrar que una norma es continua en la topología usual debemos probar que, dado $a\in\R^n$ y dado $\varepsilon>0$, existe un $\delta>0$ tal que si 
+
+\[x\in \bola_{\norm{\cdot}_e}(a,\delta)\]
+
+entonces
+
+\[f(x)=\norm{x}\in \bola_{\abs{\cdot}}(f(a),\varepsilon)=\bola_{\abs{\cdot}}(\norm{a},\varepsilon)\]
+
+En otras palabras, dado $a\in\R^n$ y dado $\varepsilon>0$, existe un $\delta>0$ tal que si
+
+\[\norm{x-a}_e<\delta\]
+
+entonces
+
+\[\abs{\norm{x}-\norm{a}}<\varepsilon\]
+
+
+En efecto, aplicando las propiedades antes vistas, tenemos que
+
+\begin{equation*}
+\abs{\norm{x}-\norm{a}}\le \abs{\norm{x-a}}=\norm{x-a}=\norm{\sum_i(x_i-a_i)e_i}\stackrel{2.3.}{\le}\sum_i\abs{x_i-a_i}\norm{e_i}
+\end{equation*}
+
+Teniendo en cuenta que $\abs{x_i-a_i}\le \norm{x-a}_e$, queda
+
+\begin{equation*}
+\abs{\norm{x}-\norm{a}}\le \sum_i\norm{x-a}_e\norm{e_i}=\norm{x-a}_e\sum_i\norm{e_i}
+\end{equation*}
+
+donde $\sum_i\norm{e_i}$ es una constante que denotaremos por $C$.
+
+
+Así, dado $\varepsilon>0$, existe $\delta=\varepsilon/C>0$ tal que si $\norm{x-a}_e<\delta$, entonces
+
+\begin{equation*}
+\abs{\norm{x}-\norm{a}}<\varepsilon
+\end{equation*}
+
+con lo que queda probada la continuidad de la norma $\norm{\cdot}$.\\
+
+
+
+Ya tenemos todo lo necesario para realizar la demostración. Una vez que probemos las dos contenciones de las topologías, es decir
+
+\begin{equation*}
+\T_{\norm{\cdot}_1}\subset\T_{\norm{\cdot}_2} \ \ \text{y} \  \	\T_{\norm{\cdot}_1}\supset\T_{\norm{\cdot}_2}
+\end{equation*}
+
+habremos terminado. 
+
+
+Comencemos notando que la función 
+
+\begin{equation*}
+\frac{\norm{\cdot}_1}{\norm{\cdot}_2}:\esfera^{n-1}\subset \R^n\rightarrow \R
+\end{equation*}
+
+es continua con la topología usual en $\esfera^{n-1}$, ya que el denominador no se anula y las normas son continuas. Dado que $\esfera^{n-1}$ es compacto, la función es acotada y alcanza el mínimo. Como el numerador tampoco se anula en el compacto, esto equivale a decir que existen $a,b>0$ tal que
+
+\begin{equation*}
+0<a\le \frac{\norm{\cdot}_1}{\norm{\cdot}_2}\le b
+\end{equation*}
+
+en $\esfera^{n-1}$. Es decir, para todo $v\in\esfera^{n-1}$ se tiene que
+
+\begin{equation*}
+0<a\norm{v}_2\le \norm{v}_1\le b\norm{v}_2
+\end{equation*}
+
+Lo deseable sería tener esta desigualdad para un vector cualquiera de $\R^n$ y así tener relacionadas las distancias de ambas topologías. Veamos que así es.
+
+
+Sea $u\in\R^n\backslash\zset$, existe un vector $v\in \esfera^{n-1}$ y un número positivo $\lambda$ tal que $u=\lambda v$. Entonces, multiplicando por $\lambda$ en la desigualdad anterior, dado que es positivo, y utilizando la propiedad \ref{norma_lambda}, obtenemos
+
+\begin{equation*}
+a\lambda\norm{v}_2\le \lambda\norm{v}_1\le b\lambda\norm{v}_2\sii a\norm{\lambda v}_2\le \norm{\lambda v}_1\le b\norm{\lambda v}_2\sii a\norm{u}_2\le \norm{u}_1\le b\norm{u}_2
+\end{equation*}
+
+Por otro lado, si $u$ es el vector nulo, la desigualdad se cumple trivialmente. Por tanto, para todo vector $u$ de $\R^n$ se tiene que
+
+\begin{equation}\label{desigualdad_normas}
+a\norm{u}_2\le \norm{u}_1\le b\norm{u}_2
+\end{equation}
+
+donde $a,b>0$.\\
+
+
+
+Por último, relacionemos los abiertos de ambas topologías para obtener las dos inclusiones. Una vez que tenemos la relación entre las normas, es fácil encontrar una relación entre las bolas de ambas topologías, dado que estas se definen a partir de las distancias que definen las normas.
+
+
+Sea $x\in \bola_{d_1}(\rho,\varepsilon)$. Esto implica que $\norm{x-\rho}_1<\varepsilon$. Por la desigualdad \eqref{desigualdad_normas} se tiene entonces que $\norm{x-\rho}_2\le\varepsilon/a$, lo cual a su vez implica que $x\in \bola_{d_2}(\rho,\varepsilon/a)$. Es decir,
+
+\begin{equation*}
+\bola_{d_1}(\rho,\varepsilon)\subset \bola_{d_2}(\rho,\varepsilon/a)
+\end{equation*}
+
+Por tanto, dado $\U$ un abierto de la topología $\T_{\norm{\cdot}_2}$ siempre podemos encontrar un abierto de la topología $\T_{\norm{\cdot}_1}$ contenido en él. Esto es evidente ya que al ser $\U$ un abierto, contendrá una bola $\bola_{d_2}$ que a su vez, por lo que acabamos de ver, contiene una bola $\bola_{d_1}$, que es un abierto de $\T_{\norm{\cdot}_1}$. Esto implica que la topología definida por la norma $\norm{\cdot}_1$ tiene más abiertos, ya que al menos tiene uno por cada abierto de $\T_{\norm{\cdot}_2}$. Es decir, acabamos de demostrar que
+
+\begin{equation*}
+\T_{\norm{\cdot}_1}\supset\T_{\norm{\cdot}_2}
+\end{equation*}
+
+
+De la misma forma, dado $x\in \bola_{d_2}(\rho,\varepsilon)$, es decir, $\norm{x-\rho}_2<\varepsilon$, por la desigualdad \eqref{desigualdad_normas} se tiene que $\norm{x-\rho}_1<b\varepsilon$, lo cual implica que $x\in \bola_{d_1}(\rho,b\varepsilon)$. Es decir,
+
+\begin{equation*}
+\bola_{d_2}(\rho,\varepsilon)\subset \bola_{d_1}(\rho,b\varepsilon)
+\end{equation*}
+
+
+Razonando como acabamos de hacer, esto implica que
+
+\begin{equation*}
+\T_{\norm{\cdot}_1}\subset\T_{\norm{\cdot}_2}
+\end{equation*}
+
+Así, finalmente, se concluye que
+
+\begin{equation}
+\T_{\norm{\cdot}_1}=\T_{\norm{\cdot}_2}
+\end{equation}
+
+Dado que las normas eran arbitrarias, queda demostrado que todas las normas de $\R^n$ son equivalentes.
