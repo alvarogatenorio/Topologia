@@ -66,7 +66,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
 		\begin{equation}
 		\label{etop_eq_topologiaRn}
-		\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  B_{d}(x,\varepsilon)\subset\U\}
+		\T = \{\U\subset\R^n\tq \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
 		A esta topología la llamamos \tbitop{usual}.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop{trivial}, que viene definida por \begin{equation}
@@ -605,10 +605,72 @@ Una última cosa que merece la pena observar es que la frontera de un conjunto p
 \end{proof}
 
 \section{Base de entornos}
-\begin{defi}[Base de entornos]
+Al igual que en los espacios vectoriales, para estudiar las aplicaciones lineales nos bastaba con fijarnos en qué les ocurría a os vectores de una base, en los espacios topológicos desarrollamos un concepto similar.
+\begin{defi}[Base de Entornos de un Punto]
 	\label{etop_bases_entornos}
+	Una \tbi[base! de entornos]{base de entornos} de un punto $a\in\X$ es una colección $\Va{a}$ de entornos de $a$ tales que todo entorno de $a$ contiene a alguno de $\Va{a}$.
 \end{defi}
 
+Como veremos a continuación, el concepto de base de entornos de un punto nos permitirá estudiar la topología alrededor de ese punto.
+
+Veamos unos cuantos ejemplos para aclarar el concepto.
+\begin{exa}[Topología Usual]
+	\label{etop_exa_baseUsual}
+	Consideremos el espacio topológico $\R^n$ con la topología usual. Asimismo consideremos un punto $a\in\R^n$.
+	
+	Algunos ejemplos naturales de bases de entornos de $a$ son
+	\begin{enumerate}
+		\item $\Va{a}:=\{\bola(a,\varepsilon)\tq \varepsilon>0\}$, la base usual de entornos abiertos.
+		\item $\adher{\Va{a}}:=\{\adher{\bola}(a,\varepsilon)\tq \varepsilon>0\}$, la base usual de entornos cerrados.
+	\end{enumerate}
+	La comprobación de que efectivamente son bases de entornos es evidente y se deja al lector (simplemente hay que usar la definición de abierto en el espacio topológico $\R^n$ usual).
+	
+	Una base de entornos un poco más interesante es la siguiente
+	\begin{equation}
+		\matheuler{W}_a:=\left\{\bola\left(a,\frac{1}{k}\right)\tq k\geq 1\right\}
+	\end{equation}
+	Lo interesante de esta base es que es numerable. Más adelante estudiaremos cuándo es posible extraer bases de entornos numerables de un punto.
+	
+	De nuevo, la comprobación de que efectivamente es un base es evidente, basta usar la propiedad arquimediana de los números reales.
+\end{exa}
+
+Presentemos otro ejemplo para que el elector aprenda a digerir este concepto en ambientes un poco más abstrusos y hostiles.
+\begin{exa}[Topología del Punto]
+	\label{etop_exa_basePunto}
+	Consideramos un conjunto no vacío $\X$ y un punto $a\in \X$, a partir de aquí construimos el espacio topológico $\X$ con la topología del punto $a$.
+	
+	Es curioso observar que una base de entornos de $a$ es el propio conjunto $\{a\}$.
+	
+	Esto es debido a que en la topología del punto $\{a\}$ es un abierto, y todos los abiertos del espacio topológico contienen a $\{a\}$, luego todo entorno de $a$ contiene a $\{a\}$ (que es entorno de $a$).
+	
+	Este último párrafo puede parecer un trabalenguas de mal gusto, pero animamos al lector a que lo compruebe por su cuenta.
+\end{exa}
+
+Para concluir esta pequeña sección presentamos una definición sobre la cual trabajaremos en el futuro cercano.
+\begin{defi}[I Axioma de Numerabilidad]
+	Decimos que un espacio topológico $(\X,\T)$ es \tbi[axiomas de numerabilidad!I axioma de numerabilidad]{primer axioma de numerabilidad} (o simplemente I Axioma) si todo punto posee una base de entornos numerable.
+\end{defi}
+Visto lo visto salta a la vista que algunos de los espacios topológicos que hemos visitado desde nuestra nave del misterio cumplen el primer axioma.
+\begin{exa}[Espacios I Axioma]
+	A la luz del ejemplo \ref{etop_exa_baseUsual} sabemos que $\R^n$ con la topología usual verifica el primer axioma.
+	
+	Asimismo el ejemplo \ref{etop_exa_basePunto} nos dice (aunque no directamente, hacen falta algunas comprobaciones que se dejan al lector) que cualquier espacio topológico con la topología de un punto $a\in\X$ verifica el primer axioma de numerabilidad (de hecho podemos encontrar bases finitas de un único entorno).
+\end{exa}
+En general, los espacios primer axioma son importantes dado que en ellos podremos fabricar sucesiones (y todos los potentes argumentos que se derivan de este hecho).
+
+Por suerte o por desgracia, hay espacios que no verifican el primer axioma. Como veremos más adelante, el espacio topológico de las funciones continuas (con cierta topología) no es primer axioma.
+
+Finalizamos la sección observando que, dada una base de entornos numerable de un punto, podemos obtener una \tbi[base! encajada]{base encajada}. Y además, ¡agárrense criaturas! por que la demostración de este hecho es constructiva.
+\begin{obs}[Extracción de una Base Encajada]
+	Dada una base numerable de un punto $a\in\X$, a la que denotamos
+	\begin{equation*}
+		\Va{a}:=\{\V_i\tq i\in\N\}
+	\end{equation*}
+	Es claro que la base $\Va{a}^*:=\{\W_i:=\bigcap_{j=1}^i\V_j\tq i\in\N\}$ es encajada.
+	
+	Esto es, $\W_k\subset\W_l$ para todo $k\geq l$
+\end{obs}
+Usaremos esta construcción de forma asidua cuando estudiemos las sucesiones con detalle.
 \section{Base de abiertos}
 \begin{defi}[Base de abiertos]
 	\label{etop_bases_abiertos}
@@ -617,8 +679,8 @@ Una última cosa que merece la pena observar es que la frontera de un conjunto p
 Veamos que esta definición nos permite reformular las bases de entornos vistas en \eqref{etop_bases_entornos}, y que caracterizaremos de la siguiente manera:
 
 
-\begin{prop}[Reformulación de bases de entornos]
-	Sea $x$ un punto de $\X$ y sea $\B^{x} = \{B \in \B : x \in B\}$, $\B^{x}$ es una base de entornos.
+\begin{prop}[Reformulación de Bases de Entornos]
+	Sea $x$ un punto de $\X$ y sea $\B_{x} = \{B \in \B : x \in B\}$, entonces $\B_{x}$ es una base de entornos.
 \end{prop}
 \begin{proof} Veamos que esto ocurre. Para ello todo entorno de $x$ tiene que contener a alguno de $\B^{x}$. Sea $\V^{x}$ un entorno de $x \ra\ \exists\ \U$ abierto tal que $x \in \U \subset \V^{x}$. Ahora, como $\B$ es base de abiertos $\ra\ \U\ =\ \bigcup_{i\in I}B_i\ \ra\ \exists B_{i} \subset \B^{x}$ tal que $x \in B_{i} \subset \V^{x}$, luego cumple lo buscado.
 	
@@ -627,7 +689,7 @@ Veamos que esta definición nos permite reformular las bases de entornos vistas 
 \end{proof}
 
 Veremos otra condición que podremos usar en lugar de la definición de bases de abiertos \ref{etop_bases_abiertos}.
-\begin{obs}[Reformulación de bases de abiertos]
+\begin{obs}[Reformulación de Bases de Abiertos]
 	\label{etop_ref_bases_abiertos}
 	Para todo abierto $\U$ de $\X$ y todo punto $x \in \U$, existe un $\V \in \B$ tal que $x \in \V \subset \U$.
 \end{obs}
@@ -637,7 +699,7 @@ Veremos otra condición que podremos usar en lugar de la definición de bases de
 Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{II axioma} (de numerabilidad) si tiene una base numerable.
+	Diremos que $\X$ es \tbi[axiomas de numerabilidad! II axioma de numerabilidad]{segundo axioma} de numerabilidad (o símplemente II axioma) si tiene una base numerable.
 	\begin{exa}[Bases de abiertos]
 		Veamos varios ejemplos de base de abiertos en el espacio topológico $(\R^{n},\T_{n})$, con $\T_{n}$ la topología usual:
 		\begin{enumerate}
