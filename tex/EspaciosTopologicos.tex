@@ -406,7 +406,7 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 		\item[\bsubset] 
 		Dado $z\in \adher{A\cup B}$, todo entorno $\V_z$ de $z$ corta a $A\cup B$. Veamos que $z$ es, o bien adherente a $A$, o bien adherente a $B$ (quizá a ambos). Para ello supondremos que no es adherente a ninguno de ellos, es decir, que existe un entorno $\W_z$ de $z$ que no corta ni a $A$ ni a $B$. Si este entorno existiera tampoco cortaría a la unión (compruébese), lo cual es absurdo.
 		\item[\bsupset]
-		Dado un punto $z\in\adher{A}\cup\adher{B}$, veamos que todo entorno de $\V_z$ de $z$ corta a $A\cup B$, si no lo hiciera, para cada punto $x\in\V_z$, $x$ no estaría en $A$, luego $A\cap \V_z=\emptyset$, análogamente ocurriría con $B$, lo cual contradice nuestra hipótesis.
+		Dado un punto $z\in\adher{A}\cup\adher{B}$, veamos que todo entorno de $\V_z$ de $z$ corta a $A\cup B$. Si no lo hiciera, para cada punto $x\in\V_z$, $x$ no estaría en $A$, luego $A\cap \V_z=\emptyset$. Análogamente ocurriría con $B$, lo cual contradice nuestra hipótesis.
 	\end{enumerate}
 	Con lo que finaliza la demostración.
 \end{proof}
@@ -478,7 +478,7 @@ Presentemos un poco de terminología para el conjunto de los puntos de acumulaci
 \begin{obs}[Entornos Perforados]
 	Cuando consideramos un entorno $\V_x$ de un punto $x\in\X$, a veces (sobre todo cuando hablamos de puntos de acumulación) es útil no considerar el entorno entero, sino el entorno salvo un punto.
 	
-	Por ejemplo $\V_x\setminus\{x\}$. A este último conjunto se le suele denominar \tbi[entorno!perforado]{entorno perforado} o \tbi[entorno!pinchado]{entorno pinchado} de $x$.
+	Cabe destacar que al conjunto $\V_x\setminus\{x\}$ se le suele denominar \tbi[entorno!perforado]{entorno perforado} o \tbi[entorno!pinchado]{entorno pinchado} de $x$.
 \end{obs}
 Una propiedad interesante de los conjuntos derivados se presenta en el siguiente lema.
 \begin{lem}[Descomposición de la Adherencia]
@@ -505,11 +505,11 @@ Parémonos un segundo a reflexionar sobre las implicaciones de este resultado.
 	
 	Esto es consecuencia directa de la proposición \ref{etop_prop_cerradosAdher} y el lema \ref{etop_lem_descomposicion}.
 \end{obs}
-Cabe señalar que, claramente, esta descomposición, en general, no es un partición, tal y como muestra es siguiente sencillo ejemplo.
+Cabe señalar que, claramente, esta descomposición, en general, no es un partición, tal y como muestra el siguiente sencillo ejemplo.
 \begin{exa}[Disco]
 	Si consideramos el disco unidad $D$ en $\R^2$ con la topología usual, es fácil demostrar que sus puntos de acumulación coinciden con su adherencia, con lo que obtenemos que
 	\begin{equation}
-	\adher{D}\setminus D \subsetneq A'
+	\adher{D}\setminus D \subsetneq D'
 	\end{equation}
 	En general (compruébese) se verifica que $\adher{A}\setminus A\subset A'$.
 \end{exa}
@@ -530,7 +530,7 @@ Pasamos hora a definir el concepto de densidad de un conjunto.
 	\adher{A}=\X
 	\end{equation*}
 \end{defi}
-Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene es que, con relativamente poco esfuerzo podemos dar una definición equivalente en unos términos un poco más sencillos, tal y como muestra la siguiente proposición.
+Esta definición es poco manejable en algunas circunstancias. Lo bueno que tiene es que, con relativamente poco esfuerzo podemos dar una definición equivalente en unos términos un poco más sencillos, tal y como muestra la siguiente proposición.
 \begin{prop}[Caracterización de la Densidad]
 	Son equivalentes:
 	\begin{enumerate}
@@ -549,7 +549,7 @@ Esta definición es poco manejable en algunas circunstancias, lo bueno que tiene
 	\end{enumerate}
 	Con lo que ya hemos terminado.
 \end{proof}
-De forma natural surge preguntarse si, como en el caso conocido de $\R^n$, los espacios topológicos en general, poseen algún subconjunto numerable denso. La respuesta a esta pregunta es no, como veremos más adelante, precisamente por eso surge la siguiente definición.
+De forma natural surge preguntarse si, como en el caso conocido de $\R^n$, los espacios topológicos en general poseen algún subconjunto numerable denso. La respuesta a esta pregunta es no (como veremos más adelante) razón por la cual surge la siguiente definición.
 \begin{defi}[Espacio Topológico Separable]
 	Se dice que un espacio topológico $\X$ es \tbi[espacio!separable]{separable} si posee un subconjunto numerable denso.
 \end{defi}
@@ -561,11 +561,11 @@ Para afianzar la idea de que en la topología la intuición no parará de tender
 		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (inducción). Asimismo, la densidad puede probarse fácilmente por inducción sobre $n$.
 		\item Dado un conjunto cualquiera $\X$ equipado con la topología de un punto $a\in X$, el espacio topológico $(\X,\T_a)$ es separable (nótese que $a$ es denso y finito).
 	\end{enumerate}
-	Así se ve que en espacios topológicos puestos con un poco de mala baba pasan cosas que nos descarajan la intuición.
+	Así se ve que, en espacios topológicos puestos con un poco de mala baba, pasan cosas que nos descarajan la intuición.
 \end{exa}
 Para finiquitar esta sección presentamos el concepto de frontera de un conjunto, que, de momento, al igual que el concepto de punto aislado, quedará en el baúl de los recuerdos.
 \begin{defi}[Frontera de un Conjunto]
-	Definimos la frontera de un conjunto los puntos adherentes al conjunto que no son interiores. Dicho de otra forma (e introduciendo notación de paso)
+	Definimos la frontera de un conjunto como los puntos adherentes al conjunto que no son interiores. Dicho de otra forma (e introduciendo notación de paso)
 	\begin{equation}
 	\Fr(A)=\adher{A}\setminus\inter{A}
 	\end{equation}
