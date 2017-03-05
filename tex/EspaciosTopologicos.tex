@@ -482,6 +482,7 @@ Presentemos un poco de terminología para el conjunto de los puntos de acumulaci
 \end{obs}
 Una propiedad interesante de los conjuntos derivados se presenta en el siguiente lema.
 \begin{lem}[Descomposición de la Adherencia]
+	\label{etop_lem_descomposicion}
 	\begin{equation*}
 	\adher{A}=A\cup A'
 	\end{equation*}
@@ -498,6 +499,12 @@ Una propiedad interesante de los conjuntos derivados se presenta en el siguiente
 	\end{enumerate}
 	Como queríamos demostrar.
 \end{proof}
+Parémonos un segundo a reflexionar sobre las implicaciones de este resultado.
+\begin{obs}[Acumulación y Cerrados]
+	Es claro que un conjunto es cerrado si y solo si contiene a todos sus puntos de acumulación.
+	
+	Esto es consecuencia directa de la proposición \ref{etop_prop_cerradosAdher} y el lema \ref{etop_lem_descomposicion}.
+\end{obs}
 Cabe señalar que, claramente, esta descomposición, en general, no es un partición, tal y como muestra es siguiente sencillo ejemplo.
 \begin{exa}[Disco]
 	Si consideramos el disco unidad $D$ en $\R^2$ con la topología usual, es fácil demostrar que sus puntos de acumulación coinciden con su adherencia, con lo que obtenemos que
@@ -563,18 +570,43 @@ Para finiquitar esta sección presentamos el concepto de frontera de un conjunto
 	\Fr(A)=\adher{A}\setminus\inter{A}
 	\end{equation}
 \end{defi}
-%Faltan algunas cosillas que tengo a medias.
+Es interesante comprobar que, como parece intuitivo, un conjunto y su complementario comparten frontera.
+\begin{lem}[Frontera y Complementación]
+	\begin{equation*}
+		\Fr(\X \setminus A)=\Fr(A)
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Basta hacer uso de algunas de las igualdades conjuntistas probadas anteriormente para darse cuenta de que
+	\begin{equation*}
+		\Fr(\X \setminus A)=\adher{\X \setminus A}\setminus \Int(\X \setminus A)=\adher{\X \setminus A}\setminus (\X\setminus \adher{A})=(\X\setminus\inter{A})\setminus (\X\setminus \adher{A})
+	\end{equation*}
+	Sabiendo esto, solo queda comprobar la igualdad conjuntista
+	\begin{equation*}
+		\adher{A}\setminus\inter{A}=(\X\setminus\inter{A})\setminus (\X\setminus \adher{A})
+	\end{equation*}
+	La cual es trivial. Si tenemos un punto adherente y no interior, es evidente que este no pertenece al complementario de la adherencia, además, por ser un punto no interior, pertenecerá al complementario del interior.
+	
+	La igualdad se da por que podemos repetir esta demostración a la inversa (compruébese). 
+\end{proof}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% FALTA 1.5 y 1.6
-%%%%%%%%%%%%%%%%%%%%%%%
+Una última cosa que merece la pena observar es que la frontera de un conjunto puede ser vista como la intersección de las adherencias del conjunto y su complementario.
+\begin{lem}[Frontera y Adherencia]
+	\begin{equation*}
+		\Fr(A)=\adher{A}\cap\adher{\X \setminus A}
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Sabemos que se cumple
+	\begin{equation*}
+		\adher{A}\cap\adher{\X \setminus A}=\adher{A}\cap(\X \setminus \inter{A})
+	\end{equation*}
+	Así pues basta comprobar que $\adher{A}\cap(\X \setminus \inter{A})=\adher{A}\setminus \inter{A}$, lo cual es evidente.
+\end{proof}
 
 \section{Base de entornos}
 \begin{defi}[Base de entornos]
 	\label{etop_bases_entornos}
-	%Rellenable en el futuro
 \end{defi}
 
 \section{Base de abiertos}
