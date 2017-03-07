@@ -14,3 +14,9 @@ denicion, corta al conjunto A.
 
 Lema 1.3.3
 Por UN lado
+
+***
+Ejemplo 1.6.2
+Pone topología sorgenfry al principio y luego sorgenfri con i latina!! (puntos 1 y 2 en repetidas ocasiones)
+Punto 3: Falta un espacio entre conexos y el paréntesis No hay conexos(salvo los puntos). 
+Punto 4: falta tilde en el sí ->SI es separable.
