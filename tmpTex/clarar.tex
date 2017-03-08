@@ -1,12 +1,12 @@
 %Cosas Pendientes de Clara Rodríguez Núñez
 \section{Homeomorfismo. Homeomorfismo local}
-\label{etop_homeomorfismos}
+\label{cont_homeomorfismos}
 En esta sección trataremos la idea de homeomorfismo en espacios topológicos. Esta idea va a adquirir una gran importancia para nosotros ya que es la que nos va a permitir caracterizar espacios distintos como "similares" desde un punto de vista topológico (vemos que continúa la idea de isomorfismo que hemos visto en otras asignaturas).
 
 
 Además, más adelante nos proporcionará una serie de características comunes entre espacios homeomorfos(apertura, conexión, compacidad\dots).
 
-\label{etop_def_homeomorfismo}
+\label{cont_def_homeomorfismo}
 
 \begin{defi}[Homeomorfismo]
 	Un \tbi{homeomorfismo} entre espacios topológicos $f\colon X\rightarrow Y$ es una biyección continua con inversa continua.
@@ -16,9 +16,9 @@ Además, más adelante nos proporcionará una serie de características comunes 
 
 Hagamos ahora unas pequeñas observaciones antes de pasar a una serie de ejemplos que nos permitan asentar estos conceptos.
 
-\label{etop_obs_defHomeomorfismo}
+\label{cont_obs_defHomeomorfismo}
 \begin{obs}
-	Como vemos en la definición \ref{etop_def_homeomorfismo}, no nos basta únicamente con que nuestra aplicación $f$ sea biyectiva (y de este modo tenga inversa), sino que además exigimos esta inversa sea continua. 
+	Como vemos en la definición \ref{cont_def_homeomorfismo}, no nos basta únicamente con que nuestra aplicación $f$ sea biyectiva (y de este modo tenga inversa), sino que además exigimos esta inversa sea continua. 
 	
 	Esta continuidad en ambos sentidos del homeomorfismo nos va a resultar muy útil como veremos más adelante, dado que las muchas propiedades (abiertos, cerrados\dots) se van a transladar entre los dos espacios homeomorfos que nos proporciona $f$.
 \end{obs}
@@ -28,7 +28,7 @@ Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, pa
 \begin{exa}[Homeomorfismos]
 	
 	\begin{enumerate}
-		\item La función $Id\colon(X,\tau_{dis})\rightarrow(X,\tau_{triv})$ verifica ser continua y biyectiva, pero como vimos en el ejemplo su inversa no es continua, por lo que no se tratará de un homeomorfismo. %añadir referencia 
+		\item La función $Id\colon(X,\tau_{dis})\rightarrow(X,\tau_{triv})$ verifica ser continua y biyectiva, pero como vimos en el ejemplo \ref{cont_obs_continuidad_discreta_trivial} su inversa no es continua, por lo que no se tratará de un homeomorfismo. 
 		
 		\item %añadir dibujos!!!
 		Vemos como cualquier función $f$ que mande $X$ a $Y$ no es homeomorfismo, a pesar de que $f$ pueda ser biyectiva y continua.
@@ -52,7 +52,7 @@ Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, pa
 
 Una vez definido el concepto de homeomorfismo y vista a través de los ejemplos su gran fuerza, vamos a pasar al concepto de homeomorfismo local, el cual, a pesar de ser una relación más débil que la que proporciona el homeomorfismo, también será muy utilizado a lo largo de la asignatura.
 
-\label{etop_def_homeomorfismoLocal}
+\label{cont_def_homeomorfismoLocal}
 \begin{defi}[Homeomorfismo Local]
 	Sea $f:X\rightarrow Y$ aplicación entre espacios topológicos y $x_0\in X$. Se dice que $f$ es \tbi[homeomorfismo!local]{homeomorfismo local} en $x_0$ si $x_0$ tiene un entorno abierto $U^{x_0}$ tal que $f(U^{x_0})$ es entorno abierto de $f(x_0)$ en $Y$ y se tiene que $f|_{x_0}:U^{x_0}\rightarrow f(U^{x_0})$ es homeomorfismo.
 \end{defi}
@@ -60,7 +60,7 @@ Una vez definido el concepto de homeomorfismo y vista a través de los ejemplos 
 De esta definición se desprende que todo un homeomorfismo entre dos espacios es en un homeomorfismo local en todos sus puntos. Este resultado resulta evidente, pero su contrarreciproco (no homeomorfo local implica no homeomorfo) nos puede resultar enormemente útil ya que es mucho más sencillo estudiar  el homeomorfismo local al global.
 Vemos ahora algunos ejemplos de homeomorfismos locales.
 
-\label{etop_exa_homeomorfismoLocal}
+\label{cont_exa_homeomorfismoLocal}
 \begin{exa}
 	%falta dibujo esfera
 	Vemos como podemos construir entre la esfera y el plano un homeomorfimo local en cada uno de sus puntos, por lo que podemos decir de estos que resultan localmente homeomorfos.
@@ -77,9 +77,9 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 	\begin{enumerate}
 		\item 
 		Sea $f:X\rightarrow Y$ aplicación biyectiva.
-		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^-1(U)$ también lo será. Del mismo modo, es equivalente a que si $U\in Y$ es cerrado, $f^-1(U)$ también lo será.
+		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $U\in Y$ es cerrado, $f^{-1}(U)$ también lo será.
 		
-		Igualmente, que $f^-1$ sea continua es equivalente a que si $U\in X$ es cerrado, $(f^-1)^-1(U)=f(U)$ también lo será. Así también, es equivalente a que si $U\in X$ es cerrado, $f(U)$ también lo será.
+		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $U\in X$ es cerrado, $(f^{-1})^{-1}(U)=f(U)$ también lo será. Así también, es equivalente a que si $U\in X$ es cerrado, $f(U)$ también lo será.
 		
 		Vemos como la si se verifican ambas (continuidad de $f$ y de su inversa) será homeomorfismo, de modo que hemos encontrado una caracterización de estos en función de las imágenes directa e inversa de los abiertos (o cerrados).
 		
@@ -91,12 +91,12 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 		Vemos como al no ser $f$ biyectiva, no tienen porque ser equivalentes. (Dejamos para el lector el comprobar que en caso de ser biyectiva si lo es, utilizando las distintas caracterizaciones de continuidad de aplicaciones).
 		
 		\item
-		Sean los espacios $X$ compacto, $Z\subset X$ cerrado e $Y$ tomando en $Y$ la topología $T_2$.
+		Sean los espacios $X$ compacto, $Z\subset X$ cerrado e $Y$ tomando en $Y$ la topología $\T_2$.
 	
 		 Tomamos $f: X\rightarrow Y$ aplicación continua, entonces tendremos que:
 		
 		Como probaremos más adelante, cerrado en compacto implica compacto, por lo que $Z$ será cerrado en $X$.
-		Como $f$ es continua, $f(Z)$ será compacto en $Y$ y como estamos trabajando con la topología $T_2$ será cerrado.
+		Como $f$ es continua, $f(Z)$ será compacto en $Y$ y como estamos trabajando con la topología $\T_2$ será cerrado.
 		
 		Así, tenemos por lo tanto que si $f$ es biyección, su inversa (al ser $f$ cerrada) será continua. Por lo tanto, afirmamos que toda aplicación continua en compactos es homeomorfismo.
 		Como se habrá percatado el lector, aun no disponemos siquiera de una definición de compacidad, por lo que esta demostración queda aun fuera de su alcance, pero hemos decidido incluirla para así ver resultados interesantes sobre homeomorfismos. Recomendamos que una vez que se hayan dado los contenidos relacionados con compacidad se regrese a esta sección para así comprobar la comprensión de estos argumentos.
