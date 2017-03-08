@@ -1,104 +1,65 @@
 %Cosas Pendientes de Clara Rodríguez Núñez
-\section{Homeomorfismo. Homeomorfismo local}
-\label{cont_homeomorfismos}
-En esta sección trataremos la idea de homeomorfismo en espacios topológicos. Esta idea va a adquirir una gran importancia para nosotros ya que es la que nos va a permitir caracterizar espacios distintos como "similares" desde un punto de vista topológico (vemos que continúa la idea de isomorfismo que hemos visto en otras asignaturas).
+%%Espacio producto, falta incluir la suma
+\section{Producto de espacios topológicos}
+Una vez visto el caso del espacio cociente, pasamos ahora a realizar un desarrollo similar para otras construcciones como son los productos y sumas de espacios topológicos. Se va a realizar un procedimiento análogo en el desarrollo de las mismas al de la anterior sección.
 
+Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Tomamos entonces 
+\begin{equation}
+Y=\prod_i X_i \stackrel{p_i^r}{\longrightarrow}(X_i,\T_i)
+\end{equation}
+Lo que buscamos en la construcción del espacio producto es de dotar a $Y$ de la topología $\T$ más fina haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi{proyecciones}.
 
-Además, más adelante nos proporcionará una serie de características comunes entre espacios homeomorfos(apertura, conexión, compacidad\dots).
+De este modo, como queremos que $(p_i^r)^{-1}$ sea continua  tenemos que para todo abierto $U_i\in \T_i$ deberá verificarse que $(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r$ (todos son los totales excepto en el caso de $X_i$) sea abierto. Es decir, que se cumpla $X_1\times\cdots\times U_i \times\cdots X_r\in \T$
 
-\label{cont_def_homeomorfismo}
+Por lo tanto, vemos que por ser topología ha de verificarse que $(p_i^r)^{-1}(U_i)\cap (p_j^r)^{-1}(U_j)= \cdots\times U_i \times\cdots\times U_j\times \cdots$ sea parte de ella (intersección de abiertos).
 
-\begin{defi}[Homeomorfismo]
-	Un \tbi{homeomorfismo} entre espacios topológicos $f\colon X\rightarrow Y$ es una biyección continua con inversa continua.
-	
-	Si existe un homeomorfismo entre dos espacios X e Y se dice que estos son \tbi{homeomorfos}.
+Si tomamos ahora $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ veamos que es una base de la topología que pretendemos construir. Esto va a resultar evidente, ya que tan solo debemos comprobar para demostrarlo que al intersecar dos elementos cualesquiera de la base nos queda otro elemento de la base. 
+
+Como dados $U_1\times\cdots\times U_r$ y $V-1\times\cdots\times V_r$ elementos de la base su intersección es $(U_1\cap V_1)\times\cdots\times (U_r\cap V_r)$ y como $(U_i\cap V_i)\in \T_i$, afirmamos que forma parte de la base por la definición de la misma.
+
+Así, una vez que tenemos la base que va a caracterizar nuestra topología producto podemos afirmar que esta viene dada por $\T=\prod_i \T_i$.
+
+\begin{defi}[Topología producto]
+Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbi{topología producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
 \end{defi}
+\begin{lem}[Propiedad Universal]
+En la siguiente situación,%añadir figura wiki
 
-Hagamos ahora unas pequeñas observaciones antes de pasar a una serie de ejemplos que nos permitan asentar estos conceptos.
+Tenemos la siguiente \tbi{propiedad universal del producto} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=p_i^r\circ f$ son continuas para todo $i$.
 
-\label{cont_obs_defHomeomorfismo}
-\begin{obs}
-	Como vemos en la definición \ref{cont_def_homeomorfismo}, no nos basta únicamente con que nuestra aplicación $f$ sea biyectiva (y de este modo tenga inversa), sino que además exigimos esta inversa sea continua. 
+\begin{proof}
+	Vemos que si $f$ es continua, como $p_i^r$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
 	
-	Esta continuidad en ambos sentidos del homeomorfismo nos va a resultar muy útil como veremos más adelante, dado que las muchas propiedades (abiertos, cerrados\dots) se van a transladar entre los dos espacios homeomorfos que nos proporciona $f$.
-\end{obs}
+	Por otro lado, tenemos que dado $W=\prod_iU_i$ abierto en $X$, tenemos que $f^{-1}(W)=\bigcap_i f_i^{-1}(U_i)$ será abierto dado que los $f_i^{-1}(U_i)$ son abiertos por ser $f$ continua. Así, como hemos probado que la imagen inversa de abiertos es abierta, tenemos que $f$ es continua.
+	\end{proof}
+\end{lem}
 
-Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, para comprender las diferencias entre ambas y así afianzar la definición.
-\label{etop_exa_homeomorfismos}
-\begin{exa}[Homeomorfismos]
+Veamos ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
+
+\begin{prop}
+	Las proyecciones son abiertas
 	
-	\begin{enumerate}
-		\item La función $Id\colon(X,\tau_{dis})\rightarrow(X,\tau_{triv})$ verifica ser continua y biyectiva, pero como vimos en el ejemplo \ref{cont_obs_continuidad_discreta_trivial} su inversa no es continua, por lo que no se tratará de un homeomorfismo. 
+	\begin{proof}
+		Sea $W$ abierto en el espacio producto, veamos que $p_i^r(W)$ es abierto.
 		
-		\item %añadir dibujos!!!
-		Vemos como cualquier función $f$ que mande $X$ a $Y$ no es homeomorfismo, a pesar de que $f$ pueda ser biyectiva y continua.
-		
-		Esto no podemos afirmarlo con nuestros conocimientos actuales, pero adelantándonos en el temario (buscamos al introducir este ejemplo tan solo aumentar el interés del lector por los homeomorfismos, no buscamos que se comprenda completamente) lo sabremos ya dado el punto $o$ (aquel que se manda al origen en Y) tenemos que:
-		
-		$\forall V^o$ pinchado (es decir, quitamos $o$) $V^o$ tiene al menos 4 componentes conexas.%añadir dibujo
-		
-		$\exists W^o$ pinchado  con 2 componentes conexas.%añadir dibujo
-		
-		Por lo tanto, al no mantenerse la cantidad de componentes conexas entre $X$ e $Y$ se verifica que $f$ no es homeomorfismo.
-		
-		\item %añadir dibujos(geogebra)
-		Veamos como los conjuntos anteriores son homeomorfos entre si.
-		
-		 Tomando un recubrimiento por cerrados del primero (el que tiene por cerrados los tres segmentos) y haciendole corresponder mediante $f $con los tres segmentos de nuestro segundo conjunto, vemos como cada una de sus restricciones es continua, y f de este modo continua (hacemos este camino a la inversa para ver que la inversa también lo es y así probar que es homeomorfismo). 
-		
-		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ que homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).
-	\end{enumerate}
-\end{exa}
+		Nos basta con comprobarlo con los abiertos de la base, es decir, para los elementos de la forma $ U_1\times\cdots\times U_r : U_i\in \T_i$.  Como  $p_i^r(U_1\times\cdots\times U_r)=U_i$ es abierto podemos concluir la demostración.
+	\end{proof}
+\end{prop}
 
-Una vez definido el concepto de homeomorfismo y vista a través de los ejemplos su gran fuerza, vamos a pasar al concepto de homeomorfismo local, el cual, a pesar de ser una relación más débil que la que proporciona el homeomorfismo, también será muy utilizado a lo largo de la asignatura.
 
-\label{cont_def_homeomorfismoLocal}
-\begin{defi}[Homeomorfismo Local]
-	Sea $f:X\rightarrow Y$ aplicación entre espacios topológicos y $x_0\in X$. Se dice que $f$ es \tbi[homeomorfismo!local]{homeomorfismo local} en $x_0$ si $x_0$ tiene un entorno abierto $U^{x_0}$ tal que $f(U^{x_0})$ es entorno abierto de $f(x_0)$ en $Y$ y se tiene que $f|_{x_0}:U^{x_0}\rightarrow f(U^{x_0})$ es homeomorfismo.
-\end{defi}
-
-De esta definición se desprende que todo un homeomorfismo entre dos espacios es en un homeomorfismo local en todos sus puntos. Este resultado resulta evidente, pero su contrarreciproco (no homeomorfo local implica no homeomorfo) nos puede resultar enormemente útil ya que es mucho más sencillo estudiar  el homeomorfismo local al global.
-Vemos ahora algunos ejemplos de homeomorfismos locales.
-
-\label{cont_exa_homeomorfismoLocal}
-\begin{exa}
-	%falta dibujo esfera
-	Vemos como podemos construir entre la esfera y el plano un homeomorfimo local en cada uno de sus puntos, por lo que podemos decir de estos que resultan localmente homeomorfos.
-	Resulta de interés destacar que no es necesario que la aplicación sea la misma en todo el espacio, sino que podemos tomar una distinta para cada punto del espacio.
+\begin{prop}
+	La aplicación $X:\longrightarrow\{a1\}\times\cdots\times X_i\times\cdots\times \{ar\}\in X_1\times\cdots\times X_r$ tal que $x\longrightarrow (a_1,\dots,a_r)$ es una inmersión.
 	
-	Tal y como se ve en el ejemplo, 
-	$f(x0,y0,z0)=(x0,y0)$ siendo homeomorfismo en su restricción a $U^{x_0}$
-	$f(x1,y1.z1)=(y1,z1)$ siendo del mismo modo homeomorfismo en su restricción
-\end{exa}
+	\begin{proof}
+		Veamos primero como transforma la base de abiertos del inicial en la base del final.
+		$U_i\longrightarrow\{a1\}\times\cdots\times U_i\times\cdots\times \{ar\}=\{a1\}\times\cdots\times X_i\times\cdots\times \{ar\}\cap(U_1\times\cdots\times U_r)$
+		
+		Como observamos esto se verifica y además la aplicación al serlo en los abiertos de las bases verifica ser biyectiva, continua y abierta por lo que se tratará de una inmersión.
+	\end{proof}
+\end{prop}
 
-Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y observaciones propias de los homeomorfismos (globales), pero que también nos valdrán para la restricción homeomorfa de los locales (dado que en ella por definición la aplicación es homeomorfa)
-\label{etop_obs_homeomorfismo}
-\begin{obs}
-	\begin{enumerate}
-		\item 
-		Sea $f:X\rightarrow Y$ aplicación biyectiva.
-		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $U\in Y$ es cerrado, $f^{-1}(U)$ también lo será.
-		
-		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $U\in X$ es cerrado, $(f^{-1})^{-1}(U)=f(U)$ también lo será. Así también, es equivalente a que si $U\in X$ es cerrado, $f(U)$ también lo será.
-		
-		Vemos como la si se verifican ambas (continuidad de $f$ y de su inversa) será homeomorfismo, de modo que hemos encontrado una caracterización de estos en función de las imágenes directa e inversa de los abiertos (o cerrados).
-		
-		\item
-		Definimos las siguientes propiedades de aplicaciones:
-		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!abierta]{abierta} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
-		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
-		
-		Vemos como al no ser $f$ biyectiva, no tienen porque ser equivalentes. (Dejamos para el lector el comprobar que en caso de ser biyectiva si lo es, utilizando las distintas caracterizaciones de continuidad de aplicaciones).
-		
-		\item
-		Sean los espacios $X$ compacto, $Z\subset X$ cerrado e $Y$ tomando en $Y$ la topología $\T_2$.
-	
-		 Tomamos $f: X\rightarrow Y$ aplicación continua, entonces tendremos que:
-		
-		Como probaremos más adelante, cerrado en compacto implica compacto, por lo que $Z$ será cerrado en $X$.
-		Como $f$ es continua, $f(Z)$ será compacto en $Y$ y como estamos trabajando con la topología $\T_2$ será cerrado.
-		
-		Así, tenemos por lo tanto que si $f$ es biyección, su inversa (al ser $f$ cerrada) será continua. Por lo tanto, afirmamos que toda aplicación continua en compactos es homeomorfismo.
-		Como se habrá percatado el lector, aun no disponemos siquiera de una definición de compacidad, por lo que esta demostración queda aun fuera de su alcance, pero hemos decidido incluirla para así ver resultados interesantes sobre homeomorfismos. Recomendamos que una vez que se hayan dado los contenidos relacionados con compacidad se regrese a esta sección para así comprobar la comprensión de estos argumentos.
-	\end{enumerate}
-\end{obs}
+Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. No vamos a probar que sean bases realmente en ninguno de los dos casos ya que en ambos casos va a resultar muy sencillo aplicando la caracterización de base, dejándose como ejercicio para el lector de cara al repaso de la misma.
+\begin{enumerate}
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que $\B=\{W_i\times\cdots\times W_r:W_i\in \B_i$ base de $\T_i\}$ es base de entornos del mismo.
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que $\Va^{(a_1,\dots,a_r)}$=$\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \Va^{a_i}$ base de entornos en $\T_i\}$ es base de entornos del mismo.
+\end{enumerate}
