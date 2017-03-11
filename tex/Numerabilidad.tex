@@ -1,2 +1,112 @@
 %Para este capítulo se usará la abreviatura "num".
 \chapter{Numerabilidad}
+\label{num}
+
+En matemáticas, un \tbi{axioma de numerabilidad} es una propiedad de un cierto objeto (en nuestro caso, un espacio topológico) que afirma la existencia de un conjunto numerable con ciertas propiedades. Estas restricciones sobre el espacio pueden ser más o menos fuertes y a menudo garantizan en el espacio ciertas propiedades que hacen que se parezca a los espacios que conocemos y amamos, como $\R$. En resumen, que se verifiquen ciertos axiomas de numerabilidad hacen mucho más cómodo el trabajar con ciertos espacios.
+
+\section{Sucesiones}
+
+Las sucesiones eran, en $\R^n$, una herramienta fundamental para el trabajo. En un espacio topológico en general son mucho menos potentes de lo que estamos acostumbrados por falta de estructura, pero aun así son dignas de mención. Una teoría más general de la convergencia para suplir esta carencia es la teoría de la convergencia de redes, pero no vamos a detallarla aquí. 
+
+\begin{defi}[Sucesión]
+	Una \tbi{sucesión} en un espacio $\X$ es una aplicación $f:\N\to \X$. Habitualmente escribimos una sucesión como $\{x_n\}_n$, donde $x_n$ es su $n$-ésimo elemento. 
+\end{defi}
+
+El concepto más importante de las sucesiones es la convergencia. Nótese que esta definición es equivalente a la que se ve en $\R^n$ con bolas.
+
+\begin{defi}[Convergencia]
+	\label{num_defi_convergencia}
+	Decimos que una sucesión $\{x_n\}_n$ de $\X$ \tbi[sucesión!convergente]{converge} a $x_0\in \X$ si para cada entorno $V^{x_0}$ de $x_0$ existe $k_0\geq 1$ tal que $x_k\in V^{x_0}$ para $k\geq k_0$. A menudo lo expresamos como:
+	\[x_0=\lim x_k = \lim_k x_k\]
+\end{defi}
+
+\begin{obs}
+	Para que una sucesión sea convergente, es suficiente que la definición \ref{num_defi_convergencia} se verifique para una base de entornos. No es necesario comprobar que se cumple para un entorno cualquiera.
+\end{obs}
+
+\begin{obs}[Consecuencias de la definición de continuidad] \
+	\label{num_obs_consecuencias_continuidad}
+	\begin{enumerate}
+		\item Si $x_0 = \lim x_k$, con $x_k\in A$, entonces $x_0\in\adher{A}$. En efecto, en todo entorno de $x_0$ hay por definición de convergencia algún punto de $A$, y entonces es punto adherente por definición.
+		
+		\item El límite de una sucesión no es necesariamente único, es decir, una sucesión puede converger a varios puntos. En efecto, consideramos un conjunto $\X$ con la topología del punto\indext{del punto} $\T_a$, para un punto $a\in\X$. Aquí, la sucesión constante $x_k=a\xrightarrow[]{} x\;\;\forall x\in\X$. Esto es claro puesto que cualquier entorno de cualquier punto contiene a $a$.
+		
+		% NO TENGO MUY CLARO LO QUE DICE AQUÍ, COMPROBAR
+		% \item Consideramos $\R$ con la topología de los complementarios numerables\indext[$\T_{CN}$]{de los complementarios numerables}. En esta, se verifica que $x=\lim x_k\iff x=x_k\;\forall k\geq 0$, pues como $\
+	\end{enumerate}
+\end{obs}
+
+\section{Primer axioma de numerabilidad}
+
+\begin{defi}[Primer axioma]
+	Decimos que un espacio $\X$ es \tbi{primer axioma de numerabilidad} o simplemente \tb{\ti{I axioma}} si todo punto de $\X$ tiene una base de entornos numerable\index{base!de entornos}.
+\end{defi}
+
+\begin{obs}
+	Esta base numerable, si existe, siempre se podrá tomar encajada, como ya mencionamos en la observación \ref{etop_obs_base_encajada}. 
+\end{obs}
+
+\begin{obs}
+	\label{num_obs_adherencia_limites}	
+	Si $\X$ es I axioma, entonces la adherencia está totalmente determinada por límites de sucesiones. Esto es:
+	\[x\in \adher{A}\iff \exists\{x_k\}_k\subset A\text{ t.q. } x=\lim_k x_k \]
+	
+	Vamos a ver solo la implicación hacia la derecha, la otra ya la vimos en la observación \ref{num_obs_consecuencias_continuidad}. Sea una base de entornos encajada $\V^x=\{V^x\colon k\geq 1\}$, numerable por ser $\X$ I axioma. $x\in\adher{A}$ implica que $V_k\cap A\neq\emptyset\;\forall k$ y en consecuencia $\exists a_k\in V_k\cap A$ y $x=\lim_k a_k$. En efecto, dado un entorno $V^x$ existe $k_0$ tal que $V_{k_0}\subset V^x$ y entonces, por haber tomado la base encajada, para cualquier $k\geq k_0$ $a_k\in V_k\subset V_{k_0}\subset V^x$, que es precisamente la definición de continuidad.
+\end{obs}
+
+\begin{exa}[Adherencias curiosas]
+	Volviendo de nuevo al ejemplo de $\X$ con la topología $\T_a$ del punto, resulta que se verifica que $\adher{\{a\}}=\X$. Esto es consecuencia directa de la observación \ref{num_obs_adherencia_limites}.
+\end{exa}
+
+\begin{prop}
+	Si $X$ es \hausdorff, entonces el límite es único.
+	
+	\begin{proof}
+		Si no lo fuera, podríamos tomar dos entornos disjuntos alrededor de los dos límites, y la sucesión tendría que estar en ambos al mismo tiempo a partir de un cierto punto.
+	\end{proof}
+\end{prop}
+
+\begin{obs}
+	Un espacio métrico es siempre I axioma y \hausdorff, de forma que en él las sucesiones se comportan como esperamos.
+\end{obs}
+
+\section{Otros axiomas de numerabilidad}
+
+\begin{defi}[Segundo axioma]
+	Decimos que un espacio $\X$ es \tbi{segundo axioma de numerabilidad} o simplemente \tb{\ti{II axioma}} si tiene una base de abiertos numerable.
+\end{defi}
+
+\begin{defi}[Separable]
+	Decimos que un espacio $\X$ es \tbi{separable} si en él existe un conjunto denso numerable.
+\end{defi}
+
+\begin{exa}
+	$\R$ con la topología usual es separable, pues $\Q$ es denso y numerable. De la misma forma, $\R^n$ también lo es, por $\Q^n$. 
+\end{exa}
+
+\begin{defi}[Lindelöf]
+	Decimos que un espacio $\X$ es \tbi{Lindelöf} si para todo recubrimiento por abiertos de $\X$ podemos extraer un subrecubrimiento numerable.
+\end{defi}
+
+\begin{obs}
+	Nótese que la noción de Lindelöf implica la compacidad. De hecho, esta propiedad está a caballo entre los axiomas de numerabilidad y los de compacidad.
+\end{obs}
+
+\begin{prop}[Relación entre los axiomas de numerabilidad]
+	Dado un espacio topológico $\X$, que sea II axioma, se verifica:
+	\begin{enumerate}
+		\item $\X$ es I axioma.
+		\item $\X$ es Lindelöf.
+		\item $\X$ es separable.
+	\end{enumerate}
+	y no se verifica ninguna de las demás implicaciones posibles entre estos cuatro conceptos.
+\end{prop}
+
+\begin{obs}
+	Si $\X$ es un espacio métrico, las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $\X$ es II axioma.
+		\item $\X$ es separable.
+		\item $\X$ es Lindelöf.
+	\end{enumerate}
+\end{obs}

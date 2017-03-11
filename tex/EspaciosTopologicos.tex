@@ -649,9 +649,10 @@ Presentemos otro ejemplo para que el elector aprenda a digerir este concepto en 
 	Este último párrafo puede parecer un trabalenguas de mal gusto, pero animamos al lector a que lo compruebe por su cuenta.
 \end{exa}
 
-Para concluir esta pequeña sección presentamos una definición sobre la cual trabajaremos en el futuro cercano.
+Para concluir esta pequeña sección presentamos una definición sobre la cual trabajaremos con detalle en el capítulo \ref{num}.
+
 \begin{defi}[I Axioma de Numerabilidad]
-	Decimos que un espacio topológico $(\X,\T)$ es \tbi[axiomas de numerabilidad!I axioma de numerabilidad]{primer axioma de numerabilidad} (o simplemente I Axioma) si todo punto posee una base de entornos numerable.
+	Decimos que un espacio topológico $(\X,\T)$ es \tbi[primer axioma de numerabilidad]{primer axioma de numerabilidad} (o simplemente I Axioma) si todo punto posee una base de entornos numerable.
 \end{defi}
 Visto lo visto salta a la vista que algunos de los espacios topológicos que hemos visitado desde nuestra nave del misterio cumplen el primer axioma.
 \begin{exa}[Espacios I Axioma]
@@ -665,6 +666,7 @@ Por suerte o por desgracia, hay espacios que no verifican el primer axioma. Como
 
 Finalizamos la sección observando que, dada una base de entornos numerable de un punto, podemos obtener una \tbi[base! encajada]{base encajada}. Y además, ¡agárrense criaturas! por que la demostración de este hecho es constructiva.
 \begin{obs}[Extracción de una Base Encajada]
+	\label{etop_obs_base_encajada}
 	Dada una base numerable de un punto $a\in\X$, a la que denotamos
 	\begin{equation*}
 		\Va{a}:=\{\V_i\tq i\in\N\}
@@ -699,10 +701,10 @@ Veremos otra condición que podremos usar en lugar de la definición de bases de
 \begin{proof}
 	Si se cumple esto, y tomamos $\U$ abierto de de $\X$, entonces para todo $x \in \U$ tomamos $\V^x \in \B$ de tal forma que $x \in \V^x \subset \U$. Al hacer esto, $\U$ coincide con $\bigcup_{x \in \U}V^{x}$, por lo que cualquier abierto que tomemos de $\X$ es unión de elementos de la base. La otra implicación es directa.
 \end{proof}
-Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en un tema posterior, expone muy bien las ideas recién tratadas.
+Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en el capítulo \ref{num}, expone muy bien las ideas recién tratadas.
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi[axiomas de numerabilidad! II axioma de numerabilidad]{segundo axioma} de numerabilidad (o símplemente II axioma) si tiene una base numerable.
+	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{segundo axioma} de numerabilidad (o simplemente II axioma) si tiene una base numerable.
 	\begin{exa}[Bases de abiertos]
 		Veamos varios ejemplos de base de abiertos en el espacio topológico $(\R^{n},\T_{n})$, con $\T_{n}$ la topología usual:
 		\begin{enumerate}
