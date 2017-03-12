@@ -55,6 +55,7 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 \end{obs}
 
 \begin{exa}[Adherencias curiosas]
+	\label{num_exa_adher_topologia_punto}
 	Volviendo de nuevo al ejemplo de $\X$ con la topología $\T_a$ del punto, resulta que se verifica que $\adher{\{a\}}=\X$. Esto es consecuencia directa de la observación \ref{num_obs_adherencia_limites}.
 \end{exa}
 
@@ -81,7 +82,12 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 \end{defi}
 
 \begin{exa}
-	$\R$ con la topología usual es separable, pues $\Q$ es denso y numerable. De la misma forma, $\R^n$ también lo es, por $\Q^n$. 
+	Veamos algunos ejemplos de espacios separables:
+	\begin{enumerate}
+		\item $\R$ con la topología usual es separable, pues $\Q$ es denso y numerable. De la misma forma, $\R^n$ también lo es, por $\Q^n$. 
+		
+		\item Un espacio $(\X,\T_a)$, donde $\T_a$ es la topología del punto, es automáticamente separable. En efecto, ya vimos en el ejemplo \ref{num_exa_adher_topologia_punto} que la adherencia del conjunto $\{a\}$ es el total, luego es denso; y desde luego es numerable. \qedhere
+	\end{enumerate}
 \end{exa}
 
 \begin{defi}[Lindelöf]
@@ -89,7 +95,7 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 \end{defi}
 
 \begin{obs}
-	Nótese que la noción de Lindelöf implica la compacidad. De hecho, esta propiedad está a caballo entre los axiomas de numerabilidad y los de compacidad.
+	Nótese que la noción de Lindelöf implica la compacidad. De hecho, aunque la hemos mencionado aquí, esta propiedad está a caballo entre los axiomas de numerabilidad y los de compacidad y volveremos a verla en el capítulo \ref{comp}, que trata sobre compacidad.
 \end{obs}
 
 \begin{prop}[Relación entre los axiomas de numerabilidad]
@@ -99,7 +105,7 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 		\item $\X$ es Lindelöf.
 		\item $\X$ es separable.
 	\end{enumerate}
-	y no se verifica ninguna de las demás implicaciones posibles entre estos cuatro conceptos.
+	y no se verifica ninguna de las demás implicaciones posibles entre los cuatro axiomas de numerabilidad que hemos visto.
 \end{prop}
 
 \begin{obs}
@@ -107,6 +113,8 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 	\begin{enumerate}
 		\item $\X$ es II axioma.
 		\item $\X$ es separable.
-		\item $\X$ es Lindelöf.
+		\item $\X$ es Lindelöf. \qedhere
 	\end{enumerate}
 \end{obs}
+
+% FALTA EL COMPORTAMIENTO TOPOLÓGICO
