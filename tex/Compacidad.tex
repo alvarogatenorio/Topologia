@@ -60,3 +60,13 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 		\end{equation}
 	\end{enumerate}
 \end{obs}
+\begin{prop}
+	Sea $\X$ un espacio topológico compacto, e $\Y$ un subespacio suyo. Si $\Y$ es cerrado entonces es compacto.
+	\begin{proof}
+		Tomamos u recubrimiento de $\Y$ tal que $\Y \subset \bigcup_{i}U_i$. Esto implica que $\X = (\X-\Y) \cup \bigcup_{i}U_i$. Como esto es un subrecubrimiento por abiertos de $\X$ y este es compacto,
+		\begin{equation}
+			\X = (\X-\Y) \cup U_{i_1} \cup ... \cup U_{i_n} \Rightarrow \Y \subset U_{i_1} \cup ... \cup U_{i_n}
+		\end{equation}
+		Luego $\Y$ es compacto.
+	\end{proof}
+\end{prop}
