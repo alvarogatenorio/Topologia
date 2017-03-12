@@ -60,6 +60,8 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 		\end{equation}
 	\end{enumerate}
 \end{obs}
+
+
 \begin{prop}
 	Sea $\X$ un espacio topológico compacto, e $\Y$ un subespacio suyo. Si $\Y$ es cerrado entonces es compacto.
 	\begin{proof}
@@ -70,3 +72,73 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 		Luego $\Y$ es compacto.
 	\end{proof}
 \end{prop}
+
+
+Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
+
+
+\begin{prop}
+	\label{comp_comp_comp}
+	Sea $\X$ compacto y $f:\X \rightarrow \Y$ una aplicación continua. $\Y = f(\X)$ es compacto.
+	\begin{proof}
+		Veamos que si tomamos un recubrimiento de $\Y$, podemos llegar a un subrecubrimiento finito moviendonos por la aplicación.Si tomamos un recubrimiento de $\Y$ tal que
+		\begin{equation}
+			\Y = \bigcup_{i}\W_i
+		\end{equation}
+		Como sabemos que la imagen inversa de abierto es abierto,
+		\begin{equation}
+			\X = \bigcup_{i}f^{-1}(\W_i)
+		\end{equation}
+		y como $\X$ es compacto, tenemos que:
+		\begin{equation}
+			\X  = f^{-1}(\W_{i_1}) \cup ... \cup f^{-1}(\W_{i_n})
+		\end{equation}
+		y usando de nuevo la aplicación llegamos a que $\W_{i_1} \cup ... \cup \W_{i_n}$ cubren $\Y$.
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+	Sea $\Y$ contenido en $\X$, con $\X$ compacto y $T_{2}$, entonces $\Y$ es cerrado.
+	\begin{proof}
+		contenidos...
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+	Sea $\X$ compacto y $f:\X \rightarrow \R$ una aplicación continua entonces existen $max f$ y $min f$.
+	\begin{proof}
+		Como $f(\X)$ es compacto por \ref{comp_comp_comp}, tenemos que $f(\X) \subset \R$ y sabemos que por ser $\R$ completo, existen $x_1$ y $x_2$ tal que
+		\begin{equation}
+			min f = f(x_1) \leq f(x) \leq f(x_2) \leq max f
+		\end{equation}
+		y estos puntos son alcanzados.
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+		Sea $\X$ compacto e $\Y$ un subespacio infinito entonces $\Y$ tiene algún punto de acumulación.
+	\begin{proof}
+		contenidos...
+	\end{proof}
+\end{prop}
+
+\begin{defi}[Definiciones]
+	\begin{enumerate}
+		\item \tbi{Secuencialmente compacto}: 
+		\item \tbi{$\sigma$-compacto}: 
+		\item \tbi{Numerablemente compacto}: 
+		\item \tbi{Lindelöf}: vease en \ref{lindel}
+	\end{enumerate}
+
+
+\begin{obs}
+	La relación que hay entre ser compacto, secuencialmente compacto, $\sigma$-compacto, numerablemente compacto y Lindelöf es la siguiente:
+	\begin{enumerate}
+		\item Compacto $\Rightarrow$ $\sigma$-compacto
+		\item $\sigma$-compacto $\Rightarrow$Lindelöf
+		\item $\sigma$-compacto $\Rightarrow$ Numerablemente compacto
+	\end{enumerate}
+\end{obs}
