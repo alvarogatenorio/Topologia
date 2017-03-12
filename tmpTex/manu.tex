@@ -1,41 +1,41 @@
 %Cosas Pendientes de Manuel Navarro García
 
-\textbf{Número 1.1.} Sea $X$ un conjunto, y $\T_{\text{CF}}$ la familia de todos los subconjuntos de $X$ cuyo complementario es finito, más el conjunto vacío. Probar que $\T_{\text{CF}}$ es una topología en $X$. Esta topología se llama, por razones evidentes, \textit{topología de los complementarios finitos}. ?`Qué topología obtenemos si $X$ es un conjunto finito?  \\
+\textbf{Número 1.1.} Sea $\mathcal{X}$ un conjunto, y $\T_{\text{CF}}$ la familia de todos los subconjuntos de $\mathcal{X}$ cuyo complementario es finito, más el conjunto vacío. Probar que $\T_{\text{CF}}$ es una topología en $X$. Esta topología se llama, por razones evidentes, \textit{topología de los complementarios finitos}. ?`Qué topología obtenemos si $\mathcal{X}$ es un conjunto finito?  \\
 
 A partir del enunciado se deduce que los abiertos de esta topología son los elementos de la colección 
 
-\[\T_{\text{CF}}= \{U \subset X : U= \emptyset \text{ o } X \backslash U\equiv U^c \text{ es finito}\}.\]
+\[\T_{\text{CF}}= \{U \subset \mathcal{X} : U= \emptyset \text{ o } \mathcal{X} \backslash U\equiv U^c \text{ es finito}\}.\]
 
 Veamos que efectivamente $\T_{\text{CF}}$ es una topología al verificar las condiciones necesarias. 
 
 \begin{itemize}
-\item En primer lugar, el vacío pertenece a esta por definición. Además, el complementario del total $X$ (el vacío) es finito, luego $X$ también pertenece a $\T_{\text{CF}}$. 
+\item En primer lugar, el vacío pertenece a esta por definición. Además, el complementario del total $\mathcal{X}$ (el vacío) es finito, luego $\mathcal{X}$ también pertenece a $\T_{\text{CF}}$. 
 
 \item Por otro lado, sea $\{U_\alpha\}_{\alpha \in I}$ para un cierto conjunto de índices $I$ una colección arbitraria de elementos de $\T_{\text{CF}}$, teniéndose que 
 
-\[X \backslash \bigcup_{\alpha}U_\alpha = \bigcap_{\alpha} (X\backslash U_\alpha).\]
+\[\mathcal{X} \backslash \bigcup_{\alpha}U_\alpha = \bigcap_{\alpha} (\mathcal{X}\backslash U_\alpha).\]
 
-Pero $X-U_\alpha$ es finito para cada $\alpha \in I$, luego la intersección numerable de ellos también lo será. De este modo, la unión numerable de abiertos de $\T_{\text{CF}}$ pertenece a ella.
+Pero $\mathcal{X}-U_\alpha$ es finito para cada $\alpha \in I$, luego la intersección numerable de ellos también lo será. De este modo, la unión numerable de abiertos de $\T_{\text{CF}}$ pertenece a ella.
 
 \item Por último, consideremos $U_1$ y $U_2$ dos abiertos de $\T_{\text{CF}}$. Analógamente al caso anterior, 
 
-\[X \backslash (U_1 \cap U_2) = \bigcup_{i=1}^2 (X\backslash U_i).\]
+\[\mathcal{X} \backslash (U_1 \cap U_2) = \bigcup_{i=1}^2 (\mathcal{X}\backslash U_i).\]
 
-Sin embargo, $X \backslash U_i$ es finito para $i\in\{1,2\}$, luego la unión finita de conjuntos finitos es finita.
+Sin embargo, $\mathcal{X} \backslash U_i$ es finito para $i\in\{1,2\}$, luego la unión finita de conjuntos finitos es finita.
 \end{itemize}
 
-Para finalizar, se nos pregunta qué topología se obtendría en caso de que $X$ fuese un conjunto finito. Si damos por cierta esta suposición, es claro que $\T_{\text{CF}}$ coincide con la topología discreta, ya que el complementario de todo conjunto es finito. \\
+Para finalizar, se nos pregunta qué topología se obtendría en caso de que $\mathcal{X}$ fuese un conjunto finito. Si damos por cierta esta suposición, es claro que $\T_{\text{CF}}$ coincide con la topología discreta, ya que el complementario de todo conjunto es finito. \\
 
-A pesar de haber terminado con lo requerido del ejercicio, podemos ir más allá estudiando más a fondo esta topología. Para comenzar, nótese que si $X$ es numerable trivialmente el conjunto es separable y primer y segundo axioma de numerabilidad. El caso en el que $X$ no es numerable ya no es tan sencillo. Vayamos por partes.
+A pesar de haber terminado con lo requerido del ejercicio, podemos ir más allá estudiando más a fondo esta topología. Para comenzar, nótese que si $\mathcal{X}$ es numerable trivialmente el conjunto es separable y primer y segundo axioma de numerabilidad. El caso en el que $\mathcal{X}$ no es numerable ya no es tan sencillo. Vayamos por partes.
 
 \begin{itemize}
-\item $X$ es separable. Es más, todo conjunto numerable es denso en $X$. En efecto, supongamos que existiese un conjunto $A \subset X$ numerable pero que no es denso en $X$. Esto implica que existe un abierto $B\in \T_{\text{CF}}$ tal que $B\cap A = \emptyset$. De este modo, 
+\item $\mathcal{X}$ es separable. Es más, todo conjunto numerable es denso en $\mathcal{X}$. En efecto, supongamos que existiese un conjunto $A \subset \mathcal{X}$ numerable pero que no es denso en $\mathcal{X}$. Esto implica que existe un abierto $B\in \T_{\text{CF}}$ tal que $B\cap A = \emptyset$. De este modo, 
 
-\[(X\backslash B)\cup (X\backslash A)=X.\]
+\[(\mathcal{X}\backslash B)\cup (\mathcal{X}\backslash A)=\mathcal{X}.\]
 
-Pero los conjuntos del primer miembro son finitos, y la unión de finitos es finita, lo que conllevaría a que $X$ también lo sea. Esto nos conduce a la  contradicción buscada. 
+Pero los conjuntos del primer miembro son finitos, y la unión de finitos es finita, lo que conllevaría a que $\mathcal{X}$ también lo sea. Esto nos conduce a la  contradicción buscada. 
 
-\item $X$ no es primer axioma de numerabilidad, lo que implica que tampoco es segundo. Para corroborar esto, comprobemos que para cada punto $a\in X$ no existe una base de entornos abiertos numerable centrada en $a$. Razonaremos de nuevo por reducción al absurdo. \\
+\item $\mathcal{X}$ no es primer axioma de numerabilidad, lo que implica que tampoco es segundo. Para corroborar esto, comprobemos que para cada punto $a\in \mathcal{X}$ no existe una base de entornos abiertos numerable centrada en $a$. Razonaremos de nuevo por reducción al absurdo. \\
 
 Supongamos que sí que existe esa base y sea esta 
 
@@ -47,29 +47,29 @@ La intersección
 
 es no vacía puesto que, al tomar los complementarios y aplicar las leyes de De Morgan se tiene que 
 
-\[X \backslash \left(\bigcap_{k\geq 1} V_k\right)= \left(\bigcup_{k\geq 1} X \backslash V_k\right), \]
+\[\mathcal{X} \backslash \left(\bigcap_{k\geq 1} V_k\right)= \left(\bigcup_{k\geq 1} \mathcal{X} \backslash V_k\right), \]
 
-y esta unión es numerable ya que $X \backslash V_k$ es finito (recordemos que $V_k \in \T_{\text{CF}}$). Al ser $X$ no numerable y 
+y esta unión es numerable ya que $X \backslash V_k$ es finito (recordemos que $V_k \in \T_{\text{CF}}$). Al ser $\mathcal{X}$ no numerable y 
 
-\[X= \left(\bigcap_{k\geq 1} V_k\right) \cup \left(\bigcup_{k\geq 1} X\backslash V_k\right),\]
+\[\mathcal{X}= \left(\bigcap_{k\geq 1} V_k\right) \cup \left(\bigcup_{k\geq 1} \mathcal{X}\backslash V_k\right),\]
 
 la intersección anterior ha de ser no numerable. \\
 
-Tomemos ahora un punto cualquiera $b$ de esta intersección con la condición de que sea distinto de $a$ y consideremos el entorno abierto de $a$ dado por $W:=X\backslash \{b\}$. Claramente, $a\in W$ y es abierto puesto que su complementario es finito.  De forma evidente la condición $V_k \subset W$ no se verifica para ningún $k$ ya que $b\in V_k$ para todo $k$. Esto verifica que $\mathcal{U}^a$ no puede ser base, concluyendo así que cuando $X$ no es numerable $\T_{\text{CF}}$ no es primer axioma de numerabilidad.
+Tomemos ahora un punto cualquiera $b$ de esta intersección con la condición de que sea distinto de $a$ y consideremos el entorno abierto de $a$ dado por $W:=\mathcal{X}\backslash \{b\}$. Claramente, $a\in W$ y es abierto puesto que su complementario es finito.  De forma evidente la condición $V_k \subset W$ no se verifica para ningún $k$ ya que $b\in V_k$ para todo $k$. Esto verifica que $\mathcal{U}^a$ no puede ser base, concluyendo así que cuando $X$ no es numerable $\T_{\text{CF}}$ no es primer axioma de numerabilidad.
 
-\item $X$ es compacto. En efecto, supongamos que $\{V_k : k \geq 1\}$ es un recubrimiento por abiertos de $X$ y tomemos un $V_{k_0}$ arbitrario. Como este abierto pertenece a $\T_{\text{CF}}$ su complementario es finito, luego 
+\item $\mathcal{X}$ es compacto. En efecto, supongamos que $\{V_k : k \geq 1\}$ es un recubrimiento por abiertos de $\mathcal{X}$ y tomemos un $V_{k_0}$ arbitrario. Como este abierto pertenece a $\T_{\text{CF}}$ su complementario es finito, luego 
 
-\[X \backslash V_{k_0} := \{x_1, \ldots, x_r\}\]
+\[\mathcal{X} \backslash V_{k_0} := \{x_1, \ldots, x_r\}\]
 
-con $x_j \in X$ y $j=\{1,\ldots, r\}$ tales que $x_j\in V_{k_j}$ para cierto $k_j$, pues la unión de $V_k$ recubre $X$ según lo hemos definido. De este modo, podemos tomar $X$ como la unión de $V_{k_0}$ con los $V_{k_j}$ que contienen a los puntos $x_j$, esto es,
+con $x_j \in \mathcal{X}$ y $j=\{1,\ldots, r\}$ tales que $x_j\in V_{k_j}$ para cierto $k_j$, pues la unión de $V_k$ recubre $\mathcal{X}$ según lo hemos definido. De este modo, podemos tomar $\mathcal{X}$ como la unión de $V_{k_0}$ con los $V_{k_j}$ que contienen a los puntos $x_j$, esto es,
 
-\[X=\bigcup_{j=0}^r V_{k_j},\]
+\[\mathcal{X}=\bigcup_{j=0}^r V_{k_j},\]
 
-lo que prueba que $X$ es compacto. 
+lo que prueba que $\mathcal{X}$ es compacto. 
 
-\item $X$ es conexo. Un modo de probar esto es comprobar que no existen conjuntos abiertos y cerrados simultáneamente. En caso de que esto ocurriese, lo que quiere decir que $A\in \T_{\text{CF}}$ y $X\backslash A \in \T_{\text{CF}}$, se tiene que $X \backslash A$ y $X\backslash (X\backslash A)=A$ son finitos, luego
+\item $\mathcal{X}$ es conexo. Un modo de probar esto es comprobar que no existen conjuntos abiertos y cerrados simultáneamente. En caso de que esto ocurriese, lo que quiere decir que $A\in \T_{\text{CF}}$ y $\mathcal{X}\backslash A \in \T_{\text{CF}}$, se tiene que $\mathcal{X} \backslash A$ y $X\backslash (\mathcal{X}\backslash A)=A$ son finitos, luego
 
-\[X=A \cup (X\backslash A)\]
+\[\mathcal{X}=A \cup (\mathcal{X}\backslash A)\]
 
 sería finito, y esto contradice que sea no numerable. 
 
@@ -97,7 +97,7 @@ sería finito, y esto contradice que sea no numerable.
 
 \textbf{Imágenes inversas} \\
 
-Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(X,\T)$, un conjunto $Y$ y una aplicación $f$ que nace en $Y$ y muere en $(X,\T)$, queremos dotar a $Y$ de una topología que haga que $f$ sea continua. Evidentemente, una elección fácil para que esto ocurra es escoger la topología discreta, puesto que es la que cuenta con más abiertos y, por lo tanto, para todo abierto $U'$ de $X$ entonces $f^{-1}(U')$ es abierto en $Y$, lo que implica que $f$ sea continua. Sin embargo, este caso no es realmente interesante y lo difícil del problema será encontrar la topología menos fina para que $f$ sea continua. \\
+Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua. Evidentemente, una elección fácil para que esto ocurra es escoger la topología discreta, puesto que es la que cuenta con más abiertos y, por lo tanto, para todo abierto $U'$ de $\mathcal{X}$ entonces $f^{-1}(U')$ es abierto en $\mathcal{Y}$, lo que implica que $f$ sea continua. Sin embargo, este caso no es realmente interesante y lo difícil del problema será encontrar la topología menos fina para que $f$ sea continua. \\
 
 La solución a este problema es la topología $f^{-1}(\T)$, definida como 
 
@@ -105,60 +105,60 @@ La solución a este problema es la topología $f^{-1}(\T)$, definida como
 
 La comprobación de que verdaderamente es una topología se desprende de las propiedades de la función inversa aplicada a conjuntos. Por otro lado, es la menos fina que implica que $f$ sea continua por construcción, luego cualquier otra topología con estas características contiene a esta. Finalmente, se tiene que es única. En efecto, si tenemos que $\T$ y $\T$ cumplen que son las menos finas por construcción, entonces se tiene que $\T\subset \T'$ y $\T'\subset \T$, luego son iguales. \\
 
-Una vez resuelta esta cuestión, es hora de profundizar un poco más. Tomemos otro espacio topológico $(Z,\T')$ y consideremos una función $g$ que nace en este y muere en $Y$. El problema que se nos plantea ahora es determinar qué aplicaciones $g$ son continuas. Nótese que con esta distribución también podemos definir la composición $f\circ g$, quedando el siguiente diagrama:
+Una vez resuelta esta cuestión, es hora de profundizar un poco más. Tomemos otro espacio topológico $(\mathcal{Z},\T')$ y consideremos una función $g$ que nace en este y muere en $Y$. El problema que se nos plantea ahora es determinar qué aplicaciones $g$ son continuas. Nótese que con esta distribución también podemos definir la composición $f\circ g$, quedando el siguiente diagrama:
 
 \begin{equation*}
 \xymatrix{
-&Y \ar[r]^f
-&(X,\T) \\
-&(Z,\T') \ar@{-->}[ru]_{f\circ g} \ar[u]^g}
+&\mathcal{Y} \ar[r]^f
+&(\mathcal{X},\T) \\
+&(\mathcal{Z},\T') \ar@{-->}[ru]_{f\circ g} \ar[u]^g}
 \end{equation*}
 
-En primer lugar, observemos que como $f$ es continua por definición del problema anterior, que $g$ sea continua implica que la composición $f\circ g$ también lo sea. Sin embargo, la otra implicación (si $f\circ g$ es continua entonces $g$ es continua) también es cierta como veremos a continuación. Esto es realmente interesante, puesto que la topología que haya en $Y$ no es relevante si nuestro estudio se centra en la relación de $(Z,\T')$ y $(X,\T)$. \\
+En primer lugar, observemos que como $f$ es continua por definición del problema anterior, que $g$ sea continua implica que la composición $f\circ g$ también lo sea. Sin embargo, la otra implicación (si $f\circ g$ es continua entonces $g$ es continua) también es cierta como veremos a continuación. Esto es realmente interesante, puesto que la topología que haya en $\mathcal{Y}$ no es relevante si nuestro estudio se centra en la relación de $(\mathcal{X},\T')$ y $(X,\T)$. \\
 
 Veamos que efectivamente se cumple esta implicación. En efecto, consideremos un abierto $W\subset f^{-1}(U)$ y verifiquemos que $g^{-1}(W)\subset \T'$. Por su definición, $W$ es un abierto de $f^{-1}(U)$ con $U\subset \T$ y, como $f\circ g$ es continua, entonces $(f\circ g)^{-1}(U)\subset \T'$. Pero se tiene que $f\circ g)^{-1}(U)=g^{-1}[f^{-1}(U)]\equiv g^{-1}(W)$, luego $g^{-1}(W)\subset \T'$. \\
 
-Una consecuencia directa que se desprende de esto es que la topología imagen inversa $f^{-1}(\T)$ es la topología en $Y$ que cumple la equivalencia anterior. En efecto, supongamos que una topología $\T_Y$ lo cumple y veamos que coincide con la topología imagen inversa. Para ello, consideremos el siguiente diagrama
+Una consecuencia directa que se desprende de esto es que la topología imagen inversa $f^{-1}(\T)$ es la topología en $\mathcal{Y}$ que cumple la equivalencia anterior. En efecto, supongamos que una topología $\T_\mathcal{Y}$ lo cumple y veamos que coincide con la topología imagen inversa. Para ello, consideremos el siguiente diagrama
 
 \begin{equation*}
 \xymatrix{
-&(Y,\T_Y) \ar[r]^f
-&(X,\T) \\
-&(Y,\T_Y) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
+&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
+&(\mathcal{X},\T) \\
+&(\mathcal{Y},\T_{\mathcal{Y}}) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
 \end{equation*}
 
-Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, al ser esta continua, tenemos por lo anterior que $f$ es continua. En consecuencia, $\T_Y$ hace que $f$ sea continua y, por tanto, $f^{-1}(\T)\subset \T_Y$. Ya tenemos demostrada una inclusión. \\
+Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, al ser esta continua, tenemos por lo anterior que $f$ es continua. En consecuencia, $\T_{\mathcal{Y}}$ hace que $f$ sea continua y, por tanto, $f^{-1}(\T)\subset \T_{\mathcal{Y}}$. Ya tenemos demostrada una inclusión. \\
 
 Consideremos ahora el diagrama 
 
 \begin{equation*}
 \xymatrix{
-&(Y,\T_Y) \ar[r]^f
-&(X,\T) \\
-&(Y,f^{-1}(\T)) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
+&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
+&(\mathcal{X},\T) \\
+&(\mathcal{Y},f^{-1}(\T)) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
 \end{equation*}
 
-Ahora, sabemos que $f$ es continua por lo visto en el primer problema. Además, como la diagonal es continua, entonces la vertical es continua, luego $\T_Y \subset f^{-1}(\T)$. \\
+Ahora, sabemos que $f$ es continua por lo visto en el primer problema. Además, como la diagonal es continua, entonces la vertical es continua, luego $\T_{\mathcal{Y}} \subset f^{-1}(\T)$. \\
 
 \begin{obs}[Inyectividad]
 
 (1) Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles. Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades. \\
 
-(2) El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(Y),\left.\T\right|_{f(Y)}) \subset (X,\T)$, entonces $f$ es biyectiva:
+(2) El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{Y}),\left.\T\right|_{f(\mathcal{Y})}) \subset (\mathcal{X},\T)$, entonces $f$ es biyectiva:
 
-\[(Y,f^{-1}(U)) \xrightarrow{f} (f(Y),\left.\T\right|_{f(Y)}) \subset (X,\T).\]
+\[(\mathcal{Y},f^{-1}(U)) \xrightarrow{f} (f(\mathcal{Y}),\left.\T\right|_{f(\mathcal{Y})}) \subset (\mathcal{X},\T).\]
 
-Además, la aplicación es continua puesto que, dado $W$ un abierto de $f(Y)$, entonces $W=Y\cap f(U)$ para cierto abierto $U\in \T$. Esto implica que
+Además, la aplicación es continua puesto que, dado $W$ un abierto de $f(\mathcal{Y})$, entonces $W=\mathcal{Y}\cap f(U)$ para cierto abierto $U\in \T$. Esto implica que
 
-\[f^{-1}(W)=f^{-1}(U\cap f(Y))=f^{-1}(U)\cap Y=f^{-1}(U),\]
+\[f^{-1}(W)=f^{-1}(U\cap f(\mathcal{Y}))=f^{-1}(U)\cap \mathcal{Y}=f^{-1}(U),\]
 
-que es abierto de $Y$ por la definición de topología que hemos tomado. Sin embargo, esto no termina aquí, ya que $f$ es abierta. En efecto, dado un abierto $W\subset Y$, entonces existe un abierto $U\subset \T$ de modo que $W=f^{-1}(U)$. De este modo, 
+que es abierto de $\mathcal{Y}$ por la definición de topología que hemos tomado. Sin embargo, esto no termina aquí, ya que $f$ es abierta. En efecto, dado un abierto $W\subset \mathcal{Y}$, entonces existe un abierto $U\subset \T$ de modo que $W=f^{-1}(U)$. De este modo, 
 
-\[f(W)=f(f^{-1}(U))\cap f(Y)=(U)\cap f(Y)=f^{-1}(U),\]
+\[f(W)=f(f^{-1}(U))\cap f(\mathcal{Y})=(U)\cap f(\mathcal{Y})=f^{-1}(U),\]
 
-que es un abierto de $f(Y)$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $Y$ en $X$ es homeomorfismo de $Y$ en $f(Y)$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
+que es un abierto de $f(\mathcal{Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{Y}$ en $\mathcal{X}$ es homeomorfismo de $\mathcal{Y}$ en $f(\mathcal{Y})$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
 
-\[f:(Y,f^{-1}(\T)) \to (X,\T).\]
+\[f:(\mathcal{Y},f^{-1}(\T)) \to (\mathcal{X},\T).\]
 
 \end{obs}
 
@@ -166,26 +166,26 @@ que es un abierto de $f(Y)$ (la segunda igualdad se deduce de que $f$ es inyecti
 
 Después de haber realizado todo el desarrollo anterior, una posibilidad que se nos plantea es dualizar las cuestiones que nos han ido apareciendo. Coloquialmente, podríamos decir que vamos a cambiarle el sentido a todo. \\
 
-Así pues, consideremos un espacio topológico $(X,\T)$, un conjunto $Y$ y una aplicación $f$ que nace en $(X,\T)$ y muere en $Y$. El problema ahora consiste en dotar a $Y$ de una topología que haga que $f$ sea continua. La solución más sencilla sería elegir la topología trivial, puesto que sus únicos abiertos son el vacío y el total y siempre se cumpliría que para cada $U'$ abierto de $Y$ entonces la imagen inversa de este es un abierto del espacio de partida. No obstante, es interesante encontrar la topología más fina que cumpla esto, y esta es 
+Así pues, consideremos un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $(\mathcal{X},\T)$ y muere en $\mathcal{Y}$. El problema ahora consiste en dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua. La solución más sencilla sería elegir la topología trivial, puesto que sus únicos abiertos son el vacío y el total y siempre se cumpliría que para cada $U'$ abierto de $\mathcal{Y}$ entonces la imagen inversa de este es un abierto del espacio de partida. No obstante, es interesante encontrar la topología más fina que cumpla esto, y esta es 
 
 \[f(\T)=\{U: f^{-1}(U)\in \T\}\]
 
 Evidentemente, se trata de una topología y es la más fina que permite que $f$ sea continua ya que si se añade algún abierto más deja de serlo. Por último, realizando un razonamiento por doble inclusión al análogo en imágenes inversas, se puede ver que es única. \\
 
-Continuando con la misma argumentación, veamos cuando una función $g$ que parta de $Y$ es continua
+Continuando con la misma argumentación, veamos cuando una función $g$ que parta de $\mathcal{Y}$ es continua
 
 \begin{equation}
 \label{cont_propiedad_universal_top_imagen}
 \xymatrix{
-(X,\T) \ar[r]^f \ar@{-->}[rd]_{g\circ f} &
-Y \ar[d]^g & \\
-&(Z,\T')}
+(\mathcal{X},\T) \ar[r]^f \ar@{-->}[rd]_{g\circ f} &
+\mathcal{Y} \ar[d]^g & \\
+&(\mathcal{Z},\T')}
 \end{equation}
 
-Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $W\subset \T'$ entonces $g^{-1}(W)\subset f(\T)$) y que $f(\T)$ es la topología en $Y$ que cumple esta doble implicación. \\
+Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $W\subset \T'$ entonces $g^{-1}(W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{Y}$ que cumple esta doble implicación. \\
 
 \begin{obs}[Sobreyectividad]
 
-(1) Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(X)$. Entonces $f^{-1}(Y)$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{Y\backslash f(X)})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $Y\backslash f(X)$ es vacía y es abierta en la imagen. Además, como $f(X)$ es el complementario de $Y\backslash f(X)$, entonces $f(X)$ es cerrado. No obstante, $f(X)$ coincide con el total, luego también es un abierto. 
+(1) Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{X})$. Entonces $f^{-1}(\mathcal{Y})$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{Y}\backslash f(\mathcal{X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{Y}\backslash f(\mathcal{X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{X})$ es el complementario de $\mathcal{Y}\backslash f(\mathcal{X})$, entonces $f(\mathcal{X})$ es cerrado. No obstante, $f(\mathcal{X})$ coincide con el total, luego también es un abierto. 
 
 \end{obs}
