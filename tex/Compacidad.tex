@@ -17,7 +17,7 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 		\item El intervalo $(a,b)$ no es compacto.
 		\item La recta real $\R$ no es compacta. Vemos que si tomamos un recubrimiento de abiertos : $\A=\{(n,n+2) \tq n \in \Z\}$ no contiene ningún subrecubrimiento finito que cubra $\R$.
 		\item El subespacio $\X = \{0\} \cup \{\frac{1}{n} \tq n \in \Z_{+}$ de $\R$\} es compacto.
-		Dado un conjunto abierto de $\A$, existe un abierto $\U$ de $\A$ que contiene al $0$. $\U$ cotiene todos los puntos de la forma $\frac{1}{n}$ salvo un número finito de ellos. Para cada uno de estos puntos cogemos un abierto del recubrimiento. Por lo tanto tenemos un subrecubrimiento finito, luego es compacto. 
+		Dado un conjunto abierto de $\A$, existe un abierto $\U$ de $\A$ que contiene al $0$. $\U$ contiene todos los puntos de la forma $\frac{1}{n}$ salvo un número finito de ellos. Para cada uno de estos puntos cogemos un abierto del recubrimiento. Por lo tanto tenemos un subrecubrimiento finito, luego es compacto. 
 	\end{enumerate}
 \end{exa}
 
@@ -63,7 +63,8 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 \end{obs}
 
 
-\begin{prop}
+\begin{prop}[Cerrado en compacto es compacto]
+	\label{cerra_en_comp_comp}
 	Sea $\X$ un espacio topológico compacto, e $\Y$ un subespacio suyo. Si $\Y$ es cerrado entonces es compacto.
 	\begin{proof}
 		Tomamos u recubrimiento de $\Y$ tal que $\Y \subset \bigcup_{i}U_i$. Esto implica que $\X = (\X-\Y) \cup \bigcup_{i}U_i$. Como esto es un subrecubrimiento por abiertos de $\X$ y este es compacto,
@@ -100,19 +101,25 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 
 
 \begin{prop}
-	Sea $\Y$ contenido en $\X$, con $\X$ compacto y $T_{2}$, entonces $\Y$ es cerrado.
+	Cada subespacio $\Y$ compacto de un espacio $\X$ (que es $T_2$) es cerrado.
 	\begin{proof}
-		contenidos...
+		Basandonos en las dos hipótesis, demostraremos que $\X - \Y$ es abierto, luego $\Y$ será cerrado.
+		
+		Sea $a \in \X-\Y$ vamos a ver que existe un entorno de $a$ que no interseca con $\Y$.
+		
+		Para todo punto $y \in \Y$ tomamos entornos disjuntos $\U^y$ y $\V^y$ de los puntos $a$ e $y_0$ respectivamente, utilizando la condición de ser $T_2$. Si ahora tomamos la colección $V = \{V^y \tq y \in \Y\}$, es un recubrimiento por abiertos de $\Y$, y por ser este compacto existirá un subrecubrimiento finito $V_{y_1}, ..., V_{y_n}$ que recubrirá $\Y$.
+		
+		Luego $\V = V_{y_1} \cup ... \cup V_{y_n}$ contiene a $\Y$ y es abierto. Además es disjunto de $\U = U_{y_1} \cap ... \cap U_{y_n}$, formado al tomar la intersección de los entornos de $a$. Por lo tanto $\U$ es entorno de $a$ que no interseca a $\Y$, quedando así demostrado.
 	\end{proof}
 \end{prop}
 
 
 \begin{prop}
-	Sea $\X$ compacto y $f:\X \rightarrow \R$ una aplicación continua entonces existen $max f$ y $min f$.
+	Sea $\X$ compacto y $f:\X \rightarrow \R$ una aplicación continua entonces existen $\min f$ y $\max f$.
 	\begin{proof}
 		Como $f(\X)$ es compacto por \ref{comp_comp_comp}, tenemos que $f(\X) \subset \R$ y sabemos que por ser $\R$ completo, existen $x_1$ y $x_2$ tal que
 		\begin{equation}
-			min f = f(x_1) \leq f(x) \leq f(x_2) \leq max f
+			\min f = f(x_1) \leq f(x) \leq f(x_2) \leq \max f
 		\end{equation}
 		y estos puntos son alcanzados.
 	\end{proof}
@@ -122,24 +129,24 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 \begin{prop}
 		Sea $\X$ compacto e $\Y$ un subespacio infinito entonces $\Y$ tiene algún punto de acumulación.
 	\begin{proof}
-		contenidos...
+		Si $\Y$ no tuviese ningún punto de acumulación, entonces todos los puntos serían aislados, luego tendríamos la topología discreta. Ahora, como $\Y$ es cerrado dentro de un compacto, por \ref{cerra_en_comp_comp} $\Y$ es compacto, y para ser compacto un conjunto con la topología discreta tiene que ser finito, lo que produce una contradicción.
 	\end{proof}
 \end{prop}
 
 \begin{defi}[Definiciones]
 	\begin{enumerate}
-		\item \tbi{Secuencialmente compacto}: 
-		\item \tbi{$\sigma$-compacto}: 
-		\item \tbi{Numerablemente compacto}: 
-		\item \tbi{Lindelöf}: vease en \ref{lindel}
+		\item \tbi{Secuencialmente compacto}: un espacio topológico	$\X$ es secuencialmente compacto si toda sucesión en $\X$ tiene una subsucesión convergente en $\X$.
+		\item \tbi{$\sigma$-compacto}:  un espacio topológico $\X$ es $\sigma$-compacto si es la unión numerable de subespacios compactos.
+		\item \tbi{Numerablemente compacto}: Un espacio $\X$ es numerablemente compacto si cada subconjunto infinito de $\X$ tiene un punto límite.
+		\item \tbi{Lindelöf}: véase en \ref{lindel}
 	\end{enumerate}
 \end{defi}
 
 \begin{obs}
 	La relación que hay entre ser compacto, secuencialmente compacto, $\sigma$-compacto, numerablemente compacto y Lindelöf es la siguiente:
 	\begin{enumerate}
-		\item Compacto $\Rightarrow$ $\sigma$-compacto
-		\item $\sigma$-compacto $\Rightarrow$Lindelöf
-		\item $\sigma$-compacto $\Rightarrow$ Numerablemente compacto
+		\item Compacto $\implies$ $\sigma$-compacto
+		\item $\sigma$-compacto $\implies$Lindelöf
+		\item $\sigma$-compacto $\implies$ Numerablemente compacto
 	\end{enumerate}
 \end{obs}
