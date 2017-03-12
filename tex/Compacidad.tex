@@ -1,3 +1,145 @@
 %Para este capítulo se usará la abreviatura "comp".
 \chapter{Compacidad}
 \label{comp}
+
+La compacidad en espacios topológicos es una noción bastante elaborada, y su generalización llevo a los matemáticos bastante tiempo. Desde principios del siglo XX la idea que buscaban era generalizar para espacios topológicos arbitrarios las propiedades de los intervalos cerrados y acotados $[a,b]$ de $\R$ que permitía demostrar teoremas como el del valor medio o la continuidad uniforme. Surgieron así distintos tipos de compacidad, tales como la compacidad por punto límite, la compacidad numerable,...,  pero no siendo estas las más adecuada, se acabo por formalizar en términos de abiertos(en concreto, como recubrimientos de abiertos). Eso dio lugar a la definición actual.
+\begin{defi}[Recubrimiento y recubrimiento de abiertos]
+	Una colección $\A$ de subconjuntos del espacio $\X$ se dice que es un \tbi{recubrimiento} si la unión de los elementos de $\A$ coincide con $\X$. $\A$ es un \tbi{recubrimiento abierto} de $\X$ si es un recubrimiento de $\X$ formado por conjuntos abiertos.
+\end{defi}
+
+\begin{defi}[Compacto]
+	Diremos que un espacio $\X$ es \tbi{compacto} si de cada \tb{recubrimiento abierto} $\A$ de $\X$ podemos extraer un subrecubrimiento finito que también recubre $\X$.
+\end{defi}
+
+\begin{exa}
+	\begin{enumerate}
+		\item El intervalo $[a,b]$ es compacto.
+		\item El intervalo $(a,b)$ no es compacto.
+		\item La recta real $\R$ no es compacta. Vemos que si tomamos un recubrimiento de abiertos : $\A=\{(n,n+2) \tq n \in \Z\}$ no contiene ningún subrecubrimiento finito que cubra $\R$.
+		\item El subespacio $\X = \{0\} \cup \{\frac{1}{n} \tq n \in \Z_{+}$ de $\R$\} es compacto.
+		Dado un conjunto abierto de $\A$, existe un abierto $\U$ de $\A$ que contiene al $0$. $\U$ cotiene todos los puntos de la forma $\frac{1}{n}$ salvo un número finito de ellos. Para cada uno de estos puntos cogemos un abierto del recubrimiento. Por lo tanto tenemos un subrecubrimiento finito, luego es compacto. 
+	\end{enumerate}
+\end{exa}
+
+\begin{obs} \
+	\begin{enumerate}
+		\item Sea $\Y$ un subespacio de $\X$. Entonces $\Y$ es compacto si, y sólo si cada recubrimiento de $\Y$ por abiertos de $\X$ contiene una subcolección finita que cubre $\Y$.
+		\begin{proof} \
+			\begin{enumerate}
+				\item[\bra] 	Supongamos que $\Y$ es compacto y que 
+					\begin{equation}
+						\A=\{A_i\}_{i \in J}
+					\end{equation}
+					es un recubrimiento de $\Y$ por abiertos de $\X$. Entonces la colección formada por
+					\begin{equation}
+						{A_i \cap \Y \tq i \in J}
+					\end{equation} es un cubrimiento de $\Y$ por conjuntos abiertos de $\Y$, y como $\Y$ es compacto, existe un subrecubrimiento finito de $\Y$ que cubre a $\Y$ de la forma
+					\begin{equation}
+						\{\A_{i_1} \cap \Y, ... , \A_{i_n} \cap \Y\} 
+					\end{equation}
+						, luego $\{\A_{i_1}, ... , \A_{i_n}\}$ es un subrecubrimiento finito que cubre a $\Y$.
+				
+				\item[\bla] Sea $\A'=\{A'_{i}\}$ un cubrimiento de $\Y$ por abiertos de $\Y$. Para cada $i$ podemos elegir un conjunto $A_i$ abierto en $\X$ tal que 
+					\begin{equation}
+							\A'_i=A_i \cap \Y
+					\end{equation}
+					La colección formada por estos $A_i$ a la que llamaremos $\A$ es un recubrimiento de $\Y$ por abiertos de $\A$. Por hipótesis, algun subrecubrimiento finito $\{A_{i_1},...,A_{i_n}\}$ que cubre $\Y$. Entonces $\{A'_{i_1},...,A'_{i_n}\}$ es una subrecubrimiento finito de $\Y$, luego $\Y$ es compacto.
+			\end{enumerate}
+		\end{proof}
+		\item Podemos expresar la compacidad mediante cerrados también, usando teoria de conjuntos.
+		Tomamos un recubrimiento de $\X$ tal que $\X = \bigcup_{i}U_i$. Como $\X$ es compacto, entonces existe un subrecubrimiento finito tal que $\X = U_{i_1} \cup ... \cup U_{i_n}$.
+		\begin{equation}
+			\X = \bigcup_{i}U_i \Rightarrow \exists U_{i_1},..., U_{i_n} \tq\ \X = U_{i_1} \cup ... \cup U_{i_n}
+		\end{equation}
+		Complementando esto,
+		\begin{equation}
+			\emptyset = \bigcap_{i}U_i \Rightarrow \exists F_{i_1},..., F_{i_n} \tq\ \emptyset = F_{i_1} \cap ... \cap F_{i_n}
+		\end{equation}
+		o lo que es lo mismo,
+		\begin{equation}
+			\emptyset \neq \bigcap_{i}U_i \Leftarrow \forall F_{i_1},..., F_{i_n} \tq\ \emptyset \neq F_{i_1} \cap ... \cap F_{i_n}
+		\end{equation}
+	\end{enumerate}
+\end{obs}
+
+
+\begin{prop}
+	Sea $\X$ un espacio topológico compacto, e $\Y$ un subespacio suyo. Si $\Y$ es cerrado entonces es compacto.
+	\begin{proof}
+		Tomamos u recubrimiento de $\Y$ tal que $\Y \subset \bigcup_{i}U_i$. Esto implica que $\X = (\X-\Y) \cup \bigcup_{i}U_i$. Como esto es un subrecubrimiento por abiertos de $\X$ y este es compacto,
+		\begin{equation}
+			\X = (\X-\Y) \cup U_{i_1} \cup ... \cup U_{i_n} \Rightarrow \Y \subset U_{i_1} \cup ... \cup U_{i_n}
+		\end{equation}
+		Luego $\Y$ es compacto.
+	\end{proof}
+\end{prop}
+
+
+Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
+
+
+\begin{prop}
+	\label{comp_comp_comp}
+	Sea $\X$ compacto y $f:\X \rightarrow \Y$ una aplicación continua. $\Y = f(\X)$ es compacto.
+	\begin{proof}
+		Veamos que si tomamos un recubrimiento de $\Y$, podemos llegar a un subrecubrimiento finito moviendonos por la aplicación.Si tomamos un recubrimiento de $\Y$ tal que
+		\begin{equation}
+			\Y = \bigcup_{i}\W_i
+		\end{equation}
+		Como sabemos que la imagen inversa de abierto es abierto,
+		\begin{equation}
+			\X = \bigcup_{i}f^{-1}(\W_i)
+		\end{equation}
+		y como $\X$ es compacto, tenemos que:
+		\begin{equation}
+			\X  = f^{-1}(\W_{i_1}) \cup ... \cup f^{-1}(\W_{i_n})
+		\end{equation}
+		y usando de nuevo la aplicación llegamos a que $\W_{i_1} \cup ... \cup \W_{i_n}$ cubren $\Y$.
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+	Sea $\Y$ contenido en $\X$, con $\X$ compacto y $T_{2}$, entonces $\Y$ es cerrado.
+	\begin{proof}
+		contenidos...
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+	Sea $\X$ compacto y $f:\X \rightarrow \R$ una aplicación continua entonces existen $max f$ y $min f$.
+	\begin{proof}
+		Como $f(\X)$ es compacto por \ref{comp_comp_comp}, tenemos que $f(\X) \subset \R$ y sabemos que por ser $\R$ completo, existen $x_1$ y $x_2$ tal que
+		\begin{equation}
+			min f = f(x_1) \leq f(x) \leq f(x_2) \leq max f
+		\end{equation}
+		y estos puntos son alcanzados.
+	\end{proof}
+\end{prop}
+
+
+\begin{prop}
+		Sea $\X$ compacto e $\Y$ un subespacio infinito entonces $\Y$ tiene algún punto de acumulación.
+	\begin{proof}
+		contenidos...
+	\end{proof}
+\end{prop}
+
+\begin{defi}[Definiciones]
+	\begin{enumerate}
+		\item \tbi{Secuencialmente compacto}: 
+		\item \tbi{$\sigma$-compacto}: 
+		\item \tbi{Numerablemente compacto}: 
+		\item \tbi{Lindelöf}: vease en \ref{lindel}
+	\end{enumerate}
+\end{defi}
+
+\begin{obs}
+	La relación que hay entre ser compacto, secuencialmente compacto, $\sigma$-compacto, numerablemente compacto y Lindelöf es la siguiente:
+	\begin{enumerate}
+		\item Compacto $\Rightarrow$ $\sigma$-compacto
+		\item $\sigma$-compacto $\Rightarrow$Lindelöf
+		\item $\sigma$-compacto $\Rightarrow$ Numerablemente compacto
+	\end{enumerate}
+\end{obs}
