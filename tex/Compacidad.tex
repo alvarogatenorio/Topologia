@@ -1,2 +1,21 @@
 %Para este capítulo se usará la abreviatura "comp".
 \chapter{Compacidad}
+\label{comp}
+La compacidad en espacios topológicos es una noción bastante elaborada, y su generalización llevo a los matemáticos bastante tiempo. La idea que buscaban era generalizar lapropiedad que dotaba a espacios como $[a,b]$ de una buena propiedad que permitía demostrar teoremas como el del valor medio o la continuidad uniforme. Inicialmente esta propiedad se enuncio como que cualquier subconjunto infinito de puntos de $[a,b]$ tenía un punto límite, pero no siendo esta la más adecuada, tiempo después se busco formalizarla en términos de abiertos(en concreto, como cubrimientos de abiertos). Eso dio lugar a la definición actual.
+\begin{defi}[Recubrimiento y recubrimiento de abiertos]
+	Una colección $\A$ de subconjuntos del espacio $\X$ se dice que es un \tbi{recubrimiento} si la unión de los elementos de $\A$ coincide con $\X$. $\A$ es un \tbi{recubrimiento abierto} de $\X$ si es un recubrimiento de $\X$ formado por conjuntos abiertos.
+\end{defi}
+
+\begin{defi}[Compacto]
+	Diremos que un espacio $\X$ es \tbi{compacto} si de cada \tb{recubrimiento abierto} $\A$ de $\X$ podemos extraer un subrecubrimiento finito que también recubre $\X$.
+\end{defi}
+
+\begin{exa}
+	\begin{enumerate}
+		\item El intervalo $[a,b]$ es compacto.
+		\item El intervalo $(a,b)$ no es compacto.
+		\item La recta real $\R$ no es compacta. Vemos que si tomamos un recubrimiento de abiertos : $\A=\{(n,n+2) \tq n \in \Z\}$ no contiene ningún subrecubrimiento finito que cubra $\R$.
+		\item El subespacio $\X = \{0\} \cup \{\frac{1}{n} \tq n \in \Z_{+}$ de $\R$\} es compacto.
+		Dado un conjunto abierto de $\A$, existe un abierto $\U$ de $\A$ que contiene al $0$. $\U$ cotiene todos los puntos de la forma $\frac{1}{n}$ salvo un número finito de ellos. Para cada uno de estos puntos cogemos un abierto del recubrimiento. Por lo tanto tenemos un subrecubrimiento finito, luego es compacto. 
+	\end{enumerate}
+\end{exa}
