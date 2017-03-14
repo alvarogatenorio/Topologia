@@ -6,15 +6,15 @@
 La separación de puntos consiste en, dados dos puntos distintos, saber distinguirlos topológicamente. A pesar de que hay más de un modo de hacerlo, nos centraremos solo en una. Para ello, consideremos dos puntos $x$ e $y$ distintos y vamos a definir ciertos axiomas que nos ayuden en nuestro estudio.
 
 \begin{itemize}
-\item El axioma $T_0$ o Kolmogorov dice que existe un entorno de uno de los dos puntos (sin especificar cuál) que no contiene al otro. 
-\item El axioma $T_1$ o Fréchet dice que existe un entorno $V^x$ de $x$ que no contiene a $y$ y también existe un entorno $V^y$ de $y$ que no contiene a $x$.
-\item El axioma $T_2$ o Hausdorff dice que existen un entorno $V^x$ de $x$ y un entorno $V^y$ de $y$ que son disjuntos. 
+\item El axioma $\kolmogorov$ o Kolmogorov dice que existe un entorno de uno de los dos puntos (sin especificar cuál) que no contiene al otro. 
+\item El axioma $\frechet$ o Fréchet dice que existe un entorno $\V^x$ de $x$ que no contiene a $y$ y también existe un entorno $\V^y$ de $y$ que no contiene a $x$.
+\item El axioma $\hausdorff$ o Hausdorff dice que existen un entorno $\V^x$ de $x$ y un entorno $\V^y$ de $y$ que son disjuntos. 
 \end{itemize}
 
 Evidentemente, cada axioma es más restrictivo que el anterior. 
 
 \begin{obs}
-Todo espacio métrico es $T_2$. En efecto, si consideramos dos puntos distintos $x$ e $y$, podemos tomar bolas centradas en cada uno de los puntos de radio menor que la mitad de la distancia que los separa. De este modo, obtenemos dos entornos abiertos que son disjuntos. 
+Todo espacio métrico es $\hausdorff$. En efecto, si consideramos dos puntos distintos $x$ e $y$, podemos tomar bolas centradas en cada uno de los puntos de radio menor que la mitad de la distancia que los separa. De este modo, obtenemos dos entornos abiertos que son disjuntos. 
 \end{obs}
 
 \section{Caracterizaciones}
@@ -22,29 +22,29 @@ Todo espacio métrico es $T_2$. En efecto, si consideramos dos puntos distintos 
 En esta subsección vamos a estudiar varios resultados útiles que se desprenden directamente de los axiomas que hemos definido anteriormente. 
 
 \begin{prop}
-	Un conjunto $X$ es $T_1$ si y solo si todos sus puntos son cerrados.
+	Un conjunto $\X$ es $\frechet$ si y solo si todos sus puntos son cerrados.
 	\begin{proof}
-		$\Leftarrow)$ Consideremos un punto cualquiera $x\in X$ y supongamos que $\{x\}$ es cerrado. De este modo, $U=X\backslash \{x\}$ es abierto, y si $x\neq y\in X$, entonces $U$ es un conjunto abierto tal que $x\notin U$ e $y\in U$.
+		$\Leftarrow)$ Consideremos un punto cualquiera $x\in \X$ y supongamos que $\{x\}$ es cerrado. De este modo, $\U=\X\backslash \{x\}$ es abierto, y si $x\neq y\in \X$, entonces $\U$ es un conjunto abierto tal que $x\notin \U$ e $y\in \U$.
 		 
-		$\Rightarrow)$ Supongamos ahora que $X$ es un espacio $T_1$ y sea $x\in X$. Entonces para cada $y\in X$ existe un abierto $U^y \subseteq X$ tal que $y\in U^y$ y $x\notin U^y$. Tomemos $U=\bigcup_{y\in X\backslash\{x\}}U^y=X\backslash\{x\}$, que es abierto por ser unión arbitraria de abiertos, luego $\{x\}$ es cerrado. 
+		$\Rightarrow)$ Supongamos ahora que $\X$ es un espacio $\frechet$ y sea $x\in \X$. Entonces para cada $y\in \X$ existe un abierto $\U^y \subseteq \X$ tal que $y\in \U^y$ y $x\notin \U^y$. Tomemos $\U=\bigcup_{y\in \X\backslash\{x\}}\U^y=\X\backslash\{x\}$, que es abierto por ser unión arbitraria de abiertos, luego $\{x\}$ es cerrado. 
 	\end{proof}
 \end{prop}
 
 \begin{theo}
-	Si $f,g:X\to Y$ son funciones continuas e $Y$ es $T_2$, entonces $\{f=g\}\subset X$ es cerrado. 
+	Si $f,g:\X\to \Y$ son funciones continuas e $\Y$ es $\hausdorff$, entonces $\{f=g\}$ es cerrado. 
 	\begin{proof}
-		Hemos de demostrar que el conjunto $\{f\neq g\}$ es abierto. Dado $x\in X$, si se tiene que $f(x)\neq g(x)$ y al ser $Y$ un espacio $T_2$, existen entornos $V^{f(x)}$ y $V^{g(x)}$ disjuntos. Como $f$ y $g$ son continuas, se tiene además que $f^{-1}(V^{f(x)})$ y $f^{-1}(V^{g(x)})$ son entornos de $x$. La intersección de entornos, como ya sabemos, también es entorno, luego $V^x=f^{-1}(V^{f(x)})\cap f^{-1}(V^{g(x)})$ es un entorno de $x$ contenido en $\{f\neq g\}$. En efecto, que $z\in V^x$ quiere decir que $f(z)\in V^{f(x)}$ y $g(z)\in V^{g(x)}$, pero al ser estos entornos disjuntos, $f(z)\neq g(z)$. Con esto concluye la demostración, ya que si $V^x$ es entorno (abierto) contenido en $\{f\neq g\}$, este conjunto es abierto.
+		Hemos de demostrar que el conjunto $\{f\neq g\}$ es abierto. Dado $x\in \X$, si se tiene que $f(x)\neq g(x)$ y al ser $\Y$ un espacio $\hausdorff$, existen entornos $\V^{f(x)}$ y $\V^{g(x)}$ disjuntos. Como $f$ y $g$ son continuas, se tiene además que $f^{-1}(\V^{f(x)})$ y $f^{-1}(\V^{g(x)})$ son entornos de $x$. La intersección de entornos, como ya sabemos, también es entorno, luego $\V^x=f^{-1}(\V^{f(x)})\cap f^{-1}(\V^{g(x)})$ es un entorno de $x$ contenido en $\{f\neq g\}$. En efecto, que $z\in \V^x$ quiere decir que $f(z)\in \V^{f(x)}$ y $g(z)\in \V^{g(x)}$, pero al ser estos entornos disjuntos, $f(z)\neq g(z)$. Con esto concluye la demostración, ya que si $\V^x$ es entorno (abierto) contenido en $\{f\neq g\}$, este conjunto es abierto.
 	\end{proof}
 \end{theo}
 
-Veamos ahora un caso particular del teorema anterior. Consideremos el espacio producto $X\times X$ y las proyecciones $p_1$ y $p_2$ desde este a $X$. El resultado anterior nos da que $\Delta:=\{p_1=p_2\}$ es un conjunto cerrado. Nótese que $\Delta=\{(x,x):x\in X\}$, esto es, la diagonal.
+Veamos ahora un caso particular del teorema anterior. Consideremos el espacio producto $\X\times \X$ y las proyecciones $p_1$ y $p_2$ desde este a $\X$. El resultado anterior nos da que $\Delta:=\{p_1=p_2\}$ es un conjunto cerrado. Nótese que $\Delta=\{(x,x):x\in \X\}$, esto es, la diagonal. De este modo, un conjunto es $\hausdorff$ si y solo si su diagonal es cerrada.
 
 Para terminar, veamos un colorario del teorema realizado con los conjuntos densos.  
 
 \begin{cor}
-	Si $f,g:X\to X$ son funciones continuas que coinciden en un conjunto denso y $X$ es $T_2$ entonces $\{f=g\}$ son iguales en $X$. 
+	Si $f,g:\X\to \X$ son funciones continuas que coinciden en un conjunto denso y $\X$ es $\hausdorff$ entonces $\{f=g\}$ son iguales en $X$. 
 	\begin{proof}
-		Sea $A\subset X$ un conjunto denso, es decir, $\overline{A}=X$. Como ya hemos visto, $A\subset \{f=g\}$ es un conjunto cerrado, pero al ser la clausura de $A$ el menor cerrado que lo contiene y coincidir con el total, entonces $\{f=g\}=X$.
+		Sea $A\subset \X$ un conjunto denso, es decir, $\bar{A}=\X$. Como ya hemos visto, $A\subset \{f=g\}$ es un conjunto cerrado, pero al ser la clausura de $A$ el menor cerrado que lo contiene y coincidir con el total, entonces $\{f=g\}=\X$.
 	\end{proof}
 \end{cor}
 
@@ -53,8 +53,8 @@ Para terminar, veamos un colorario del teorema realizado con los conjuntos denso
 En esta sección, comprobaremos cómo se comportan topológicamente los conjuntos $T_2$ si se ven sometidos a cocientes, sumas finitas...
 
 \begin{itemize}
-\item Si $(X,\T)$ es un espacio topológico $T_2$ entonces $(A,\T_A)$, donde $\emptyset \subset A \subseteq X$ es un subespacio de $X$ y $\T_A=\{U\cap A: U\in \T \}$ es la topología relativa, es $T_2$. Se dice entonces que propiedad de ser $T_2$ es hereditaria. 
-En efecto, sean $x,y\in A$ tales que $x\neq y$. Al pertenecer estos puntos también a $X$, existe $V^x$ y $V^y$ entornos disjuntos de $x$ e $y$ respectivamente. Pero al pertenecer también a $A$, entonces $x\in V^x \cap A$ y $y\in V^y \cap A$, lo que conduce a que $(V^x\cap A)\cap (V^y\cap A)=\emptyset$. De este modo, se cumple el axioma $T_2$ en $A$.  
-\item Si $\backsim$ es una relación de equivalencia en un espacio $X$ que es $T_2$, el espacio $X/\backsim$ con la topología propia de la identificación no es en general $T_2$. Para verlo, basta definir como relación de equivalencia en $\mathbb{R}$ con la topología usual $x\backsim y$ si y solo si $x-y\in \mathbb{Q}$. Así, la identificación $\pi: R\to R/\backsim$ (el espacio de partida equipado con la topología usual y el de llegada con la trivial), muestran lo que buscamos.
-\item Si $X_1$ y $X_2$ son dos espacios $T_2$, entonces su producto $X_1\times X_2$ también lo es. En efecto, consideremos dos puntos distintos del producto $x=(x_1,x_2)$ y $y=(y_1,y_2)$ y supongamos que $x_1\neq y_1$. Así, existen entornos $V^{x_1}$ y $V^{y_1}$ disjuntos que cumplen que $V^{x_1}\times X_2$ y $V^{y_1}\times X_2$ son entornos disjuntos de $x$ e $y$ en $X_1\times X_2$. De forma análoga se procede con la segunda coordenada para obtener así que el espacio producto es $T_2$. Mediante este argumento se demuestra fácilmente que el producto finito de espacios $T_2$ lo es también. Además, se puede probar que este hecho no se ciñe únicamente a productos finitos, sino que también es válido para el producto infinito de espacios. No obstante, la demostración de este comentario no es relevante para nuestro estudio puesto que el estudio de la topología que engendra este producto puede suponer ciertos problemas a estas alturas.
-\item Si $X_1$ y $X_2$ son dos espacios $T_2$, entonces su suma también lo es. La demostración de esto es muy similar a la del producto. 
+\item Si $(\X,\T)$ es un espacio topológico $\hausdorff$ entonces $(A,\T_A)$, donde $\emptyset \subset A \subseteq \X$ es un subespacio de $\X$ y $\T_A=\{\U\cap A: \U\in \T \}$ es la topología relativa, es $\hausdorff$. Se dice entonces que propiedad de ser $\hausdorff$ es hereditaria. 
+En efecto, sean $x,y\in A$ tales que $x\neq y$. Al pertenecer estos puntos también a $\X$, existe $\V^x$ y $\V^y$ entornos disjuntos de $x$ e $y$ respectivamente. Pero al pertenecer también a $A$, entonces $x\in \V^x \cap A$ y $y\in \V^y \cap A$, lo que conduce a que $(\V^x\cap A)\cap (\V^y\cap A)=\emptyset$. De este modo, se cumple el axioma $\hausdorff$ en $A$.  
+\item Si $\backsim$ es una relación de equivalencia en un espacio $\X$ que es $\hausdorff$, el espacio $\X/\backsim$ con la topología propia de la identificación no es en general $\hausdorff$. Para verlo, basta definir como relación de equivalencia en $\mathbb{R}$ con la topología usual $x\backsim y$ si y solo si $x-y\in \mathbb{Q}$. Así, la identificación $\pi: R\to R/\backsim$ (el espacio de partida equipado con la topología usual y el de llegada con la trivial), muestran lo que buscamos.
+\item Si $\X_1$ y $\X_2$ son dos espacios $\hausdorff$, entonces su producto $\X_1\times \X_2$ también lo es. En efecto, consideremos dos puntos distintos del producto $x=(x_1,x_2)$ y $y=(y_1,y_2)$ y supongamos que $x_1\neq y_1$. Así, existen entornos $\V^{x_1}$ y $\V^{y_1}$ disjuntos que cumplen que $\V^{x_1}\times \X_2$ y $\V^{y_1}\times \X_2$ son entornos disjuntos de $x$ e $y$ en $\X_1\times \X_2$. De forma análoga se procede con la segunda coordenada para obtener así que el espacio producto es $\hausdorff$. Mediante este argumento se demuestra fácilmente que el producto finito de espacios $\hausdorff$ lo es también. Además, se puede probar que este hecho no se ciñe únicamente a productos finitos, sino que también es válido para el producto infinito de espacios. No obstante, la demostración de este comentario no es relevante para nuestro estudio puesto que el estudio de la topología que engendra este producto puede suponer ciertos problemas a estas alturas.
+\item Si $\X_1$ y $\X_2$ son dos espacios $\hausdorff$, entonces su suma también lo es. La demostración de esto es muy similar a la del producto. 
