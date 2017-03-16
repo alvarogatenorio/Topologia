@@ -335,3 +335,68 @@ Ahora pasamos a ver si somos capaces de construir bases más sencillas para nues
 	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que $\B=\{W_i\times\cdots\times W_r:W_i\in \B_i$ base de $\T_i\}$ es base de entornos del mismo.
 	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que $\V^{(a_1,\dots,a_r)}=\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \V^{a_i} \text{ base de entornos en } \T_i \}$ es base de entornos del mismo.
 \end{enumerate}
+
+\section{Suma}
+Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas "alturas" (como si los colocaramos en estantes). 
+
+Como antes, vamos a comenzar viendo las propiedades que debe cumplir la topología que caracterice nuestro espacio para luego pasar a construirla.
+
+Dados los espacios $(X_i, \T_i)^{1\le i \le r}$ con sus correspondientes topologías, construimos el espacio suma como
+\begin{equation}
+(X_i, \T_i)\stackrel{j_i}\longrightarrow Y=\sum_{i=1}^rX_i=\bigcup_{i=1}^r\{i\}\times X_i
+\end{equation}
+Conviene resaltar que, como podemos observar, como las copias de los distintos espacios $X_i$ en la suma será distinta, dado que a cada una le corresponderá un elemento $i$ distinto.
+
+Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T$ más fina en $Y$ de modo que haga las $j_i$ continuas. Las funciones $j_i$ las llamaremos \tbi{inclusiones}.
+
+Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T$ todos los conjuntas de $Y$ cuya inversa sea abierta.
+De este modo, también incluiremos $\{i\}\times X_i$ dado que $j^{-1}(\{i\}\times X_i)=X_i$ que es abierto en $\T_i$.
+
+De este modo, construimos la topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$ comprobemos que está bien definida y que es realmente base.
+\begin{equation}
+(\{i\}\times U_i)\cap(\{j\}\times U_j)=
+\left\{ \begin{array}{lcc}
+\{i\}\times(U_i\cap U_j)\in\T &   si  & i=j \\
+\\  \emptyset\in\T& si & i\neq j 
+\end{array}
+\right.
+\end{equation}
+Como podemos ver, ambos casos verifican que la intersección está contenida en $\T$ como debiamos demostrar para ver que es base del mismo.
+Así, podemos definir:
+\begin{defi}[Topología suma]
+	Dados los espacios con sus correspondientes topologías $(X_i, \T_i)^{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbi{topología suma} como aquella topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$.
+\end{defi}
+
+Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología producto que no va a ser otra que la siguiente propiedad universal:
+	\begin{figure}
+	\centering
+	\includegraphics{EspacioSuma}
+	\caption{Espacio Suma}
+	\label{fig_suma}
+\end{figure}
+\begin{lem}[Propiedad Universal Suma]
+	En la situación reflejada en la figura \ref{fig_suma}, tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$.
+
+	Tenemos la siguiente \tbi{propiedad universal de la suma} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=j_i\circ f$ son continuas para todo $i$.
+	
+	\begin{proof}
+		Vemos que si $f$ es continua, como $j_i$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
+		
+		Por otro lado, tenemos que dado que $(Y,\T)$ como hemos visto en la construcción de la topología suma $T$ es un recubrimiento abierto y continuo en cada uno de los $X_i$, tenemos que al ser continuo cada $g_i$ en $X_i$ también lo será $g$.
+	\end{proof}
+\end{lem}
+
+Resulta importante indicar que como se desprende de la demostración (segunda implicación) la propiedad universal no solo nos va a caracterizar la función $g$, sino que nos permite caracterizar también la topología suma (si no se cumple la propiedad podemos asegurar que no estamos trabajando en esta). 
+
+
+\begin{obs}
+	Veamos por último un par de observaciones sobre esta topología que pueden resultar interesantes de cara a conocer el mecanismo de la misma.
+	\begin{enumerate}
+	\item Como hemos visto, $\{i\}\times X_i\subset\sum_j X_j$ siendo $\{i\}\times X_i$ abierto. Veamos que también es cerrado.
+	
+	Dado que $\sum_j X_j\setminus \{i\}\times X_i=\bigcup_{j\ne i }X_j$ es abierto, lo tenemos.
+	
+	\item Las inclusiones que $X_l\stackrel{j_l}\longrightarrow\sum_iX_i$ son inmersiones abiertas y cerradas. Esto lo dejamos como ejercicio al lector, es un ejercicio sencillo pero puede resultar útil como repaso del modo de construcción de la topología suma realizado previamente en el apartado.
+	\end{enumerate}
+	
+\end{obs}
