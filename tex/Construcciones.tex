@@ -7,8 +7,8 @@
 Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua. Evidentemente, una elección fácil para que esto ocurra es escoger la topología discreta, puesto que es la que cuenta con más abiertos y, por lo tanto, para todo abierto $\U'$ de $\mathcal{X}$ entonces $f^{-1}(\U')$ es abierto en $\mathcal{Y}$, lo que implica que $f$ sea continua. Sin embargo, este caso no es realmente interesante y lo difícil del problema será encontrar la topología menos fina para que $f$ sea continua.
 
 La solución a este problema es la topología $f^{-1}(\T)$, definida como 
-
 \[f^{-1}(\T)=\{f^{-1}(\U):\U\in \T\}\]
+y que llamamos \tbitop{imagen inversa}.
 
 La comprobación de que verdaderamente es una topología se desprende de las propiedades de la función inversa aplicada a conjuntos. Por otro lado, es la menos fina que implica que $f$ sea continua por construcción, luego cualquier otra topología con estas características contiene a esta. Finalmente, se tiene que es única. En efecto, si tenemos que $\T$ y $\T$ cumplen que son las menos finas por construcción, entonces se tiene que $\T\subset \T'$ y $\T'\subset \T$, luego son iguales.
 
@@ -77,7 +77,7 @@ Así pues, consideremos un espacio topológico $(\mathcal{\X},\T)$, un conjunto 
 
 \[f(\T)=\{\U: f^{-1}(\U)\in \T\}\]
 
-Evidentemente, se trata de una topología y es la más fina que permite que $f$ sea continua ya que si se añade algún abierto más deja de serlo. Por último, realizando un razonamiento por doble inclusión al análogo en imágenes inversas, se puede ver que es única.
+Evidentemente, se trata de una topología y es la más fina que permite que $f$ sea continua ya que si se añade algún abierto más deja de serlo. Por último, realizando un razonamiento por doble inclusión al análogo en imágenes inversas, se puede ver que es única. Llamamos a esta topología \tbitop{imagen} o \tb{\ti{topología imagen directa}}.
 
 Continuando con la misma argumentación, veamos cuando una función $g$ que parta de $\mathcal{Y}$ es continua
 
@@ -89,12 +89,11 @@ Continuando con la misma argumentación, veamos cuando una función $g$ que part
 	&(\mathcal{\Z},\T')}
 \end{equation}
 
-Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación.
+Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación. Decimos que esta es la \tbi{propiedad universal!de la imagen}.
 
 \begin{obs}[Sobreyectividad]
 	
-	Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{\X})$. Entonces $f^{-1}(\mathcal{\Y})$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{\Y}\backslash f(\mathcal{\X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{\Y}\backslash f(\mathcal{\X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{\X})$ es el complementario de $\mathcal{\Y}\backslash f(\mathcal{\X})$, entonces $f(\mathcal{\X})$ es cerrado. No obstante, $f(\mathcal{\X})$ coincide con el total, luego también es un abierto. 
-	
+	Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{\X})$. Entonces $f^{-1}(\mathcal{\Y})$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{\Y}\backslash f(\mathcal{\X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{\Y}\backslash f(\mathcal{\X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{\X})$ es el complementario de $\mathcal{\Y}\backslash f(\mathcal{\X})$, entonces $f(\mathcal{\X})$ es cerrado. No obstante, $f(\mathcal{\X})$ coincide con el total, luego también es un abierto. 	
 \end{obs}
 
 Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consideramos el siguiente diagrama:
@@ -145,7 +144,7 @@ Gracias a esta definición, podemos reescribir la topología cociente como:
 Además, vamos a dar un nombre a las funciones que envían $X$ en un espacio homeomorfo a un cociente:
 
 \begin{defi}[Identificación]
-	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva que verifica que $\T'$ es la topología imagen por $f$ $f(\T)$.
+	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva que verifica que $\T'$ es la topología imagen por $f$: $f(\T)$.
 \end{defi}
 
 La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. El hecho de que la topología de $\mc{Y}$ sea la imagen significa que una identificación es continua.
@@ -292,12 +291,12 @@ Como dados $U_1\times\cdots\times U_r$ y $V-1\times\cdots\times V_r$ elementos d
 Así, una vez que tenemos la base que va a caracterizar nuestra topología producto podemos afirmar que esta viene dada por $\T=\prod_i \T_i$.
 
 \begin{defi}[Topología producto]
-	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbi{topología producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
+	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbitop{producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
 \end{defi}
 \begin{lem}[Propiedad Universal]
 	En la siguiente situación,%añadir figura wiki
 	
-	Tenemos la siguiente \tbi{propiedad universal del producto} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=p_i^r\circ f$ son continuas para todo $i$.
+	Tenemos la siguiente \tbi[propiedad universal!del producto]{propiedad universal del producto} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=p_i^r\circ f$ son continuas para todo $i$.
 	
 	\begin{proof}
 		Vemos que si $f$ es continua, como $p_i^r$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
@@ -364,7 +363,7 @@ De este modo, construimos la topología que tiene como base $\B=\{\{i\}\times U_
 Como podemos ver, ambos casos verifican que la intersección está contenida en $\T$ como debiamos demostrar para ver que es base del mismo.
 Así, podemos definir:
 \begin{defi}[Topología suma]
-	Dados los espacios con sus correspondientes topologías $(X_i, \T_i)^{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbi{topología suma} como aquella topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$.
+	Dados los espacios con sus correspondientes topologías $(X_i, \T_i)^{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbitop{suma} como aquella topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$.
 \end{defi}
 
 Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología producto que no va a ser otra que la siguiente propiedad universal:
