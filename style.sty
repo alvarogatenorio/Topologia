@@ -56,6 +56,10 @@
 % Condicionales
 \usepackage{ifthen}
 
+% Espacios para comandos sin argumentos
+% (http://tex.stackexchange.com/questions/17730/newcommand-and-spacing)
+\usepackage{xspace}
+
 %Paquetes para Entornos.
 \usepackage{amsthm}
 %Entornos personalizados.
@@ -190,9 +194,9 @@
 \newcommand{\esfera}{\mb{S}}
 \newcommand{\toro}{\mb{T}}
 
-\newcommand{\kolmogorov}{$\mathrm{T_0}$}
-\newcommand{\frechet}{$\mathrm{T_1}$}
-\newcommand{\hausdorff}{$\mathrm{T_2}$}
+\newcommand{\kolmogorov}{$\mathrm{T_0}$\xspace}
+\newcommand{\frechet}{$\mathrm{T_1}$\xspace}
+\newcommand{\hausdorff}{$\mathrm{T_2}$\xspace}
 
 \DeclareMathOperator{\bola}{B}
 
