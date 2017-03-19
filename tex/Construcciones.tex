@@ -21,9 +21,9 @@ Una vez resuelta esta cuestión, es hora de profundizar un poco más. Tomemos ot
 	&(\mathcal{Z},\T') \ar@{-->}[ru]_{f\circ g} \ar[u]^g}
 \end{equation*}
 
-En primer lugar, observemos que como $f$ es continua por definición del problema anterior, que $g$ sea continua implica que la composición $f\circ g$ también lo sea. Sin embargo, la otra implicación (si $f\circ g$ es continua entonces $g$ es continua) también es cierta como veremos a continuación. Esto es realmente interesante, puesto que la topología que haya en $\mathcal{Y}$ no es relevante si nuestro estudio se centra en la relación de $(\mathcal{X},\T')$ y $(X,\T)$.
+En primer lugar, observemos que como $f$ es continua por definición del problema anterior, que $g$ sea continua implica que la composición $f\circ g$ también lo sea. Además, la otra implicación (si $f\circ g$ es continua entonces $g$ es continua) también es cierta como veremos a continuación. Esto es realmente interesante, puesto que la topología que haya en $\mathcal{Y}$ no es relevante si nuestro estudio se centra en la relación de $(\mathcal{X},\T')$ y $(X,\T)$.
 
-Veamos que efectivamente se cumple esta implicación. En efecto, consideremos un abierto $\W\subset f^{-1}(\U)$ y verifiquemos que $g^{-1}(\W)\subset \T'$. Por su definición, $\W$ es un abierto de $f^{-1}(\U)$ con $\U\subset \T$ y, como $f\circ g$ es continua, entonces $(f\circ g)^{-1}(\U)\subset \T'$. Pero se tiene que $f\circ g)^{-1}(\U)=g^{-1}[f^{-1}(\U)]\equiv g^{-1}(\W)$, luego $g^{-1}(\W)\subset \T'$.
+Veamos que efectivamente se cumple esta implicación. En efecto, consideremos un abierto $\W\subset f^{-1}(\U)$ y verifiquemos que $g^{-1}(\W)\subset \T'$. Por su definición, $\W$ es un abierto de $f^{-1}(\U)$ con $\U\subset \T$ y, como $f\circ g$ es continua, entonces $(f\circ g)^{-1}(\U)\subset \T'$. Pero se tiene que $(f\circ g)^{-1}(\U)=g^{-1}[f^{-1}(\U)]\equiv g^{-1}(\W)$, luego $g^{-1}(\W)\subset \T'$.
 
 Una consecuencia directa que se desprende de esto es que la topología imagen inversa $f^{-1}(\T)$ es la topología en $\mathcal{Y}$ que cumple la equivalencia anterior. En efecto, supongamos que una topología $\T_\mathcal{Y}$ lo cumple y veamos que coincide con la topología imagen inversa. Para ello, consideremos el siguiente diagrama
 
@@ -89,7 +89,7 @@ Continuando con la misma argumentación, veamos cuando una función $g$ que part
 	&(\mathcal{\Z},\T')}
 \end{equation}
 
-Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación. Decimos que esta es la \tbi{propiedad universal!de la imagen}.
+Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación. Decimos que esta es la \tbi{propiedad universal de la imagen}.
 
 \begin{obs}[Sobreyectividad]
 	
@@ -123,7 +123,7 @@ Está claro que se verifican nuestros requisitos. Por un lado, $p$ es trivialmen
 	En las condiciones de la construcción (cuando la relación $\sim$ está definida como $x\sim y\iff f(x)=f(y)$), $\bar{f}$ es homeomorfismo.
 	
 	\begin{proof}
-		Ya hemos visto que $\bar{f}$ es biyectivo cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$; y que es continuo en el sentido en el que lo hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
+		Ya hemos visto que $\bar{f}$ es biyectiva cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$; y que es continuo en el sentido en el que lo hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
 		
 		En efecto, $U\in \X/\mathord{\sim}$ abierto $\iff p^{-1}(U)$ es abierto en $\X$. Pero tenemos que $p^{-1}(U)=f^{-1}(f(S))$, porque:
 		\[x\in p^{-1}(U)\iff p(x)\in S\stackrel{\bar{f}\text{ biy.}}{\iff}\bar{f}(p(x))\in \bar{f}(U)\iff f(x)\in\bar{f}(U)\iff x\in f^{-1}(\bar{f}(U))\]
