@@ -73,4 +73,69 @@ lo que prueba que $\mathcal{X}$ es compacto.
 
 sería finito, y esto contradice que sea no numerable. 
 
+
+
+13/03/2017
+
+\textbf{Construcciones}
+
+En esta sección se estudiaran las distintas construcciones que ya se han detallado en casos anteriores (subespacios, cociente y productos y sumas finitas) en los que quedan espacios compactos. 
+
+\begin{itemize}
+\item Los subespacios cerrados $F$ de un espacio compacto son compactos. En efecto, sea $\A=\{A_i\}_{i\in I}$ un recubrimiento por abiertos del espacio topológico compacto $(K, \T)$. Claramente, $\A\cup F^c$ es un recubrimiento por abiertos de $K$, del cual se puede extraer un subrecubrimiento finito. Si este no contiene a $F^c$, entonces está formando exclusivamente por elementos de $\A$, digamos $\{A_{i_1},\ldots, A_{i_n}\}$, y como $F\subset K$ ya hemos terminado. Por otro lado, si $F^c$ está en el subrecubrimiento finito, este será de la forma $\{A_{i_1},\ldots, A_{i_n},F^c\}$, y como $F\subset X=\{A_{i_1}\cup \ldots\cup  A_{i_n}\}\cup F^c$, tenemos que $F\subset A_{i_1}\cup \ldots\cup  A_{i_n}$.
+\item Los espacios cocientes de compactos son compactos, puesto que un cociente es una aplicación continua suprayectiva y la imagen continua de un compacto es compacto. De esta forma, si tenemos una función continua $f: \X\to \Y$, donde $\X$ es compacto y $\Y$ es Hausdorff, entonces la aplicación es cerrada. En efecto, sea $F\subset \X$ un subespacio cerrado, que será compacto por lo anterior. Por otro lado, $f(F)$ es compacto al tratarse de la imagen continua de un compacto y, finalmente, sabemos que ser compacto en un espacio Hausdorff implica ser cerrado. De aquí se deduce que si además $f$ es suprayectiva, entonces se trata de una identificación y que si es biyectiva, entonces estamos ante un homeomorfismo. 
+\item Las sumas finitas de espacios compactos son compactos, ya que si se tiene un recubrimiento finito de toda la suma, se tendrá uno finito para cada uno de los sumandos. Nótese que si la suma es numerable esto ya no tiene por qué ser cierto. 
+\item Los productos finitos de espacios compactos son compactos. Este resultado se conoce como el teorema de Tychonoff (que también vale para el producto infinito) y se demostrará a continuación. 
+\end{itemize}
+
+\begin{theo}[Teorema de Tychonoff] Sean $\X$ e $\Y$ dos espacios topológicos y sea $\X \times \Y$ su espacio producto. Entonces $\X$ e $\Y$ son compactos si y solamente si $\X\times \Y$ lo es.
+\begin{proof}
+
+$\Leftarrow )$ Si $\X\times \Y$ es compacto, consideremos la proyección $p_{\X}: \X\times \Y \to \X$. Al ser continua y como la imagen continua de un compacto es compacto. Hemos terminado. El caso para $\Y$ es análogo. 
+
+$\Rightarrow )$ Dado el producto $\X\times \Y$, podemos tomar un recubrimiento por abiertos suyo de modo que 
+\[\X\times \Y=\bigcup_{i}\W_i.\]
+Nuestro objetivo es conseguir extraer una cantidad finita de esta familia de abiertos. Antes de comenzar, nótese que estos abiertos no tienen por qué ser productos y esto dificulta nuestra labor. Por tanto, supondremos que el recubrimiento por abiertos que tomemos sí que es un producto de dos abiertos, donde cada uno pertenece a un factor. Una vez realizado este comentario, ya podemos comenzar. 
+
+En primer lugar, para todo $(x,y)\in\X\times \Y$ existe $i$ de modo que $(x,y)\in \W_i$. Así, se pueden encontrar entornos abiertos $\U^x$ y $\V^y$ tales que $U^x\times \V^y \subset \W_i$ (puesto que así son las bases que hemos elegido). Nótese que los entornos no dependen exclusivamente de $x$ e $y$ por lo que lo correcto sería escribir $U^x_y\times \V^y_x \subset \W_i$. 
+
+Fijemos $x\in \X$ de forma que ocurrirá que $\Y=\bigcup_{y\in \Y} \V_x^y$. Por ser $Y$ compacto, existe un subrecubrimiento finito tal que 
+\[\Y=\V_x^{y_1}\cap \ldots \cap \V_x^{y_r}.\]
+Pese a que los puntos $y_l$ dependen de la elección de $x$, no se ha incluido en la notación con tal de no sobrecargarla. 
+
+A continuación, para cada $x\in \X$ se puede considerar el abierto
+\[\U^x=\V^x_{y_1}\cap \ldots \cap \V^x_{y_r}.\]
+Sin embargo, al ser $X$ compacto, entonces se puede tomar un subrecubrimiento finito de él tal que
+\[\X=\bigcup_{x\in \X}\U^x=\U^{x_1}\cap \ldots \cap \U^{x_s}.\]
+
+A estas alturas, podemos afirmar que
+\[U^{x_k}\times V_{x_k}^{y_l}\subset \U_{y_l}^{x_k}\times \V_{x_k}^{y_l}\subset W_{i_{kl}}.\]
+Estos $W_{i_{kl}}$ son una cantidad finita y solo queda comprobar que recubren a $\X\times \Y$. Para ello, tomemos un punto $(x,y)\in \X\times \Y$. Claramente, $x\in U^{x_k}$ y $y\in  \V_{x_k}^{y_l}$, luego $(x,y)\in W_{i_{kl}}$, y hemos terminado. 
+\end{proof}
+\end{theo}
+
+Del teorema anterior se pueden deducir ciertas consecuencias relevantes cuando el espacio topológico es $\mathbb{R}^n$.
+
+\begin{obs}
+
+(1) Los adoquines 
+\[[a_1,b_1]\times \ldots \times [a_r,b_r]\]
+son compactos, puesto que $[a_i,b_i]$ es compacto para todo $i\in \{1,\ldots, n\}$
+
+(2) Ser cerrado y acotado implica ser compacto. En efecto, si está acotado existe una bola $\bola(0,\rho)$ para algún $\rho >0$ y así mismo esta bola pertenece a $[-\rho,\rho]^n$. Si además es cerrado, se trataría de un cerrado contenido en un compacto, luego compacto. 
+\end{obs}
+
+\textbf{Compacidad local}
+
+\begin{defi}[Compacidad local] Un espacio es localmente compacto cuando cada punto tiene una base de entornos compactos para cada $x\in \X$ de la forma 
+\[\V^x=\{K\subset \X: K\text{ es entorno y es compacto}\}.\]
+\end{defi}
+
+Veamos algunos ejemplos para aclarar este concepto. 
+
+\textit{Ejemplos}
+
+(1) $\mathbb{R}^n$ con la topología usual lo es, ya que para cada punto existe una base de entornos de la forma
+\[\V^x=\{\bola(x,1/k):k\geq 1\}\]
+(2) $\mathbb{Q}\subset \mathbb{R}$ con la topología usual no lo es. En efecto, tomemos un entorno compacto de $\mathbb{Q}$ del cero $K^0$. Este entorno, por definición, contiene un abierto $\U$ de la topología relativa de modo que $(-\varepsilon,\varepsilon)\cap \mathbb{Q}$ para cierto $\varepsilon>0$. A continuación, elijamos un irracional $\theta \in (-\varepsilon,\varepsilon)$ y una sucesión $\{q_k\}_{k=1}^\infty\in (-\varepsilon,\varepsilon)\cap \mathbb{Q}$ que converge a $\theta$. Claramente, $\{q_k:k\in \mathbb{N}\}$ es un conjunto infinito (ya que si fuese finito convergería a un valor de $\mathbb{Q}$) contenido en $K^0$. Por el teorema de Bolzano-Weierstrass, este conjunto tiene un punto de acumulación en $K^0$ y existe una subsucesión $\{q_{k_l}\}_{l=1}^\infty$ que converge a un punto de $K^0$ al que denotaremos $p$. No obstante, toda subsucesión de una sucesión converge al mismo punto que esta última, luego hemos probado que $p=\theta$. Esto es una contradicción y hemos terminado. 
 \end{itemize}
