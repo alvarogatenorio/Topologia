@@ -1,0 +1,19 @@
+*Contiuidad en un punto
+
+Escribiría la definición usual de continuidad sin \forall ni \exists y escribiendo como \[\] o equation lo de normas y bolas
+No sería para cierta B^a y para cualquier B^f(a)?
+
+Observación 2.1.1
+Creo que donde pone gruesa es fina y donde pone fina es gruesa (ya que la fina es la que más abiertos tiene)
+1.{x0} es abierto y, (COMA) por tanto, (COMA)
+
+Observación 2.1.2
+2. Definiría la aplicación identidad en un \[\] o equation
+
+Proposición 2.1.1
+Sea V^f(x0) un entorno de ¡¡¡f(x0)!!!
+Que yo sepa en la igualdad (f|A)^{-1}(V^f(x0))=A\cap f^{1}(V^f(x0)) no se utiliza para nada la topología relativa. Creo que se utiliza en el hecho de que la intersección de A con un entorno en X es entorno en A.
+
+Prposición 2.1.2
+La continuidad es una propiedad local... si EXISTE V^x0\subset X entorno de x0 tal que ¡¡¡f|V^x0!!! es continua en x0.
+Demostración: Si EXISTE V^x0\subset X entorno de x0 tal que ¡¡¡f|V^x0!!! es continua en x0, entonces ¡¡¡(f|V^x0)^{-1}(V^f(x0))=...!!! ES ENTORNO (sin el luego) de x0 en V^x0. Esto implica que,(hay muchos entonces seguidos) ¡¡¡f^{1}(V^f(x0))!!! es entorno de x0 en X y, (COMA) por tanto, (COMA) f es continua.

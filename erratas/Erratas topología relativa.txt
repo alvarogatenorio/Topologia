@@ -1,0 +1,13 @@
+Definición 1.5.1
+Creo que queda mejor escribiendo el conjunto \T|Y aparte.
+
+Proposición 1.5.1
+es lo mismo que ver si ¡¡¡Y\C!!! es abierto
+Especificaría abierto de Y o de X en cada caso por ser la primera demostración que se hace con topología relativa
+y, (COMA) por tanto, (COMA) C es cerrado.
+Creo que haría falta explicar que todo cerrado de Y es de esa forma, Y\cap F con F cerrado de X.
+
+Observación 1.5.1
+Resaltar que son consecuencias que habíamos utilizado siempre (ab de ab son ab y cerr de cerr son cerr)
+
+No sé si esta sección está terminada, pero yo añadiría cosas, como que los entornos son intersección de entornos de X con Y, y lo mismo con las bases de abiertos.
