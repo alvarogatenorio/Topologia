@@ -1,0 +1,100 @@
+%Para este capítulo se usará la abreviatura "conex".
+\chapter{Conexión}
+\label{conex}
+
+La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n$ que pueden generalizarse a un espacio topológico arbitrario. Un conjunto es, intuitivamente, conexo, si está hecho ``de una sola pieza''. 
+
+\section{Definición y propiedades}
+
+Empezaremos viendo, por supuesto, la definición, y una serie de caracterizaciones equivalentes.
+
+\begin{defi}[Conexión]
+	$\X$ es \tbi{conexo} si no es unión de dos abiertos disjuntos no vacíos, esto es, no existen $U,V\neq\emptyset$, abiertos, tales que $U\cap V=\emptyset$ y $X=U\cup V$.
+\end{defi}
+
+\begin{obs}[Conexión en subespacios]
+	De nuevo, como con compacidad, la conexión en un subconjunto no necesita una definición alternativa. Dado $\mc{Y}\subset\X$, simplemente decimos que $\mc{Y}$ es conexo si lo es entendido como espacio equipado con la topología relativa. Nótese que esta definición es equivalente a la mucho más rebuscada que dábamos en $\R^n$, que involucraba abiertos relativos.
+\end{obs}
+
+\begin{prop}[Definiciones equivalentes de conexión]
+	Sea un espacio topológico $\X$. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $\X$ es conexo.
+		\item $\X$ no es unión de dos cerrados disjuntos no vacíos, esto es, no existen $F,G\neq\emptyset$, cerrados, tales que $F\cap G=\emptyset$ y $X=F\cup G$.
+		\item No hay ningún conjunto abierto y cerrado no trivial, esto es, $\not\exists U$ abierto y cerrado tal que $U\neq\emptyset$ y $U\neq\X$.
+	\end{enumerate}
+\end{prop}
+
+\begin{exa}
+	En $\R$, los conexos son los intervalos. En efecto, si $A\subset\R$ no es un intervalo, entonces por definición $\exists a\notin A$ tal que $\inf A< a < \sup A$. Entonces, $(-\infty, a)\cap A)$ y $(a,\infty)\cap A$ son dos abiertos disjuntos no vacíos cuya unión contiene a $A$.
+\end{exa}
+
+Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos.
+
+\begin{prop}[Imagen continua]
+	La imagen continua de un conexo es un conexo.
+	
+	\begin{proof}
+		Sea $\X$ conexo, $f:\X\to\mc{Y}=f(\X)$ continua. Entonces queremos ver que $\mc{Y}$ es conexo. Para ello vamos a ver el contrarrecíproco: si $\mc{Y}$ no es conexo $\X$ tampoco.
+		
+		Si existiera $A\subset\mc{Y}$ abierto y cerrado no trivial (esto es, que no es ni el vacío ni el total), entonces por ser $f$ continua $f^{-1}(A)$ es también abierta y cerrada, y por ser $f$ sobreyectiva $f^{-1}(A)$ no es el vacío ni el total. Por tanto $\X$ no es conexo.
+	\end{proof}
+\end{prop}
+
+% NOTA: no he nombrado el teorema como teorema del pivote porque buscado en internet sólo salía en la página de Ruiz con ese nombre. En demás libros que he visto no tiene nombre.
+\begin{theo}
+	\label{conex_theo_pivote}
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ y existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo. Ahora
+	
+	\begin{proof}
+		Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado. Vamos a ver que necesariamente es el vacío o el total. Entonces, para cada $i\in I$ $S\cap A_i\subset A_i$ y es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
+		\begin{enumerate}
+			\item Si $S\cap A_i=\emptyset\;\forall i\in I$, entonces $S=\emptyset$ y ya está.
+			\item Si $\exists i\in I$ tal que $S\cap A_i=A_i$, entonces $\exists a\in S\cap A_i$ que por hipótesis verifica que $a\in S\cap A_j$ para todo $j\in I$. Entonces ninguno de los $S\cap A_j$ es vacío, y por tanto $S\cap A_j=A_j\;\forall j\in I$, es decir, $S=\bigcup_{i\in I} A_i$. \qedhere
+		\end{enumerate}
+	\end{proof}
+\end{theo}
+
+Este teorema es extremadamente útil para garantizar la conexión de un sinnúmero de conjuntos, y genera un gran abanico de corolarios y consecuencias. Aquí vamos a detallar algunos que se usan con frecuencia.
+
+\begin{cor}
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos que verifica que $A_i\cap A_j\neq\emptyset\;\forall i\neq j$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
+	
+	\begin{proof}
+		Sea $i_0\in I$ de forma que $A_{i_0}$ sea no vacío. Entonces $A_i\cap A_{i_0}\neq\emptyset$ por hipótesis, y podemos aplicar el teorema anterior para cada $i\in I$. Ahora, escribimos:
+		\[\bigcup_{i\in I} A_i = \bigcup_{i\in I} (A_i\cup A_{i_0})\]
+		y como todos comparten los elementos de $A_{i_0}$, podemos aplicar el teorema de nuevo.
+	\end{proof}
+\end{cor}
+
+\begin{cor}
+	Sea una cadena $\{A_i\}_{i=1}^n$ de conexos que verifica que $A_i\cap A_{i+1}\neq\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
+	
+	\begin{proof}
+		Por inducción, se aplica el teorema a $A_1\cup A_2$, $(A_1\cup A_2)\cup A_3$, ..., $\left(\bigcup_{i=1}^k\right)\cup A_{k+1}$.
+	\end{proof}
+\end{cor}
+
+\begin{obs}
+	El corolario anterior también se verifica si la sucesión de conjuntos es numerable, pero no lo vamos a probar aquí.
+	% AQUÍ VIENE PROBADO http://dbfin.com/topology/munkres/chapter-3/section-23-connected-spaces/problem-2-solution/
+\end{obs}
+
+El siguiente resultado, aunque también es consecuencia del teorema \ref{conex_theo_pivote}, es más que un mero corolario y merece la categoría de teorema por sí mismo.
+
+\begin{theo}
+	Sea $A$ conexo, $B$ tal que $A\subset B\subset\adher{A}$. Entonces $B$ es conexo. En particular $\adher{A}$ es conexo.
+	
+	\begin{proof}
+		Como podemos escribir:
+		\[B=\bigcup_{b\in B\setminus A} (A\cup\{b\}) \]
+		y todos comparten un punto, entonces basta probar que cada $A\cup\{b\}\subset\adher{A}$ es conexo, pues en ese caso el teorema \ref{conex_theo_pivote} nos garantiza la conexión de $B$.
+		
+		Supongamos que $\exists C\subset A\cup\{b\}$ abierto y cerrado y no trivial. Entonces, $C\cap A\subset A$ y es abierto y cerrado en $A$. Por tanto, $A$ es conexo, y distinguimos dos casos:
+		
+		\begin{itemize}
+			\item Si $C\cap A=\emptyset$, entonces $C=\{b\}$ y por tanto $\{b\}$ es abierto, luego, como el entorno $\{b\}$ de sí mismo no corta con $A$, $b\notin\adher{A}$, lo cual es una contradicción.
+			\item Si $C\cap A=A$, $C=A$ y por tanto $A$ es cerrado, pero $b\notin A=\adher{A}$, que de nuevo es una contradicción. \qedhere
+		\end{itemize}
+	\end{proof}
+\end{theo}
