@@ -32,7 +32,9 @@ De la misma forma que podemos estudiar la continuidad para unas ciertas topolog�
 	\begin{enumerate}
 		\item Si $f:\X\to\mc{Y}$ es la aplicación constante $f=b$, entonces $f$ es continua con cualquier topología. En efecto, la imagen inversa de cualquier subconjunto (y en particular de cualquier entorno) de $\mc{Y}$ que contenga a $b$ es el total, que es entorno de todos los puntos.
 		
-		\item La continuidad de la aplicación identidad depende de los espacios topológicos sobre los que está definida, al contrario de lo que pueda parecer. En efecto, sea $f:(\X,\T_\text{discreta})\to (\X,\T_\text{trivial})$. Esta sí es continua, por la observación \ref{cont_obs_continuidad_discreta_trivial}. Sin embargo, su inversa, que también es la aplicación identidad, no es continua. Esto se sigue directamente de que, por ser la topología del espacio de llegada la discreta, $\{f(x_0)\}$ es abierto y por tanto entorno de $f(x_0)$, pero su imagen inversa es $\{x_0\}$ que con la topología trivial del espacio de salida no es entorno. \qedhere
+		\item La continuidad de la aplicación identidad depende de los espacios topológicos sobre los que está definida, al contrario de lo que pueda parecer. En efecto, sea
+		\[f:(\X,\T_\text{discreta})\to (\X,\T_\text{trivial})\]
+		que sí es continua, por la observación \ref{cont_obs_continuidad_discreta_trivial}. Sin embargo, su inversa, que también es la aplicación identidad, no es continua. Esto se sigue directamente de que, por ser la topología del espacio de llegada la discreta, $\{f(x_0)\}$ es abierto y por tanto entorno de $f(x_0)$, pero su imagen inversa es $\{x_0\}$ que con la topología trivial del espacio de salida no es entorno. \qedhere
 	\end{enumerate}
 \end{obs}
 
@@ -42,7 +44,7 @@ Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
 	Dada $f:\X\to\mc{Y}$, continua en $x_0\in\X$, si $A\subset\X$ tal que $x_0\in A$, entonces $f\restriction_A:A\to\mc{Y}$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V^{f(x_0)}$ un entorno de $x_0$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V^{f(x_0)}) = A\cap f^{-1}(V^{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $A$.
+		Sea $V^{f(x_0)}$ un entorno de $f(x_0)$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V^{f(x_0)}) = A\cap f^{-1}(V^{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $A$.
 	\end{proof}
 \end{prop}
 
