@@ -32,6 +32,7 @@ Empezaremos viendo, por supuesto, la definición, y una serie de caracterizacion
 Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos.
 
 \begin{prop}[Imagen continua]
+	\label{conex_prop_im_continua}
 	La imagen continua de un conexo es un conexo.
 	
 	\begin{proof}
@@ -58,10 +59,11 @@ Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjunto
 Este teorema es extremadamente útil para garantizar la conexión de un sinnúmero de conjuntos, y genera un gran abanico de corolarios y consecuencias. Aquí vamos a detallar algunos que se usan con frecuencia.
 
 \begin{cor}
-	Sea $\{A_i\}_{i\in I}$ una familia de conexos que verifica que $A_i\cap A_j\neq\emptyset\;\forall i\neq j$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
+	\label{conex_cor_pivote_corte_comun}
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos que cumple que $\exists i_0\in I$ tal que $A_{i_0}\cap A_i\neq\emptyset\;\;\forall i\in I$. Entonces $\bigcup_{i\in I} A_i$ es conexo. En particular, el resultado se verifica si la familia cumple que $A_i\cap A_j\neq\emptyset\;\;\forall i\neq j$.
 	
 	\begin{proof}
-		Sea $i_0\in I$ de forma que $A_{i_0}$ sea no vacío. Entonces $A_i\cap A_{i_0}\neq\emptyset$ por hipótesis, y podemos aplicar el teorema anterior para cada $i\in I$. Ahora, escribimos:
+		Como $A_i\cap A_{i_0}\neq\emptyset$ por hipótesis, podemos aplicar el teorema \ref{conex_theo_pivote} para cada $i\in I$, y por tanto cada $A_{i_0}\cup A_i$ es conexo. Ahora, escribimos:
 		\[\bigcup_{i\in I} A_i = \bigcup_{i\in I} (A_i\cup A_{i_0})\]
 		y como todos comparten los elementos de $A_{i_0}$, podemos aplicar el teorema de nuevo.
 	\end{proof}
@@ -71,7 +73,7 @@ Este teorema es extremadamente útil para garantizar la conexión de un sinnúme
 	Sea una cadena $\{A_i\}_{i=1}^n$ de conexos que verifica que $A_i\cap A_{i+1}\neq\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
 	
 	\begin{proof}
-		Por inducción, se aplica el teorema a $A_1\cup A_2$, $(A_1\cup A_2)\cup A_3$, ..., $\left(\bigcup_{i=1}^k\right)\cup A_{k+1}$.
+		Por inducción, se aplica el teorema \ref{conex_theo_pivote} a $A_1\cup A_2$, $(A_1\cup A_2)\cup A_3$, ..., $\left(\bigcup_{i=1}^k A_i\right)\cup A_{k+1}$.
 	\end{proof}
 \end{cor}
 
@@ -98,3 +100,54 @@ El siguiente resultado, aunque también es consecuencia del teorema \ref{conex_t
 		\end{itemize}
 	\end{proof}
 \end{theo}
+
+Aprovechando los resultados anteriores podemos garantizar la conexión de un buen número de espacios.
+
+\begin{exa} Veamos algunos ejemplos de conjuntos conexos:
+	\begin{enumerate}
+		\item En $\R^n$, se dice que un conjunto es \tbi{convexo} si para cada par de puntos el segmento que los une también está en el conjunto; y se dice que es \tbi{estrellado} si existe un punto tal que el segmento de él a cualquier otro está en el conjunto. Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican.
+		
+		En efecto, un conjunto $A$ estrellado se puede escribir como:
+		\[A=\bigcup_{a\in A} [a_0, a]\]
+		para cierto $a_0\in A$. Cada segmento $[a_0,a]$ es conexo por la proposición \ref{conex_prop_im_continua}, al ser la imagen del intervalo conexo $[0,1]$ por la aplicación:
+		\[t\mapsto (1-t)a_0+ta\]
+		y por tanto, por el teorema \ref{conex_theo_pivote}, como todos comparten el punto $a_0$ su unión es conexa.
+		
+		Nótese que ni la convexidad ni ser estrellado son propiedades topológicas; ambas son propiedades métricas: su definición solo tiene sentido en un espacio que, al menos, tenga definida una distancia.
+		
+		\item Una circunferencia en $\R^2$ es conexa, pero no es estrellada. En efecto, es conexa por ser la imagen de $[0,2\pi]$ por la aplicación $t\mapsto (\cos t, \sen t)$.
+		
+		\item El grafo de la función $\sin\frac{1}{x}$ para $x>0$, que escribimos:
+		\[C = \left\{\left(x,\sin\frac{1}{x}\right)\midc x>0\right\}\]
+		es conexo por ser la imagen continua de $(0,\infty)$ por la aplicación:
+		\[x\mapsto \left(x,\sin\frac{1}{x}\right)\]
+		
+		Lo que es más interesante, para cualquier $a\in [-1,1]$ se verifica que $\{(0,a)\}$ es adherente a $C$ y por tanto que $C\cup\{(0,a)\}$ es conexo.
+		
+		\item Consideramos el conjunto:
+		\[C = \big(\{0\}\times (0,1]\big) \cup \left(\bigcup_{n\in\N} [0,1]\times\left\{\frac{1}{n}\right\}\right) \]
+		que es unión de segmentos horizontales cada vez más juntos y de un segmento vertical. Este es trivialmente conexo por el corolario \ref{conex_cor_pivote_corte_comun}. Lo particular es que si unimos a $C$ el segmento horizontal:
+		\[(0,1)\times\{0\}\]
+		sigue siendo conexo por ser adherencia de $C$. \qedhere
+	\end{enumerate}
+\end{exa}
+
+Completamos esta sección con una propiedad interesante garantizada por la conexión.
+
+\begin{lem}
+	Sea $\X$ conexo y $\{U_i\}_{i\in I}$ una familia de abiertos, de forma que $\X=\bigcup_{i\in I} U_i$. Dos puntos cualesquiera $x,y\in\X$ se pueden conectar mediante una cadena finita $\{U_{i_k}\}_{k=1}^n$ de abiertos de la familia que verifique que $U_{i_k}\cap U_{i_{k+1}}\neq\emptyset$.
+	
+	\begin{proof}
+		Sea $A=\{z\in\X \midc \text{existe una cadena de } x \text{ a } z \}$. $A$ es claramente no vacío, puesto que $x\in A$. Entonces, una forma de ver que $\X=A$, que es lo que queremos encontrar, es comprobar que $A$ es abierto y cerrado, puesto que entonces solo puede ser el total (pues hemos visto que es no vacío).
+		
+		\begin{itemize}
+			\item Veamos que $A$ es abierto. En efecto, dado $z\in A$, queremos ver que existe un abierto $U$ tal que $z\in U\subset A$. Pero basta con tomar el último de la cadena, que ya cumple estas condiciones.
+			
+			\item Ahora veamos que es cerrado. En efecto, si $z\in\adher{A}$, existe un abierto $U_{i_0}$ tal que$U_{i_0}\cap A\neq\emptyset$. Entonces, tomamos un punto $y$ de la intersección, y como está en $A$ hay una cadena de $x$ a $y$. Uniendo $U_{i_0}$ a la cadena tenemos una cadena de $x$ a $z$, y por tanto $z\in A$, luego $A=\adher{A}$. \qedhere
+		\end{itemize}
+	\end{proof}
+\end{lem}
+
+\begin{obs}
+	En particular, puedo recubrir cualquier abierto conexo de $\R^n$ por bolas, y por tanto existe una cadena de bolas que une cualquier par de puntos. Si tomo un punto en cada intersección entre bolas consecutivas de la cadena y los uno, tengo una poligonal que conecta los dos puntos. Entonces, si $C\subset\R^n$ es abierto, $C$ es conexo si y solo si es conexo por poligonales (la definición de conexión por poligonales y la implicación inversa corresponden a cálculo diferencial).
+\end{obs}
