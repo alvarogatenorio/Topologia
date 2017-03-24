@@ -26,7 +26,7 @@ y equipamos $\R^2$ con la topología $\T$ que tiene todos esos triángulos por b
 	\begin{enumerate}
 		\item Vamos a hacer una serie de apreciaciones antes de proceder a la resolución de este apartado. Hemos de observar que $\T_u \varsubsetneq \T$. Esto implica que la topología $\T$ es más fina que la usual. Esto se desprende de que cualquier abierto de de la usual contiene un abierto de $\T$, y que esta contención es estricta de que los triángulos no son abiertos en la usual.(La otra contención no se da ya que no podemos meter abiertos de la usual para ciertos puntos del triángulo, como por ejemplo el vértice).
 		
-		Vamos a calcular entonces la adherencia de un triángulo semiabierto. L aprimera idea intuitiva que nos surge es añadirle al abierto el segmento vertical con los extremos incluidos que une los dos vértices del triángulo.
+		Vamos a calcular entonces la \tb{adherencia de un triángulo semiabierto}. La primera idea intuitiva que nos surge es añadirle al abierto el segmento vertical con los extremos incluidos que une los dos vértices del triángulo.
 		
 		\begin{figure}[h!]
 			\centering
@@ -43,10 +43,16 @@ y equipamos $\R^2$ con la topología $\T$ que tiene todos esos triángulos por b
 		
 		Por lo tanto la adherencia de $\U$ en esta topología es el propio $\U$, ya que como hemos visto, los puntos de ese segmento no son adherentes.
 		
-		Si lo hubieramos visto comprobando ``uno a uno" todos los puntos habría que decir además que los puntos de fuera del triángulo no son adherentes ya que existe un abierto en la usual wque contiene un triángulo (que es entorno que no corta al conjunto).
+		Si lo hubieramos visto comprobando ``uno a uno" todos los puntos habría que decir además que los puntos de fuera del triángulo no son adherentes ya que existe un abierto en la usual que contiene un triángulo (que es entorno que no corta al conjunto).
 		
-		Luego  $\adher{\U} = \U$ , lo quer implica además que es una base de abiertos y cerrados simultaneamente.
+		Luego  $\adher{\U} = \U$ , lo que implica además que es una base de abiertos y cerrados simultáneamente.
 		
-		\item Veamos si el espacio topológico es Lindelöf con esta topología.
+		\item Veamos si el espacio topológico es \tb{Lindelöf} \ref{lindel} con esta topología.
+		
+		Lo primero que tenemos que intentar hacer es ver si hay subespacios especiales (por ejemplo rectas verticales).
+		
+		Tomamos la recta vertical $r$, subespacio de nuestro espacio topológico con la topología relativa. Si lo cortamos con los abiertos relativos, observamos que $p = r \cap \U^{abierto\ rel.\ en\ r} \implies \T|_r$ es la topología discreta $\implies$ No es II axioma por ser recta con topología discreta $\implies r= \cup_{p\in r}\{p\}$.
+		
+		Por lo tanto $\T$ no puede ser II axioma, ya que esta es una propiedad hereditaria. Además, $\T$ tampoco es Lindelöf ya que esta es una propiedad hereditaria para cerrados. Como $r$ es cerrado, $\T$ tampoco es Lindelöf.
 	\end{enumerate}	
 \end{proof}
