@@ -54,5 +54,16 @@ y equipamos $\R^2$ con la topología $\T$ que tiene todos esos triángulos por b
 		Tomamos la recta vertical $r$, subespacio de nuestro espacio topológico con la topología relativa. Si lo cortamos con los abiertos relativos, observamos que $p = r \cap \U^{abierto\ rel.\ en\ r} \implies \T|_r$ es la topología discreta $\implies$ No es II axioma por ser recta con topología discreta $\implies r= \cup_{p\in r}\{p\}$.
 		
 		Por lo tanto $\T$ no puede ser II axioma, ya que esta es una propiedad hereditaria. Además, $\T$ tampoco es Lindelöf ya que esta es una propiedad hereditaria para cerrados. Como $r$ es cerrado, $\T$ tampoco es Lindelöf.
+		
+		Para comprobar si es \tb{localmente compacto} procederemos del siguiente modo. Nos hacemos la pregunta, ¿existirá algún entorno compacto?.Supongamos que existe algún entorno compacto $\K^p$. $\exists \K^p \supset \U = \adher{U} \implies \U$ compacto. Nos centraremos en ello.
+		Si la respuesta fuera negativa, si encuentro un $\L^{cerrado} \subset \U$ que no es compacto habremos terminado.
+		Si tomamos un segmento con los extremos contenidos, vertical, y contenido en un triángulo al que llamaremos $\mathcal{I}$. Si $\exists \K^p \supset \U \supset \mathcal{I}$, la topología de este segmento es la discreta por ser un subespacio de el $r$ que tomamos antes. Además es cerrado en la topología usual. Por lo tanto, $\T|_\mathcal{I}$ es la topología discreta $\implies$ no es compacto (no hay un subrecubrimiento finito), luego hemos terminado ya que al $\mathcal{I}$ no ser compacto no puede existir el supuesto compacto que supusimos.
+		\item Veamos si es totalmente disconexo.
+		
+		Como se vió en resultados teóricos, si un espacio tiene una base \ti{clopen} y es $T_0$ entonces es totalmente disconexo.
+		
+		SUpongamos que $p,q \in \X, p \neq q\ y\ p,q \in \mathcal{C}$. Veamos que $\mathcal{C}$ no es conexo. Ponemos $\mathcal{C} = (\mathcal{C} \cap \U) \cup (\mathcal{C} \setminus \U)$, sabemos que $\U$ es abierto ambiente ($\U$ es abierto de uno de los puntos que no tiene al otro, que existe por ser $T_0$), y que estas intersecciones son no vacías ya que contienen a los puntos $p$ y $q$. Por lo tanto tenemos dos cerrados que producen la desconexión, y como es para cualquiera dos puntos, el espacio es totalmente disconexo con esta topología. Además se necesita que haya dos puntos distintos.
+	
+		\item Para ver si algo es topología producto hemos de mirar los productos que lo conforman.
 	\end{enumerate}	
 \end{proof}
