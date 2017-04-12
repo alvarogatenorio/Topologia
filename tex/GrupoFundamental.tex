@@ -8,3 +8,56 @@ La topología algebraica comprende métodos que son significativamente distintos
 
 En particular, introducimos la homotopía con el propósito de definir más adelante la noción de grupo fundamental. Dos caminos son, intuitivamente, homótopos si podemos deformar uno en el otro de forma continua.
 
+% FALTA LA MAYORÍA DE LA SECCIÓN, EXCEPTO ESTE ÚLTIMO EJEMPLO	
+
+\begin{exa}
+	La interpolación lineal produce homotopías relativas. En efecto, consideramos la homotopía:
+	\[H_s = (1-s)f + sg\]
+	Si $f(a)=g(a)$ para algún $a\in\Y$, entonces resulta que:
+	\[H_s(a)=(1-s)f(a)+sg(a)=f(a)=g(a)\]
+	
+	En particular, en $\R^n$, cualquier par de caminos cuyos extremos coincidan son homótopos con extremos fijos. De esta forma, en cualquier espacio $\X$ homeomorfo a $\R^n$ por un homeomorfismo $h:\R^n\to \X$, cualesquiera dos caminos cuyos extremos coincidan son homótopos con extremos fijos. En efecto, podemos fabricar la homotopía fácilmente: sean $\sigma,\tau$ los caminos en $\X$. Consideramos $\alpha,\beta$ caminos en $\R^n$, de forma que verifiquen que $\sigma = h\circ\alpha$, $\tau = h\circ\beta$. Como $\alpha$ y $\beta$ comparten extremos y están en $\R^n$, son homótopos con extremos fijos, y dada la homotopía $H_s$, resulta que $h\circ H_s$ es homotopía entre $\sigma$ y $\tau$.
+\end{exa}
+
+\section{Esferas}
+
+El estudio de las homotopías en las esferas es interesante como ejemplo, y permite, basándose tan solo en lo visto en la anterior sección, demostrar un resultado no trivial.
+
+Empezamos definiendo formalmente la esfera, para aclarar la notación.
+
+\begin{defi}[Esfera]
+	Llamamos \tbi{esfera} de dimensión $n$ y denotamos $\Sfe^n$ al subconjunto de $\R^{n+1}$:
+	\[\Sfe^n = \{x\in\R^{n+1}\midc \norm{x}=1\}\subset\R^{n+1}\]
+	donde $\norm{\cdot}$ es la norma euclídea. Cuando se considera como espacio topológico es con la restricción de la topología usual, si no se especifica otra.
+\end{defi}
+
+\begin{obs}
+	Si bien la esfera de la definición anterior es la esfera unidad, nótese que todas las esferas de cualquier radio y centradas en cualquier punto de $\R^{n+1}$ son homeomorfas a la esfera que hemos definido.
+\end{obs}
+
+El resultado no trivial que mencionábamos en la introducción de esta sección es el siguiente:
+
+\begin{prop}
+	\label{grf_homotop_caminos_esfera}
+	Dos caminos en una esfera $\Sfe^n$, $n\geq 2$, que tengan los mismos extremos son homótopos con extremos fijos.
+
+	\begin{proof}
+		% TODO: demostración
+		Falta
+	\end{proof}
+\end{prop}
+
+Un resultado muy relacionado ha sido un problema abierto hasta hace muy poco tiempo:
+
+\begin{conjet}[Poincaré]
+	La propiedad de la proposición \ref{grf_homotop_caminos_esfera} caracteriza a la esfera $\Sfe^3$. Esto es, si un espacio topológico verifica que cualquier par de caminos en él que tengan los mismos extremos son homótopos con extremos fijos, entonces es homeomorfo a la esfera unidad.
+\end{conjet}
+
+La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es cierta y tiene interés. Históricamente:
+\begin{itemize}
+	\item Para $n=2$, el resultado se conoce desde el siglo XIX.
+	\item Para $n=5$, Zeeman lo demostró en 1961.
+	\item Para $n\geq 6$, Smale lo demostró en 1961.
+	\item Para $n=4$, Donaldson lo demostró en 1985.
+	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields tras demostrar la conjetura.
+\end{itemize}
