@@ -42,15 +42,29 @@ El resultado no trivial que mencionábamos en la introducción de esta sección 
 	Dos caminos en una esfera $\Sfe^n$, $n\geq 2$, que tengan los mismos extremos son homótopos con extremos fijos.
 
 	\begin{proof}
-		% TODO: demostración
-		Falta
+		Consideramos los caminos $\sigma,\tau:[0,1]\to \Sfe^n$, tales que $\sigma(0)=\tau(0)$ y $\sigma(1)=\tau(1)$. Para probar que son homótopos con extremos fijos, basta con probar que existe un punto $a\in\Sfe^n$ tal que $a\not\in \sigma,\tau$. Ya hemos comprobado antes que esto es suficiente (FALTA CITA). % TODO: Cita
+		
+		Entonces, vamos a separar la esfera en dos abiertos $U$ y $V$, de forma que $\Sfe^n=U\cup V$. Para un cierto $a\in\Sfe^n$, tal que ni $a$ ni $-a$ es uno de los extremos del camino, elegimos $U$ y $V$ tales que:
+		\[\left\{\begin{array}{l}
+			U = \Sfe^n\setminus\{a\} \\
+			V = \Sfe^n\setminus\{-a\}
+		\end{array}\right.\]
+		es decir, $U$ es la esfera quitando un punto y $V$ es la esfera quitando el punto antipodal al anterior. De esta forma, ya hemos visto el hecho de que tanto $U$ como $V$ son homeomorfos a $\R^n$, por ser la esfera sin un punto (FALTA CITA, sé que lo hemos visto en clase pero no lo he encontrado). De esta forma, $U\cap V\homeo\mathbb{R}^n\setminus\{0\}$, puesto que una esfera sin un punto es homeomorfa a $\R^n$, y por tanto una esfera sin dos puntos es homeomorfa a $\R^n$ sin un punto. Además, como $n\geq 2$, sabemos que $\R^n\setminus\{0\}$ es conexo por caminos, y entonces también lo es $U\cap V$. % TODO: cita
+		
+		Podemos encontrar una partición $0=t_0<t_1<\dots<t_r=1$ del intervalo $[0,1]$ que verifique que $\sigma([t_{i-1},t_i])\subset U\text{ o }V$ para cada $i$. En efecto, sabemos que $\{\sigma^{-1}(U), \sigma^{-1}(V)$ es recubrimiento abierto de $[0,1]$. Por el lema de Lebesgue (lema \ref{comp_lema_lebesgue}), que podemos aplicar por ser $[0,1]$ un espacio métrico compacto (y por tanto, por la observación \ref{comp_obs_relacion_defs_compacidad}, secuencialmente compacto), para cada $x\in [0,1]$ $\exists\epsilon>0$ que cumple que $\bola(x,\epsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)$. Con lo cual, tomamos la partición anterior de forma que $t_i-t_{i-1}<\epsilon\;\forall i$, y entonces tenemos que, para $x$ en el intervalo:
+		\[x\in [t_{i-1}, t_i]\subset B(x,\epsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)\]
+		Por tanto, cada intervalo de la partición está en $\sigma^{-1}(U)$ o $\sigma^{-1}(V)$. Además, eliminando las divisiones innecesarias tenemos una partición que alterna estar en $\sigma^{-1}(U)$ y en $\sigma^{-1}(V)$.
+		
+		Sea $x_0\in U\cap V$. Vamos a homotopar los segmentos en $V$ a segmentos en $U$. Para cada $i$ tal que $\sigma\restriction_{[t_{i-1},t_i]}\subset V$, definimos $x_{i-1} = \sigma(t_{i-1})$, $x_i=\sigma(t_i)$. Resulta que $x_{i-1},x_i\subset U\cap V\homeo \R^n\setminus\{0\}$. Como ya hemos visto que $\R^n\setminus \{0\}$ es conexo por caminos, entonces necesariamente existe $\sigma_i:[t_{i-1},t_i]\to U\cap V$ camino entre $x_{i-1}$ y $x_i$. De esta forma, los caminos $\sigma\restriction_{[t_{i-1},t_i]}$ y $\sigma_i$ son homótopos en $V\homeo\R^n$, con lo cual son homótopos con extremos fijos en $V\subset\Sfe^n$. Repitiendo el argumento para cada segmento de $V$, reemplazándolo por el correspondiente $\sigma_i$, obtenemos un nuevo camino $\tilde{\sigma}\subset U$ y claramente $\sigma\homot\tilde{\sigma}$ con extremos fijos.
+		
+		Por último, repetimos todo el argumento anterior con $\tau$, y por tanto $\exists \tilde{\tau}$ tal que $\tau\homot\tilde{\tau}$ con extremos fijos y $\tilde{\tau}\subset U\homeo\R^n$. Entonces, $\tilde{\sigma}\homeo\tilde{\tau}$ con extremos fijos en $U\subset\Sfe^n$ y, por ser $\homot$ con extremos fijos de equivalencia, $\sigma\homot\tau$ con extremos fijos.
 	\end{proof}
 \end{prop}
 
 Un resultado muy relacionado ha sido un problema abierto hasta hace muy poco tiempo:
 
 \begin{conjet}[Poincaré]
-	La propiedad de la proposición \ref{grf_homotop_caminos_esfera} caracteriza a la esfera $\Sfe^3$. Esto es, si un espacio topológico verifica que cualquier par de caminos en él que tengan los mismos extremos son homótopos con extremos fijos, entonces es homeomorfo a la esfera unidad.
+	La propiedad de la proposición \ref{grf_homotop_caminos_esfera} caracteriza a la esfera $\Sfe^3$. Esto es, si una variedad de dimensión 3 de $\R^4$ verifica que cualquier par de caminos en ella que tengan los mismos extremos son homótopos con extremos fijos, entonces es homeomorfa a la esfera unidad.
 \end{conjet}
 
 La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es cierta y tiene interés. Históricamente:
@@ -59,5 +73,5 @@ La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es
 	\item Para $n=5$, Zeeman lo demostró en 1961.
 	\item Para $n\geq 6$, Smale lo demostró en 1961.
 	\item Para $n=4$, Donaldson lo demostró en 1985.
-	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields tras demostrar la conjetura.
+	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields que se le intentó conceder por demostrar la conjetura.
 \end{itemize}
