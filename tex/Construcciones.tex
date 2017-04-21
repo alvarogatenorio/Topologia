@@ -47,26 +47,26 @@ Consideremos ahora el diagrama
 
 Ahora, sabemos que $f$ es continua por lo visto en el primer problema. Además, como la diagonal es continua, entonces la vertical es continua, luego $\T_{\mathcal{\Y}} \subset f^{-1}(\T)$.
 
-\begin{obs}[Inyectividad]
-	
-	(1) Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $\U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(\U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles. Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades.
-	
-	(2) El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
-	
-	\[(\mathcal{\Y},f^{-1}(\U)) \xrightarrow{f} (f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
-	
-	Además, la aplicación es continua puesto que, dado $\W$ un abierto de $f(\mathcal{\Y})$, entonces $\W=\mathcal{\Y}\cap f(\U)$ para cierto abierto $\U\in \T$. Esto implica que
-	
-	\[f^{-1}(\W)=f^{-1}(\U\cap f(\mathcal{\Y}))=f^{-1}(\U)\cap \mathcal{\Y}=f^{-1}(\U),\]
-	
-	que es abierto de $\mathcal{\Y}$ por la definición de topología que hemos tomado. Sin embargo, esto no termina aquí, ya que $f$ es abierta. En efecto, dado un abierto $\W\subset \mathcal{\Y}$, entonces existe un abierto $\U\subset \T$ de modo que $\W=f^{-1}(\U)$. De este modo, 
-	
-	\[f(\W)=f(f^{-1}(\U))\cap f(\mathcal{\Y})=(\U)\cap f(\mathcal{\Y})=f^{-1}(\U),\]
-	
-	que es un abierto de $f(\mathcal{\Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
-	
-	\[f:(\mathcal{\Y},f^{-1}(\T)) \to (\mathcal{\X},\T)\qedhere\]
-	
+\begin{obs}[Inyectividad] \
+	\begin{enumerate}
+		\item Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $\U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(\U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles. Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades.
+		
+		\item El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
+		
+		\[(\mathcal{\Y},f^{-1}(\U)) \xrightarrow{f} (f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
+		
+		Además, la aplicación es continua puesto que, dado $\W$ un abierto de $f(\mathcal{\Y})$, entonces $\W=\mathcal{\Y}\cap f(\U)$ para cierto abierto $\U\in \T$. Esto implica que
+		
+		\[f^{-1}(\W)=f^{-1}(\U\cap f(\mathcal{\Y}))=f^{-1}(\U)\cap \mathcal{\Y}=f^{-1}(\U),\]
+		
+		que es abierto de $\mathcal{\Y}$ por la definición de topología que hemos tomado. Sin embargo, esto no termina aquí, ya que $f$ es abierta. En efecto, dado un abierto $\W\subset \mathcal{\Y}$, entonces existe un abierto $\U\subset \T$ de modo que $\W=f^{-1}(\U)$. De este modo, 
+		
+		\[f(\W)=f(f^{-1}(\U))\cap f(\mathcal{\Y})=(\U)\cap f(\mathcal{\Y})=f^{-1}(\U),\]
+		
+		que es un abierto de $f(\mathcal{\Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
+		
+		\[f:(\mathcal{\Y},f^{-1}(\T)) \to (\mathcal{\X},\T)\qedhere\]
+	\end{enumerate}
 \end{obs}
 
 \section{Imágenes directas}
@@ -247,7 +247,7 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 			\includegraphics[scale = 0.1]{img/pol_fund_esfera}
 		\end{figure}
 		
-		\item Podemos identificar el plano proyectivo real $\proy^2$ con un disco y una esfera donde la relación de equivalencia ``pega'' los bordes. También podemos identificarlo con una semiesfera en la que cada punto del borde es equivalente a su antípoda, o con una esfera completa en la que dos puntos están relacionados si y solo si son antipodales. Además, el polígono fundamental del plano proyectivo real sería:
+		\item Podemos identificar el plano proyectivo real $\proy^2$ con un disco y una banda de Möbius donde la relación de equivalencia ``pega'' los bordes. También podemos identificarlo con una semiesfera en la que cada punto del borde es equivalente a su antípoda, o con una esfera completa en la que dos puntos están relacionados si y solo si son antipodales. Además, el polígono fundamental del plano proyectivo real sería:
 		
 		\begin{figure}[h!]
 			\centering
@@ -308,7 +308,7 @@ Así, una vez que tenemos la base que va a caracterizar nuestra topología produ
 Veamos ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
 
 \begin{prop}
-	Las proyecciones son abiertas
+	Las proyecciones son abiertas.
 	
 	\begin{proof}
 		Sea $W$ abierto en el espacio producto, veamos que $p_i^r(W)$ es abierto.
@@ -319,7 +319,7 @@ Veamos ahora una serie de proposiciones relacionadas con la topología producto,
 
 
 \begin{prop}
-	La aplicación $X:\longrightarrow\{a1\}\times\cdots\times X_i\times\cdots\times \{ar\}\in X_1\times\cdots\times X_r$ tal que $x\longrightarrow (a_1,\dots,a_r)$ es una inmersión.
+	La aplicación $X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,a_r)$ es una inmersión.
 	
 	\begin{proof}
 		Veamos primero como transforma la base de abiertos del inicial en la base del final.
@@ -367,12 +367,13 @@ Así, podemos definir:
 \end{defi}
 
 Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología producto que no va a ser otra que la siguiente propiedad universal:
-	\begin{figure}
-	\centering
-	\includegraphics{img/EspacioSuma}
-	\caption{Espacio Suma}
-	\label{fig_suma}
-\end{figure}
+
+\[\xymatrix{
+	X \ar[rd]^f & \\
+	X_i \ar[u]^{\phi_i} \ar[r]_{f_i} &
+	Y
+}\]
+
 \begin{lem}[Propiedad universal de la suma]
 	En la situación reflejada en la figura \ref{fig_suma}, tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$.
 
@@ -395,7 +396,6 @@ Resulta importante indicar que como se desprende de la demostración (segunda im
 	
 	Dado que $\sum_j X_j\setminus \{i\}\times X_i=\bigcup_{j\ne i }X_j$ es abierto, lo tenemos.
 	
-	\item Las inclusiones que $X_l\stackrel{j_l}\longrightarrow\sum_iX_i$ son inmersiones abiertas y cerradas. Esto lo dejamos como ejercicio al lector, es un ejercicio sencillo pero puede resultar útil como repaso del modo de construcción de la topología suma realizado previamente en el apartado.
-	\end{enumerate}
-	
+	\item Las inclusiones $X_l\stackrel{j_l}\longrightarrow\sum_iX_i$ son inmersiones abiertas y cerradas. Esto lo dejamos como ejercicio al lector, es un ejercicio sencillo pero puede resultar útil como repaso del modo de construcción de la topología suma realizado previamente en el apartado. \qedhere
+\end{enumerate}
 \end{obs}
