@@ -1,0 +1,56 @@
+\chapter{Funtores y teoría de categorías}
+\label{funt}
+
+Este anexo, si bien no es necesario para entender el apartado correspondiente, quiere ser una brevísima introducción a los conceptos más básicos de teoría de categorías, de forma que el lector comprenda qué es realmente un funtor y pueda aplicar este conocimiento a la topología algebraica, donde los utilizamos. 
+
+Empezamos definiendo pues qué es una categoría, pero para ello hay que conocer antes el concepto de clase.
+
+\section{Clases}
+
+\begin{defi}[Clase]
+Una \tbi{clase} es una colección de objetos (a menudo conjuntos, con una estructura adicional) que pueden ser definidos inequívocamente por una propiedad común. Por ejemplo, podemos considerar la clase de los grupos o la clase de los espacios vectoriales.
+\end{defi}
+
+\begin{obs}[Clase propia]
+Decimos que una clase es \tb{\ti{propia}} si no es un conjunto. Desde luego, cualquier conjunto es una clase, lo cual se sigue directamente de la definición (la propiedad es que un elemento pertenece a la clase cuando pertenece al conjunto).
+
+Así, de forma muy intuitiva, podemos considerar una clase propia como un ``conjunto muy grande''. Si se pudieran definir conjuntos como definimos clases propias, citando una propiedad común, introduciríamos paradojas en la teoría de conjuntos, como la archiconocida paradoja de Russell. De esta forma, se crea el concepto de clase, que trata de solventar este obstáculo. Por ejemplo, la paradoja de Russell no se da con clases porque no existe la noción de que una clase esté contenida en otra.
+
+Nótese que en algunas teorías de conjuntos formales, y en particular con los axiomas ZFC, las clases no se definen. De esta forma, se aceptan en cuanto que todo lo que se formule con clases se pueda formular sin ellas, usando, en particular, la propiedad asociada, expresable con una fórmula. En este sentido, se pueden entender las clases como ``clases de equivalencia de fórmulas''.
+\end{obs}
+
+\section{Categorías y funtores}
+
+Ahora sí, podemos definir una categoría. La definición puede variar según el autor, pero el concepto por detrás es siempre el mismo.
+
+\begin{defi}[Categoría]
+\label{funt_defi_categoria}
+
+Una \tbi{categoría} consiste en:
+
+\begin{itemize}
+\item Una clase de \tb{\ti{objetos}} (a menudo conjuntos, con o sin estructura adicional).
+\item Una clase de \tb{\ti{morfismos}}, que van de un objeto de los anteriores a otro. Un morfismo es una aplicación entre dos objetos que preserva su estructura. Por ejemplo, si los objetos son conjuntos los morfismos son funciones, si son grupos los morfismos son homomorfismos, y si los objetos son espacios topológicos los morfismos son funciones continuas.
+\item Una operación de \tb{\ti{composición}}, que dados dos morfismos $f:a\to b$, $g:b\to c$ devuelva $g\circ f:a\to c$.
+\end{itemize}
+
+Y los siguientes axiomas:
+\begin{enumerate}[label=\Roman*]
+\item \tb{Asociatividad de la composición:} la composición de morfismos es asociativa. Es decir, $(f\circ g)\circ h=f\circ(g\circ h)$.
+\item \tb{Morfismo identidad:} para cada objeto $x$, existe un morfismo $1_x:x\to x$ de forma que para cualquier $f:a\to x$ y $g:x\to b$, $1_x\circ f=f$ y $g\circ 1_x=g$.
+\end{enumerate}
+\end{defi}
+
+Ahora ya podemos definir el concepto de funtor.
+
+\begin{defi}[Funtor]
+\label{funt_defi_funtor}
+
+Un \tbi{funtor} o \tb{\ti{functor}} es una aplicación $F:C\to D$ entre dos categorías $C$ y $D$ que asigna a cada objeto otro objeto y a cada morfismo otro morfismo de forma que preserva los morfismos identidad y la composición. Es decir, para cada $X\in C$, $F(\Id_X)=\Id_{F(X)}$; y para cada $f:X\to Y$ y $g:Y\to Z$, $F(g\circ f)=F(g)\circ F(f)$.
+\end{defi}
+
+\begin{obs}
+Intuitivamente, un funtor es un homomorfismo para categorías: una aplicación que conserva la estructura de las categorías. En particular, la colección de categorías cuyos objetos son conjuntos (no son clases propias) es una categoría, y en este caso un funtor es él mismo un morfismo de esta categoría de categorías pequeñas.
+\end{obs}
+
+La teoría de categorías tiene utilidad para abstraer otros conceptos matemáticos en muchas áreas. Su propósito es usar esta abstracción para poder probar resultados muy complicados de forma simple. En nuestro caso, la usaremos para traducir propiedades de los espacios topológicos a propiedades de su grupo fundamental asociado, como veremos en la sección correspondiente.
