@@ -43,9 +43,10 @@ Así, como todo espacio métrico es, a su vez, un espacio topológico (ver ejemp
 \subsection{Teorema General de Equivalencia}
 Esta sección está dedicada a demostrar el siguiente teorema.
 \begin{theo}[Teorema General de Equivalencia]
-	Sea $E$ un espacio vectorial del dimensión finita $n$. Entonces, todas las normas definidas sobre $E$ son equivalentes.
+	Sea $E$ un espacio vectorial del dimensión finita $n$ sobre un cuerpo completo. Entonces, todas las normas definidas sobre $E$ son equivalentes.
 \end{theo}
-Como la demostración del teorema es un poco larga (tampoco demasiado), la dotaremos de una sección propia.
+Como la demostración del teorema es un poco larga (tampoco demasiado), la dotaremos de una sección propia. No vamos a demostrar el caso general para cualquier espacio vectorial sobre un cuerpo completo, nos limitaremos a probarlo para $\R^n$ (y es fácilmente generalizable a $\C^n$).
+
 \subsubsection{Demostración del Teorema General de Equivalencia}
 Nuestro objetivo es, dadas dos normas arbitrarias, $\norm{\cdot}_1$ y $\norm{\cdot}_2$ de $E$, demostrar que las topologías engendradas por ellas son iguales. Es decir
 \begin{equation*}
@@ -183,3 +184,15 @@ Así, finalmente, se concluye que
 \end{equation}
 
 Dado que las normas eran arbitrarias, queda demostrado que todas las normas de $\R^n$ son equivalentes.
+
+\subsubsection{Contraejemplo para cuerpos no completos}
+
+A menudo se obvia la condición de que los cuerpos sean completos, pero es necesaria para que se verifique el teorema. En particular, vamos a ver un contraejemplo: dos normas en $\Q^2$ que no son equivalentes.
+
+Consideramos las normas $\norm{\cdot}_1,\norm{\cdot}_2:\Q^2\to\R$ definidas como:
+\[\norm{(x,y)}_1 = \abs{x}+\abs{y}\quad\quad\&\quad\quad \norm{(x,y)}_2 = \abs{x+\sqrt{2}y}\]
+Desde luego, se verifica que son normas. Que no son equivalentes se puede ver tanto por acotaciones como considerando las bolas en esta topología.
+
+En efecto, $\norm{\cdot}_1$ tiene por bolas los rombos abiertos: es la norma 1 tradicional. Por tanto la topología que genera en $\Q^2$ es restricción de la usual en $\R^2$. Sin embargo, $\norm{\cdot}_2$ está generada por unas bolas más extrañas. La bola $\bola(x,\epsilon)$ es el área limitada por dos rectas de la forma $x+\sqrt{2}y=\pm\epsilon$. Así, como $\Q^2$ es denso en $\R^2$, estas bolas siempre tienen puntos todo lo separados del origen que haga falta (considerando la distancia usual) y, por tanto, ninguna bola es acotada en la topología usual. Por eso, las bolas usuales no son abiertas en la topología generada por $\norm{\cdot}_2$, y las topologías son distintas.
+
+Una aproximación inocente puede llevar a pensar que el mismo argumento se podría aplicar palabar por palabra para encontrar dos normas no equivalentes en $\R^2$, lo que contradiría al teorema de equivalencia. El problema no está en el argumento, sino en que $\norm{\cdot}_2$ no es una norma en $\R^2$: en efecto, si exigimos que se anule lo hace en $(0,0)$ y en puntos que siempre tienen una coordenada irracional. De esta forma, la condición solo se cumple en $\Q^2$. 
