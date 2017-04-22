@@ -293,10 +293,17 @@ Así, una vez que tenemos la base que va a caracterizar nuestra topología produ
 \begin{defi}[Topología producto]
 	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbitop{producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
 \end{defi}
-\begin{lem}[Propiedad Universal]
-	En la siguiente situación,%añadir figura wiki
-	
-	Tenemos la siguiente \tbi[propiedad universal!del producto]{propiedad universal del producto} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=p_i^r\circ f$ son continuas para todo $i$.
+
+Podemos formular, además, una propiedad universal del producto que caracteriza a esta topología:
+
+\begin{lem}[Propiedad universal del producto]
+	En la siguiente situación,
+	\[\xymatrix{
+		Y=\prod_i X_i \ar[r]^{p_i} & 
+		(X_i,\T_i) \\
+		(Z,\T') \ar[u]^{(f_1,\dots,f_n)=f} \ar[ru]_{p_i\circ f=f_i} &
+	}\]
+	tenemos la \tbi[propiedad universal!del producto]{propiedad universal del producto} que caracteriza la continuidad de $f$, diciendo que esta será continua si y solo si $f_i=p_i^r\circ f$ son continuas para todo $i$.
 	
 	\begin{proof}
 		Vemos que si $f$ es continua, como $p_i^r$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
@@ -331,12 +338,12 @@ Veamos ahora una serie de proposiciones relacionadas con la topología producto,
 
 Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. No vamos a probar que sean bases realmente en ninguno de los dos casos ya que en ambos casos va a resultar muy sencillo aplicando la caracterización de base, dejándose como ejercicio para el lector de cara al repaso de la misma.
 \begin{enumerate}
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que $\B=\{W_i\times\cdots\times W_r:W_i\in \B_i$ base de $\T_i\}$ es base de entornos del mismo.
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que $\V^{(a_1,\dots,a_r)}=\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \V^{a_i} \text{ base de entornos en } \T_i \}$ es base de entornos del mismo.
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que: \[\B=\{W_i\times\cdots\times W_r:W_i\in \B_i \text{ base de }\T_i\}\] es base de entornos del mismo.
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V^{(a_1,\dots,a_r)}=\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \V^{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
 \end{enumerate}
 
 \section{Suma}
-Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas "alturas" (como si los colocaramos en estantes). 
+Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
 
 Como antes, vamos a comenzar viendo las propiedades que debe cumplir la topología que caracterice nuestro espacio para luego pasar a construirla.
 
@@ -368,16 +375,14 @@ Así, podemos definir:
 
 Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología producto que no va a ser otra que la siguiente propiedad universal:
 
-\[\xymatrix{
-	X \ar[rd]^f & \\
-	X_i \ar[u]^{\phi_i} \ar[r]_{f_i} &
-	Y
-}\]
-
 \begin{lem}[Propiedad universal de la suma]
-	En la situación reflejada en la figura \ref{fig_suma}, tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$.
-
-	Tenemos la siguiente \tbi[propiedad universal!de la suma]{propiedad universal de la suma} que caracteriza la continuidad de $f$ diciendo que esta será continua si y solo si  $f_i=j_i\circ f$ son continuas para todo $i$.
+	En la siguiente situación:
+	\[\xymatrix{
+		X \ar[rd]^f & \\
+		X_i \ar[u]^{\phi_i} \ar[r]_{f_i} &
+		Y
+	}\]
+	tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$, tenemos la siguiente \tbi[propiedad universal!de la suma]{propiedad universal de la suma} que caracteriza la continuidad de $f$, diciendo que esta será continua si y solo si  $f_i=j_i\circ f$ son continuas para todo $i$.
 	
 	\begin{proof}
 		Vemos que si $f$ es continua, como $j_i$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
@@ -387,7 +392,6 @@ Una vez vista su definición, veamos ahora un resultado fundamental acerca de la
 \end{lem}
 
 Resulta importante indicar que como se desprende de la demostración (segunda implicación) la propiedad universal no solo nos va a caracterizar la función $g$, sino que nos permite caracterizar también la topología suma (si no se cumple la propiedad podemos asegurar que no estamos trabajando en esta). 
-
 
 \begin{obs}
 	Veamos por último un par de observaciones sobre esta topología que pueden resultar interesantes de cara a conocer el mecanismo de la misma.
