@@ -1,75 +1,124 @@
 %Para este capítulo se usará la abreviatura "const".
 \chapter{Construcciones de espacios}
 \label{const}
+%Introducción por hacer.
+\section{Imágenes inversas (inmersiones)}
+\subsection{Construcción de continuidad menos fina}
+Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua.
 
-\section{Imágenes inversas}
+Visto en forma de diagrama
+\begin{equation*}
+\xymatrix{
+	(\mc{Y},\T_y) \ar[r]^f
+	&(\mathcal{X},\T)}
+\end{equation*}
 
-Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua. Evidentemente, una elección fácil para que esto ocurra es escoger la topología discreta, puesto que es la que cuenta con más abiertos y, por lo tanto, para todo abierto $\U'$ de $\mathcal{X}$ entonces $f^{-1}(\U')$ es abierto en $\mathcal{Y}$, lo que implica que $f$ sea continua. Sin embargo, este caso no es realmente interesante y lo difícil del problema será encontrar la topología menos fina para que $f$ sea continua.
-
+\begin{obs}[Solución trivial]
+	Evidentemente, una elección fácil para que esto ocurra es escoger la topología discreta, puesto que es la que cuenta con más abiertos y, por lo tanto, para todo abierto $\U'$ de $\mathcal{X}$ entonces $f^{-1}(\U')$ es abierto en $\mathcal{Y}$, lo que implica que $f$ es continua.
+\end{obs}
+Sin embargo, este caso no es realmente interesante, por lo cual refinaremos el enunciado de nuestro problema, ahora no buscaremos una topología cualquiera sino la topología menos fina posible que haga continua a $f$.
+\begin{obs}[Aproximación a la solución]
+	Un truco que se nos podría ocurrir para atacar este problema es usar la caracterización de la continuidad que afirma que una aplicación $f$ es continua si y solo si transforma abiertos en abiertos por imágenes inversas.
+	
+	Usando esto, es claro que la topología que buscamos deberá tener como abiertos al menos a las imágenes inversas de los abiertos de $\X$. De hecho, como vemos ahora mismo, esta es la solución de nuestro problema.
+\end{obs}
 La solución a este problema es la topología $f^{-1}(\T)$, definida como 
-\[f^{-1}(\T)=\{f^{-1}(\U):\U\in \T\}\]
+\[f^{-1}(\T):=\{f^{-1}(\U)\midc\U\in \T\}\]
 y que llamamos \tbitop{imagen inversa}.
 
-La comprobación de que verdaderamente es una topología se desprende de las propiedades de la función inversa aplicada a conjuntos. Por otro lado, es la menos fina que implica que $f$ sea continua por construcción, luego cualquier otra topología con estas características contiene a esta. Finalmente, se tiene que es única. En efecto, si tenemos que $\T$ y $\T$ cumplen que son las menos finas por construcción, entonces se tiene que $\T\subset \T'$ y $\T'\subset \T$, luego son iguales.
+La comprobación de que verdaderamente es una topología se desprende de las propiedades de la función inversa aplicada a conjuntos. Por otro lado, es la menos fina que hace a $f$ continua por construcción, luego cualquier otra topología con estas características contiene a esta. Finalmente, se tiene que es única. En efecto, si tenemos que $\T$ y $\T'$ cumplen que son las menos finas por construcción, entonces se tiene que $\T\subset \T'$ y $\T'\subset \T$, luego son iguales.
 
-Una vez resuelta esta cuestión, es hora de profundizar un poco más. Tomemos otro espacio topológico $(\mathcal{Z},\T')$ y consideremos una función $g$ que nace en este y muere en $Y$. El problema que se nos plantea ahora es determinar qué aplicaciones $g$ son continuas. Nótese que con esta distribución también podemos definir la composición $f\circ g$, quedando el siguiente diagrama:
+\subsection{Caracterización de la continuidad entrante}
+Es hora de profundizar un poco más. Tomemos otro espacio topológico arbitrario $(\mathcal{Z},\T')$ y consideremos una función $g$ que nace en este y muere en $\Y$.
 
-\begin{equation*}
-\xymatrix{
-	&\mathcal{Y} \ar[r]^f
-	&(\mathcal{X},\T) \\
-	&(\mathcal{Z},\T') \ar@{-->}[ru]_{f\circ g} \ar[u]^g}
-\end{equation*}
+El problema que se nos plantea ahora es determinar qué aplicaciones $g:Z\to \Y$ son continuas.
 
-En primer lugar, observemos que como $f$ es continua por definición del problema anterior, que $g$ sea continua implica que la composición $f\circ g$ también lo sea. Además, la otra implicación (si $f\circ g$ es continua entonces $g$ es continua) también es cierta como veremos a continuación. Esto es realmente interesante, puesto que la topología que haya en $\mathcal{Y}$ no es relevante si nuestro estudio se centra en la relación de $(\mathcal{X},\T')$ y $(X,\T)$.
-
-Veamos que efectivamente se cumple esta implicación. En efecto, consideremos un abierto $\W\subset f^{-1}(\U)$ y verifiquemos que $g^{-1}(\W)\subset \T'$. Por su definición, $\W$ es un abierto de $f^{-1}(\U)$ con $\U\subset \T$ y, como $f\circ g$ es continua, entonces $(f\circ g)^{-1}(\U)\subset \T'$. Pero se tiene que $(f\circ g)^{-1}(\U)=g^{-1}[f^{-1}(\U)]\equiv g^{-1}(\W)$, luego $g^{-1}(\W)\subset \T'$.
-
-Una consecuencia directa que se desprende de esto es que la topología imagen inversa $f^{-1}(\T)$ es la topología en $\mathcal{Y}$ que cumple la equivalencia anterior. En efecto, supongamos que una topología $\T_\mathcal{Y}$ lo cumple y veamos que coincide con la topología imagen inversa. Para ello, consideremos el siguiente diagrama
-
-\begin{equation*}
-\xymatrix{
-	&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
-	&(\mathcal{X},\T) \\
-	&(\mathcal{Y},\T_{\mathcal{Y}}) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
-\end{equation*}
-
-Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, al ser esta continua, tenemos por lo anterior que $f$ es continua. En consecuencia, $\T_{\mathcal{Y}}$ hace que $f$ sea continua y, por tanto, $f^{-1}(\T)\subset \T_{\mathcal{Y}}$. Ya tenemos demostrada una inclusión.
-
-Consideremos ahora el diagrama 
-
-\begin{equation*}
-\xymatrix{
-	&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
-	&(\mathcal{X},\T) \\
-	&(\mathcal{Y},f^{-1}(\T)) \ar@{-->}[ru]_f \ar[u]^{\text{id}}}
-\end{equation*}
-
-Ahora, sabemos que $f$ es continua por lo visto en el primer problema. Además, como la diagonal es continua, entonces la vertical es continua, luego $\T_{\mathcal{\Y}} \subset f^{-1}(\T)$.
-
-\begin{obs}[Inyectividad] \
-	\begin{enumerate}
-		\item Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $\U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(\U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles. Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades.
-		
-		\item El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
-		
-		\[(\mathcal{\Y},f^{-1}(\U)) \xrightarrow{f} (f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
-		
-		Además, la aplicación es continua puesto que, dado $\W$ un abierto de $f(\mathcal{\Y})$, entonces $\W=\mathcal{\Y}\cap f(\U)$ para cierto abierto $\U\in \T$. Esto implica que
-		
-		\[f^{-1}(\W)=f^{-1}(\U\cap f(\mathcal{\Y}))=f^{-1}(\U)\cap \mathcal{\Y}=f^{-1}(\U),\]
-		
-		que es abierto de $\mathcal{\Y}$ por la definición de topología que hemos tomado. Sin embargo, esto no termina aquí, ya que $f$ es abierta. En efecto, dado un abierto $\W\subset \mathcal{\Y}$, entonces existe un abierto $\U\subset \T$ de modo que $\W=f^{-1}(\U)$. De este modo, 
-		
-		\[f(\W)=f(f^{-1}(\U))\cap f(\mathcal{\Y})=(\U)\cap f(\mathcal{\Y})=f^{-1}(\U),\]
-		
-		que es un abierto de $f(\mathcal{\Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es homeomorfismo. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$. De aquí se puede definir el concepto de inmersión o embebimiento si $f$ es inyectiva y se tiene que 
-		
-		\[f:(\mathcal{\Y},f^{-1}(\T)) \to (\mathcal{\X},\T)\qedhere\]
-	\end{enumerate}
+Damos sin rodeos la solución a este problema.
+\begin{prop}[Propiedad universal de las inmersiones]
+	\label{const_universalInmersiones}
+	Una aplicación $g:Z\to\Y$ es continua si y solo si se verifica que $f\circ g$ es continua.
+\end{prop}
+\begin{proof}
+	Para ponernos en situación nos dibujamos el diagrama
+	\begin{equation*}
+	\xymatrix{
+		&(\Y,f^{-1}(\T)) \ar[r]^f
+		&(\X,\T) \\
+		&(Z,\T') \ar@{-->}[ru]_{f\circ g} \ar[u]^g}
+	\end{equation*}
+	En primer lugar, observemos que como $f$ es continua por definición, si $g$ es continua, entonces trivialmente la composición $f\circ g$ también lo será. Con lo que la primera de las implicaciones es evidente.
+	
+	Recíprocamente, queremos ver que $g$ transforma abiertos en abiertos por imágenes inversas. En efecto, dado $W\in f^{-1}(\T)$, comprobemos que $g^{-1}(W)\in\T'$. Por definición $W=f^{-1}(\U)$, con $\U\in\T$. Por ende,
+	\begin{equation*}
+		g^{-1}(W)=g^{-1}(f^{-1}(U))=(f\circ g)^{-1}(U)
+	\end{equation*}
+	Como $f\circ g$ es continua, el resultado se sigue.
+\end{proof}
+\begin{obs}[Irrelevancia de la topología de $\Y$]
+	La proposición \ref{const_universalInmersiones} es realmente interesante, puesto que nos dice que la topología que haya en $\Y$ no es relevante a la hora de estudiar las aplicaciones continuas que mueren en $\Y$.
 \end{obs}
+\subsection{Propiedad universal de las inmersiones}
+\begin{defi}[Propiedad universal]
+	Si para cierta topología $\T_\Y$ de $\Y$ se verifica el enunciado de la proposición \ref{const_universalInmersiones} se dice que la topología $\T_\Y$ verifica la \tbi[propiedad universal!de las inmersiones]{propiedad universal de las inmersiones}.
+\end{defi}
+Ahora tratamos de determinar para qué topologías de $\Y$ se verifica la propiedad universal para las inmersiones.
 
-\section{Imágenes directas}
+Desde luego, la proposición \ref{const_universalInmersiones} nos dice que para la topología $f^{-1}(\T)$ se verifica la propiedad universal (y que el la menos fina que lo hace, pues es la menos fina que hace a $f$ continua).
+
+Ahora vamos a ver que no solo ocurre esto sino que el la única topología que verifica esta propiedad universal.
+
+\begin{prop}[Unicidad de la propiedad universal]
+	Sea $\T_\Y$ una topología que verifica la propiedad universal, entonces $\T_\Y=f^{-1}(\T)$.
+\end{prop}
+\begin{proof}
+	Razonaremos por doble contención y haciendo algunos cambalaches útiles para retorcer la propiedad universal a nuestro gusto.
+	
+	Consideramos el siguiente diagrama, análogo al de la demostración de la proposición \ref{const_universalInmersiones} pero tomando $(Z,\T')=(\Y,\T_\Y)$ y $g=\text{id}$.
+	\begin{equation*}
+	\xymatrix{
+		&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
+		&(\mathcal{X},\T) \\
+		&(\mathcal{Y},\T_{\mathcal{Y}}) \ar@{-->}[ru]_{f\circ \text{id}=f} \ar[u]^{\text{id}}}
+	\end{equation*}
+	
+	Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, por la propiedad universal, tenemos por lo anterior que $f\circ\text{id}=f$ es continua. En consecuencia, $\T_{\mathcal{Y}}$ hace que $f$ sea continua y, por tanto, por construcción de $f^{-1}(\T)$, $f^{-1}(\T)\subset \T_\Y$. Ya tenemos demostrada una inclusión.
+	
+	Para la otra implicación consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,\T_\Y)$ y $g=\text{id}$.  
+	
+	\begin{equation*}
+	\xymatrix{
+		&(\mathcal{Y},\T_{\mathcal{Y}}) \ar[r]^f
+		&(\mathcal{X},\T) \\
+		&(\mathcal{Y},f^{-1}(\T)) \ar@{-->}[ru]_{f\circ \text{id}=f} \ar[u]^{\text{id}}}
+	\end{equation*}
+	
+	Ahora, por definición de $f^{-1}(\T)$, sabemos que $f\circ\text{id}=f$ es continua. Ahora, aplicando la propiedad universal tenemos que $\text{id}$ debe ser continua, y esto solo es posible si $\T_\Y\subset f^{-1}(\T)$.
+\end{proof}
+\begin{obs}[Inyectividad] Vamos a ver ahora un caso particular muy importante (el que realmente es de interés) de esta construcción.
+
+Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $\U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(\U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles (no puedo separarlos en dos abiertos distintos). Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades.
+\end{obs}
+\subsection{Inmersiones}
+El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
+
+\[(\mathcal{\Y},f^{-1}(\T)) \xrightarrow{f} (f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
+
+Además, la aplicación es \tb{continua} puesto que, dado $\W$ un abierto de $f(\mathcal{\Y})$, entonces, por topología relativa $\W=f(\Y)\cap \U$ para cierto abierto $\U\in \T$. Esto implica que
+
+\[f^{-1}(\W)=f^{-1}(\U\cap f(\mathcal{\Y}))=f^{-1}(\U)\cap \mathcal{\Y}=f^{-1}(\U),\]
+
+que es abierto de $\mathcal{\Y}$ por la definición de topología que hemos tomado.
+
+Sin embargo, esto no termina aquí, ya que $f$ es \tb{abierta}. En efecto, dado un abierto $\W\subset\Y$, entonces existe un abierto $\U\in\T$ de modo que $f(\W)=\U\cap f(\Y)$. En efecto, 
+
+\[f(\W)=f(f^{-1}(\U))=f(f^{-1}(U\cap f(\Y)))=\U\cap f(\Y),\]
+
+que es un abierto de $f(\mathcal{\Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es \tb{homeomorfismo}. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$.
+
+\begin{defi}[Inmersión o embebimiento]
+	A una función $f:(\Y,f^{-1}(\T))\to(\X,\T)$ inyectiva se la denomina \tbi{inmersión} o \tbi{embebimiento}.
+\end{defi}
+\section{Imágenes directas (cocientes e indentificaciones)}
 
 Después de haber realizado todo el desarrollo anterior, una posibilidad que se nos plantea es dualizar las cuestiones que nos han ido apareciendo. Coloquialmente, podríamos decir que vamos a cambiarle el sentido a todo.
 
