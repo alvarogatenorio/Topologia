@@ -525,7 +525,7 @@ Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan 
 \end{defi}
 Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparcada por si las moscas.
 
-Pasamos hora a definir el concepto de densidad de un conjunto.
+Pasamos ahora a definir el concepto de densidad de un conjunto.
 \begin{defi}[Conjunto Denso]
 	\label{etop_def_denso}
 	Decimos que un conjunto $A$ es \tbi[conjunto!denso]{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
@@ -608,7 +608,7 @@ Una última cosa que merece la pena observar es que la frontera de un conjunto p
 \end{proof}
 
 \section{Base de entornos}
-Al igual que en los espacios vectoriales, para estudiar las aplicaciones lineales nos bastaba con fijarnos en qué les ocurría a os vectores de una base, en los espacios topológicos desarrollamos un concepto similar.
+Al igual que en los espacios vectoriales, para estudiar las aplicaciones lineales nos bastaba con fijarnos en qué les ocurría a los vectores de una base, en los espacios topológicos desarrollamos un concepto similar.
 \begin{defi}[Base de Entornos de un Punto]
 	\label{etop_bases_entornos}
 	Una \tbi[base! de entornos]{base de entornos} de un punto $a\in\X$ es una colección $\Va{a}$ de entornos de $a$ tales que todo entorno de $a$ contiene a alguno de $\Va{a}$.
@@ -681,66 +681,80 @@ Usaremos esta construcción de forma asidua cuando estudiemos las sucesiones con
 	\label{etop_bases_abiertos}
 	Una \tbi[base!de abiertos]{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión de abiertos de $\B$
 \end{defi}
-Veamos que esta definición nos permite reformular las bases de entornos vistas en \eqref{etop_bases_entornos}, y que caracterizaremos de la siguiente manera:
 
+Esto viene a ser una filosofia parecida a la del álgebra lineal, pero cambiando unión por combinación lineal y abiertos por vectores. Ahora vamos a ver una reformulación de este concepto bastante potente, pues relaciona los dos conceptos de base que tenemos hasta el momento.
 
-\begin{prop}[Reformulación de Bases de Entornos]
-	Sea $x$ un punto de $\X$ y sea $\B_{x} = \{B \in \B : x \in B\}$, entonces $\B_{x}$ es una base de entornos.
+\begin{prop}[Caracterización de las bases de una topología]
+	$\B$ es base de $\T$ si y solo si para cada $x \in \X$ el conjunto
+	$\V_x = \{ V \in \B \tq  x \in V\}$ es una base de entornos de x.
 \end{prop}
-\begin{proof} Veamos que esto ocurre. Para ello todo entorno de $x$ tiene que contener a alguno de $\B^{x}$. Sea $\V^{x}$ un entorno de $x \ra\ \exists\ \U$ abierto tal que $x \in \U \subset \V^{x}$. Ahora, como $\B$ es base de abiertos $\ra\ \U\ =\ \bigcup_{i\in I}B_i\ \ra\ \exists B_{i} \subset \B^{x}$ tal que $x \in B_{i} \subset \V^{x}$, luego cumple lo buscado.
+\begin{proof} 
+	Supongamos que $\B$ es base de $\T$. Veamos que $\V_x$ es base de entornos de $x$. Para ello, sea $V$ entorno de x. Entonces hay un $\U$ abierto de manera que $x \in \U \subset \V$. Como $\B$ es base de abiertos de $\T$, tenemos que
+	$x \in \U = \bigcup_{i \in I, V_i \in \B} V_i \subset V \Rightarrow$ hay un $V_i \in \B$ tal que $x \in V_i \subset \U \subset V$.
 	
-	
-	Ahora veamos...%Completar, duda en que quiere hacer conn esto 
+	Ahora supongamos que $\V_x$ es base de entornos de $x$. Veamos que $\B$ es base de abiertos. Sea $\U$ un abierto no vacío y $x \in \U$. Por ser $V_x$ base de entornos de x y $\U$ entorno de $x$, pues es un abierto que contiene a $x$, habrá un $V \in \V_x$ tal que $x \in V \subset \U$. Como podemos hacer esto para cada $x \in \U$, es fácil deducir que $\U = \bigcup_{x \in \U} V_x$, pues es claro que $V_x \subset \U \ \forall x \Rightarrow \bigcup V_x \subset \U$ y por otro lado $x \in V_x \ \forall x \Rightarrow \U \subset \bigcup V_x$.
 \end{proof}
 
-Veremos otra condición que podremos usar en lugar de la definición de bases de abiertos \ref{etop_bases_abiertos}.
-\begin{obs}[Reformulación de Bases de Abiertos]
-	\label{etop_ref_bases_abiertos}
-	Para todo abierto $\U$ de $\X$ y todo punto $x \in \U$, existe un $\V \in \B$ tal que $x \in \V \subset \U$.
+Hechas estas consideraciones, pasemos a ver ejemplos de bases de abiertos.
+\begin{exa}[Bases de abiertos]
+	En $( \R^n,\T_u )$ todas las siguientes colecciones son bases de abiertos de $\T_u$.
+ 	 $$\B_1=\{B(x, \varepsilon) \tq x \in \R^n\ y \ \varepsilon > 0\}$$
+	 $$\B_2=\{B(x, \frac{1}{k}) \tq x \in \R^n\ y \ k \geq 1\}$$
+	 Usando la caracterización vista anteriormente, es trivial comprobar que $B_1$ y $B_2$ efectivamente son bases.
+	 $$\B_3=\{B(q, r) \tq q \in \Q^n\ y \ r \in \Q\}$$
+	 Esta última es especialmente importante, pues es una base numerable.
+\end{exa}
+
+\begin{obs}
+	Una vez hallamos demostrado que cierta $\B$ es base de abiertos, para demostrar que $\B'$ es base, basta con expresar los abiertos de $\B$ como unión de los de $\B'$. Por eso es importante encontrar bases lo más pequeñas posibles.  \qedhere
 \end{obs}
-\begin{proof}
-	Si se cumple esto, y tomamos $\U$ abierto de de $\X$, entonces para todo $x \in \U$ tomamos $\V^x \in \B$ de tal forma que $x \in \V^x \subset \U$. Al hacer esto, $\U$ coincide con $\bigcup_{x \in \U}V^{x}$, por lo que cualquier abierto que tomemos de $\X$ es unión de elementos de la base. La otra implicación es directa.
-\end{proof}
-Tras haber visto bases de abiertos \ref{etop_bases_abiertos}, y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en el capítulo \ref{num}, expone muy bien las ideas recién tratadas.
+
+Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en el capítulo \ref{num}, expone muy bien las ideas recién tratadas.
+ 
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{segundo axioma} de numerabilidad (o simplemente II axioma) si tiene una base numerable.
-	\begin{exa}[Bases de abiertos]
-		Veamos varios ejemplos de base de abiertos en el espacio topológico $(\R^{n},\T_{n})$, con $\T_{n}$ la topología usual:
-		\begin{enumerate}
-			\item $\B=\{B(x, \varepsilon)\ :\ x \in \R^n\ y \ \varepsilon > 0\}$
-			\item $\B=\{B(x, \frac{1}{k})\ :\ x \in \R^n\ y \ k \geq 1\}$
-			\item $\B=\{B(q, r)\ :\ q \in \Q^n\ y \ r \in \Q\}$
-		\end{enumerate}
-	\end{exa}
+	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{segundo axioma} de numerabilidad (o simplemente II axioma) si tiene una base de abiertos numerable.
+
 \end{defi}
 \begin{obs}
-	Ser II axioma implica ser I axioma.
+	Ser II axioma implica ser I axioma. \qedhere
 \end{obs}
 \begin{proof}
 	Si $\B$ es una base numerable para la topología de $\X$, entonces si tomamos el subconjuto de $\B$ formado por los elementos de la base que contienen al punto $x$ entonces es una base numerable en $x$. Luego todo punto tiene una bsae numerable, por lo que es I axioma.
 \end{proof}
-Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hecho no todos los espacios métricos lo cumplen. Será útil ya que muchos espacios que no son familiares lo cumplen, y nos ayudará para probar algunos teoremas.
-\begin{prop}
+
+\begin{obs}
+	Ser II axioma implica ser separable. \qedhere
+\end{obs}
+\begin{proof}
+	Hay que ver que en todo abierto hay un punto del conjunto numerable denso. Como todo abierto es unión numerable de abiertos de la base, basta escoger un punto de cada conjunto de la base, habiendo construido así el conjunto numerable denso.
+\end{proof}
+
+Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hecho no todos los espacios métricos lo cumplen. Será útil ya que muchos espacios que no son familiares lo cumplen, y nos ayudará para probar algunos teoremas. \\
+
+La siguiente proposición responde algunas preguntas importantes.
+\begin{prop}[Caracterización de las bases de abiertos]
 	\label{etop_base_top}
-	Una colección de $\B$ de subconjuntos de un conjunto $\X$ es base de una (única) topología en $\X$ si y sólo si:
+	Una colección de subconjuntos $\B$ de $X$ es base de una topología si y sólo si se verifican las siguientes condiciones:
 	\begin{enumerate}
-		\item $\X = \bigcup_{B \in \B}B$
-		\item Para todo $B_1$, $B_2 \in \B$ y para todo $x \in B_1 \cap B_2$,  $\exists B \in \B$  y  $B \subset B_1 \cap B2$ tal que $x \in B$.
+		\item La base $\B$ cubre todo el espacio, es decir, $X = \bigcup_{B \in \B}B$
+		\item Para todo $B_1$, $B_2 \in \B$ y para todo $x \in B_1 \cap B_2$,  $\exists B \in \B$  y  $B \subset B_1 \cap B_2$ tal que $x \in B$.
 	\end{enumerate}
+\end{prop}
 \begin{proof}
 	\begin{enumerate}
-		\item Como $\X$ es abierto, es unión de elementos de la base. Por lo tanto $X$ es la unión de todos los elementos de $\B$.
-		\item Supongamos que $B_1$, $B_2 \in \B$ y que $x \in B_1 \cap B_2$. Como $B_1$ y $B_2$ son abiertos, su intersección es abierta. Por \ref{etop_ref_bases_abiertos}, existe un $B \in \B$ tal que $x \in B \subset B_1 \cap B_2$.
+		Supongamos que $\B$ es base, entonces se cumple 1 trivialmente. Además, $B_1 \cap B_2$ es abierto, luego entorno de $x$, por tanto $\exists B$ tal que $x \in B \subset B_1 \cap B_2$. Luego se cumple 2. \\
+		
+		Veamos ahora la otra implicación. Si la colección de conjuntos $\T = \{ U \subset X \tq U = \bigcup_{B \in \B}B$ es una topología, entonces $\B$ es base. Vayamos a la demostración. Si $X = \bigcup_{B \in \B}B$ es claro que $\B$ es una base de la topología trivial. Además si se cumple 2, es claro que por construcción $B_1 \cap B_2 \neq \emptyset$. Sean $\U_1, \U_2 \in \T$, supongamos que $\U_1 \cap \U_2 \neq \emptyset$, entonces hay un $x \in \U_1 \cap \U_2$. Esto implica que $\U_1$ y $\U_2$ son entornos de $x$. Como se cumple 2, existen sendos $B_1, B_2$ tales que $x \in B_1 \cap B_2 \subset \U_1 \cap \U_2$. Tomando la unión llegamos al resultado.
 	\end{enumerate}
 \end{proof}
-\end{prop}
+
 \begin{exa}[Topología de Sorgenfrey en $\R$]
-	Sea el espacio topológico $(\Re, \T_s)$ espacio topológico, con $\T_s$ la llamada topología de Sorgenfrey. Veamos en que consiste esta topología. 
+	Sea el espacio topológico $(\R, \T_s)$ espacio topológico, con $\T_s$ la llamada topología de Sorgenfrey. Veamos en que consiste esta topología. 
 	
-	Si tomamos en $\R$ la colección de intervalos $[a,b)$, este conjunto es base de la llamada \tbitop{de Sorgenfrei}.
+	Si tomamos en $\R$ la colección de intervalos $[a,b)$, este conjunto es base de la llamada \tbitop{de Sorgenfrey}.
 	\begin{proof}
-		Para ver que ocurre esto verificaremos que esta base verifica \ref{etop_base_top}
+		Para ver que ocurre esto comprobaremos que esta base cumple \ref{etop_base_top}
 		
 		Denotemos $\B = \{[a,b) : a,b \in \R\}$. Que $\B$ cumple que la unión de todos sus elementos genera el total es obvio($\R$ es la unión de estos intervalos).
 		
@@ -748,19 +762,23 @@ Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hech
 	\end{proof}
 	Veremos una serie de propiedades extra de esta topología, que son muy ilustrativas.
 	\begin{enumerate}
-		\item Los abiertos de la topología usual están contenidos en la topología de Sorgenfrei.
+		\item Los abiertos de la topología usual están contenidos en la topología de Sorgenfrey.
 		\begin{proof}
-			Sea el intervalo $(a,b)$. Describamoslo en función de intervalos cerrado-abierto. $(a,b) = \cup_{k\geq 1} [a+\frac{1}{k},b)$. Sabemos que esta unión está en la topología de Sorgenfrei luego ya está.
+			Sea el intervalo $(a,b)$. Describamoslo en función de intervalos cerrado-abierto. $(a,b) = \cup_{k\geq 1} [a+\frac{1}{k},b)$. Sabemos que esta unión está en la topología de Sorgenfrey luego ya está.
 		\end{proof}
-	Con esto observamos que la topología de Sorgenfrei es más fina que la usual $(\T \subsetneq \T_{s})$
-	Con esto sabemos que si un conjunto no es compacto con la topología de Sorgenfrei tampoco lo es con la usual, ya que si con una que tiene los mismo y más abiertos no podemos extraer un subrecubrimiento finito,difícilmente podremos hacerlo con una más pequeña.
+	Con esto observamos que la topología de Sorgenfrey es más fina que la usual $(\T \subsetneq \T_{s})$. Para ver que efectivamente son distintas, basta tomar un abierto de Sorgenfrey $[a,b)$ y darse cuenta de que no es abierto en la usual.
+	
+	
+	Con esto sabemos que si un conjunto no es compacto con la topología de Sorgenfrey tampoco lo es con la usual, ya que si con una que tiene los mismos y más abiertos no podemos extraer un subrecubrimiento finito, difícilmente podremos hacerlo con una más pequeña.
 	\item Es una base de conjuntos abiertos y cerrados (lo que se llama una topología "\textit{clopen}")
 	\begin{proof}
-		Ver esto es muy sencillo. Si tenemos el abierto (en esta topología) $[a,b)$, tenemos que su complementario es $(-\infty, a)$ que es un abierto de la usual, luego de la de Sorgenfrei, y $[b,\infty)$ que es $[b,\infty) = \cup_{k\geq1} [b, b+k)$ que es un abierto Sorgenfrei. Luego el intervalo $[a,b)$ es un abierto-cerrado.
+		Ver esto es muy sencillo. Si tenemos el abierto (en esta topología) $[a,b)$, tenemos que su complementario es $(-\infty, a) \cup [b,\infty)$. El intervalo $(-\infty, a)$ es un abierto de la usual, luego de la de Sorgenfrey, y $[b,\infty)$ lo poedmos escribir como $[b,\infty) = \cup_{k\geq1} [b, b+k)$ que es un abierto Sorgenfrey. Luego el intervalo $[a,b)$ es un abierto-cerrado.
 	\end{proof}
 	\item No hay conexos(salvo los puntos).
-	\item No es II axioma, ya que en todo conjunto de la base hay racional. SI es separable.
-	\item Es I axioma (tomamos $[a, a+\frac{1}{k})$). Es Lindelöf.
+	\item No es II axioma.
+	\item Es separable.
+	\item Es I axioma (tomamos $[a, a+\frac{1}{k})$).
+	\item Es Lindelöf.
 	\end{enumerate}
 \end{exa}
 
@@ -768,27 +786,77 @@ Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hech
 \section{Topología relativa}
 
 \begin{defi}[Topología relativa]
-	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X$. Definimos la \tbitop{relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$. Se verifica que esta es una topología en $\mc{Y}$, y entonces decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}.
+	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X \neq \emptyset$. Definimos la \tbitop{relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$.
+	En general, decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}. Y a los abiertos de $\mc{Y}$ se les denomina \tbi{abiertos relativos}.
 \end{defi}
+	
+	Comprobemos que efectivamente es una topología. \\
+	Contiene el vacío y el total. En efecto, $\emptyset \in \T\restriction_\mc{Y}$ pues $\emptyset \cap \mc{Y} = \emptyset$ y $\mc{Y} \in \T\restriction_\mc{Y}$ pues $\X \cap \mc{Y} = \mc{Y}$. 
+	Es cerrado respecto de uniones arbitrarias. En efecto, $\bigcup_{i \in I}{(\U \cap \mc{Y})} = \big( \bigcup_{i \in I} \U \big) \cap \mc{Y}$. Y por último, es cerrado respecto de intersecciones finitas. En efecto, $\bigcap_{i = 1}^{n}{(\U_i \cap \mc{Y})} = \big( \bigcap_{i=1}^{n} \U_i \big) \cap \mc{Y}$. \\
 
-Gracias a esta definición, siempre que hablemos en adelante de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa para dotarlo de estructura de espacio topológico.
+	Gracias a esta definición, siempre que hablemos en adelante de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa para dotarlo de estructura de espacio topológico. \\
+
+Veamos ahora un lema referido a resultados más elementales.
+
+\begin{lem}[Bases y topología relativa]
+	Sea $Y$ un subconjunto no vacío de $\X$. Entonces:
+	\begin{enumerate} 
+		\item Si $\V_y$ es base de entornos de $y \in Y$ en $\X$, entonces $\V_y \cap Y$ es base entornos en $Y$.
+		\item Si $\B$ es base en $\X$, $\B \cap Y$ es base en $Y$. 	
+	\end{enumerate}
+\end{lem}
+
+\begin{obs}[Lindelöf y separabilidad]
+	Si $\X$ es un espacio Lindelöf o separable, $Y \subset \X$ no tiene porque serlo. \qedhere
+\end{obs}
 
 Vamos a ver ahora que la topología relativa también preserva esa ``dualidad'' de la que hablábamos antes entre abiertos y cerrados. En particular, también los cerrados relativos son las intersecciones de los cerrados de $\X$.
 
-\begin{prop}
+\begin{lem}[Cerrados relativos]
 	Los cerrados de $\mc{Y}$ son las intersecciones de los cerrados de $\X$ con $\mc{Y}$. Es decir, $C\subset\mc{Y}$ es cerrado si existe $F\subset\X$ cerrado tal que $C = F\cap\mc{Y}$.
 	
 	\begin{proof}
-		Sea $W\subset\X$ un abierto de $X$. Entonces, $\X\setminus W$ es cerrado, y queremos ver si $C=\mc{Y}\cap(\X\setminus W)$ es cerrado. Pero esto es lo mismo que ver si $\mc{Y}\setminus F$ es abierto, y:
+		Sea $W\subset\X$ un abierto de $X$. Entonces, $\X\setminus W$ es cerrado, y queremos ver si $C=\mc{Y}\cap(\X\setminus W)$ es cerrado. Pero esto es lo mismo que ver si $\mc{Y}\setminus C$ es abierto, y:
 		\[\mc{Y}\setminus C=\mc{Y}\setminus (\mc{Y}\cap(\X\setminus W))=\mc{Y}\setminus ((\mc{Y}\cap\X)\setminus W)=\mc{Y}\setminus (\mc{Y}\setminus W) = \mc{Y}\cap W\]
 		donde para las igualdades anteriores se han utilizado relaciones conocidas de teoría de conjuntos. Entonces, como $\mc{Y}\cap W$ es abierto por definición de topología relativa, $\mc{Y}\setminus C$ también lo es, y por tanto $C$ es cerrado.
 	\end{proof}
-\end{prop}
+\end{lem}
 
-\begin{obs}
-	En particular, se verifican las siguientes propiedades:
+\begin{lem}[Entornos relativos]
+	Sea $A \subset \X$. Los entornos de $a \in A$ son las intersecciones de A con los entornos de $a$ en $\X$.	
+\end{lem}
+\begin{proof}
+	Sea $\V$ un entorno de $a$ en $\X$, entonces hay un abierto $\U$ tal que $x \in \U \subset \V$. Veamos que $\V \cap A$ es entorno de $a$ en $\X$. Para ello vemos que hay un abierto $\U'$ tal que $x \in \U' \subset \V \cap A$. Dicho abierto es, intuitivamente, $\U \cap A$.
+	Vamos a comprobarlo formalmente. Sea $a \in \U \cap A$. Veamos que $(\U \cap A) \subset (\V \cap A)$. Como $\U \subset \V$, dado $x \in \U $ y $x \in A \Rightarrow x \in \V$ y $ x \in A$. \\
+	
+	Sea $\V'$ un entorno de $a$ en $A$, entonces hay un abierto $\U'$ tal que $x \in \U' \subset \V'$. Como $\U'$ es abierto relativo en $A$, $a \in \U \cap A \subset \V'$. Veamos que $\V' = \V \cap A$ con $\V$ un entorno de $a$ en $\X$. Es claro que $\U$ es entorno de $a$ en $\X$, por ende, basta tomar $\V = \V' \cap \U$.
+\end{proof}
+
+\begin{prop}[Relatividad y adherencias]
+	Sea $A \subset \X$ y $\pi \subset A$. Se cumple que $A \supset Adh_A(\pi) = A \cap Adh_{\X}(\pi)$.
+\end{prop}
+\begin{proof}
+	$a \in Adh_A(\pi)$ si y solo si dado un entorno de $a$ en $A$, $\emptyset \neq \V_A \cap \pi = \V_x \cap (A Cap \pi) = \V_x \cap \pi$.
+\end{proof}
+
+
+\begin{obs}[Otras propiedades]
 	\begin{enumerate}
 		\item Sea $A\subset\X$ abierto. Si $A\cap U$ es un abierto en la topología $\T\restriction_A$ (es decir, $U$ es abierto en $\T_\X$), entonces $A\cap U$ es también abierto en $\T_\X$.
 		\item Sea $F\subset\X$ cerrado. Si $F\cap C$ es un cerrado en la topología $\T\restriction_F$ (es decir, $C$ es cerrado en $\T_\X$), entonces $F\cap C$ es también cerrado en $\T_\X$. \qedhere
 	\end{enumerate}
 \end{obs}
+
+\begin{lem}[Bases relativas]
+	Sea $\mc{Y} \subset \X$.
+ 	\begin{enumerate}
+ 		\item Si $\V_y$ es base en $\X$, $\V_y \cap \mc{Y}$ es base en $\mc{Y}$.
+ 		\item Si $\B$ es base en $\X$, $\B \cap \mc{Y}$ es base en $\mc{Y}$.
+ 	\end{enumerate}
+\end{lem}
+\begin{proof}
+	\begin{enumerate}
+		\item Hay que ver que dado un entorno de $y$ en $\mc{Y}$, que son de la forma $V \cap \mc{Y}$, hay uno de la forma $W \cap \mc{Y}$ tal que $(W \cap \mc{Y}) \subset (V \cap \mc{Y})$. Es claro que $W \cap V$ lo cumple.
+		\item Dado un abierto $\U$ en $\mc{Y}$, tenemos que $\mc{Y} \cap \U = \mc{Y} \cap \big( \bigcup B \big) = \bigcup (B \cap \mc{Y})$.
+	\end{enumerate}
+\end{proof}
