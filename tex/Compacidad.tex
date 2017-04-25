@@ -159,12 +159,14 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 Ahora, presentamos un resultado sobre espacios secuencialmente compactos que va a usarse con asiduidad en la sección de topología algebraica.
 
 \begin{lem}[Lebesgue]
-\label{comp_lema_lebesgue}
-Sea $\X$ un espacio métrico secuencialmente compacto. Entonces, dado un recubrimiento abierto $\mc{A}$ de $\X$, existe $\epsilon>0$ tal que cada subconjunto de $\X$ de diámetro menor que $\epsilon$ está contenido en algún abierto de $\mc{A}$. En particular, cada bola $\bola(x,\epsilon)$ está contenida en algún abierto de $\mc{A}$.
+	\label{comp_lema_lebesgue}
+	Sea $\X$ un espacio métrico compacto. Entonces, dado un recubrimiento abierto $\mc{A}$ de $\X$, existe $\epsilon>0$ tal que cada subconjunto de $\X$ de diámetro menor que $\epsilon$ está contenido en algún abierto de $\mc{A}$. En particular, cada bola $\bola(x,\epsilon)$ está contenida en algún abierto de $\mc{A}$.
 
-\begin{proof}
-Supongamos que existe un recubrimiento abierto $\mc{A}$ de $\X$ que no cumple la condición del lema, esto es, $\forall\epsilon > 0$ existe algún subconjunto de diámetro menor que $\epsilon$ que no está contenido en ningún abierto de $\mc{A}$. Entonces, para cada $n\in\N$, sea $A_n$ un subconjunto de diámetro menor que $\frac{1}{n}$ que no esté contenido en ningún abierto de $\mc{A}$, y sea $x_n\in A_n$. Por ser $\X$ secuencialmente compacto, la sucesión $\{x_n\}_{n=1}^\infty$ tiene una subsucesión $\{x_{n_k}\}_k$ convergente a un punto $x\in\X$. Tomamos entonces $U\in\mc{A}$ que contenga a $x$, y $r>0$ de forma que $\bola(x,r)\subset U$.
+	\begin{proof}
+		Como acabamos de ver en la observación \ref{comp_obs_relacion_defs_compacidad}, $\X$ es secuencialmente compacto. Es esto lo que vamos a usar para la demostración.
+	
+		Supongamos que existe un recubrimiento abierto $\mc{A}$ de $\X$ que no cumple la condición del lema, esto es, $\forall\epsilon > 0$ existe algún subconjunto de diámetro menor que $\epsilon$ que no está contenido en ningún abierto de $\mc{A}$. Entonces, para cada $n\in\N$, sea $A_n$ un subconjunto de diámetro menor que $\frac{1}{n}$ que no esté contenido en ningún abierto de $\mc{A}$, y sea $x_n\in A_n$. Por ser $\X$ secuencialmente compacto, la sucesión $\{x_n\}_{n=1}^\infty$ tiene una subsucesión $\{x_{n_k}\}_k$ convergente a un punto $x\in\X$. Tomamos entonces $U\in\mc{A}$ que contenga a $x$, y $r>0$ de forma que $\bola(x,r)\subset U$.
 
-Consideramos la bola $\bola(x,\frac{r}{2})$. Por ser $\{x_{n_k}\}$ convergente, existe un $i$ tal que $x_{n_i}\in\bola(x,\frac{r}{2})$, y entonces $\frac{1}{n_i}<\frac{r}{2}$. Entonces, $x_{n_i}\in A_{n_i}\cap\bola(x,\frac{r}{2})$, y el diámetro de $A_{n_i}$ es menor que $\frac{r}{2}$, luego $A_{n_i}\subset\bola(x_{n_i},r)\subset U$, lo que contradice a la hipótesis.
-\end{proof}
+		Consideramos la bola $\bola(x,\frac{r}{2})$. Por ser $\{x_{n_k}\}$ convergente, existe un $i$ tal que $x_{n_i}\in\bola(x,\frac{r}{2})$, y entonces $\frac{1}{n_i}<\frac{r}{2}$. Entonces, $x_{n_i}\in A_{n_i}\cap\bola(x,\frac{r}{2})$, y el diámetro de $A_{n_i}$ es menor que $\frac{r}{2}$, luego $A_{n_i}\subset\bola(x_{n_i},r)\subset U$, lo que contradice a la hipótesis.
+	\end{proof}
 \end{lem}

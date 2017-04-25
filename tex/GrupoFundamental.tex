@@ -75,3 +75,170 @@ La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es
 	\item Para $n=4$, Donaldson lo demostró en 1985.
 	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields que se le intentó conceder por demostrar la conjetura.
 \end{itemize}
+
+% TODO: Faltan las secciones 3 y 4 (producto de caminos y grupo fundamental)
+% TODO: En la sección del grupo fundamental, añadir la noción de simplemente conexo (dijo en clase que se le olvidó definirla, y esta sección es donde mejor cuadra)
+
+\section{\ti{General nonsense}. Funtorialidad}
+
+El objetivo principal de esta sección es aplicar las ideas de teoría de categorías a los conceptos que hemos ido viendo a lo largo de este capítulo. Así, se recomienda leer antes el anexo \ref{funt}, que contiene una brevísima introducción a los conceptos más básicos de teoría de categorías. Esta no solo define los conceptos básicos como categoría o funtor sino que puede ayudar al lector a comprender el propósito detrás de este punto de vista, que a primera vista puede parecer terriblemente abstracto.
+
+\begin{const}[Interpretación funtorial del grupo fundamental]
+	En esta sección, vamos a considerar dos categorías. La primera de ellas es la \index[general]{categoría}categoría de espacios topológicos punteados \Topp, cuyos objetos son: 
+	\[\{((\X,\T),x_0)\midc (\X,\T)\text{ espacio topológico}, x_0\in\X\}\]
+	y en la cual los morfismos son las funciones continuas que preservan el punto base $x_0$. La segunda de ellas la categoría de los grupos \Grp, que tiene por objetos:
+	\[\{(G,\cdot)\midc (G,\cdot) \text{ grupo}\}\]
+	y por morfismos los homomorfismos de grupos.
+	
+	Entonces, consideramos tomar el grupo fundamental como un \index[general]{funtor}funtor. Es decir, consideramos el funtor $\pi$:
+	\[\xymatrix @R=0.5pc @C=0.5pc {
+		& & \Topp \ar[rrr]^\pi & & & \Grp & \\
+		& & (\X,x_0) \ar@{|->}[rrr] \ar[dd]_{f \text{ cont.}} \ar@<1.5ex>@{|->}[dd] & & & \pi(\X,x_0) \ar[dd]_{f^\ast}^{\text{homom.}} \ar@{}[r]|-\ni & [\sigma] \ar@{|->}[dd] \\
+		[0,1] \ar[urr]^\sigma \ar[drr]_{f\circ\sigma} & & & & & & \\
+		& & (\Y,y_0) \ar@{|->}[rrr] & & & \pi(\Y,y_0) \ar@{}[r]|-\ni & [f\circ\sigma] \\
+	}\]
+	Nótese que denotamos $f^\ast$ al homomorfismo de grupos que es imagen de una aplicación continua $f$ por el funtor $\pi$.
+	Como se aprecia en el diagrama, este homomorfismo $f^\ast$ se define, para una clase de equivalencia de caminos, de la siguiente forma:
+	\[\begin{split}
+	f^\ast:(\X, x_0) &\to (\Y, y_0) \\
+	[\sigma] &\mapsto [f\circ\sigma]
+	\end{split}\]
+	Hay que comprobar, entonces, que está bien definido. En efecto, consideramos la aplicación $f^\ast$ que acabamos de definir. Desde luego, si $\sigma$ es un lazo con base $x_0$, $f\circ\sigma$ es un lazo con base $y_0$. Para ver si respeta la homotopía, consideramos $\tau:[0,1]\to (\X,x_0)$ homótopo con extremos fijos con $\sigma$ a través de la homotopía $H$. Entonces, $f\circ H$ es una homotopía entre $f\cap\sigma$ y $f\cap\tau$. Por último, comprobamos que es homomorfismo, lo cual es directo comprobando que $f\circ(\sigma\ast\tau)=(f\circ\sigma)\ast (f\circ\tau)$.
+	
+	Además, hay que ver que es un funtor, esto es, que cumple:
+	\begin{itemize}
+		\item $(g\circ f)^\ast = g^\ast\circ f^\ast$. En efecto, consideramos el lazo $\sigma$ con base en $x_0$. Sabemos que:
+		\[(g\circ f)\circ\sigma=g\circ(f\circ\sigma)\]
+		y tomando la imagen de $\sigma$ por $(g\circ f)^\ast$:
+			\[(g\circ f)^\ast([\sigma])=[(g\circ f)\circ\sigma]=[g\circ(f\circ\sigma)]=g^\ast([f\circ\sigma])=g^\ast(f^\ast([\sigma]))\]
+		como queríamos comprobar.
+		
+		\item $(\Id_\X)^\ast = \Id_{\pi(\X, x_0)}$. Esto se verifica directamente por como hemos definido $f^\ast$.
+	\end{itemize}
+\end{const}
+
+Visto todo lo necesario, podemos pasar a comprobar una serie de propiedades utilizando el punto de vista introducido en la construcción anterior. La teoría de categorías es capaz a menudo de simplificar demostraciones al considerar los objetos abstractos, lo cual es una de sus grandes fortalezas. Vamos a ver ahora una serie de proposiciones que al mismo tiempo son ejemplos, pues muestran como enfocaríamos una demostración desde este nuevo punto de vista. Sin embargo, no dejan de ser resultados interesantes por sí mismos.
+
+\begin{prop}
+	El funtor grupo fundamental manda homeomorfismos en isomorfismos de grupos. En particular, si dos espacios tienen distinto grupo fundamental, entonces no son homeomorfos.
+	
+	\begin{proof}
+		Sean $\X,\Y$ dos espacios topológicos punteados con $x_0$, $y_0$, y $f$ un homeomorfismo entre ellos de forma que:
+		\[\xymatrix @R=0.4pc {
+			\X \ar[r]^f_{\text{homeo.}} & \Y \ar[r]^{g=f^{-1}} & \X \\
+			x_0 \ar@{|->}[r] & y_0 \ar@{|->}[r] & x_0
+		}\]
+		
+		Ahora, tenemos que:
+		\[g^\ast\circ f^\ast = (g\circ f)^\ast = (\Id_\X)^\ast = \Id_{\pi(X)}\]
+		\[f^\ast\circ g^\ast = (f\circ g)^\ast = (\Id_\Y)^\ast = \Id_{\pi(Y)}\]
+		y con esto hemos comprobado que $g^\ast$ es la inversa de $f^\ast$, luego $f^\ast$ es isomorfismo.
+	\end{proof}
+\end{prop}
+
+\begin{prop}
+	Un \index[general]{retracto}retracto, como veremos con detalle más adelante, es un subespacio tal que existe una aplicación continua que deforma el espacio en él, como se aprecia en el siguiente esquema:
+	\[\xymatrix @C=0.65pc {
+		A \ar@{}[r]|\subset \ar[dr]_{\rho\restriction_A = \Id} & \X \ar[d]^{\rho\text{ retracto}} \\
+		& A
+	}\]
+	Entonces, la imagen $\rho^\ast$ de $\rho$ por $\pi$ es un homomorfismo sobreyectivo. En particular, si el grupo fundamental del retracto $A$ es no trivial, entonces el grupo fundamental del espacio $\X$ tampoco es trivial.
+	
+	\begin{proof}
+		Para la demostración, consideramos la imagen por $\pi$ del diagrama anterior, donde $A$ y $\X$ tienen el mismo punto base $x_0\in A$:
+		\[\xymatrix {
+			\pi(A,x_0) \ar[r]^{j^\ast} \ar[dr]_{(\rho\restriction_A)^\ast = \Id_{\pi(A)}} & \pi(\X,x_0) \ar[d]^{\rho^\ast} \\
+			& \pi(A,x_0)
+		}\]
+		donde $j$ es la aplicación inclusión de $A$ en $\X$. Como por las propiedades de los funtores $\rho^\ast\circ j^\ast=(\rho\circ j)^\ast$, el diagrama anterior conmuta, es decir:
+		\[\rho^\ast\circ j^\ast=\Id_{\pi(A)}\]
+		
+		Ahora, como $\Id_{\pi(A)}$ es biyectivo, y en particular sobreyectivo, $\rho^\ast\circ j^\ast$ también debe ser sobreyectivo, y entonces necesariamente $\rho^\ast$ lo es.
+	\end{proof}
+\end{prop}
+
+Un caso donde se puede aplicar la proposición anterior es el siguiente.
+
+\begin{exa}
+	Consideramos el disco cerrado $\adher{D}_2\subset\R^2$. Queremos comprobar que el disco no se puede retraer a $A=\Sfe^1=\partial\adher{D}_2$. Como veremos más adelante, $\pi(A)=\pi(\Sfe^1)=\Z$, y ya sabemos que $\pi(\adher{D}_2)=\{1\}$, pues es un estrellado en $\R^n$. Entonces, si fuera retracto, habría un homomorfismo sobreyectivo del grupo trivial a $\Z$, y esto es imposible.
+\end{exa}
+
+\begin{prop}
+	Dados dos espacios $\X,\Y$, el grupo fundamental del producto es isomorfo al producto de los grupos fundamentales. Esto es:
+	\[\pi(\X\times\Y)\approx\pi(\X)\times\pi(\Y)\]
+	
+	\begin{proof}
+		Consideramos los puntos base $x_0,y_0$ respectivamente. El esquema de la topología producto sería el siguiente:
+		\[\xymatrix @R = 0.4pc{
+			& \X & \\
+			\X\times\Y \ar[ur]^p \ar[dr]_q & & [0,1] \ar[ul]^\sigma \ar[dl]^\tau \\
+			& \Y &
+		}\]
+		donde $p$ y $q$ son las proyecciones. Entonces, como ya hemos hecho antes, vamos a ver la imagen de este diagrama:
+		\[\xymatrix @R = 0.4pc @C = 0.5pc {
+			& \pi(\X) & & & *+[r]{[p\circ (\sigma,\tau)]=[\sigma]} \\
+			\pi(\X,\Y)  \ar[ru]^{p^\ast} \ar[rd]_{q^\ast} \ar[rr]^-{(p^\ast,q^\ast)} & & \pi(\X)\times\pi(\Y) \ar@{}[r]|-\colon& [(\sigma,\tau)] \ar@{|->}[ru] \ar@{|->}[rd] \ar@{|->}[r] & ([\sigma],[\tau]) \\
+			& \pi(\Y) & & & *+[r]{[q\circ (\sigma,\tau)]=[\tau]}
+		}\]
+		
+		Nótese que hemos añadido la aplicación que llega a $\pi(\X)\times\pi(\Y)$. Si comprobamos que es un isomorfismo, entonces tenemos lo que estábamos buscando. En efecto:
+		\begin{itemize}
+			\item Es trivialmente sobreyectivo.
+			\item Es inyectivo. Para verlo, usaremos un resultado conocido que afirma que un homomorfismo es inyectivo si y solo si su núcleo es trivial. Entonces, denotando $e_X$ al elemento identidad de cada grupo $\pi(X)$, sean $\sigma,\tau$ de forma que $([\sigma],[\tau])=(e_\X,e_\Y)$. Queremos ver que necesariamente $[(\sigma,\tau)]=e_{\X\times \Y}$.
+			
+			Consideramos las homotopías $K_s:\sigma\homot x_0=e_\X$, $L_s:\tau\homot y_0=e_\Y$. Entonces, $(K_s,L_s):(\sigma,\tau)\homot(x_0,y_0)=e_{\X\times\Y}$ es homotopía y, por tanto, el núcleo del homomorfismo es $\{e_{\X\times\Y}\}$.
+		\end{itemize}
+		Por tanto, es isomorfismo.
+	\end{proof}
+\end{prop}
+
+Un ejemplo de la utilidad de este resultado es el siguiente.
+
+\begin{exa}
+	Consideramos el toro $\toro$, que sabemos que es homeomorfo a $\Sfe^1\times\Sfe^1$. Entonces, cuando veamos más adelante que $\pi(\Sfe^1)=\Z$, podremos afirmar directamente que $\pi(\toro)=\Z\times\Z$.
+\end{exa}
+
+\section{Espacios recubridores. El problema de elevación}
+
+El estudio de los espacios recubridores de otro espacio es a menudo útil para calcular grupos fundamentales, y en general tiene una gran relación con el estudio de ellos. En esta sección planteamos el problema de elevación en su versión más general, para luego particularizarlo para poder demostrar propiedades útiles.
+
+Para empezar, vamos a formalizar el concepto de espacio recubridor.
+
+\begin{defi}[Espacio recubridor]
+	Sea $p:\tilde{\X}\to \X$ una aplicación continua y sobreyectiva. Decimos que $\tilde{\X}$ es un \tbi[espacio!recubridor]{espacio recubridor} de $X$ si para cada $x\in\X$ existe un entorno $U^x$ que verifica que $p^{-1}(U_x)$ se puede escribir como unión disjunta de conjuntos $U_\lambda$ donde cada uno de ellos es homeomorfo a $U^x$, de forma que para cada $\lambda$ $p\restriction_{U_\lambda}:U_\lambda\to U^x$ sea un homeomorfismo.
+\end{defi}
+
+\begin{exa}[Recubrimientos]
+	Veamos algunos ejemplos de espacios recubridores.
+	
+	\begin{enumerate}
+		\item $\Sfe^n$ recubre al plano proyectivo real $\proy^n$, con la siguiente aplicación:
+		\[\begin{split}
+		p:\Sfe^n&\to\proy^n \\
+		(x_0,\dots,x_n)&\mapsto (x_0:\dotsc:x_n)
+		\end{split}\]
+		En efecto, tomamos un punto $(x_0:\dotsc:x_n)\in\proy^n$. Tomando un entorno abierto del punto, homeomorfo a un disco, su imagen inversa consiste en dos abiertos homeomorfos a discos alrededor de dos puntos antipodales de $\Sfe^n$. Estos son disjuntos y se verifican las condiciones.
+		
+		\item $\R$ recubre al círculo $\Sfe^1$, con la aplicación:
+		\[\begin{split}
+		p:\R&\to\Sfe^1 \\
+		t &\mapsto e^{2\pi t}=(\cos 2\pi t,\sin 2\pi t)
+		\end{split}\]
+		En efecto, para un punto $x$ del círculo, tomamos un entorno abierto: un arco que lo contenga sin extremos. Esto es homeomorfo a un intervalo abierto, y su imagen inversa consiste en una cantidad numerable de intervalos a lo largo de la recta real, cada uno conteniendo un punto de $p^{-1}(x) = \Z + a$ para algún $a\in\R$. Como, tomando el entorno inicial lo suficientemente pequeño, todos estos intervalos son disjuntos, ya está. \qedhere
+	\end{enumerate}
+\end{exa}
+
+Con esto, estamos ya en condiciones de formular el problema de elevación.
+
+\begin{const}[Formulación del problema de elevación]
+	\index[general]{problema de elevación}
+	Consideramos el diagrama:
+	\[\xymatrix{
+		& \tilde{\X} \ar[d]^p \\
+		\mc{Z} \ar@{-->}[ru]^{\tilde{H}} \ar[r]^H & \X
+	}\]
+	
+	Aquí, $\tilde{\X}$ es un espacio recubridor mediante la aplicación $p$. El problema de elevación pregunta por la existencia de la aplicación del diagrama $\tilde{H}:\mc{Z}\to\X$, continua y que verifique que $p\circ\tilde{H}=H$, es decir, que haga que el diagrama sea conmutativo. Una aplicación que verifique esto se llama \tbi{elevación}.
+\end{const}
+
+% TODO: Resto de la sección de elevación
