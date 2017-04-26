@@ -55,9 +55,9 @@ El resultado no trivial que mencionábamos en la introducción de esta sección 
 		\[x\in [t_{i-1}, t_i]\subset B(x,\epsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)\]
 		Por tanto, cada intervalo de la partición está en $\sigma^{-1}(U)$ o $\sigma^{-1}(V)$. Además, eliminando las divisiones innecesarias tenemos una partición que alterna estar en $\sigma^{-1}(U)$ y en $\sigma^{-1}(V)$.
 		
-		Sea $x_0\in U\cap V$. Vamos a homotopar los segmentos en $V$ a segmentos en $U$. Para cada $i$ tal que $\sigma\restriction_{[t_{i-1},t_i]}\subset V$, definimos $x_{i-1} = \sigma(t_{i-1})$, $x_i=\sigma(t_i)$. Resulta que $x_{i-1},x_i\subset U\cap V\homeo \R^n\setminus\{0\}$. Como ya hemos visto que $\R^n\setminus \{0\}$ es conexo por caminos, entonces necesariamente existe $\sigma_i:[t_{i-1},t_i]\to U\cap V$ camino entre $x_{i-1}$ y $x_i$. De esta forma, los caminos $\sigma\restriction_{[t_{i-1},t_i]}$ y $\sigma_i$ son homótopos en $V\homeo\R^n$, con lo cual son homótopos con extremos fijos en $V\subset\Sfe^n$. Repitiendo el argumento para cada segmento de $V$, reemplazándolo por el correspondiente $\sigma_i$, obtenemos un nuevo camino $\tilde{\sigma}\subset U$ y claramente $\sigma\homot\tilde{\sigma}$ con extremos fijos.
+		Sea $x_0\in U\cap V$. Vamos a homotopar los segmentos en $V$ a segmentos en $U$. Para cada $i$ tal que $\sigma\restriction_{[t_{i-1},t_i]}\subset V$, definimos $x_{i-1} = \sigma(t_{i-1})$, $x_i=\sigma(t_i)$. Resulta que $x_{i-1},x_i\subset U\cap V\homeo \R^n\setminus\{0\}$. Como ya hemos visto que $\R^n\setminus \{0\}$ es conexo por caminos, entonces necesariamente existe $\sigma_i:[t_{i-1},t_i]\to U\cap V$ camino entre $x_{i-1}$ y $x_i$. De esta forma, los caminos $\sigma\restriction_{[t_{i-1},t_i]}$ y $\sigma_i$ son homótopos en $V\homeo\R^n$, con lo cual son homótopos con extremos fijos en $V\subset\Sfe^n$. Repitiendo el argumento para cada segmento de $V$, reemplazándolo por el correspondiente $\sigma_i$, obtenemos un nuevo camino $\widetilde{\sigma}\subset U$ y claramente $\sigma\homot\widetilde{\sigma}$ con extremos fijos.
 		
-		Por último, repetimos todo el argumento anterior con $\tau$, y por tanto $\exists \tilde{\tau}$ tal que $\tau\homot\tilde{\tau}$ con extremos fijos y $\tilde{\tau}\subset U\homeo\R^n$. Entonces, $\tilde{\sigma}\homeo\tilde{\tau}$ con extremos fijos en $U\subset\Sfe^n$ y, por ser $\homot$ con extremos fijos de equivalencia, $\sigma\homot\tau$ con extremos fijos.
+		Por último, repetimos todo el argumento anterior con $\tau$, y por tanto $\exists \widetilde{\tau}$ tal que $\tau\homot\widetilde{\tau}$ con extremos fijos y $\widetilde{\tau}\subset U\homeo\R^n$. Entonces, $\widetilde{\sigma}\homeo\widetilde{\tau}$ con extremos fijos en $U\subset\Sfe^n$ y, por ser $\homot$ con extremos fijos de equivalencia, $\sigma\homot\tau$ con extremos fijos.
 	\end{proof}
 \end{prop}
 
@@ -202,13 +202,16 @@ Un ejemplo de la utilidad de este resultado es el siguiente.
 
 El estudio de los espacios recubridores de otro espacio es a menudo útil para calcular grupos fundamentales, y en general tiene una gran relación con el estudio de ellos. En esta sección planteamos el problema de elevación en su versión más general, para luego particularizarlo para poder demostrar propiedades útiles.
 
+\subsection{Espacios recubridores}
+
 Para empezar, vamos a formalizar el concepto de espacio recubridor.
 
 \begin{defi}[Espacio recubridor]
-	Sea $p:\tilde{\X}\to \X$ una aplicación continua y sobreyectiva. Decimos que $\tilde{\X}$ es un \tbi[espacio!recubridor]{espacio recubridor} de $X$ si para cada $x\in\X$ existe un entorno $U^x$ que verifica que $p^{-1}(U_x)$ se puede escribir como unión disjunta de conjuntos $U_\lambda$ donde cada uno de ellos es homeomorfo a $U^x$, de forma que para cada $\lambda$ $p\restriction_{U_\lambda}:U_\lambda\to U^x$ sea un homeomorfismo.
+	Sea $p:\widetilde{\X}\to \X$ una aplicación continua y sobreyectiva. Decimos que $\widetilde{\X}$ es un \tbi[espacio!recubridor]{espacio recubridor} de $X$ si para cada $x\in\X$ existe un entorno $U_x$ que verifica que $p^{-1}(U_x)$ se puede escribir como unión disjunta de conjuntos $U_\lambda$ donde cada uno de ellos es homeomorfo a $U_x$, de forma que, para cada $\lambda$, $p\restriction_{U_\lambda}:U_\lambda\to U_x$ sea un homeomorfismo.
 \end{defi}
 
 \begin{exa}[Recubrimientos]
+	\label{grf_exa_recubrimientos}
 	Veamos algunos ejemplos de espacios recubridores.
 	
 	\begin{enumerate}
@@ -228,17 +231,77 @@ Para empezar, vamos a formalizar el concepto de espacio recubridor.
 	\end{enumerate}
 \end{exa}
 
+\subsection{El problema de elevación}
+
 Con esto, estamos ya en condiciones de formular el problema de elevación.
 
 \begin{const}[Formulación del problema de elevación]
 	\index[general]{problema de elevación}
 	Consideramos el diagrama:
 	\[\xymatrix{
-		& \tilde{\X} \ar[d]^p \\
-		\mc{Z} \ar@{-->}[ru]^{\tilde{H}} \ar[r]^H & \X
+		& \widetilde{\X} \ar[d]^p \\
+		\mc{Z} \ar@{-->}[ru]^{\widetilde{H}} \ar[r]^H & \X
 	}\]
 	
-	Aquí, $\tilde{\X}$ es un espacio recubridor mediante la aplicación $p$. El problema de elevación pregunta por la existencia de la aplicación del diagrama $\tilde{H}:\mc{Z}\to\X$, continua y que verifique que $p\circ\tilde{H}=H$, es decir, que haga que el diagrama sea conmutativo. Una aplicación que verifique esto se llama \tbi{elevación}.
+	Aquí, $\widetilde{\X}$ es un espacio recubridor mediante la aplicación $p$. El problema de elevación pregunta por la existencia de la aplicación del diagrama $\widetilde{H}:\mc{Z}\to\X$, continua y que verifique que $p\circ\widetilde{H}=H$, es decir, que haga que el diagrama sea conmutativo. Una aplicación que verifique esto se llama \tbi{elevación}.
 \end{const}
 
-% TODO: Resto de la sección de elevación
+% TODO: Falta una buena parte de la sección de elevación
+
+\section{El grupo fundamental del espacio proyectivo}
+
+El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el espacio proyectivo real de dimensión $n$, para $n\geq 2$. Como pronto veremos, esta demostración explota el concepto de elevación. 
+
+\begin{theo}[Grupo fundamental de $\proy^n$]
+	Para $n\geq 2$, $\pi(\proy^2)=\Z_2$.
+	
+	\begin{proof}
+		Vamos a empezar demostrando que la esfera $\Sfe^n$ es un espacio recubridor del espacio proyectivo $\proy^n$. Vamos a repetir con un poco más de detalle el argumento que ya utilizamos en el ejemplo \ref{grf_exa_recubrimientos}. Consideramos pues la aplicación:
+		\[\begin{split}
+		p:\Sfe^n&\to\proy^n \\
+		(x_0,\dots,x_n)&\mapsto (x_0,\dotsc,x_n)
+		\end{split}\]
+		Entonces, sea un punto $y\in\proy^n$. Tenemos que comprobar que para cada $x\in p^{-1}(y)$ existe un entorno $U_x$ tal que $p^{-1}(U_x)$ es union disjunta de conjuntos $U_\lambda$, donde cada $U_\lambda\homeo U_x$.
+		
+		De esta forma, para $y\in\proy^n$, consideramos un hiperplano $\pi$ que no lo contenga. Como el plano $\pi$ es cerrado, $U=\proy^n\setminus\pi$ es abierto, y además contiene a $x$, luego es entorno. La imagen inversa del plano $\pi$ es, para la misma aplicación definida en todo $\R^{n+1}$, un hiperplano; y de esta manera la imagen inversa de $\proy^n\setminus\pi$ por $p:\Sfe^n\to\proy^n$ son dos casquetes de la esfera. Llamamos pues a estos $U_+$, $U_-$ y desde luego son abiertos. Como la imagen inversa de $x$ son dos puntos antipodales, que llamamos $p$ y $-p$, y no están en $p^{-1}(\pi)$, entonces está cada uno en un casquete. De esta forma, como los casquetes son entornos disjuntos, basta con comprobar que $U_+,U_-\homeo U_x$. Pero resulta que $U_x = \proy^n\setminus\pi\homeo\R^n$, y $U_+,U_-\homeo\R^n$ porque son homeomorfos a discos abiertos.
+		
+		Visto esto, podemos considerar la elevación de caminos que vamos a utilizar. Sea $a=(1:0:\dotsc:0)$ el punto base del grupo fundamental. Entonces, tenemos el diagrama:
+		\[\xymatrix @C = 0.5pc {
+			&& \Sfe^n \ar[d]^p & (x_0,\dots,x_n) \ar@{|->}[d] \ar@{}[l]|-\ni \\
+			[0,1] \ar[rr]^\sigma \ar[rru]^{\widetilde{\sigma}} && \proy^n & (x_0,\dotsc,x_n) \ar@{}[l]|-\ni
+		}\]
+		de forma que $\sigma$ es un lazo en $\proy^n$ con base en $a$, y por tanto verifica $\sigma(0)=\sigma(1)=a$. Si llamamos $p^{-1}(a)=\{\widetilde{a},\widetilde{-a}\}$, por el lema de elevación de caminos [FALTA CITA], podemos elegir $\widetilde{\sigma}$ de forma que se verifique que $\widetilde{\sigma}(0)=\widetilde{a}$. Pero como tan solo sabemos que $p\circ\widetilde{\sigma}=\sigma$, entonces $\widetilde{\sigma}(1)$ no tiene por qué ser $\widetilde{a}$, puede ser también $-\widetilde{a}$. % TODO: cita
+		
+		Planteamos entonces dos casos:
+		\begin{enumerate}[label=\roman*]
+			\item $\widetilde{\sigma}$ es un lazo en $\Sfe^n$ de base $\widetilde{a}$. Como ya vimos en la proposición \ref{grf_homotop_caminos_esfera} que $\pi(\Sfe^n)=\{1\}$, podemos escribir:
+			\[\widetilde{H}_s:\widetilde{\sigma}\homot\widetilde{e}=\widetilde{a}\]
+			y tomando imágenes por $p$ tenemos:
+			\[H_s=p\circ\widetilde{H}_s:p\circ\widetilde{\sigma}\homot p\circ\widetilde{e}\]
+			y por ser $p\circ\widetilde{\sigma}=\sigma$, tenemos que $H_s: \sigma\homot e=a$. Por tanto, $[\sigma] = 1\in\pi(\proy^n,a)$.
+			
+			\item $\widetilde{\sigma}$ es un camino en $\Sfe^n$ de $\widetilde{a}$ a $-\widetilde{a}$. Consideramos el camino:
+			\[\widetilde{\alpha}(t)= (\cos\pi t, \sen\pi t,0,\dots, 0) \]
+			que verifica que $\widetilde{\alpha}(0)=\widetilde{a}$ y $\widetilde{\alpha}(1)=-\widetilde{a}$. De nuevo, por estar en $\Sfe^n$ existe una homotopía con extremos fijos:
+			\[\widetilde{H}_s:\widetilde{\sigma}\homot[\widetilde{a},-\widetilde{a}]\widetilde{\alpha}\]
+			y, de nuevo tomando imágenes, obtenemos la homotopía:
+			\[p\circ H_s:\sigma\homot\alpha\]
+			donde los extremos fijos son $p(\widetilde{a}),p(-\widetilde{a})$, y ambos son $a$. Por tanto es homotopía de lazos. Entonces, tenemos que $[\sigma] = [\alpha]\in\pi(\proy^n,a)$.
+		\end{enumerate}
+		
+		De esta forma, hemos comprobado que cualquier lazo de $\proy^n$ está en alguna de las dos clases de homotopía. De esta forma, podemos asegurar que $\card{\pi(\proy^n,a)}\leq 2$. Veamos pues que las clases $1$ y $[\alpha]$ son distintas.
+		
+		En efecto, si fueran iguales consideramos la homotopía $H_s:\alpha\homot[a] e$. Esta verifica $H_s(0)=H_s(1)\equiv a$, $H_0=\alpha$ y $H_1\equiv a$. Al elevarla, nos queda un diagrama como el siguiente:
+		\[\xymatrix{
+			& \Sfe^n \ar[d]^p \\
+			[0,1]\times[0,1] \ar[r]^-H \ar[ru]^{\widetilde{H}} & \proy^n
+		}\]
+		donde la existencia de $\widetilde{H}$ está garantizada por el lema de elevación [FALTA CITA]. Además, podemos elegir que $\widetilde{H}_0=\widetilde{\alpha}$. Como ademas la homotopía es de extremos fijos, su elevación lo es, y están definidos también $\widetilde{H}_s(0) = \widetilde{a}$ y $\widetilde{H}_s(1) = -\widetilde{a}$. Pero necesariamente, por continuidad y por ser $H_1\equiv a$, $\widetilde{H}_1$ tiene que ser una constante, y tenemos $\widetilde{H}_1(0) = \widetilde{a}$ y $\widetilde{H}_1(1)=-\widetilde{a}$, lo cual es una contradicción. % TODO: cita
+		
+		Entonces, el grupo fundamental de $\proy^n$ tiene dos elementos, y por tanto tiene que ser $\Z_2$.
+	\end{proof}
+\end{theo}
+
+\section{Grupo fundamental del círculo}
+
+El objetivo de esta sección es calcular el grupo fundamental de $\Sfe^1$, el círculo de $\R^2$. Además, este es homeomorfo a $\proy^1$, la recta proyectiva real, con lo que ya tendremos el grupo fundamental del espacio proyectivo de cualquier dimensión.

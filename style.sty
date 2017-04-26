@@ -158,6 +158,7 @@
 % Valor absoluto y norma
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\card{\lvert}{\rvert}%
 
 % : para definir conjuntos (más separado)
 \newcommand{\midc}{\ensuremath\;:\;}
@@ -208,7 +209,8 @@
 % A homeomorfo a B
 \newcommand{\homeo}{\approx}
 % Sigma homótopo a tau
-\newcommand{\homot}{\simeq}
+\newcommand{\homot}[1][]{\underset{#1}{\simeq}}
+% Sigma homótopo con extremos fijos
 
 \DeclareMathOperator{\bola}{B}
 
