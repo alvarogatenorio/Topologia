@@ -6,14 +6,16 @@ La continuidad es la propiedad por excelencia que queremos que nuestras funcione
 
 \section{Continuidad en un punto}
 
-En el espacio euclídeo usual, cuando teníamos una función $f:A\subset\mb{R}^m\to\mb{R}^n$, con un punto $a\in A$, decíamos que $f$ es continua en $a$ si y solo si $\forall\varepsilon > 0\;\exists\delta > 0$ tal que si $x\in A,\norm{x-a}<\delta$, entonces $\norm{f(x)-f(a)}<\varepsilon$. Podemos reescribir esta condición como que si $x\in A\cap\bola(a,\delta)$, entonces $f(x)\in\bola(f(a),\varepsilon)$. Pero de nuevo, esto es equivalente a que para cualquier $\bola^a$ (bola centrada en $a$), $A\cap \bola^a\subset f^{-1}(\bola^{f(a)})$ para cierta $\bola^{f(a)}$.
+En el espacio euclídeo usual, cuando teníamos una función $f:A\subset\mb{R}^m\to\mb{R}^n$, con un punto $a\in A$, decíamos que $f$ es continua en $a$ si y solo si $\forall\varepsilon > 0\;\exists\delta > 0$ tal que si $x\in A,\norm{x-a}<\delta$, entonces $\norm{f(x)-f(a)}<\varepsilon$. Podemos reescribir esta condición como que si $x\in A\cap\bola(a,\delta)$, entonces $f(x)\in\bola(f(a),\varepsilon)$. Pero de nuevo, esto es equivalente a que para cualquier $\bola_a$ (bola centrada en $a$), $A\cap \bola_a\subset f^{-1}(\bola_{f(a)})$ para cierta $\bola_{f(a)}$.
 
 De esta forma, vamos a proceder ahora a generalizar esta definición para espacios topológicos arbitrarios.
 
 \begin{defi}
-	Sean $\X,\mc{Y}$ espacios topológicos, $f:\X\to\mc{Y}$. $f$ es \tbi[aplicación!continua]{continua} en $x_0\in\X$ si para todo entorno $V^{f(x_0)}$ la imagen inversa $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$. 
+	Sean $\X,\mc{Y}$ espacios topológicos, $f:\X\to\mc{Y}$. $f$ es \tbi[aplicación!continua]{continua} en $x_0\in\X$ si para todo entorno $V^{f(x_0)}$ la imagen inversa $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$. 
 \end{defi}
 
+	Equivalentemente, podemos decir que $f$ es continua si transforma entornos en entornos por imágenes inversas. Entendiendose esto como (entorno de la imagen $\xrightarrow{f^{-1}}$ entorno de la preimagen).
+	
 \begin{obs}
 	\label{cont_obs_continuidad_discreta_trivial}
 	Si la topología de $\X$ es grosera, o la topología de $\mc{Y}$ es muy fina, la continuidad suele ser más fácil de comprobar. Podemos pensar en $\X$ con la topología discreta como ejemplo de lo primero y en $\mc{Y}$ con la topología trivial como ejemplo de lo segundo:
@@ -44,17 +46,21 @@ Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
 	Dada $f:\X\to\mc{Y}$, continua en $x_0\in\X$, si $A\subset\X$ tal que $x_0\in A$, entonces $f\restriction_A:A\to\mc{Y}$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V^{f(x_0)}$ un entorno de $f(x_0)$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V^{f(x_0)}) = A\cap f^{-1}(V^{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V^{f(x_0)})$ es entorno de $x_0$ en $A$.
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V_{f(x_0)}) = A\cap f^{-1}(V_{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $A$.
 	\end{proof}
 \end{prop}
 
+	Este lema viene a decirnos que la continuidad no depende del conjunto donde nos encontremos, no obstante, si depende (y mucho) de la topología.
+
 \begin{prop}
-	La continuidad es una propiedad local, es decir, $f:\X\to\mc{Y}$ es continua en $x_0\in\X$ si $\exists V^{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$.
+	La continuidad es una propiedad local, es decir, $f:\X\to\mc{Y}$ es continua en $x_0\in\X$ si $\exists V_{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V^{f(x_0)}$ un entorno de $f(x_0)$. Si $\exists V^{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$, entonces $(f\restriction_{V^{x_0}})(V^{f(x_0)}) = f^{-1}(V^{f(x_0)})\cap V^{x_0}$, luego es entorno de $x_0$ en $V^{x_0}$. Entonces es entorno de $x_0$ en $\X$ y por tanto $f$ es continua.
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Si $\exists V_{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$, entonces $(f\restriction_{V_{x_0}})(V_{f(x_0)}) = f^{-1}(V_{f(x_0)})\cap V_{x_0}$, luego es entorno de $x_0$ en $V_{x_0}$. Entonces es entorno de $x_0$ en $\X$ y por tanto $f$ es continua.
 	\end{proof}
 \end{prop}
+
+	La idea que define a las propiedades locales, es que para ver si se cumplen en un punto no es necesario mirar como se comporta el espacio en su conjunto, sino tan solo debemos comprobar como se comporta en un entorno del punto. La idea intuitiva de esto es que nos da igual lo que pase ``lejos'' del punto.
 
 \section{Continuidad}
 
@@ -69,8 +75,9 @@ Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos 
 \begin{exa}
 	Vamos a ampliar la observación \ref{cont_obs_continuidad_cte_e_id} comprobando qué tienen que verificar las topologías $\T_1$, $\T_2$ para que se cumpla que la función identidad definida de $(\X,\T_1)\to(\X,\T_2)$ es continua.
 	
-	El hecho de que $f$ sea continua significa que para cualquier entorno $V_2^{f(x_0)} = V^{x_0}$, la imagen inversa:
-	\[f^{-1}(V_2^{x_0})=V_2^{x_0}=V_1^{x_0}\]
+	Notemos que aunque tenemos dos topologías distintas, estamos en el mismo espacio, entonces para cualquier entorno de un punto $x_0$ en una de las topolgías, tenemos un entorno equivalente del mismo punto en la otra topología. Es decir, $V^{\T_2}_{x_0} = V^{\T_1}_{x_0}$. \\
+	El hecho de que $f$ sea continua significa que para cualquier entorno $V^{\T_2}_{f(x_0)} = V^{\T_2}_{x_0} = V^{\T_1}_{x_0}$, la imagen inversa:
+	\[f^{-1}(V^{\T_2}_{x_0})=V^{\T_2}_{x_0}=V^{\T_1}_{x_0}\]
 	cumple que es entorno de $x_0$ en el espacio $(\X,\T_1)$. Entonces, la condición necesaria y suficiente para que la función identidad entre estos dos espacios sea constante es que $\T_1\supset \T_2$.
 \end{exa}
 
@@ -135,7 +142,7 @@ Terminamos con una propiedad fundamental de las funciones continuas: la composic
 	\begin{proof}
 		Esta es una consecuencia casi directa de la definición. En efecto, si consideramos $x_0\in\X$ y sus imágenes:
 		\[x_0\mapsto f(x_0)\eqqcolon y_0\mapsto g(f(x_0))\eqqcolon z_0\]
-		entonces basta con estudiar los entornos. En efecto, si $V^{z_0}$ es entorno de $z_0$, por la continuidad de $g$ su imagen inversa es un entorno $V^{y_0}$ en $\mc{Y}$ y, ahora, por la continuidad de $f$, la imagen inversa de este último es un entorno de $z_0$.
+		entonces basta con estudiar los entornos. En efecto, si $V^{z_0}$ es entorno de $z_0$, por la continuidad de $g$ su imagen inversa es un entorno $V^{y_0}$ en $\mc{Y}$ y, ahora, por la continuidad de $f$, la imagen inversa de este último es un entorno de $x_0$.
 	\end{proof}
 \end{prop}
 
@@ -184,9 +191,9 @@ Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, pa
 		\item %añadir dibujos(geogebra)
 		Veamos como los conjuntos anteriores son homeomorfos entre si.
 		
-		 Tomando un recubrimiento por cerrados del primero (el que tiene por cerrados los tres segmentos) y haciendole corresponder mediante $f $con los tres segmentos de nuestro segundo conjunto, vemos como cada una de sus restricciones es continua, y f de este modo continua (hacemos este camino a la inversa para ver que la inversa también lo es y así probar que es homeomorfismo). 
+		 Tomando un recubrimiento por cerrados del primero (el que tiene por cerrados los tres segmentos) y haciendole corresponder mediante $f$ con los tres segmentos de nuestro segundo conjunto, vemos como cada una de sus restricciones es continua, y f de este modo continua (hacemos este camino a la inversa para ver que la inversa también lo es y así probar que es homeomorfismo). 
 		
-		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ que homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).
+		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).
 	\end{enumerate}
 \end{exa}
 
@@ -203,15 +210,15 @@ Vemos ahora algunos ejemplos de homeomorfismos locales.
 \label{cont_exa_homeomorfismoLocal}
 \begin{exa}
 	%falta dibujo esfera
-	Vemos como podemos construir entre la esfera y el plano un homeomorfimo local en cada uno de sus puntos, por lo que podemos decir de estos que resultan localmente homeomorfos.
+	Vemos como podemos construir entre la esfera y el plano un homeomorfismo local en cada uno de sus puntos, por lo que podemos decir de estos que resultan localmente homeomorfos.
 	Resulta de interés destacar que no es necesario que la aplicación sea la misma en todo el espacio, sino que podemos tomar una distinta para cada punto del espacio.
 	
-	Tal y como se ve en el ejemplo, 
-	$f(x0,y0,z0)=(x0,y0)$ siendo homeomorfismo en su restricción a $U^{x_0}$
-	$f(x1,y1.z1)=(y1,z1)$ siendo del mismo modo homeomorfismo en su restricción
+	Veamos lo que acabamos de comentar: \\ 
+	$f(x_0,y_0,z_0)=(x_0,y_0)$ siendo homeomorfismo en su restricción a $U_{x_0}$. \\
+	$f(x_1,y_1,z_1)=(y_1,z_1)$ siendo del mismo modo homeomorfismo en su restricción.
 \end{exa}
 
-Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y observaciones propias de los homeomorfismos (globales), pero que también nos valdrán para la restricción homeomorfa de los locales (dado que en ella por definición la aplicación es homeomorfa)
+Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y observaciones propias de los homeomorfismos (globales), pero que también nos valdrán para la restricción homeomorfa de los locales (dado que en ella por definición la aplicación es homeomorfa).
 \label{etop_obs_homeomorfismo}
 \begin{obs}
 	\begin{enumerate}
@@ -219,14 +226,14 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 		Sea $f:X\rightarrow Y$ aplicación biyectiva.
 		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $U\in Y$ es cerrado, $f^{-1}(U)$ también lo será.
 		
-		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $U\in X$ es cerrado, $(f^{-1})^{-1}(U)=f(U)$ también lo será. Así también, es equivalente a que si $U\in X$ es cerrado, $f(U)$ también lo será.
+		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $F\in X$ es cerrado, $(f^{-1})^{-1}(F)=f(F)$ también lo será. Así también, es equivalente a que si $U\in X$ es abierto, $f(U)$ también lo será.
 		
-		Vemos como la si se verifican ambas (continuidad de $f$ y de su inversa) será homeomorfismo, de modo que hemos encontrado una caracterización de estos en función de las imágenes directa e inversa de los abiertos (o cerrados).
+		Vemos como si se verifican ambas (la continuidad de $f$ y de su inversa) será homeomorfismo, de modo que hemos encontrado una caracterización de estos en función de las imágenes directa e inversa de los abiertos (o cerrados).
 		
 		\item
 		Definimos las siguientes propiedades de aplicaciones:
 		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!abierta]{abierta} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
-		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
+		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de cerrados es un cerrado (es decir, cuando $f(F)$ es cerrado si $F$ es cerrado).
 		
 		Vemos como al no ser $f$ biyectiva, no tienen porque ser equivalentes. (Dejamos para el lector el comprobar que en caso de ser biyectiva si lo es, utilizando las distintas caracterizaciones de continuidad de aplicaciones).
 		
@@ -235,7 +242,7 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 	
 		 Tomamos $f: X\rightarrow Y$ aplicación continua, entonces tendremos que:
 		
-		Como probaremos más adelante, cerrado en compacto implica compacto, por lo que $Z$ será cerrado en $X$.
+		Como probaremos más adelante, cerrado en compacto implica compacto, por lo que $Z$ será compacto en $X$.
 		Como $f$ es continua, $f(Z)$ será compacto en $Y$ y como estamos trabajando con la topología $\T_2$ será cerrado.
 		
 		Así, tenemos por lo tanto que si $f$ es biyección, su inversa (al ser $f$ cerrada) será continua. Por lo tanto, afirmamos que toda aplicación continua en compactos es homeomorfismo.
