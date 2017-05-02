@@ -138,4 +138,117 @@ Veamos algunos ejemplos para aclarar este concepto.
 (1) $\mathbb{R}^n$ con la topología usual lo es, ya que para cada punto existe una base de entornos de la forma
 \[\V^x=\{\bola(x,1/k):k\geq 1\}\]
 (2) $\mathbb{Q}\subset \mathbb{R}$ con la topología usual no lo es. En efecto, tomemos un entorno compacto de $\mathbb{Q}$ del cero $K^0$. Este entorno, por definición, contiene un abierto $\U$ de la topología relativa de modo que $(-\varepsilon,\varepsilon)\cap \mathbb{Q}$ para cierto $\varepsilon>0$. A continuación, elijamos un irracional $\theta \in (-\varepsilon,\varepsilon)$ y una sucesión $\{q_k\}_{k=1}^\infty\in (-\varepsilon,\varepsilon)\cap \mathbb{Q}$ que converge a $\theta$. Claramente, $\{q_k:k\in \mathbb{N}\}$ es un conjunto infinito (ya que si fuese finito convergería a un valor de $\mathbb{Q}$) contenido en $K^0$. Por el teorema de Bolzano-Weierstrass, este conjunto tiene un punto de acumulación en $K^0$ y existe una subsucesión $\{q_{k_l}\}_{l=1}^\infty$ que converge a un punto de $K^0$ al que denotaremos $p$. No obstante, toda subsucesión de una sucesión converge al mismo punto que esta última, luego hemos probado que $p=\theta$. Esto es una contradicción y hemos terminado. 
+
+EJERCICIO EXAMEN 2007
+
+\section{Examen Septiembre 2007}
+\subsubsection{Problema 2}
+Sea $S\subset \mathbb{R}^2$ el conjunto
+\begin{equation}
+	\{(x,y): -1 \leq x\leq 1, 0\leq y \leq 1\}.
+\end{equation}
+En $S$ se considera la relación de equivalencia definida por las relaciones
+\[(x,y)\sim (x,y); \quad (1,y)\sim (0,y); \quad (x,1)\sim (x',1) \text{ para } 0\leq x,x'\leq 1.\] 
+\begin{enumerate}
+	\item Encontrar un subespacio de $\mathbb{R}^3$ homeomorfo al espacio cociente $X=S/\sim$.
+	\item Mostrar que $X$ es simplemente conexo.
+	\item ¿Es $X$ homeomorfo a la esfera?
+\end{enumerate}
+\begin{proof}
+	
+	En primer lugar, hagamos un análisis del conjunto con el que vamos a tratar y las relaciones de equivalencia involucradas. La primera de estas relaciones impone que cada punto está relacionado consigo mismo. La segunda relaciona los puntos que tienen la misma altura cuando en las rectas $x=0$ y $x=1$ (que señalamos en negro). Por último, la tercera nos dice que todos los puntos $x\in[0,1]$ de la recta $y=1$ están relacionados entre sí (que señalamos en rojo).
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen1.png} 
+		\end{center}
+	
+	\begin{enumerate}
+		\item Para encontrar un subespacio como el que se requieren, basta hallar algún objeto de $\mathbb{R}^3$ en el que se realice una identificación dada por las relaciones de equivalencia anteriormente dadas. El diagrama a seguir es el siguiente
+	\[\xymatrix{
+S \ar[r] \ar[d]  & X\subset \mathbb{R}^3  \\
+S/\sim \ar[ru]^{\sim}_{\mathrm{homeo}}}\]
+	Para obtener el conjunto cociente dada por la segunda relación de equivalencia se deberán identificar los puntos $(0,y)$ y $(1,y)$ de cada clase de equivalencia $\{0,1\}\times \{y\}$ a un mismo punto. Como resultado, se obtiene que el conjunto cociente es el cilindro $S^1\times [0,1]$ de $\mathbb{R}^3$ al que se le añade el cuadrado $[-1,0]^2$:
+ 
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen2.png} 
+		\end{center}
+	
+	A continuación, la tercera relación de equivalencia viene a decir que todos los puntos que componen la circunferencia superior colapsan en uno, el $(1,0)$:
+
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen3.png} 
+		\end{center}
+	
+	Este esquema es el subconjunto $X$ que buscábamos. Para verlo, basta comprobar que la aplicación $h: S/\sim \to X$ es un homeomorfismo. En resumidas cuentas, al cuadrado $[-1,0]^2$ se le aplicó la identidad y a $[0,1]^2$ una serie de transformaciones continuas. Así, $h$ es una biyección y, por lo que sabemos, continua. No obstante, $S/\sim$ es un conjunto compacto y $X\subset \mathbb{R}^3$ es \hausdorff, luego la aplicación $h$ es un homeomorfismo. Para concluir, cabe destacar que la topología cociente es la topología inducida por $\mathbb{R}^3$.
+	
+	\item Mostremos que $X$ es simplemente conexo en dos pasos. En primer lugar, hagamos que cualquier punto $p$ del cuadrado $[-1,0]^2$ vaya a $g(p)$ mediante una aplicación $g$ que es continua y tal que $(t,p)\to (1-t)p+tg(p)$ con $t\in[0,1]$. De su definición se deduce que para $t=0$ es la identidad y que para $t=1$ tenemos el punto $g(p)$. De este modo, para un cierto $t$ se ha contraído un poco hacia el cono
+	
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen4.png} 
+		\end{center}
+		
+	Una vez que únicamente quedan los puntos que el cuadrado compartía con el semicono, se puede hacer algo similar con este último. Si denotamos $c$ al vértice del semicono, la aplicación dada por $(t,p)\to (1-t)p+tc$ con $t\in[0,1]$. 
+
+	Con esto, hemos mostrado que es homeomorfo al punto $c$, luego es simplemente conexo. 
+	
+	\item Claramente, $X$ no es homeomorfo a una esfera. Para verlo, tomemos el punto $p$ de la figura
+		
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen5.png} 
+		\end{center}
+		
+	Los entornos del punto $p$ son de la forma
+	
+		\begin{center}
+			\includegraphics[scale=0.5]{Ex2007imagen6.png} 
+		\end{center}
+		
+que no son homeomorfos a los entornos en cada punto de la esfera (discos abiertos). 
+	\end{enumerate}	
+\end{proof}
+
+24/04/2017
+
+(1) \emph{Elevación semilocal}. Se trata de una elevación semilocal puesto que solamente se hará localmente en el primer factor del espacio producto $\Y\times [0,1]$. Comprobemos que si fijamos $y\in \Y$ existe una elevación $\tilde{H}^y: V^y\times [0,1]\to \tilde{X}$, donde $V^y$ es un entorno abierto de $y$. Notemos que este entorno puede ser arbitrariamente pequeño. 
+
+En primer lugar, tenemos que $\{y\}\times [0,1]\to X=\cup_x U^x$, donde $U^x$ son los entornos regularmente cubiertos restringidos a $H$. Por ser $\{y\}\times[0,1]$ compacto ($\{y\}$ lo es en $\Y$ y $[0,1]$ en $\X$ respectivamente), existe una partición $0=t_0<t_1<\ldots <t_r$ de modo que $H(\{y\}\times [t_{i-1},t_i])\subset U^{x_i}$, o lo que es lo mismo, $\{y\}\times [t_{i-1},t_i]\subset H^{-1}(U^{x_i})$. No obstante, $H^{-1}(U^{x_i})$ es un abierto de $\Y\times[0,1]$ por ser $H$ continua. 
+
+El lema de Wallace nos dice que existe un entorno $V^y_i$ de forma que $V_i^y\times [t_{i-1},t_i]\subset H^{-1}(U^{x_i})$. Por consiguiene , podemos considerar
+\[V^y=\bigcap_{1\leq j\leq r}V_j^y,\]
+entorno abierto  (por ser intersección finita de abiertos) de $y$, luego 
+\[V^y\times[t_{i-1},t_i]\subset H^{-1}(U^{x_i})\]
+y es posible definir correctamente $H: V^y\times [t_{i-1},t_i]\to U^{x_i}$ para todo $i\in\{1,\ldots, r\}$. 
+
+Por inducción, elevamos esta restricción de $H$ (recordemos que queremos elevar todo el intervalo $[0,1]$). Sabemos que $\tilde{H}^y |_{V^y\times \{0\}}=\tilde{H}_0^y=\tilde{f}$. Supongamos que la elevación $\tilde{H}^y |_{V^y\times [0,t_i]}$ está definida. Para poder definir correctamente la elevación en $[t_i,t_{i+1}]$, ambas han de coincidir en $t_i$. Tal y como hemos tomado $V^y$ en el razonamiento anterior, podemos tomar $H:V^y\times[t_i,t_{i+1}]\to U^{x_{i+1}}$ y, por consiguiente, $H(y,t_i)\in U^{x_{i+1}}$. 
+
+Por un lado, se tiene que la elevación $\tilde{H}^y|_{V^y\times[0,t_i]}$ está definida en el punto $(y,t_i)$, luego al ser 
+\[p(\tilde{H}^y|_{V^y\times [0,t_i]}(y,t_i))=H(y,t_i)\in U^{x_{i+1}},\]
+entonces
+\[\tilde{H}^y|_{V^y\times [0,t_i]}(y,t_i)\in p^{-1}(U^{x_{i+1}})=\bigcup_\lambda U_\lambda^{x_{i+1}}.\]
+Pero al ser $U^{x_{i+1}}_\lambda$ disjuntos, existe un único $\lambda$ tal que $\tilde{H}|_{V^y\times[0,t_i]}(y,t_i)\in U_{\lambda}^{x_i+1}$, o equivalentemente, $(y,t_i)\in (\tilde{H}|_{V^y\times[0,t_i]})^{-1}(U_{\lambda}^{x_i+1})$. Ahora, al ser la elevación continua y $U_{\lambda}^{x_i+1}$ un abierto, la imagen inversa es un abierto del producto $V^y\times [0,t_i]$, de modo que existe un entorno abierto $W^y\subset V^y\subset \Y$ tal que $W^y\times\{t_i\} \subset (\tilde{H}^y|_{V^y\times [0,t_i]})^{-1}(U_\lambda^{x_{i+1}})$. Como ya adelantamos al principio, se puede reducir $V^y$ de modo que su intersección con $W^y$ sea él mismo, por lo que también se cumple que $V^y\times\{t_i\} \subset (\tilde{H}^y|_{V^y\times [0,t_i]})^{-1}(U_\lambda^{x_{i+1}})$. 
+
+A continuación, al ser $p|_{U_\lambda^{x_{i+1}}}$ un homeomorfismo, podemos hacer la siguiente construcción
+		\[\xymatrix{
+V^y\times[t_{i-1},t_i] \ar[r]^-H \ar[rd] &
+U^{x_i} \ar[d]^{p|_{U_{\lambda}^{x_{i+1}}}} \\
+&U_{\lambda}^{x_i}}\]
+Con ella, vemos que $\tilde{H}|_{V^y\times [t_i,t_{i+1}]}=(p|_{U_{\lambda}^{x_{i+1}}})^{-1}\circ H$. Para ver que está bien definida es necesario que ambas aplicaciones coinciden en $V^y\times \{t_i\}$. Por un lado, al ser
+\[(\tilde{H}^y|_{V^y\times [0,t_i]})(V^y\times\{t_i\}) \subset U_\lambda^{x_{i+1}},\]
+se tiene que $V^y\times [0,t_i]$ es una elevación de $V^y\times\{t_i\}$ a $U_\lambda^{x_{i+1}}$, y lo mismo ocurre con $\tilde{H}^y|_{V^y\times [t_i,t_{i+1}]}$. De este modo, dado $(y,t_i)\in V^y\times\{t_i\}$ se tiene que 
+\[p|_{U_{\lambda}^x}(\tilde{H}^y|_{[0,t_{i}]}(y,t_i))=H(y,t_i)=p|{U_{\lambda}^x}(\tilde{H}^y|_{[t_i,t_{i+1}]}(y,t_i)).\]
+Como $p|_{U_{\lambda}^{x_{i+1}}}$ es un homeomorfismo, para todo $(y,t_i)\in V^y\times\{t_i\}$ se tiene que 
+\[\tilde{H}^y|_{[0,t_{i}]}(y,t_i)=\tilde{H}^y|_{[t_i,t_{i+1}]}(y,t_i).\]
+Con esto, se concluye que
+\[ \tilde{H}^y|_{V^y\times [0,t_{i}]} = \begin{cases}
+\tilde{H}^y|_{V^y\times [0,t_{i}]} & \text{ si } 0\leq t \leq t_i \\
+\tilde{H}^y|_{V^y\times [t_i,t_{i+1}]} & \text{ si } t_i\leq t \leq t_{i+1}
+\end{cases}\]
+es continua y está bien definida. 
+
+\emph{Pegado}. Por último, hemos de comprobar que las elevaciones $\tilde{H}^y:V^y\times[0,1]\to \tilde{\X}$ son compatibles. Para ello, dadas dos elevaciones $\tilde{H}^y:V^y\times[0,1]\to \tilde{\X}$ y $\tilde{H}^{y'}:V^{y'}\times[0,1]\to \tilde{\X}$, hemos de comprobar que coinciden en $(V^y\cap V^{y'})\times[0,1]$. Así, la aplicación global estará bien definida desde el punto de vista conjuntista. 
+
+En efecto, consideremos $y''\in V^y\cap V^{y'}$ y veamos que 
+\[\tilde{H}^y(y'',\bullet)=\tilde{H}^{y'}(y'',\bullet).\]
+No obstante, al ser dos elevaciones de $H$ en $\{y''\}\times[0,1]$, se tiene que 
+\[\tilde{H}^y(y'',0)=\tilde{H}^{y'}(y'',0)=\tilde{f}(y'').\]
+Al tenerse dos elevaciones en un conexo ($\{y''\}\times[0,1]$) que coinciden en un punto, entones por unicidad son iguales. 
 \end{itemize}
