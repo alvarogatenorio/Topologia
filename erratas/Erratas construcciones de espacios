@@ -1,3 +1,37 @@
-Observación 3.2.1
-cuando decimos f^{-1}(Y), no debería ser de todo el conjunto Y sino del punto y.
-Los paréntesis de la tercera línea no coinciden con los que tengo yo en los apuntes, yo tengo f(T)|(Y\f(X))
+﻿3.1. Imagenes inversas
+-Después de la definición de topología imagen inversa. En la demostración de unicidad, cuando coge dos para ver que son la misma, falta una "prima" en una de ellas (línea 4 después de la definición).
+
+-Después del diagrama de la aplicación g, en el segundo párrafo, última línea: "Pero se tiene que..."en la composición falta un paréntesis
+-> fog)
+
+
+Observación 3.1.1
+Apartado 2, segundo párrafo, "Ademas, la aplicacion es continua puesto que, dado W un abierto de f(Y), entonces W =" creo que 
+es U inter f(Y).
+
+Apartado 2, tercer párrafo: f(W) = f(f^-1(U)) inter f(Y) = (U) inter f(Y) = f^-1(U), creo que este último f^-1(U) no debería ir ahí. Estamos probando que W = f^-1(U), no que f(W) = f^1(U)
+
+
+3.2 Imagenes directas
+Falta un espacio entre "!" y el resto en "Decimos que esta es la propiedad universal!de la imagen." 
+
+
+Observacion 3.2.1 (Sobreyectividad). 
+Creo que el f^-1(Y) es f^-1(y) y que cuando pone luego f(T|...) es f(T)|...
+Después, en el diagrama faltan paréntesis en (Y; fT), sería (Y,f(T))
+
+Proposición 3.2.1
+Creo que alguna S es una U. Después faltan gorritos en las f.
+
+
+3.3. Producto de espacios topologicos
+"de este modo, como queremos que (pri)^-1 sea continua tenemos.."no queremos que pri sea continua???
+
+3.4. Suma
+"de objetos a distintas .alturas" la primera a de alturas sale mal en el PDF 
+
+"De este modo, también incluiremos {i}xXi..." Luego hay otro "De este modo" muy junto.
+
+Definicion 3.4.1
+"Una vez vista su denicion, veamos ahora un resultado fundamental acerca de la topologa
+producto" no es sobre la topologia SUMA??

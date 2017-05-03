@@ -1,4 +1,4 @@
-Observacion 1.1.2
+﻿Observacion 1.1.2
 A la familia de conjuntos  que conforman un espacio topol
 ogico X se LE denomina topologa de X
 Asimismo,(a) los conjuntos que conforman  reciben el nombre de abiertos de X
@@ -28,37 +28,7 @@ Luego todo punto tiene una BASE numerable....
 Proposición 1.6.2
 Después de 1) y 2), cuando se define la topología T, falta una llave para cerrar el conjunto. 
 
-*** SOBRE CAPÍTULO 3
-3.1. Imagenes inversas
--Después de la definición de topología imagen inversa. En la demostración de unicidad, cuando coge dos para ver que son la misma, falta una "prima" en una de ellas (línea 4 después de la definición).
-
--Después del diagrama de la aplicación g, en el segundo párrafo, última línea: "Pero se tiene que..."en la composición falta un paréntesis
--> fog)
-
-
-Observación 3.1.1
-Apartado 2, segundo párrafo, "Ademas, la aplicacion es continua puesto que, dado W un abierto de f(Y), entonces W =" creo que 
-es U inter f(Y).
-
-Apartado 2, tercer párrafo: f(W) = f(f^-1(U)) inter f(Y) = (U) inter f(Y) = f^-1(U), creo que este último f^-1(U) no debería ir ahí. Estamos probando que W = f^-1(U), no que f(W) = f^1(U)
-
-
-3.2 Imagenes directas
-Falta un espacio entre "!" y el resto en "Decimos que esta es la propiedad universal!de la imagen." 
-
-
-Observacion 3.2.1 (Sobreyectividad). 
-Creo que el f^-1(Y) es f^-1(y) y que cuando pone luego f(T|...) es f(T)|...
-Después, en el diagrama faltan paréntesis en (Y; fT), sería (Y,f(T))
-
-
-3.3. Producto de espacios topologicos
-"de este modo, como queremos que (pri)^-1 sea continua tenemos.."no queremos que pri sea continua???
-
-3.4. Suma
-"de objetos a distintas .alturas" la primera a de alturas sale mal en el PDF 
-
-Definicion 3.4.1
-"Una vez vista su denicion, veamos ahora un resultado fundamental acerca de la topologa
-producto" no es sobre la topologia SUMA??
+****Más erratas
+Ejemplo 1.6.2
+Falta un espacio al principio antes de (R es la unión de estos intervalos)
 

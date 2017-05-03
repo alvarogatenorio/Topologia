@@ -1,4 +1,4 @@
-*Continuidad en un punto
+****Continuidad en un punto
 
 Escribir’a la definici—n usual de continuidad sin \forall ni \exists y escribiendo como \[\] o equation lo de normas y bolas
 No sería para cierta B^a y para cualquier B^f(a)?
@@ -13,3 +13,11 @@ Que yo sepa en la igualdad (f|A)^{-1}(V^f(x0))=A\cap f^{1}(V^f(x0)) no se utiliz
 Prposici—n 2.1.2
 La continuidad es una propiedad local... si EXISTE V^x0\subset X entorno de x0 tal que ¡¡¡f|V^x0!!! es continua en x0.
 Demostraci—n: Si EXISTE V^x0\subset X entorno de x0 tal que ¡¡¡f|V^x0!!! es continua en x0, entonces ¡¡¡(f|V^x0)^{-1}(V^f(x0))=...!!! ES ENTORNO (sin el luego) de x0 en V^x0. Esto implica que,(hay muchos entonces seguidos) ¡¡¡f^{1}(V^f(x0))!!! es entorno de x0 en X y, (COMA) por tanto, (COMA) f es continua.
+
+****Continuidad
+Ejemplo 2.2.1
+Al final "para que la función identidad entre estos dos espacios sea CONTINUA"
+
+Proposición 2.2.1
+(4)=>(1) Entonces cada una de estas imágenes inversas es ABIERTO.
+

@@ -1,5 +1,13 @@
-Definicion 6.1.1
+﻿Definicion 6.1.1
 Según Wikipedia: En matemática, una colección de subconjuntos A de un conjunto X es un recubrimiento, 
 de X, si la unión de los elementos de la colección A contiene a X.
 En los apuntes dice que el recubrimiento tiene que coincidir con el conjunto.
 Hasta aquí las erratas de hoy. Besitos de chocolate (L).
+
+Proposición 6.1.1
+Tomamos UN
+
+Proposición 6.1.3
+Tomamos entornos disjuntos...de los puntos a e ¡y!
+Primero se pone como entorno de a para cada y (o yo lo entiendo así) \U mientras que luego se escriben como U, dado que se llama \U a la intersección de los mismos. Lo mismo con los V.
+Los U tienen primero las y como superíndice y luego como subíndice.
