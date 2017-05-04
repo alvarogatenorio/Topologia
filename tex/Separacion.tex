@@ -59,3 +59,21 @@ En efecto, sean $x,y\in A$ tales que $x\neq y$. Al pertenecer estos puntos tambi
 \item Si $\X_1$ y $\X_2$ son dos espacios \hausdorff, entonces su producto $\X_1\times \X_2$ también lo es. En efecto, consideremos dos puntos distintos del producto $x=(x_1,x_2)$ y $y=(y_1,y_2)$ y supongamos que $x_1\neq y_1$. Así, existen entornos $\V^{x_1}$ y $\V^{y_1}$ disjuntos que cumplen que $\V^{x_1}\times \X_2$ y $\V^{y_1}\times \X_2$ son entornos disjuntos de $x$ e $y$ en $\X_1\times \X_2$. De forma análoga se procede con la segunda coordenada para obtener así que el espacio producto es \hausdorff. Mediante este argumento se demuestra fácilmente que el producto finito de espacios \hausdorff lo es también. Además, se puede probar que este hecho no se ciñe únicamente a productos finitos, sino que también es válido para el producto infinito de espacios. No obstante, la demostración de este comentario no es relevante para nuestro estudio puesto que el estudio de la topología que engendra este producto puede suponer ciertos problemas a estas alturas.
 \item Si $\X_1$ y $\X_2$ son dos espacios \hausdorff, entonces su suma también lo es. La demostración de esto es muy similar a la del producto.
 \end{itemize}
+
+De manera totalmente similar puede demostrarse que la propiedad de ser un espacio T$_0$ y T$_1$ se preserva para subespacios, productos finitos y sumas finitas; y no lo hace para el cociente.
+
+A continuación, y como haremos de aquí en adelante cada vez que hablemos de comportamiento topológico, se muestra una tabla que resume todo lo demostrado. No se especificará, pero es claro que los productos y las sumas son finitos.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c|c|c|c|}
+		\cline{2-5}
+		& \multicolumn{1}{l|}{\textbf{Subespacios}} & \multicolumn{1}{l|}{\textbf{Cociente}} & \multicolumn{1}{l|}{\textbf{Producto}} & \multicolumn{1}{l|}{\textbf{Suma}} \\ \hline
+		\multicolumn{1}{|l|}{\kolmogorov} & Sí                               & No                            & Sí                            & Sí                        \\ \hline
+		\multicolumn{1}{|l|}{\frechet} & Sí                               & No                            & Sí                            & Sí                        \\ \hline
+		\multicolumn{1}{|l|}{\hausdorff} & Sí                               & No                            & Sí                            & Sí                        \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen de separación.}
+	\label{Tabla_separacion}
+\end{table}
+La tabla anterior se leería de la siguiente forma: Si un espacio X es \kolmogorov, cualquier subespacio suyo es \kolmogorov. El producto de espacios \kolmogorov es \kolmogorov, etc.

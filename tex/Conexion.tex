@@ -151,3 +151,46 @@ Completamos esta sección con una propiedad interesante garantizada por la conex
 \begin{obs}
 	En particular, puedo recubrir cualquier abierto conexo de $\R^n$ por bolas, y por tanto existe una cadena de bolas que une cualquier par de puntos. Si tomo un punto en cada intersección entre bolas consecutivas de la cadena y los uno, tengo una poligonal que conecta los dos puntos. Entonces, si $C\subset\R^n$ es abierto, $C$ es conexo si y solo si es conexo por poligonales (la definición de conexión por poligonales y la implicación inversa corresponden a cálculo diferencial).
 \end{obs}
+
+%Tablas comportamiento topológico. Añado aquí también las de conexión por caminos, dado que no está aun el tema.
+
+\section{Comportamiento topológico}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|l|l|l|l|}
+		\cline{2-5}
+		& \textbf{Subespacios}    & \textbf{Cociente}       & \textbf{Producto}       & \textbf{Suma}           \\ \hline
+		\multicolumn{1}{|c|}{\textbf{Conexión}} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí*} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen de conexión.}
+	\label{Tabla_conexion}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|l|l|l|l|}
+		\cline{2-5}
+		& \textbf{Subespacios}                                                                      & \textbf{Cociente}       & \textbf{Producto}       & \textbf{Suma}           \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Local\\ conexión\end{tabular}}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Sí, en el caso\\ de abiertos\end{tabular}} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen de local conexión}
+	\label{Tabla_localconexion}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|}
+		\cline{2-5}
+		\multicolumn{1}{l|}{}                                                                                  & \multicolumn{1}{l|}{\textbf{Subespacios}}                             & \multicolumn{1}{l|}{\textbf{Cociente}} & \multicolumn{1}{l|}{\textbf{Producto}} & \multicolumn{1}{l|}{\textbf{Suma}} \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Conexo por\\ caminos\end{tabular}}}            & No                                                                    & Sí                                     & Sí                                     & No                                 \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Localmente conexo\\ por caminos\end{tabular}}} & \begin{tabular}[c]{@{}c@{}}Sí, en el caso \\ de abiertos\end{tabular} & Sí                                     & Sí                                     & Sí                                 \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen de conexión por caminos}
+	\label{Tabla_conexion_caminos}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 1]{img/Comparacion_conexion}
+\end{figure}

@@ -170,3 +170,28 @@ Ahora, presentamos un resultado sobre espacios secuencialmente compactos que va 
 		Consideramos la bola $\bola(x,\frac{r}{2})$. Por ser $\{x_{n_k}\}$ convergente, existe un $i$ tal que $x_{n_i}\in\bola(x,\frac{r}{2})$, y entonces $\frac{1}{n_i}<\frac{r}{2}$. Entonces, $x_{n_i}\in A_{n_i}\cap\bola(x,\frac{r}{2})$, y el diámetro de $A_{n_i}$ es menor que $\frac{r}{2}$, luego $A_{n_i}\subset\bola(x_{n_i},r)\subset U$, lo que contradice a la hipótesis.
 	\end{proof}
 \end{lem}
+
+%Tablas de comportamiento topológico
+
+\section{Comportamiento topológico}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|}
+		\cline{2-5}
+		& \textbf{Subespacios}                                                 & \textbf{Cociente} & \textbf{Producto} & \textbf{Suma} \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Compacidad}} & \begin{tabular}[c]{@{}l@{}}Sí, en el caso\\ de cerrados\end{tabular} & Sí*               & Sí                & Sí            \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen de compacidad.}
+	\label{Tabla_compacidad}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|l|l|l|l|}
+		\cline{2-5}
+		& \textbf{Subespacios}    & \textbf{Cociente}       & \textbf{Producto}       & \textbf{Suma}           \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Local\\ compacidad\end{tabular}}} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen local compacidad.}
+	\label{Tabla_localcompacidad}
+\end{table}
