@@ -8,7 +8,7 @@
 %Cuidado al usar interiores pues es algo que lamentablemente jode el interlineado. Usar el comando reducido \inter cuando se quiera poner un abierto en medio del texto.
 
 %Para este capítulo se usará la abreviatura "etop".
-\chapter{Espacios Topológicos}
+\chapter{Espacios topológicos}
 %Todo capítulo será etiquetado con una abreviatura especificada al inicio del archivo.
 \label{etop}
 %Todo capítulo comienza con una breve introducción, ya sea a modo de breve motivación o a modo de resumen de contenidos (o ambas).
@@ -19,14 +19,14 @@ La idea de espacio topológico se comenzó a desarrollar durante los siglos XIX 
 La definición inicial de estos espacios se puede encontrar en el libro \tb{\ti{``Grundzüge der Mengenlehre''}}\footnote{``Teoría abstracta de conjuntos'', publicado en $1914$ por \tb{\ti{Félix Hausdorff}}(1868-1942).} publicado por este último autor.
 
 
-Al comienzo de este capítulo introducimos la noción moderna de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos los conjuntos abiertos y cerrados y sus relaciones.%Continuará.
-\section{Espacios Topológicos. Definición y Ejemplos.}
+Al comienzo de este capítulo introducimos la noción moderna de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos los conjuntos abiertos y cerrados y sus relaciones.%Continuará...
+\section{Espacios topológicos. Definición y ejemplos.}
 %Etiquetaremos tanto secciones como subsecciones.
 \label{etop_definicionEjemplos}
 %Es recomendable redactar un poco entre entorno y entorno y soltar un chascarrillo de vez en cuando para dejar reflexionar al lector y que no le parezca un ladrillo.
 Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la que trabajaremos a lo largo de todas estas notas, los llamados espacios topológicos.
 %Es recomendable titular cada entorno entre corchetes.
-\begin{defi}[Espacio Topológico]
+\begin{defi}[Espacio topológico]
 	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
 	\label{etop_def_espacioTopologico}
 	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
@@ -39,8 +39,7 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$.
 		\item[\tb{T3}] La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
 	\end{enumerate}
-	
-	A menudo hablaremos tan solo de \tbi{espacio}.
+	A menudo hablaremos tan solo de \tbi{espacio} para referirnos a los espacios topológicos.
 \end{defi}
 %Siempre viene bien algún chascarrillo para liberar tensiones.
 Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
@@ -66,7 +65,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
 		\begin{equation}
 		\label{etop_eq_topologiaRn}
-		\T = \{\U\subset M\tq \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
+		\T = \{\U\subset M\midc \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
 		A esta topología la llamamos \tbitop{usual}.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop{trivial}, que viene definida por \begin{equation}
@@ -82,7 +81,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\item Como último ejemplo curioso nos queda la llamada \tbitop{del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
 		\begin{equation}
 		\label{etop_eq_topologiaPunto}
-		\T_a = \{\U \subset \X\tq a\in\U\}\cup\{\emptyset\}
+		\T_a = \{\U \subset \X\midc a\in\U\}\cup\{\emptyset\}
 		\end{equation}
 		
 		%Comento este ejemplo porque no se entiende un zipote lo que explicó este señor.
@@ -92,13 +91,13 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 	Con lo que ya tenemos una gama lo suficientemente amplia de ejemplos como para ir tirando.
 \end{exa}
 Para finalizar la sección observamos que en un mismo conjunto $\X$ podemos definir diversas topologías. Dichas topologías pueden ``compararse'' en determinado contexto.
-\begin{defi}[Relación de Orden entre Topologías]
+\begin{defi}[Relación de orden entre topologías]
 	Consideremos $\T$ y $\T'$ dos topologías definidas sobre un conjunto $\X$.
 	
-	Si se verifica que $\T \supset \T'$ diremos que $\T$ es más \tbi[topología más fina]{fina} que $\T'$ y que $\T'$ es más \tbi[topología más gruesa]{gruesa} que $\T$.
+	Si se verifica que $\T \subset \T'$ diremos que $\T$ es más \tbi[topología más gruesa]{gruesa} que $\T'$ y que $\T'$ es más \tbi[topología más fina]{fina} que $\T$.
 \end{defi}
 En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del curso.
-\section{Conjuntos Abiertos e Interior}
+\section{Conjuntos abiertos e interior}
 \label{etop_entornos}
 En esta sección introducimos el concepto de entorno, cuya utilidad inmediata es caracterizar a los conjuntos abiertos de un espacio topológico $\X$.
 \begin{defi}[Entorno de un Punto]

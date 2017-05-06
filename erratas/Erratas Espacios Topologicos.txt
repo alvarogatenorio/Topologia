@@ -1,34 +1,21 @@
-﻿Observacion 1.1.2
-A la familia de conjuntos  que conforman un espacio topol
-ogico X se LE denomina topologa de X
-Asimismo,(a) los conjuntos que conforman  reciben el nombre de abiertos de X
-
-Ejemplo 1.1.1
-3. Siguiendo la idea del ejemplo anterior, pero a la inversa, encontramos una topologa que
-tambien DOTA de estructura topologica
-
 Observacion 1.3.2
 cualquier entorno de a contiene al PUNTO a, luego, por
 denicion, corta al conjunto A.
 
-
 Lema 1.3.3
 Por UN lado
 
-***
 Ejemplo 1.6.2
 Pone topología sorgenfry al principio y luego sorgenfri con i latina!! (puntos 1 y 2 en repetidas ocasiones)
 Punto 3: Falta un espacio entre conexos y el paréntesis No hay conexos(salvo los puntos). 
 Punto 4: falta tilde en el sí ->SI es separable.
 
-**********Erratas 01/05/2017
 Observación 1.6.2
 Luego todo punto tiene una BASE numerable....
 
 Proposición 1.6.2
 Después de 1) y 2), cuando se define la topología T, falta una llave para cerrar el conjunto. 
 
-****Más erratas
 Ejemplo 1.6.2
 Falta un espacio al principio antes de (R es la unión de estos intervalos)
 
