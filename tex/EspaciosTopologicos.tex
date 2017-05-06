@@ -100,20 +100,22 @@ En lo que resta de capítulo iremos introduciendo algunos conceptos generales de
 \section{Conjuntos abiertos e interior}
 \label{etop_entornos}
 En esta sección introducimos el concepto de entorno, cuya utilidad inmediata es caracterizar a los conjuntos abiertos de un espacio topológico $\X$.
-\begin{defi}[Entorno de un Punto]
+\begin{defi}[Entorno de un punto]
 	\label{etop_def_entorno}
 	Un \tbi{entorno} de un punto $a\in\X$ es un conjunto que contiene a un abierto que contiene al punto $a$.
 \end{defi}
 Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe a un galicismo. %¿cuál?
 
-Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda
+Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda.
+
+Dado $\V$ es un entorno de $a\in \X$ si existe un abierto $\U$ de forma que
 \begin{equation}
 \label{etop_eq_entorno}
-\V\supset\U\ni a
+a\in\U\subset\V
 \end{equation}
 
 Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema.
-\begin{lem}[Caracterización de Abiertos]
+\begin{lem}[Caracterización de abiertos]
 	\label{etop_lem_caracterizacionAbiertos}
 	$\U$ es abierto si y solo si es entorno de todos sus puntos.
 \end{lem}
@@ -122,11 +124,11 @@ Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los
 	
 	Recíprocamente, si $\U$ es entorno de todos sus puntos, entonces, para cada punto $a\in\U$ se cumple que
 	\begin{equation*}
-	\U\supset\U_a\ni a
+	a\in\U_a\subset\U
 	\end{equation*}
 	de donde se desprende que
 	\begin{equation*}
-	\U\supset\bigcup_{a\in\U}\U_a=:A
+	A:=\bigcup_{a\in\U}\U_a\subset\U
 	\end{equation*}
 	Más aún, se da la otra contención, y además, de forma trivial, ya que todo punto de $\U$ pertenece a algún $\U_a$, luego también a la unión de todos. Luego
 	\begin{equation*}
@@ -135,10 +137,13 @@ Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los
 	Como la unión arbitraria de abiertos es abierto, $A$ es abierto, con lo que se sigue el resultado.
 \end{proof}
 En general, un conjunto será entorno de algunos de sus puntos, en principio no de todos. De esta idea surge la siguiente definición.
-\begin{defi}[Punto Interior]
+\begin{defi}[Punto interior]
 	\label{etop_def_puntoInterior}
 	Dado un conjunto $A\subset\X$, diremos que un punto $a\in\X$ es un \tbi[punto!interior]{punto interior} de $A$ si $A$ es entorno de $a$.
 \end{defi}
+
+Esto pretende modelizar matemáticamente la idea de ``estar muy metido dentro de algo''.
+
 Será algo habitual de ahora en adelante tratar de determinar el conjunto de puntos interiores de un determinado conjunto $A\subset\X$, a este conjunto se le denomina \tbi{interior} de $\X$.
 
 Antes de continuar, fijemos unas cuantas notaciones que utilizaremos según el contexto para referirnos al interior de un conjunto.
@@ -152,7 +157,7 @@ Merece la pena notar que el interior de un conjunto puede ser el conjunto vacío
 \inter{A}\subset A
 \end{equation}
 Veamos ahora unos resultados elementales, pero a la vez cruciales, del interior de un conjunto.
-\begin{lem}[Apertura]
+\begin{lem}[Apertura del interior]
 	\label{etop_lem_aperturaInterior}
 	El interior de un conjunto $A$ es un abierto.
 \end{lem}
@@ -173,12 +178,12 @@ Presentamos aquí los primeros pasos de la demostración por ser especialmente �
 Como la unión de abiertos es abierto, es claro que una forma de construir el mayor abierto contenido en cierto conjunto es, coleccionar los abiertos contenidos en dicho conjunto y unirlos. Escrito formalmente, tomamos el conjunto
 \begin{equation}
 \label{etop_eq_mayorAbierto}
-B:=\bigcup_{\W\subset A}\W
+B:=\bigcup_{\W\subset A}\W\text{ con $\W$ abierto.}
 \end{equation}
 Es claro que $B\subset A$, ya que es una unión de conjuntos contenidos en $A$, además, si hubiera un abierto más grande contenido en $A$ que $B$, este pertenecería a la familia de conjuntos que estamos uniendo, lo cual es absurdo.
 
 Presentamos el final de la demostración en forma de lema.
-\begin{lem}[Caracterización del Interior]
+\begin{lem}[Caracterización del interior]
 	\label{etop_lem_caracterizacionInterior}
 	El interior de un conjunto $A$ es el mayor abierto contenido en $A$.
 \end{lem}
@@ -195,7 +200,7 @@ Presentamos el final de la demostración en forma de lema.
 \end{proof}
 
 El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algunos corolarios interesantes que presentamos a modo de observaciones.
-\begin{obs}[Propiedades del Interior]
+\begin{obs}[Propiedades del interior]
 	\label{etop_obs_propiedadesInterior}
 	Enumeramos algunas propiedades del interior.
 	\begin{enumerate}
@@ -216,12 +221,12 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 		\label{etop_eq_interiorContencion}
 		A\subset B\ra \inter{A}\subset\inter{B}
 		\end{equation}
-		Esto es claro ya que, como $B$ contiene a $A$, el mayor abierto contenido en $B$ será en general más grande que el mayor abierto contenido en cualquier subconjunto suyo.
+		Por la desigualdad \eqref{etop_eq_desigualdadInterior1} es claro que $\inter{A}\subset B$, y como $\inter{B}$ es el mayor abierto contenido en $B$, y $\inter{A}$ es un abierto contenido en $B$, es claro que $\inter{A}\subset\inter{B}$.
 	\end{enumerate}
 	Esto ya nos da cierta artillería para defendernos con estos conjuntos.
 \end{obs}
 Con esto podemos decir que ya hemos liquidado todo lo referente a conjuntos abiertos.
-\section{Conjuntos Cerrados y Adherencia}
+\section{Conjuntos cerrados y adherencia}
 \label{etop_cerradosAdherencia}
 En esta sección estudiaremos los conjuntos cerrados.
 
