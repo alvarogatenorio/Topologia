@@ -290,6 +290,7 @@ Introducimos ahora un concepto elemental pero interesante, el concepto de puntos
 \end{defi}
 
 \begin{obs}[Definición equivalente]
+	\label{etop_defi_equivalente}
 	Podríamos haber sustituido la definición \ref{etop_defi_puntoAdherente} por una igual pero cambiando la palabra entorno por la palabra abierto.
 	
 	La comprobación de que esto se puede hacer es inmediata y se deja al lector.
@@ -483,33 +484,36 @@ Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop
 	Recíprocamente, si se da la igualdad $A=\adher{A}$, como $\adher{A}$ es cerrado, también lo será $A$.
 \end{proof}
 Añadimos una observación final trivial, simplemente por curiosidad.
-\begin{obs}[Doble Adherencia]
+\begin{obs}[Doble adherencia]
 	Dado un conjunto $A$, se tiene que
 	\begin{equation*}
 	\adher{A}=\adher{\adher{A}}
 	\end{equation*}
 	Esto es inmediato ya que, como $\adher{A}$ es un cerrado, coincide con su adherencia.
 \end{obs}
-\section{Puntos de Acumulación y Conjuntos Densos}
+\section{Puntos de acumulación y conjuntos densos}
 En esta sección presentamos el concepto de punto de acumulación, que es muy útil para trabajar con sucesiones, como veremos más adelante. Además, definiremos la idea de que un conjunto sea denso de varias maneras que nos serán muy útiles a la hora de resolver problemas.
-\begin{defi}[Punto de Acumulación]
+\begin{defi}[Punto de acumulación]
 	\label{etop_defi_puntoAcumulacion}
 	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi[punto!de acumulación]{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
 	\begin{equation*}
 	(\V_x\setminus\{x\})\cap A\not=\emptyset
 	\end{equation*}
 \end{defi}
+\begin{obs}[Definición equivalente]
+	Una observación análoga a \ref{etop_defi_equivalente} tienen vigencia aquí también.
+\end{obs}
 Presentemos un poco de terminología para el conjunto de los puntos de acumulación.
-\begin{defi}[Conjunto Derivado]
+\begin{defi}[Conjunto derivado]
 	Al conjunto de los puntos de acumulación de un conjunto $A$ se le denomina \tbi[conjunto!derivado]{conjunto derivado}. Usualmente denotaremos al conjunto derivado por $A'$.
 \end{defi}
-\begin{obs}[Entornos Perforados]
+\begin{obs}[Entornos perforados]
 	Cuando consideramos un entorno $\V_x$ de un punto $x\in\X$, a veces (sobre todo cuando hablamos de puntos de acumulación) es útil no considerar el entorno entero, sino el entorno salvo un punto.
 	
 	Cabe destacar que al conjunto $\V_x\setminus\{x\}$ se le suele denominar \tbi[entorno!perforado]{entorno perforado} o \tbi[entorno!pinchado]{entorno pinchado} de $x$.
 \end{obs}
 Una propiedad interesante de los conjuntos derivados se presenta en el siguiente lema.
-\begin{lem}[Descomposición de la Adherencia]
+\begin{lem}[Descomposición de la adherencia]
 	\label{etop_lem_descomposicion}
 	\begin{equation*}
 	\adher{A}=A\cup A'
@@ -528,7 +532,7 @@ Una propiedad interesante de los conjuntos derivados se presenta en el siguiente
 	Como queríamos demostrar.
 \end{proof}
 Parémonos un segundo a reflexionar sobre las implicaciones de este resultado.
-\begin{obs}[Acumulación y Cerrados]
+\begin{obs}[Acumulación y cerrados]
 	Es claro que un conjunto es cerrado si y solo si contiene a todos sus puntos de acumulación.
 	
 	Esto es consecuencia directa de la proposición \ref{etop_prop_cerradosAdher} y el lema \ref{etop_lem_descomposicion}.
@@ -542,7 +546,7 @@ Cabe señalar que, claramente, esta descomposición, en general, no es un partic
 	En general (compruébese) se verifica que $\adher{A}\setminus A\subset A'$.
 \end{exa}
 Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan ganas de ver qué pasa con aquellos puntos que no cumplen esta definición por los pelos. Para esto introducimos la siguiente definición.
-\begin{defi}[Puntos Aislados]
+\begin{defi}[Puntos aislados]
 	Se llaman \tbi[punto!aislado]{puntos aislados} de un conjunto $A$, a aquellos puntos de $A$ que no son puntos de acumulación. Es decir, a los puntos $x\in A$ que poseen un entorno que cumple
 	\begin{equation*}
 	\V_x\cap A = \{x\}
@@ -551,7 +555,7 @@ Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan 
 Por el momento no usaremos mucho esta definición, aunque la dejamos aquí aparcada por si las moscas.
 
 Pasamos ahora a definir el concepto de densidad de un conjunto.
-\begin{defi}[Conjunto Denso]
+\begin{defi}[Conjunto denso]
 	\label{etop_def_denso}
 	Decimos que un conjunto $A$ es \tbi[conjunto!denso]{denso} en un espacio topológico $\X$ si la adherencia de $A$ es el propio espacio $\X$. Es decir
 	\begin{equation*}
@@ -559,7 +563,7 @@ Pasamos ahora a definir el concepto de densidad de un conjunto.
 	\end{equation*}
 \end{defi}
 Esta definición es poco manejable en algunas circunstancias. Lo bueno que tiene es que, con relativamente poco esfuerzo podemos dar una definición equivalente en unos términos un poco más sencillos, tal y como muestra la siguiente proposición.
-\begin{prop}[Caracterización de la Densidad]
+\begin{prop}[Caracterización de la densidad]
 	Son equivalentes:
 	\begin{enumerate}
 		\item $A$ es denso.
@@ -578,12 +582,12 @@ Esta definición es poco manejable en algunas circunstancias. Lo bueno que tiene
 	Con lo que ya hemos terminado.
 \end{proof}
 De forma natural surge preguntarse si, como en el caso conocido de $\R^n$, los espacios topológicos en general poseen algún subconjunto numerable denso. La respuesta a esta pregunta es no (como veremos más adelante) razón por la cual surge la siguiente definición.
-\begin{defi}[Espacio Topológico Separable]
+\begin{defi}[Espacio topológico separable]
 	Se dice que un espacio topológico $\X$ es \tbi[espacio!separable]{separable} si posee un subconjunto numerable denso.
 \end{defi}
 
 Para afianzar la idea de que en la topología la intuición no parará de tendernos trampas, presentamos el siguiente ejemplo.
-\begin{exa}[Espacios Separables]
+\begin{exa}[Espacios separables]
 	Recordamos en primer lugar por qué $\R^n$ es separable y después presentamos un ejemplo contraintuitivo.
 	\begin{enumerate}
 		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (inducción). Asimismo, la densidad puede probarse fácilmente por inducción sobre $n$.
@@ -592,14 +596,14 @@ Para afianzar la idea de que en la topología la intuición no parará de tender
 	Así se ve que, en espacios topológicos puestos con un poco de mala baba, pasan cosas que nos descarajan la intuición.
 \end{exa}
 Para finiquitar esta sección presentamos el concepto de frontera de un conjunto, que, de momento, al igual que el concepto de punto aislado, quedará en el baúl de los recuerdos.
-\begin{defi}[Frontera de un Conjunto]
+\begin{defi}[Frontera de un conjunto]
 	Definimos la frontera de un conjunto como los puntos adherentes al conjunto que no son interiores. Dicho de otra forma (e introduciendo notación de paso)
 	\begin{equation}
 	\Fr(A)=\adher{A}\setminus\inter{A}
 	\end{equation}
 \end{defi}
 Es interesante comprobar que, como parece intuitivo, un conjunto y su complementario comparten frontera.
-\begin{lem}[Frontera y Complementación]
+\begin{lem}[Frontera y complementación]
 	\begin{equation*}
 		\Fr(\X \setminus A)=\Fr(A)
 	\end{equation*}
@@ -619,7 +623,7 @@ Es interesante comprobar que, como parece intuitivo, un conjunto y su complement
 \end{proof}
 
 Una última cosa que merece la pena observar es que la frontera de un conjunto puede ser vista como la intersección de las adherencias del conjunto y su complementario.
-\begin{lem}[Frontera y Adherencia]
+\begin{lem}[Frontera y adherencia]
 	\begin{equation*}
 		\Fr(A)=\adher{A}\cap\adher{\X \setminus A}
 	\end{equation*}
@@ -632,7 +636,7 @@ Una última cosa que merece la pena observar es que la frontera de un conjunto p
 	Así pues basta comprobar que $\adher{A}\cap(\X \setminus \inter{A})=\adher{A}\setminus \inter{A}$, lo cual es evidente.
 \end{proof}
 
-\section{Base de entornos}
+\section{Bases de entornos}
 Al igual que en los espacios vectoriales, para estudiar las aplicaciones lineales nos bastaba con fijarnos en qué les ocurría a los vectores de una base, en los espacios topológicos desarrollamos un concepto similar.
 \begin{defi}[Base de Entornos de un Punto]
 	\label{etop_bases_entornos}
