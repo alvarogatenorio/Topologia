@@ -778,6 +778,8 @@ Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos
 
 \begin{obs}[II axioma $\ra$ separable]
 	Elegiremos un punto $x_i$ de cada abierto $\U_i$ de la base $\B$. Dado un abierto $\U$ arbitrario, como es unión de abiertos de la base, contendrá a algún punto $x_i$. Luego el conjunto $\{x_i\midc i\in\N\}$ es un conjunto numerable denso.
+	
+	El recíproco no se da (véase la recta de Sorgenfrey).
 \end{obs}
 
 Hemos de comentar que ser II axioma es mucho más fuerte que ser I axioma. De hecho, hay espacios métricos que no son II axioma.
@@ -838,14 +840,14 @@ La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicida
 	Ver esto es muy sencillo. Sea el abierto de la base $[a,b)$, demostremos que su complementario $(-\infty, a) \cup [b,\infty)$ es también abierto.
 	
 	Esto es debido a  que el intervalo $(-\infty, a)$ es un abierto usual, luego Sorgenfrey, y $[b,\infty)$ lo poedmos escribir como $[b,\infty) = \cup_{k\geq1} [b, b+k)$ luego es un abierto Sorgenfrey. Como la unión de abiertos es abierto se tiene el resultado.
-	\item Todo subconjunto de $\R$ no unipuntual admite una partición formada por dos clopens Sorgenfrey. Como veremos más adelante, esto significará que no hay conjuntos ``conexos'' salvo los puntos.
 	\item La recta de Sorgenfrey es separable.
+	
+	En efecto, $\Q$ es denso, ya que todo elemento de la base $[a,b)\supset(a,b)$ contiene algún racional.
 	\item La recta de Sorgenfrey es I axioma.
 	
-	tomamos $[a, a+\frac{1}{k})$
-	\item La recta de Sorgenfrey no es II axioma.
+	Sea $a\in\R$, tomamos como base numerable la familia $[a, a+\frac{1}{k})$ con $k\in\N$. La comprobación de que efectivamente es base de entornos es muy sencilla y se deja al lector como ejercicio, como pista diremos que hay que usar la propiedad arquimediana.
 	\end{enumerate}
-	Con esto ya conocemos muchas propiedades de este espacio tan exótico.
+	Con esto ya conocemos bastante de este espacio tan exótico (aunque adelantamos que todavía queda bastante por conocer).
 \end{exa}
 
 
