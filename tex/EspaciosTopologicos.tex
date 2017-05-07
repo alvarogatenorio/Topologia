@@ -34,10 +34,10 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
 	\begin{enumerate}
 		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
-		\item[\tb{T1}] El vacío y el total están en la colección $\T$, es decir, $\{\emptyset, \X\} \subset \T$
-		\item[\tb{T2}] La unión arbitraria de conjuntos de $\T$ está en $\T$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
+		\item El vacío y el total están en la colección $\T$, es decir, $\{\emptyset, \X\} \subset \T$
+		\item La unión arbitraria de conjuntos de $\T$ está en $\T$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
 		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$.
-		\item[\tb{T3}] La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
+		\item La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
 	\end{enumerate}
 	A menudo hablaremos tan solo de \tbi{espacio} para referirnos a los espacios topológicos.
 \end{defi}
@@ -683,7 +683,7 @@ Presentemos otro ejemplo para que el elector aprenda a digerir este concepto en 
 Para concluir esta pequeña sección presentamos una definición sobre la cual trabajaremos con detalle en el capítulo \ref{num}.
 
 \begin{defi}[I Axioma de numerabilidad]
-	Decimos que un espacio topológico $(\X,\T)$ es \tbi[primer axioma de numerabilidad]{primer axioma de numerabilidad} (o simplemente I axioma) si todo punto posee una base de entornos numerable.
+	Decimos que un espacio topológico $(\X,\T)$ es \tbi[axiomas de numerabilidad!primer axioma de numerabilidad]{primer axioma de numerabilidad} (o simplemente I axioma) si todo punto posee una base de entornos numerable.
 \end{defi}
 Visto lo visto salta a la vista que algunos de los espacios topológicos que hemos visitado desde nuestra nave del misterio cumplen el primer axioma.
 \begin{exa}[Espacios I axioma]
@@ -710,74 +710,106 @@ Usaremos esta construcción de forma asidua cuando estudiemos las sucesiones con
 \section{Bases de abiertos}
 \begin{defi}[Base de abiertos]
 	\label{etop_bases_abiertos}
-	Una \tbi[base!de abiertos]{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión de abiertos de $\B$
+	Una \tbi[base!de abiertos]{base} de $\T$ es una colección $\B$ de abiertos, tal que todo abierto de $\T$ es unión (posiblemente arbitraria) de abiertos de $\B$.
 \end{defi}
 
-Esto viene a ser una filosofia parecida a la del álgebra lineal, pero cambiando unión por combinación lineal y abiertos por vectores. Ahora vamos a ver una reformulación de este concepto bastante potente, pues relaciona los dos conceptos de base que tenemos hasta el momento.
-
-\begin{prop}[Caracterización de las bases de una topología]
-	$\B$ es base de $\T$ si y solo si para cada $x \in \X$ el conjunto
-	$\V_x = \{ V \in \B \tq  x \in V\}$ es una base de entornos de x.
-\end{prop}
-\begin{proof} 
-	Supongamos que $\B$ es base de $\T$. Veamos que $\V_x$ es base de entornos de $x$. Para ello, sea $V$ entorno de x. Entonces hay un $\U$ abierto de manera que $x \in \U \subset \V$. Como $\B$ es base de abiertos de $\T$, tenemos que
-	$x \in \U = \bigcup_{i \in I, V_i \in \B} V_i \subset V \Rightarrow$ hay un $V_i \in \B$ tal que $x \in V_i \subset \U \subset V$.
+Esto viene a ser una filosofía parecida a la del álgebra lineal, pero cambiando unión por combinación lineal y abiertos por vectores. Ahora vamos a ver una reformulación de este concepto bastante potente, pues relaciona los dos conceptos de base que tenemos hasta el momento.
+\begin{obs}[Unicidad de la topología asociada]
+	Dado un conjunto arbitrario $\X$ y una colección $\B$ de subconjuntos de $\X$. Si $\B$ es base de cierta topología $\T$, entonces dicha topología es única. Además $\T:=\{\U\subset\X\midc\U:=\bigcup_{B\in\B}B\}$.
 	
-	Ahora supongamos que $\V_x$ es base de entornos de $x$. Veamos que $\B$ es base de abiertos. Sea $\U$ un abierto no vacío y $x \in \U$. Por ser $V_x$ base de entornos de x y $\U$ entorno de $x$, pues es un abierto que contiene a $x$, habrá un $V \in \V_x$ tal que $x \in V \subset \U$. Como podemos hacer esto para cada $x \in \U$, es fácil deducir que $\U = \bigcup_{x \in \U} V_x$, pues es claro que $V_x \subset \U \ \forall x \Rightarrow \bigcup V_x \subset \U$ y por otro lado $x \in V_x \ \forall x \Rightarrow \U \subset \bigcup V_x$.
+	En efecto, si hubiera otra topología $\T'\not=\T$ de la que $\B$ fuera base, podrían presentarse dos situaciones:
+	\begin{enumerate}
+		\item Habría un conjunto $\U'\not\in\T$ tal que $\U'\in\T'$, pero $\U'=\bigcup_{B\in\B}B\not\in\T$, lo cual es imposible por definición de $\T$, por ende, $\T'\subset \T$.
+		\item Si se diera el contenido estricto habría un $\U\in\T$ que no fuera abierto en $\T'$, no obstante $\U=\bigcup_{B\in\B}B$, y, como por definición de base todos los elementos de $\B$ son abiertos en $\T'$ y por definición de topología la unión arbitraria de abiertos es abierta, $\U\in\T'$. Lo cual contradice nuestra hipótesis.
+	\end{enumerate}
+	Finalmente, hemos deducido que $\T=\T'$.
+\end{obs}
+\begin{prop}[Caracterización de las bases de una topología]
+	\label{etop_prop_caracterizacionBases}
+	$\B$ es base de $\T$ si y solo si para cada $x \in \X$ el conjunto
+	$\V_x := \{ V \in \B \midc  x \in V\}$ es una base de entornos de $x$.
+\end{prop}
+\begin{proof}
+	Procedemos por doble implicación.
+	\begin{itemize}
+		\item[\bra] Supongamos que $\B$ es base de $\T$. Veamos que $\V_x$ es base de entornos de $x$. Para ello, tomaremos $V$ entorno de $x$ y veremos que hay un elemento de $\V_x$ contenido en $V$.
+		
+		Como $V$ es entorno, hay un $\U$ abierto de manera que $x \in \U \subset \V$. Como $\B$ es base de abiertos de $\T$, tenemos que $x \in \U = \bigcup_{V_i \in \B} V_i \subset V$.
+		
+		Por tanto, habrá un $V_i \in \B$ tal que $x \in V_i \subset \U \subset V$. Como por definición, $V_i\in\V_x$ se tiene el resultado.
+		\item[\bla] Recíprocamente supongamos que $\V_x$ es base de entornos de $x$. Veamos que $\B$ es base de abiertos. Sea $\U$ un abierto no vacío y $x \in \U$. 
+		
+		Por ser $\V_x$ base de entornos de $x$ y $\U$ entorno de $x$, pues es un abierto que contiene a $x$, habrá un $V \in \V_x$ tal que $x \in V \subset \U$.
+		
+		Como podemos hacer esto para cada $x \in \U$, es fácil deducir que $\U = \bigcup_{x \in \U} V_x$ con lo que ya hemos ganado.
+	\end{itemize}
+	Con lo que concluye la demostración.
 \end{proof}
 
 Hechas estas consideraciones, pasemos a ver ejemplos de bases de abiertos.
 \begin{exa}[Bases de abiertos]
-	En $( \R^n,\T_u )$ todas las siguientes colecciones son bases de abiertos de $\T_u$.
- 	 $$\B_1=\{B(x, \varepsilon) \tq x \in \R^n\ y \ \varepsilon > 0\}$$
-	 $$\B_2=\{B(x, \frac{1}{k}) \tq x \in \R^n\ y \ k \geq 1\}$$
+	En $( \R^n,\T_u )$, es decir $\R^n$ con la topología usual, las siguientes colecciones son bases de abiertos de $\T_u$.
+ 	 \begin{gather}
+ 	 	\B_1=\{\bola(x, \varepsilon) \midc x \in \R^n\ y \ \varepsilon > 0\}\\
+ 	 	\B_2=\left\{\bola\left(x, \frac{1}{k}\right) \midc x \in \R^n\ y \ k \geq 1\right\}
+ 	 \end{gather}
 	 Usando la caracterización vista anteriormente, es trivial comprobar que $B_1$ y $B_2$ efectivamente son bases.
-	 $$\B_3=\{B(q, r) \tq q \in \Q^n\ y \ r \in \Q\}$$
-	 Esta última es especialmente importante, pues es una base numerable.
+	 \begin{equation}
+	 	\B_3=\{\bola(q, r) \midc q \in \Q^n\ y \ r \in \Q\}
+	 \end{equation}
+	 Esta última es especialmente importante, pues es una base numerable, e intuitivamente, cuantos menos elementos tenga una base, mucho mejor.
+	 
+	 La comprobación de que $\B_3$ es base exige usar la densidad de $\Q$ y es un poco más laboriosa, pero el lector debería poderla llevar a cabo sin mayores complicaciones.
 \end{exa}
-
-\begin{obs}
+\begin{obs}[Bases pequeñas]
 	Una vez hallamos demostrado que cierta $\B$ es base de abiertos, para demostrar que $\B'$ es base, basta con expresar los abiertos de $\B$ como unión de los de $\B'$. Por eso es importante encontrar bases lo más pequeñas posibles.  \qedhere
 \end{obs}
 
-Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el II axioma de numerabilidad, que, aunque será tratado con profundidad en el capítulo \ref{num}, expone muy bien las ideas recién tratadas.
+Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos \ref{etop_bases_entornos}, vamos a plantear el concepto análogo al I axioma de numerabilidad, el muy originalmente denominado ``II axioma de numerabilidad'', que, aunque será tratado con profundidad en el capítulo \ref{num}, expone muy bien las ideas recién tratadas.
  
 \begin{defi}[II axioma de numerabilidad]
 	\label{etop_2_axioma_num}
-	Diremos que $\X$ es \tbi[segundo axioma de numerabilidad]{segundo axioma} de numerabilidad (o simplemente II axioma) si tiene una base de abiertos numerable.
+	Diremos que $\X$ es \tbi[axiomas de numerabilidad!segundo axioma de numerabilidad]{segundo axioma} de numerabilidad (o simplemente II axioma) si tiene una base de abiertos numerable.
 
 \end{defi}
-\begin{obs}
-	Ser II axioma implica ser I axioma. \qedhere
+\begin{obs}[II axioma $\ra$ I axioma]
+	Ya que, por la proposición \ref{etop_prop_caracterizacionBases}, dado $x\in X$, la colección $\V_x:=\{V\in\B\midc x\in V\}\subset\B$ es una base de entornos, y como $\B$ es numerable, $\V_x$ también lo será.
 \end{obs}
-\begin{proof}
-	Si $\B$ es una base numerable para la topología de $\X$, entonces si tomamos el subconjuto de $\B$ formado por los elementos de la base que contienen al punto $x$ entonces es una base numerable en $x$. Luego todo punto tiene una bsae numerable, por lo que es I axioma.
-\end{proof}
 
-\begin{obs}
-	Ser II axioma implica ser separable. \qedhere
+\begin{obs}[II axioma $\ra$ separable]
+	Elegiremos un punto $x_i$ de cada abierto $\U_i$ de la base $\B$. Dado un abierto $\U$ arbitrario, como es unión de abiertos de la base, contendrá a algún punto $x_i$. Luego el conjunto $\{x_i\midc i\in\N\}$ es un conjunto numerable denso.
 \end{obs}
-\begin{proof}
-	Hay que ver que en todo abierto hay un punto del conjunto numerable denso. Como todo abierto es unión numerable de abiertos de la base, basta escoger un punto de cada conjunto de la base, habiendo construido así el conjunto numerable denso.
-\end{proof}
 
-Hemos de comentar que el II axioma es mucho más fuerte que el I axioma. De hecho no todos los espacios métricos lo cumplen. Será útil ya que muchos espacios que no son familiares lo cumplen, y nos ayudará para probar algunos teoremas. \\
+Hemos de comentar que ser II axioma es mucho más fuerte que ser I axioma. De hecho, hay espacios métricos que no son II axioma.
 
-La siguiente proposición responde algunas preguntas importantes.
+La siguiente proposición es una caracterización muy útil de las bases de abiertos.
 \begin{prop}[Caracterización de las bases de abiertos]
 	\label{etop_base_top}
-	Una colección de subconjuntos $\B$ de $X$ es base de una topología si y sólo si se verifican las siguientes condiciones:
+	Una colección de subconjuntos $\B$ de $\X$ es base de una topología si y sólo si se verifican las siguientes condiciones:
 	\begin{enumerate}
-		\item La base $\B$ cubre todo el espacio, es decir, $X = \bigcup_{B \in \B}B$
-		\item Para todo $B_1$, $B_2 \in \B$ y para todo $x \in B_1 \cap B_2$,  $\exists B \in \B$  y  $B \subset B_1 \cap B_2$ tal que $x \in B$.
+		\item La base $\B$ cubre todo el espacio, es decir, $\X = \bigcup_{B \in \B}B$
+		\item Para cada par de abiertos de la base $B_1$, $B_2 \in \B$ y para cada punto de su intersección $x \in B_1 \cap B_2$,  hay un abierto de la base $B \in \B$ tal que $x\in B \subset B_1 \cap B_2$.
 	\end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}Procedemos por doble implicación
 	\begin{enumerate}
-		Supongamos que $\B$ es base, entonces se cumple 1 trivialmente. Además, $B_1 \cap B_2$ es abierto, luego entorno de $x$, por tanto $\exists B$ tal que $x \in B \subset B_1 \cap B_2$. Luego se cumple 2. \\
+		\item[\bra] Supongamos que $\B$ es base, entonces se cumple trivialmente la primera condición. Además, $B_1 \cap B_2$ es abierto, luego entorno de $x$, por tanto, por la proposición \ref{etop_prop_caracterizacionBases} hay un $B\in\B$ tal que $x \in B \subset B_1 \cap B_2$.
 		
-		Veamos ahora la otra implicación. Si la colección de conjuntos $\T = \{ U \subset X \tq U = \bigcup_{B \in \B}B$ es una topología, entonces $\B$ es base. Vayamos a la demostración. Si $X = \bigcup_{B \in \B}B$ es claro que $\B$ es una base de la topología trivial. Además si se cumple 2, es claro que por construcción $B_1 \cap B_2 \neq \emptyset$. Sean $\U_1, \U_2 \in \T$, supongamos que $\U_1 \cap \U_2 \neq \emptyset$, entonces hay un $x \in \U_1 \cap \U_2$. Esto implica que $\U_1$ y $\U_2$ son entornos de $x$. Como se cumple 2, existen sendos $B_1, B_2$ tales que $x \in B_1 \cap B_2 \subset \U_1 \cap \U_2$. Tomando la unión llegamos al resultado.
+		\item[\bla] Por definición $\B$ es base si y solo si $\Gamma:=\{ \U \subset X \midc \U = \bigcup_{B \in \B}B\}$ es una topología.
+		
+		Si $X = \bigcup_{B \in \B}B$ es claro que $\Gamma$ cumple la primera propiedad de las topologías.
+		
+		Por definición de $\Gamma$ la unión arbitraria de elementos de $\Gamma$ está en gamma, cumpliéndose así la segunda propiedad de las topologías.
+		
+		Además, si se cumple la segunda condición veamos que se cumplen la propiedad restante.
+		
+		Sean $\U_1, \U_2 \in \Gamma$, supongamos que $\U_1 \cap \U_2 \not= \emptyset$, entonces hay un $x \in \U_1 \cap \U_2$. Esto implica que $\U_1$ y $\U_2$ son entornos de $x$. Por la proposición \ref{etop_prop_caracterizacionBases}, existen sendos $B_1^x, B_2^x\in\B$ tales que \[x \in B_1^x \cap B_2^x \subset \U_1 \cap \U_2\]
+		
+		Además, como se cumple la segunda condición, hay un $B_x\in\B$ tal que $B_x\subset B_1^x\cap B_2^x$.
+		
+		Por ende, es inmediato comprobar que $\U_1\cap\U_2=\bigcup_{x\in\U_1\cap\U_2}B_x$, verificándose pues (por inducción) que la intersección finita de elementos de $\Gamma$ está en $\Gamma$.
 	\end{enumerate}
+	Con lo que concluye la demostración.
 \end{proof}
 
 \begin{exa}[Topología de Sorgenfrey en $\R$]
