@@ -811,38 +811,41 @@ La siguiente proposición es una caracterización muy útil de las bases de abie
 	\end{enumerate}
 	Con lo que concluye la demostración.
 \end{proof}
-
+La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicidad de la topología inducida por una base es que podemos definir topologías sin necesidad de conocer todos los abiertos de las mismas, tal y como vemos en el siguiente ejemplo.
 \begin{exa}[Topología de Sorgenfrey en $\R$]
-	Sea el espacio topológico $(\R, \T_s)$ espacio topológico, con $\T_s$ la llamada topología de Sorgenfrey. Veamos en que consiste esta topología. 
-	
-	Si tomamos en $\R$ la colección de intervalos $[a,b)$, este conjunto es base de la llamada \tbitop{de Sorgenfrey}.
-	\begin{proof}
-		Para ver que ocurre esto comprobaremos que esta base cumple \ref{etop_base_top}
+	Consideramos la familia de conjuntos \begin{equation}\B:=\{[a,b)\midc a,b\in\R\}\end{equation}
+	$\B$ es base de una topología, a la que llamaremos \tbitop{de Sorgenfrey} o \tbitop{del límite inferior}. Para ver esto usaremos la proposición \ref{etop_base_top}.
 		
-		Denotemos $\B = \{[a,b) : a,b \in \R\}$. Que $\B$ cumple que la unión de todos sus elementos genera el total es obvio($\R$ es la unión de estos intervalos).
+	Que se cumple la primera condición es evidente.
 		
-		Veamos que cumple la segunda propiedad. Sea $\B_1=[a,b)$ y $\B_2=[a',b')$ y sea $x \in B_1 \cap \B_2$ vemos claramente que la intersección de estos dos intervalos sigue siendo de la misma forma, y tendrá como extremo inferior $a" = max\{a,a'\} $ y superior $b"=min\{b,b'\}$ luego es el intervalo $B_1 \cap \B_2 = [a",b")$, por lo que pertenece a la base y se cumple que $x \in B \subset B_1 \cap \B_2$. Luego llegamos a lo buscado.
-	\end{proof}
-	Veremos una serie de propiedades extra de esta topología, que son muy ilustrativas.
+	Veamos que cumple la segunda. Sea $B_1=[a,b)$ y $B_2=[a',b')$ y sea $x \in B_1 \cap B_2$ vemos claramente que la intersección de estos dos intervalos (que suponemos no vacía) sigue siendo de la misma forma, y tendrá como extremo inferior $a'' = \max\{a,a'\} $ y superior $b''=\min\{b,b'\}$ luego es el intervalo $B:=B_1 \cap B_2 = [a",b")$ pertenece a la base. Luego llegamos a lo buscado (de hecho a algo más fuerte).
+	\end{exa}
+	Veamos una serie de propiedades extra de esta topología, que son muy ilustrativas.
+	\begin{exa}[Propiedades de la topología de Sorgenfrey]
+		A la topología de Sorgenfrey la denotamos por $\T_{[,)}$ y al espacio topológico $(\R,\T_{[,)})$ lo denominamos \tbi{recta de Sorgenfrey}. Algunas propiedades interesantes de la recta de Sorgenfrey son:
 	\begin{enumerate}
-		\item Los abiertos de la topología usual están contenidos en la topología de Sorgenfrey.
-		\begin{proof}
-			Sea el intervalo $(a,b)$. Describamoslo en función de intervalos cerrado-abierto. $(a,b) = \cup_{k\geq 1} [a+\frac{1}{k},b)$. Sabemos que esta unión está en la topología de Sorgenfrey luego ya está.
-		\end{proof}
-	Con esto observamos que la topología de Sorgenfrey es más fina que la usual $(\T \subsetneq \T_{s})$. Para ver que efectivamente son distintas, basta tomar un abierto de Sorgenfrey $[a,b)$ y darse cuenta de que no es abierto en la usual.
+		\item La topología Sorgenfrey es \tb{estrictamente más fina que la topología usual}. En general, para demostrar esto dadas ciertas bases de sendas topologías, basta con demostrar que los abiertos de una base son unión de abiertos de la otra (de ahí la ventaja de trabajar con bases lo más pequeñas posibles). Hagámoslo.
+		
+		En efecto, sea el intervalo $(a,b)$ (abierto de la base usual de $\R$). Describámoslo como unión de abiertos de la base de Sorgenfrey (¡compruébese!).
+		\begin{equation}
+			(a,b) = \bigcup_{k\geq 1} \left[a+\frac{1}{k},b\right)
+		\end{equation}
+		Sabemos que esta unión está en la topología de Sorgenfrey luego ya está.
+	Para ver que efectivamente son distintas, basta tomar un abierto de Sorgenfrey $[a,b)$ y darse cuenta de que no es abierto en la usual (¡compruébese!).
 	
+	\item La base de Sorgenfrey es una \tb{base de clopens}.
 	
-	Con esto sabemos que si un conjunto no es compacto con la topología de Sorgenfrey tampoco lo es con la usual, ya que si con una que tiene los mismos y más abiertos no podemos extraer un subrecubrimiento finito, difícilmente podremos hacerlo con una más pequeña.
-	\item Es una base de conjuntos abiertos y cerrados (lo que se llama una topología "\textit{clopen}")
-	\begin{proof}
-		Ver esto es muy sencillo. Si tenemos el abierto (en esta topología) $[a,b)$, tenemos que su complementario es $(-\infty, a) \cup [b,\infty)$. El intervalo $(-\infty, a)$ es un abierto de la usual, luego de la de Sorgenfrey, y $[b,\infty)$ lo poedmos escribir como $[b,\infty) = \cup_{k\geq1} [b, b+k)$ que es un abierto Sorgenfrey. Luego el intervalo $[a,b)$ es un abierto-cerrado.
-	\end{proof}
-	\item No hay conexos(salvo los puntos).
-	\item No es II axioma.
-	\item Es separable.
-	\item Es I axioma (tomamos $[a, a+\frac{1}{k})$).
-	\item Es Lindelöf.
+	Ver esto es muy sencillo. Sea el abierto de la base $[a,b)$, demostremos que su complementario $(-\infty, a) \cup [b,\infty)$ es también abierto.
+	
+	Esto es debido a  que el intervalo $(-\infty, a)$ es un abierto usual, luego Sorgenfrey, y $[b,\infty)$ lo poedmos escribir como $[b,\infty) = \cup_{k\geq1} [b, b+k)$ luego es un abierto Sorgenfrey. Como la unión de abiertos es abierto se tiene el resultado.
+	\item Todo subconjunto de $\R$ no unipuntual admite una partición formada por dos clopens Sorgenfrey. Como veremos más adelante, esto significará que no hay conjuntos ``conexos'' salvo los puntos.
+	\item La recta de Sorgenfrey es separable.
+	\item La recta de Sorgenfrey es I axioma.
+	
+	tomamos $[a, a+\frac{1}{k})$
+	\item La recta de Sorgenfrey no es II axioma.
 	\end{enumerate}
+	Con esto ya conocemos muchas propiedades de este espacio tan exótico.
 \end{exa}
 
 
