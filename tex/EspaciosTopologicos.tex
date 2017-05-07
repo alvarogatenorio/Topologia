@@ -210,7 +210,7 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 		\inter{\inter{A}}=\inter{A}
 		\end{equation}
 		Esto es trivial ya que al ser $\inter{A}$ un abierto, el mayor abierto contenido en él es él mismo.
-		\item Un abierto coincide con su interior, es decir
+		\item Un conjunto es abierto si y solo si coincide con su interior, es decir
 		\begin{equation}
 		\label{etop_eq_abiertoInterior}
 		A=\inter{A}
@@ -232,14 +232,14 @@ En esta sección estudiaremos los conjuntos cerrados.
 
 Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la de ser abierto, ya que, como veremos más adelante, hay conjuntos que no son ni abiertos ni cerrados así como conjuntos que son abiertos y cerrados a la vez.
 
-\begin{defi}[Conjunto Cerrado]
+\begin{defi}[Conjunto cerrado]
 	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi[conjunto!cerrado]{cerrado} si su complementario, $\X\setminus\F$, es abierto.
 \end{defi}
 
 Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
 
 Usando propiedades básicas de teoría de conjuntos se obtienen algunas propiedades elementales de los conjuntos cerrados.
-\begin{lem}[Propiedades de los Cerrados]
+\begin{lem}[Propiedades de los cerrados]
 	\label{etop_lem_propiedadesCerrados}
 	Dado un espacio topológico $\X$ se verifica
 	\begin{enumerate}
@@ -265,9 +265,11 @@ Usando propiedades básicas de teoría de conjuntos se obtienen algunas propieda
 	\end{enumerate}
 	Con lo que concluye la demostración.
 \end{proof}
-\begin{obs}[Abiertos y Cerrados a la Vez]
+\begin{obs}[Abiertos y cerrados a la vez]
 	\label{etop_obs_abiertoCerrado}
 	Basta con mirar con atención este lema \ref{etop_lem_propiedadesCerrados} para darse cuenta de que hemos encontrado dos conjuntos que son abiertos y cerrados a la vez, el vacío y el total.
+	
+	Estos conjuntos abiertos y cerrados a la vez (o ``\tbi[clopen]{clopens}'', del inglés close--open) son de vital importancia a la hora de estudiar la conexión, como veremos más adelante. 
 \end{obs}
 %----DEJO ESTO COMENTADO HASTA QUE SE DE LA DEFINICIÓN DE COMPACTO----
 %Una breve anotación que nos será útil en el futuro. Para la comprobación de compacidad en un computo, nos será útil la utilización de cerrados. Veamos un ejemplo, introducido para motivar esta observación.\\
@@ -280,10 +282,18 @@ Usando propiedades básicas de teoría de conjuntos se obtienen algunas propieda
 %$\emptyset = \bigcap(0,\frac{1}{n}] \subset (0,\infty)$. Estos conjuntos son cerrados en este espacio. Pero observamos trivialmente que cualquier $n_0$ finito que coja, la intersección va a dar no vacía, luego el conjunto no es compacto.
 %----FIN----
 Introducimos ahora un concepto elemental pero interesante, el concepto de puntos adherentes y adherencia.
-\begin{defi}[Punto Adherente]
+\begin{defi}[Punto adherente]
 	\label{etop_defi_puntoAdherente}
 	Un punto $a\in\X$ se dice \tbi[punto!adherente]{adherente} a un conjunto $A\subset\X$ si todo entorno de $a$ corta al conjunto $A$.
+	
+	Esta definición pretende modelizar la idea de estar ``muy pegado'' a algo.
 \end{defi}
+
+\begin{obs}[Definición equivalente]
+	Podríamos haber sustituido la definición \ref{etop_defi_puntoAdherente} por una igual pero cambiando la palabra entorno por la palabra abierto.
+	
+	La comprobación de que esto se puede hacer es inmediata y se deja al lector.
+\end{obs}
 Como ya es habitual, coleccionaremos los puntos adherentes a un conjunto dado y estudiaremos las propiedades del conjunto de puntos adherentes. Introduzcamos una definición para verlo formalmente.
 \begin{defi}[Adherencia]
 	\label{etop_defi_adherencia}
@@ -299,7 +309,7 @@ Usualmente denotaremos a la adherencia de alguna de las siguientes formas
 Vamos a desgranar ahora una serie de resultados que nos van a hacer ver que adherencia e interior de un conjunto son, de alguna manera, conceptos duales.
 
 Comenzamos en primer lugar con algo casi trivial.
-\begin{obs}[Adherencia y Conjunto]
+\begin{obs}[Adherencia y conjunto]
 	\label{etop_obs_adherenciaConjunto}
 	Es claro que se verifica que
 	\begin{equation}
@@ -307,9 +317,17 @@ Comenzamos en primer lugar con algo casi trivial.
 	A\subset\adher{A}
 	\end{equation}
 	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al punto $a$, luego, por definición, corta al conjunto $A$.
+	
+	Visto en perspectiva, esta desigualdad es de alguna manera la dual a la \eqref{etop_eq_desigualdadInterior1}.
+	
+	Además, combinando ambas desigualdades obtenemos que un conjunto siempre queda ``ensandwichado'' entre su interior y su adherencia.
+	\begin{equation*}
+		\inter{A}\subset A\subset\adher{A}
+	\end{equation*}
+	Lo cual puede resultar de utilidad.
 \end{obs}
 
-\begin{lem}[Clausura de la Adherencia]
+\begin{lem}[Clausura de la adherencia]
 	\label{etop_lem_clausuraAdherencia}
 	La adherencia de un conjunto $A$ es un cerrado.
 \end{lem}
@@ -340,7 +358,7 @@ B:=\bigcap_{\mc{H}\supset A}\mc{H}
 En efecto es un conjunto que contiene a $A$ ya que todos los conjuntos de la familia a intersecar contienen a $A$, además, es el menor de ellos, ya que, de haber uno más pequeño, pertenecería a la familia que se está intersecando, lo cual es absurdo (¡compruébese!).
 
 Presentamos, otra vez, en forma de lema, el resto de la demostración.
-\begin{lem}[Caracterización de la Adherencia]
+\begin{lem}[Caracterización de la adherencia]
 	\label{etop_lem_caracterizacionAdherencia}
 	La adherencia de un conjunto $A$ es el menor cerrado que contiene a $A$.
 \end{lem}
@@ -362,7 +380,7 @@ Presentamos, otra vez, en forma de lema, el resto de la demostración.
 	Y, por ende, $\V\cap A=\emptyset$, contra la definición de punto adherente.
 \end{proof}
 Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resultar bastante útiles al lector.
-\begin{prop}[Complementario de la Adherencia]
+\begin{prop}[Complementario de la adherencia]
 	\label{etop_prop_compAdher}
 	\begin{equation*}
 	\X\setminus\adher{A}=\Int(\X\setminus A)
@@ -382,7 +400,7 @@ Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resu
 \end{proof}
 
 Insistiendo es esta dualidad vía complementación entre abiertos y cerrados, presentamos un corolario inmediato.
-\begin{cor}[Complementario del Interior]
+\begin{cor}[Complementario del interior]
 	\label{etop_cor_compInter}
 	\begin{equation*}
 	\X\setminus\inter{B}=\Adh(\X \setminus B)
@@ -400,7 +418,7 @@ Insistiendo es esta dualidad vía complementación entre abiertos y cerrados, pr
 	Con lo que se tiene el resultado.
 \end{proof}
 Una última identidad notable, un poco más profunda que las anteriores es la que relaciona la unión de las adherencias con la adherencia de las uniones.
-\begin{prop}[Unión de Adherencias]
+\begin{prop}[Unión de adherencias]
 	La unión de las adherencias es la adherencia de las uniones.
 	\label{etop_prop_unionAdher}
 	\begin{equation*}
@@ -417,8 +435,11 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 	\end{enumerate}
 	Con lo que finaliza la demostración.
 \end{proof}
+\begin{obs}[Demostración alternativa]
+	Una demostración alternativa y quizá más contundente de la proposición \ref{etop_prop_unionAdher} consistiría en usar las propiedades de distributividad de las operaciones conjuntistas.
+\end{obs}
 Por supuesto, este resultado presenta un dual inmediato.
-\begin{cor}[Intersección de Interiores]
+\begin{cor}[Intersección de interiores]
 	El interior de la intersección es la intersección de los anteriores.
 	\begin{equation*}
 	\Int(A\cap B)=\inter{A}\cap\inter{B}
@@ -438,7 +459,7 @@ Por supuesto, este resultado presenta un dual inmediato.
 	Así, el resultado se sigue.
 \end{proof}
 El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la intersección no se da, tal y como muestra el siguiente ejemplo.
-\begin{exa}[Cuadrados Abiertos]
+\begin{exa}[Cuadrados abiertos]
 	\label{etop_ejem_cuadradosAbiertos}
 	Si consideramos los conjuntos
 	\begin{equation*}
@@ -449,7 +470,7 @@ El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la inters
 	En $\R^2$ con la topología usual, es fácil demostrar (se deja al lector) que $\adher{A\cap B}=\emptyset$ mientras que $\adher{A}\cap\adher{B}=\{1\}\times[0,1]$.
 \end{exa}
 Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop_obs_propiedadesInterior}, caractericemos los conjuntos cerrados a partir del concepto de adherencia.
-\begin{prop}[Cerrados y Adherencia]
+\begin{prop}[Cerrados y adherencia]
 	\label{etop_prop_cerradosAdher}
 	Un conjunto es $A$ cerrado si y solo si coincide con su adherencia. Es decir
 	\begin{equation*}
