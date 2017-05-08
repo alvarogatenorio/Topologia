@@ -852,79 +852,102 @@ La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicida
 
 
 \section{Topología relativa}
-
+Introducimos ahora el concepto de ``subespacio'' topológico, para lo cual, fijado un espacio topológico ``induciremos'' una topología a cada uno de sus subconjuntos a la que llamaremos ``relativa''.
 \begin{defi}[Topología relativa]
-	Sea $(\X,\T)$ un espacio topológico, y un subconjunto $\mc{Y}\subset\X \neq \emptyset$. Definimos la \tbitop{relativa} en $\mc{Y}$ como $\T\restriction_\mc{Y} = \{U\cap\mc{Y}\colon U\in\T\}$.
+	Sea $(\X,\T)$ un espacio topológico, asimismo sea un subconjunto $\mc{Y}\subset\X \neq \emptyset$.
+	
+	Definimos la \tbitop{relativa} en $\mc{Y}$ como \begin{equation}
+		\T\restriction_\mc{Y} = \{U\cap\mc{Y}\midc U\in\T\}
+	\end{equation}
 	En general, decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}. Y a los abiertos de $\mc{Y}$ se les denomina \tbi{abiertos relativos}.
 \end{defi}
-	
-	Comprobemos que efectivamente es una topología. \\
-	Contiene el vacío y el total. En efecto, $\emptyset \in \T\restriction_\mc{Y}$ pues $\emptyset \cap \mc{Y} = \emptyset$ y $\mc{Y} \in \T\restriction_\mc{Y}$ pues $\X \cap \mc{Y} = \mc{Y}$. 
-	Es cerrado respecto de uniones arbitrarias. En efecto, $\bigcup_{i \in I}{(\U \cap \mc{Y})} = \big( \bigcup_{i \in I} \U \big) \cap \mc{Y}$. Y por último, es cerrado respecto de intersecciones finitas. En efecto, $\bigcap_{i = 1}^{n}{(\U_i \cap \mc{Y})} = \big( \bigcap_{i=1}^{n} \U_i \big) \cap \mc{Y}$. \\
-
-	Gracias a esta definición, siempre que hablemos en adelante de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa para dotarlo de estructura de espacio topológico. \\
-
-Veamos ahora un lema referido a resultados más elementales.
-
-\begin{lem}[Bases y topología relativa]
-	Sea $Y$ un subconjunto no vacío de $\X$. Entonces:
-	\begin{enumerate} 
-		\item Si $\V_y$ es base de entornos de $y \in Y$ en $\X$, entonces $\V_y \cap Y$ es base entornos en $Y$.
-		\item Si $\B$ es base en $\X$, $\B \cap Y$ es base en $Y$. 	
+\begin{obs}[Buena definición]
+	Comprobemos que efectivamente la topología relativa es merecedora de su nombre (y por tanto no hemos hecho un pan como unas hostias).
+	\begin{enumerate}
+		\item La topología relativa contiene el vacío y el total (que en este caso es $\Y$). En efecto, $\emptyset \in \T\restriction_\mc{Y}$ pues $\emptyset \cap \mc{Y} = \emptyset$ y $\mc{Y} \in \T\restriction_\mc{Y}$ pues $\X \cap \mc{Y} = \mc{Y}$.
+		\item Es cerrado respecto de uniones arbitrarias. En efecto, $\bigcup_{i \in I}{(\U \cap \mc{Y})} = \big( \bigcup_{i \in I} \U \big) \cap \mc{Y}$.
+		\item Es cerrado respecto de intersecciones finitas. Basta ver, $\bigcap_{i = 1}^{n}{(\U_i \cap \mc{Y})} = \big( \bigcap_{i=1}^{n} \U_i \big) \cap \mc{Y}$.
 	\end{enumerate}
-\end{lem}
-
-\begin{obs}[Lindelöf y separabilidad]
-	Si $\X$ es un espacio Lindelöf o separable, $Y \subset \X$ no tiene porque serlo. \qedhere
+	Y por tanto ya podemos dormir tranquilos.
 \end{obs}
 
-Vamos a ver ahora que la topología relativa también preserva esa ``dualidad'' de la que hablábamos antes entre abiertos y cerrados. En particular, también los cerrados relativos son las intersecciones de los cerrados de $\X$.
+Gracias a esta definición, siempre que hablemos de un subconjunto de $\X$ y necesitemos una topología definida en él, se usará por defecto la relativa.
 
+Veamos ahora cómo se comportan los cerrados, los entornos, las adherencias y las bases de los subespacios respecto de sus análogos originales.
 \begin{lem}[Cerrados relativos]
-	Los cerrados de $\mc{Y}$ son las intersecciones de los cerrados de $\X$ con $\mc{Y}$. Es decir, $C\subset\mc{Y}$ es cerrado si existe $F\subset\X$ cerrado tal que $C = F\cap\mc{Y}$.
+	Los cerrados de $\Y$ son los cerrados de $\X$ cortados con $\Y$.
 	
-	\begin{proof}
-		Sea $W\subset\X$ un abierto de $X$. Entonces, $\X\setminus W$ es cerrado, y queremos ver si $C=\mc{Y}\cap(\X\setminus W)$ es cerrado. Pero esto es lo mismo que ver si $\mc{Y}\setminus C$ es abierto, y:
-		\[\mc{Y}\setminus C=\mc{Y}\setminus (\mc{Y}\cap(\X\setminus W))=\mc{Y}\setminus ((\mc{Y}\cap\X)\setminus W)=\mc{Y}\setminus (\mc{Y}\setminus W) = \mc{Y}\cap W\]
-		donde para las igualdades anteriores se han utilizado relaciones conocidas de teoría de conjuntos. Entonces, como $\mc{Y}\cap W$ es abierto por definición de topología relativa, $\mc{Y}\setminus C$ también lo es, y por tanto $C$ es cerrado.
+	\begin{proof} Procedemos por doble implicación.
+		\begin{enumerate}
+			\item[\bra] Sea $\F$ cerrado relativo, luego $\Y\setminus \F$ es abierto relativo. Por ende, para cierto $\U$ abierto de $\X$ se verifica $\Y\setminus \F=\Y\cap\U$. Complementando de nuevo respecto de $\Y$ obtenemos
+			\begin{multline*}
+				\F = \Y\setminus(\Y\cap\U)=\Y\cap(\X\setminus(\Y\cap\U))=\Y\cap((\X\setminus\Y)\cup(\X\setminus\U))=\\
+				=\Y\cap(\X\setminus\Y)\cup\Y\cap(\X\setminus\U)=\emptyset\cup\Y\cap(\X\setminus\U)=\Y\cap(\X\setminus\U)
+			\end{multline*}
+			Como $\X\cap\U$ es cerrado hemos terminado.
+			\item[\bla] Sea $\U$ abierto de $\X$, veamos que $\Y\cap(\X \setminus\U)$ es cerrado relativo. Para ello complementamos respecto de $\Y$.
+			\begin{multline*}
+				\Y\setminus(\Y\cap(\X \setminus\U))=\Y\cap(\X \setminus (\Y\cap(\X \setminus \U)))=\\
+				=\Y\cap((\X\setminus\Y)\cup\U)=(\Y\cap(\X\setminus\Y))\cup(\Y\cap\U)=\emptyset\cup(\Y\cap\U)=(\Y\cap\U)
+			\end{multline*}
+		\end{enumerate}
+		Con lo que concluye la demostración.
 	\end{proof}
 \end{lem}
-
 \begin{lem}[Entornos relativos]
-	Sea $A \subset \X$. Los entornos de $a \in A$ son las intersecciones de A con los entornos de $a$ en $\X$.	
+	Los entornos de un punto $a \in \Y$ en $\Y$ son los entornos de $a$ en $\X$ cortados con $\Y$.	
 \end{lem}
 \begin{proof}
-	Sea $\V$ un entorno de $a$ en $\X$, entonces hay un abierto $\U$ tal que $x \in \U \subset \V$. Veamos que $\V \cap A$ es entorno de $a$ en $\X$. Para ello vemos que hay un abierto $\U'$ tal que $x \in \U' \subset \V \cap A$. Dicho abierto es, intuitivamente, $\U \cap A$.
-	Vamos a comprobarlo formalmente. Sea $a \in \U \cap A$. Veamos que $(\U \cap A) \subset (\V \cap A)$. Como $\U \subset \V$, dado $x \in \U $ y $x \in A \Rightarrow x \in \V$ y $ x \in A$. \\
+	Sea $\V$ un entorno de $a$ en $\X$, entonces hay un abierto $\U$ tal que $x \in \U \subset \V$. Veamos que $\V \cap \Y$ es entorno de $a$ en $\Y$. En efecto, $a \in \U \cap \Y\subset (\V \cap \Y)$ (¡compruébese!). Como $\U\cap\Y$ es abierto relativo el resultado se sigue.
 	
-	Sea $\V'$ un entorno de $a$ en $A$, entonces hay un abierto $\U'$ tal que $x \in \U' \subset \V'$. Como $\U'$ es abierto relativo en $A$, $a \in \U \cap A \subset \V'$. Veamos que $\V' = \V \cap A$ con $\V$ un entorno de $a$ en $\X$. Es claro que $\U$ es entorno de $a$ en $\X$, por ende, basta tomar $\V = \V' \cap \U$.
+	Recíprocamente, sea $\V'$ un entorno de $a$ en $\Y$, entonces hay un abierto relativo $\U'$ tal que $x \in \U' \subset \V'$. Por tanto, $a \in \U \cap \Y \subset \V'$ para cierto $\U\in\T$. Veamos que $\V' = \V \cap \Y$ siendo $\V$ un entorno de $a$ en $\X$. Es claro que $\U$ es entorno de $a$ en $\X$, por ende, basta tomar $\V = \V' \cup \U$. En efecto
+	\begin{equation*}
+		\V\cap\Y=(\V'\cup\U)\cap\Y=(\V'\cap\Y)\cup(\U\cap\Y)=\V'\cup\U'=\V'
+	\end{equation*}
+	Con lo que hemos ganado.
 \end{proof}
-
-\begin{prop}[Relatividad y adherencias]
-	Sea $A \subset \X$ y $\pi \subset A$. Se cumple que $A \supset Adh_A(\pi) = A \cap Adh_{\X}(\pi)$.
+\begin{prop}[Adherencia relativa]
+	Sea $M \subset \Y$, entonces \[\Adh_{\Y}(M)=\Adh_{\X}(M)\cap\Y\]
 \end{prop}
 \begin{proof}
-	$a \in Adh_A(\pi)$ si y solo si dado un entorno de $a$ en $A$, $\emptyset \neq \V_A \cap \pi = \V_x \cap (A Cap \pi) = \V_x \cap \pi$.
+	Si $a \in \Adh_\Y(M)$ se verifica que dado $\V'$ entorno relativo de $a$
+	\[\emptyset\not=\V' \cap M = (\V\cap\Y)\cap M = \V \cap M\subset\Y\]
+	Recíprocamente seguimos los mismos pasos pero leyendo como los árabes.
 \end{proof}
-
-
-\begin{obs}[Otras propiedades]
-	\begin{enumerate}
-		\item Sea $A\subset\X$ abierto. Si $A\cap U$ es un abierto en la topología $\T\restriction_A$ (es decir, $U$ es abierto en $\T_\X$), entonces $A\cap U$ es también abierto en $\T_\X$.
-		\item Sea $F\subset\X$ cerrado. Si $F\cap C$ es un cerrado en la topología $\T\restriction_F$ (es decir, $C$ es cerrado en $\T_\X$), entonces $F\cap C$ es también cerrado en $\T_\X$. \qedhere
-	\end{enumerate}
-\end{obs}
-
 \begin{lem}[Bases relativas]
-	Sea $\mc{Y} \subset \X$.
- 	\begin{enumerate}
- 		\item Si $\V_y$ es base en $\X$, $\V_y \cap \mc{Y}$ es base en $\mc{Y}$.
- 		\item Si $\B$ es base en $\X$, $\B \cap \mc{Y}$ es base en $\mc{Y}$.
- 	\end{enumerate}
+	\label{etop_lem_basesRel}
+	Sea $\mc{Y}$ un subespacio topológico, se verifica.
+	\begin{enumerate}
+		\item Si $\Va{y}$ es base de $y$ en $\X$, entonces $\Va{y} \cap \Y$ es base de $y$ en $\Y$.
+		\item Si $\B$ es base en $\X$, $\B \cap \Y$ es base en $\Y$.
+	\end{enumerate}
 \end{lem}
 \begin{proof}
 	\begin{enumerate}
-		\item Hay que ver que dado un entorno de $y$ en $\mc{Y}$, que son de la forma $V \cap \mc{Y}$, hay uno de la forma $W \cap \mc{Y}$ tal que $(W \cap \mc{Y}) \subset (V \cap \mc{Y})$. Es claro que $W \cap V$ lo cumple.
+		\item Hay que ver que dado un entorno de $y$ en $\mc{Y}$, que son de la forma $V \cap \mc{Y}$, hay uno de la forma $W \cap \mc{Y}$ tal que $(W \cap \mc{Y}) \subset (V \cap \mc{Y})$ con $W\in\Va{y}$. Es claro que tomando el $W\in\Va{y}$ correspondiente a $V$, $W \cap \Y$ lo cumple.
 		\item Dado un abierto $\U$ en $\mc{Y}$, tenemos que $\mc{Y} \cap \U = \mc{Y} \cap \big( \bigcup B \big) = \bigcup (B \cap \mc{Y})$.
 	\end{enumerate}
+	Fin de la cita.
+\end{proof}
+\begin{obs}[Axiomas hereditarios]
+	Si un espacio es I axioma (respectivamente II axioma), en virtud del lema \ref{etop_lem_basesRel} todo subespacio suyo será I axioma (respectivamente II axioma).
+\end{obs}
+\begin{lem}[Otras propiedades] Unas últimas propiedades interesantes son
+	\begin{enumerate}
+		\item $\Y$ es abierto de $\X$ si y solo si todo abierto de $\Y$ es abierto de $\X$.
+		\item $\Y$ es cerrado de $\X$ si y solo si todo cerrado de $\Y$ es cerrado de $\X$.
+		\item $\Y$ es entorno de $x$ en $\X$ si y solo si todo entorno de $x$ en $Y$ es entorno de $x$ en $X$.
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	Únicamente demostraremos $1.$ y $3.$
+	\begin{enumerate}
+		\item Como $\U'$ es abierto relativo si y solo si $\U'=\Y\cap\U$ si $\Y$ es abierto en $\X$ todos los demás abiertos de la topología relativa también serán abiertos en $\X$ (intersección finita de abiertos).
+		
+		Recíprocamente, como $\Y$ es abierto relativo, $\Y$ será abierto usual.
+		\item[$3.$] Como todo entorno relativo es de la forma $\V\cap\Y$, y tanto $\V$ como $\Y$ son entornos del total por hipótesis, es claro que $\V\cap\Y$ es entorno en el total.
+		
+		Recíprocamente, como $\Y$ es entorno relativo, por hipótesis $\Y$ es entorno del total.
+	\end{enumerate}
+	Con lo que nos podemos dar por satisfechos.
 \end{proof}
