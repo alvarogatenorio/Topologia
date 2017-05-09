@@ -2,77 +2,90 @@
 \chapter{Continuidad}
 \label{cont}
 
-La continuidad es la propiedad por excelencia que queremos que nuestras funciones verifiquen. En este breve capítulo vamos a generalizar la noción de continuidad que ya conocemos y dominamos para espacios como $\R^n$, de forma que la podamos aplicar a cualquier espacio métrico conocido. La continuidad, además, será clave para definir más adelante la noción de homeomorfismo: las aplicaciones que preservan las propiedades topológicas de un espacio dado.
+La continuidad es la propiedad por excelencia que queremos que nuestras funciones verifiquen. En este breve capítulo vamos a generalizar la noción de continuidad que ya conocemos y dominamos para espacios como $\R^n$, de forma que la podamos aplicar a cualquier espacio topológico conocido (sin necesidad de que sea métrico). La continuidad, además, será clave para definir más adelante la noción de homeomorfismo, es decir, una transformación que preserva las propiedades topológicas de un espacio dado.
 
-\section{Continuidad en un punto}
+\section{Definición y propiedades elementales}
 
-En el espacio euclídeo usual, cuando teníamos una función $f:A\subset\mb{R}^m\to\mb{R}^n$, con un punto $a\in A$, decíamos que $f$ es continua en $a$ si y solo si $\forall\varepsilon > 0\;\exists\delta > 0$ tal que si $x\in A,\norm{x-a}<\delta$, entonces $\norm{f(x)-f(a)}<\varepsilon$. Podemos reescribir esta condición como que si $x\in A\cap\bola(a,\delta)$, entonces $f(x)\in\bola(f(a),\varepsilon)$. Pero de nuevo, esto es equivalente a que para cualquier $\bola_a$ (bola centrada en $a$), $A\cap \bola_a\subset f^{-1}(\bola_{f(a)})$ para cierta $\bola_{f(a)}$.
+Para empezar, tratamos de dar una justificación intuitiva del cómo se llegó a la definición que presentaremos a continuación.
 
-De esta forma, vamos a proceder ahora a generalizar esta definición para espacios topológicos arbitrarios.
+Hasta ahora conocíamos una definición de continuidad válida en el ámbito de los espacios métricos, que nos decía que si $(M,d)$ y $(N,d')$ eran espacios métricos arbitrarios y $f:M\to\N$ una aplicación entre ellos, era continua en un punto $x_0\in M$ si y solo si dado un $\varepsilon>0$ podíamos encontrar un $\delta>0$ de forma que $f(\bola_d(x_0,\delta))\subset\bola_{d'}(f(x_0),\varepsilon)$.
 
-\begin{defi}
-	Sean $\X,\mc{Y}$ espacios topológicos, $f:\X\to\mc{Y}$. $f$ es \tbi[aplicación!continua]{continua} en $x_0\in\X$ si para todo entorno $V^{f(x_0)}$ la imagen inversa $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$. 
+Dicho de otra forma, si cierto punto dista de $x_0$ menos que $\delta$, entonces su imagen deberá distar menos que $\varepsilon$ de la imagen de $x_0$. Informalmente, una aplicación continua es la que manda puntos próximos a puntos próximos.
+
+En los espacios topológicos no tenemos la noción de distancia, pero si cierta noción de ``proximidad'', o al menos de ``ligadura'' entre puntos, esta es la noción de entorno, que usaremos para extender esta definición.
+\begin{defi}[Continuidad en un punto]
+	Sean $\X$ e $\Y$ espacios topológicos. Consideremos asimismo una aplicación $f:\X\to\Y$.
+	
+	Diremos que $f$ es \tbi[aplicación!continua]{continua} en un punto $x_0\in\X$ si para todo entorno $V_{f(x_0)}$ de $f(x_0)$, la imagen inversa de dicho entorno, $f^{-1}(V_{f(x_0)})$, es entorno de $x_0$. 
 \end{defi}
 
-	Equivalentemente, podemos decir que $f$ es continua si transforma entornos en entornos por imágenes inversas. Entendiendose esto como (entorno de la imagen $\xrightarrow{f^{-1}}$ entorno de la preimagen).
-	
-\begin{obs}
+Dicho con palabras llanas, $f$ es continua en un punto si transforma entornos en entornos por imágenes inversas.
+
+Una forma totalmente equivalente de entender este concepto es pensar que dado un entorno $V_{f(x_0)}$ de $f(x_0)$ siempre podremos encontrar un entorno $V_{x_0}$ de forma que $f(V_{x_0})\subset V_{f(x_0)}$.
+\begin{obs}[Importancia de las topologías]
+	\label{cont_obs_importanciaTopol}
+	Si la topología de $\X$ es fina (con muchos abiertos), o la topología de $\Y$ es muy grosera (con muy pocos abiertos), la continuidad suele ser más fácil de comprobar, ya que hay pocos entornos que chequear en el espacio de llegada y muchos candidatos en el espacio de partida.
+\end{obs}
+Al hilo de la observación \ref{cont_obs_importanciaTopol} veamos algunos casos extremos que pueden resultar chocantes para una mente poco experimentada en los exóticos placeres topológicos.
+\begin{obs}[Casos extremos]
 	\label{cont_obs_continuidad_discreta_trivial}
-	Si la topología de $\X$ es grosera, o la topología de $\mc{Y}$ es muy fina, la continuidad suele ser más fácil de comprobar. Podemos pensar en $\X$ con la topología discreta como ejemplo de lo primero y en $\mc{Y}$ con la topología trivial como ejemplo de lo segundo:
-	
+	Veamos cual es el comportamiento de la continuidad con las topologías más drásticas que conocemos.	
 	\begin{enumerate}
-		\item En la topología discreta, cualquier conjunto es abierto, con lo cual $\{x_0\}$ es abierto y por tanto cualquier conjunto que contenga a $x_0$ es entorno suyo. Entonces, para cualquier entorno de $f(x_0)$ su imagen inversa contendrá a $x_0$ y por lo anterior será entorno suyo. Es decir, cualquier función que nazca en $\X$ con la topología discreta es continua.
+		\item En la topología discreta, cualquier conjunto es abierto, con lo cual $\{x_0\}$ es abierto y, por tanto, cualquier conjunto que contenga a $x_0$ es entorno suyo. Entonces, para cualquier entorno de $f(x_0)$ su imagen inversa contendrá a $x_0$ y por lo anterior será entorno suyo. Es decir, cualquier función que nazca en $\X$ con la topología discreta es continua.
 		
-		\item En la topología trivial, los únicos abiertos son el vacío y el total, con lo cual dado un punto su único entorno es el total. Entonces, si $\mc{Y}$ con la topología trivial es el espacio de llegada de una función $f$, $f$ es continua, pues la imagen inversa del total es el total, y este es abierto (y por tanto entorno) en cualquier topología. \qedhere 
+		\item En la topología trivial, los únicos abiertos son el vacío y el total, con lo cual dado un punto, su único entorno es el total. Entonces, si $\Y$ con la topología trivial es el espacio de llegada de una función $f$, $f$ es continua, pues la imagen inversa del total es el total, y este es abierto (y por tanto entorno) en cualquier topología. \qedhere 
 	\end{enumerate}
 \end{obs}
 
 De la misma forma que podemos estudiar la continuidad para unas ciertas topologías concretas, podemos estudiarla para algunas funciones concretas sin limitarnos a una topología particular. En particular, nos van a interesar la función constante y la función identidad.
 
-\begin{obs} \
+\begin{obs}[Aplicaciones constante e identidad] \
 	\label{cont_obs_continuidad_cte_e_id}
 	\begin{enumerate}
-		\item Si $f:\X\to\mc{Y}$ es la aplicación constante $f=b$, entonces $f$ es continua con cualquier topología. En efecto, la imagen inversa de cualquier subconjunto (y en particular de cualquier entorno) de $\mc{Y}$ que contenga a $b$ es el total, que es entorno de todos los puntos.
+		\item Si $f:\X\to\mc{Y}$ es la aplicación constante $f\equiv b$, entonces $f$ es continua con cualquier topología. En efecto, la imagen inversa de cualquier subconjunto (y en particular de cualquier entorno) de $\mc{Y}$ que contenga a $b$ es el total, que es entorno de todos los puntos (por ser abierto).
 		
-		\item La continuidad de la aplicación identidad depende de los espacios topológicos sobre los que está definida, al contrario de lo que pueda parecer. En efecto, sea
-		\[f:(\X,\T_\text{discreta})\to (\X,\T_\text{trivial})\]
-		que sí es continua, por la observación \ref{cont_obs_continuidad_discreta_trivial}. Sin embargo, su inversa, que también es la aplicación identidad, no es continua. Esto se sigue directamente de que, por ser la topología del espacio de llegada la discreta, $\{f(x_0)\}$ es abierto y por tanto entorno de $f(x_0)$, pero su imagen inversa es $\{x_0\}$ que con la topología trivial del espacio de salida no es entorno. \qedhere
+		\item La continuidad de la aplicación identidad depende de los espacios topológicos sobre los que está definida, al contrario de lo que pueda parecer. Caso curioso es el siguiente:
+		\[\text{id}:(\X,\T_\text{discreta})\to (\X,\T_\text{trivial})\]
+		Esta aplicación es continua (y biyectiva), por la observación \ref{cont_obs_continuidad_discreta_trivial}. Sin embargo, su inversa, que también es la aplicación identidad, no es continua. Esto se sigue directamente de que, por ser la topología del espacio de llegada la discreta, $\{f(x_0)\}$ es abierto y por tanto entorno de $f(x_0)$, pero su imagen inversa es $\{x_0\}$ que con la topología trivial del espacio de salida no es entorno. \qedhere
 	\end{enumerate}
 \end{obs}
 
 Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
 
-\begin{prop}
+\begin{prop}[Continuidad y restricciones]
 	Dada $f:\X\to\mc{Y}$, continua en $x_0\in\X$, si $A\subset\X$ tal que $x_0\in A$, entonces $f\restriction_A:A\to\mc{Y}$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Como en $A$ estamos considerando la topología relativa, se verifica que $(f\restriction_A^{-1})(V_{f(x_0)}) = A\cap f^{-1}(V_{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $A$.
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Se verifica que $(f\restriction_A^{-1})(V_{f(x_0)}) = A\cap f^{-1}(V_{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $A$ (nótese que consideramos la topología relativa en $A$).
 	\end{proof}
 \end{prop}
 
 	Este lema viene a decirnos que la continuidad no depende del conjunto donde nos encontremos, no obstante, si depende (y mucho) de la topología.
+	
+	La siguiente proposición es el recíproco de la anterior.
 
-\begin{prop}
-	La continuidad es una propiedad local, es decir, $f:\X\to\mc{Y}$ es continua en $x_0\in\X$ si $\exists V_{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$.
+\begin{prop}[Continuidad como propiedad local] Si hay un entorno $V_{x_0}$ de $x_0$ tal que $f\restriction_{V_{x_0}}$ es continua en $x_0$ entonces $f$ es continua.
 	
 	\begin{proof}
-		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Si $\exists V_{x_0}\subset\X$ entorno de $x_0$ tal que $f\restriction_{x_0}$ es continua en $x_0$, entonces $(f\restriction_{V_{x_0}})(V_{f(x_0)}) = f^{-1}(V_{f(x_0)})\cap V_{x_0}$, luego es entorno de $x_0$ en $V_{x_0}$. Entonces es entorno de $x_0$ en $\X$ y por tanto $f$ es continua.
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$, por continuidad de  $f\restriction_{V_{x_0}}$ en $x_0$ se cumple que $(f\restriction_{V_{x_0}})^{-1}(V_{f(x_0)}) = f^{-1}(V_{f(x_0)})\cap V_{x_0}$ es entorno de $x_0$ en $V_{x_0}$, luego, por topología relativa, $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$ y, por tanto, $f$ es continua.
 	\end{proof}
 \end{prop}
 
-	La idea que define a las propiedades locales, es que para ver si se cumplen en un punto no es necesario mirar como se comporta el espacio en su conjunto, sino tan solo debemos comprobar como se comporta en un entorno del punto. La idea intuitiva de esto es que nos da igual lo que pase ``lejos'' del punto.
+	La idea que define a las llamadas ``propiedades locales'', es que para ver si se cumplen en un punto no es necesario mirar como se comporta todo el espacio en su conjunto, sino tan solo debemos comprobar como se comporta en un entorno del punto.
+	
+	La idea intuitiva de esto es que nos da igual lo que pase ``lejos'' del punto.
 
-\section{Continuidad}
+\section{Caracterizaciones de la continuidad}
 
-Tras definir la continuidad en un punto, el paso instintivo es por supuesto definir la continuidad en todo el espacio. Vamos a hacerlo y a dar una serie de definiciones equivalentes de continuidad, que abren muchas posibilidades a la hora de verificar esta propiedad.
+Tras definir la continuidad en un punto, el paso instintivo es por supuesto definir la continuidad en todo el espacio (o en cualquiera de sus subconjuntos). Vamos a hacerlo y a dar una serie de definiciones equivalentes de continuidad, que abren muchas posibilidades a la hora de verificar esta propiedad.
 
-\begin{defi}[Continuidad]
-	Se dice que $f:\X\to\mc{Y}$ es \tbi[aplicación!continua]{continua} si lo es en todo punto.
+\begin{defi}[Continuidad en un conjunto]
+	Se dice que $f:\X\to\mc{Y}$ es \tbi[aplicación!continua]{continua} en un conjunto $A\subset \X$ si lo es en todo punto de $A$.
 \end{defi}
 
-Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos permite deformar, aplastar, girar... pero no cortar o pegar.
+Antes de meternos en materia vamos a engrasar la maquinaria de todo lo que sabemos estudiando un poco más las aplicaciones identidad.
 
-\begin{exa}
+\begin{exa}[Aplicaciones identidad]
 	Vamos a ampliar la observación \ref{cont_obs_continuidad_cte_e_id} comprobando qué tienen que verificar las topologías $\T_1$, $\T_2$ para que se cumpla que la función identidad definida de $(\X,\T_1)\to(\X,\T_2)$ es continua.
 	
 	Notemos que aunque tenemos dos topologías distintas, estamos en el mismo espacio, entonces para cualquier entorno de un punto $x_0$ en una de las topolgías, tenemos un entorno equivalente del mismo punto en la otra topología. Es decir, $V^{\T_2}_{x_0} = V^{\T_1}_{x_0}$. \\
@@ -146,8 +159,10 @@ Terminamos con una propiedad fundamental de las funciones continuas: la composic
 	\end{proof}
 \end{prop}
 
-\section{Homeomorfismo. Homeomorfismo local}
+\section{Homeomorfismos y homeomorfismos locales}
 \label{cont_homeomorfismos}
+%Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos permite deformar, aplastar, girar... pero no cortar o pegar.
+
 En esta sección trataremos la idea de homeomorfismo en espacios topológicos. Esta idea va a adquirir una gran importancia para nosotros ya que es la que nos va a permitir caracterizar espacios distintos como ``similares'' desde un punto de vista topológico (que preservan sus propiedades topológicas, vemos que continúa la idea de isomorfismo que hemos visto en otras asignaturas).
 
 
