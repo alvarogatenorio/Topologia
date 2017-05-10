@@ -214,8 +214,6 @@ Nótese que puede haber identificaciones que no verifiquen ninguna de las condic
 
 Toda esta construcción abstracta debe servirnos para formalizar todo el concepto de cociente de un espacio. Esta es quizá la idea más importante que se va a ver en toda la asignatura, y es excepcionalmente útil para construir una gigantesca variedad de homeomorfismos y encontrar objetos simples homeomorfos a otros mucho más complejos.
 
-
-
 \begin{exa}[Circunferencia unidad]
 	Definimos la aplicación:
 	\[\begin{split}
@@ -327,7 +325,7 @@ Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$
 \begin{equation}
 Y=\prod_i X_i \stackrel{p_i^r}{\longrightarrow}(X_i,\T_i)
 \end{equation}
-Lo que buscamos en la construcción del espacio producto es de dotar a $Y$ de la topología $\T$ más fina haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi{proyecciones}.
+Lo que buscamos en la construcción del espacio producto es de dotar a $Y$ de la topología $\T$ más fina haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi[proyeccion@proyección]{proyecciones}.
 
 De este modo, como queremos que $(p_i^r)^{-1}$ sea continua  tenemos que para todo abierto $U_i\in \T_i$ deberá verificarse que $(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r$ (todos son los totales excepto en el caso de $X_i$) sea abierto. Es decir, que se cumpla $X_1\times\cdots\times U_i \times\cdots X_r\in \T$
 
@@ -340,7 +338,7 @@ Como dados $U_1\times\cdots\times U_r$ y $V-1\times\cdots\times V_r$ elementos d
 Así, una vez que tenemos la base que va a caracterizar nuestra topología producto podemos afirmar que esta viene dada por $\T=\prod_i \T_i$.
 
 \begin{defi}[Topología producto]
-	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbitop{producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
+	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbitop[$\T_1\times\T_2$]{producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
 \end{defi}
 
 Podemos formular, además, una propiedad universal del producto que caracteriza a esta topología:

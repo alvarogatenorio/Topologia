@@ -67,8 +67,8 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaRn}
 		\T = \{\U\subset M\midc \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
-		A esta topología la llamamos \tbitop{usual}.
-		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop{trivial}, que viene definida por \begin{equation}
+		A esta topología la llamamos \tbitop[$\T_u$]{usual}.
+		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop[$\T_t$]{trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
 		\T=\{\emptyset, \X\}
 		\end{equation}
@@ -77,7 +77,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaDiscreta}
 		\T = \partes(\X)
 		\end{equation}
-		A esta topología la llamaremos \tbitop{discreta}.
+		A esta topología la llamaremos \tbitop[$\T_d$]{discreta}.
 		\item Como último ejemplo curioso nos queda la llamada \tbitop{del punto}. Consiste en considerar como abiertos a todos los subconjuntos de un conjunto $\X$ que contengan a un determinado punto $a$. Es decir
 		\begin{equation}
 		\label{etop_eq_topologiaPunto}
@@ -779,7 +779,7 @@ Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos
 \begin{obs}[II axioma $\ra$ separable]
 	Elegiremos un punto $x_i$ de cada abierto $\U_i$ de la base $\B$. Dado un abierto $\U$ arbitrario, como es unión de abiertos de la base, contendrá a algún punto $x_i$. Luego el conjunto $\{x_i\midc i\in\N\}$ es un conjunto numerable denso.
 	
-	El recíproco no se da (véase la recta de Sorgenfrey).
+	El recíproco no se da. Un contraejemplo es la recta de Sorgenfrey, que veremos más adelante en el ejemplo \ref{etop_ej_sorgenfrey}.
 \end{obs}
 
 Hemos de comentar que ser II axioma es mucho más fuerte que ser I axioma. De hecho, hay espacios métricos que no son II axioma.
@@ -815,8 +815,10 @@ La siguiente proposición es una caracterización muy útil de las bases de abie
 \end{proof}
 La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicidad de la topología inducida por una base es que podemos definir topologías sin necesidad de conocer todos los abiertos de las mismas, tal y como vemos en el siguiente ejemplo.
 \begin{exa}[Topología de Sorgenfrey en $\R$]
+	\label{etop_ej_sorgenfrey}
+	
 	Consideramos la familia de conjuntos \begin{equation}\B:=\{[a,b)\midc a,b\in\R\}\end{equation}
-	$\B$ es base de una topología, a la que llamaremos \tbitop{de Sorgenfrey} o \tbitop{del límite inferior}. Para ver esto usaremos la proposición \ref{etop_base_top}.
+	$\B$ es base de una topología, a la que llamaremos \tbitop[$\T_{[,)}$]{de Sorgenfrey} o \tbi[topología!del límite inferior|see{topología de Sorgenfrey}]{topología del límite inferior}\index[topologias]{del límite inferior|see{de Sorgenfrey}}. Para ver esto usaremos la proposición \ref{etop_base_top}.
 		
 	Que se cumple la primera condición es evidente.
 		

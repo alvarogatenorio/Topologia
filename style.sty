@@ -143,7 +143,8 @@
 \newcommand{\tbi}[2][]{\ifthenelse{\equal{#1}{}}{\tb{\ti{#2}}\index[general]{#2}}{\tb{\ti{#2}}\index[general]{#1}}}
 \newcommand{\tbitop}[2][]{\tb{\ti{topología #2}}\indext[#1]{#2}}
 % Para añadir una topología al índice
-\newcommand{\indext}[2][]{\index[general]{topología!#2}\index[topologias]{#2\protect\ifthenelse{\protect\equal{#1}{}}{}{ (\protect#1)}}}
+\newcommand{\indext}[2][]{\index[general]{topología!#2}\index[topologias]{#2@#2\protect\ifthenelse{\protect\equal{#1}{}}{}{, \protect#1}}}
+\newcommand{\indexg}[1]{\index[general]{#1}}
 
 %Cero y Vacío.
 \newcommand{\smz}{\setminus\{0\}}
@@ -197,6 +198,8 @@
 \newcommand{\A}{\mc{A}}
 %S de esfera.
 \newcommand{\Sfe}{\esfera}
+%Hash de isomorfismo índice
+\newcommand{\indice}{\mathrm{\#}}
 
 \newcommand{\partes}{\mc{P}}
 \newcommand{\esfera}{\mb{S}}
@@ -208,9 +211,10 @@
 
 % A homeomorfo a B
 \newcommand{\homeo}{\approx}
-% Sigma homótopo a tau
+% Sigma homótopo a tau. El argumento opcional son los extremos fijos si los hay.
 \newcommand{\homot}[1][]{\underset{#1}{\simeq}}
-% Sigma homótopo con extremos fijos
+% Producto de caminos
+\newcommand{\pathp}{\mathbin{*}}
 
 \DeclareMathOperator{\bola}{B}
 

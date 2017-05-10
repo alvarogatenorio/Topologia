@@ -103,7 +103,7 @@ El objetivo principal de esta sección es aplicar las ideas de teoría de catego
 	f^\ast:(\X, x_0) &\to (\Y, y_0) \\
 	[\sigma] &\mapsto [f\circ\sigma]
 	\end{split}\]
-	Hay que comprobar, entonces, que está bien definido. En efecto, consideramos la aplicación $f^\ast$ que acabamos de definir. Desde luego, si $\sigma$ es un lazo con base $x_0$, $f\circ\sigma$ es un lazo con base $y_0$. Para ver si respeta la homotopía, consideramos $\tau:[0,1]\to (\X,x_0)$ homótopo con extremos fijos con $\sigma$ a través de la homotopía $H$. Entonces, $f\circ H$ es una homotopía entre $f\cap\sigma$ y $f\cap\tau$. Por último, comprobamos que es homomorfismo, lo cual es directo comprobando que $f\circ(\sigma\ast\tau)=(f\circ\sigma)\ast (f\circ\tau)$.
+	Hay que comprobar, entonces, que está bien definido. En efecto, consideramos la aplicación $f^\ast$ que acabamos de definir. Desde luego, si $\sigma$ es un lazo con base $x_0$, $f\circ\sigma$ es un lazo con base $y_0$. Para ver si respeta la homotopía, consideramos $\tau:[0,1]\to (\X,x_0)$ homótopo con extremos fijos con $\sigma$ a través de la homotopía $H$. Entonces, $f\circ H$ es una homotopía entre $f\circ\sigma$ y $f\circ\tau$. Por último, comprobamos que es homomorfismo, lo cual es directo comprobando que $f\circ(\sigma\ast\tau)=(f\circ\sigma)\ast (f\circ\tau)$.
 	
 	Además, hay que ver que es un funtor, esto es, que cumple:
 	\begin{itemize}
@@ -164,6 +164,7 @@ Un caso donde se puede aplicar la proposición anterior es el siguiente.
 \end{exa}
 
 \begin{prop}
+	\label{grf_prop_gf_prod_es_prod_gf}
 	Dados dos espacios $\X,\Y$, el grupo fundamental del producto es isomorfo al producto de los grupos fundamentales. Esto es:
 	\[\pi(\X\times\Y)\approx\pi(\X)\times\pi(\Y)\]
 	
@@ -253,7 +254,9 @@ Con esto, estamos ya en condiciones de formular el problema de elevación.
 El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el espacio proyectivo real de dimensión $n$, para $n\geq 2$. Como pronto veremos, esta demostración explota el concepto de elevación. 
 
 \begin{theo}[Grupo fundamental de $\proy^n$]
-	Para $n\geq 2$, $\pi(\proy^2)=\Z_2$.
+	\label{grf_espacio_proyectivo}
+	
+	Para $n\geq 2$, el grupo fundamental de \indexg{espacio proyectivo} $\proy^n$ es $\pi(\proy^2)=\Z_2$, el grupo abeliano de orden 2.
 	
 	\begin{proof}
 		Vamos a empezar demostrando que la esfera $\Sfe^n$ es un espacio recubridor del espacio proyectivo $\proy^n$. Vamos a repetir con un poco más de detalle el argumento que ya utilizamos en el ejemplo \ref{grf_exa_recubrimientos}. Consideramos pues la aplicación:
@@ -302,6 +305,92 @@ El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el e
 	\end{proof}
 \end{theo}
 
-\section{Grupo fundamental del círculo}
+\section{El grupo fundamental del círculo}
 
-El objetivo de esta sección es calcular el grupo fundamental de $\Sfe^1$, el círculo de $\R^2$. Además, este es homeomorfo a $\proy^1$, la recta proyectiva real, con lo que ya tendremos el grupo fundamental del espacio proyectivo de cualquier dimensión.
+El objetivo de esta sección es calcular el grupo fundamental de $\Sfe^1$, el círculo de $\R^2$. Además, este es homeomorfo a $\proy^1$, la recta proyectiva real, con lo que, considerando también la sección anterior, ya tendremos el grupo fundamental del espacio proyectivo de cualquier dimensión.
+
+\begin{theo}[Grupo fundamental de $\Sfe^1$]
+\label{grf_circulo}
+
+El grupo fundamental de $\Sfe^1$ es $\pi(\Sfe^1)=\Z$.
+
+\begin{proof}
+Consideramos el siguiente esquema:
+\[\xymatrix @C = 0.5pc {
+&&\R \ar[d]^p & t \ar@{|->}[d] \\
+[0,1] \ar[rr]^\sigma \ar[rru]^{\widetilde{\sigma}} & & \Sfe^1 & e^{2\pi ti}
+}\]
+donde ya hemos visto que $\R$ es un espacio recubridor con la aplicación $p$.
+
+Definimos entonces la siguiente aplicación entre grupos:
+\[\begin{split}
+\indice:\pi(\Sfe^1,a)&\to\Z \\
+[\sigma] &\mapsto \indice\sigma = \widetilde{\sigma}(1)-\widetilde{\sigma}(0)
+\end{split}\]
+para cualquier elevación $\widetilde{\sigma}$ de $\sigma$ en $\R$. La denominamos \tbi[indice@índice]{índice}, \tbi[numero de vueltas@número de vueltas|see{índice}]{número de vueltas} o \tbi[grado|see{índice}]{grado}.
+
+El objetivo de la demostración es comprobar que la aplicación $\indice$ anterior es un isomorfismo de grupos, pues entonces hemos terminado. Desde luego, es necesario comprobar también que está bien definida.
+
+En primer lugar, comprobamos que $\indice$ no depende de la elevación $\widetilde{\sigma}$. Para ello, sea $\widehat{\sigma}$ otra elevación. Tenemos que verificar que $\widetilde{\sigma}(1)-\widetilde{\sigma}(0) = \widehat{\sigma}(1) - \widehat{\sigma}(0)$. Consideramos entonces la aplicación:
+\[[0,1]\ni t\mapsto \widetilde{\sigma}(t) - \widehat{\sigma}(t)\]
+Como $p\circ\widetilde{\sigma} = p\circ\widehat{\sigma} = \sigma$, necesariamente $\widetilde{\sigma}(t) - \widehat{\sigma}(t)\in\Z$. Dado que la aplicación anterior es continua y $[0,1]$ es conexo, su imagen es conexa, y un conexo en $\Z$ es un punto, es decir, $\widetilde{\sigma}(t) - \widehat{\sigma}(t)$ es constante, y la llamamos $k$. Entonces:
+\[\widetilde{\sigma}(1)-\widetilde{\sigma}(0) = (\widehat{\sigma}(1) + k) - (\widehat{\sigma}(0) + k) = \widehat{\sigma}(1) - \widehat{\sigma}(0)\]
+
+Para asegurar que está bien definida, también hace falta ver que $\indice$ no depende del representante. Es decir, que dados $\sigma,\tau$ de forma que $\sigma\homot[a]\tau$, $\indice\sigma = \indice\tau$. Para ello, vamos a recurrir a la elevación: consideramos la homotopía $H:\sigma\homot[a]\tau$. Entonces, tenemos:
+\[\xymatrix{
+& \R \ar[d]^p \\
+[0,1]^2 \ar[ru]^{\widetilde{H}} \ar[r]^-H & \Sfe^1
+}\]
+donde la existencia de la elevación $\widetilde{H}$ está garantizada por el lema de elevación de homotopías [FALTA CITA]. Está claro que $\widetilde{H}_0 = \widetilde{\sigma}$ y $\widetilde{H}_1 = \widetilde{\tau}$. Además, por ser $H$ homotopía con el extremo $a$ fijo, para todo $s$ $H_s$ es un lazo con base $a$.
+
+Ahora, como queremos ver que $\indice\sigma = \indice\tau$, consideramos la aplicación $s\mapsto \widetilde{H}_s(1)-\widetilde{H}_s(0)=\indice(H_s)$, que está bien definida por ser cada $H_s$ un lazo. Entonces, está claro que $\indice(H_s)\in\Z$, y por ser una aplicación de $[0,1]$ en $\Z$ continua, es constante. Entonces:
+\[\indice\sigma = \indice(H_0) = \indice(H_1) = \indice\tau\]
+
+Así, ya hemos visto que está bien definida. Falta comprobar pues que es biyectiva y homomorfismo de grupos.
+
+Desde luego, es sobreyectiva. En efecto, consideramos los caminos $[0,1]\ni t\mapsto e^{2k\pi it}$, con $k\in\Z$.  Entonces, cada uno de ellos tiene una elevación $\widetilde{\sigma}(t)=kt$, de forma que su índice es $k$.
+
+Para ver la inyectividad, hay que comprobar que $\indice\sigma = \indice\tau\implies \sigma\homot[a]\tau$. Podemos escoger un par de elevaciones $\widetilde{\sigma},\widetilde{\tau}$ que verifiquen que $\widetilde{\tau}(0)=\widetilde{\sigma}(0)$. Así, como $\indice\sigma = \widetilde{\sigma}(1)-\widetilde{\sigma}(0)$, $\indice\tau = \widetilde{\tau}(1)-\widetilde{\tau}(0)$, y son iguales, resulta que $\widetilde{\sigma}(1)=\widetilde{\tau}(1)$.
+
+Ahora, está claro que la interpolación lineal $(1-s)\widetilde{\sigma}(t) + s\widetilde{\tau}(t)$ es una homotopía en $\R$. Entonces, $H_s \coloneqq p((1-s)\widetilde{\sigma}(t) + s\widetilde{\tau}(t))$ es una homotopía en $\Sfe^1$ entre $\widetilde{\sigma}$ y $\widetilde{\tau}$. Pero aún falta probar que es homotopía de lazos. En efecto:
+\[H_s(0)= p((1-s)\widetilde{\sigma}(0) + s\widetilde{\tau}(0))=p(\widetilde{\sigma}(0))=\sigma(0)=a\]
+\[H_s(1)= p((1-s)\widetilde{\sigma}(1) + s\widetilde{\tau}(1))=p(\widetilde{\sigma}(1))=\sigma(1)=a\]
+
+Por fin, ya solo falta ver que $\indice$ es homomorfismo de grupos. Como el grupo fundamental se definía con la operación $\pathp$, de forma que $[\sigma]\pathp[\tau]=[\sigma\pathp\tau]$, tenemos que verificar que $\indice\sigma + \indice\tau = \indice(\sigma\pathp\tau)$.
+
+Entonces, volviendo a la definición de índice, tenemos que:
+\[\indice\sigma = \widetilde{\sigma}(1)-\widetilde{\sigma}(0)\]
+\[\indice\tau = \widetilde{\tau}(1)-\widetilde{\tau}(0)\]
+\[\indice(\sigma\pathp\tau) = \widetilde{\sigma\pathp\tau}(1)-\widetilde{\sigma\pathp\tau}(0)\]
+donde podemos escoger $\widetilde{\tau}(0)=\widetilde{\sigma}(1)$, de forma que $\widetilde{\sigma}\pathp\widetilde{\tau}$ esté bien definido. Entonces, este es un camino de $\widetilde{\sigma}(0)$ a $\widetilde{\tau}(1)$, es decir, de $a$ a $a$.
+
+Como $p\circ(\widetilde{\sigma}\pathp\widetilde{\tau}) = \sigma\pathp\tau$, sabemos que $\widetilde{\sigma}\pathp\widetilde{\tau} = \widetilde{\sigma\pathp\tau}$, por unicidad de la elevación [PORFA QUE ALGUIEN COMPRUEBE SI LO TIENE APUNTADO IGUAL]. Entonces:
+\[\indice(\sigma\pathp\tau)=\widetilde{\sigma\pathp\tau}(1)-\widetilde{\sigma\pathp\tau}(0)=\tau(1)-\tau(0)=\widetilde{\tau}(1)-\widetilde{\tau}(0) + \widetilde{\sigma}(1)-\widetilde{\sigma}(0)=\widetilde{\tau}(1) - \widetilde{\sigma}(0)\]
+como queríamos.
+\end{proof}
+\end{theo}
+
+\begin{cor}[Grupo fundamental de $\proy^1$]
+El grupo fundamental de \indexg{espacio proyectivo} $\proy^1$ es $\pi(\proy^1)=\Z$.
+
+\begin{proof}
+Trivial por ser $\proy^1\homeo\Sfe^1$. 
+\end{proof}
+\end{cor}
+
+\begin{cor}[Grupo fundamental del toro]
+El grupo fundamental del toro de revolución $\toro$ es $\pi(\toro)=\Z^2$.
+
+\begin{proof}
+Como el toro \indexg{toro@toro de revolución} es homeomorfo a $\Sfe^1\times\Sfe^1$, la proposición \ref{grf_prop_gf_prod_es_prod_gf} nos asegura que:
+\[\pi(\toro)=\pi(\Sfe^1)\times\pi(\Sfe^1)=\Z^2\]
+\end{proof}
+\end{cor}
+
+\begin{cor}
+El grupo de rotaciones \indexg{SO(3)} $SO(3)$ no es homeomorfo a $\Sfe^1\times\Sfe^2$.
+
+\begin{proof}
+En efecto, se puede comprobar (aunque no lo haremos aquí) que $SO(3)\homeo\proy^3$. Por tanto, como ya vimos en el teorema \ref{grf_espacio_proyectivo}, tiene grupo fundamental $\Z_2$. Sin embargo, $\Sfe^1\times\Sfe^2$ tiene por grupo fundamental $\Z$, por el resultado anterior.
+\end{proof}
+\end{cor}
