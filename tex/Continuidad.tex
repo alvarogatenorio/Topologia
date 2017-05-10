@@ -83,17 +83,6 @@ Tras definir la continuidad en un punto, el paso instintivo es por supuesto defi
 	Se dice que $f:\X\to\mc{Y}$ es \tbi[aplicación!continua]{continua} en un conjunto $A\subset \X$ si lo es en todo punto de $A$.
 \end{defi}
 
-Antes de meternos en materia vamos a engrasar la maquinaria de todo lo que sabemos estudiando un poco más las aplicaciones identidad.
-
-\begin{exa}[Aplicaciones identidad]
-	Vamos a ampliar la observación \ref{cont_obs_continuidad_cte_e_id} comprobando qué tienen que verificar las topologías $\T_1$, $\T_2$ para que se cumpla que la función identidad definida de $(\X,\T_1)\to(\X,\T_2)$ es continua.
-	
-	Notemos que aunque tenemos dos topologías distintas, estamos en el mismo espacio, entonces para cualquier entorno de un punto $x_0$ en una de las topolgías, tenemos un entorno equivalente del mismo punto en la otra topología. Es decir, $V^{\T_2}_{x_0} = V^{\T_1}_{x_0}$. \\
-	El hecho de que $f$ sea continua significa que para cualquier entorno $V^{\T_2}_{f(x_0)} = V^{\T_2}_{x_0} = V^{\T_1}_{x_0}$, la imagen inversa:
-	\[f^{-1}(V^{\T_2}_{x_0})=V^{\T_2}_{x_0}=V^{\T_1}_{x_0}\]
-	cumple que es entorno de $x_0$ en el espacio $(\X,\T_1)$. Entonces, la condición necesaria y suficiente para que la función identidad entre estos dos espacios sea constante es que $\T_1\supset \T_2$.
-\end{exa}
-
 Vamos a ver ahora una serie de definiciones equivalentes de la noción de continuidad.
 
 \begin{prop}
@@ -114,8 +103,12 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 	\end{enumerate}
 
 	\begin{proof}
-		Vamos a probar las implicaciones más sencillas e ilustrativas, aunque realmente se podría hacer en cualquier orden. 
-		
+		Procederemos según el siguiente diagrama, no obstante, se reta al lector a tratar de efectuar cualquiera de las implicaciones no demostradas explícitamente.
+		\[
+		\xymatrix{&(0.)\ar@2{<->}[r]\ar@{=>}[d]&(1.)\ar@2{<->}[dr]& &\\
+			&(4.)\ar@{=>}[ur] & &(2.)\ar@2{<->}[r]&(3.)\\
+			(5.)\ar@{<=}[uur] \ar@{=>}[urrr]& & & &}
+		\]
 		\begin{enumerate}[align=left, leftmargin=*]
 			\item[\fbox{$(0)\implies (1)$}] Sea un abierto $U\subset\mc{Y}$. Por ser abierto, es entorno de todos sus puntos. Pero para cada punto $f(x_0)\in U$, por ser $f$ continua, la imagen inversa de $U$ es también entorno de $x_0$. De esta forma, para cualquier $x_0\in f^{-1}(U)$, se cumple que $f^{-1}(U)$ es entorno de $x_0$, y por tanto $f^{-1}(U)$ es abierto.
 			
