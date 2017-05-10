@@ -21,7 +21,7 @@ Empezaremos viendo, por supuesto, la definición, y una serie de caracterizacion
 	\begin{enumerate}
 		\item $\X$ es conexo.
 		\item $\X$ no es unión de dos cerrados disjuntos no vacíos, esto es, no existen $F,G\neq\emptyset$, cerrados, tales que $F\cap G=\emptyset$ y $X=F\cup G$.
-		\item No hay ningún conjunto abierto y cerrado no trivial, esto es, $\not\exists U$ abierto y cerrado tal que $U\neq\emptyset$ y $U\neq\X$.
+		\item No hay ningún conjunto abierto y cerrado no trivial, esto es, $\nexists U$ abierto y cerrado tal que $U\neq\emptyset$ y $U\neq\X$.
 	\end{enumerate}
 \end{prop}
 
@@ -45,10 +45,10 @@ Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjunto
 % NOTA: no he nombrado el teorema como teorema del pivote porque buscado en internet sólo salía en la página de Ruiz con ese nombre. En demás libros que he visto no tiene nombre.
 \begin{theo}
 	\label{conex_theo_pivote}
-	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ y existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo. Ahora
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ y existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
 	
 	\begin{proof}
-		Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado. Vamos a ver que necesariamente es el vacío o el total. Entonces, para cada $i\in I$ $S\cap A_i\subset A_i$ y es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
+		Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado. Vamos a ver que necesariamente es el vacío o el total. Entonces, para cada $i\in I$ tenemos que $S\cap A_i\subset A_i$ es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
 		\begin{enumerate}
 			\item Si $S\cap A_i=\emptyset\;\forall i\in I$, entonces $S=\emptyset$ y ya está.
 			\item Si $\exists i\in I$ tal que $S\cap A_i=A_i$, entonces $\exists a\in S\cap A_i$ que por hipótesis verifica que $a\in S\cap A_j$ para todo $j\in I$. Entonces ninguno de los $S\cap A_j$ es vacío, y por tanto $S\cap A_j=A_j\;\forall j\in I$, es decir, $S=\bigcup_{i\in I} A_i$. \qedhere
@@ -92,7 +92,7 @@ El siguiente resultado, aunque también es consecuencia del teorema \ref{conex_t
 		\[B=\bigcup_{b\in B\setminus A} (A\cup\{b\}) \]
 		y todos comparten un punto, entonces basta probar que cada $A\cup\{b\}\subset\adher{A}$ es conexo, pues en ese caso el teorema \ref{conex_theo_pivote} nos garantiza la conexión de $B$.
 		
-		Supongamos que $\exists C\subset A\cup\{b\}$ abierto y cerrado y no trivial. Entonces, $C\cap A\subset A$ y es abierto y cerrado en $A$. Por tanto, $A$ es conexo, y distinguimos dos casos:
+		Supongamos que $\exists C\subset A\cup\{b\}$ abierto y cerrado y no trivial. Entonces, $C\cap A\subset A$ y es abierto y cerrado en $A$. Como $A$ es conexo distinguimos dos casos:
 		
 		\begin{itemize}
 			\item Si $C\cap A=\emptyset$, entonces $C=\{b\}$ y por tanto $\{b\}$ es abierto, luego, como el entorno $\{b\}$ de sí mismo no corta con $A$, $b\notin\adher{A}$, lo cual es una contradicción.

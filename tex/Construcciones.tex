@@ -29,7 +29,7 @@ y que llamamos \tbitop{imagen inversa}.
 La comprobación de que verdaderamente es una topología se desprende de las propiedades de la función inversa aplicada a conjuntos. Por otro lado, es la menos fina que hace a $f$ continua por construcción, luego cualquier otra topología con estas características contiene a esta. Finalmente, se tiene que es única. En efecto, si tenemos que $\T$ y $\T'$ cumplen que son las menos finas por construcción, entonces se tiene que $\T\subset \T'$ y $\T'\subset \T$, luego son iguales.
 
 \subsection{Caracterización de la continuidad entrante}
-Es hora de profundizar un poco más. Tomemos otro espacio topológico arbitrario $(\mathcal{Z},\T')$ y consideremos una función $g$ que nace en este y muere en $\Y$.
+Es hora de profundizar un poco más. Tomemos otro espacio topológico arbitrario $(Z,\T')$ y consideremos una función $g$ que nace en este y muere en $\Y$.
 
 El problema que se nos plantea ahora es determinar qué aplicaciones $g:Z\to \Y$ son continuas.
 
@@ -50,7 +50,7 @@ Damos sin rodeos la solución a este problema.
 	
 	Recíprocamente, queremos ver que $g$ transforma abiertos en abiertos por imágenes inversas. En efecto, dado $W\in f^{-1}(\T)$, comprobemos que $g^{-1}(W)\in\T'$. Por definición $W=f^{-1}(\U)$, con $\U\in\T$. Por ende,
 	\begin{equation*}
-		g^{-1}(W)=g^{-1}(f^{-1}(U))=(f\circ g)^{-1}(U)
+		g^{-1}(W)=g^{-1}(f^{-1}(\U))=(f\circ g)^{-1}(\U)
 	\end{equation*}
 	Como $f\circ g$ es continua, el resultado se sigue.
 \end{proof}
@@ -63,9 +63,9 @@ Damos sin rodeos la solución a este problema.
 \end{defi}
 Ahora tratamos de determinar para qué topologías de $\Y$ se verifica la propiedad universal para las inmersiones.
 
-Desde luego, la proposición \ref{const_universalInmersiones} nos dice que para la topología $f^{-1}(\T)$ se verifica la propiedad universal (y que el la menos fina que lo hace, pues es la menos fina que hace a $f$ continua).
+Desde luego, la proposición \ref{const_universalInmersiones} nos dice que para la topología $f^{-1}(\T)$ se verifica la propiedad universal (y que es la menos fina que lo hace, pues es la menos fina que hace a $f$ continua).
 
-Ahora vamos a ver que no solo ocurre esto sino que el la única topología que verifica esta propiedad universal.
+Ahora vamos a ver que no solo ocurre esto sino que es la única topología que verifica esta propiedad universal.
 
 \begin{prop}[Unicidad de la propiedad universal]
 	Sea $\T_\Y$ una topología que verifica la propiedad universal, entonces $\T_\Y=f^{-1}(\T)$.
@@ -83,7 +83,7 @@ Ahora vamos a ver que no solo ocurre esto sino que el la única topología que v
 	
 	Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, por la propiedad universal, tenemos por lo anterior que $f\circ\text{id}=f$ es continua. En consecuencia, $\T_{\mathcal{Y}}$ hace que $f$ sea continua y, por tanto, por construcción de $f^{-1}(\T)$, $f^{-1}(\T)\subset \T_\Y$. Ya tenemos demostrada una inclusión.
 	
-	Para la otra implicación consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,\T_\Y)$ y $g=\text{id}$.  
+	Para la otra implicación consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,f^{-1}(\T))$ y $g=\text{id}$.  
 	
 	\begin{equation*}
 	\xymatrix{
@@ -109,11 +109,9 @@ Además, la aplicación es \tb{continua} puesto que, dado $\W$ un abierto de $f(
 
 que es abierto de $\mathcal{\Y}$ por la definición de topología que hemos tomado.
 
-Sin embargo, esto no termina aquí, ya que $f$ es \tb{abierta}. En efecto, dado un abierto $\W\subset\Y$, entonces existe un abierto $\U\in\T$ de modo que $f(\W)=\U\cap f(\Y)$. En efecto, 
+Sin embargo, esto no termina aquí, ya que $f$ es \tb{abierta}. En efecto, como $\U$ está contenido en $\mathcal{Y}$ e $\mathcal{Y}$ está equipado con la topología inversa de la topología de $\X$, tenemos que existe un abierto $\U \subset \X$ tal que $f^{-1}(\U) = \W$. Aplicando $f$ a esta igualdad obtenemos que $f(\W) = f(f^{-1}(\U)) = \U \cap f(\W)$ que es un abierto de $f(\mathcal{Y})$.
 
-\[f(\W)=f(f^{-1}(\U))=f(f^{-1}(U\cap f(\Y)))=\U\cap f(\Y),\]
-
-que es un abierto de $f(\mathcal{\Y})$ (la segunda igualdad se deduce de que $f$ es inyectiva). Por tanto, al ser $f$ continua y abierta, es \tb{homeomorfismo}. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$.
+Por tanto, al ser $f$ continua y abierta, es \tb{homeomorfismo}. Esto es sorprendente, ya que una aplicación inyectiva de $\mathcal{\Y}$ en $\mathcal{\X}$ es homeomorfismo de $\mathcal{\Y}$ en $f(\mathcal{\Y})$.
 
 \begin{defi}[Inmersión o embebimiento]
 	A una función $f:(\Y,f^{-1}(\T))\to(\X,\T)$ inyectiva se la denomina \tbi{inmersión} o \tbi{embebimiento}.
@@ -135,20 +133,20 @@ Continuando con la misma argumentación, veamos cuando una función $g$ que part
 \xymatrix{
 	(\mathcal{\X},\T) \ar[r]^f \ar@{-->}[rd]_{g\circ f} &
 	\mathcal{\Y} \ar[d]^g & \\
-	&(\mathcal{\Z},\T')}
+	&(Z,\T')}
 \end{equation}
 
 Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación. Decimos que esta es la \tbi[propiedad universal!de la imagen]{propiedad universal de la imagen}.
 
 \begin{obs}[Sobreyectividad]
 	
-	Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{\X})$. Entonces $f^{-1}(\mathcal{\Y})$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{\Y}\backslash f(\mathcal{\X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{\Y}\backslash f(\mathcal{\X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{\X})$ es el complementario de $\mathcal{\Y}\backslash f(\mathcal{\X})$, entonces $f(\mathcal{\X})$ es cerrado. No obstante, $f(\mathcal{\X})$ coincide con el total, luego también es un abierto. 	
+	Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{\X})$. Entonces $f^{-1}(y)$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{\Y}\backslash f(\mathcal{\X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{\Y}\backslash f(\mathcal{\X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{\X})$ es el complementario de $\mathcal{\Y}\backslash f(\mathcal{\X})$, entonces $f(\mathcal{\X})$ es cerrado. No obstante, $f(\mathcal{\X})$ coincide con el total, luego también es un abierto. 	
 \end{obs}
 
 Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consideramos el siguiente diagrama:
 \[\xymatrix{
 	(\X,\T) \ar[r]^{f} \ar[d]_{p} &
-	(\mc{Y}, f\T) \\
+	(\mc{Y}, f(\T)) \\
 	\X/\mathord{\sim}  \ar[ru]_{\bar{f}}
 }\]
 donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Aquí, $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia, y consideramos $\bar{f}$ de forma que verifique que $f=\bar{f}\circ p$.
@@ -172,12 +170,13 @@ Está claro que se verifican nuestros requisitos. Por un lado, $p$ es trivialmen
 	En las condiciones de la construcción (cuando la relación $\sim$ está definida como $x\sim y\iff f(x)=f(y)$), $\bar{f}$ es homeomorfismo.
 	
 	\begin{proof}
-		Ya hemos visto que $\bar{f}$ es biyectiva cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$; y que es continuo en el sentido en el que lo hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
+		Ya hemos visto que $\bar{f}$ es biyectiva cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$, y que es continua en el sentido en el que la hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
 		
-		En efecto, $U\in \X/\mathord{\sim}$ abierto $\iff p^{-1}(U)$ es abierto en $\X$. Pero tenemos que $p^{-1}(U)=f^{-1}(f(S))$, porque:
-		\[x\in p^{-1}(U)\iff p(x)\in S\stackrel{\bar{f}\text{ biy.}}{\iff}\bar{f}(p(x))\in \bar{f}(U)\iff f(x)\in\bar{f}(U)\iff x\in f^{-1}(\bar{f}(U))\]
+		En efecto, sea $U\in \X/\mathord{\sim}$ abierto. Tenemos que $p^{-1}(U)=f^{-1}(\bar{f}(\U))$, porque:
+		\[x\in p^{-1}(U)\iff p(x)\in \U\stackrel{\bar{f}\text{ biy.}}{\iff}\bar{f}(p(x))\in \bar{f}(U)\iff f(x)\in\bar{f}(U)\iff x\in f^{-1}(\bar{f}(U))\]
 		
-		Entonces, como $f(\T)$ es la topología en $\mc{Y}$, $f^{-1}(f(U))$ es abierto en $\X\iff \bar{f}(U)$ es abierto en $\mc{Y}$, pero ya hemos visto que $f^{-1}(f(U))$ es abierto, porque es $p^{-1}(U)$.
+		Entonces, como $\U$ es abierto y $p$ continua, $p^{-1}(U)$ es abierto, luego $f^{-1}(f(\U))$ también es abierto. Ahora por definición de la topología de $\mathcal{Y}$ tenemos que $\bar{f}(\U)$ es abierto en $\mathcal{Y}$.
+		
 	\end{proof}
 \end{prop}
 
@@ -228,7 +227,7 @@ Toda esta construcción abstracta debe servirnos para formalizar todo el concept
 		\esfera^1 \\
 		\R/\mathord{\sim}  \ar@{<->}[ru]
 	}\]
-	y está claro que la aplicación que manda $f$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta.
+	y está claro que la aplicación que manda $\R$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta.
 	
 	Ahora, nótese que considerando $[0,1]\subset\R$ podemos tomar las restricciones correspondientes con el siguiente esquema:
 	\[\xymatrix @C=0.5pc @R=0.5pc @L=-0.2pc {
@@ -325,15 +324,15 @@ Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$
 \begin{equation}
 Y=\prod_i X_i \stackrel{p_i^r}{\longrightarrow}(X_i,\T_i)
 \end{equation}
-Lo que buscamos en la construcción del espacio producto es de dotar a $Y$ de la topología $\T$ más fina haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi[proyeccion@proyección]{proyecciones}.
+Lo que buscamos en la construcción del espacio producto es dotar a $Y$ de la topología $\T$ más fina que haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi[proyeccion@proyección]{proyecciones}.
 
-De este modo, como queremos que $(p_i^r)^{-1}$ sea continua  tenemos que para todo abierto $U_i\in \T_i$ deberá verificarse que $(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r$ (todos son los totales excepto en el caso de $X_i$) sea abierto. Es decir, que se cumpla $X_1\times\cdots\times U_i \times\cdots X_r\in \T$
+De este modo, como queremos que $p_i^r$ sea continua  tenemos que para todo abierto $U_i\in \T_i$ deberá verificarse que $(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r$ (todos son los totales excepto en el caso de $X_i$) sea abierto. Es decir, que se cumpla $X_1\times\cdots\times U_i \times\cdots X_r\in \T$
 
-Por lo tanto, vemos que por ser topología ha de verificarse que $(p_i^r)^{-1}(U_i)\cap (p_j^r)^{-1}(U_j)= \cdots\times U_i \times\cdots\times U_j\times \cdots$ sea parte de ella (intersección de abiertos).
+Por lo tanto, vemos que por ser topología ha de verificarse que $(p_i^r)^{-1}(U_i)\cap (p_j^r)^{-1}(U_j)= X_1\cdots\times U_i \times\cdots\times U_j\times \cdots X_r$ sea parte de ella (intersección de abiertos).
 
 Si tomamos ahora $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ veamos que es una base de la topología que pretendemos construir. Esto va a resultar evidente, ya que tan solo debemos comprobar para demostrarlo que al intersecar dos elementos cualesquiera de la base nos queda otro elemento de la base. 
 
-Como dados $U_1\times\cdots\times U_r$ y $V-1\times\cdots\times V_r$ elementos de la base su intersección es $(U_1\cap V_1)\times\cdots\times (U_r\cap V_r)$ y como $(U_i\cap V_i)\in \T_i$, afirmamos que forma parte de la base por la definición de la misma.
+Como dados $U_1\times\cdots\times U_r$ y $V_1\times\cdots\times V_r$ elementos de la base su intersección es $(U_1\cap V_1)\times\cdots\times (U_r\cap V_r)$ y como $(U_i\cap V_i)\in \T_i$, afirmamos que forma parte de la base por la definición de la misma.
 
 Así, una vez que tenemos la base que va a caracterizar nuestra topología producto podemos afirmar que esta viene dada por $\T=\prod_i \T_i$.
 
@@ -359,7 +358,31 @@ Podemos formular, además, una propiedad universal del producto que caracteriza 
 	\end{proof}
 \end{lem}
 
-Veamos ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
+Veamos ahora que la propiedad universal caracteriza la topología.
+
+\begin{prop}
+	Si $(Y,\T_Y)$ cumple la propiedad universal del producto, entonces $\T_Y = \prod\T_i $
+\end{prop}
+\begin{proof}
+	Vamos a demostrarlo por doble contención y haciendo algún cambalache con la identidad.
+	Empecemos con un diagrama para aclarar las ideas.
+	\[\xymatrix{
+		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(X_i,\T_i) \\
+		(Y,\T_Y) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+	}\]
+	Como la topología $\T_Y$ cumple la propiedad universal y la aplicación identidad es continua, tenemos que $p_{r_i}$ es continua. Luego por finura $ \prod\T_i \subset \T_Y$.
+	
+	Ahora razonamos con este diagrama:
+	\[\xymatrix{
+		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(X_i,\T_i) \\
+		(Y,\prod\T_i) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+	}\]	
+	Como por construcción $p_{r_i}$ es continua, entones id es continua. Esto solo ocurre si $\T_Y \subset \prod\T_i$. 	
+\end{proof}
+
+Vamos a ver ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
 
 \begin{prop}
 	Las proyecciones son abiertas.
@@ -373,22 +396,29 @@ Veamos ahora una serie de proposiciones relacionadas con la topología producto,
 
 
 \begin{prop}
-	La aplicación $X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,a_r)$ es una inmersión.
+	La aplicación $f : X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,x,\dots,a_r)$ es una inmersión.
 	
 	\begin{proof}
-		Veamos primero como transforma la base de abiertos del inicial en la base del final.
-		$U_i\longrightarrow\{a1\}\times\cdots\times U_i\times\cdots\times \{ar\}=\{a1\}\times\cdots\times X_i\times\cdots\times \{ar\}\cap(U_1\times\cdots\times U_r)$
-		
-		Como observamos esto se verifica y además la aplicación al serlo en los abiertos de las bases verifica ser biyectiva, continua y abierta por lo que se tratará de una inmersión.
+		Evidentemente, f es biyectiva. Por otra parte, $f$ es la aplicación $(k_1,\dots,id,\dots,k_r)$ continua, por serlo la identidad.
+		Además, $f^{-1} = p_{r_i}\restriction_{\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}}$ es continua por serlo las proyecciones. Luego f es homeomorfismo.
 	\end{proof}
 \end{prop}
+
+\begin{obs}[Consecuencias]
+	La topología de $\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}$ es exactamente la de $X_i$. Esto constituye un truco para comprobar si una topología es una topología producto.
+\end{obs}
+	
 
 Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. No vamos a probar que sean bases realmente en ninguno de los dos casos ya que en ambos casos va a resultar muy sencillo aplicando la caracterización de base, dejándose como ejercicio para el lector de cara al repaso de la misma.
 \begin{enumerate}
 	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que: \[\B=\{W_i\times\cdots\times W_r:W_i\in \B_i \text{ base de }\T_i\}\] es base de entornos del mismo.
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V^{(a_1,\dots,a_r)}=\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \V^{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
-\end{enumerate}
+	\begin{proof}
+		Sea $\U \in \T$. Podemos descomponerlo como sigue $\U =U_1 \times \dots \times U_r $ con $U_i \in \T_i$ y $U_i = \bigcup_j W_{ij}$ con $W_{ij} \in \B_i$. Sea $x \in \U$. Entonces $x \in \W_{1j} \times \dots \times W_{rj} \subset \bigcup_j W_{1j} \times \dots \times \bigcup_j W_{rj} = U_1 \times \dots \times U_r$. Haciendo este procedimiento para cada punto se sigue el resultado.
+	\end{proof}
 
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V_{(a_1,\dots,a_r)}=\{V_{a_1}\times\cdots\times V_{a_r}:W_i\in \V_{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
+\end{enumerate}
+		
 \section{Suma}
 Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
 
@@ -398,14 +428,14 @@ Dados los espacios $(X_i, \T_i)^{1\le i \le r}$ con sus correspondientes topolog
 \begin{equation}
 (X_i, \T_i)\stackrel{j_i}\longrightarrow Y=\sum_{i=1}^rX_i=\bigcup_{i=1}^r\{i\}\times X_i
 \end{equation}
-Conviene resaltar que, como podemos observar, como las copias de los distintos espacios $X_i$ en la suma será distinta, dado que a cada una le corresponderá un elemento $i$ distinto.
+Conviene resaltar que, como podemos observar, las copias de los distintos espacios $X_i$ en la suma será distinta, dado que a cada una le corresponderá un elemento $i$ distinto.
 
 Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T$ más fina en $Y$ de modo que haga las $j_i$ continuas. Las funciones $j_i$ las llamaremos \tbi{inclusiones}.
 
-Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T$ todos los conjuntas de $Y$ cuya inversa sea abierta.
+Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T$ todos los conjuntos de $Y$ cuya inversa sea abierta.
 De este modo, también incluiremos $\{i\}\times X_i$ dado que $j^{-1}(\{i\}\times X_i)=X_i$ que es abierto en $\T_i$.
 
-De este modo, construimos la topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$ comprobemos que está bien definida y que es realmente base.
+Ahora construimos la topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$ comprobemos que está bien definida y que es realmente base.
 \begin{equation}
 (\{i\}\times U_i)\cap(\{j\}\times U_j)=
 \left\{ \begin{array}{lcc}
@@ -420,13 +450,13 @@ Así, podemos definir:
 	Dados los espacios con sus correspondientes topologías $(X_i, \T_i)^{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbitop{suma} como aquella topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$.
 \end{defi}
 
-Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología producto que no va a ser otra que la siguiente propiedad universal:
+Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología suma que no va a ser otra que la siguiente propiedad universal:
 
 \begin{lem}[Propiedad universal de la suma]
 	En la siguiente situación:
 	\[\xymatrix{
 		X \ar[rd]^f & \\
-		X_i \ar[u]^{\phi_i} \ar[r]_{f_i} &
+		X_i \ar[u]^{j_i} \ar[r]_{f_i} &
 		Y
 	}\]
 	tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$, tenemos la siguiente \tbi[propiedad universal!de la suma]{propiedad universal de la suma} que caracteriza la continuidad de $f$, diciendo que esta será continua si y solo si  $f_i=j_i\circ f$ son continuas para todo $i$.
@@ -434,7 +464,7 @@ Una vez vista su definición, veamos ahora un resultado fundamental acerca de la
 	\begin{proof}
 		Vemos que si $f$ es continua, como $j_i$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
 		
-		Por otro lado, tenemos que dado que $(Y,\T)$ como hemos visto en la construcción de la topología suma $T$ es un recubrimiento abierto y continuo en cada uno de los $X_i$, tenemos que al ser continuo cada $g_i$ en $X_i$ también lo será $g$.
+		Por otro lado, tenemos que dado que $(Y,\T)$ como hemos visto en la construcción de la topología suma $T$ es un recubrimiento abierto y continuo en cada uno de los $X_i$, tenemos que al ser continuo cada $f_i$ en $X_i$ también lo será $f$.
 	\end{proof}
 \end{lem}
 
