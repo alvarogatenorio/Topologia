@@ -26,14 +26,14 @@ En esta subsección vamos a estudiar varios resultados útiles que se desprenden
 	\begin{proof}
 		$\Leftarrow)$ Consideremos un punto cualquiera $x\in \X$ y supongamos que $\{x\}$ es cerrado. De este modo, $\U=\X\backslash \{x\}$ es abierto, y si $x\neq y\in \X$, entonces $\U$ es un conjunto abierto tal que $x\notin \U$ e $y\in \U$.
 		 
-		$\Rightarrow)$ Supongamos ahora que $\X$ es un espacio \frechet y sea $x\in \X$. Entonces para cada $y\in \X$ existe un abierto $\U^y \subseteq \X$ tal que $y\in \U^y$ y $x\notin \U^y$. Tomemos $\U=\bigcup_{y\in \X\backslash\{x\}}\U^y=\X\backslash\{x\}$, que es abierto por ser unión arbitraria de abiertos, luego $\{x\}$ es cerrado. 
+		$\Rightarrow)$ Supongamos ahora que $\X$ es un espacio \frechet y sea $x\in \X$. Entonces para cada $y\in \X$ existe un abierto $\U_y \subseteq \X$ tal que $y\in \U_y$ y $x\notin \U_y$. Tomemos $\U=\bigcup_{y\in \X\backslash\{x\}}\U_y=\X\backslash\{x\}$, que es abierto por ser unión arbitraria de abiertos, luego $\{x\}$ es cerrado. 
 	\end{proof}
 \end{prop}
 
 \begin{theo}
 	Si $f,g:\X\to \Y$ son funciones continuas e $\Y$ es \hausdorff, entonces $\{f=g\}$ es cerrado. 
 	\begin{proof}
-		Hemos de demostrar que el conjunto $\{f\neq g\}$ es abierto. Dado $x\in \X$, si se tiene que $f(x)\neq g(x)$ y al ser $\Y$ un espacio \hausdorff, existen entornos $\V^{f(x)}$ y $\V^{g(x)}$ disjuntos. Como $f$ y $g$ son continuas, se tiene además que $f^{-1}(\V^{f(x)})$ y $f^{-1}(\V^{g(x)})$ son entornos de $x$. La intersección de entornos, como ya sabemos, también es entorno, luego $\V^x=f^{-1}(\V^{f(x)})\cap f^{-1}(\V^{g(x)})$ es un entorno de $x$ contenido en $\{f\neq g\}$. En efecto, que $z\in \V^x$ quiere decir que $f(z)\in \V^{f(x)}$ y $g(z)\in \V^{g(x)}$, pero al ser estos entornos disjuntos, $f(z)\neq g(z)$. Con esto concluye la demostración, ya que si $\V^x$ es entorno (abierto) contenido en $\{f\neq g\}$, este conjunto es abierto.
+		Hemos de demostrar que el conjunto $\{f\neq g\}$ es abierto. Dado $x\in \X$, si se tiene que $f(x)\neq g(x)$ y al ser $\Y$ un espacio \hausdorff, existen entornos $\V_{f(x)}$ y $\V_{g(x)}$ disjuntos. Como $f$ y $g$ son continuas, se tiene además que $f^{-1}(\V_{f(x)})$ y $f^{-1}(\V_{g(x)})$ son entornos de $x$. La intersección de entornos, como ya sabemos, también es entorno, luego $\V_x=f^{-1}(\V_{f(x)})\cap f^{-1}(\V_{g(x)})$ es un entorno de $x$ contenido en $\{f\neq g\}$. En efecto, que $z\in \V_x$ quiere decir que $f(z)\in \V_{f(x)}$ y $g(z)\in \V_{g(x)}$, pero al ser estos entornos disjuntos, $f(z)\neq g(z)$. Con esto concluye la demostración, ya que si $\V_x$ es entorno (abierto) contenido en $\{f\neq g\}$, este conjunto es abierto.
 	\end{proof}
 \end{theo}
 
@@ -42,7 +42,7 @@ Veamos ahora un caso particular del teorema anterior. Consideremos el espacio pr
 Para terminar, veamos un colorario del teorema realizado con los conjuntos densos.  
 
 \begin{cor}
-	Si $f,g:\X\to \X$ son funciones continuas que coinciden en un conjunto denso y $\X$ es \hausdorff entonces $\{f=g\}$ son iguales en $X$. 
+	Si $f,g:\X\to \X$ son funciones continuas que coinciden en un conjunto denso y $\X$ es \hausdorff entonces $f$ y $g$ son iguales en $X$. 
 	\begin{proof}
 		Sea $A\subset \X$ un conjunto denso, es decir, $\bar{A}=\X$. Como ya hemos visto, $A\subset \{f=g\}$ es un conjunto cerrado, pero al ser la clausura de $A$ el menor cerrado que lo contiene y coincidir con el total, entonces $\{f=g\}=\X$.
 	\end{proof}

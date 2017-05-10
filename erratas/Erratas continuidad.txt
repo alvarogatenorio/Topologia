@@ -1,7 +1,0 @@
-****Continuidad
-Ejemplo 2.2.1
-Al final "para que la función identidad entre estos dos espacios sea CONTINUA"
-
-Proposición 2.2.1
-(4)=>(1) Entonces cada una de estas imágenes inversas es ABIERTO.
-
