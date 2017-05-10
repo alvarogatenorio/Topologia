@@ -251,46 +251,37 @@ Vemos ahora, a modo de ejemplo que la esfera $\esfera^2:=\{x\in\R^3\midc\norm{x}
 	
 	Resulta de interés destacar que no es necesario que la aplicación sea la misma en todo el espacio, sino que podemos tomar una distinta para cada punto del espacio.
 	
-	En efecto, sea $p:=(x_0,y_0,z_0)\in\esfera^2$ con $z_0\not=0$, entonces, dado un entorno abierto de $p$ que no corta al ecuador de la esfera, definimos la aplicación
+	En efecto, sea $p:=(x_0,y_0,z_0)\in\esfera^2$ con $z_0\not=0$, entonces, dado un entorno abierto de $p$ que no corta al ecuador de la esfera y queda contenido en el hemisferio de $p$, definimos la aplicación
 	\[\begin{array}{cc}
-	f(x,y,z):=(x,y) \qquad& f^{-1}(x,y):=(x,y,\sqrt{1-x^2-y^2})
+	f(x,y,z):=(x,y) \qquad& f^{-1}(x,y):=(x,y,\frac{z_0}{\abs{z_0}}\sqrt{1-x^2-y^2})
 	\end{array}\]
 	que es homeomorfismo local (¡compruébese!).
 	
-	Análogamente, si tomamos un $p':=(x_1,y_1,0)\in\esfera^2$, dado un entorno abierto de $p'$ definimos el siguiente homeomorfismo local (¡compruébese!)
+	Análogamente, si tomamos un $p':=(x_1,y_1,0)\in\esfera^2$ con $x_1>0$, dado un entorno abierto de $p'$ con todos los puntos con primera coordenada positiva definimos el siguiente homeomorfismo local (¡compruébese!)
 	\[\begin{array}{cc}
 	f(x,y,z):=(y,z) \qquad& f^{-1}(y,z):=(\sqrt{1-y^2-z^2},y,z)
-	\end{array}\qedhere\]
+	\end{array}\]
+	Nótese que aún quedan puntos de la esfera por tratar (se dejan como ejercicio).
 \end{exa}
 
 Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y observaciones propias de los homeomorfismos (globales), pero que también nos valdrán para la restricción homeomorfa de los locales (dado que en ella por definición la aplicación es homeomorfa).
 \label{etop_obs_homeomorfismo}
-\begin{obs}[Propiedades de los homeomorfismos]
+\begin{obs}[Propiedades de los homeomorfismos]\
 	\begin{enumerate}
 		\item 
 		Sea $f:X\rightarrow Y$ aplicación biyectiva.
-		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $U\in Y$ es cerrado, $f^{-1}(U)$ también lo será.
 		
-		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $F\in X$ es cerrado, $(f^{-1})^{-1}(F)=f(F)$ también lo será. Así también, es equivalente a que si $U\in X$ es abierto, $f(U)$ también lo será.
+		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $F\in Y$ es cerrado, $f^{-1}(F)$ también lo será.
 		
-		Vemos como si se verifican ambas (la continuidad de $f$ y de su inversa) será homeomorfismo, de modo que hemos encontrado una caracterización de estos en función de las imágenes directa e inversa de los abiertos (o cerrados).
+		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $F\in X$ es cerrado, entonces $f(F)$ es cerrado, asimismo si $U\in X$ es abierto, $f(U)$ también lo será.
 		
-		\item
-		Definimos las siguientes propiedades de aplicaciones:
-		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!abierta]{abierta} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
-		Una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de cerrados es un cerrado (es decir, cuando $f(F)$ es cerrado si $F$ es cerrado).
-		
-		Vemos como al no ser $f$ biyectiva, no tienen porque ser equivalentes. (Dejamos para el lector el comprobar que en caso de ser biyectiva si lo es, utilizando las distintas caracterizaciones de continuidad de aplicaciones).
+		Vemos como si se verifican ambas (la continuidad de $f$ y de su inversa) será homeomorfismo, de modo que $f$ es homeomorfismo si y solo si es continua, biyectiva y transforma abiertos en abiertos por imágenes directas.
 		
 		\item
-		Sean los espacios $X$ compacto, $Z\subset X$ cerrado e $Y$ un espacio \hausdorff.
-	
-		 Tomamos $f: X\rightarrow Y$ aplicación continua, entonces tendremos que:
+		Una aplicación $f$ no necesariamente biyectiva se dice \tbi[aplicación!abierta]{abierta} cuando la imagen de abiertos es un abierto (es decir, cuando $f(U)$ es abierta si $U$ es abierto).
 		
-		Como probaremos más adelante, cerrado en compacto implica compacto, por lo que $Z$ será compacto en $X$.
-		Como $f$ es continua, $f(Z)$ será compacto en $Y$ y como $Y$ es \hausdorff, $f(Z)$ será cerrado.
+		Análogamente, una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de cerrados es un cerrado (es decir, cuando $f(F)$ es cerrado si $F$ es cerrado).
 		
-		Así, tenemos por lo tanto que si $f$ es biyección, su inversa (al ser $f$ cerrada) será continua. Por lo tanto, afirmamos que toda aplicación continua en compactos es homeomorfismo.
-		Como se habrá percatado el lector, aun no disponemos siquiera de una definición de compacidad ni de espacio \hausdorff, por lo que esta demostración queda aun fuera de su alcance, pero hemos decidido incluirla para así ver resultados interesantes sobre homeomorfismos. Recomendamos que una vez que se hayan dado los contenidos relacionados con compacidad y separación se regrese a esta sección para así comprobar la comprensión de estos argumentos.
-	\end{enumerate}
+		Dejamos como ejercicio al lector ver que si una es aplicación es abierta no tiene por qué ser cerrada (y viceversa) y que si una aplicación es abierta y cerrada no tiene por qué ser biyectiva.\qedhere
+		\end{enumerate}
 \end{obs}
