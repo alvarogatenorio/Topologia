@@ -360,7 +360,31 @@ Podemos formular, además, una propiedad universal del producto que caracteriza 
 	\end{proof}
 \end{lem}
 
-Veamos ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
+Veamos ahora que la propiedad universal caracteriza la topología.
+
+\begin{prop}
+	Si $(Y,\T_Y)$ cumple la propiedad universal del producto, entonces $\T_Y = \prod\T_i $
+\end{prop}
+\begin{proof}
+	Vamos a demostrarlo por doble contención y haciendo algún cambalache con la identidad.
+	Empecemos con un diagrama para aclarar las ideas.
+	%\[\xymatrix{
+	%	(Y,\T_Y) \ar[p_{r_i}]^{p_i} & 
+	%	(X_i,\T_i) \\
+	%	(Y,\T_Y) \ar[u]^{id} \ar[ru]_{p_{r_i} = p_{r_i} \circ id} &
+	%}\]
+	Como la topología $\T_Y$ cumple la propiedad universal y la aplicación identidad es continua, tenemos que $p_{r_i}$ es continua. Luego por finura $ \prod\T_i \subset \T_Y$.
+	
+	Ahora razonamos con este diagrama:
+	%\[\xymatrix{
+	%	(Y,\T_Y) \ar[p_{r_i}]^{p_i} & 
+	%	(X_i,\T_i) \\
+	%	(Y,\prod\T_i) \ar[u]^{id} \ar[ru]_{p_{r_i} = p_{r_i} \circ id} &
+	%}\]	
+	Como por construcción $p_{r_i}$ es continua, entones id es continua. Esto solo ocurre si $\T_Y \subset \prod\T_i$. 	
+\end{proof}
+
+Vamos a ver ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
 
 \begin{prop}
 	Las proyecciones son abiertas.
@@ -374,22 +398,29 @@ Veamos ahora una serie de proposiciones relacionadas con la topología producto,
 
 
 \begin{prop}
-	La aplicación $X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,a_r)$ es una inmersión.
+	La aplicación $f : X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,x,\dots,a_r)$ es una inmersión.
 	
 	\begin{proof}
-		Veamos primero como transforma la base de abiertos del inicial en la base del final.
-		$U_i\longrightarrow\{a1\}\times\cdots\times U_i\times\cdots\times \{ar\}=\{a1\}\times\cdots\times X_i\times\cdots\times \{ar\}\cap(U_1\times\cdots\times U_r)$
-		
-		Como observamos esto se verifica y además la aplicación al serlo en los abiertos de las bases verifica ser biyectiva, continua y abierta por lo que se tratará de una inmersión.
+		Evidentemente, f es biyectiva. Por otra parte, $f$ es la aplicación $(k_1,\dots,id,\dots,k_r)$ continua, por serlo la identidad.
+		Además, $f^{-1} = p_{r_i}\restriction_{\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}}$ es continua por serlo las proyecciones. Luego f es homeomorfismo.
 	\end{proof}
 \end{prop}
+
+\begin{obs}[Consecuencias]
+	La topología de $\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}$ es exactamente la de $X_i$. Esto constituye un truco para comprobar si una topología es una topología producto.
+\end{obs}
+	
 
 Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. No vamos a probar que sean bases realmente en ninguno de los dos casos ya que en ambos casos va a resultar muy sencillo aplicando la caracterización de base, dejándose como ejercicio para el lector de cara al repaso de la misma.
 \begin{enumerate}
 	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que: \[\B=\{W_i\times\cdots\times W_r:W_i\in \B_i \text{ base de }\T_i\}\] es base de entornos del mismo.
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V^{(a_1,\dots,a_r)}=\{V^{a_1}\times\cdots\times V^{a_r}:W_i\in \V^{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
-\end{enumerate}
+	\begin{proof}
+		Sea $\U \in \T$. Podemos descomponerlo como sigue $\U =U_1 \times \dots \times U_r $ con $U_i \in \T_i$ y $U_i = \bigcup_j W_{ij}$ con $W_{ij} \in \B_i$. Sea $x \in \U$. Entonces $x \in \W_{1j} \times \dots \times W_{rj} \subset \bigcup_j W_{1j} \times \dots \times \bigcup_j W_{rj} = U_1 \times \dots \times U_r$. Haciendo este procedimiento para cada punto se sigue el resultado.
+	\end{proof}
 
+	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V_{(a_1,\dots,a_r)}=\{V_{a_1}\times\cdots\times V_{a_r}:W_i\in \V_{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
+\end{enumerate}
+		
 \section{Suma}
 Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
 
