@@ -206,39 +206,66 @@ Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, pa
 			\label{cont_img_lemins}
 		\end{figure}
 		
-		\item %añadir dibujos(geogebra)
-		Veamos como los conjuntos anteriores son homeomorfos entre si.
+		\item \begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.3]{img/segmentos}
+			\caption{Ilustración del homeomorfismo.}
+			\label{cont_img_sementos}
+		\end{figure}
 		
-		 Tomando un recubrimiento por cerrados del primero (el que tiene por cerrados los tres segmentos) y haciendole corresponder mediante $f$ con los tres segmentos de nuestro segundo conjunto, vemos como cada una de sus restricciones es continua, y f de este modo continua (hacemos este camino a la inversa para ver que la inversa también lo es y así probar que es homeomorfismo). 
+		Sea $\X$ un conjunto $3$ segmentos cualesquiera de $\R^2$ que comparten un punto extremo e $\Y$ otro conjunto de $3$ segmentos arbitrarios que comparten un punto extremo (véase la ilustración \ref{cont_img_sementos}). Si equipamos a ambos conjuntos con la topología relativa inducida por la topología usual de $\R^2$, ambos espacios son homeomorfos.
 		
-		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).\qedhere
+		En efecto, tomando el recubrimiento por cerrados de $\X$ compuesto por cada uno de los segmentos y definiendo un homeomorfismo $f$ que a cada segmento (cerrado del recubrimiento de $\X$) le haga corresponder otro segmento de $\Y$ (sin repetir). Tenemos, por la proposición \ref{cont_prop_caracterizacion} que $\X$ e $\Y$ son homeomorfos (así de paso vemos que las proposiciones sirven para algo).
+		
+		Dicho homeomorfismo $f$ será la \tbi{interpolación lineal} que definimos como
+		\begin{equation}
+			\begin{array}{cc}
+			f_{ab}:&[0,1]\to\R^2\\
+			& t\mapsto ta+(1-t)b
+			\end{array}
+		\end{equation}
+		Que es un homeomorfismo (¡compruébese!) que transforma el intervalo $[0,1]$ en el segmento de $\R^2$ determinado por los puntos $a,b\in\R^2$, al que denotamos por $[a,b]$ con cierto abuso de notación.
+		
+		Para conseguir un homeomorfismo entre dos segmentos $[a,b]$ y $[c,d]$ cualesquiera basta seguir el siguiente diagrama.
+		\[\xymatrix{[0,1]\ar[r]^{f_{ab}}\ar[d]_{f_{cd}}&[a,b]\\
+			[c,d]\ar[ru]_{f_{cd}\circ f^{-1}_{ab}}
+			}\]
 	\end{enumerate}
+	Con esto ya tenemos suficiente artillería para resolver gran cantidad de problemas.
 \end{exa}
 
-Una vez definido el concepto de homeomorfismo y vista a través de los ejemplos su gran fuerza, vamos a pasar al concepto de homeomorfismo local, el cual, a pesar de ser una relación más débil que la que proporciona el homeomorfismo, también será muy utilizado a lo largo de la asignatura.
+Una vez definido el concepto de homeomorfismo y vista a través de los ejemplos su gran fuerza, vamos a pasar al concepto de homeomorfismo local, el cual, a pesar de ser una relación más débil que la que proporciona el homeomorfismo, también será muy utilizado.
 
-\label{cont_def_homeomorfismoLocal}
-\begin{defi}[Homeomorfismo Local]
-	Sea $f:X\rightarrow Y$ aplicación entre espacios topológicos y $x_0\in X$. Se dice que $f$ es \tbi[homeomorfismo!local]{homeomorfismo local} en $x_0$ si $x_0$ tiene un entorno abierto $U^{x_0}$ tal que $f(U^{x_0})$ es entorno abierto de $f(x_0)$ en $Y$ y se tiene que $f|_{x_0}:U^{x_0}\rightarrow f(U^{x_0})$ es homeomorfismo.
+\begin{defi}[Homeomorfismo local]
+	\label{cont_def_homeomorfismoLocal}
+	Sea $f:X\rightarrow Y$ aplicación entre espacios topológicos y $x_0\in X$. Se dice que $f$ es \tbi[homeomorfismo!local]{homeomorfismo local} en $x_0$ si $x_0$ tiene un entorno abierto $U_{x_0}$ tal que $f(U_{x_0})$ es entorno abierto de $f(x_0)$ en $Y$ y se tiene que $f|_{U_{x_0}}:U_{x_0}\rightarrow f(U_{x_0})$ es homeomorfismo.
 \end{defi}
 
 De esta definición se desprende que todo un homeomorfismo entre dos espacios es en un homeomorfismo local en todos sus puntos. Este resultado resulta evidente, pero su contrarreciproco (no homeomorfo local implica no homeomorfo) nos puede resultar enormemente útil ya que es mucho más sencillo estudiar  el homeomorfismo local al global.
-Vemos ahora algunos ejemplos de homeomorfismos locales.
 
-\label{cont_exa_homeomorfismoLocal}
-\begin{exa}
-	%falta dibujo esfera
-	Vemos como podemos construir entre la esfera y el plano un homeomorfismo local en cada uno de sus puntos, por lo que podemos decir de estos que resultan localmente homeomorfos.
+Vemos ahora, a modo de ejemplo que la esfera $\esfera^2:=\{x\in\R^3\midc\norm{x}=1\}$ es localmente homeomorfa al plano $\R^2$.
+
+\begin{exa}[Esfera y plano]
+	\label{cont_exa_homeomorfismoLocal}
+	Vamos a contruir un homeomorfismo local entre la esfera y el plano.
+	
 	Resulta de interés destacar que no es necesario que la aplicación sea la misma en todo el espacio, sino que podemos tomar una distinta para cada punto del espacio.
 	
-	Veamos lo que acabamos de comentar: \\ 
-	$f(x_0,y_0,z_0)=(x_0,y_0)$ siendo homeomorfismo en su restricción a $U_{x_0}$. \\
-	$f(x_1,y_1,z_1)=(y_1,z_1)$ siendo del mismo modo homeomorfismo en su restricción.
+	En efecto, sea $p:=(x_0,y_0,z_0)\in\esfera^2$ con $z_0\not=0$, entonces, dado un entorno abierto de $p$ que no corta al ecuador de la esfera, definimos la aplicación
+	\[\begin{array}{cc}
+	f(x,y,z):=(x,y) \qquad& f^{-1}(x,y):=(x,y,\sqrt{1-x^2-y^2})
+	\end{array}\]
+	que es homeomorfismo local (¡compruébese!).
+	
+	Análogamente, si tomamos un $p':=(x_1,y_1,0)\in\esfera^2$, dado un entorno abierto de $p'$ definimos el siguiente homeomorfismo local (¡compruébese!)
+	\[\begin{array}{cc}
+	f(x,y,z):=(y,z) \qquad& f^{-1}(y,z):=(\sqrt{1-y^2-z^2},y,z)
+	\end{array}\qedhere\]
 \end{exa}
 
 Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y observaciones propias de los homeomorfismos (globales), pero que también nos valdrán para la restricción homeomorfa de los locales (dado que en ella por definición la aplicación es homeomorfa).
 \label{etop_obs_homeomorfismo}
-\begin{obs}
+\begin{obs}[Propiedades de los homeomorfismos]
 	\begin{enumerate}
 		\item 
 		Sea $f:X\rightarrow Y$ aplicación biyectiva.
