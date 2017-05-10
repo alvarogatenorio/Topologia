@@ -86,6 +86,7 @@ Tras definir la continuidad en un punto, el paso instintivo es por supuesto defi
 Vamos a ver ahora una serie de definiciones equivalentes de la noción de continuidad.
 
 \begin{prop}[Caracterizaciones de la continuidad]
+	\label{cont_prop_caracterizacion}
 	Sea $f:\X\to\mc{Y}$. Entonces, las siguientes afirmaciones son equivalentes:
 	
 	\begin{enumerate}
@@ -153,58 +154,64 @@ Terminamos con una propiedad fundamental de las funciones continuas, y es que la
 \end{prop}
 Ahora que ya sabemos un poco más, a modo de satisfacción personal, para que veamos que las matemáticas funcionan, vamos a deducir condiciones necesarias y suficientes para que la aplicación identidad entre dos espacios topológicos sea continua.
 \begin{obs}[Aplicación identidad]
+	\label{cont_obs_identidad}
 	Sean $(\X,\T_1)$ y $(\X,\T_2)$ espacios topológicos y la aplicación identidad entre ellos. Sabemos que $\text{id}$ es continua si y solo si transforma abiertos en abiertos por imágenes inversas. Luego si $\U$ es abierto en $\T_2$, $\text{id}^{-1}(\U)=\U$ debe ser abierto en $\T_1$. Dicho de otra forma, $\text{id}$ es continua si y solo si $\T_2\subset\T_1$.
 \end{obs}
 \section{Homeomorfismos y homeomorfismos locales}
 \label{cont_homeomorfismos}
-%Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos permite deformar, aplastar, girar... pero no cortar o pegar.
+Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos permite deformar, aplastar, girar... pero no cortar o pegar. No obstante en esta sección estudiaremos las aplicaciones que no solo ``no rompen'' el espacio, sino que también son en cierto sentido ``reversibles'', estas serán los llamados ``homeomorfismos''.
 
-En esta sección trataremos la idea de homeomorfismo en espacios topológicos. Esta idea va a adquirir una gran importancia para nosotros ya que es la que nos va a permitir caracterizar espacios distintos como ``similares'' desde un punto de vista topológico (que preservan sus propiedades topológicas, vemos que continúa la idea de isomorfismo que hemos visto en otras asignaturas).
-
-
-Además, más adelante nos proporcionará una serie de características comunes entre espacios homeomorfos(apertura, conexión, compacidad\dots).
-
-\label{cont_def_homeomorfismo}
-
+A bote pronto los homeomorfismos son las aplicaciones que preservan la estructura topológica, es decir los abiertos (véase la proposición \ref{cont_prop_caracterizacion}) del mismo modo que los isomorfismos de grupos preservaban las operaciones.
 \begin{defi}[Homeomorfismo]
-	Un \tbi{homeomorfismo} entre espacios topológicos $f\colon X\rightarrow Y$ es una biyección continua con inversa continua.
+	\label{cont_def_homeomorfismo}
+	Un \tbi{homeomorfismo} entre espacios topológicos $f\colon \X\rightarrow \Y$ es una biyección continua con inversa continua.
 	
-	Si existe un homeomorfismo entre dos espacios X e Y se dice que estos son \tbi{homeomorfos}.
+	Si existe un homeomorfismo entre dos espacios $\X$ e $\Y$ se dice que estos son \tbi{homeomorfos}.
 \end{defi}
 
-Hagamos ahora unas pequeñas observaciones antes de pasar a una serie de ejemplos que nos permitan asentar estos conceptos.
+Hagamos ahora una pequeña observación antes de pasar a una serie de ejemplos que nos permitan asentar estos conceptos.
 
-\label{cont_obs_defHomeomorfismo}
-\begin{obs}
-	Como vemos en la definición \ref{cont_def_homeomorfismo}, no nos basta únicamente con que nuestra aplicación $f$ sea biyectiva (y de este modo tenga inversa), sino que además exigimos esta inversa sea continua. 
+\begin{obs}[Continuidad de la inversa]
+	\label{cont_obs_defHomeomorfismo}
+	Como vemos en la definición \ref{cont_def_homeomorfismo}, no nos basta únicamente con que nuestra aplicación $f$ sea biyectiva (y de este modo tenga inversa) y continua, sino que además exigimos esta inversa sea continua. 
+	
+	Nótese que, por ejemplo, en los isomorfismos de grupos, siempre que teníamos un homomorfismo biyectivo automáticamente era un isomorfismo. Esto no ocurre en este contexto como veremos a continuación.
 	
 	Esta continuidad en ambos sentidos del homeomorfismo nos va a resultar muy útil como veremos más adelante, dado que las muchas propiedades (abiertos, cerrados\dots) se van a transladar entre los dos espacios homeomorfos que nos proporciona $f$.
 \end{obs}
 
 Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, para comprender las diferencias entre ambas y así afianzar la definición.
 \label{etop_exa_homeomorfismos}
-\begin{exa}[Homeomorfismos]
-	
+\begin{exa}[Homeomorfismos] Comencemos volviendo al ejemplo recurrente de la aplicación identidad.
 	\begin{enumerate}
-		\item La función $Id\colon(X,\tau_{dis})\rightarrow(X,\tau_{triv})$ verifica ser continua y biyectiva, pero como vimos en el ejemplo \ref{cont_obs_continuidad_discreta_trivial} su inversa no es continua, por lo que no se tratará de un homeomorfismo. 
+		\item La función $\text{id}\colon(X,\T_{\text{dis}})\rightarrow(X,\T_\text{triv})$ verifica ser continua y biyectiva, pero como vimos en la observación \ref{cont_obs_identidad} su inversa no es continua, por lo que no es un homeomorfismo. 
 		
-		\item %añadir dibujos!!!
-		Vemos como cualquier función $f$ que mande $X$ a $Y$ no es homeomorfismo, a pesar de que $f$ pueda ser biyectiva y continua.
+		\item Cualquier función $f$ que mande $\R$ a la \tbi{lemniscata} $\mc{L}\subset\R^2$ (con la topología relativa) no es homeomorfismo, a pesar de que $f$ pudiera llegar a ser biyectiva y continua.
 		
-		Esto no podemos afirmarlo con nuestros conocimientos actuales, pero adelantándonos en el temario (buscamos al introducir este ejemplo tan solo aumentar el interés del lector por los homeomorfismos, no buscamos que se comprenda completamente) lo sabremos ya dado el punto $o$ (aquel que se manda al origen en Y) tenemos que:
+		La lemniscata viene descrita por la imagen de la siguiente función.
+		\[\varphi(t):=\left(\frac{t}{1+t^4},\frac{t^3}{1+t^4}\right)\]
+		Esto no podemos afirmarlo con nuestros conocimientos actuales, no obstante daremos una demostración intuitiva (ver ilustración \ref{cont_img_lemins}) que no pretende ser formal sino tan solo aumentar el interés del lector.
 		
-		$\forall V^o$ pinchado (es decir, quitamos $o$) $V^o$ tiene al menos 4 componentes conexas.%añadir dibujo
+		La justificación sería la siguiente. Dado el punto $O:=(0,0)$ tenemos que:
+		\begin{itemize}
+			\item Todo entorno pinchado de $O$ tiene cuatro ``componentes conexas'' (sean lo que sean).
+			\item Todo entorno pinchado de $f^{-1}(O)$ tiene dos componentes conexas.
+		\end{itemize}
 		
-		$\exists W^o$ pinchado  con 2 componentes conexas.%añadir dibujo
-		
-		Por lo tanto, al no mantenerse la cantidad de componentes conexas entre $X$ e $Y$ se verifica que $f$ no es homeomorfismo.
+		Por lo tanto, al no mantenerse la cantidad de componentes conexas entre $X$ e $Y$ se verifica que $f$ no es homeomorfismo (ya veremos por qué).
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[scale = 0.075]{img/lemniscata}
+			\caption{Ilustración del argumento intuitivo.}
+			\label{cont_img_lemins}
+		\end{figure}
 		
 		\item %añadir dibujos(geogebra)
 		Veamos como los conjuntos anteriores son homeomorfos entre si.
 		
 		 Tomando un recubrimiento por cerrados del primero (el que tiene por cerrados los tres segmentos) y haciendole corresponder mediante $f$ con los tres segmentos de nuestro segundo conjunto, vemos como cada una de sus restricciones es continua, y f de este modo continua (hacemos este camino a la inversa para ver que la inversa también lo es y así probar que es homeomorfismo). 
 		
-		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).
+		Este ejemplo nos puede resultar ilustrativo de que nos basta con encontrar una $f$ homeomorfa entre nuestros espacios, pero no en todo el plano (lo cual es mucho más ambicioso).\qedhere
 	\end{enumerate}
 \end{exa}
 
