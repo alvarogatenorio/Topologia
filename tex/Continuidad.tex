@@ -85,7 +85,7 @@ Tras definir la continuidad en un punto, el paso instintivo es por supuesto defi
 
 Vamos a ver ahora una serie de definiciones equivalentes de la noción de continuidad.
 
-\begin{prop}
+\begin{prop}[Caracterizaciones de la continuidad]
 	Sea $f:\X\to\mc{Y}$. Entonces, las siguientes afirmaciones son equivalentes:
 	
 	\begin{enumerate}
@@ -112,9 +112,9 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 		\begin{enumerate}[align=left, leftmargin=*]
 			\item[\fbox{$(0)\implies (1)$}] Sea un abierto $U\subset\mc{Y}$. Por ser abierto, es entorno de todos sus puntos. Pero para cada punto $f(x_0)\in U$, por ser $f$ continua, la imagen inversa de $U$ es también entorno de $x_0$. De esta forma, para cualquier $x_0\in f^{-1}(U)$, se cumple que $f^{-1}(U)$ es entorno de $x_0$, y por tanto $f^{-1}(U)$ es abierto.
 			
-			\item[\fbox{$(1)\implies (0)$}] Sea $V^{f(x_0)}$ un entorno en $\mc{Y}$. Por definición, contiene un abierto $U$ tal que $f(x_0)\in U$. Ahora, por hipótesis, $f^{-1}(U)$ es abierto, y como $x_0\in f^{-1}(U)\subset f^{-1}(V^{f(x_0)})$, se verifica que $f^{-1}(V^{f(x_0)})$ contiene un abierto que contiene a $x_0$ y por tanto es entorno.
+			\item[\fbox{$(1)\implies (0)$}] Sea $V_{f(x_0)}$ un entorno en $\mc{Y}$. Por definición, contiene un abierto $U$ tal que $f(x_0)\in U$. Ahora, por hipótesis, $f^{-1}(U)$ es abierto, y como $x_0\in f^{-1}(U)\subset f^{-1}(V_{f(x_0)})$, se verifica que $f^{-1}(V_{f(x_0)})$ contiene un abierto que contiene a $x_0$ y por tanto es entorno.
 			
-			\item[\fbox{$(1)\Longleftrightarrow (2)$}] $F\subset\mc{Y}$ es cerrado $\iff$ $\mc{Y}\setminus F$ es abierto. Pero entonces por hipótesis $f^{-1}(\mc{Y}\setminus F)$ es abierto, y $f^{-1}(\mc{Y}\setminus F)=\X\setminus f^{-1}(F)$, luego $f^{-1}(F)$ es cerrado. La otra implicación es análoga.
+			\item[\fbox{$(1)\Longleftrightarrow (2)$}] $F\subset\mc{Y}$ es cerrado si y solo si $\mc{Y}\setminus F$ es abierto. Pero entonces por hipótesis $f^{-1}(\mc{Y}\setminus F)$ es abierto, y $f^{-1}(\mc{Y}\setminus F)=\X\setminus f^{-1}(F)$, luego $f^{-1}(F)$ es cerrado. La otra implicación es análoga.
 			
 			\item[\fbox{$(2)\implies (3)$}] Basta con ver que cualquier $A$ verifica que $f(\adher{A})\subset \adher{f(A)}$ o, lo que es equivalente, $\adher{A}\subset f^{-1}(\adher{f(A)})$. Sin embargo, la imagen inversa del cerrado $\adher{f(A)}$ es cerrada, con lo que basta con demostrar que $A\subset f^{-1}(\adher{f(A)})$, ya que $\adher{A}$ es el menor cerrado que contiene a $A$. Por tanto, simplemente:
 			\[A\subset f^{-1}(f(A))\subset f^{-1}(\adher{f(A)})\]
@@ -126,12 +126,12 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 						
 			\item[\fbox{$(0)\implies (4)$}] Trivial, con el recubrimiento cuyo único abierto es $\mc{X}$.
 			
-			\item[\fbox{$(4)\implies (1)$}] Vamos a aprovechar que ya hemos demostrado $(0)\implies (1)$. Entonces, sea $U\subset\mc{Y}$ un abierto. Lo podemos escribir como unión de abiertos de forma que cada uno de ellos esté en un $U_i$, de la siguiente forma:
+			\item[\fbox{$(4)\implies (1)$}] Vamos a aprovechar que ya hemos demostrado $(0)\iff (1)$. Entonces, sea $U\subset\mc{Y}$ un abierto. Lo podemos escribir como unión de abiertos de forma que cada uno de ellos esté en un $U_i$, de la siguiente forma:
 			\[U=\bigcup\limits_{i\in I} (U_i\cap U)\]
 			
 			Ahora, la imagen inversa de $U$ es:
 			\[f^{-1}(U)=f^{-1}\left(\bigcup\limits_{i\in I} (U_i\cap U)\right)=\bigcup\limits_{i\in I} (f^{-1}(U_i\cap U))\]
-			pero como $U_i\cap U\subset U_i$ y $f\restriction_{U_i}$ es continua, entonces cada una de estas imágenes inversas es continua, y la imagen inversa de $U$ también lo es.
+			pero como $U_i\cap U\subset U_i$ y $f\restriction_{U_i}$ es continua, entonces cada una de estas imágenes inversas es abierta, luego la imagen inversa de $U$ también lo es por ser unión arbitraria de abiertos.
 			
 			\item[\fbox{$(0)\implies (5)$}] Trivial, con el recubrimiento cuyo único cerrado es $\mc{X}$.
 			
@@ -140,18 +140,21 @@ Vamos a ver ahora una serie de definiciones equivalentes de la noción de contin
 	\end{proof}
 \end{prop}
 
-Terminamos con una propiedad fundamental de las funciones continuas: la composición respeta la continuidad.
+Terminamos con una propiedad fundamental de las funciones continuas, y es que la composición respeta la continuidad.
 
-\begin{prop}
+\begin{prop}[Composición]
 	Sean $f:\X\to\mc{Y}$, $g:\mc{Y}\to\mc{Z}$, con $f,g$ continuas. Entonces, $h = g\circ f$ es continua.
 	
 	\begin{proof}
 		Esta es una consecuencia casi directa de la definición. En efecto, si consideramos $x_0\in\X$ y sus imágenes:
-		\[x_0\mapsto f(x_0)\eqqcolon y_0\mapsto g(f(x_0))\eqqcolon z_0\]
-		entonces basta con estudiar los entornos. En efecto, si $V^{z_0}$ es entorno de $z_0$, por la continuidad de $g$ su imagen inversa es un entorno $V^{y_0}$ en $\mc{Y}$ y, ahora, por la continuidad de $f$, la imagen inversa de este último es un entorno de $x_0$.
+		\[x_0\mapsto f(x_0)\eqqcolon y_0\mapsto g(f(x_0))=g(y_0)\eqqcolon z_0\]
+		entonces basta con estudiar los entornos. En efecto, si $V_{z_0}$ es entorno de $z_0$, por la continuidad de $g$ su imagen inversa es un entorno $V_{y_0}$ en $\mc{Y}$ y, ahora, por la continuidad de $f$, la imagen inversa de este último es un entorno de $x_0$.
 	\end{proof}
 \end{prop}
-
+Ahora que ya sabemos un poco más, a modo de satisfacción personal, para que veamos que las matemáticas funcionan, vamos a deducir condiciones necesarias y suficientes para que la aplicación identidad entre dos espacios topológicos sea continua.
+\begin{obs}[Aplicación identidad]
+	Sean $(\X,\T_1)$ y $(\X,\T_2)$ espacios topológicos y la aplicación identidad entre ellos. Sabemos que $\text{id}$ es continua si y solo si transforma abiertos en abiertos por imágenes inversas. Luego si $\U$ es abierto en $\T_2$, $\text{id}^{-1}(\U)=\U$ debe ser abierto en $\T_1$. Dicho de otra forma, $\text{id}$ es continua si y solo si $\T_2\subset\T_1$.
+\end{obs}
 \section{Homeomorfismos y homeomorfismos locales}
 \label{cont_homeomorfismos}
 %Intuitivamente, una aplicación continua es la que no ``rompe'' el espacio. Nos permite deformar, aplastar, girar... pero no cortar o pegar.
