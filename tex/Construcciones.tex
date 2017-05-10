@@ -368,19 +368,19 @@ Veamos ahora que la propiedad universal caracteriza la topología.
 \begin{proof}
 	Vamos a demostrarlo por doble contención y haciendo algún cambalache con la identidad.
 	Empecemos con un diagrama para aclarar las ideas.
-	%\[\xymatrix{
-	%	(Y,\T_Y) \ar[p_{r_i}]^{p_i} & 
-	%	(X_i,\T_i) \\
-	%	(Y,\T_Y) \ar[u]^{id} \ar[ru]_{p_{r_i} = p_{r_i} \circ id} &
-	%}\]
+	\[\xymatrix{
+		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(X_i,\T_i) \\
+		(Y,\T_Y) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+	}\]
 	Como la topología $\T_Y$ cumple la propiedad universal y la aplicación identidad es continua, tenemos que $p_{r_i}$ es continua. Luego por finura $ \prod\T_i \subset \T_Y$.
 	
 	Ahora razonamos con este diagrama:
-	%\[\xymatrix{
-	%	(Y,\T_Y) \ar[p_{r_i}]^{p_i} & 
-	%	(X_i,\T_i) \\
-	%	(Y,\prod\T_i) \ar[u]^{id} \ar[ru]_{p_{r_i} = p_{r_i} \circ id} &
-	%}\]	
+	\[\xymatrix{
+		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(X_i,\T_i) \\
+		(Y,\prod\T_i) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+	}\]	
 	Como por construcción $p_{r_i}$ es continua, entones id es continua. Esto solo ocurre si $\T_Y \subset \prod\T_i$. 	
 \end{proof}
 
