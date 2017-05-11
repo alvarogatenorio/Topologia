@@ -418,6 +418,27 @@ Ahora pasamos a ver si somos capaces de construir bases más sencillas para nues
 
 	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V_{(a_1,\dots,a_r)}=\{V_{a_1}\times\cdots\times V_{a_r}:W_i\in \V_{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
 \end{enumerate}
+
+Por último, algunas observaciones útiles sobre la topología de los productos son
+\begin{prop}[Adherencia]
+	Sean $X_i$ espacios topológicos y $A_i$ subconjuntos de $X_i$. Tenemos que
+	\[Adh(A_1 \times \dots \times A_r) = Adh(A_1) \times \dots \times Adh(A_r)\]
+\end{prop}
+\begin{proof}
+	 Por una parte tenemos que $x \in Adh(A_1 \times \dots \times A_r) \iff$ dado un entorno $U_1 \times \dots \times U_r$ de $x$, dicho entorno corta a $A_1 \times \dots \times A_r$.
+	 Por otra parte, $x \in  Adh(A_1) \times \dots \times Adh(A_r) \iff \ \forall U_1 \times \dots \times U_r $ se cumple que $U_i \cap A_i \neq \emptyset \ \forall i$.
+	 Finalmente, gracias a la siguiente propiedad $(U_1 \times \dots \times U_r) \cap (A_1 \times \dots \times A_r) = (U_1 \cap A_1) \times \dots \times (U_r \cap A_r)$ se llega al resultado.
+\end{proof}
+
+\begin{prop}[Cerrados]
+	Sean $X_i$ espacios topológicos y $A_i$ subconjuntos de $X_i$. Tenemos que
+	$A_1 \times \dots \times A_r$ es cerrado $\iff A_i$ es cerrado $\forall i$.
+\end{prop}
+\begin{proof}
+	Veamos que si $A_i$ es cerrado $\forall i$ entonces $A_1 \times \dots \times A_r$ es cerrado. Basta ver que $A_1 \times \dots \times A_r$ coincide con su adherencia, que por la proposición anterior coincide con $Adh(A_1) \times \dots \times Adh(A_r)$, que a su vez es $A_1 \times \dots \times A_r$, pues cada $A_i$ coincide con su adherencia por ser cerrado.
+	La otra implicación se deja al lector.
+\end{proof}	
+
 		
 \section{Suma}
 Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
