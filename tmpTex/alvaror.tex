@@ -5,17 +5,4 @@
 %%%%%%%%%%
 
 % Dentro de la sección de local-compacidad
-
-\begin{prop}
-	Sea $\X$ un espacio \hausdorff. Si $x\in \X$ tiene un entorno compacto, entonces tiene una base de entornos compactos.
-	
-	\begin{proof}
-		Vamos a construir la base de compactos a partir del entorno compacto. Sea $K$ ese entorno, y entonces verifica que existe un abierto $U$ tal que $x\in U\subset K$. Entonces, tenemos que ver que para cada entorno $W$ arbitrario existe un $L\subset W$ que sea entorno compacto de $x$.
-		
-		Como $X\setminus W\subset K$ y es cerrado en él, entonces $K\setminus W$ es compacto. Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
-		
-		Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (esto es consecuencia directa de poder hacerlo para cada par de puntos). Entonces, podemos encontrar dos abiertos $V$ y $G$ tales que $V^x\cap G=\emptyset$, $x\in V^x$ y $K\setminus W\subset G$. Podemos tomar $V^x$ además de forma que $V^x\subset U$: si $V^x$ no cumpliera esto, tomamos en su lugar $V^x\cap U$ que también contiene a $x$. Entonces, $x\in V^x\subset \adher{V}\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ \hausdorff. Entonces $\adher{V}$ es un compacto (por ser cerrado en compacto) entorno de $x$.
-		
-		Ahora, solo queda comprobar que $\adher{V}\subset W$. Veamos para ello que $V\cap G=\emptyset\implies \adher{V}\cap G=\emptyset$ para un entorno $G$ de $y$. En efecto, sea $y\in \adher{V}\cap G$. Entonces $y\in\adher{V}$ e $y\in G$, que es entorno de $y$, y por definición de adherencia $V\cap G\neq\emptyset$. Ahora, como $K\setminus W$ es entorno de $y$, por lo anterior $\adher{V}\cap (K\setminus W)=\emptyset$, y como $\adher{V}\subset K$, entonces $\adher{V}\subset W$.
-	\end{proof}
-\end{prop}
+% Ya está añadido:)

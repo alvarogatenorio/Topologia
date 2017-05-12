@@ -14,6 +14,8 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 	Diremos que un espacio $\X$ es \tbi{compacto} \indexg{espacio!compacto|see{compacto}} si de cada \tb{recubrimiento abierto} $\A$ de $\X$ podemos extraer un subrecubrimiento finito que también recubre $\X$.
 \end{defi}
 
+Veamos algunos ejemplos ya conocidos.
+
 \begin{exa}
 	\begin{enumerate}
 		\item El intervalo $[a,b]$ es compacto.
@@ -23,6 +25,8 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 		Dado un conjunto abierto de $\A$, existe un abierto $\U$ de $\A$ que contiene al $0$. $\U$ contiene todos los puntos de la forma $\frac{1}{n}$ salvo un número finito de ellos. Para cada uno de estos puntos cogemos un abierto del recubrimiento. Por lo tanto tenemos un subrecubrimiento finito, luego es compacto. 
 	\end{enumerate}
 \end{exa}
+
+A continuación, recordemos la noción de compacidad en subespacios topológicos.
 
 \begin{obs} \
 	\begin{enumerate}
@@ -65,8 +69,9 @@ La compacidad en espacios topológicos es una noción bastante elaborada, y su g
 	\end{enumerate}
 \end{obs}
 
+De aquí en adelante revisaremos algunas consecuencias ya conocidas de la compacidad. Sin embargo, adoptaremos el nuevo alfabeto topológico para ello, viendo como algunas demostraciones se simplifican.
 
-\begin{prop}[Cerrado en compacto es compacto]
+\begin{prop}[Cerrado en compacto es compacto]\label{T6:prop_cerrado en compacto es compacto}
 	\label{cerra_en_comp_comp}
 	Sea $\X$ un espacio topológico compacto, e $\Y$ un subespacio suyo. Si $\Y$ es cerrado entonces es compacto.
 	\begin{proof}
@@ -103,21 +108,26 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 \end{prop}
 
 
-\begin{prop}
-	Cada subespacio $\Y$ compacto de un espacio $\X$ (que es $T_2$) es cerrado.
+\begin{prop}\label{T6:prop_compacto en t2 es cerrado}
+	Cada subespacio $\Y$ compacto de un espacio $\X$ (que es \hausdorff) es cerrado.
 	\begin{proof}
 		Basandonos en las dos hipótesis, demostraremos que $\X - \Y$ es abierto, luego $\Y$ será cerrado.
 		
 		Sea $a \in \X-\Y$ vamos a ver que existe un entorno de $a$ que no interseca con $\Y$.
 		
-		Para todo punto $y \in \Y$ tomamos entornos disjuntos $\U_a$ y $\V_y$ de los puntos $a$ e $y$ respectivamente, utilizando la condición de ser $T_2$. Si ahora tomamos la colección $\V = \{V_y \midc y \in \Y\}$, es un recubrimiento por abiertos de $\Y$, y por ser este compacto existirá un subrecubrimiento finito $V_{y_1}, ..., V_{y_n}$ que recubrirá $\Y$.
+		Para todo punto $y \in \Y$ tomamos entornos disjuntos $U_a^y$ y $V_y$ de los puntos $a$ e $y$ respectivamente, utilizando la condición de ser $T_2$. El superíndice indica que el entorno $U_a^y$ depende del punto $y$. Si ahora tomamos la colección $V = \{V_y \midc y \in \Y\}$, es un recubrimiento por abiertos de $\Y$, y por ser este compacto existirá un subrecubrimiento finito $V_{y_1}, ..., V_{y_n}$ que recubrirá $\Y$.
 		
-		Luego $\V = V_{y_1} \cup ... \cup V_{y_n}$ contiene a $\Y$ y es abierto. Además es disjunto de $\U = U_{a_1} \cap ... \cap U_{a_n}$, formado al tomar la intersección de los entornos de $a$. Por lo tanto $\U$ es entorno de $a$ que no interseca a $\Y$, quedando así demostrado.
+		Luego $\V = V_{y_1} \cup ... \cup V_{y_n}$ contiene a $\Y$ y es abierto. Además es disjunto de $\U = U_a^{y_1} \cap ... \cap U_a^{y_n}$, formado al tomar la intersección de los entornos de $a$ correspondientes a cada $y\in\Y$. Por lo tanto $\U$ es entorno de $a$ que no interseca a $\Y$, quedando así demostrado.
 	\end{proof}
 \end{prop}
 
+\begin{obs}\label{T6:obs_compacto y punto en t2 disjuntos}
+	Notemos que hemos demostrado más de lo que nos pedían. En la demostración anterior se prueba que un compacto $\Y$ y un punto $a\in \X-\Y$, en un espacio topológico $\X$ que es \hausdorff, tienen entornos disjuntos. Basta tomar $\U$, entorno de $a$, y $\V$, entorno de $\Y$.
+	
+	Además, es importante que $\X$ sea \hausdorff. Obsérvese que en $\X=\{a,b\}$ con la topología del punto $\T_a$ todo es compacto y, sin embargo, $\{a\}$ no es cerrado.
+\end{obs}
 
-\begin{prop}
+\begin{prop}\label{T6:prop_alcanza maximo y minimo}
 	Sea $\X$ compacto y $f:\X \rightarrow \R$ una aplicación continua entonces se alcanzan $\min f$ y $\max f$ en $\X$.
 	\begin{proof}
 		Como $f(\X)$ es compacto por \ref{comp_comp_comp}, tenemos que $f(\X) \subset \R$ y sabemos que por ser $\R$ completo, existen $x_1$ y $x_2$ tal que
@@ -128,6 +138,10 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 	\end{proof}
 \end{prop}
 
+\begin{obs}
+	Sea $f:\X\rightarrow \R^+$ con $\X$ compacto. Entonces, por la proposición anterior, se alcanza el mínimo. Es decir, existe $x_0\in\X$ tal que $f(x_0)=\text{min} f(x)$. Como $f(x)>0$ para todo $x\in\X$, en concreto, $f(x_0)>0$. Esto implica que
+	\[ f(x)\ge f(x_0)>0\ra f(x)\ge \epsilon>0 \forall x\in\X \]
+\end{obs}
 
 \begin{prop}
 		Sea $\X$ compacto e $\Y$ un subespacio infinito. Entonces $\Y$ tiene algún punto de acumulación.
@@ -135,6 +149,23 @@ Veamos una buena propiedad de los compactos al usarlos con aplicaciones.
 		Si $\Y$ no tuviese ningún punto de acumulación, entonces todos los puntos serían aislados, luego tendríamos la topología discreta. Ahora, como $\Y$ es cerrado dentro de un compacto, por \ref{cerra_en_comp_comp} $\Y$ es compacto, y para ser compacto un conjunto con la topología discreta tiene que ser finito, lo que produce una contradicción.
 	\end{proof}
 \end{prop}
+
+\begin{obs}
+	Al contrario de lo que ocurría en $\R$, en general el recíproco de la proposición anterior no se cumple. 
+\end{obs}
+
+Por último, y antes de introducir una serie de definiciones dedicadas a alimentar la curiosidad del lector, hagamos una pequeña observación de gran importancia en forma de lema.
+
+\begin{lem}
+	Si tenemos una función continua $f: \X\to \Y$, donde $\X$ es compacto y $\Y$ es Hausdorff, entonces la aplicación es cerrada.
+\end{lem}
+\begin{proof}
+	En efecto, sea $F\subset \X$ un subespacio cerrado, que será compacto por ser $\X$ compacto. Por otro lado, $f(F)$ es compacto al tratarse de la imagen continua de un compacto y, finalmente, sabemos que ser compacto en un espacio Hausdorff implica ser cerrado.
+\end{proof}
+
+De aquí se deduce que si además $f$ es suprayectiva, entonces se trata de una identificación y que si es biyectiva, entonces estamos ante un homeomorfismo. 
+
+Esto es muy útil para saber cuando una aplicación entre $\X$ e $\Y$ es una identificación, ya que en general $\Y\subset\R^n$, por lo que es \hausdorff. En caso de ser $f$ continua y $\X$ compacto se tiene que $\Y$ es un modelo geométrico del cociente $\X/\sim$.
 
 \begin{defi}[Definiciones] Existen varias nociones estrechamente relacionadas con la compacidad:
 	\begin{enumerate}
@@ -174,6 +205,69 @@ Ahora, presentamos un resultado sobre espacios secuencialmente compactos que va 
 %Tablas de comportamiento topológico
 
 \section{Comportamiento topológico}
+
+En esta sección se estudiaran las distintas construcciones que ya se han detallado en casos anteriores (subespacios, cociente y productos y sumas finitas) en los que quedan espacios compactos. 
+
+\begin{itemize}
+	\item Los subespacios cerrados $\F$ de un espacio compacto son compactos. Obsérvese que este apartado no es más que la proposición~\ref{T6:prop_cerrado en compacto es compacto}.
+	
+	\item Los espacios cocientes de compactos son compactos, puesto que un cociente es una aplicación continua suprayectiva y la imagen continua de un compacto es compacto. 
+	
+	\item Las sumas finitas de espacios compactos son compactos, ya que si se tiene un recubrimiento por abiertos de la suma, podemos extraer un subrecubrimiento finito de cada sumando. Dado que la suma es finita, la unión de todos ellos será un subrecubrimiento  finito para la suma. Nótese que si la suma es numerable esto ya no tiene por qué ser cierto. 
+	\item Los productos finitos de espacios compactos son compactos. Este resultado se conoce como el teorema de Tychonoff (que también vale para el producto infinito) y se demostrará a continuación. 
+\end{itemize}
+
+\begin{theo}[Teorema de Tychonoff] Sean $\X$ e $\Y$ dos espacios topológicos y sea $\X \times \Y$ su espacio producto. Entonces $\X$ e $\Y$ son compactos si y solamente si $\X\times \Y$ lo es.
+	\begin{proof}
+		
+		$\Leftarrow )$ Si $\X\times \Y$ es compacto, consideremos la proyección $p_{\X}: \X\times \Y \to \X$. Al ser continua y como la imagen continua de un compacto es compacto, hemos terminado. El caso para $\Y$ es análogo. 
+		
+		$\Rightarrow )$ Dado el producto $\X\times \Y$, podemos tomar un recubrimiento por abiertos suyo de modo que 
+		\[\X\times \Y=\bigcup_{i}\W_i.\]
+		Nuestro objetivo es conseguir extraer una cantidad finita de esta familia de abiertos. Antes de comenzar, nótese que estos abiertos no tienen por qué ser productos y esto dificulta nuestra labor. Por tanto, trataremos de quedarnos con abiertos producto, utilizando el hecho de que son base de la topología producto, para obtener una cantidad finita de $\W_i$. Una vez realizado este comentario, ya podemos comenzar. 
+		
+		En primer lugar, para todo $(x,y)\in\X\times \Y$ existe $i$ de modo que $(x,y)\in \W_i$. Así, se pueden encontrar entornos abiertos $\U^y_x$ de $x$ (donde el superíndice denota que depende del $y$ tomado) y $\V_y^x$ de $y$ (que de nuevo depende del $x$ tomado) tales que
+		\begin{equation}\label{T6:tychonoff1}
+			(x,y)\in \U^y_x\times \V_y^x \subset \W_i,
+		\end{equation}
+		puesto que son base de la topología. Nótese que para otro punto del producto con el mismo $x$ y distinto $y$ los dos abiertos cambian.
+		
+		Fijemos $x\in \X$ de forma que ocurrirá que $\Y=\bigcup_{y\in \Y} \V_y^x$. Por ser $Y$ compacto, existe un subrecubrimiento finito tal que 
+		\begin{equation}\label{T6:tychonoff4}
+			\Y=\V^x_{y_1}\cap \ldots \cap \V^x_{y_r}.
+		\end{equation}
+		Pese a que los puntos $y_l$ (tanto el valor de $y$ como la cantidad $r$) dependen de la elección de $x$, no se ha incluido en la notación con tal de no sobrecargarla. 
+		
+		A continuación, para cada $x\in \X$ se puede considerar el abierto
+		\begin{equation}\label{T6:tychonoff2}
+			\U_x=\U_x^{y_1}\cap \ldots \cap \U_x^{y_r}.
+		\end{equation}
+		Sin embargo, al ser $X$ compacto, entonces se puede tomar un subrecubrimiento finito de él tal que
+		\begin{equation}\label{T6:tychonoff3}
+			\X=\bigcup_{x\in \X}\U_x\Rightarrow X=\U_{x_1}\cup \ldots \cup \U_{x_s}.
+		\end{equation}
+		
+		A estas alturas, podemos afirmar que, para cierto $k$ entre $1$ y $s$ y cierto $l$ entre $1$ y $r$,
+		\[(x,y)\in \U_{x_k}\times \V^{x_k}_{y_l}\stackrel{\eqref{T6:tychonoff2}}{\subset} \U^{y_l}_{x_k}\times \V^{x_k}_{y_l}\stackrel{\eqref{T6:tychonoff1}}{\subset} W_{i_{kl}}.\]
+		Estos $W_{i_{kl}}$ son una cantidad finita y solo queda comprobar que recubren a $\X\times \Y$. Para ello, tomemos un punto $(x,y)\in \X\times \Y$. Claramente, por la igualdad~\eqref{T6:tychonoff3}, existe un $k\in\{1,\cdots,s\}$ tal que $x\in \U_{x_k}$. Tomando en la igualdad~\eqref{T6:tychonoff4} $x=x_k$, existe un $l\in\{1,\cdots,r\}$ tal que $y\in  \V^{x_k}_{y_l}$, luego $(x,y)\in W_{i_{kl}}$, y hemos terminado. 
+	\end{proof}
+\end{theo}
+
+Del teorema anterior se pueden deducir ciertas consecuencias relevantes cuando el espacio topológico es $\mathbb{R}^n$.
+
+\begin{obs}
+	
+	(1) Los adoquines 
+	\[[a_1,b_1]\times \ldots \times [a_r,b_r]\]
+	son compactos, puesto que $[a_i,b_i]$ es compacto para todo $i\in \{1,\ldots, n\}$
+	
+	(2) Un conjunto es compacto si y solo si es cerrado y acotado.
+	
+	En efecto, ya sabemos que ser compacto implica ser cerrado, pues $\R^n$ es \hausdorff. Además, por la proposición~\ref{T6:prop_alcanza maximo y minimo}, las proyecciones continuas $p:\R^n\rightarrow\R$ alcanzan el máximo y el mínimo, luego es acotado.
+	
+	Por otro lado, si está acotado existe una bola $\bola(0,\rho)$ para algún $\rho >0$ y así mismo esta bola pertenece a $[-\rho,\rho]^n$. Si además es cerrado, se trataría de un cerrado contenido en un compacto, luego compacto. 
+\end{obs}
+
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
@@ -185,12 +279,53 @@ Ahora, presentamos un resultado sobre espacios secuencialmente compactos que va 
 	\label{Tabla_compacidad}
 \end{table}
 
+\section{Compacidad local}
+
+Hasta ahora no hemos hecho más que revisar lo que ya sabíamos de compacidad y traducirlo al nuevo lenguaje, exceptuando algún resultado como el Teorema de Tychonoff. Todo esto era de alguna manera ``global", pues se refería  a espacios topológicos. Ahora pasaremos a lo local, relacionado con entornos de puntos. Introduciremos esta noción de local con la compacidad y la extenderemos a conexión y conexión por caminos más adelante. Esto es algo novedoso y de gran importancia, por lo que se ruega al lector que lo estudie con detenimiento.
+
+\begin{defi}[Compacidad local] Un espacio es \tbi{localmente compacto} cuando cada punto $x\in\X$ tiene una base de entornos compactos
+	\[\Va{x}=\{K\subset \X: K\text{ es entorno y es compacto}\}.\]
+\end{defi}
+
+Veamos algunos ejemplos para aclarar este concepto. 
+
+\begin{exa}
+	\begin{enumerate}
+		\item $\mathbb{R}^n$ con la topología usual lo es, ya que para cada punto existe una base de entornos de la forma
+		\[\Va{x}=\{\adher{\bola}(x,1/k):k\geq 1\}\]
+		Dado que $\R^n$ no es compacto, de este ejemplo se desprende que
+		\[\text{Localmente compacto }\cancel{\Rightarrow} \text{ Compacto}\]
+		
+		\item $\mathbb{Q}\subset \mathbb{R}$ con la topología usual no lo es. En efecto, tomemos un entorno compacto de $\mathbb{Q}$ del cero $K_0$. Este entorno, por definición, contiene un abierto $\U$ de la topología relativa de modo que $(-\varepsilon,\varepsilon)\cap \mathbb{Q}\subset K_0$ para cierto $\varepsilon>0$. A continuación, elijamos un irracional $\theta \in (-\varepsilon,\varepsilon)$ y una sucesión $\{q_k\}_{k=1}^\infty\in (-\varepsilon,\varepsilon)\cap \mathbb{Q}$ que converge a $\theta$. Claramente, $\{q_k:k\in \mathbb{N}\}$ es un conjunto infinito (ya que si fuese finito convergería a alguno de ellos, por lo que el límite sería racional) contenido en $K_0$ compacto. Por el teorema de Bolzano-Weierstrass, este conjunto tiene un punto de acumulación en $K_0$ o, equivalentemente, existe una subsucesión $\{q_{k_l}\}_{l=1}^\infty$ que converge a un punto de $K_0$ al que denotaremos $p$. No obstante, toda subsucesión de una sucesión converge al mismo punto que esta última, luego hemos probado que $p=\theta$. Esto es una contradicción, pues $K_0\subset \Q$, y hemos terminado. 
+	\end{enumerate}
+\end{exa}
+
+Sin embargo, parece muy engorroso tener que demostrar que existe una base de entornos con todos ellos compactos para ver que un espacio topológico es localmente compacto. Sorprendentemente, si el espacio es \hausdorff, la tarea es mucho más sencilla.
+
+\begin{prop}
+	Sea $\X$ un espacio \hausdorff. Si $x\in \X$ tiene un entorno compacto, entonces tiene una base de entornos compactos.
+	
+	\begin{proof}
+		Vamos a construir la base de compactos a partir del entorno compacto. Sea $K$ ese entorno, y entonces verifica que existe un abierto $U$ tal que $x\in U\subset K$. Entonces, tenemos que ver que para cada entorno $W$ arbitrario existe un $L\subset W$ que sea entorno compacto de $x$.
+		
+		Como $K\setminus W\subset K$ y es cerrado en él, entonces $K\setminus W$ es compacto. Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
+		
+		Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en la observación~\ref{T6:obs_compacto y punto en t2 disjuntos}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, $x\in V_x$ y $K\setminus W\subset G$. Podemos tomar $V_x$ además de forma que $V_x\subset U$. Si $V_x$ no cumpliera esto, tomamos en su lugar $V_x\cap U$ que también contiene a $x$. Entonces, $x\in V_x\subset \adher{V}_x\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ \hausdorff. Entonces $\adher{V}_x$ es un compacto (por ser cerrado en compacto) entorno de $x$.
+		
+		Ahora, solo queda comprobar que $\adher{V}_x\subset W$. Veamos para ello que $V_x\cap G=\emptyset\implies \adher{V}_x\cap G=\emptyset$. En efecto, sea $y\in \adher{V}_x\cap G$. Entonces $y\in\adher{V}_x$ e $y\in G$, que es entorno de $y$, y por definición de adherencia $V_x \cap G\neq\emptyset$, llegando así a un absurdo.
+	    
+	    Ahora, como $K\setminus W\subset G$, por lo anterior $\adher{V}_x\cap (K\setminus W)=\emptyset$, y como $\adher{V}_x\subset K$, entonces $\adher{V}_x\subset W$.
+	\end{proof}
+\end{prop}
+
+\subsection{Comportamiento topológico de la compacidad local}
+
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l|l|l|l|l|}
 		\cline{2-5}
 		& \textbf{Subespacios}    & \textbf{Cociente}       & \textbf{Producto}       & \textbf{Suma}           \\ \hline
-		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Local\\ compacidad\end{tabular}}} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Compacidad\\ local\end{tabular}}} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\ \hline
 	\end{tabular}
 	\caption{Tabla resumen local compacidad.}
 	\label{Tabla_localcompacidad}
