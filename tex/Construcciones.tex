@@ -233,7 +233,7 @@ En este caso $\frac{\X}{\sim}$ denota el conjunto cociente inducido por la relac
 
 Evidentemente, la relación de equivalencia $\sim$ será la inherente a la inyectividad.
 \begin{defi}[Relación de inyectividad]
-	Definimos la relación de equivalencia $\sim$ sobre $\X$ (¡compruébese!) como la que relaciona aquellos elementos de $\X$ que comparten imagen por $f$. Es decir $x\sim y$ si y solo si $f(x)=f(y)$.
+	Definimos la relación de equivalencia $\sim$ sobre $\X$ (¡compruébese!) como la que relaciona aquellos elementos de $\X$ que comparten imagen por $f$. Es decir $x\sim y$ si y solo si $f(x)=f(y)$. Normalmente diremos que esta es la relación de equivalencia inducida o asociada a $f$.
 \end{defi}
 Nótese el gran parecido de este cambalache con el primer teorema de isomorfía para grupos o anillos. Por supuesto, se deja como ejericio al lector comprobar que $\adher{f}$ está bien definida y es biyectiva.
 
@@ -428,9 +428,6 @@ Esta posibilidad de encontrar, a veces, un cociente más simple que tiene la mis
 	\end{figure}
 
 En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes pero sin entrar en tantos detalles como en los ejemplos previos. Para familiarizarnos íntimamente con el espacio cociente, es un buen ejercicio mental tratar de visualizar cómo podemos deformar un objeto del ejemplo siguiente para transformarlo en otro homeomorfo. Al fin y al cabo, la homeomorfia, intuitivamente, es poder deformar sin romper, y los cocientes formalizan la noción de ``pegar'' puntos.
-\begin{obs}[Otro tipo de problema]
-	Puede ocurrir que no tengamos ni idea de cual puede ser una posible identificación entre un espacio y otro pero si sepamos a qué cociente podría ser homeomorfo el espacio a estudiar, lo cual, a la postre puede ayudarnos a encontrar una identificación (y demostrar así la homeomorfía).
-\end{obs}
 \begin{exa}[Otros espacios cociente interesantes]\
 	\begin{enumerate}
 		\item La esfera $\esfera^2$ se puede identificar con el disco unidad si la relación de equivalencia es la que hace que todos los puntos del borde (la circunferencia) estén relacionados entre sí y los demás, solo consigo mismos. De la misma forma, la podemos identificar con dos discos donde la relación de equivalencia ``pega'' los bordes.
@@ -465,7 +462,38 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 	\end{enumerate}
 	Esto es objetivamente bonito.
 \end{exa}
-
+\begin{obs}[Otro tipo de problema]
+	\label{const_otroProb}
+	Puede ocurrir que no tengamos ni idea de cual puede ser una posible identificación entre un espacio y otro pero si sepamos a qué cociente podría ser homeomorfo el espacio a estudiar, lo cual, a la postre puede ayudarnos a encontrar una identificación cuyo cociente inducido sea el candidato (y demostrar así la homeomorfía).
+\end{obs}
+\begin{exa}[Cilindro]
+	Para ilustrar el problema descrito en la observación \ref{const_otroProb} vamos a imaginar que estamos en el jardín de infancia jugando con cartulinas, nosotros, que somos chavales avispados, sabemos que el cilindro se define como $\esfera^1\times[0,1]\subset\R^3$, pero nosotros sólo tenemos una cartulina, eso es $[0,1]^2$. De pronto se nos enciende la bombilla y decimos, ``¡anda coño!'' (Arquímedes hubiera dicho ``¡eureka!'') y comprobamos que si pegamos los bordes del cuadrado nos sale algo, así a ojo, muy parecido a un cilindro.
+	
+	Esta idea de pegar los bordes la podemos modelizar con la relación de equivalencia
+	\[(x,y)\sim (x',y')\sii x-x'\in\Z\text{, }y=y'\]
+	Visto con polígono fundamental
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale = 0.15]{img/pol_fun_cilindro}
+		\caption{Polígono fundamental del cilindro.}
+	\end{figure}
+	
+	Dicho formalmente, estamos considerando el espacio cociente $[0,1]^2/\mathord{\sim}$ como candidato a ser homeomorfo al cilindro. Para demostrar que así es debemos encontrar una aplicación $\varphi:[0,1]^2\to\esfera^1\times[0,1]$ tal que su relación de equivalencia asociada sea $\sim$ y además sea identificación.
+	
+	Es claro que se debe cumplir $\varphi(0,y)=\varphi(1,y)=(x',y',z')$ y que $x'^2+y'^2=1$ para todo $y\in[0,1]$.
+	
+	Llegados a este punto más vale que se te ilumine la cabeza y te des cuenta de que una función trigonométrica te haría muy buen apaño. Por ejemplo
+	\[\begin{split}
+		\varphi: x'= & \cos(2\pi x)\\
+		y' =& \sen(2\pi x)\\
+		z' =& y
+	\end{split}\]
+	Esta función cumple trivialmente todas las propiedades requeridas. Es evidente que es sobreyectiva en $\esfera^1\times [0,1]$ además también es continua, y, no solo eso sino que es homeomorfismo local, con lo cual es abierta.
+	
+	En ningún momento hemos demostrado que ningunas de las aplicaciones vistas en ejemplos sean homeomorfismos locales (que parece ser la clave para demostrar que son abiertas y por tanto identificaciones), sin embargo lo hacemos porque más adelante veremos resultados potentes que nos permitirán demostrar este tipo de cosas de un plumazo.
+	
+	Bien, si damos por hecho eso, ya habríamos demostrado formalmente que $[0,1]^2/\mathord{\sim}$ es homeomorfo al cilindro, y, por tanto, podríamos ir a pedir una pegatina en forma de estrella, que nos la hemos ganado. 
+\end{exa}
 \section{Producto de espacios topológicos}
 Una vez visto el caso del espacio cociente, pasamos ahora a realizar un desarrollo similar para otras construcciones como son los productos y sumas de espacios topológicos. Se va a realizar un procedimiento análogo en el desarrollo de las mismas al de la anterior sección.
 
