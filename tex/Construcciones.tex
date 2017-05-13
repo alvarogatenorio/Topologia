@@ -1,15 +1,24 @@
 %Para este capítulo se usará la abreviatura "const".
-\chapter{Construcciones de espacios}
+\chapter{Construcciones de topologías}
 \label{const}
-%Introducción por hacer.
+A lo largo de este capítulo vamos a seguir una rutina de trabajo que resultará enormemente fructífera. Tratamos de explicarla brevemente aquí, no obstante recomendamos que una vez finalizado este capítulo el lector vuelva aquí a modo de retrospectiva.
+
+Nuestro ``modus operandi'' será, en primer lugar, dotar a un conjunto de la topología ``más drástica'' (en cierto sentido) que haga continua a una (o varias) aplicaciones entrantes (o salientes) a dicho conjunto.
+
+Tras esto, trataremos de dar condiciones necesarias y suficientes para que una aplicación entrante (o saliente) al espacio topológico anteriormente construido sea continua. De esta idea nacen las llamadas ``propiedades universales'', que a la postre veremos que caracterizan a la topología.
+
+Por último iremos jugando con nuestras pequeñas y diabólicas creaciones, buscándoles aplicaciones y desgranando sus propiedades.
+
+Repetiremos este proceso un total de $4$ veces. 
 \section{Imágenes inversas (inmersiones)}
+En esta sección formalizaremos la idea de ``meter'' un espacio topológico dentro de otro.
 \subsection{Construcción de continuidad menos fina}
-Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\mathcal{Y}$ y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua.
+Esta sección se centrará en dar solución al siguiente problema. Dado un espacio topológico $(\mathcal{X},\T)$, un conjunto $\Y$, y una aplicación $f$ que nace en $\mathcal{Y}$ y muere en $(\mathcal{X},\T)$, queremos dotar a $\mathcal{Y}$ de una topología que haga que $f$ sea continua.
 
 Visto en forma de diagrama
 \begin{equation*}
 \xymatrix{
-	(\mc{Y},\T_y) \ar[r]^f
+	(\mc{Y},\T_\Y) \ar[r]^f
 	&(\mathcal{X},\T)}
 \end{equation*}
 
@@ -83,7 +92,7 @@ Ahora vamos a ver que no solo ocurre esto sino que es la única topología que v
 	
 	Sabemos que la identidad de un espacio en sí mismo es una aplicación continua. De este modo, por la propiedad universal, tenemos por lo anterior que $f\circ\text{id}=f$ es continua. En consecuencia, $\T_{\mathcal{Y}}$ hace que $f$ sea continua y, por tanto, por construcción de $f^{-1}(\T)$, $f^{-1}(\T)\subset \T_\Y$. Ya tenemos demostrada una inclusión.
 	
-	Para la otra implicación consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,f^{-1}(\T))$ y $g=\text{id}$.  
+	Para la otra inclusión consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,f^{-1}(\T))$ y $g=\text{id}$.  
 	
 	\begin{equation*}
 	\xymatrix{
@@ -99,9 +108,9 @@ Ahora vamos a ver que no solo ocurre esto sino que es la única topología que v
 Supongamos que dos puntos $y_1$ e $y_2$ terminan en el mismo punto tras ser evaluados en una aplicación (lo que quiere decir que esta no es inyectiva). Los abiertos $\U$ que contienen a la imagen de los dos puntos mencionados $x$ (que es la misma) cumplen que $f^{-1}(\U)$ contiene a $y_1$ e $y_2$, luego estos dos puntos resultan ser topológicamente indistinguibles (no puedo separarlos en dos abiertos distintos). Por ello, este tipo de aplicaciones no presentan mucho interés puesto que no es posible conocer con certeza ciertas propiedades.
 \end{obs}
 \subsection{Inmersiones}
-El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
+El caso verdaderamente interesante ocurre cuando $f$ es inyectiva. En este caso, si se considera el subespacio $(f(\mathcal{\Y}),\T\restriction_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T)$, entonces $f$ es biyectiva:
 
-\[(\mathcal{\Y},f^{-1}(\T)) \xrightarrow{f} (f(\mathcal{\Y}),\left.\T\right|_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
+\[(\mathcal{\Y},f^{-1}(\T)) \xrightarrow{f} (f(\mathcal{\Y}),\T\restriction_{f(\mathcal{\Y})}) \subset (\mathcal{\X},\T).\]
 
 Además, la aplicación es \tb{continua} puesto que, dado $\W$ un abierto de $f(\mathcal{\Y})$, entonces, por topología relativa $\W=f(\Y)\cap \U$ para cierto abierto $\U\in \T$. Esto implica que
 
@@ -117,71 +126,161 @@ Por tanto, al ser $f$ continua y abierta, es \tb{homeomorfismo}. Esto es sorpren
 	A una función $f:(\Y,f^{-1}(\T))\to(\X,\T)$ inyectiva se la denomina \tbi{inmersión} o \tbi{embebimiento}.
 \end{defi}
 \section{Imágenes directas (cocientes e indentificaciones)}
-
+En esta sección formalizaremos la idea de ``pegar'' unos puntos con otros. Al final tendremos el superpoder de trabajar con espacios topológicos como si fueran recortables infantiles, lo cual es sorprendentemente útil.
+\subsection{Construcción de continuidad más fina}
 Después de haber realizado todo el desarrollo anterior, una posibilidad que se nos plantea es dualizar las cuestiones que nos han ido apareciendo. Coloquialmente, podríamos decir que vamos a cambiarle el sentido a todo.
 
-Así pues, consideremos un espacio topológico $(\mathcal{\X},\T)$, un conjunto $\mathcal{\Y}$ y una aplicación $f$ que nace en $(\mathcal{\X},\T)$ y muere en $\mathcal{\Y}$. El problema ahora consiste en dotar a $\mathcal{\Y}$ de una topología que haga que $f$ sea continua. La solución más sencilla sería elegir la topología trivial, puesto que sus únicos abiertos son el vacío y el total y siempre se cumpliría que para cada $\U'$ abierto de $\mathcal{\Y}$ entonces la imagen inversa de este es un abierto del espacio de partida. No obstante, es interesante encontrar la topología más fina que cumpla esto, y esta es 
+Así pues, consideremos un espacio topológico $(\X,\T)$, un conjunto $\Y$, y una aplicación $f$ que nace en $(\X,\T)$ y muere en $\Y$.
 
-\[f(\T)=\{\U: f^{-1}(\U)\in \T\}\]
+El problema ahora consiste en dotar a $\Y$ de una topología que haga que $f$ sea continua.
 
-Evidentemente, se trata de una topología y es la más fina que permite que $f$ sea continua ya que si se añade algún abierto más deja de serlo. Por último, realizando un razonamiento por doble inclusión al análogo en imágenes inversas, se puede ver que es única. Llamamos a esta topología \tbitop{imagen} o \tb{\ti{topología imagen directa}}.
-
-Continuando con la misma argumentación, veamos cuando una función $g$ que parta de $\mathcal{Y}$ es continua
-
-\begin{equation}
-\label{cont_propiedad_universal_top_imagen}
-\xymatrix{
-	(\mathcal{\X},\T) \ar[r]^f \ar@{-->}[rd]_{g\circ f} &
-	\mathcal{\Y} \ar[d]^g & \\
-	&(Z,\T')}
-\end{equation}
-
-Trabajando igual que en el caso anterior, se llega a que $g$ es continua si y solo si $g\circ f$ es continua (para ello, basta ver que si $\W\subset \T'$ entonces $g^{-1}(\W)\subset f(\T)$) y que $f(\T)$ es la topología en $\mathcal{\Y}$ que cumple esta doble implicación. Decimos que esta es la \tbi[propiedad universal!de la imagen]{propiedad universal de la imagen}.
-
-\begin{obs}[Sobreyectividad]
-	
-	Supongamos que $f$ no es sobreyectiva y tomemos un punto $y\notin f(\mathcal{\X})$. Entonces $f^{-1}(y)$ es el vacío, pero como el vacío es abierto llegamos a que el punto es abierto, luego $f(\left.\T\right|_{\mathcal{\Y}\backslash f(\mathcal{\X})})$ coincide con la topología discreta. Sin embargo, la imagen inversa de $\mathcal{\Y}\backslash f(\mathcal{\X})$ es vacía y es abierta en la imagen. Además, como $f(\mathcal{\X})$ es el complementario de $\mathcal{\Y}\backslash f(\mathcal{\X})$, entonces $f(\mathcal{\X})$ es cerrado. No obstante, $f(\mathcal{\X})$ coincide con el total, luego también es un abierto. 	
+\begin{obs}[Solución trivial]
+	Como antes, la solución más sencilla sería elegir la topología trivial, puesto que sus únicos abiertos son el vacío y el total y siempre se cumpliría que para cada $\U'$ abierto de $\Y$ entonces la imagen inversa de este es un abierto del espacio de partida.
 \end{obs}
 
-Ahora que hemos visto que el caso interesante es que $f$ sea sobreyectiva, consideramos el siguiente diagrama:
-\[\xymatrix{
-	(\X,\T) \ar[r]^{f} \ar[d]_{p} &
-	(\mc{Y}, f(\T)) \\
-	\X/\mathord{\sim}  \ar[ru]_{\bar{f}}
-}\]
-donde la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$. Aquí, $p$ es simplemente la aplicación que manda $x\in\X$ a su clase de equivalencia, y consideramos $\bar{f}$ de forma que verifique que $f=\bar{f}\circ p$.
+No obstante, es interesante encontrar la topología más fina que cumpla esto.
 
-% Esto no lo nombró él en clase pero lo he encontrado por ahí y es cómodo
-Decimos que una aplicación $f$ que verifica que si $x\sim y$ entonces $f(x)=f(y)$ respeta la relación de equivalencia $\mathord{\sim}$. Nótese que no se exige la equivalencia, solo la implicación.
+Como queremos hacer a $f$ continua, es claro que las imágenes inversas de los abiertos de $\Y$ tendrán que ser abiertos de $\X$. Si somos radicales en nuestras pretensiones obtenemos la solución al problema.
 
-Como hemos definido la relación de equivalencia como la que verifica $x\sim y\iff f(x)=f(y)$, tenemos que $\bar{f}$ es una biyección. Además, se puede comprobar que si existe $\bar{f}$ tal que $f=\bar{f}\circ p$, entonces $f$ respeta la relación de equivalencia $\mathord{\sim}$.
+\[\T_\Y:=f(\T):=\{\U\subset \Y\midc f^{-1}(\U)\in \T\}\]
 
-Ahora, vamos a definir la topología cociente para $\X/\mathord{\sim}$. Buscamos una topología que verifique que la aplicación $p$ es continua y que existe una aplicación continua $\bar{f}$ que respete la relación de equivalencia $\mathord{\sim}$ y que verifique que $f=\bar{f}\circ p$.
+La comprobación de que $f(\T)$ es una topología es muy fácil y se deja el lector. La razón por la que $f(\T)$ es la topología más fina que hace a más fina que permite que $f$ sea continua es que si se añade algún abierto $\U$, por construcción $f^{-1}(\U)\not\in\T$ luego $f$ dejaría de ser continua.
 
+Por último, realizando un razonamiento por doble inclusión al análogo al de la sección anterior, se puede ver que es única.
+
+Llamamos a esta topología \tbitop{imagen} o \tbitop{imagen directa}.
+
+\subsection{Caracterización de la continuidad saliente}
+Continuando con nuestra filosofía particular, tomemos un espacio topológico arbitrario $(Z,\T')$. Asimismo consideremos una función $g$ que nace en $(\Y,f(\T))$ y muere en $Z$.
+
+El problema que nos planteamos es caracterizar a las aplicaciones continuas $g:\Y\to Z$.
+
+La solución a este problema no merece un premio a la originalidad.
+\begin{prop}[Propiedad universal de las identificaciones]
+	\label{const_universalIdentificaciones}
+	Una aplicación $g:\Y\to Z$ es continua si y solo si se verifica que $f$ es continua.
+\end{prop}
+\begin{proof}
+	Orientémonos en la oscuridad que nos envuelve con un bonito diagrama.
+	\begin{equation*}
+		\xymatrix{
+			(\X,\T) \ar[r]^f \ar@{-->}[rd]_{g\circ f} &
+			(\Y,f(\T)) \ar[d]^g & \\
+			&(Z,\T')
+		}
+	\end{equation*}
+	Como antes, es evidente que si $g$ es continua $g\circ f$ es continua.
+	
+	Recíprocamente, queremos ver que $g$ transforma abiertos en abiertos por imágenes inversas. Que dado $\U\in\T'$ entonces $g^{-1}(\U)\in f(\T)$ es equivalente (por definición de $f(\T)$) a que
+	\[f^{-1}(g^{-1}(\U))=(g\circ f)^{-1}(\U)\in\T\]
+	Como $\U\in\T'$ y por hipótesis $g\circ f$ es continua podemos irnos a casa, hemos ganado.
+\end{proof}
+\subsection{Propiedad universal de las identificaciones}
+Si hacemos un poco de ``copy-paste'' de la sección anterior obtenemos lo siguiente. 
+\begin{defi}[Propiedad universal]
+	Si para cierta topología $\T_\Y$ de $\Y$ se verifica el enunciado de la proposición \ref{const_universalIdentificaciones} se dice que la topología $\T_\Y$ verifica la \tbi[propiedad universal!de las identificaciones]{propiedad universal de las identificaciones}.
+\end{defi}
+Ahora vemos rápidamente que la propiedad universal (como en el caso de la sección anterior) caracteriza a la topología $\T_\Y$.
+
+\begin{prop}[Unicidad de la propiedad universal]
+	Sea $\T_\Y$ una topología que verifica la propiedad universal, entonces $\T_\Y=f(\T)$.
+\end{prop}
+\begin{proof}
+	Razonaremos por doble contención con exactamente los mismos trucos que en la sección anterior.
+	
+	Consideramos el siguiente diagrama, análogo al de la demostración de la proposición \ref{const_universalIdentificaciones} pero tomando $(Z,\T')=(\Y,\T_\Y)$ y $g=\text{id}$.
+	\begin{equation*}
+	\xymatrix{
+		(\X,\T)\ar[r]^{f}\ar@{-->}[rd]_{\text{id}\circ f=f}&(\Y,\T_\Y)\ar[d]^{\text{id}}\\
+		&(\Y,\T_\Y)
+	}
+	\end{equation*}
+	
+	En las condiciones del diagrama la identidad es continua, luego por la propiedad universal $\text{id}\circ f=f$ es continua. Por ende, al ser $f(\T)$ la más fina que hace a $f$ continua $\T_Y\subset f(\T)$.
+	
+	Recíprocamente, consideramos un diagrama análogo, pero tomando $(Z,\T')=(\Y,f(\T))$.  
+	\begin{equation*}
+	\xymatrix{
+		(\X,\T)\ar[r]^{f}\ar@{-->}[rd]_{\text{id}\circ f=f}&(\Y,\T_\Y)\ar[d]^{\text{id}}\\
+		&(\Y,f(\T))
+	}
+	\end{equation*}
+	Por definición de $f(\T)$ $\text{id}\circ f=f$ es continua, luego por la propiedad universal lo es la identidad, por ende $f(\T)\subset \T_\Y$.
+\end{proof}
+\begin{obs}[Sobreyectividad]
+	Veamos qué patología nos encontramos en el caso de que $f$ no sea sobreyectiva.
+	
+	Si $f$ no fuera sobreyectiva habría un $y\in\Y$ de manera que $f^{-1}(y)=\emptyset\in\T$, siendo, por continuidad de $f$ un punto abierto.
+	
+	Por tanto, $f(\T)\restriction_{\Y\setminus f(\X)}$ sería la topología discreta. No obstante la cosa no acaba aquí.
+	
+	Además de eso, vamos a poder particionar el espacio $\Y$ en dos clopens no triviales, lo cual, como veremos más adelante, nos dice que que $\Y$ es ``disconexo''.
+	
+	En efecto, $f^{-1}(\Y\setminus f(\X))=\emptyset$ que es abierto, por ende, $\Y\setminus f(\X)$ es abierto y $f(\X)$ es cerrado. Pero además $f^{-1}(f(\X))=\X$, luego $f(\X)$ es abierto y cerrado, siendo por tanto $\Y\setminus f(\X)$ también un clopen. 
+\end{obs}
+Así pues a partir de ahora nos centraremos en el caso sobreyectivo.
+
+Finalizamos la sección dando una última definición.
+\begin{defi}[Indentificación]
+	Una aplicación $f:(\X,\T)\to(\Y,\T_\Y)$ se dice \tbi{indentificación} si es sobreyectiva y $\T_Y=f(\T)$.
+\end{defi} 
+\subsection{Construcción de cocientes}
+En este apartado vamos a ver exactamente cuáles son las virtudes de trabajar con el caso sobreyectivo.
+
+Si $f$ es sobreyectiva podemos definir una relación de equivalencia $\sim$ sobre $\X$ de forma que la aplicación $\adher{f}:\frac{\X}{\sim}\to\Y$ esté bien definida y sea una biyección. Donde $\adher{f}(\class{x})=f(x)$.
+
+En este caso $\frac{\X}{\sim}$ denota el conjunto cociente inducido por la relación de equivalencia $\sim$ y $\class{x}$ la clase de equivalencia de $x$.
+
+Evidentemente, la relación de equivalencia $\sim$ será la inherente a la inyectividad.
+\begin{defi}[Relación de inyectividad]
+	Definimos la relación de equivalencia $\sim$ sobre $\X$ (¡compruébese!) como la que relaciona aquellos elementos de $\X$ que comparten imagen por $f$. Es decir $x\sim y$ si y solo si $f(x)=f(y)$.
+\end{defi}
+Nótese el gran parecido de este cambalache con el primer teorema de isomorfía para grupos o anillos. Por supuesto, se deja como ejericio al lector comprobar que $\adher{f}$ está bien definida y es biyectiva.
+
+Antes de continuar presentamos una pequeña definición.
+\begin{defi}[Proyección canónica]
+	Dados un conjunto $\X$ y una relación de equivalencia $\sim$ sobre $\X$, definimos la \tbi{proyección canónica} como la aplicación
+	\[\begin{array}{cc}
+	p:&\X\to\frac{\X}{\sim}\\
+	&x\mapsto\class{x}
+	\end{array}\]
+	Donde $\class{x}$ denota la clase de equivalencia de $x$.
+\end{defi}
+Ya con todos estos preliminares en la cabeza, vamos a dotar a $\frac{X}{\sim}$ de estructura de espacio topológico, y lo haremos (por comodidad) dotándole de la topología de las imágenes directas respecto de la proyección canónica $p$.
+
+Como esto ya empieza a ser un poco tenebroso, hagamos un diagrama.
+\begin{equation*}
+	\xymatrix{
+		(\X,\T) \ar[r]^f \ar[d]^p& (\Y,f(\T))\\
+		(\frac{\X}{\sim},p(\T))\ar[ru]_{\adher{f}=f\circ p^{-1}} & \\
+	}
+\end{equation*}
+Introduzcamos una definición por comodidad.
 \begin{defi}[Topología cociente]
-	Definimos la \tbitop[$\T/\mathord{\sim}$]{cociente} en las condiciones anteriores como:
-	\[\T/\mathord{\sim} = \{V\midc p^{-1}(V)\in\T\}\]
+	Definimos la \tbitop[$\T/\mathord{\sim}$]{cociente} como
+	\[\T/\mathord{\sim} := \left\{\U\subset\frac{\X}{\sim} \midc p^{-1}(\U)\in\T\right\}\]
 	es decir, la topología cociente es la topología imagen por $p$.
 \end{defi}
-
-Está claro que se verifican nuestros requisitos. Por un lado, $p$ es trivialmente continua (pues la topología imagen por $p$ es precisamente la que verifica esto). Por otro lado, por ser una topología imagen se verifica directamente la continuidad de $\bar{f}$.
-
-\begin{prop}
-	En las condiciones de la construcción (cuando la relación $\sim$ está definida como $x\sim y\iff f(x)=f(y)$), $\bar{f}$ es homeomorfismo.
-	
-	\begin{proof}
-		Ya hemos visto que $\bar{f}$ es biyectiva cuando la relación de equivalencia verifica $x\sim y\iff f(x)=f(y)$, y que es continua en el sentido en el que la hemos definido. Para ver la continuidad en el otro sentido, basta con ver que $\bar{f}$ es abierta.
-		
-		En efecto, sea $U\in \X/\mathord{\sim}$ abierto. Tenemos que $p^{-1}(U)=f^{-1}(\bar{f}(\U))$, porque:
-		\[x\in p^{-1}(U)\iff p(x)\in \U\stackrel{\bar{f}\text{ biy.}}{\iff}\bar{f}(p(x))\in \bar{f}(U)\iff f(x)\in\bar{f}(U)\iff x\in f^{-1}(\bar{f}(U))\]
-		
-		Entonces, como $\U$ es abierto y $p$ continua, $p^{-1}(U)$ es abierto, luego $f^{-1}(f(\U))$ también es abierto. Ahora por definición de la topología de $\mathcal{Y}$ tenemos que $\bar{f}(\U)$ es abierto en $\mathcal{Y}$.
-		
-	\end{proof}
+Nuestro objetivo ahora es ver qué relación hay entre los espacios $\frac{\X}{\sim}$ e $\Y$. Sin rodeos adelantamos que son homeomorfos.
+\begin{prop}[Teorema de homeomorfía]
+	$(\frac{\X}{\sim},\T/\sim)$ es homeomorfo a $(\Y,f(\T))$. Además, $\adher{f}$ es un homeomorfismo.
 \end{prop}
-
-Por otro lado, está claro que todos los abiertos de $\T/\mathord{\sim}$ son imágenes por $p$ de abiertos de $\T$ (pero no todas las imágenes de abiertos tienen que estar necesariamente en $\T$). Entonces, definimos:
-
+\begin{proof}
+	Probemos el ``además'' con lo cual tendremos el resultado.
+	
+	Sabemos que $\adher{f}$ es una biyección entre $\frac{\X}{\sim}$ e $\Y$, luego únicamente queda demostrar la continuidad en ambos sentidos.
+	
+	La propiedad universal de $\frac{\X}{\sim}$ nos dice que $\adher{f}$ es continua si y solo si $\adher{f}\circ p$ es continua.
+	
+	Teniendo en cuenta que $\adher{f}=f\circ p^{-1}$ tenemos que $\adher{f}\circ p=f\circ p^{-1}\circ p=f$,como $f$ es continua hemos terminado.
+	
+	Para la continuidad de $\adher{f}^{-1}$ seguimos un argumento similar.
+	
+	Por la propiedad universal de $f(\T)$, $\adher{f}^{-1}$ es continua si y solo si $\adher{f}^{-1}\circ f$ es continua.
+	
+	Pero $\adher{f}^{-1}\circ f=p\circ f^{-1}\circ f=p$, y $p$ es continua por definición.
+\end{proof}
+\subsection{Saturación}
 \begin{defi}[Conjunto saturado]
 	En las condiciones anteriores, decimos que $W\in\T$ es \tbi[conjunto!saturado]{saturado} si $W=p^{-1}(p(W))$. Es equivalente decir que $[x]\cap W\neq\emptyset\implies [x]\subset W$, o que $x\in W,y\sim x\implies y\in W$.
 \end{defi}
@@ -190,10 +289,6 @@ Gracias a esta definición, podemos reescribir la topología cociente como:
 \[\T/\mathord{\sim} = \{p(W)\midc W\in\T\text{, } W\text{ saturado}\}\]
 
 Además, vamos a dar un nombre a las funciones que envían $X$ en un espacio homeomorfo a un cociente:
-
-\begin{defi}[Identificación]
-	Una \tbi{identificación} es una aplicación $f:(X,\T)\to (\mc{Y},\T')$ sobreyectiva que verifica que $\T'$ es la topología imagen por $f$: $f(\T)$.
-\end{defi}
 
 La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. El hecho de que la topología de $\mc{Y}$ sea la imagen significa que una identificación es continua.
 
@@ -212,6 +307,7 @@ Para comprobar si una aplicación es una identificación, podemos usar la siguie
 Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores. Además, como no se exige que las identificaciones sean biyectivas, las dos condiciones anteriores no son equivalentes.
 
 Toda esta construcción abstracta debe servirnos para formalizar todo el concepto de cociente de un espacio. Esta es quizá la idea más importante que se va a ver en toda la asignatura, y es excepcionalmente útil para construir una gigantesca variedad de homeomorfismos y encontrar objetos simples homeomorfos a otros mucho más complejos.
+\subsection{Aplicaciones}
 
 \begin{exa}[Circunferencia unidad]
 	Definimos la aplicación:
@@ -307,8 +403,8 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 			\includegraphics[scale = 0.09]{img/pol_fund_mobius}
 		\end{figure}
 		
-		Nótese que en este caso hay un lado que no se pegaría, que corresponde al borde de la banda de Möbius. 
-		\newpage
+		Nótese que en este caso hay un lado que no se pegaría, que corresponde al borde de la banda de Möbius.
+		
 		Por otro lado, el de la botella de Klein sería:
 		\begin{figure}[h!]
 			\centering
