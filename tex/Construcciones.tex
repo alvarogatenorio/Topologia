@@ -263,7 +263,7 @@ Introduzcamos una definición por comodidad.
 \end{defi}
 Nuestro objetivo ahora es ver qué relación hay entre los espacios $\frac{\X}{\sim}$ e $\Y$. Sin rodeos adelantamos que son homeomorfos.
 \begin{prop}[Teorema de homeomorfía]
-	$(\frac{\X}{\sim},\T/\sim)$ es homeomorfo a $(\Y,f(\T))$. Además, $\adher{f}$ es un homeomorfismo.
+	$(\frac{\X}{\sim},\T/\mathord{\sim})$ es homeomorfo a $(\Y,f(\T))$. Además, $\adher{f}$ es un homeomorfismo.
 \end{prop}
 \begin{proof}
 	Probemos el ``además'' con lo cual tendremos el resultado.
@@ -281,49 +281,78 @@ Nuestro objetivo ahora es ver qué relación hay entre los espacios $\frac{\X}{\
 	Pero $\adher{f}^{-1}\circ f=p\circ f^{-1}\circ f=p$, y $p$ es continua por definición.
 \end{proof}
 \subsection{Saturación}
+En este apartado estudiaremos en detalle la topología de $\frac{\X}{\sim}$. Al ser este espacio homeomorfo al espacio $\Y$, si comprendemos la topología del cociente comprenderemos de regalo la topología de $\Y$ (lo cual es una estrategia tremendamente fecunda).
+
+Antes de comenzar introduzcamos una definición.
 \begin{defi}[Conjunto saturado]
-	En las condiciones anteriores, decimos que $W\in\T$ es \tbi[conjunto!saturado]{saturado} si $W=p^{-1}(p(W))$. Es equivalente decir que $[x]\cap W\neq\emptyset\implies [x]\subset W$, o que $x\in W,y\sim x\implies y\in W$.
+	Decimos que $A\subset\X$ es \tbi[conjunto!saturado]{saturado} si para todo punto $x\in A$ se verifica que también están todos los de su clase de equivalencia.
+	
+	Dicho de otra manera, si $x\in A$ entonces $p^{-1}(\class{x})\subset A$.
 \end{defi}
 
-Gracias a esta definición, podemos reescribir la topología cociente como:
-\[\T/\mathord{\sim} = \{p(W)\midc W\in\T\text{, } W\text{ saturado}\}\]
-
-Además, vamos a dar un nombre a las funciones que envían $X$ en un espacio homeomorfo a un cociente:
-
-La aplicación $f$ con la que hemos estado trabajando es, entonces, una identificación. El hecho de que la topología de $\mc{Y}$ sea la imagen significa que una identificación es continua.
-
-Las identificaciones se llaman a veces en la literatura aplicaciones cociente\index[general]{aplicación!cociente}. Esto está ligado con su utilidad: las identificaciones son aquellas que inducen una relación de equivalencia $\sim$ de forma que podemos desarrollar toda la construcción anterior. De esta forma, nos ``regalan'' un espacio homeomorfo a $\mc{Y}$ que a menudo es más simple y más fácil de entender que él. Este propósito quedará más claro en los ejemplos posteriores.
-
-Para comprobar si una aplicación es una identificación, podemos usar la siguiente proposición:
+Por ende, un conjunto saturado será unión (obviamente disjunta) de clases de equivalencia por ende se verifica la ecuación
+\begin{equation}
+p^{-1}(p(A))= A
+\end{equation}
+Esta definición de conjunto saturado es útil pues caracteriza a la topología cociente como vemos a continuación.
+\begin{prop}[Caracterización de la topología cociente]
+	\label{const_prop_satur}
+	La topología cociente está conformada por la proyección canónica de los abiertos saturados. Es decir
+	\[\T/\mathord{\sim} = \{p(\W)\midc \W\in\T\text{ y }\W\text{ saturado}\}\]
+\end{prop}
+\begin{proof}
+	Sea $\U$ abierto del cociente veamos que podemos expresarlo como la proyección canónica de un abierto saturado.
+	
+	Por construcción $p^{-1}(\U)$ es abierto saturado de $\X$. Si se diera la igualdad $p(p^{-1}(\U))=\U$ habríamos demostrado un contenido (y efectivamente así es por sobreyectividad de $p$).
+	
+	Recíprocamente, sea $\W$ abierto saturado es claro que $p(\W)$ es abierto ya que, por ser $\W$ saturado $p^{-1}(p(\W))=\W\in\T$.
+\end{proof}
+\begin{obs}[Cerrados saturados]
+	Con un argumento análogo al de la proposición \ref{const_prop_satur} puede demostrarse que los cerrados del cociente son las proyecciones canónicas de los cerrados saturados. 
+\end{obs}
+Con lo que ya sabemos podemos dar algunas condiciones suficientes para que una aplicación sea una identificación entre espacios topológicos.
 
 \begin{prop}[Condiciones suficientes de identificación]
-	Sea $f:\X\to\mc{Y}$ una aplicación. Si se verifica alguna de las siguientes condiciones, $f$ es una identificación:
+	Sea $f:\X\to\Y$ una aplicación sobreyectiva.
+	
+	Si se verifica alguna de las siguientes condiciones, $f$ es una identificación:
 	\begin{enumerate}
 		\item $f$ es una aplicación continua abierta.
 		\item $f$ es una aplicación continua cerrada.
 	\end{enumerate}
 \end{prop}
+\begin{proof}
+	Demostraremos únicamente $(1.)$, $(2.)$ es análogo y se deja como ejercicio.
+	
+	Como $f$ es sobreyectiva únicamente queda comprobar que la topología de $\Y$ sea la topología imagen. Al ser $f$ continua automáticamente se tiene que $\T_\Y\subset f(\T)$.
+	
+	Recíprocamente, dado $\U\in f(\T)$, por construcción $f^{-1}(\U)\in\T$, como $f$ es sobreyectiva y abierta se verifica que $f(f^{-1}(\U))=\U$ es abierto de $\Y$, por ende se da la igualdad de las topologías.
+\end{proof}
 
 Nótese que puede haber identificaciones que no verifiquen ninguna de las condiciones anteriores. Además, como no se exige que las identificaciones sean biyectivas, las dos condiciones anteriores no son equivalentes.
 
 Toda esta construcción abstracta debe servirnos para formalizar todo el concepto de cociente de un espacio. Esta es quizá la idea más importante que se va a ver en toda la asignatura, y es excepcionalmente útil para construir una gigantesca variedad de homeomorfismos y encontrar objetos simples homeomorfos a otros mucho más complejos.
-\subsection{Aplicaciones}
 
+En el siguiente apartado veremos un fragmento de la potencia de estas ideas, que insistimos en que son esencialmente las que las vistas en álgebra abstracta cuando estudiábamos los anillos inducidos por un homomorfismo evaluación usando el cociente del anillo por un polinomio.
+\subsection{Aplicaciones}
+En este apartado presentamos un montón de ejemplos para familiarizarnos con todas estas ideas. En primer lugar, vamos a estudiar la circunferencia unidad $\esfera^1$ como un cociente de la recta real.
 \begin{exa}[Circunferencia unidad]
-	Definimos la aplicación:
+	Definimos la aplicación $\varphi$ como
 	\[\begin{split}
-	\R&\to\esfera^1 \\
+	\varphi:\R&\to\esfera^1 \\
 	t&\mapsto e^{2\pi it}=(\cos 2\pi t,\sen 2\pi t)
 	\end{split}\]
-	y consideramos la relación de equivalencia $s\sim t\iff e^{2\pi is}=e^{2\pi it}\iff s-t\in\Z$. Vamos a ver que la circunferencia unidad $\esfera^1$ es homeomorfa a $\R/\mathord{\sim}$.
+	Compruébese que la relación de equivalencia inducida por la no inyectividad es:
+	\[s\sim t\iff e^{2\pi is}=e^{2\pi it}\iff s-t\in\Z\]
+	Vamos a ver que la circunferencia unidad $\esfera^1$ es homeomorfa a $\R/\mathord{\sim}$.
 	
 	Nos queda, pues, el siguiente esquema:
 	\[\xymatrix{
-		\R \ar[r] \ar[d] &
+		\R \ar[r]^\varphi \ar[d] &
 		\esfera^1 \\
 		\R/\mathord{\sim}  \ar@{<->}[ru]
 	}\]
-	y está claro que la aplicación que manda $\R$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta.
+	Está claro que la aplicación que manda $\R$ a $\esfera^1$ es una identificación, pues es sobreyectiva, continua y homeomorfismo local, luego es abierta (¡compruébese!).
 	
 	Ahora, nótese que considerando $[0,1]\subset\R$ podemos tomar las restricciones correspondientes con el siguiente esquema:
 	\[\xymatrix @C=0.5pc @R=0.5pc @L=-0.2pc {
@@ -332,85 +361,109 @@ Toda esta construcción abstracta debe servirnos para formalizar todo el concept
 		[0,1] \ar@{}[ur]^*[@]{\subset} \ar[dr] \\
 		& \R/\mathord{\sim}  \ar@{<->}[rruu]
 	}\]
-	y llegar a otra identificación. Ahora la relación de equivalencia asociada es simplemente aquella en la que $1\sim 0$ y todos los demás puntos son solamente equivalentes a sí mismos.
+	y llegar a otra identificación $\varphi\restriction_{[0,1]}$ (compruébese). Ahora la relación de equivalencia asociada es simplemente aquella en la que $1\sim 0$ y todos los demás puntos son solamente equivalentes a sí mismos.
+	
+	Por ende hemos concluido que la circunferencia unidad es homeomorfa al intervalo $[0,1]$ si ``pegamos'' los extremos, es decir, la circunferencia unidad es homeomorfa a $[0,1]/\mathord{\sim}$.
 \end{exa}
 
 Esta posibilidad de encontrar, a veces, un cociente más simple que tiene la misma topología nos motiva a definir:
 
 \begin{defi}[Dominio fundamental]
-	En una construcción como la anterior, llamamos \tbi{dominio fundamental} a la región cerrada más pequeña posible con un representante de cada clase de equivalencia. Según la situación, a veces se exigen también otras propiedades como compacidad.
-\end{defi}
-
-\begin{exa}
-	Ahora, vamos a considerar el toro de revolución que vive en $\R^3$, cuya parametrización es conocida:
-	\[\begin{split}
-	x&=(a\cos(\theta)+b)\cos(\phi),\\
-	y&=(a\cos(\theta)+b)\sin(\phi),\\
-	z&=a\sin(\theta).
-	\end{split}\]
+	Dada una identificación $f$ entre espacios topológicos llamamos \tbi{dominio fundamental} al menor subconjunto $D$ de $\X$ tal que $f\restriction_{D}$ continúa siendo identificación.
 	
-	Como vemos en la imagen, se trata de una figura generada por revolución de una circunferencia en torno a un eje.
+	A veces se exigen también algunas condiciones de regularidad extra, por ejemplo, que $D$ sea cerrado o ``compacto''. Normalmente nosotros pediremos que sea cerrado.
+\end{defi}
+\begin{obs}[Definición equivalente]
+	Es claro que si la restricción de una identificación $f:\X\to\Y$ a un conjunto $D$ continúa siendo identificación, el conjunto $D$ posee al menos un representante de cada clase de equivalencia de $\frac{\X}{\sim}$ (si no se rompe la sobreyectividad).
+	
+	Recíprocamente, si restringimos una identificación a un subconjunto que contenga al menos un representante de cada clase de equivalencia continúa siendo una identificación, ya que $\U$ es abierto de $\Y$ si y solo si $f^{-1}(\U)$ es abierto de $\X$ lo cual es equivalente a que $f^{-1}(\U)\cap D$ sea abierto de $D$, pero resulta que $f\restriction_{D}(\U)=f^{-1}(\U)\cap D$ (luego hemos ganado).
+	
+	Como conclusión obtenemos que podríamos haber definido dominio fundamental como el menor subconjunto de $\X$ que contiene al menos un representante de cada clase de equivalencia (con las condiciones de regularidad adicionales que queramos).
+\end{obs}
+\begin{exa}[Toro]
+	Ahora, vamos a considerar el \tbi{toro plano} $\toro^2$. El toro $\toro^2$ se define como el producto cartesiano $\esfera^1\times \esfera^1\subset\R^4$ con la topología relativa correspondiente.
+	
+	El toro plano admite una representación en $\R^3$ como vemos en la figura \ref{toro}. Informalmente se trata de una figura generada por revolución de una circunferencia en torno a un eje (o símplemente de un rosco).
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale = 0.15]{img/toro}
+		\caption{Ilustración de un toro}
+		\label{toro}
 	\end{figure}
-	
+	Si consideramos la aplicación $\varphi:\R^2\to\R^4$ definida por:
+	\[\begin{split}
+	x&=\cos(2\pi x),\\
+	y&=\sen(2\pi x),\\
+	z&=\cos(2\pi y),\\
+	t&=\sen(2\pi y).
+	\end{split}\]
 	Vamos a hacer pues una construcción similar a la ya vista para la circunferencia unidad. Nos queda un esquema del siguiente tipo:
 	
 	\[\xymatrix @C=0.5pc @R=0.5pc @L=-0.2pc {
 		& \R^2\ar[rr] \ar[dd] & &
-		\toro^2\subset\R^3 \\
-		[0,2\pi]^2 \ar@{}[ur]^*[@]{\subset} \ar[dr] \\
+		\toro^2\subset\R^4 \\
+		[0,1]^2 \ar@{}[ur]^*[@]{\subset} \ar[dr] \\
 		& \R^2/\mathord{\sim}  \ar@{<->}[rruu]
 	}\]
 	
-	En este caso, la relación de equivalencia está definida como:
+	En este caso, la relación de equivalencia inducida es (¡háganse las cuentas!):
 	\[(x,y)\sim (x',y')\iff x-x'\in\Z,\;y-y'\in\Z\]
-	y como dominio fundamental encontramos el cuadrado $[0,2\pi]^2$. 
+	y como dominio fundamental encontramos el cuadrado $[0,1]^2$.
 	
-	A menudo, los dominios fundamentales se representan con esquemas llamados \tbi[polígono fundamental]{polígonos fundamentales}. La forma de entenderlos es que la relación de equivalencia ``pega'' los puntos de $A$ y de $B$ en el sentido que indican las flechas, como vemos en el ejemplo siguiente, que representa el toro que acabamos de describir:
+	La demostración de que $\varphi$ es indentificación sigue la misma filosofía que la del ejemplo anterior, es decir, se basa en demostrar que es homeomorfismo local (no lo haremos aquí).
+	
+	Así pues queda demostrado que si cogemos un cuadrado y ``pegamos'' sus bordes tal y como indica la figura \ref{const_img_polfun_toro} obtenemos un espacio homeomorfo al toro, es decir a $\esfera^1\times \esfera^1$. Dicho formalmente $[0,1]^2/\mathord{\sim}$ es homeomorfo al toro plano.
+	\end{exa}
+	A menudo, los dominios fundamentales son representables mediante esquemas llamados \tbi[polígono fundamental]{polígonos fundamentales} (recortables ifantiles exóticos).
+	
+	La forma de entenderlos es que la relación de equivalencia ``pega'' los puntos de $A$ y de $B$ en el sentido que indican las flechas, como vemos en el ejemplo siguiente, que representa el toro que acabamos de describir:
 	
 	% Copiado de https://en.wikipedia.org/wiki/Fundamental_polygon . Querría hacer uno yo pero no ha dado tiempo.
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale = 0.1]{img/pol_fund_toro}
+		\caption{Polígono fundamental de un toro plano}
+		\label{const_img_polfun_toro}
 	\end{figure}
-\end{exa}
 
 En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes pero sin entrar en tantos detalles como en los ejemplos previos. Para familiarizarnos íntimamente con el espacio cociente, es un buen ejercicio mental tratar de visualizar cómo podemos deformar un objeto del ejemplo siguiente para transformarlo en otro homeomorfo. Al fin y al cabo, la homeomorfia, intuitivamente, es poder deformar sin romper, y los cocientes formalizan la noción de ``pegar'' puntos.
-
-\begin{exa} \
+\begin{obs}[Otro tipo de problema]
+	Puede ocurrir que no tengamos ni idea de cual puede ser una posible identificación entre un espacio y otro pero si sepamos a qué cociente podría ser homeomorfo el espacio a estudiar, lo cual, a la postre puede ayudarnos a encontrar una identificación (y demostrar así la homeomorfía).
+\end{obs}
+\begin{exa}[Otros espacios cociente interesantes]\
 	\begin{enumerate}
-		\item La esfera $\esfera^2$ se puede identificar con el disco unidad si la relación de equivalencia es la que hace que todos los puntos del borde estén relacionados entre sí y los demás, solo con sí mismos. De la misma forma, la podemos identificar con dos discos donde la relación de equivalencia ``pega'' los bordes. Por último, una esfera tiene como polígono fundamental:
+		\item La esfera $\esfera^2$ se puede identificar con el disco unidad si la relación de equivalencia es la que hace que todos los puntos del borde (la circunferencia) estén relacionados entre sí y los demás, solo consigo mismos. De la misma forma, la podemos identificar con dos discos donde la relación de equivalencia ``pega'' los bordes.
+		
+		Por último, una esfera puede identificar con un polígono fundamental de la siguiente manera
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale = 0.1]{img/pol_fund_esfera}
+			\caption{Polígono fundamental de la esfera.}
 		\end{figure}
 		
-		\item Podemos identificar el plano proyectivo real $\proy^2$ con un disco y una banda de Möbius donde la relación de equivalencia ``pega'' los bordes. También podemos identificarlo con una semiesfera en la que cada punto del borde es equivalente a su antípoda, o con una esfera completa en la que dos puntos están relacionados si y solo si son antipodales. Además, el polígono fundamental del plano proyectivo real sería:
+		\item Podemos identificar el plano proyectivo real $\proy^2$ con un disco y una banda de Möbius donde la relación de equivalencia ``pega'' los bordes (tiene su miga y no lo haremos aquí).
+		
+		También podemos identificarlo con una semiesfera en la que cada punto del borde es equivalente a su antípoda, o con una esfera completa en la que dos puntos están relacionados si y solo si son antipodales.
+		
+		Además, también admite una identificación como polígono fundamental
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale = 0.1]{img/pol_fund_plano_proy}
+			\caption{Polígono fundamental del plano proyectivo real.}
 		\end{figure}
 		
-		\item Vamos a ver otros dos polígonos fundamentales más. El de la banda de Möbius sería:
-		
+		\item Ya como colofón podemos definir como espacios con topología cociente dos objetos más.
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[scale = 0.09]{img/pol_fund_mobius}
-		\end{figure}
-		
-		Nótese que en este caso hay un lado que no se pegaría, que corresponde al borde de la banda de Möbius.
-		
-		Por otro lado, el de la botella de Klein sería:
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[scale = 0.1]{img/pol_fund_botella_klein}
+			\subfigure[Banda de Möbius]{\includegraphics[scale = 0.09]{img/pol_fund_mobius}}
+			\subfigure[Botella de Klein]{\includegraphics[scale = 0.1]{img/pol_fund_botella_klein}}
+			\caption{Banda de Möbius y Botella de Klein}
 		\end{figure}
 	\end{enumerate}
+	Esto es objetivamente bonito.
 \end{exa}
 
 \section{Producto de espacios topológicos}
