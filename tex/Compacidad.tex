@@ -318,15 +318,225 @@ Sin embargo, parece muy engorroso tener que demostrar que existe una base de ent
 	\end{proof}
 \end{prop}
 
-\subsection{Comportamiento topológico de la compacidad local}
+\section{Comportamiento topológico de la compacidad local}
+
+Como hemos hecho en temas anteriores, estudiaremos como se comporta la compacidad local en subespacios, sumas, productos y cocientes de espacios localmente compactos.
+
+\begin{itemize}
+	\item La suma finita de espacios localmente compactos, es localmente compacta.
+	
+	En efecto, dado $x\in\sum_{i=1}^r \X_i$ entonces existe un $i\in\{1,\cdots,r\}$ tal que $x\in \{i\}\times \X_i$. Como $\X_i$ es localmente compacto, existe una base $\Va{x}^i$ de entornos compactos de $x$. Entonces $\{i\}\times \Va{x}^i=\{\{i\}\times V : V\in\Va{x}^i\}$ es base de entornos compactos de $x$ en $\sum_{i=1}^r \X_i$.
+	
+	\item El producto finito de espacios localmente compactos es localmente compacto.
+	
+	Dado $\prod_{i=1}^r\X_i$, como cada $\X_i$ es localmente compacto, exite $\Va{x}^i$ base de entornos compactos en cada uno de ellos. Entonces, 
+	\[\Va{x}=\{V_1\times\cdots\times V_r: V_i\in\Va{x}^i\}\]
+	es base de entornos compactos, por el teorema de Tychonoff.
+	
+	\item Si la identificación es abierta entonces el cociente de un espacio localmente compacto también lo es.
+	
+	Por ser abierta la identificación manda entornos a entornos. Por ser además continua, la imagen de compactos es compacto. Luego el cociente es localmente compacto. En el ejemplo~\ref{T6:exa_comportamiento_local_compacidad_cociente} se muestra que es imprescindible que sea abierta. Si esto no ocurre, el cociente no es necesariamente localmente compacto.
+	
+	\item Los subespacios localmente cerrados son localmente compactos. Haremos esto aparte.
+\end{itemize}
+
+\begin{exa}[Identificación cerrada]\label{T6:exa_comportamiento_local_compacidad_cociente}
+	Veamos un ejemplo en el cual el cociente de un espacio topológico localmente compacto no lo es. Esto se debe a que la identificación no es abierta.
+	
+	Sabemos que $\R$ es localmente compacto. Sin embardo, $\R/\Z$ no lo es. Veamos que el punto $\Z$ del cociente no tiene ningún entorno compacto.
+	
+	Supongamos que sí. Entonces existe $K$ compacto de $\R/\Z$ tal que $\Z\in\U\subset K$, siendo $\U$ un abierto del cociente, es decir, es imagen por la proyección canónica $p$ de un abierto saturado $\W$ de $\R$ y, por tanto, $\Z\subset\W$. Entonces, para cada $k\in\Z$ podemos tomar $t_k\notin\Z$ tal que $t_k\in\W$ (pues $\W$ es abierto de $\R$ y, por tanto, es unión de intervalos abiertos). Así, $p(t_k)=t_k\in\U=p(\W)$ para todo $k\in\Z$. Consideramos entonces el conjunto de puntos aislados
+	
+	\[\{t_k : k\ge 1\}\subset\U\subset K,\]
+	
+	que es un subespacio infinito en un compacto, por lo que tiene algún punto de acumulación $a\in K$ (que no es ninguno de ellos por ser todos aislados). Entonces hay dos posibilidades: $a=\Z$ o $a\not=\Z$.
+	
+	Si $a=\Z$, entonces $p(\R\backslash\{t_k:k\ge 1\})$ es un entorno de $\Z$ que no corta a $\{t_k : k\ge 1\}$, por lo que $\Z$ no puede ser el punto de acumulación.
+	
+	Si $a\not=\Z$, entonces, por definición de punto de acumulación, para todo entorno $V_a$ de $a$ se tiene que $V_a\backslash\{a\}\cap \{t_k : k\ge 1\}\not=\emptyset$, lo cual no se da por ser los $t_k$ puntos aislados.
+	
+	Se concluye pues que el subespacio infinito $\{t_k : k\ge 1\}$ de $K$ compacto no tiene puntos de acumulación. Legamos así a un absurdo, por lo que no existen entornos compactos de $\Z$.
+	
+	Nótese que la identificación es cerrada. En efecto, sea $\F$ cerrado de $\R$, recordemos que los cerrados del cociente son las imágenes de cerrados saturados de $\R$. Así, si es saturado entonces $p(\F)$ es cerrado de $\R/\Z$. Si no es saturado es porque $\F\cap\Z\not=\emptyset$ pero $\Z$ no está contenido en él. Entonces, $\F\cup\Z$ es cerrado saturado de $\R$ y $p(F)=p(\F\cup\Z)$ es cerrado del cociente.
+	
+	Esto nos muestra que no vale con que tenga alguna propiedad igual de fuerte que ser abierta, sino que tiene que ser esta misma, no vale ninguna otra.
+\end{exa}
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{l|l|l|l|l|}
+	\begin{tabular}{c|c|c|c|c|}
 		\cline{2-5}
-		& \textbf{Subespacios}    & \textbf{Cociente}       & \textbf{Producto}       & \textbf{Suma}           \\ \hline
-		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Compacidad\\ local\end{tabular}}} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\ \hline
+		& \textbf{Subespacios}                                                           & \textbf{Cociente}                                                                       & \textbf{Producto} & \textbf{Suma} \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Compacidad\\ local\end{tabular}}} & \begin{tabular}[c]{@{}c@{}}Sí, en el caso de\\ localmente cerrados\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sí, en el caso de\\ identificaciones\\ abiertas\end{tabular} & Sí                & Sí            \\ \hline
 	\end{tabular}
-	\caption{Tabla resumen local compacidad.}
-	\label{Tabla_localcompacidad}
+	\caption{Tabla resumen de compacidad local.}
+	\label{Tabla_compacidad_local}
 \end{table}
+
+\subsection{Subespacios localmente cerrados}
+
+Antes de comenzar a elaborar el último apartado del estudio del comportamiento de la local compacidad conviene definir subespacio localmente cerrado.
+
+\begin{defi}
+	Un subespacio $\Y\subset\X$ es \tbi{localmente cerrado} si es abierto en su adherencia,
+	\begin{equation*}
+		\Y=\adher{\Y}\cap G,
+	\end{equation*}
+	donde $G$ es abierto de $\X$.
+\end{defi}
+
+Vayamos estudiando que subespacios de $\X$ localmente compacto lo son también, hasta concluir que los localmente cerrados son localmente compactos.
+
+Tomemos $\F\subset\X$ subespacio cerrado. Por ser $\X$ localmente compacto para todo $x\in\F$ hay una base de entornos compactos, que denotaremos por $K$. Entonces, $\F\cup K$ es entorno de $x$ en $\F$. Además es compacto, ya que es un cerrado relativo de $K$ compacto. Por tanto, $\F$ es localmente compacto.
+
+Consideremos ahora $G\subset \X$ subespacio abierto. Para todo $x\in G$ existe
+\[\Va{x}=\{K:K\text{ es compacto },\}\]
+base de entornos compactos en $\X$. Entonces,
+\[\matheuler{W}_x=\{K\in \Va{x}:K\subset G\},\]
+es base de entornos compactos en $G$, siendo entonces $G$ localmente compacto.
+
+Así pues,los subespacios abiertos y cerrados de $\X$ son localmente compactos. Imaginemos ahora que tenemos la siguiente cadena, donde $\F$ es cerrado de $\X$ y $G$ es abierto de $\F$ (no necesariamente de $\X$)
+\[G\subset\F\subset\X.\]
+Por lo que acabamos de ver, si $\X$ es localmente compacto, $\F$ también lo es. Entonces $G$ es subespacio abierto de $\F$ localmento compacto, luego $G$ lo es también. En este caso además podemos escribir $G=\F\cap W$, donde $W$ es abierto de $\X$. Lo mismo ocurre con la cadena
+\[\F\subset G\subset\X,\]
+donde podemos escribir $\F=G\cap H$, con $H$ cerrado de $\X$.
+
+Esto nos da lugar a subespacios de $\X$ que son intersección de un abierto y un cerrado y que son localmente compactos. Además, los primeros casos estudiados (subespacios abiertos de $\X$ y subespacios cerrados) son un caso particular de estos últimos. Veamos finalmente que se intersección de un abierto y un cerrado es equivalente a ser localmente cerrado.
+
+Dado $\Y\subset\X$ localmente cerrado. Por definición, $\Y=\adher{\Y}\cap G$ con $G$ abierto e $\adher{\Y}$ cerrado de $\X$.
+
+Por otro lado, sea $\Y=\F\cap G$ con $G$ abierto y $\F$ cerrado de $\X$. Entonces, como $\Y\subset\F$, se tiene que $\adher{\Y}\subset\F$. Además, como $\Y\subset\adher{\Y}$ e $\Y\subset G$, entonces $\Y\subset \adher{\Y}\cap G$. Así,
+\[\Y\subset \adher{\Y}\cap G\subset \F\cap G=\Y\]
+concluyéndose que $\Y=\adher{\Y}\cap G$ es localmente cerrado.
+
+Queda demostrado así que los subespacios localmente cerrados son localmente compactos. Pero ¿se dará el recíproco?
+
+\begin{prop}
+	Si $\X$ es un espacio topológico \hausdorff e $\Y\subset\X$ es localmente compacto. Entonces $\Y$ es localmente cerrado.
+\end{prop}
+\begin{proof}
+	Tenemos que probar que $\Y$ es abierto en su adherencia, es decir, que para todo $y\in\Y$ exite un abierto de la adherencia $G=U\cap\adher{\Y}$ (con $U$ abierto de $\X$ que contiene a $y$) tal que $y\in G\subset \Y$.
+	
+	Sea $y\in\Y$. Como $\Y$ es localmente compacto existe un entorno compacto $K\subset\Y$ de $y$. Por ser entorno, existe un abierto $W\cap\Y$ de $\Y$ tal que $y\in W\cap\Y\subset K$. Veamos que basta con tomar $U=W$.
+	
+	En efecto, dado que $W$ es abierto de $\X$, se tiene que $W\cap \adher{\Y}$ es abierto de la adherencia que contiene a $y$. Si probásemos que $W\cap \adher{\Y}\subset \adher{W\cap\Y}$ entonces, como $\X$ es \hausdorff, $K$ es cerrado, y esto implicaría que
+	\[W\cap \Y\subset K=\adher{K}\ra \adher{W\cap\Y}\subset K\subset\Y\ra W\cap \adher{\Y}\subset\Y \]
+	siendo así $W\cap \adher{\Y}$ abierto de la adherencia tal que $Y\in W\cap \adher{\Y}\subset\Y$, quedando demostrada la proposición.
+	
+	Probemos pues que $W\cap \adher{\Y}\subset \adher{W\cap\Y}$. Dado $z\in W\cap \adher{\Y}$, entonces $z\in \adher{\Y}$, por lo que para todo entorno $V_z$ se tiene que $V_z\cap\Y\not=\emptyset$. Además, $z\in W$, así que $V_z\cap W$ es entorno de $z$. En particular para este entorno se tiene que
+	\[(V_z\cap W)\cap \Y\not=\emptyset\ra V_z\cap(W\cap\Y)\not=\emptyset\]
+	para todo entorno $V_z$ de $z$. Esto implica que $z\in \adher{W\cap\Y}$, como queríamos.
+\end{proof}
+
+\section{Compacificación de Alexandroff}
+
+Como hemos podido ver a lo largo de este capítulo, los espacios compactos son espacios muy manejables, con buenas propiedades. ¿No sería una gran noticia que todos los espacios con los que vamos a trabajar lo fueran? Lamentablemente esto no va a ser así, pero si que vamos a lograr en muchas ocasiones hacer de nuestro espacio un subespacio de un espacio compacto.
+
+
+La idea de las compactificaciones es lograr esto (convertir espacios no compactos en subespacios de compactos) añadiendo puntos al espacio original.
+Veamos en primer lugar una definición de compactificación antes de pasar a ver la que da nombre a esta sección.
+
+\begin{defi}[Compactificación]
+	Llamaremos \tbi{compactificación} de un espacio $X$ a un espacio $Y$ si $X$ es homeomorfo a un subespacio denso de $Y$, e $Y$ es compacto.
+\end{defi}
+
+
+La condición de que el espacio sea denso en su compactificación solo tiene como objetivo, que ésta no sea innecesariamente grande. 
+
+
+Vemos antes de pasar a la de Alexandroff un breve ejemplo para terminar de aclarar la definición.
+\begin{exa}
+	Si $X\subset K$ con $K$ compacto, $\adher X\subset K$ es también compacta ya que se trata de un cerrado en un compacto y por lo tanto sería una compactificación de $X$.
+\end{exa}
+
+Ahora pasamos a ver el caso particular de la compactificación de Alexandroff. En primer lugar la definiremos para luego pasar a ver una serie de observaciones que nos llevaran a demostrar que realmente verifica ser compactificación.
+\begin{defi}[Compactificación de Alexandroff]
+	Sea $(X,\T)$ espacio topológico localmente compacto, no compacto que verifica ser $T_2$.
+	
+	Tomamos un punto al que pasamos a denotar como $\infty$ tal que  $\{\infty\}\notin X$ y consideramos $X^*=X\cup\{\infty\}$. 
+	
+	Tomaremos como  topología la que viene dada por la siguiente definición:
+	\begin{equation}
+	\T ^* = \T \cup \{A \subset X^* \colon X^*\setminus A \textup{ es compacto en }X\}
+	\end{equation}
+	
+	Vemos ahora una propiedad que verificará la topología que acabamos de definir. Tenemos que  $\infty\in\U\in\T^* \sii X^*\setminus\U$ es compacto en $X$ que es \hausdorff $\ra X^*\setminus\U$ es cerrado $\ra X\backslash(X^*\setminus\U)=\U\cap X\in\T$.
+\end{defi}
+Hemos definido de este modo la \tbi[compactificación!de Alexandroff]{compactificación de Alexandroff} aunque no hemos probado aún que $X^*$ sea un espacio compacto ni que su topología este bien definida siquiera, pasamos a hacerlo ahora. Para ello vamos a comprobarlo como una serie observaciones que probaremos inmediatamente.
+
+\begin{obs}En primer lugar enunciaremos en cada apartado una propiedad, probandola a continuación dentro del mismo apartado. Los primeros buscan probar que realmente es topología, luego estudiamos propiedades de la misma.
+	
+	\begin{enumerate}
+		\item $\emptyset,X^*\in \T^*$, la comprobación en ambos casos es trivial. 
+		\item La unión de abiertos de $\T^*$ es abierta. Veamos su demostración.
+		
+		Podemos descomponer los abiertos de esta unión en dos grupos, los abiertos que contienen a $\infty$ y los que no. De este modo, expresamos la unión como 
+		\begin{equation}
+		\bigcup_{U\in\T}U_i \cup \bigcup_{\infty\in\W_j}W_j
+		\end{equation}
+		Denotaremos $\bigcup_{U\in\T}U_i$ como $U$ y $\bigcup_{\infty\in\W_j}W_j$ como $W$. Vayamos ahora por casos.
+		
+		Si solo tenemos $U$ ($W=\emptyset$) ya lo tenemos, dado que se trataría de unión de abiertos de $\T$ y al ser ésta topología será un abierto de $\T$ y, por lo tanto, también de $\T^*$.
+		
+		
+		Si solo tenemos $W$ tenemos que $X^*\setminus W=\bigcap_j X^*\setminus W_j$ será cerrado en $X$ y estará contenido en $X^*\setminus W_{j_0}$ que es compacto por el modo en que hemos definido los $W_{j_0}$. Por lo tanto, tenemos que  $X^*\setminus W=\bigcap_j X^*\setminus W_j$ es un cerrado dentro de un compacto, y esto implica que es compacto. Con esto, por la definición, tenemos que $W$ es abierto.
+		
+		Por último, si tenemos tanto $U$ como $W$ no vacíos, la demostración será similar al caso anterior. 
+		
+		Tomamos $G$ la unión de $W$ y $U$. Entonces tenemos $X\setminus G= (X^*\setminus W)\cap(X\setminus U)\subset X^*\setminus W$.
+		Como hemos visto, $(X\setminus U)$ es cerrado y $(X^*\setminus W)$ compacto, que es cerrado por ser $X$ \hausdorff, por lo que la intersección de ambos será un cerrado en un compacto, y por lo tanto compacta. Así, $X\setminus G$ será compacto y por lo tanto $G$ abierto.
+		
+		\item Veamos que la intersección finita de abiertos es abierta, dados dos abiertos $U$ y $V$ tenemos que, su intersección será abierta. Para probarlo nos basta con observar las tres situaciones distintas que pueden darse:
+		\begin{equation}
+		U\cap W=
+		\left\{ \begin{array}{lcc}
+		\infty\notin U,V &  \ra  & \textup{resulta trivial (nos encontramos en }\T)\\
+		\\\infty\in U,\infty\notin V &   \ra  & \textup{como $U\cap X\in\T$, asi que ambos son abiertos de $\T$}\\
+		\\\infty\in U,V &  \ra  & \textup{ya que la intersección finita de compactos es compacta}\\
+		\end{array}
+		\right.
+		\end{equation}
+		Con estos 3 puntos hemos demostrado que $\T^*$ es topología.
+		\item Como se desprende de su definición (dejamos al lector el comprobarlo por su cuenta, no hay que recurrir a más que la propia definición) tenemos que $\T^*|_X=\T$. 
+		\item Es $T_2$. Dado que como se nos ha dicho $\T$ es $T_2$, tan solo podríamos encontrar problemas a la hora de separar $x\in X$ y $\infty$.
+		
+		Ahora bien, como $X$ es localmente compacto, $\exists K$ compacto tal que $x\in U\subset K$ siendo $U$ abierto. Además, $X^*\setminus K=W$ es abierto en $\T^*$, por la definición de la misma, que contiene a $\infty$.
+		
+		Como $U\cap W\subset K\cap (X^*\setminus K)=\emptyset$ hemos encontrado los entornos de los puntos que buscabamos. 
+		
+		
+		\item $X^*$ es compacto. Gracias a las observaciones desarrolladas anteriormente nos va a ser sencillo probarlo.
+		
+		Dado un recubrimiento por abiertos de $X$ $U_{i\in I}$ tenemos que $\exists U_{i_0}\ni\infty$ y entonces $X^*\setminus U_{i_0}=K$ será compacto en $X$. Por lo tanto, al ser $U_{i\in I}$ recubrimiento por abiertos de $K$ y éste compacto, tenemos que $K\subset U_{i_1}\cup\cdots\cup U_{i_r}$ (extraemos subrecubrimiento finito del mismo).
+		
+		Ahora bien, como $K\subset U_{i_1}\cup\cdots\cup U_{i_r}$ y $X^*\setminus K\subset U_{i_0}$ entonces tenemos que $X^*\subset U_{i_0}\cup  U_{i_1}\cup\cdots\cup U_{i_r}$, con lo que habríamos obtenido un subrecubrimiento finito y probado de este modo su compacidad.
+		
+		\item Completemos ahora la definición de compactificación viendo que $X\subset X^*$ es abierto denso en $X$. 
+		
+		Ver que es abierto es trivial mediante la definición de $\T^*$ (dado que $X$ es abierto en $\T$). Ahora, para ver que es denso, sea $U$ abierto no vacio y supongamos que $\infty\in\U$ (el caso de que no esté no es necesario analizarlo ya que sería trivialmente abierto de $X$ por la definición). Ahora bien, $U=(X^*\setminus K)$ con $K$ compacto de $X$, por lo que tiene que cortar a $X$. En caso contrario, $U\cap X=\emptyset\ra K=X$ que no es compacto.
+		
+		
+		\item $X^*$ es única, es decir, es homeomorfa a toda otra compactificación por un punto.
+		
+		Sea ahora $(Y,\T^{'})$  una compactificación por un punto de $X$, siendo $Y= f(X) \cup \{w\}$ con $Y$ compacto $T_2$ y $f$ inmersión, abierta, densa.
+		
+		Definimos $h : Y \longrightarrow X^*$ mediante $h(w) = \infty$ y $h(f(x)) = x$ para todo $x \in X$. Evidentemente $h$ es biyectiva. Nos queda por ver que es continua, dado que al ser $Y$ compacto y $X^*$ ser \hausdorff, esto implica que es cerrada, y por lo tanto homeomorfismo.
+		
+		Tomamos $U\subset X^*$, vayamos ahora por casos:
+		
+		Si $U\subset X$, entonces $f(U)=h^{-1}(U)\subset Y$ que será abierto por ser $f$ abierta.
+		
+		Si $\infty\in U$, entonces $X\cap U=X\setminus K$ siendo $K$ compacto. Como $h^{-1}(U)=f(X\setminus K)\cup \{w\}=Y\setminus f(K)$, se tiene que $h^{-1}(U)=Y\setminus f(K)$, que es abierto dado que $f(K)$ es compacto en $Y$ que es \hausdorff, luego es cerrado.
+	\end{enumerate}.
+\end{obs}
+Con estas observaciones, podemos resumir lo demostrado diciendo que la topología que hemos tomado es realmente topología y compactificación de $X$ y además hemos probado que añadir un único punto caracteriza la topología de Alexandroff. Para terminar esta sección vamos a ver unos pocos ejemplos de compactificaciones.
+\begin{exa}
+	Veremos ahora ejemplos de compactificaciones. Los primeros tendrán como objetivo entender el mecanismo de la misma. Después, pondremos ejemplos para aclarar que como hemos visto, dado un conjunto sus compactificaciones por un punto son homeomorfas, pero no sucede al contrario (dada una compactificación los conjuntos de los que puede provenir no tienen porque ser homeomorfos). 
+	\begin{enumerate}
+		\item Tenemos que $\R^*=\mathcal{S}^1$, $\R^{n*}=\mathcal{S}^n\subset \R^{n+1}$.
+		\item $[0,1]\ne(0,1)^*$
+		\item $(0,1]^*=[0,1]$ y $[0,1)^*=[0,1]$ pero estos dos subespacios no son homeomorfos entre si.
+		\item Siendo $X=[0,1/2)\cup(1,2]$ e $Y=[0,1)$ tenemos que sus compactificaciones son la misma $X^*=Y^*=[0,1]$ pero no son homeomorfos.
+	\end{enumerate}
+\end{exa}
+
