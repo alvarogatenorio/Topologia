@@ -613,6 +613,7 @@ Vamos a ver ahora una serie de proposiciones relacionadas con la topología prod
 \end{prop}
 
 \begin{prop}[Inmersiones]
+	\label{const_prop_inmersion}
 	La aplicación $f : X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,x,\dots,a_r)$ es una inmersión.
 	
 	\begin{proof}
@@ -692,63 +693,109 @@ Por último, presentamos algunas observaciones útiles sobre la topología de lo
 	Por el lema \ref{const_lem_cartesiano} estas dos bases son la misma, luego la topología es la misma.
 \end{proof}
 \section{Suma de espacios topológicos}
-Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
+Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector (también iremos más rápido). La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
 
 Como antes, vamos a comenzar viendo las propiedades que debe cumplir la topología que caracterice nuestro espacio para luego pasar a construirla.
 
-Dados los espacios $(X_i, \T_i)^{1\le i \le r}$ con sus correspondientes topologías, construimos el espacio suma como
+Dados los espacios $(X_i, \T_i)_{1\le i \le r}$ con sus correspondientes topologías, consideramos la ``suma'' de los conjuntos como
 \begin{equation}
-(X_i, \T_i)\stackrel{j_i}\longrightarrow Y=\sum_{i=1}^rX_i=\bigcup_{i=1}^r\{i\}\times X_i
+ Y:=\sum_{i=1}^rX_i:=\bigcup_{i=1}^r\{i\}\times X_i
 \end{equation}
-Conviene resaltar que, como podemos observar, las copias de los distintos espacios $X_i$ en la suma será distinta, dado que a cada una le corresponderá un elemento $i$ distinto.
+Antes de continuar introducimos la siguiente definición.
+\begin{defi}[Inclusiones]
+	Definimos la \tbi{inclusión} de $X_i$ en $Y$ como la aplicación
+	\begin{equation}
+		\begin{array}{cc}
+		j_i: & X_i\to Y\\
+		& x_i\mapsto (i,x_i)
+		\end{array}
+	\end{equation}
+\end{defi}
+Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T_Y$ más fina en $Y$ de modo que haga a todas las continuas simultáneamente.
 
-Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T$ más fina en $Y$ de modo que haga las $j_i$ continuas. Las funciones $j_i$ las llamaremos \tbi{inclusiones}.
+Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T_Y$ todos los conjuntos de $Y$ cuya inversa vía todas las inclusiones sea abierta (tal y como hicimos en la construcción del cociente).
 
-Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T$ todos los conjuntos de $Y$ cuya inversa sea abierta.
-De este modo, también incluiremos $\{i\}\times X_i$ dado que $j^{-1}(\{i\}\times X_i)=X_i$ que es abierto en $\T_i$.
+De este modo, exigiremos que $\{i\}\times U_i$ (siendo $U_i\in\T_i$) sea abierto dado que $j^{-1}(\{i\}\times U_i)=U_i$, que es abierto en $\T_i$.
 
-Ahora construimos la topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$ comprobemos que está bien definida y que es realmente base.
+Evidentemente, la colección de conjuntos de esta forma no es una topología, es claro que la unión falla, no obstante, hay una forma muy sencilla de arreglar esto, tal y como hicimos con los productos.
+
+Si construimos la topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$ se comprueba fácilmente que efectivamente es base y que, además, resuelve nuestro problema.
+
+En efecto, es claro que cubre el espacio, estudiemos las intersecciones.
 \begin{equation}
 (\{i\}\times U_i)\cap(\{j\}\times U_j)=
 \left\{ \begin{array}{lcc}
-\{i\}\times(U_i\cap U_j)\in\T &   si  & i=j \\
-\\  \emptyset\in\T& si & i\neq j 
+\{i\}\times(U_i\cap U_j)\in\B &   si  & i=j \\
+\\  \emptyset\in\B& si & i\neq j 
 \end{array}
 \right.
 \end{equation}
-Como podemos ver, ambos casos verifican que la intersección está contenida en $\T$ como debiamos demostrar para ver que es base del mismo.
-Así, podemos definir:
+Como podemos ver, ambos casos verifican que la intersección de abiertos de la base es está en $\B$ (que es, de hecho, más fuerte de lo que necesitamos). Además, es claro que la topología engendrada por $\T$ es la más fina ya que si añadiéramos algún abierto más romperíamos la continuidad de alguna inclusión.
+
+Condensemos todo esto en una definición.
 \begin{defi}[Topología suma]
-	Dados los espacios con sus correspondientes topologías $(X_i, \T_i)^{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbitop{suma} como aquella topología que tiene como base $\B=\{\{i\}\times U_i:U_i\in\T_i\}$.
+	Sean $r$ espacios topológicos $(X_i, \T_i)_{1\le i \le r}$ y el espacio suma $Y=\sum_{i=1}^rX_i$, construimos la \tbitop[$\sum\T_i$]{suma}, y la denotamos $\sum\T_i$ como aquella topología que tiene como base \[\B=\{\{i\}\times U_i:U_i\in\T_i\}\]
 \end{defi}
 
-Una vez vista su definición, veamos ahora un resultado fundamental acerca de la topología suma que no va a ser otra que la siguiente propiedad universal:
+Ahora volvemos a hacer lo que hacemos siempre, es decir, tratar de caracterizar a las aplicaciones continuas que mueren en el espacio suma, para posteriormente ver que es precisamente esa caracterización la que caracteriza a la topología suma ¡valga la redundancia!
 
 \begin{lem}[Propiedad universal de la suma]
 	En la siguiente situación:
 	\[\xymatrix{
-		X \ar[rd]^f & \\
-		X_i \ar[u]^{j_i} \ar[r]_{f_i} &
-		Y
+		(X_i,\T_i)\ar[r]^{j_i} \ar[rd]_{g\circ j_i = g\restriction_{X_i\times\{i\}}}& (Y,\sum\T_i)\ar[d]^{g}\\
+		& (Z,\T')
 	}\]
-	tomando en $X_i$ las topologías $\T_i$ y siendo $(Y,\T)$, tenemos la siguiente \tbi[propiedad universal!de la suma]{propiedad universal de la suma} que caracteriza la continuidad de $f$, diciendo que esta será continua si y solo si  $f_i=j_i\circ f$ son continuas para todo $i$.
+	$g$ es continua si y solo si $g\circ j_i\stackrel{!}{=}g\restriction_{X_i\times\{i\}}=:g_i$ es continua para todo $i$.
 	
+	A esta condición necesaria y suficiente se llama \tbi[propiedad universal!de la suma]{propiedad universal de la suma}.
 	\begin{proof}
-		Vemos que si $f$ es continua, como $j_i$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
+		Si $g$ es continua, como $j_i$ son continuas, tenemos que $g_i$ también lo será al ser composición de estas.
 		
-		Por otro lado, tenemos que dado que $(Y,\T)$ como hemos visto en la construcción de la topología suma $T$ es un recubrimiento abierto y continuo en cada uno de los $X_i$, tenemos que al ser continuo cada $f_i$ en $X_i$ también lo será $f$.
+		Por otro lado, como $\{i\}\times X_i$ es un recubrimiento abierto de $Y$, y además $g_i$ es continua en cada abierto del recubrimiento, es claro que, por definición de $g_i$, $g$ es continua.
 	\end{proof}
 \end{lem}
 
-Resulta importante indicar que como se desprende de la demostración (segunda implicación) la propiedad universal no solo nos va a caracterizar la función $g$, sino que nos permite caracterizar también la topología suma (si no se cumple la propiedad podemos asegurar que no estamos trabajando en esta). 
+Veamos que en efecto la propiedad universal de la suma caracteriza a la topología suma, y, por tanto, si un espacio topológico no cumple esta propiedad podemos asegurar que no tiene la topología suma.
 
-\begin{obs}
+\begin{lem}[Unicidad de la propiedad universal]
+	Si en el espacio topológico $Y=(\sum_{i=1}^rX_i,\T_Y)$ se verifica la propiedad universal de la suma , entonces $\T_Y=\sum\T_i$.
+\end{lem}
+\begin{proof}
+	Exactamente igual que en las anteriores, basta con considerar los diagramas
+	\begin{equation*}
+		\begin{array}{cc}
+			\xymatrix{
+				(X_i,\T_i)\ar[r]^{j_i} \ar[rd]_{j_i\circ\text{id}=j_i}& (Y,\T_Y) \ar[d]^{\text{id}}\\
+				& (Y,\T_Y)
+			} \qquad&
+			\xymatrix{
+				(X_i,\T_i)\ar[r]^{j_i} \ar[rd]_{j_i\circ\text{id}=j_i} & (Y,\T_Y) \ar[d]^{\text{id}}\\
+				& (Y,\sum\T_i)
+			}
+		\end{array}
+	\end{equation*}
+	y razonar por doble contención.
+	
+	Centrándonos en el diagrama de la izquierda, la identidad es continua luego las inclusiones son continuas, por ende, $\T_Y\subset\sum\T_i$.
+	
+	Mirando ahora a la derecha, las inclusiones son continuas por construcción luego $\text{id}$ es continua, luego $\sum\T_i\subset \T_Y$.
+\end{proof}
+Para poner punto y final a este capítulo veamos algunas propiedades de los espacios suma.
+\begin{obs}[Propiedades del espacio suma]
 	Veamos por último un par de observaciones sobre esta topología que pueden resultar interesantes de cara a conocer el mecanismo de la misma.
 	\begin{enumerate}
-	\item Como hemos visto, $\{i\}\times X_i\subset\sum_j X_j$ siendo $\{i\}\times X_i$ abierto. Veamos que también es cerrado.
+	\item Como hemos visto, $\{i\}\times X_i\subset\sum_{j=1}^r X_j$ siendo $\{i\}\times X_i$ abierto. Veamos que también es cerrado.
 	
-	Dado que $\sum_j X_j\setminus \{i\}\times X_i=\bigcup_{j\ne i }X_j$ es abierto, lo tenemos.
+	En efecto, $\sum_{j=1}^r X_j\setminus \{i\}\times X_i=\bigcup_{j\ne i }X_j$ es abierto, luego lo tenemos.
 	
-	\item Las inclusiones $X_l\stackrel{j_l}\longrightarrow\sum_iX_i$ son inmersiones abiertas y cerradas. Esto lo dejamos como ejercicio al lector, es un ejercicio sencillo pero puede resultar útil como repaso del modo de construcción de la topología suma realizado previamente en el apartado. \qedhere
+	Como hemos comentado en un par de ocasiones, adelantándonos a los acontecimientos, el hecho de que haya clopens no triviales (vacío o total) implica cierta noción de desconexión, (lo cual cuadra con la idea de poner los espacios bien separaditos en estantes).
+	\item $A$ es cerrado de $\sum_{i=1}^rX_i$ es cerrado si y solo si su imagen inversa vía todas las inclusiones es cerrada.
+	
+	En efecto, por las propiedades de las funciones inversas con las restas conjuntistas
+	\[X_i\setminus j_i^{-1}(A) = j_i^{-1}\left(\left(\sum_{i=1}^rX_i\right)\setminus A\right)\]
+	Como $(\sum_{i=1}^rX_i)\setminus A$ es abierto por hipótesis, entonces $X_i\setminus j_i^{-1}(A)$ es abierto por construcción.
+	
+	Recíprocamente, si $j_i^{-1}\left(\left(\sum_{i=1}^rX_i\right)\setminus A\right)$ es abierto por hipótesis para todo $i$, entonces, por construcción, $(\sum_{i=1}^rX_i)\setminus A$ debe ser abierto. Hemos terminado.  
+	\item Las inclusiones son inmersiones abiertas y cerradas. Esto lo dejamos como ejercicio al lector, es un ejercicio sencillo, diremos como pista la demostración de que son inmersiones es análoga a la de la proposición \ref{const_prop_inmersion} (un poco engorrosa). \qedhere
 \end{enumerate}
 \end{obs}
