@@ -1,4 +1,0 @@
-﻿3.2 Imagenes directas
-
-Observacion 3.2.1 (Sobreyectividad). 
-Creo que cuando pone luego f(T|...) es f(T)|...

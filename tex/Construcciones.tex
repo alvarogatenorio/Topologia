@@ -205,7 +205,7 @@ Ahora vemos rápidamente que la propiedad universal (como en el caso de la secci
 		&(\Y,f(\T))
 	}
 	\end{equation*}
-	Por definición de $f(\T)$ $\text{id}\circ f=f$ es continua, luego por la propiedad universal lo es la identidad, por ende $f(\T)\subset \T_\Y$.
+	Por definición de $f(\T)$, $\text{id}\circ f=f$ es continua, luego por la propiedad universal lo es la identidad, por ende $f(\T)\subset \T_\Y$.
 \end{proof}
 \begin{obs}[Sobreyectividad]
 	Veamos qué patología nos encontramos en el caso de que $f$ no sea sobreyectiva.
@@ -467,7 +467,7 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 	Puede ocurrir que no tengamos ni idea de cual puede ser una posible identificación entre un espacio y otro pero si sepamos a qué cociente podría ser homeomorfo el espacio a estudiar, lo cual, a la postre puede ayudarnos a encontrar una identificación cuyo cociente inducido sea el candidato (y demostrar así la homeomorfía).
 \end{obs}
 \begin{exa}[Cilindro]
-	Para ilustrar el problema descrito en la observación \ref{const_otroProb} vamos a imaginar que estamos en el jardín de infancia jugando con cartulinas, nosotros, que somos chavales avispados, sabemos que el cilindro se define como $\esfera^1\times[0,1]\subset\R^3$, pero nosotros sólo tenemos una cartulina, eso es $[0,1]^2$. De pronto se nos enciende la bombilla y decimos, ``¡anda coño!'' (Arquímedes hubiera dicho ``¡eureka!'') y comprobamos que si pegamos los bordes del cuadrado nos sale algo, así a ojo, muy parecido a un cilindro.
+	Para ilustrar el problema descrito en la observación \ref{const_otroProb} vamos a imaginar que estamos en el jardín de infancia jugando con cartulinas, nuestro objetivo será construir un cilindro. Nosotros, que somos chavales avispados, sabemos que el cilindro se define como $\esfera^1\times[0,1]\subset\R^3$, pero sólo tenemos una cartulina, eso es $[0,1]^2$. De pronto se nos enciende la bombilla y decimos, ``¡anda coño!'' (Arquímedes hubiera dicho ``¡eureka!'') y comprobamos que si pegamos los bordes del cuadrado nos sale algo, así a ojo, muy parecido a un cilindro, no obstante somos desconfiados y queremos comprobarlo formalmente.
 	
 	Esta idea de pegar los bordes la podemos modelizar con la relación de equivalencia
 	\[(x,y)\sim (x',y')\sii x-x'\in\Z\text{, }y=y'\]
@@ -480,7 +480,7 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 	
 	Dicho formalmente, estamos considerando el espacio cociente $[0,1]^2/\mathord{\sim}$ como candidato a ser homeomorfo al cilindro. Para demostrar que así es debemos encontrar una aplicación $\varphi:[0,1]^2\to\esfera^1\times[0,1]$ tal que su relación de equivalencia asociada sea $\sim$ y además sea identificación.
 	
-	Es claro que se debe cumplir $\varphi(0,y)=\varphi(1,y)=(x',y',z')$ y que $x'^2+y'^2=1$ para todo $y\in[0,1]$.
+	Es claro que se debe cumplir (entre otras cosas) $\varphi(0,y)=\varphi(1,y)=(x',y',z')$ y que $x'^2+y'^2=1$ para todo $y\in[0,1]$.
 	
 	Llegados a este punto más vale que se te ilumine la cabeza y te des cuenta de que una función trigonométrica te haría muy buen apaño. Por ejemplo
 	\[\begin{split}
@@ -488,136 +488,210 @@ En el siguiente ejemplo, vamos a ver varios homeomorfismos cociente importantes 
 		y' =& \sen(2\pi x)\\
 		z' =& y
 	\end{split}\]
-	Esta función cumple trivialmente todas las propiedades requeridas. Es evidente que es sobreyectiva en $\esfera^1\times [0,1]$ además también es continua, y, no solo eso sino que es homeomorfismo local, con lo cual es abierta.
+	Esta función cumple trivialmente todas las propiedades requeridas. Es evidente que es sobreyectiva en $\esfera^1\times [0,1]$ además también es continua, y, no solo eso sino que es homeomorfismo local, con lo cual es abierta (y por tanto identificación).
 	
-	En ningún momento hemos demostrado que ningunas de las aplicaciones vistas en ejemplos sean homeomorfismos locales (que parece ser la clave para demostrar que son abiertas y por tanto identificaciones), sin embargo lo hacemos porque más adelante veremos resultados potentes que nos permitirán demostrar este tipo de cosas de un plumazo.
+	En ningún momento hemos demostrado que ninguna de las aplicaciones vistas en ejemplos sean homeomorfismos locales (que parece ser la clave para demostrar que son abiertas y por tanto identificaciones), sin embargo, no lo hacemos porque más adelante veremos resultados potentes que nos permitirán demostrar este tipo de cosas de un plumazo.
 	
-	Bien, si damos por hecho eso, ya habríamos demostrado formalmente que $[0,1]^2/\mathord{\sim}$ es homeomorfo al cilindro, y, por tanto, podríamos ir a pedir una pegatina en forma de estrella, que nos la hemos ganado. 
+	Bien, si damos por hecho eso, ya habríamos demostrado formalmente (por el teorema de homeomorfía) que $[0,1]^2/\mathord{\sim}$ es homeomorfo al cilindro, y, por tanto, podríamos ir a pedir una pegatina con forma de estrella sonriente, que nos la hemos ganado. 
 \end{exa}
 \section{Producto de espacios topológicos}
-Una vez visto el caso del espacio cociente, pasamos ahora a realizar un desarrollo similar para otras construcciones como son los productos y sumas de espacios topológicos. Se va a realizar un procedimiento análogo en el desarrollo de las mismas al de la anterior sección.
+Una vez visto el caso de los espacios cociente, pasamos ahora a realizar un desarrollo similar para otras construcciones como son los productos y sumas de espacios topológicos (esta sección y la siguiente).
 
-Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Tomamos entonces 
-\begin{equation}
-Y=\prod_i X_i \stackrel{p_i^r}{\longrightarrow}(X_i,\T_i)
-\end{equation}
-Lo que buscamos en la construcción del espacio producto es dotar a $Y$ de la topología $\T$ más fina que haga continuas todas las aplicaciones $p_i^r$ para $1\le i\le r$. A dichas  $p_i^r$ las conoceremos a partir de ahora como \tbi[proyeccion@proyección]{proyecciones}.
-
-De este modo, como queremos que $p_i^r$ sea continua  tenemos que para todo abierto $U_i\in \T_i$ deberá verificarse que $(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r$ (todos son los totales excepto en el caso de $X_i$) sea abierto. Es decir, que se cumpla $X_1\times\cdots\times U_i \times\cdots X_r\in \T$
-
-Por lo tanto, vemos que por ser topología ha de verificarse que $(p_i^r)^{-1}(U_i)\cap (p_j^r)^{-1}(U_j)= X_1\cdots\times U_i \times\cdots\times U_j\times \cdots X_r$ sea parte de ella (intersección de abiertos).
-
-Si tomamos ahora $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ veamos que es una base de la topología que pretendemos construir. Esto va a resultar evidente, ya que tan solo debemos comprobar para demostrarlo que al intersecar dos elementos cualesquiera de la base nos queda otro elemento de la base. 
-
-Como dados $U_1\times\cdots\times U_r$ y $V_1\times\cdots\times V_r$ elementos de la base su intersección es $(U_1\cap V_1)\times\cdots\times (U_r\cap V_r)$ y como $(U_i\cap V_i)\in \T_i$, afirmamos que forma parte de la base por la definición de la misma.
-
-Así, una vez que tenemos la base que va a caracterizar nuestra topología producto podemos afirmar que esta viene dada por $\T=\prod_i \T_i$.
-
-\begin{defi}[Topología producto]
-	Sean $(X_{i },\T_{i})^{1\le i\le r}$ espacios topológicos y sea $Y=\prod_i X_i$. Entonces se conoce como \tbitop[$\T_1\times\T_2$]{producto} a la topología $\T$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r : U_i\in \T_i \}$ (es decir, el producto de las topologías).
+Como es natural se va a realizar un procedimiento análogo, no obstante, nos permitiremos la licencia de ir un pelín más ágiles.
+\subsection{Construcción de continuidad menos fina}
+Sean $(X_{i },\T_{i})_{1\le i\le r}$ espacios topológicos y sea $Y=\prod_{i=1}^{r} X_i$ el producto cartesiano de dichos espacios.
+\begin{defi}[Proyecciones]
+	Definimos de \tbi[proyeccion@proyección]{proyección} $i$--ésima de $Y$ sobre $X_i$ como la aplicación
+	\begin{equation}
+	\begin{array}{cc}
+	p_i:&Y\to X_i\\
+	& (y_1,\dots,y_r)\mapsto(0,\dots,y_i,\dots,0)
+	\end{array}
+	\end{equation}
 \end{defi}
+El problema que nos planteamos ahora es el de dotar a $Y$ de la topología $\T_Y$ menos fina que haga continuas a todas las aplicaciones proyecciones.
 
-Podemos formular, además, una propiedad universal del producto que caracteriza a esta topología:
+De este modo, como queremos que $p_i$ sea continua tenemos que exigir la imagen inversa todo abierto $U_i\in \T_i$ sea un abierto de $Y$, es decir
+\begin{equation}\label{const_prod_aprox1}(p_i^r)^{-1}(U_i)=X_1\times\cdots\times U_i\times\cdots X_r\in\T\end{equation}
+
+Sin embargo, al contrario de lo que ha ocurrido hasta ahora, esta ya no es directamente la solución al problema, ya que si coleccionamos los conjuntos descritos en la ecuación \ref{const_prod_aprox1}, estos no son una topología (falla la intersección finita).
+
+Por ende, vamos a añadir a la colección anterior los conjuntos del tipo
+\[(p_i^r)^{-1}(U_i)\cap (p_j^r)^{-1}(U_j)= X_1\cdots\times U_i \times\cdots\times U_j\times \cdots X_r\]
+o más en general
+\begin{equation}\label{const_prod_base}\B:=\{ U_1\times\cdots\times U_r\midc U_i\in \T_i \}\end{equation}
+
+Pero ahora nos falla la unión arbitraria (basta dibujarse un ejemplo en el plano usual). Sin embargo, esto ya es fácil de solucionar.
+
+Si coseguimos demostrar el conjunto $\B$ definido en \ref{const_prod_base} es una base entonces habremos ganado.
+
+Antes de pasar a demostrarlo, que es muy fácil, vamos a presentar una igualdad conjuntista utilísima en el contexto de los productos.
+\begin{lem}[Producto cartesiano e intersección]
+	\label{const_lem_cartesiano}
+	Sean $A_1,\dots,A_n$ y $B_1,\dots,B_n$ conjuntos arbitrarios, entonces se cumple
+	\begin{equation*}
+		(A_1\times\cdots\times A_n)\cap(B_1\times\cdots\times B_n)=(A_1\cap B_1)\times\cdots\times (A_n\cap B_n)
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Un elemento $(x_1,\dots,x_n)$ vive en el miembro de la izquierda si y solo si cada una de sus componentes $x_i$ vive tanto en $A_i$ como en $B_i$, lo cual es equivalente a vivir en el miembro de la derecha. 
+\end{proof}
+\begin{prop}[Base de la menos fina]
+	El conjunto $\B$ definido en \ref{const_prod_base} es base de la topología menos fina que hace a todas las proyecciones continuas.
+\end{prop}
+\begin{proof}
+	Que es base es evidente ya que $Y=\prod_{i=1}^{r}X_i\in\B$, y no solo se cumple la segunda condición de la caracterización de bases sino que se da algo más fuerte, la intersección de dos elementos de la base es elemento de la base.
+	
+	En efecto, dados $U_1\times\cdots\times U_r$ y $V_1\times\cdots\times V_r$ elementos de la base su intersección es $(U_1\cap V_1)\times\cdots\times (U_r\cap V_r)$ y como $(U_i\cap V_i)\in \T_i$, afirmamos que forma parte de la base por la definición de la misma.
+	
+	Además $\B$ es base de la topología menos fina que resuelve nuestro problema, ya que si hubiera otra topología más fina que lo resolviera, al menos debería contener a los abiertos de $\B$ y sus uniones arbitrarias, siendo por tanto más fina que la topología engendrada por $\B$ (absurdo).
+\end{proof}
+
+Así pues ya podemos definir formalmente la ``topología producto'' como la topología engendrada por $\B$. Condensemos todo esto en forma de definición.
+\begin{defi}[Topología producto]
+	Sean $(X_{i},\T_{i})_{1\le i\le r}$ espacios topológicos y sea $Y=\prod_{i=1}^r X_i$. Entonces, se conoce como \tbitop[$\prod\T_i$]{producto} a la topología $\T_Y:\stackrel{\textrm{not.}}{=}\prod\T_i$ de $Y$ que viene dada por la base $ \{ U_1\times\cdots\times U_r \midc U_i\in \T_i \}$.
+\end{defi}
+\subsection{Caracterización de la continuidad entrante}
+Como estamos haciendo una construcción bastante parecida a la de las inmersiones, vamos a tratar de resolver el problema de caracterizar a las aplicaciones continuas que mueren en un espacio con la topología producto.
 
 \begin{lem}[Propiedad universal del producto]
+	\label{const_prod_universal1}
 	En la siguiente situación,
 	\[\xymatrix{
 		Y=\prod_i X_i \ar[r]^{p_i} & 
 		(X_i,\T_i) \\
 		(Z,\T') \ar[u]^{(f_1,\dots,f_n)=f} \ar[ru]_{p_i\circ f=f_i} &
 	}\]
-	tenemos la \tbi[propiedad universal!del producto]{propiedad universal del producto} que caracteriza la continuidad de $f$, diciendo que esta será continua si y solo si $f_i=p_i^r\circ f$ son continuas para todo $i$.
-	
-	\begin{proof}
-		Vemos que si $f$ es continua, como $p_i^r$ son continuas, tenemos que $f_i$ también lo será al ser composición de estas.
-		
-		Por otro lado, tenemos que dado $W=\prod_iU_i$ abierto en $X$, tenemos que $f^{-1}(W)=\bigcap_i f_i^{-1}(U_i)$ será abierto dado que los $f_i^{-1}(U_i)$ son abiertos por ser $f$ continua. Así, como hemos probado que la imagen inversa de abiertos es abierta, tenemos que $f$ es continua.
-	\end{proof}
+	tenemos que $f$ es continua si y solo si $f_i\stackrel{!}{=}p_i\circ f$ es continua para todo $i\in\{1,\dots,r\}$.
 \end{lem}
+\begin{proof}
+	Vemos que si $f$ es continua, como $p_i$ es continua, tenemos que $f_i$ también lo será al ser composición de estas.
+	
+	Recíprocamente, como la continuidad basta con comprobarla para los abiertos de la base, queremos demostrar que dado $W=\prod_{i=1}^rU_i$ abierto en $Y$, entonces $f^{-1}(W)$ es abierto. En efecto
+	\[f^{-1}(W)=f^{-1}(U_1\times\dots\times U_r)=f^{-1}\left(\bigcap_{i=1}^r p_i^{-1}(U_i)\right)=\bigcap_{i=1}^r f_i^{-1}(U_i)\] será abierto dado que los $f_i^{-1}(U_i)$ son abiertos por ser $f_i$ continua.
+\end{proof}
+\begin{obs}[Extensión]
+	Esto viene a ser una extensión del teorema para aplicaciones que morían en $\R^n$ que decía que dicha aplicación era continua si y solo si lo era componente a componente. No obstante, la razón profunda es el lema anterior.
+\end{obs} 
+\subsection{Propiedad universal del producto}
 
-Veamos ahora que la propiedad universal caracteriza la topología.
+A la condición necesaria y suficiente descrita en el lema \ref{const_prod_universal1} se la denomina \tbi[propiedad universal!del producto]{propiedad universal del producto}. Como en los casos anteriores, esta propiedad caracteriza a la topología producto.
 
-\begin{prop}
+\begin{prop}[Unicidad de la propiedad universal]
 	Si $(Y,\T_Y)$ cumple la propiedad universal del producto, entonces $\T_Y = \prod\T_i $
 \end{prop}
 \begin{proof}
 	Vamos a demostrarlo por doble contención y haciendo algún cambalache con la identidad.
 	Empecemos con un diagrama para aclarar las ideas.
 	\[\xymatrix{
-		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(Y,\T_Y) \ar[r]^{p_i} & 
 		(X_i,\T_i) \\
-		(Y,\T_Y) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+		(Y,\T_Y) \ar[u]^{\text{id}} \ar[ru]_{p_i = p_i \circ \text{id}} &
 	}\]
-	Como la topología $\T_Y$ cumple la propiedad universal y la aplicación identidad es continua, tenemos que $p_{r_i}$ es continua. Luego por finura $ \prod\T_i \subset \T_Y$.
+	Como la topología $\T_Y$ cumple la propiedad universal y la aplicación identidad es continua, tenemos que $p_i$ es continua. Luego por finura $ \prod\T_i \subset \T_Y$.
 	
 	Ahora razonamos con este diagrama:
 	\[\xymatrix{
-		(Y,\T_Y) \ar[r]_{p_{r_i}}^{p_i} & 
+		(Y,\T_Y) \ar[r]^{p_i} & 
 		(X_i,\T_i) \\
-		(Y,\prod\T_i) \ar[u]^{\text{id}} \ar[ru]_{p_{r_i} = p_{r_i} \circ \text{ id}} &
+		(Y,\prod\T_i) \ar[u]^{\text{id}} \ar[ru]_{p_i = p_i \circ \text{id}} &
 	}\]	
-	Como por construcción $p_{r_i}$ es continua, entones id es continua. Esto solo ocurre si $\T_Y \subset \prod\T_i$. 	
+	Como por construcción $p_i$ es continua, entones $\text{id}$ es continua. Esto solo ocurre si $\T_Y \subset \prod\T_i$. 	
 \end{proof}
+\subsection{Propiedades de los espacios producto}
 
 Vamos a ver ahora una serie de proposiciones relacionadas con la topología producto, las cuales a pesar de resultar sencillas de comprobar nos proporcionan resultados interesantes.
 
-\begin{prop}
+\begin{prop}[Apertura de proyecciones]
 	Las proyecciones son abiertas.
 	
 	\begin{proof}
-		Sea $W$ abierto en el espacio producto, veamos que $p_i^r(W)$ es abierto.
+		Sea $W$ abierto en el espacio producto, veamos que $p_i(W)$ es abierto.
 		
-		Nos basta con comprobarlo con los abiertos de la base, es decir, para los elementos de la forma $ U_1\times\cdots\times U_r : U_i\in \T_i$.  Como  $p_i^r(U_1\times\cdots\times U_r)=U_i$ es abierto podemos concluir la demostración.
+		Basta con comprobarlo con los abiertos de la base.  Como  $p_i(U_1\times\cdots\times U_r)=U_i$ es abierto podemos concluir la demostración.
 	\end{proof}
 \end{prop}
 
-
-\begin{prop}
+\begin{prop}[Inmersiones]
 	La aplicación $f : X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,x,\dots,a_r)$ es una inmersión.
 	
 	\begin{proof}
-		Evidentemente, f es biyectiva. Por otra parte, $f$ es la aplicación $(k_1,\dots,id,\dots,k_r)$ continua, por serlo la identidad.
-		Además, $f^{-1} = p_{r_i}\restriction_{\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}}$ es continua por serlo las proyecciones. Luego f es homeomorfismo.
+		Evidentemente, $f$ es inyectiva, luego solo queda demostrar que $X_i$ tiene la topología imágenes inversas $f^{-1}(\prod_{k=1}^r\T_k)$. En efecto, aunque un poco engorroso
+		\begin{equation*}
+			f^{-1}\left(\prod_{k=1}^r\T_k\right)=\left\{f^{-1}\left(\bigcup_{j\in J}\prod_{k=1}^r U_k\right)\midc U_k\in\T_k\right\}=\left\{\bigcup_{l\in L}U_i\midc U_i\in\T_i\right\}=\T_i
+		\end{equation*}
+		Nótese el cambio de índices arbitrarios de $j\in J$ a $l\in L$ con $L\subset J$ para recalcar que hay abiertos del producto cuya imagen inversa por $f$ es el vacío. 
 	\end{proof}
 \end{prop}
-
 \begin{obs}[Consecuencias]
-	La topología de $\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}$ es exactamente la de $X_i$. Esto constituye un truco para comprobar si una topología es una topología producto.
-\end{obs}
+	La topología de $\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}$ es exactamente la de $X_i$, pues al ser una inmersión, la restricción es un homeomorfismo.
 	
+	Esto constituye un truco muy importante para comprobar si una topología es una topología producto, en concreto, para descartar candidatos.
+\end{obs}
 
-Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. No vamos a probar que sean bases realmente en ninguno de los dos casos ya que en ambos casos va a resultar muy sencillo aplicando la caracterización de base, dejándose como ejercicio para el lector de cara al repaso de la misma.
-\begin{enumerate}
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ tenemos que: \[\B=\{W_i\times\cdots\times W_r:W_i\in \B_i \text{ base de }\T_i\}\] es base de entornos del mismo.
+Ahora pasamos a ver si somos capaces de construir bases más sencillas para nuestra topología producto, es decir, conformadas por menos abiertos. Igualmente, veremos el modo de construcción de bases de entornos en el espacio producto. \begin{prop}[Reducción de la base]
+	\label{const_prop_base}
+	Dado el espacio producto $(Y,\prod\T_i)$ tenemos que: \[\B=\{W_i\times\cdots\times W_r:W_i\in \B_i \text{ base de }\T_i\}\] es base de abiertos de $(Y,\prod\T_i)$.
+\end{prop}
 	\begin{proof}
-		Sea $\U \in \T$. Podemos descomponerlo como sigue $\U =U_1 \times \dots \times U_r $ con $U_i \in \T_i$ y $U_i = \bigcup_j W_{ij}$ con $W_{ij} \in \B_i$. Sea $x \in \U$. Entonces $x \in \W_{1j} \times \dots \times W_{rj} \subset \bigcup_j W_{1j} \times \dots \times \bigcup_j W_{rj} = U_1 \times \dots \times U_r$. Haciendo este procedimiento para cada punto se sigue el resultado.
+		Basta probar que todo abierto de la base antigua puede ser escrito como unión de abiertos de la base nueva.
+		
+		En efecto, sea $\U$ abierto de la base vieja, luego $\U =U_1 \times \dots \times U_r $ con $U_i \in \T_i$, poniendo cada abierto como unión de abiertos de su base correspondiente obtenemos $U_i = \bigcup_j W_{ij}$ con $W_{ij} \in \B_i$.
+		
+		Ahora basta razonar con cada punto, es decir, dado $x \in \U$, entonces \[x \in \W_{1x} \times \dots \times W_{rx} \subset \bigcup_j W_{1x} \times \dots \times \bigcup_j W_{rx} = U_1 \times \dots \times U_r\]	
+		Luego evidentemente $\U=\bigcup_{x\in\U}\W_{1x} \times \dots \times W_{rx}$ con lo que se tiene el resultado.
 	\end{proof}
-
-	\item Dado el espacio producto $(\prod_iX_i,\prod_i\T_i)$ y $(a_1,\dots,a_r)\in\prod_iX_i$ tenemos que: \[\V_{(a_1,\dots,a_r)}=\{V_{a_1}\times\cdots\times V_{a_r}:W_i\in \V_{a_i} \text{ base de entornos en } \T_i\} \] es base de entornos del mismo.
-\end{enumerate}
-
-Por último, algunas observaciones útiles sobre la topología de los productos son
-\begin{prop}[Adherencia]
-	Sean $X_i$ espacios topológicos y $A_i$ subconjuntos de $X_i$. Tenemos que
-	\[Adh(A_1 \times \dots \times A_r) = Adh(A_1) \times \dots \times Adh(A_r)\]
+\begin{prop}
+	Dado el espacio producto $(Y,\prod\T_i)$ y $a:=(a_1,\dots,a_r)\in Y$ tenemos que: \[\V=\{V_{a_1}\times\cdots\times V_{a_r}:W_i\in \V_{a_i} \text{ base de entornos de $a_i$ en } \T_i\} \] es base de entornos de $a$ en el producto.
 \end{prop}
 \begin{proof}
-	 Por una parte tenemos que $x \in Adh(A_1 \times \dots \times A_r) \iff$ dado un entorno $U_1 \times \dots \times U_r$ de $x$, dicho entorno corta a $A_1 \times \dots \times A_r$.
-	 Por otra parte, $x \in  Adh(A_1) \times \dots \times Adh(A_r) \iff \ \forall U_1 \times \dots \times U_r $ se cumple que $U_i \cap A_i \neq \emptyset \ \forall i$.
-	 Finalmente, gracias a la siguiente propiedad $(U_1 \times \dots \times U_r) \cap (A_1 \times \dots \times A_r) = (U_1 \cap A_1) \times \dots \times (U_r \cap A_r)$ se llega al resultado.
+	En primer lugar es evidente que los elementos de $\V$ son entornos. Por otra parte, dado $V$ entorno de $a$ entonces hay un abierto (que sin pérdida de generalidad puede ser de la base) tal que $a\in\prod_{i=1}^rU_i\subset V$.
+	
+	Es claro que $U_i$ es entorno de $a_i$ para todo $i$, luego, habrá un $V_{a_i}\in\V_{a_i}$ de manera que $a_i\in V_{a_i}\subset U_i$, con lo que se tiene el resultado.
+\end{proof}
+Estas últimas propiedades nos sugieren hacer un par de observaciones.
+\begin{obs}[Axiomas hereditarios]
+	El producto de espacios I axioma es I axioma, y lo mismo sucede con II axioma.
+\end{obs}
+\begin{obs}[Asociatividad]
+	Dados $X_1,X_2,X_3$ espacios topológicos, es claro que $X_1\times(X_2\times X_3)$ es homeomorfo a $(X_1\times X_2)\times X_3$ y a $X_1\times X_2\times X_3$, es decir, las topologías producto son las mismas.
+	
+	Esto se deduce fácilmente de la proposición \ref{const_prop_base}.
+\end{obs}
+Por último, presentamos algunas observaciones útiles sobre la topología de los productos.
+\begin{prop}[Adherencia]
+	\label{const_prop_adherencia}
+	Sean $X_i$ espacios topológicos y $A_i$ subconjuntos de $X_i$. Tenemos que
+	\[\Adh_{\prod_{i=1}^r X_i}(A_1 \times \dots \times A_r) = \Adh_{X_1}(A_1) \times \dots \times \Adh_{X_r}(A_r)\]
+\end{prop}
+\begin{proof}
+	 Por una parte tenemos que $x \in \Adh(A_1 \times \dots \times A_r)$ si y solo si dado un abierto $U_1 \times \dots \times U_r$ de $x$, dicho abierto corta a $A_1 \times \dots \times A_r$.
+	 
+	 Por otra parte, $x=(x_1,\dots,x_r) \in  \Adh(A_1) \times \dots \times \Adh(A_r)$ si y solo si para todo $U_1 \times \dots \times U_r$ donde $U_i$ es abierto de $x_i$, se cumple que $U_i \cap A_i \neq \emptyset$ para todo $i$.
+	 
+	 Finalmente, gracias al lema \ref{const_lem_cartesiano} se llega al resultado.
 \end{proof}
 
-\begin{prop}[Cerrados]
+\begin{cor}[Cerrados]
 	Sean $X_i$ espacios topológicos y $A_i$ subconjuntos de $X_i$. Tenemos que
-	$A_1 \times \dots \times A_r$ es cerrado $\iff A_i$ es cerrado $\forall i$.
-\end{prop}
+	$A_1 \times \dots \times A_r$ es cerrado si y solo si $A_i$ es cerrado para todo $i$.
+\end{cor}
 \begin{proof}
-	Veamos que si $A_i$ es cerrado $\forall i$ entonces $A_1 \times \dots \times A_r$ es cerrado. Basta ver que $A_1 \times \dots \times A_r$ coincide con su adherencia, que por la proposición anterior coincide con $Adh(A_1) \times \dots \times Adh(A_r)$, que a su vez es $A_1 \times \dots \times A_r$, pues cada $A_i$ coincide con su adherencia por ser cerrado.
-	La otra implicación se deja al lector.
+	$A_1 \times \dots \times A_r$ es cerrado si y solo si coincide con su adherencia, que por la proposición \ref{const_prop_adherencia} coincide con $\Adh(A_1) \times \dots \times \Adh(A_r)$. En definitiva
+	\[A_1 \times \dots \times A_r=\Adh(A_1 \times \dots \times A_r)=\Adh(A_1) \times \dots \times \Adh(A_r)\]
+	y esto es equivalente a que $A_i=\Adh(A_i)$ para todo $i$, de donde se sigue el resultado.
 \end{proof}	
-
-		
-\section{Suma}
+\begin{prop}[Subespacios]
+	Sean $A_1\subset X_1,\dots,A_r\subset X_r$ subespacios topológicos.
+	
+	Se verifica que la topología producto de $A_1\times\dots\times A_r$ equipando a cada $A_i$ con la topología relativa como subespacio de $X_i$, coincide con la topología relativa de $A_1\times\dots\times A_r$ como subespacio de $\prod_{i=1}^rX_i$
+\end{prop}	
+\begin{proof}
+	Los abiertos de una base de $\prod_{i=1}^rA_i$ como topología producto de topologías relativas son de la forma $(U_1\cap A_1)\times\dots\times(U_r\cap A_r)$, mientras que los abiertos de una base de $\prod_{i=1}^rA_i$ como topología relativa de una topología producto son de la forma $(U_1\times\dots\times U_r)\cap (A_1\times \dots \times A_r)$.
+	
+	Por el lema \ref{const_lem_cartesiano} estas dos bases son la misma, luego la topología es la misma.
+\end{proof}
+\section{Suma de espacios topológicos}
 Vamos a ver como última la construcción la suma, la cual gracias al desarrollo previo de los casos anteriores va a resultar de fácil comprensión para el lector. La idea de esta construcción va a ser la de realizar copias de objetos a distintas ``alturas'' (como si los colocáramos en estantes). 
 
 Como antes, vamos a comenzar viendo las propiedades que debe cumplir la topología que caracterice nuestro espacio para luego pasar a construirla.
