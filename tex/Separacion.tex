@@ -3,64 +3,134 @@
 
 \section{Separación de puntos} 
 
-La separación de puntos consiste en, dados dos puntos distintos, saber distinguirlos topológicamente. A pesar de que hay más de un modo de hacerlo, nos centraremos solo en una. Para ello, consideremos dos puntos $x$ e $y$ distintos y vamos a definir ciertos axiomas que nos ayuden en nuestro estudio.
-
+La separación de puntos consiste en, dados dos puntos distintos, saber ``distinguirlos topológicamente'' (sea lo que sea eso). Presentamos algunas formas de entender el significado de la pedante expresión entrecomillada.
+\begin{defi}[Axiomas de separación]
+	\label{sep_defi_axiom}
+Sea $(\X,\T)$ un espacio topológico.
 \begin{itemize}
-\item El axioma \kolmogorov o Kolmogorov dice que existe un entorno de uno de los dos puntos (sin especificar cuál) que no contiene al otro. \indexg{Kolmogorov} \indexg{T0@\kolmogorov|see{Kolmogorov}}
-\item El axioma \frechet o Fréchet dice que existe un entorno $\V^x$ de $x$ que no contiene a $y$ y también existe un entorno $\V^y$ de $y$ que no contiene a $x$. \indexg{Frechet@Fréchet} \indexg{T1@\frechet|see{Fréchet}}
-\item El axioma \hausdorff o Hausdorff dice que existen un entorno $\V^x$ de $x$ y un entorno $\V^y$ de $y$ que son disjuntos. \indexg{Hausdorff} \indexg{T2@\hausdorff|see{Hausdorff}}
+\item Se dice que $\X$ es \kolmogorov o \ti{\tb{Kolmogorov}} si para cada par de puntos existe un entorno de uno de los dos puntos (sin especificar cuál) que no contiene al otro. \indexg{Kolmogorov} \indexg{T0@\kolmogorov|see{Kolmogorov}}
+\item $\X$ es \frechet o \ti{\tb{Fréchet}} si dados dos puntos $x$ e $y$, existe un entorno $\V_x$ de $x$ que no contiene a $y$ y también existe un entorno $\V_y$ de $y$ que no contiene a $x$. \indexg{Frechet@Fréchet} \indexg{T1@\frechet|see{Fréchet}}
+\item Por último, se dice que $\X$ es \hausdorff o \ti{\tb{Hausdorff}} si dados $x,y\in\X$ existen un entorno $\V_x$ de $x$ y un entorno $\V_y$ de $y$ tales que son disjuntos. \indexg{Hausdorff} \indexg{T2@\hausdorff|see{Hausdorff}}
 \end{itemize}
+\end{defi}
 
-Evidentemente, cada axioma es más restrictivo que el anterior. 
-
-\begin{obs}
-Todo espacio métrico es \hausdorff. En efecto, si consideramos dos puntos distintos $x$ e $y$, podemos tomar bolas centradas en cada uno de los puntos de radio menor que la mitad de la distancia que los separa. De este modo, obtenemos dos entornos abiertos que son disjuntos. 
+\begin{obs}[Consecuencias inmediatas]
+	De la definición \ref{sep_defi_axiom} se desprende que:
+	\begin{enumerate}
+		\item Todo espacio métrico es \hausdorff. En efecto, si consideramos dos puntos distintos $x$ e $y$, podemos tomar bolas centradas en cada uno de los puntos de radio menor que la mitad de la distancia que los separa. Compruébese que de este modo resolvemos el problema.
+		\item Es claro que se da la cadena de implicaciones
+			\hausdorff $\ra$ \frechet $\ra$ \kolmogorov.\qedhere
+	\end{enumerate}  
 \end{obs}
 
 \section{Caracterizaciones}
 
-En esta subsección vamos a estudiar varios resultados útiles que se desprenden directamente de los axiomas que hemos definido anteriormente. 
+En esta subsección vamos a estudiar varios resultados útiles que se desprenden directamente de la definción \ref{sep_defi_axiom}.
 
-\begin{prop}
-	Un conjunto $\X$ es \frechet si y solo si todos sus puntos son cerrados.
-	\begin{proof}
-		$\Leftarrow)$ Consideremos un punto cualquiera $x\in \X$ y supongamos que $\{x\}$ es cerrado. De este modo, $\U=\X\backslash \{x\}$ es abierto, y si $x\neq y\in \X$, entonces $\U$ es un conjunto abierto tal que $x\notin \U$ e $y\in \U$.
-		 
-		$\Rightarrow)$ Supongamos ahora que $\X$ es un espacio \frechet y sea $x\in \X$. Entonces para cada $y\in \X$ existe un abierto $\U_y \subseteq \X$ tal que $y\in \U_y$ y $x\notin \U_y$. Tomemos $\U=\bigcup_{y\in \X\backslash\{x\}}\U_y=\X\backslash\{x\}$, que es abierto por ser unión arbitraria de abiertos, luego $\{x\}$ es cerrado. 
-	\end{proof}
+Comencemos con una reformulación de lo que significa ser \frechet
+\begin{prop}[Caracterización de \frechet]
+	$\X$ es \frechet si y solo si sus puntos son cerrados.
 \end{prop}
-
-\begin{theo}
-	Si $f,g:\X\to \Y$ son funciones continuas e $\Y$ es \hausdorff, entonces $\{f=g\}$ es cerrado. 
-	\begin{proof}
-		Hemos de demostrar que el conjunto $\{f\neq g\}$ es abierto. Dado $x\in \X$, si se tiene que $f(x)\neq g(x)$ y al ser $\Y$ un espacio \hausdorff, existen entornos $\V_{f(x)}$ y $\V_{g(x)}$ disjuntos. Como $f$ y $g$ son continuas, se tiene además que $f^{-1}(\V_{f(x)})$ y $f^{-1}(\V_{g(x)})$ son entornos de $x$. La intersección de entornos, como ya sabemos, también es entorno, luego $\V_x=f^{-1}(\V_{f(x)})\cap f^{-1}(\V_{g(x)})$ es un entorno de $x$ contenido en $\{f\neq g\}$. En efecto, que $z\in \V_x$ quiere decir que $f(z)\in \V_{f(x)}$ y $g(z)\in \V_{g(x)}$, pero al ser estos entornos disjuntos, $f(z)\neq g(z)$. Con esto concluye la demostración, ya que si $\V_x$ es entorno (abierto) contenido en $\{f\neq g\}$, este conjunto es abierto.
-	\end{proof}
+\begin{proof}Procedemos por doble implicación.
+	\begin{enumerate}
+		\item[\bla]Consideremos un par de puntos cualquiera $x,y\in \X$. Como $\{x\}$ es cerrado, su complementario, $\U:=\X\backslash \{x\}$, es abierto, y, por tanto, entorno de todos sus puntos. Como $y\in\U$, tenemos un entorno de $y$ que no contiene a $x$. Para encontrar un entorno de $x$ que no contenga a $y$ basta intercambiar los papeles de $x$ e $y$.
+		\item[\bra] Sea $x\in\X$, veamos que $\X\setminus \{x\}$ es abierto viendo que es entorno de todos sus puntos. En efecto, dado $y\in\X\setminus \{x\}$, como $\X$ es \frechet, hay un abierto de $y$ que no contiene a $x$, luego $\X\setminus \{x\}$, como $y$ es arbitrario hemos terminado.\qedhere
+	\end{enumerate}		 
+\end{proof}
+Veamos a continuación una de las propiedades más importantes de los espacios \hausdorff.
+\begin{theo}[Clausura del conjunto coincidente]
+	Si $f,g:\X\to \Y$ son funciones continuas e $\Y$ es \hausdorff, entonces $\{f=g\}:=\{x\in\X\midc f(x)=g(x)\}\subset\X$ es cerrado. 
 \end{theo}
+\begin{proof}
+	Procederemos demostrando que el conjunto $\{f\neq g\}$ es abierto, para lo cual usaremos (¡oh, sorpresa!) que es entorno de todos sus puntos.
+	
+	Dado $x\in \{f\neq g\}$, al ser $\Y$ \hausdorff, existen entornos $\V_f$ de $f(x)$ y $\V_g$ de $g(x)$ disjuntos. 
+	
+	Como $f$ y $g$ son continuas, transforman entornos en entornos por imágenes inversas, por ende, tenemos que $W:=f^{-1}(\V_f)\cap g^{-1}(\V_g)$ es entorno de $x$ (por ser intersección de entornos).
+	
+	Veamos pues que $W$ está contenido en $\{f\neq g\}$. En efecto, si hubiera un $y\in W$ tal que $f(y)=g(y)=:z$, entonces, por definición de $\V_f$ y $\V_g$, $z\in \V_f\cap \V_g$, lo cual es imposible.
+\end{proof}
 
-Veamos ahora un caso particular del teorema anterior. Consideremos el espacio producto $\X\times \X$ y las proyecciones $p_1$ y $p_2$ desde este a $\X$. El resultado anterior nos da que $\Delta:=\{p_1=p_2\}$ es un conjunto cerrado. Nótese que $\Delta=\{(x,x):x\in \X\}$, esto es, la diagonal. De este modo, un conjunto es \hausdorff si y solo si su diagonal es cerrada.
-
-Para terminar, veamos un colorario del teorema realizado con los conjuntos densos.  
-
-\begin{cor}
-	Si $f,g:\X\to \X$ son funciones continuas que coinciden en un conjunto denso y $\X$ es \hausdorff entonces $f$ y $g$ son iguales en $X$. 
-	\begin{proof}
-		Sea $A\subset \X$ un conjunto denso, es decir, $\bar{A}=\X$. Como ya hemos visto, $A\subset \{f=g\}$ es un conjunto cerrado, pero al ser la clausura de $A$ el menor cerrado que lo contiene y coincidir con el total, entonces $\{f=g\}=\X$.
-	\end{proof}
+En general el recíproco de este teorema no se da, no obstante, hay un caso particular en el que sí. Antes de ver la demostración de este hecho, estudiemos el caso particular, que tiene interés por sí mismo.
+\begin{obs}[Proyecciones]
+	\label{sep_obs_proyecciones}
+	Consideremos el espacio producto $\X\times \X$ y las proyecciones $p_1$ y $p_2$.
+	
+	El resultado anterior nos da que $\{p_1=p_2\}$ es un conjunto cerrado. Nótese que dicho conjunto no es más que $\{(x,y)\in\X^2\midc x=y\}$.
+	
+	Interpretado geométricamente en el caso particular de $\R^2$, es la recta diagonal $y=x$.
+\end{obs}
+\begin{lem}[Recíproco]
+	En las condiciones de la observación \ref{sep_obs_proyecciones}.
+	
+	Si $\{p_1 = p_2\}$ es cerrado entonces $\X$ es \hausdorff.
+\end{lem}
+\begin{proof}
+	Sea un par de puntos arbitrarios $x,y\in\X$.
+	
+	Como $x\not= y$ es claro que $(x,y)\not\in\{p_1=p_2\}$ (abierto), luego habrá un abierto (que podemos tomar de la base sin pérdida de generalidad) tal que $(x,y)\in\U_1\times\U_2\subset\{p_1\not=p_2\}$.
+	
+	Además, $\U_1$ y $\U_2$ son disjuntos, ya que si hubiera un $z\in\U_1\cap\U_2$ entonces $(z,z)\in\U_1\times\U_2$, pero $(z,z)\in \{p_1=p_2\}$, lo cual entra en contradicción con que $\U_1\times\U_2\subset \{p_1\not=p_2\}$.
+\end{proof}
+\begin{cor}[Densos]
+	\label{sep_cor_densos}
+	Si $f,g:\X\to \Y$ son funciones continuas que coinciden en un conjunto denso en $\X$ e $\Y$ es \hausdorff entonces $f$ y $g$ son iguales. 
 \end{cor}
-
+\begin{proof}
+	Sea $A\subset \X$ un conjunto denso, es decir, $\adher{A}=\X$. Por hipótesis, $A\subset \{f=g\}$.
+	
+	Como $\{f=g\}$ es cerrado, por ende, $\X=\adher{A}\subset \{f=g\}$, luego $\{f=g\}=\X$.
+	\end{proof}
+\begin{obs}[Teoremas de extensión de la continuidad]
+	Sea $f$ una función continua. Tomemos como espacio topológico la adherencia del dominio de $f$.
+	
+	Si $f$ admite una extensión continua a la adherencia, por el corolario \ref{sep_cor_densos} esta es única, ya que si hubiera dos extensiones distintas estas coincidirían en un conjunto denso. 
+\end{obs}
 \section{Comportamiento topológico} 
+A partir de ahora dedicaremos la última sección de cada capítulo a estudiar si la propiedad estudiada en el mismo es ``hereditaria'' a las diferentes construcciones que hemos visto. Es decir, subespacios, productos, cocientes y sumas. Como hay que dar un nombre a todo, nosotros a esto lo llamaremos estudiar el ``comportamiento topológico''.
 
-En esta sección, comprobaremos cómo se comportan topológicamente los conjuntos $T_2$ si se ven sometidos a cocientes, sumas finitas...
-
-\begin{itemize}
-\item Si $(\X,\T)$ es un espacio topológico \hausdorff entonces $(A,\T_A)$, donde $\emptyset \subset A \subseteq \X$ es un subespacio de $\X$ y $\T_A=\{\U\cap A: \U\in \T \}$ es la topología relativa, es \hausdorff. Se dice entonces que propiedad de ser \hausdorff es hereditaria. 
-En efecto, sean $x,y\in A$ tales que $x\neq y$. Al pertenecer estos puntos también a $\X$, existe $\V^x$ y $\V^y$ entornos disjuntos de $x$ e $y$ respectivamente. Pero al pertenecer también a $A$, entonces $x\in \V^x \cap A$ y $y\in \V^y \cap A$, lo que conduce a que $(\V^x\cap A)\cap (\V^y\cap A)=\emptyset$. De este modo, se cumple el axioma \hausdorff en $A$.  
-\item Si $\backsim$ es una relación de equivalencia en un espacio $\X$ que es \hausdorff, el espacio $\X/\backsim$ con la topología propia de la identificación no es en general \hausdorff. Para verlo, basta definir como relación de equivalencia en $\mathbb{R}$ con la topología usual $x\backsim y$ si y solo si $x-y\in \mathbb{Q}$. Así, la identificación $\pi: R\to R/\backsim$ (el espacio de partida equipado con la topología usual y el de llegada con la trivial), muestran lo que buscamos.
-\item Si $\X_1$ y $\X_2$ son dos espacios \hausdorff, entonces su producto $\X_1\times \X_2$ también lo es. En efecto, consideremos dos puntos distintos del producto $x=(x_1,x_2)$ y $y=(y_1,y_2)$ y supongamos que $x_1\neq y_1$. Así, existen entornos $\V^{x_1}$ y $\V^{y_1}$ disjuntos que cumplen que $\V^{x_1}\times \X_2$ y $\V^{y_1}\times \X_2$ son entornos disjuntos de $x$ e $y$ en $\X_1\times \X_2$. De forma análoga se procede con la segunda coordenada para obtener así que el espacio producto es \hausdorff. Mediante este argumento se demuestra fácilmente que el producto finito de espacios \hausdorff lo es también. Además, se puede probar que este hecho no se ciñe únicamente a productos finitos, sino que también es válido para el producto infinito de espacios. No obstante, la demostración de este comentario no es relevante para nuestro estudio puesto que el estudio de la topología que engendra este producto puede suponer ciertos problemas a estas alturas.
-\item Si $\X_1$ y $\X_2$ son dos espacios \hausdorff, entonces su suma también lo es. La demostración de esto es muy similar a la del producto.
-\end{itemize}
-
-De manera totalmente similar puede demostrarse que la propiedad de ser un espacio T$_0$ y T$_1$ se preserva para subespacios, productos finitos y sumas finitas; y no lo hace para el cociente.
+Inauguramos esta tradición estudiando el comportamiento topológico de \hausdorff, no obstante luego estudiaremos el de \frechet y \kolmogorov.
+\subsection{Comportamiento topológico de \hausdorff}
+Comenzamos estudiando el comportamiento respecto de los subespacios.
+\begin{lem}[Subespacios]
+	Si $\X$ es \hausdorff, entonces $A\subset\X$ es \hausdorff.
+\end{lem}
+\begin{proof}
+	 Sean $x,y\in A$. Al pertenecer estos puntos también a $\X$, existen sendos entornos disjuntos $\V_x$ y $\V_y$ de $x$ e $y$ en $\X$ respectivamente. Tomando los correspondientes entornos relativos $\V^x \cap A$ y $\V^y \cap A$ se sigue el resultado.
+\end{proof}
+Pasamos a estudiar los cocientes, tenido en mente que la filosofía de ``pegar puntos'' es bastante dañina para que las propiedades se conserven (luego iremos buscando contraejemplos).
+\begin{obs}[Cocientes]
+	La propiedad de ser \hausdorff no se traspasa a los cocientes.
+	
+	Un contraejemplo sencillo se da con el espacio topológico $\R$ y su cociente $\R/\Q$, donde se ha ``cocientado'' por la relación de equivalencia que relaciona a cada punto consigo mismo y a todos los racionales entre sí (y se le ha equipado con la topología cociente, claro).
+	
+	La idea que uno debe tener en la cabeza es que colapsamos todos los racionales a un solo punto.
+	
+	La clave para darse cuenta de que $\R/\Q$ no es \hausdorff es que los abiertos de $\R/\Q$ son las proyecciones de los abiertos saturados de $\R$. Como en $\R$ todo abierto contiene algún racional (por ser los intervalos una base de $\R$), todos los abiertos saturados contienen a $\Q$.
+	
+	Por ende, $\class{\Q}\in\R/\Q$ es un punto denso ya que todo abierto del cociente lo contiene. Luego dados dos abiertos cualesquiera nunca son disjuntos (y por tanto no puede ser \hausdorff).
+\end{obs}
+\begin{lem}[Productos]
+	Si $X_i$ es \hausdorff para todo $i\in\{1,\dots,r\}$, entonces $\prod_{i=1}^rX_i$ también es \hausdorff.
+\end{lem}
+\begin{proof}
+	Dados $x_i,y_i\in X_i$ es claro que hay sendos entornos $U_i$ y $V_i$ de $x_i$ e $y_i$ respectivamente tales que $U_i\cap V_i=\emptyset$.
+	
+	Haciendo lo anterior para cada $i$ obtenemos dos puntos $x=(x_1,\dots,x_r)$, $y=(y_1,\dots,y_r)$ de los cuales (por construcción de la topología producto) tenemos dos entornos $\prod_{i=1}^rU_i$ y $\prod_{i=1}^rV_i$ que son disjuntos por el lema \ref{const_lem_cartesiano}.
+\end{proof}
+Lo mismo se hace para la suma.
+\begin{lem}[Suma]
+	La suma finita de espacios \hausdorff es \hausdorff
+\end{lem}
+\begin{proof}
+	Usaremos que las inclusiones son inmersiones. Sean dos puntos $x,y\in\sum_{i=1}^rX_i$.
+	
+	Si están en el mismo estante, es decir $x,y\in \{i\}\times X_i$ para cierto $i$, entonces tomamos $(j_i)^{-1}(x)$ y $(j_i)^{-1}(y)$ (puntos distintos de $X_i$). Como $X_i$ es \hausdorff tomamos los abiertos correspondientes $U$ y $V$ disjuntos. Como $j_i$ es homeomorfismo los abiertos imagen también son disjuntos.
+	
+	Si están en estantes distintos basta coger como abiertos disjuntos $\{i\}\times X_i$ y $\{j\}\times\{X_j\}$
+\end{proof}
+\subsection{Comportamiento topológico de \frechet y \kolmogorov}
+De manera totalmente análoga puede demostrarse que la propiedad de ser un espacio \kolmogorov y \frechet se preserva para subespacios, productos finitos y sumas finitas; y no lo hace para el cociente.
 
 A continuación, y como haremos de aquí en adelante cada vez que hablemos de comportamiento topológico, se muestra una tabla que resume todo lo demostrado. No se especificará, pero es claro que los productos y las sumas son finitos.
 
@@ -76,4 +146,4 @@ A continuación, y como haremos de aquí en adelante cada vez que hablemos de co
 	\caption{Tabla resumen de separación.}
 	\label{Tabla_separacion}
 \end{table}
-La tabla anterior se leería de la siguiente forma: Si un espacio X es \kolmogorov, cualquier subespacio suyo es \kolmogorov. El producto de espacios \kolmogorov es \kolmogorov, etc.
+La tabla anterior se leería de la siguiente forma: Si un espacio X es \kolmogorov, cualquier subespacio suyo es \kolmogorov. El producto de espacios \kolmogorov es \kolmogorov,\dots
