@@ -9,7 +9,7 @@ La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n
 Empezaremos viendo, por supuesto, la definición, y una serie de caracterizaciones equivalentes.
 
 \begin{defi}[Conexión]
-	$\X$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no es unión de dos abiertos disjuntos no vacíos, esto es, no existen $U,V\neq\emptyset$, abiertos, tales que $U\cap V=\emptyset$ y $X=U\cup V$.
+	Un espacio topológico $\X$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no es unión de dos abiertos disjuntos no vacíos, esto es, no existen $U,V\neq\emptyset$, abiertos, tales que $U\cap V=\emptyset$ y $X=U\cup V$.
 \end{defi}
 
 \begin{obs}[Conexión en subespacios]
@@ -25,8 +25,10 @@ Empezaremos viendo, por supuesto, la definición, y una serie de caracterizacion
 	\end{enumerate}
 \end{prop}
 
+Es inmediato, y se deja al lector, comprobar estas equivalencias.
+
 \begin{exa}
-	En $\R$, los conexos son los intervalos. En efecto, si $A\subset\R$ no es un intervalo, entonces por definición $\exists a\notin A$ tal que $\inf A< a < \sup A$. Entonces, $(-\infty, a)\cap A)$ y $(a,\infty)\cap A$ son dos abiertos disjuntos no vacíos cuya unión contiene a $A$.
+	En $\R$, los conexos son los intervalos. En efecto, si $A\subset\R$ no es un intervalo, entonces por definición $\exists a\notin A$ tal que $\inf A< a < \sup A$. Entonces, $(-\infty, a)\cap A$ y $(a,\infty)\cap A$ son dos abiertos disjuntos no vacíos cuya unión contiene a $A$.
 \end{exa}
 
 Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos.
@@ -34,27 +36,30 @@ Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjunto
 \begin{prop}[Imagen continua]
 	\label{conex_prop_im_continua}
 	La imagen continua de un conexo es un conexo.
-	
-	\begin{proof}
-		Sea $\X$ conexo, $f:\X\to\mc{Y}=f(\X)$ continua. Entonces queremos ver que $\mc{Y}$ es conexo. Para ello vamos a ver el contrarrecíproco: si $\mc{Y}$ no es conexo $\X$ tampoco.
-		
-		Si existiera $A\subset\mc{Y}$ abierto y cerrado no trivial (esto es, que no es ni el vacío ni el total), entonces por ser $f$ continua $f^{-1}(A)$ es también abierta y cerrada, y por ser $f$ sobreyectiva $f^{-1}(A)$ no es el vacío ni el total. Por tanto $\X$ no es conexo.
-	\end{proof}
 \end{prop}
+\begin{proof}
+	Sea $\X$ conexo, $f:\X\to\Y=f(\X)$ continua. Entonces queremos ver que $\mc{Y}$ es conexo. Para ello vamos a ver el contrarrecíproco: si $\Y$ no es conexo $\X$ tampoco.
+	
+	Al no ser $\Y$ conexo, existe $A\subset\Y$ abierto y cerrado no trivial (esto es, que no es ni el vacío ni el total). Entonces por ser $f$ continua, $f^{-1}(A)$ es también abierto y cerrado, y por ser $f$ sobreyectiva $f^{-1}(A)$ no es el vacío ni el total. Por tanto $\X$ no es conexo.
+\end{proof}
 
 % NOTA: no he nombrado el teorema como teorema del pivote porque buscado en internet sólo salía en la página de Ruiz con ese nombre. En demás libros que he visto no tiene nombre.
+
+A continuación presentamos un teorema conocido en algunos lugares remotos como el teorema del pivote.
+
 \begin{theo}
 	\label{conex_theo_pivote}
-	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ y existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
-	
-	\begin{proof}
-		Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado. Vamos a ver que necesariamente es el vacío o el total. Entonces, para cada $i\in I$ tenemos que $S\cap A_i\subset A_i$ es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
-		\begin{enumerate}
-			\item Si $S\cap A_i=\emptyset\;\forall i\in I$, entonces $S=\emptyset$ y ya está.
-			\item Si $\exists i\in I$ tal que $S\cap A_i=A_i$, entonces $\exists a\in S\cap A_i$ que por hipótesis verifica que $a\in S\cap A_j$ para todo $j\in I$. Entonces ninguno de los $S\cap A_j$ es vacío, y por tanto $S\cap A_j=A_j\;\forall j\in I$, es decir, $S=\bigcup_{i\in I} A_i$. \qedhere
-		\end{enumerate}
-	\end{proof}
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ tales que existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
 \end{theo}
+\begin{proof}
+	Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado de la unión. Vamos a ver que necesariamente es el vacío o el total.
+	
+	Para cada $i\in I$ tenemos que $S\cap A_i\subset A_i$ es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
+	\begin{enumerate}
+		\item Si $S\cap A_i=\emptyset$ para todo $i\in I$, entonces $S=\emptyset$ y ya está.
+		\item Si $\exists i_0\in I$ tal que $S\cap A_{i_0}=A_{i_0}$, entonces, como $a$ está en la intersección de la familia, en particular $a\in A_{i_0}= S\cap A_{i_0}$ y, por tanto, $a\in S$. Esto implica que $a\in S\cap A_i$ para todo $i\in I$, con lo que ninguno de los $S\cap A_i$ es vacío. Como necesariamente deben ser el vacío o el total, $S\cap A_i=A_i$ para todo $i\in I$. Con ello, $A_i=S\cap A_i\subset S$ para todo $i\in I$, lo cual implica que $\bigcup_{i\in I} A_i\subset S$. Es decir, $S=\bigcup_{i\in I} A_i$, con lo que hemos terminado.
+	\end{enumerate}
+\end{proof}
 
 Este teorema es extremadamente útil para garantizar la conexión de un sinnúmero de conjuntos, y genera un gran abanico de corolarios y consecuencias. Aquí vamos a detallar algunos que se usan con frecuencia.
 
@@ -84,8 +89,8 @@ Este teorema es extremadamente útil para garantizar la conexión de un sinnúme
 
 El siguiente resultado, aunque también es consecuencia del teorema \ref{conex_theo_pivote}, es más que un mero corolario y merece la categoría de teorema por sí mismo.
 
-\begin{theo}
-	Sea $A$ conexo, $B$ tal que $A\subset B\subset\adher{A}$. Entonces $B$ es conexo. En particular $\adher{A}$ es conexo.
+\begin{theo}\label{T7:teo_adherencia_conexa}
+	Sea $A$ conexo y $B$ tal que $A\subset B\subset\adher{A}$. Entonces $B$ es conexo. En particular $\adher{A}$ es conexo.
 	
 	\begin{proof}
 		Como podemos escribir:
@@ -106,12 +111,13 @@ Aprovechando los resultados anteriores podemos garantizar la conexión de un bue
 \begin{exa} Veamos algunos ejemplos de conjuntos conexos:
 	\begin{enumerate}
 		\item En $\R^n$, se dice que un conjunto es \tbi{convexo} si para cada par de puntos el segmento que los une también está en el conjunto; y se dice que es \tbi{estrellado} si existe un punto tal que el segmento de él a cualquier otro está en el conjunto. Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican.
+		\[\text{Convexo}\ra\text{Estrellado}\ra \text{Conexo}\]
 		
 		En efecto, un conjunto $A$ estrellado se puede escribir como:
 		\[A=\bigcup_{a\in A} [a_0, a]\]
 		para cierto $a_0\in A$. Cada segmento $[a_0,a]$ es conexo por la proposición \ref{conex_prop_im_continua}, al ser la imagen del intervalo conexo $[0,1]$ por la aplicación:
 		\[t\mapsto (1-t)a_0+ta\]
-		y por tanto, por el teorema \ref{conex_theo_pivote}, como todos comparten el punto $a_0$ su unión es conexa.
+		y por tanto, por el teorema \ref{conex_theo_pivote}, como todos comparten el punto $a_0$, su unión es conexa.
 		
 		Nótese que ni la convexidad ni ser estrellado son propiedades topológicas; ambas son propiedades métricas: su definición solo tiene sentido en un espacio que, al menos, tenga definida una distancia.
 		
@@ -123,12 +129,20 @@ Aprovechando los resultados anteriores podemos garantizar la conexión de un bue
 		\[x\mapsto \left(x,\sin\frac{1}{x}\right)\]
 		
 		Lo que es más interesante, para cualquier $a\in [-1,1]$ se verifica que $\{(0,a)\}$ es adherente a $C$ y por tanto que $C\cup\{(0,a)\}$ es conexo.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 1.3]{img/funcionsen1x}
+		\end{figure}
 		
 		\item Consideramos el conjunto:
 		\[C = \big(\{0\}\times (0,1]\big) \cup \left(\bigcup_{n\in\N} [0,1]\times\left\{\frac{1}{n}\right\}\right) \]
 		que es unión de segmentos horizontales cada vez más juntos y de un segmento vertical. Este es trivialmente conexo por el corolario \ref{conex_cor_pivote_corte_comun}. Lo particular es que si unimos a $C$ el segmento horizontal:
 		\[(0,1)\times\{0\}\]
-		sigue siendo conexo por ser adherencia de $C$. \qedhere
+		sigue siendo conexo por ser adherencia de $C$. 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 2.5]{img/lineas}
+		\end{figure}
 	\end{enumerate}
 \end{exa}
 
@@ -138,12 +152,12 @@ Completamos esta sección con una propiedad interesante garantizada por la conex
 	Sea $\X$ conexo y $\{U_i\}_{i\in I}$ una familia de abiertos, de forma que $\X=\bigcup_{i\in I} U_i$. Dos puntos cualesquiera $x,y\in\X$ se pueden conectar mediante una cadena finita $\{U_{i_k}\}_{k=1}^n$ de abiertos de la familia que verifique que $U_{i_k}\cap U_{i_{k+1}}\neq\emptyset$.
 	
 	\begin{proof}
-		Sea $A=\{z\in\X \midc \text{existe una cadena de } x \text{ a } z \}$. $A$ es claramente no vacío, puesto que $x\in A$. Entonces, una forma de ver que $\X=A$, que es lo que queremos encontrar, es comprobar que $A$ es abierto y cerrado, puesto que entonces solo puede ser el total (pues hemos visto que es no vacío).
+		Sea $A=\{z\in\X \midc \text{existe una cadena de } x \text{ a } z \}$. $A$ es claramente no vacío, puesto que $x\in A$. Entonces, una forma de ver que $\X=A$, que es lo que queremos encontrar, es comprobar que $A$ es abierto y cerrado, puesto que entonces solo puede ser el total (pues hemos visto que es no vacío y $\X$ es conexo).
 		
 		\begin{itemize}
 			\item Veamos que $A$ es abierto. En efecto, dado $z\in A$, queremos ver que existe un abierto $U$ tal que $z\in U\subset A$. Pero basta con tomar el último de la cadena, que ya cumple estas condiciones.
 			
-			\item Ahora veamos que es cerrado. En efecto, si $z\in\adher{A}$, existe un abierto $U_{i_0}$ tal que$U_{i_0}\cap A\neq\emptyset$. Entonces, tomamos un punto $y$ de la intersección, y como está en $A$ hay una cadena de $x$ a $y$. Uniendo $U_{i_0}$ a la cadena tenemos una cadena de $x$ a $z$, y por tanto $z\in A$, luego $A=\adher{A}$. \qedhere
+			\item Ahora veamos que es cerrado. En efecto, si $z\in\adher{A}$, existe un abierto $U_{i_0}$ tal que $U_{i_0}\cap A\neq\emptyset$. Entonces, tomamos un punto $y$ de la intersección, y como está en $A$ hay una cadena de $x$ a $y$. Uniendo $U_{i_0}$ a la cadena tenemos una cadena de $x$ a $z$, y por tanto $z\in A$, luego $A=\adher{A}$. \qedhere
 		\end{itemize}
 	\end{proof}
 \end{lem}
@@ -151,6 +165,61 @@ Completamos esta sección con una propiedad interesante garantizada por la conex
 \begin{obs}
 	En particular, puedo recubrir cualquier abierto conexo de $\R^n$ por bolas, y por tanto existe una cadena de bolas que une cualquier par de puntos. Si tomo un punto en cada intersección entre bolas consecutivas de la cadena y los uno, tengo una poligonal que conecta los dos puntos. Entonces, si $C\subset\R^n$ es abierto, $C$ es conexo si y solo si es conexo por poligonales (la definición de conexión por poligonales y la implicación inversa corresponden a cálculo diferencial).
 \end{obs}
+
+\section{Componentes conexas}
+
+Al igual que ocurría con la compacidad, sería deseable que todos los espacios fuesen conexos. Dado que esto no se da, nos conformaremos con quedarnos con los subconjuntos conexos del espacio. Surge así la idea de componente conexa que definimos a continuación. Aunque parezca que esto no es una ventaja, es tremendamente útil a la hora de estudiar, por ejemplo, si dos espacios son homeomorfos.
+
+\begin{defi}
+	Un subconjunto $\Co\subset\X$ es una \tbi{componente conexa} si es un conjunto conexo maximal.
+\end{defi}
+
+Una consecuencia inmediata de la definición es que, dado $x\in\X$,
+\begin{equation}
+	\Co(x)=\bigcup_{x\in A \text{ conexo}} A
+\end{equation}
+es una componente conexa, que denominaremos componente conexa de $x$.
+
+En efecto, la unión no es vacía, pues el punto en sí es conexo. Además $x$ pertenece a la intersección de todos ellos. Como cada $A$ es conexo, basta aplicar el teorema del pivote para deducir que $\Co(x)$ es conexo. Por construcción es, además, maximal, ya que cualquier conexo que lo contenga, contiene a $x$ y, por tanto, está en la unión.
+
+Cabe destacar que $\Co(x)$ es más que maximal, ya que cumple lo siguiente. Sea $E\subset\X$ conexo tal que $E\cap \Co(x)\not=\emptyset$. Entonces $E\cup \Co(x)$ es conexo y además $x\in E\cup \Co(x)$, por lo que $E\cup \Co(x)\subset \Co(x)$, es decir, $E\subset \Co(x)$.
+
+Esto será muy utilizado de aquí en adelante, cualquier conexo que interseque con una componente conexa está contenido en ella.
+
+\begin{obs}
+	Nótese que hay varios punto con la misma componente conexa y que si el espacio es conexo, entonces es la componente conexa de todos los puntos.
+\end{obs}
+
+A continuación enunciamos y demostramos algunas propiedades de las componentes conexas.
+
+\begin{lem}
+	Sea $\X$ un espacio topológico, entonces:
+	\begin{enumerate}
+		\item Las componentes conexas son cerradas.
+		
+		\item Las componentes conexas son una partición del espacio.
+		
+		\item Si $\X$ es la unión disjunta de las componentes conexas, siendo estas finitas, entonces las componentes conexas son abiertas.
+		
+		\item Si en $\X$ todo punto tiene un entorno conexo, entonces las componentes conexas de $\X$ son abiertas.
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	Vayamos con la demostración:
+	\begin{enumerate}
+		\item Sea $\Co(x)$ componente conexa. Como es conexo, por el teorema~\ref{T7:teo_adherencia_conexa} su adherencia es conexa, y por ser maximal $\Co(x)=\adher{\Co(x)}$.
+		
+		\item Es claro que
+		\[\X=\bigcup_{x\in\X} \Co(x)\]
+		Además, dadas dos componentes conexas, $\Co_1$ y $\Co_2$, si $\Co_1\cap\Co_2\not=\emptyset$ entonces $\Co_1\subseteq\Co_2$ y por ser maximales se da la igualdad.
+		
+		\item Por hipótesis $\X=\Co_1\cup\cdots\cup\Co_r$ siendo la unión disjunta. Entonces, para cada $i\in\{1,\cdots r\}$ se tiene que 
+		\[\Co_i=\X\backslash (\Co_1\cup\cdots\cup\Co_{i-1}\cup\Co_{i+1}\cup\cdots\cup\Co_r)=\X\backslash \Co\]
+		Como cada componente conexa es cerrada por 1, la unión finita es cerrada $\Co$, luego $C_i=\X\backslash \Co$ es abierto para todo $i$.
+		
+		\item Sea $\Co$ componente conexa de $\X$ y veamos que es entorno de todos sus puntos. Sea $x\in\Co$. Por hipótesis existe $\V$ entorno conexo de $x$, con lo cual $\V\cap\Co\not=\emptyset$. Esto implica que $x\in\V\subset\Co$, con lo que $\Co$ es entorno de $x$.
+	\end{enumerate}
+\end{proof}
 
 %Tablas comportamiento topológico. Añado aquí también las de conexión por caminos, dado que no está aun el tema.
 
