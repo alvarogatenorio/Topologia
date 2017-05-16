@@ -748,6 +748,7 @@ Esto viene a ser una filosofía parecida a la del álgebra lineal, pero cambiand
 
 Hechas estas consideraciones, pasemos a ver ejemplos de bases de abiertos.
 \begin{exa}[Bases de abiertos]
+	\label{etop_bases}
 	En $( \R^n,\T_u )$, es decir $\R^n$ con la topología usual, las siguientes colecciones son bases de abiertos de $\T_u$.
  	 \begin{gather}
  	 	\B_1=\{\bola(x, \varepsilon) \midc x \in \R^n\ y \ \varepsilon > 0\}\\
@@ -773,6 +774,7 @@ Tras haber visto bases de abiertos \ref{etop_bases_abiertos} y bases de entornos
 
 \end{defi}
 \begin{obs}[II axioma $\ra$ I axioma]
+	\label{etop_2_axioma_sep}
 	Ya que, por la proposición \ref{etop_prop_caracterizacionBases}, dado $x\in X$, la colección $\V_x:=\{V\in\B\midc x\in V\}\subset\B$ es una base de entornos, y como $\B$ es numerable, $\V_x$ también lo será.
 \end{obs}
 
@@ -826,6 +828,7 @@ La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicida
 	\end{exa}
 	Veamos una serie de propiedades extra de esta topología, que son muy ilustrativas.
 	\begin{exa}[Propiedades de la topología de Sorgenfrey]
+		\label{etop_sorgenfrey}
 		A la topología de Sorgenfrey la denotamos por $\T_{[,)}$ y al espacio topológico $(\R,\T_{[,)})$ lo denominamos \tbi{recta de Sorgenfrey}. Algunas propiedades interesantes de la recta de Sorgenfrey son:
 	\begin{enumerate}
 		\item La topología Sorgenfrey es \tb{estrictamente más fina que la topología usual}. En general, para demostrar esto dadas ciertas bases de sendas topologías, basta con demostrar que los abiertos de una base son unión de abiertos de la otra (de ahí la ventaja de trabajar con bases lo más pequeñas posibles). Hagámoslo.
@@ -932,6 +935,7 @@ Veamos ahora cómo se comportan los cerrados, los entornos, las adherencias y la
 	Fin de la cita.
 \end{proof}
 \begin{obs}[Axiomas hereditarios]
+	\label{etop_obs_axiomasHereditarios}
 	Si un espacio es I axioma (respectivamente II axioma), en virtud del lema \ref{etop_lem_basesRel} todo subespacio suyo será I axioma (respectivamente II axioma).
 \end{obs}
 \begin{lem}[Otras propiedades] Unas últimas propiedades interesantes son

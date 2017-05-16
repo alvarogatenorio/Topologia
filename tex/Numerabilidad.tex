@@ -81,8 +81,8 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 	Decimos que un espacio $\X$ es \tbi{separable} si en él existe un conjunto denso numerable.
 \end{defi}
 
-\begin{exa}
-	Veamos algunos ejemplos de espacios separables:
+\begin{exa}[Espacios separables]
+	Refrescamos algunos ejemplos de espacios separables:
 	\begin{enumerate}
 		\item $\R$ con la topología usual es separable, pues $\Q$ es denso y numerable. De la misma forma, $\R^n$ también lo es, por $\Q^n$. 
 		
@@ -96,30 +96,136 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 \end{defi}
 
 \begin{obs}
-	Nótese que la noción de Lindelöf implica la compacidad. De hecho, aunque la hemos mencionado aquí, esta propiedad está a caballo entre los axiomas de numerabilidad y los de compacidad y volveremos a verla en el capítulo \ref{comp}, que trata sobre compacidad.
+	Nótese que la noción de compacidad (que veremos en el capítulo \ref{comp}) es más fuerte que la de Lindelöf. De hecho, aunque no la hemos mencionado aquí, esta propiedad está a caballo entre los axiomas de numerabilidad y los de compacidad (que también veremos en el capítulo \ref{comp}).
 \end{obs}
 
-\begin{prop}[Relación entre los axiomas de numerabilidad]
-	Dado un espacio topológico $\X$, que sea II axioma, se verifica:
-	\begin{enumerate}
-		\item $\X$ es I axioma.
-		\item $\X$ es Lindelöf.
-		\item $\X$ es separable.
-	\end{enumerate}
-	y no se verifica ninguna de las demás implicaciones posibles entre los cuatro axiomas de numerabilidad que hemos visto.
-\end{prop}
+\subsection{Relaciones entre los axiomas de numerabilidad}
+Las relaciones entre los axiomas de numerabilidad se resumen en el siguiente diagrama.
+\begin{equation*}
+	\xymatrix{
+		& \text{II axioma}\ar@{=>}[dl]\ar@{=>}[d]\ar@{=>}[dr]&\\
+		\text{I axioma} & \text{Lindelöf}\ar@{=>}@/^/[u]^{\star} & \text{Separable}\ar@{=>}@/_/[ul]_{\star}
+	}
+\end{equation*}
+Donde $\star$ significa que dicha implicación únicamente se cumple para espacios métricos.
 
-\begin{obs}
-	Si $\X$ es un espacio métrico, las siguientes afirmaciones son equivalentes:
-	\begin{enumerate}
-		\item $\X$ es II axioma.
-		\item $\X$ es separable.
-		\item $\X$ es Lindelöf. \qedhere
-	\end{enumerate}
+En este apartado (cuya lectura puede omitirse una primera vez) veremos las demostraciones de algunas de las implicaciones y algunos contraejemplos para las que no se dan. Se anima al lector a que intente probar algunas por su cuenta.
+
+No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightning)\ las demostraciones que consideramos de mayor dificultad.
+\begin{obs}[Concimiento previo]
+	Por las observaciones \ref{etop_2_axioma_num} y \ref{etop_2_axioma_sep} sabemos que ser II axioma es más fuerte que ser I axioma y que ser separable. 
+\end{obs}
+\begin{obs}[II axioma $\ra$ Lindelöf]
+	En efecto, sea $\X$ un espacio II axioma y sea $\Gamma$ un recubrimiento abierto de $\X$. Veamos que podemos extraer uno numerable.
+	
+	En efecto, por ser $\X$ segundo axioma, tiene una base numerable $\B:=\{B_n\in\T\midc n\in\N\}$.
+	
+	Para cada $n$ tomamos un abierto $\U_n$ de $\Gamma$ que verifique que $B_n\subset \U_n$ (si existe). De este modo son hemos quedado con un subrecubrimiento numerable (a lo sumo) de $\Gamma$. Para terminar tendremos que ver que, en efecto, cubre.
+	
+	Si hubiera algún $x\in\X$ que no viviera en ningún $\U_n$, $x$ viviría en algún $\U_i$ que no estuviera en el subrecubrimiento, sin embargo, $\U_i=\bigcup_{n\in A\subset\N} B_n$, y, por tanto, $\U_i$ contiene a algún conjunto de la base luego $\U_i$ está en el subrecubrimiento (absurdo).
+\end{obs}
+\begin{obs}[I axioma $\cancel{\ra}$ II axioma]
+	Un contraejemplo para esto es la topología discreta en un conjunto $\X$ no numerable. Esto se debe a que cada punto es abierto.
+	
+	En efecto, cada punto debe poder expresarse como unión de abiertos de la base, luego la base debe contener a los propios puntos como abiertos (al menos), de esta forma debe ser forzosamente no numerable (como poco).
+\end{obs}
+\begin{exa}[$(\R,\T_{[,)})$ no es II axioma]
+	\label{num_sorgenfrey_IIax}
+	Sea $\B$ una base. Para cada $x\in\R$ es claro que $[x,\infty)$ es abierto, luego es unión de abiertos de la base. En particular, habrá un abierto de la base, al que llamaremos $B_x$ tal que $x\in B_x$. Además $B_x$ tiene a $x$ por mínimo.
+	
+	Por ende, hemos establecido aplicación inyectiva entre $\R$ y los conjuntos de la base, luego la base debe ser al menos no numerable.
+\end{exa}
+\begin{obs}[Separable $\cancel{\ra}$ II axioma]
+	Se sigue de los ejemplos \ref{num_sorgenfrey_IIax} y \ref{etop_sorgenfrey}
+\end{obs}
+\begin{exa}[$(\R,\T_u)$ es ``hereditariamente Lindelöf'']
+	\label{num_exa_lindelof_R}
+	Evidentemente, $\R$ es II axioma, tal y como se vio en el ejemplo \ref{etop_bases}, luego $\R$ es lindelöf. Además, todo subespacio de $\R$, por las propiedades del II axioma vistas en la observación \ref{etop_obs_axiomasHereditarios}, luego todos los subespacios de $\R$ heredan la propiedad de Lindelöf de $\R$.
+	
+	Esto ocurre en general para espacios II axioma.
+\end{exa}
+\begin{theo}[\Lightning\ Lindelöf $\cancel{\ra}$ II axioma]
+	La recta de Sorgenfrey es Lindelöf.
+\end{theo}
+\begin{proof}
+	Sea $\Gamma$ un recubrimiento de abiertos Sorgenfrey de $\R$.
+	\begin{equation*}
+		\Gamma:=\{\U_i\in\T_{[,)}\midc i\in I\}=\left\{\bigcup_{j\in J}[x_j^i,y_j^i)\midc i\in I,\ j\in J\right\}
+	\end{equation*}
+	Consideramos el conjunto $\Gamma_u:=\left\{\bigcup_{j\in J}(x_j^i,y_j^i)\midc i\in I,\ j\in J\right\}$ (el resultante de quitar los extremos izquierdos).
+	
+	Notemos que $\Gamma_u$ puede que no sea recubrimiento de $\R$ (podría fallar algún extremo $x_j^i$). Llamemos $\U$ a la unión de todos los conjuntos de $\Gamma_u$. Como $\Gamma_u$ es un recubrimiento de abiertos usuales y $\U$ es Lindelöf por el ejemplo \ref{num_exa_lindelof_R}, podemos extraer un subrecubrimiento numerable $\Gamma_u^n$.
+	
+	Como $\R\setminus \U$ es un conjunto compuesto de extremos izquierdos de los ``intervalitos'' que conforman los conjuntos de $\Gamma$, si fuera numerable, bastaría con considerar el subrecubrimiento 
+	\begin{equation*}
+		\left\{\bigcup_{j\in J}[x_j^n,y_j^n)\midc n\in \N,\ j\in J\right\}\cup\left\{\bigcup_{j\in J}[x_j^m,y_j^m)\midc \forall m\in\N\ \exists\ j_0\in J\text{ tal que } x_{j_0}^m\in\R\setminus\U\right\}
+	\end{equation*}
+	Donde el miembro de la izquierda es $\Gamma_u^n$ añadiéndole el extremo izquierdo a cada intervalo y el miembro de la derecha el conjunto de los abiertos Sorgenfrey originales para los que falla alguno de los extremos izquierdos de los intervalos que lo componen.
+	
+	Es claro que todo esto en su conjunto es numerable y que es un subrecubrimiento de $\Gamma$.
+	
+	Comprobemos que $\R\setminus\U$ es numerable definiendo una aplicación inyectiva desde $\R\setminus\U$ hasta $\Q$.
+	
+	Sea $x\in\R\setminus\U$, luego $x$ es el extremo izquierdo de algún intervalo $(x_j^i, y_j^i)$, por densidad de $\Q$, en dicho intervalo hay algún racional $q_x$, que tomaremos como imagen de $x$.
+	
+	Nuestra aplicación es inyectiva, ya que si cogemos dos puntos $x,x'\in\R\setminus\U$ tomando $x<x'$ tendríamos que si $q_{x'}=q_x$ entonces $x'\in(x,y_j^i)$, lo cual es absurdo, ya que entonces $x'$ quedaría cubierto por $\Gamma_u$ y por tanto viviría en $\U$.
+\end{proof}
+Veamos que además ninguna de las otras posibles implicaciones se da, para ello introduzcamos el siguiente lema.
+\begin{lem}[I axioma]
+	Si $\X$ es no numerable, $(\X,\T_{\mathrm{CF}})$ no es I axioma.
+\end{lem}
+\begin{proof}
+	Comprobemos que para cada punto $a\in \X$ toda base de entornos (sin pérdida de generalidad abiertos) es no numerable. Si fuera numerable, digamos 
+	\[\{V_k \in\T_{\text{CF}}\midc k \geq 1\}\]
+	La intersección de todos ellos es no vacía (de hecho es no numerable). En efecto, basta tomar complementarios
+	\[\mathcal{X} \backslash \left(\bigcap_{k\geq 1} V_k\right)= \left(\bigcup_{k\geq 1} \mathcal{X} \backslash V_k\right)\]
+	Nótese que el miembro de la derecha es numerable por ser unión numerable de conjuntos finitos. Al ser $\mathcal{X}$ no numerable y 
+	\[\mathcal{X}= \left(\bigcap_{k\geq 1} V_k\right) \cup \left(\bigcup_{k\geq 1} \mathcal{X}\backslash V_k\right),\]
+	la intersección de todos los abiertos de la base es no numerable.
+	
+	Tomemos ahora un punto cualquiera $b$ de esta intersección con la condición de que sea distinto de $a$ y consideremos el entorno abierto de $a$ dado por $W:=\mathcal{X}\backslash \{b\}$.
+	
+	De forma evidente la condición $V_k \subset W$ no se verifica para ningún $k$ ya que $b\in V_k$ para todo $k$. Lo que contradice que el conjunto inicial fuera base.
+\end{proof}
+\begin{obs}[Lindelöf $\cancel{\ra}$ I axioma]
+	En efecto, $(\X,\T_{\text{CF}})$ con $\X$ no numerable es Lindelöf ya que dado un recubrimiento arbitrario por abiertos $\Gamma$, si me quedo con uno de ellos, me queda una cantidad finita de puntos por cubrir.
+	
+	Como $\Gamma$ es recubrimiento hará falta una cantidad finita de abiertos de $\Gamma$ para cubrir el resto, luego puedo extraer así el recubrimiento numerable (de hecho finito).
 \end{obs}
 
+\begin{obs}[Separable $\cancel{\ra}$ I axioma]
+	Si $\X$ es no numerable $(\X,\T_{\text{CF}})$ es separable. Es más, todo conjunto abierto es denso. En efecto, si hubiera un conjunto $A\subset \X$ abierto no denso, entonces habría un abierto $\U\in \T_{\text{CF}}$ tal que $\U\cap A = \emptyset$. Tomando complementarios, se tiene
+	
+	\[(\X\setminus \U)\cup (\X\setminus A)=\X\]
+	
+	Como el miembro de la izquierda es finito y el de la derecha infinito hemos terminado.
+\end{obs}
+
+Se pueden encontrar contraejemplos para el resto de implicaciones con la topología discreta sobre diferentes conjuntos.
+
+Pasemos a dar la idea de las demostraciones (dejando como ejercicio los detalles) de las implicaciones que únicamente se dan para espacios métricos.
+\begin{lem}[Separabilidad]
+	Sea $(M,d)$ espacio métrico. Si es separable, entonces es II axioma.
+\end{lem}
+\begin{proof}
+	Sea $A$ el conjunto numerable denso. Para cada punto de $A$ tomamos el conjunto de todas las bolas de radio racional. Por ende, el conjunto $\B$ formado por todas las bolas de centro un punto de $A$ y radio racional es un conjunto numerable, siendo sencillo demostrar que es, además, una base (gracias a la propiedad triangular).
+\end{proof}
+\begin{lem}[Lindelöf]
+	Sea $(M,d)$ espacio métrico. Si es Lindelöf, entonces es II axioma.
+\end{lem}
+\begin{proof}
+	Para cada $n\in\N$ consideramos el recubrimiento abierto
+	\begin{equation*}
+		\Gamma:=\left\{\bola\left(x,\frac{1}{n}\right)\midc x\in M\right\}
+	\end{equation*}
+	como $M$ es Lindelöf, podemos extraer un subrecubrimiento numerable $\Gamma_n$. Si consideramos el conjunto numerable de abiertos
+	\begin{equation*}
+		\B:=\bigcup_{n=1}^{\infty}\Gamma_n
+	\end{equation*}
+	es sencillo demostrar que $\B$ es base. 
+	\end{proof}
 \section{Comportamiento topológico}
-
+\label{num_comportamiento}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
@@ -134,4 +240,3 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 	\label{Tabla_numerabilidad}
 \end{table}
 En la tabla anterior, el símbolo * indica que, en esos casos, la propiedad de ser separable o Lindelöf se preserva porque la imagen continua de un espacio separable (Lindelöf) es separable (Lindelöf). En tablas posteriores se usará el mismo símbolo para indicar esto mismo.
-% FALTA EL COMPORTAMIENTO TOPOLÓGICO
