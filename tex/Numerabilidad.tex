@@ -31,7 +31,7 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 		
 		\item El límite de una sucesión no es necesariamente único, es decir, una sucesión puede converger a varios puntos. En efecto, consideramos un conjunto $\X$ con la topología del punto\indext{del punto} $\T_a$, para un punto $a\in\X$. Aquí, la sucesión constantemente $a$ converge simultáneamente a todos los puntos del espacio.
 		
-		Esto es claro puesto que cualquier entorno de cualquier punto contiene a $a$.
+		Esto es claro puesto que cualquier entorno de cualquier punto contiene a $a$.\qedhere
 	\end{enumerate}
 \end{obs}
 Para afianzar en el lector la idea de que la intuición que pudiera tener ya nos es válida aquí vamos a introducir un ejemplo.
@@ -177,7 +177,7 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 	
 	Para cada $n$ tomamos un abierto $\U_n$ de $\Gamma$ que verifique que $B_n\subset \U_n$ (si existe). De este modo son hemos quedado con un subrecubrimiento numerable (a lo sumo) de $\Gamma$. Para terminar tendremos que ver que, en efecto, cubre.
 	
-	Si hubiera algún $x\in\X$ que no viviera en ningún $\U_n$, $x$ viviría en algún $\U_i$ que no estuviera en el subrecubrimiento, sin embargo, $\U_i=\bigcup_{n\in A\subset\N} B_n$, y, por tanto, $\U_i$ contiene a algún conjunto de la base luego $\U_i$ está en el subrecubrimiento (absurdo).
+	Si hubiera algún $x\in\X$ que no viviera en ningún $\U_n$, $x$ viviría en algún $\U_i$ que no estuviera en el subrecubrimiento, sin embargo, $\U_i=\bigcup_{n\in A\subset\N} B_n$, y, por tanto, $\U_i$ contiene a algún conjunto de la base (en particular a alguno, digamos $B_{n_0}$ que contenga a $x$) luego tenemos garantizada la existencia de un $\U_{n_0}$ tal que  $x\in\B_{n_0}\subset\U_{n_0}$ que está en el subrecubrimiento. Lo que entra en contradicción con que $x$ no esté cubierto.
 \end{proof}
 \begin{lem}[Fuertemente Lindelöf y II axioma]
 	Si $\X$ es II axioma entonces es fuertemente Lindelöf.
@@ -185,7 +185,7 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 \begin{proof}
 	En efecto, si $\X$ es II axioma, $\X$ es Lindelöf, además, por la observación \ref{etop_obs_axiomasHereditarios} todos sus subespacios son II axioma (luego Lindelöf).
 \end{proof}
-\begin{obs}[I axioma $\cancel{\ra}$ II axioma]
+\begin{obs}[I axioma $\protect\centernot\ra$ II axioma]
 	Un contraejemplo para esto es la topología discreta en un conjunto $\X$ no numerable. Esto se debe a que cada punto es abierto.
 	
 	En efecto, cada punto debe poder expresarse como unión de abiertos de la base, luego la base debe contener a los propios puntos como abiertos (al menos), de esta forma debe ser forzosamente no numerable (como poco).
@@ -196,14 +196,14 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 	
 	Por ende, hemos establecido aplicación inyectiva entre $\R$ y los conjuntos de la base, luego la base debe ser al menos no numerable.
 \end{exa}
-\begin{obs}[Separable $\cancel{\ra}$ II axioma]
+\begin{obs}[Separable $\protect\centernot\ra$ II axioma]
 	Se sigue de los ejemplos \ref{num_sorgenfrey_IIax} y \ref{etop_sorgenfrey}
 \end{obs}
 \begin{obs}[$(\R,\T_u)$ es fuertemente Lindelöf]
 	\label{num_exa_lindelof_R}
 	Evidentemente, $\R$ es II axioma, tal y como se vio en el ejemplo \ref{etop_bases}, luego $\R$ es lindelöf y fuertemente Lindelöf (por ser II axioma).
 \end{obs}
-\begin{theo}[\Lightning\ Lindelöf $\cancel{\ra}$ II axioma]
+\begin{theo}[\Lightning\ Lindelöf $\protect\centernot\ra$ II axioma]
 	La recta de Sorgenfrey es Lindelöf.
 \end{theo}
 \begin{proof}
@@ -246,13 +246,13 @@ Veamos que además ninguna de las otras posibles implicaciones se da, para ello 
 	
 	De forma evidente la condición $V_k \subset W$ no se verifica para ningún $k$ ya que $b\in V_k$ para todo $k$. Lo que contradice que el conjunto inicial fuera base.
 \end{proof}
-\begin{obs}[Lindelöf $\cancel{\ra}$ I axioma]
+\begin{obs}[Lindelöf $\protect\centernot\ra$ I axioma]
 	En efecto, $(\X,\T_{\text{CF}})$ con $\X$ no numerable es Lindelöf ya que dado un recubrimiento arbitrario por abiertos $\Gamma$, si me quedo con uno de ellos, me queda una cantidad finita de puntos por cubrir.
 	
 	Como $\Gamma$ es recubrimiento hará falta una cantidad finita de abiertos de $\Gamma$ para cubrir el resto, luego puedo extraer así el recubrimiento numerable (de hecho finito).
 \end{obs}
 
-\begin{obs}[Separable $\cancel{\ra}$ I axioma]
+\begin{obs}[Separable $\protect\centernot\ra$ I axioma]
 	Si $\X$ es no numerable $(\X,\T_{\text{CF}})$ es separable. Es más, todo conjunto abierto es denso. En efecto, si hubiera un conjunto $A\subset \X$ abierto no denso, entonces habría un abierto $\U\in \T_{\text{CF}}$ tal que $\U\cap A = \emptyset$. Tomando complementarios, se tiene
 	
 	\[(\X\setminus \U)\cup (\X\setminus A)=\X\]
@@ -287,9 +287,152 @@ Pasemos a dar la idea de las demostraciones (dejando como ejercicio los detalles
 \label{num_comportamiento}
 Estudiemos ahora el comportamiento topológico de los axiomas de numerabilidad.
 \subsection{Subespacios}
+Llegados a este punto, podemos recoger los frutos de nuestra cosecha, con sudor y sangre plantada, a costa de pasar hambre durante el largo y frío invierno que fue el capítulo \ref{etop}.
+\begin{obs}[Conocimiento previo]
+	Las observación \ref{etop_obs_axiomasHereditarios} nos dice que tanto I axioma como II axioma se heredan a subespacios.
+\end{obs}
+Lamentablemente, para la separabilidad el comportamiento no es tan bueno.
+\begin{exa}[Topología del punto]
+	Sea $(\X,\T_a)$ con $\X$ no numerable. Sabemos de sobra que el punto $a$ es denso en $\X$. No obstante, si tomamos el subespacio $\X\setminus\{a\}$, la topología relativa asociada a dicho subespacio resulta ser la discreta. Como $\X\setminus\{a\}$ es no numerable, evidentemente es no separable, ya que todo conjunto numerable es cerrado y por tanto coincide con su adherencia.
+\end{exa}
+A pesar de no tener la separabilidad un buen comportamiento en general, si que hay un oasis en medio del desierto, los abiertos.
+\begin{lem}[Separabilidad y abiertos]
+	Si $\X$ es un espacio separable, todo subespacio abierto suyo también lo es.
+\end{lem}
+\begin{proof}
+	Sea $Y$ un subespacio abierto de $\X$. Por el lema \ref{etop_lem_otrasProp} sabemos que todo abierto relativo de $Y$ es abierto de $\X$. Como $\X$ es separable, habrá un conjunto $A$ numerable tal que todo abierto de $\X$ (y en particular los de $Y$) contiene algún punto de $A$. Por ende, $Y$ es separable. 
+\end{proof}
+Veamos pues como se comporta Lindelöf, que adelantamos que en general también mal.
+\begin{exa}[Topología pseudodiscreta]
+	Sea $\X$ un conjunto no numerable y sea $\{x\}$ tal que $x\not\in\X$. Consideramos pues el conjunto $Y:=\X\cup\{x\}$ al que equipamos con la siguiente topología.
+	\begin{equation*}
+		\T:=\{\emptyset, Y\}\cup\partes(\X)
+	\end{equation*}
+	Es claro que $Y$ es Lindelöf ya que todo recubrimiento por abiertos debe contener a $Y$, luego de todo recubrimiento podemos extraer un recubrimiento finito (el propio $Y$) luego numerable. No, obstante, $\X$ como subespacio de $Y$ tiene la topología discreta, y por tanto no es Lindelöf.
+\end{exa}
+Tal y como ocurría en el caso de la separabilidad, hay luz al final del túnel y la propiedad de Lindelöf si que es hereditaria para subespacios cerrados.
+\begin{lem}[Lindelöf y cerrados]
+	Si $\X$ es un espacio Lindelöf, todo subespacio cerrado suyo también lo es.
+\end{lem}
+\begin{proof}
+	Sea $Y$ un subespacio cerrado Sea $\Gamma$ un recubrimiento abierto de $Y$. De esta forma podemos descomponer $\X$ de la siguiente forma
+	\begin{equation*}
+		\X=(\X\setminus Y)\cup\bigcup\Gamma
+	\end{equation*}
+	Como $\X\setminus Y$ es abierto, $\Gamma\cup(\X\setminus Y)$ es un recubrimiento abierto de $\X$. Como $\X$ es Lindelöf podemos extraer un recubrimiento numerable $\Gamma_n$, sin pérdida de generalidad podemos suponer que nos quedamos con el abierto $\X\setminus Y$. Dicho de una forma más clara
+	\begin{equation*}
+		\X=\X\setminus Y\cup \bigcup\Gamma_n
+	\end{equation*}
+	Como $Y\cap(\X\setminus Y)=\emptyset$ es claro que $\Gamma_n$ es un subrecubrimiento numerable de $Y$.
+\end{proof}
 \subsection{Cocientes}
+El estudio de los cocientes para los casos de I y II axioma se basa en encontrar contraejemplos que muestran que pegar puntos no es buena idea si deseamos preservar estas propiedades. En concreto, nos bastará con encontrar un espacio topológico II axioma y un cociente suyo que no sea ni siquiera primer axioma.
+
+Para encontrarlo, podemos hacer un pacto con Belcebú, quien a cambio de una demostración un poco dolorosa nos dará una flor con infinitos pétalos que abrirá la caja de Pandora.
+\begin{exa}[Flor infinita]
+	Consideremos el espacio topológico $\R$ con la topología usual, que es un espacio II axioma. Ahora tomemos su cociente $\R/\Z$, es decir, el resultante de relacionar a todos los números enteros entre sí y a los demás solo consigo mismo.
+	
+	Efectivamente, podemos imaginarnos esto como una flor con infinitos pétalos cuyo centro es el punto $\Z$ (que recordemos que es un punto en el cociente). Para demostrar que $\R/\Z$ no es primer axioma deberemos encontrar un punto que no posea una base de entornos numerable. Dicho punto, como se ve venir, es $\Z$.
+	
+	Para demostrar esto tomemos una familia numerable de entornos (sin pérdida de generalidad abiertos) de $\Z$ a cuyos elementos los llamaremos $U_n$. Vamos a construir un abierto $V$ que no contenga a ningún abierto de la familia. Como sabemos, los abiertos del cociente son las proyecciones de los abiertos saturados del espacio original.
+	
+	Para cada abierto $U_n$ y cada número entero $k$ definimos un intervalo $(k-\varepsilon_n^k,k+\varepsilon_n^k)$ de manera que se verifique
+	\begin{equation*}
+		p\left(\bigcup_{k\in\Z}(k-\varepsilon_n^k,k+\varepsilon_n^k)\right)\subset U_n
+	\end{equation*}
+	La pieza maestra de la demostración consiste en definir un $\delta_k:=\frac{1}{2}\varepsilon_k^k$, a partir del cual definimos nuestro abierto $V$.
+	\begin{equation*}
+		V:=p\left(\bigcup_{k\in\Z}(k-\delta_k,k+\delta_k)\right)
+	\end{equation*}
+	Veamos que $V$ no contiene a ningún $U_n$. En efecto, como $\delta_n<\varepsilon_n^n$ podemos considerar un elemento $x$ del intervalo $x\in(n-\delta_n,n+\varepsilon_n^n)$ que sea mayor que $n+\delta_n$. De esta forma $p(x)\in U_n$ pero no a $V$.
+	
+	Esto demuestra que $\R/\Z$ no es I axioma.
+\end{exa}
+Al contrario de lo que pasaba en el caso de los subespacios, aquí la separabilidad y Lindelöf se comportan extraordinariamente bien.
+
+Antes de nada hay que refrescar que un espacio cociente no es más que un espacio que es resultado de transformar continuamente el espacio original, teniendo el espacio de llegada una topología un poco drástica. Aquí veremos que el cómo sea la topología del espacio de llegada nos da igual a la hora de que se preserven las propiedades de separabilidad y Lindelöf. Únicamente nos interesará que la transformación sea continua.
+\begin{prop}[Imagen continua de Separable]
+	Sea $\X$ un espacio separable y $f:\X\to Y$ una función continua, entonces $f(\X)$ es un espacio separable.
+\end{prop}
+\begin{proof}
+	Sea $A$ el conjunto numerable denso en $\X$, como $f$ es continua se verifica que
+	\begin{equation*}
+		Y=f(X)=f(\adher{A})\subset\adher{f(A)}
+	\end{equation*}
+	Y como $f(A)$ es numerable hemos terminado.
+\end{proof}
+\begin{prop}[Imagen continua de Lindelöf]
+	Sea $\X$ un espacio Lindelöf y $f:\X\to Y$ una función continua, entonces $f(\X)$ es un espacio Lindelöf.
+\end{prop}
+\begin{proof}
+	Sea $\Gamma:=\{\U_i\in\T_Y\midc i\in Y\}$ un recubrimiento por abiertos de $Y$. Como $f$ es continua $f^{-1}(\U_i)$ es abierto en $\X$. Por ende, se verifica que $\X = f^{-1}(\bigcup_{i\in I}\U_i)=\bigcup_{i\in I} f^{-1}(\U_i)$, luego $f^{-1}(\Gamma)$ es un recubrimiento por abiertos de $\X$. Como $\X$ es Lindelöf, podemos extraer un subrecubrimiento numerable. Es decir
+	\begin{equation*}
+		\X=\bigcup_{n=1}^{\infty}f^{-1}(\U_n)
+	\end{equation*}
+	Tomando imágenes a ambos lados tenemos que $f(\X)\stackrel{!}{=}\bigcup_{n=1}^{\infty}\U_n$. Con lo que hemos extraído un subrecubrimiento numerable de $f(\X)$.
+\end{proof}
 \subsection{Productos}
+A la hora de estudiar los productos también podemos recurrir a trabajo anterior, en este caso al capítulo \ref{const}.
+\begin{obs}[Conocimiento previo]
+	Sabemos por las proposiciones \ref{const_prop_base} y \ref{const_prop_base2} que el producto de espacios tanto I como II axioma es un espacio I o II axioma respectivamente.
+\end{obs}
+La separabilidad también es agradecida en este contexto.
+\begin{lem}[Productos y separabilidad]
+	Sean $X_1,\dots,X_r$ espacios separables, entonces su producto es separable.
+\end{lem}
+\begin{proof}
+	Tomamos $A_i$ los conjuntos densos numerables de cada espacio $X_i$. Es claro que el conjunto $\prod_{i=1}^rA_i$ es numerable. Además, por la proposición \ref{const_prop_adherencia} es denso.
+\end{proof}
+Lindelöf sin embargo no se comporta bien para productos, para ver esto basta un contraejemplo con la topología de Sorgenfrey.
+\begin{exa}[Sorgenfrey y productos]
+	Sabemos que $\R$ equipado con la topología de Sorgenfrey es Lindelöf, veamos que su producto no lo es. Para ello consideramos un recta oblicua de $\R^2$, que, por ser la topología de Sorgenfrey más fina que la usual, es cerrado. No obstante, la topología relativa asociada a una recta oblicua en el producto de topologías de Sorgenfrey es la discreta, ya que el punto es abierto (¡compruébese!). Por ende, la recta no es Lindelöf, pero Lindelöf se traspasaba a subespacios cerrados, luego $\R^2$ con el producto de topologías Lindelöf no es Lindelöf.
+\end{exa}
 \subsection{Sumas}
+Las sumas, como hasta ahora, conservan todas las propiedades. Veámoslo una a una y sin rodeos.
+\begin{lem}[I axioma y sumas]
+	La suma de espacios I axioma es I axioma.
+\end{lem}
+\begin{proof}
+	En efecto, dado un punto del espacio suma, este estará en alguno de los estantes. Es decir, será un punto de la forma $(i,x_i)\subset\{i\}\times X_i$. Como $\{i\}\times X_i$ es homeomorfo a $X_i$ vía la inclusión $j_i$ y $X_i$ es primer axioma, podemos tomar una base de entornos (sin pérdida de generalidad abiertos) numerable  de $j_i^{-1}(i,x_i)\in X_i$, digamos $V_k$. Como las inclusiones abiertas, $j_i(V_k)$ es una base numerable de entornos abiertos de $(i,x_i)$.
+\end{proof}
+
+\begin{lem}[II axioma y sumas]
+	La suma de espacios II axioma es II axioma.
+\end{lem}
+\begin{proof}
+	Sean $\B_i$ bases numerables de los sumandos, demostremos que
+	\[\widehat{\B}:=\left\{\{i\}\times U_n^i\midc n\in\N,\ U_n^i\in\B_i\right\}\]
+	es base (obviamente numerable) del espacio suma $\sum_{i=1}^rX_i$. En efecto, vemos que todo abierto de la base ``estándar'' es expresable como unión de abiertos de $\widehat{\B}$. 
+	\begin{equation*}
+		\B=\left\{\{i\}\times\bigcup_{A\subset \N}U_n^i\midc U_n^i\in\B_i\right\}=\left\{\bigcup_{A\subset\N}\{i\}\times U_n^i\midc U_n^i\in\B_i\right\}\qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{lem}[Separabilidad y sumas]
+	La suma de espacios separables es separable.
+\end{lem}
+\begin{proof}
+	En efecto, tomemos los conjuntos $A_i$ numerables y densos en los factores $X_i$. Veamos que el conjunto numerable
+	\begin{equation*}
+		\bigcup_{i=1}^r\{i\}\times A_i
+	\end{equation*}
+	es denso en el espacio suma. En efecto, como las inclusiones $j_i$ son inmersiones, si la adherencia de $A_i$ es $X_i$, la adherencia de $\{i\}\times A_i$ es $\{i\}\times X_i$. Como la unión de las adherencias es la adherencia de las uniones el resultado se sigue. 
+\end{proof}
+
+\begin{lem}[Lindelöf y sumas]
+	La suma de espacios Lindelöf es Lindelöf
+\end{lem}
+\begin{proof}
+	Dado un recubrimiento por abiertos $\Gamma:=\{U_i\midc i\in I\}$ de la suma, fijamos un $j\in\{1,\dots,r\}$ y tomamos la imagen inversa por $j_j$ del recubrimiento, lo cual nos dará un recubrimiento abierto de $X_j$.
+	
+	Como $X_j$ es Lindelöf, podemos extraer un subrecubrimiento numerable \[\Gamma_j:=\{(j_j)^{-1}(U_i)\midc i\in\sigma\subset I\}\]
+	
+	Tomamos como parte de nuestro subrecubrimiento a los $U_i$ del recubrimiento original que se corresponden con los abiertos del recubrimiento $\Gamma_j$. Iteramos este proceso con cada $j\in\{1,\dots,r\}$ añadiendo cada vez a nuestro subrecubrimiento los abiertos que correspondan.
+	
+	Al final nos queda un subrecubrimiento numerable del original. Que es numerable es evidente por ser unión finita de conjuntos numerables y que es recubrimiento es consecuencia de que las inclusiones son inmersiones. Además, es un subrecubrimiento por la propia construcción.
+\end{proof}
+\subsection{Tabla de comportamiento topológico}
+A modo de recapitulación presentamos la siguiente tabla.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
