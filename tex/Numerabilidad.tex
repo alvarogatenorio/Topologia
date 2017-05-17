@@ -9,18 +9,18 @@ En matemáticas, un \tbi[axiomas de numerabilidad]{axioma de numerabilidad} es u
 Las sucesiones eran, en $\R^n$, una herramienta fundamental para el trabajo. En un espacio topológico en general son mucho menos potentes de lo que estamos acostumbrados por falta de estructura, pero aun así son dignas de mención. Una teoría más general de la convergencia para suplir esta carencia es la teoría de la convergencia de redes, pero no vamos a detallarla aquí. 
 
 \begin{defi}[Sucesión]
-	Una \tbi{sucesión} en un espacio $\X$ es una aplicación $f:\N\to \X$. Habitualmente escribimos una sucesión como $\{x_n\}_n$, donde $x_n$ es su $n$-ésimo elemento. 
+	Una \tbi{sucesión} en un espacio $\X$ es una aplicación $f:\N\to \X$. Habitualmente denotaremos una sucesión por $\{x_n\}_{n=1}^{\infty}$, es decir, el conjunto ordenado de las imágenes de la función $f$, donde $x_n$ es el ``$n$-ésimo término'' de la sucesión, o sea, $f(n)$. 
 \end{defi}
 
 El concepto más importante de las sucesiones es la convergencia. Nótese que esta definición es equivalente a la que se ve en $\R^n$ con bolas.
 
 \begin{defi}[Convergencia]
 	\label{num_defi_convergencia}
-	Decimos que una sucesión $\{x_n\}_n$ de $\X$ \tbi[sucesión!convergente]{converge} a $x_0\in \X$ si para cada entorno $V_{x_0}$ de $x_0$ existe $k_0\geq 1$ tal que $x_k\in V_{x_0}$ para $k\geq k_0$. A menudo lo expresamos como:
-	\[x_0=\lim x_k = \lim_k x_k\]
+	Decimos que una sucesión $\{x_n\}_{n=1}^\infty$ de $\X$ \tbi[sucesión!convergente]{converge} a $x_0\in \X$ si para cada entorno $V_{x_0}$ de $x_0$ existe $k_0\geq 1$ tal que $x_k\in V_{x_0}$ para todo $k\geq k_0$. A menudo lo expresamos como:
+	\[x_0=\lim x_n = \lim_{n\to\infty} x_n\]
 \end{defi}
 
-\begin{obs}
+\begin{obs}[Bases]
 	Para que una sucesión sea convergente, es suficiente que la definición \ref{num_defi_convergencia} se verifique para una base de entornos. No es necesario comprobar que se cumple para un entorno cualquiera.
 \end{obs}
 
@@ -29,50 +29,99 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 	\begin{enumerate}
 		\item Si $x_0 = \lim x_k$, con $x_k\in A$, entonces $x_0\in\adher{A}$. En efecto, en todo entorno de $x_0$ hay por definición de convergencia algún punto de $A$, y entonces es punto adherente por definición.
 		
-		\item El límite de una sucesión no es necesariamente único, es decir, una sucesión puede converger a varios puntos. En efecto, consideramos un conjunto $\X$ con la topología del punto\indext{del punto} $\T_a$, para un punto $a\in\X$. Aquí, la sucesión constante $x_k=a\xrightarrow[]{} x\;\;\forall x\in\X$. Esto es claro puesto que cualquier entorno de cualquier punto contiene a $a$.
+		\item El límite de una sucesión no es necesariamente único, es decir, una sucesión puede converger a varios puntos. En efecto, consideramos un conjunto $\X$ con la topología del punto\indext{del punto} $\T_a$, para un punto $a\in\X$. Aquí, la sucesión constantemente $a$ converge simultáneamente a todos los puntos del espacio.
 		
-		% NO TENGO MUY CLARO LO QUE DICE AQUÍ, COMPROBAR
-		% \item Consideramos $\R$ con la topología de los complementarios numerables\indext[$\T_{CN}$]{de los complementarios numerables}. En esta, se verifica que $x=\lim x_k\iff x=x_k\;\forall k\geq 0$, pues como $\
+		Esto es claro puesto que cualquier entorno de cualquier punto contiene a $a$.
 	\end{enumerate}
 \end{obs}
-
+Para afianzar en el lector la idea de que la intuición que pudiera tener ya nos es válida aquí vamos a introducir un ejemplo.
+\begin{defi}[Complementarios]
+	Sea $\X$ un conjunto arbitrario, definimos la \tbitop[$\T_{\text{CN}}$]{de los complementarios numerables} como
+	\begin{equation*}
+		\T_{\text{CN}}:=\{\U\subset \X\midc \X\setminus\U\text{ es numerable}\}
+	\end{equation*}
+	De manera análoga se define la \tbitop[$\T_{\text{CF}}$]{de los complementarios finitos} $\T_{\text{CF}}$.
+	
+	Es un sencillo ejercicio comprobar que ambas son efectivamente topologías.
+\end{defi}
+\begin{lem}[Convergencia en $\T_{\text{CN}}$]
+	Sea $\X$ un espacio topológico con la topología de los complementarios numerables. Entonces, una sucesión en $\X$ converge si y solo si todos sus términos son iguales a partir de cierto $k_0\in\N$.
+\end{lem}
+\begin{proof}Procedemos por doble implicación.
+	\begin{enumerate}
+		\item[$\bla$] 
+		Evidentemente, si la sucesión es constantemente $x_0$ a partir de cierto término $k_0$, la sucesión converge a $x_0$ ya que todo entorno de $x_0$ contiene a $x_0$ y la sucesión es siempre $x_0$ a partir de término $k_0$, luego se cumple algo más fuerte de lo que nos pide la convergencia.
+		\item[$\bra$]
+		Si una sucesión converge a un punto $x_0$, el conjunto $A$ de los términos de la sucesión que no coinciden con $x_0$ es numerable (ya que el conjunto de términos de la sucesión es numerable en sí mismo). Luego su complementario, que contiene a $x_0$ es abierto, y, por tanto, entorno de $x_0$. Como $x_0$ es el límite habrá un cierto $k_0$ a partir del cual los términos de la sucesión queden confinados en $\X\setminus A$, no obstante, el único valor que puede tomar la sucesión en este conjunto es $x_0$.\qedhere
+	\end{enumerate}
+\end{proof}
+Para ver la potencia del resultado anterior hagamos una pequeña observación.
+\begin{obs}[Sucesión armónica]
+	Es harto conocido que la sucesión $\{\frac{1}{n}\}_{n=1}^{\infty}$ es convergente a $0$ en $\R$ con la topología usual, no obstante no lo será, por el lema anterior en $\R$ con la topología de los complementarios numerables. Esto es evidente ya que la sucesión jamás toma el valor $0$.
+\end{obs}
 \section{Primer axioma de numerabilidad}
 
 \begin{defi}[Primer axioma]
 	Decimos que un espacio $\X$ es \tbi[axiomas de numerabilidad!primer axioma de numerabilidad]{primer axioma de numerabilidad} o simplemente \tb{\ti{I axioma}} si todo punto de $\X$ tiene una base de entornos numerable.
 \end{defi}
 
-\begin{obs}
+\begin{obs}[Bases encajadas]
 	Esta base numerable, si existe, siempre se podrá tomar encajada, como ya mencionamos en la observación \ref{etop_obs_base_encajada}. 
 \end{obs}
 
-\begin{obs}
-	\label{num_obs_adherencia_limites}	
-	Si $\X$ es I axioma, entonces la adherencia está totalmente determinada por límites de sucesiones. Esto es:
-	\[x\in \adher{A}\iff \exists\{x_k\}_k\subset A\text{ t.q. } x=\lim_k x_k \]
+Veamos que cuando le vamos exigiendo algunas cosas más al espacio vamos desbloqueando argumentos que usábamos con naturalidad en el contexto de los espacios métricos, haciendo de las sucesiones una herramienta cada vez más y más potente.
+\begin{obs}[Construcción de sucesiones convergentes]
+	\label{num_obs_construccion}
+	En un espacio $\X$ I axioma podemos construir sucesiones convergentes a cualquier punto $x_0$ del mismo. El procedimiento que veremos a continuación (con ligeras modificaciones quizá) puede resultarnos muy útil a la hora de elaborar argumentos como veremos en el lema \ref{num_obs_adherencia_limites}. Veamos cómo se hace.
 	
-	Vamos a ver solo la implicación hacia la derecha, la otra ya la vimos en la observación \ref{num_obs_consecuencias_continuidad}. Sea una base de entornos encajada $\V^x=\{V^x\colon k\geq 1\}$, numerable por ser $\X$ I axioma. $x\in\adher{A}$ implica que $V_k\cap A\neq\emptyset\;\forall k$ y en consecuencia $\exists a_k\in V_k\cap A$ y $x=\lim_k a_k$. En efecto, dado un entorno $V^x$ existe $k_0$ tal que $V_{k_0}\subset V^x$ y entonces, por haber tomado la base encajada, para cualquier $k\geq k_0$ $a_k\in V_k\subset V_{k_0}\subset V^x$, que es precisamente la definición de continuidad.
+	Tomamos el punto $x_0$ al que queremos que nuestra sucesión converja. Asimismo tomamos una base numerable encajada $\{V_k\midc k\in\N\}$ del mismo. Y para cada $k\in\N$ tomamos un punto en $x_k\in V_k$.
+	
+	Veamos que la sucesión $\{x_k\}_{k=1}^{\infty}$ converge a $x_0$. En efecto, dado un entorno de $x_0$, siempre podemos encontrar uno de la base $V_{k_0}$ contenido. Luego todos los términos de la sucesión a partir de $k_0$ se encuentran en el entorno inicial (por ser la base encajada).
 \end{obs}
+\begin{lem}[Caracterización de la adherencia]
+	\label{num_obs_adherencia_limites}	
+	Si $\X$ es I axioma y $A$ un subconjunto de $X$. Entonces $x$ es adherente a $A$ si y solo si hay una sucesión contenida en $A$ que converge a $x$.
+\end{lem}
+\begin{proof}
+	Vamos a ver solo la implicación hacia la derecha, la otra ya la vimos en la observación \ref{num_obs_consecuencias_continuidad}.
+	
+	Basta con construir una sucesión convergente a $x$ por el procedimiento de la observación \ref{num_obs_construccion} pero a la hora de seleccionar los puntos de la sucesión exigimos que además de estar en el $V_k$ correspondiente de la base encajada también estén en $A$, cosa siempre posible por ser $x$ un punto adherente a $A$.
+\end{proof}
 
+Para ver las cosas con un poco de perspectiva vamos a demostrar desde un punto de vista puramente ``secuencial'' que en la topología del punto, el punto en cuestión es denso.
 \begin{exa}[Adherencias curiosas]
 	\label{num_exa_adher_topologia_punto}
-	Volviendo de nuevo al ejemplo de $\X$ con la topología $\T_a$ del punto, resulta que se verifica que $\adher{\{a\}}=\X$. Esto es consecuencia directa de la observación \ref{num_obs_adherencia_limites}.
+	Sea $\X$ un conjunto equipado con la topología $\T_a$ del punto $a\in\X$.
+	
+	Como la sucesión constantemente $a$ (y por tanto contenida en $\{a\}$) converge simultáneamente a todo el espacio, como vimos en la observación \ref{num_obs_adherencia_limites}, resulta que, por la observación \ref{num_obs_adherencia_limites}, el punto $a$ es denso en $\X$.
 \end{exa}
 
-\begin{prop}
+El hecho de que el límite no sea único puede resultar perturbador para las mentes acostumbradas a los espacios métricos. Por esa razón a veces es buenos exigirle ciertas condiciones adicionales de separación a nuestro espacio.
+\begin{prop}[Unicidad del límite]
 	Si $X$ es \hausdorff, entonces el límite es único.
-	
-	\begin{proof}
-		Si no lo fuera, podríamos tomar dos entornos disjuntos alrededor de los dos límites, y la sucesión tendría que estar en ambos al mismo tiempo a partir de un cierto punto.
-	\end{proof}
 \end{prop}
+\begin{proof}
+	Si no lo fuera, podríamos tomar dos entornos disjuntos alrededor de los dos límites, y la sucesión tendría que estar en ambos al mismo tiempo a partir de un cierto punto.
+\end{proof}
 
-\begin{obs}
-	Un espacio métrico es siempre I axioma y \hausdorff, de forma que en él las sucesiones se comportan como esperamos.
+\begin{obs}[Espacios métricos]
+	Un espacio métrico es siempre I axioma (basta tomar las bolas de radio $\frac{1}{n}$) y \hausdorff, de forma que en él las sucesiones se comportan como esperamos.
 \end{obs}
-
+Otra virtud intrínseca de los espacios primer axioma es que, en ellos, la continuidad y la convergencia de sucesiones guardan una relación muy estrecha.
+\begin{prop}[Caracterización de la continuidad]
+	Sea una aplicación $f:\X\to\Y$, siendo $\X$ un espacio I axioma. En estas condiciones $f$ es continua en $x_0$ si y solo si para toda sucesión $\{x_n\}_{n=1}^\infty$ convergente a $x_0$ la sucesión de los términos imagen $\{f(x_n)\}_{n=1}^\infty$ es convergente a $f(x_0)$.
+\end{prop}
+\begin{proof}
+	Hagamos ambas implicaciones.
+	\begin{enumerate}
+		\item[$\bra$] Sea $V$ un entorno arbitrario de $f(x_0)$, como $f$ es continua, transforma entornos en entornos por imágenes inversas, luego $f^{-1}(V)$ es entorno de $x_0$. Por ser $x_0$ el límite, es claro que a partir de cierto $k_0\in\N$ todos los términos de la sucesión caen en $f^{-1}(V)$.
+		
+		Por ende, todos los términos imagen  $f(x_n)$ con $n\geq k_0$ caen en $V$, y esa es exactamente la definición de convergencia para $f(x_0)$ con la sucesión de términos imagen.
+		\item[$\bla$] Recíprocamente razonamos por reducción al absurdo. Si $f$ no fuera continua en $x_0 $ habría un $V$ entorno de $f(x_0)$ tal que la imagen de cualquier entorno $W$ de $x_0$ no estuviera contenida en $V$. No obstante (y aquí es donde ponemos a funcionar el primer axioma), construyendo una sucesión $\{x_n\}_{n=1}^\infty$ convergente a $x_0$ con el método de la observación \ref{num_obs_construccion}, exigiendo además que la imagen del punto que se escoja como término no caiga en $V$ (lo cual podemos hacer por hipótesis). Tenemos que, por hipótesis $\{f(x_n)\}_{n=1}^{\infty}$ converge a $f(x_0)$, no obstante, ningún término de la sucesión está en $V$, lo cual contradice que $f(x_0)$ sea el límite.\qedhere
+	\end{enumerate}
+\end{proof}
 \section{Otros axiomas de numerabilidad}
-
+Exploremos otros axiomas de numerabilidad, que, a pesar de tener mucho interés, explotaremos menos asiduidad en este texto.
 \begin{defi}[Segundo axioma]
 	Decimos que un espacio $\X$ es \tbi[axiomas de numerabilidad!segundo axioma de numerabilidad]{segundo axioma de numerabilidad} o simplemente \tb{\ti{II axioma}} si tiene una base de abiertos numerable.
 \end{defi}
@@ -93,6 +142,9 @@ El concepto más importante de las sucesiones es la convergencia. Nótese que es
 \begin{defi}[Lindelöf]
 	\label{lindel}
 	Decimos que un espacio $\X$ es \tbi{Lindelöf} si para todo recubrimiento por abiertos de $\X$ podemos extraer un subrecubrimiento numerable.
+\end{defi}
+\begin{defi}[Fuertemente Lindelöf]
+	Un espacio topológico $\X$ se dice \tbi[Lindelöf!fuertemente]{fuertemente Lindelöf} si es Lindelöf y además todos sus subespacios (equipados con la topología relativa) también lo son.
 \end{defi}
 
 \begin{obs}
@@ -115,7 +167,10 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 \begin{obs}[Concimiento previo]
 	Por las observaciones \ref{etop_2_axioma_num} y \ref{etop_2_axioma_sep} sabemos que ser II axioma es más fuerte que ser I axioma y que ser separable. 
 \end{obs}
-\begin{obs}[II axioma $\ra$ Lindelöf]
+\begin{theo}[\Lightning\ II axioma $\ra$ Lindelöf]
+	Todo espacio topológico II axioma es Lindelöf.
+\end{theo}
+\begin{proof}
 	En efecto, sea $\X$ un espacio II axioma y sea $\Gamma$ un recubrimiento abierto de $\X$. Veamos que podemos extraer uno numerable.
 	
 	En efecto, por ser $\X$ segundo axioma, tiene una base numerable $\B:=\{B_n\in\T\midc n\in\N\}$.
@@ -123,7 +178,13 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 	Para cada $n$ tomamos un abierto $\U_n$ de $\Gamma$ que verifique que $B_n\subset \U_n$ (si existe). De este modo son hemos quedado con un subrecubrimiento numerable (a lo sumo) de $\Gamma$. Para terminar tendremos que ver que, en efecto, cubre.
 	
 	Si hubiera algún $x\in\X$ que no viviera en ningún $\U_n$, $x$ viviría en algún $\U_i$ que no estuviera en el subrecubrimiento, sin embargo, $\U_i=\bigcup_{n\in A\subset\N} B_n$, y, por tanto, $\U_i$ contiene a algún conjunto de la base luego $\U_i$ está en el subrecubrimiento (absurdo).
-\end{obs}
+\end{proof}
+\begin{lem}[Fuertemente Lindelöf y II axioma]
+	Si $\X$ es II axioma entonces es fuertemente Lindelöf.
+\end{lem}
+\begin{proof}
+	En efecto, si $\X$ es II axioma, $\X$ es Lindelöf, además, por la observación \ref{etop_obs_axiomasHereditarios} todos sus subespacios son II axioma (luego Lindelöf).
+\end{proof}
 \begin{obs}[I axioma $\cancel{\ra}$ II axioma]
 	Un contraejemplo para esto es la topología discreta en un conjunto $\X$ no numerable. Esto se debe a que cada punto es abierto.
 	
@@ -138,12 +199,10 @@ No obstante, para que este no malgaste su tiempo en vano, marcamos con (\Lightni
 \begin{obs}[Separable $\cancel{\ra}$ II axioma]
 	Se sigue de los ejemplos \ref{num_sorgenfrey_IIax} y \ref{etop_sorgenfrey}
 \end{obs}
-\begin{exa}[$(\R,\T_u)$ es ``hereditariamente Lindelöf'']
+\begin{obs}[$(\R,\T_u)$ es fuertemente Lindelöf]
 	\label{num_exa_lindelof_R}
-	Evidentemente, $\R$ es II axioma, tal y como se vio en el ejemplo \ref{etop_bases}, luego $\R$ es lindelöf. Además, todo subespacio de $\R$, por las propiedades del II axioma vistas en la observación \ref{etop_obs_axiomasHereditarios}, luego todos los subespacios de $\R$ heredan la propiedad de Lindelöf de $\R$.
-	
-	Esto ocurre en general para espacios II axioma.
-\end{exa}
+	Evidentemente, $\R$ es II axioma, tal y como se vio en el ejemplo \ref{etop_bases}, luego $\R$ es lindelöf y fuertemente Lindelöf (por ser II axioma).
+\end{obs}
 \begin{theo}[\Lightning\ Lindelöf $\cancel{\ra}$ II axioma]
 	La recta de Sorgenfrey es Lindelöf.
 \end{theo}
@@ -226,6 +285,11 @@ Pasemos a dar la idea de las demostraciones (dejando como ejercicio los detalles
 	\end{proof}
 \section{Comportamiento topológico}
 \label{num_comportamiento}
+Estudiemos ahora el comportamiento topológico de los axiomas de numerabilidad.
+\subsection{Subespacios}
+\subsection{Cocientes}
+\subsection{Productos}
+\subsection{Sumas}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
