@@ -1,3 +1,0 @@
-﻿
-Observación 5.2.2
-En la última línea, es por la deficinición de convergencia, no por la definición de continuidad.
