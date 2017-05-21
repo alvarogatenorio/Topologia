@@ -312,6 +312,7 @@ Veamos pues como se comporta Lindelöf, que adelantamos que en general también 
 \end{exa}
 Tal y como ocurría en el caso de la separabilidad, hay luz al final del túnel y la propiedad de Lindelöf si que es hereditaria para subespacios cerrados.
 \begin{lem}[Lindelöf y cerrados]
+	\label{sep_lem_cerradoLindelofLindelof}
 	Si $\X$ es un espacio Lindelöf, todo subespacio cerrado suyo también lo es.
 \end{lem}
 \begin{proof}
@@ -352,7 +353,7 @@ Al contrario de lo que pasaba en el caso de los subespacios, aquí la separabili
 
 Antes de nada hay que refrescar que un espacio cociente no es más que un espacio que es resultado de transformar continuamente el espacio original, teniendo el espacio de llegada una topología un poco drástica. Aquí veremos que el cómo sea la topología del espacio de llegada nos da igual a la hora de que se preserven las propiedades de separabilidad y Lindelöf. Únicamente nos interesará que la transformación sea continua.
 \begin{prop}[Imagen continua de Separable]
-	Sea $\X$ un espacio separable y $f:\X\to Y$ una función continua, entonces $f(\X)$ es un espacio separable.
+	Sea $\X$ un espacio separable y $f:\X\to f(\X)$ una función continua, entonces $f(\X)$ es un espacio separable.
 \end{prop}
 \begin{proof}
 	Sea $A$ el conjunto numerable denso en $\X$, como $f$ es continua se verifica que
@@ -362,6 +363,7 @@ Antes de nada hay que refrescar que un espacio cociente no es más que un espaci
 	Y como $f(A)$ es numerable hemos terminado.
 \end{proof}
 \begin{prop}[Imagen continua de Lindelöf]
+	\label{sep_prop_lindelofContLindelof}
 	Sea $\X$ un espacio Lindelöf y $f:\X\to Y$ una función continua, entonces $f(\X)$ es un espacio Lindelöf.
 \end{prop}
 \begin{proof}
