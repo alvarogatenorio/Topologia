@@ -435,37 +435,54 @@ Antes de comenzar a elaborar el último apartado del estudio del comportamiento 
 	donde $G$ es abierto de $\X$.
 \end{defi}
 
-Vayamos estudiando qué subespacios de un espacio topológico $\X$ localmente compacto lo son también. Finalmente concluiremos que la compacidad local se hereda a los subespacios localmente cerrados (como ya adelantamos).
+Vayamos estudiando qué subespacios de un espacio topológico $\X$ localmente compacto lo son también. Finalmente concluiremos que la compacidad local se hereda a los subespacios localmente cerrados (y a ninguno más).
 
-Tomemos $\F\subset\X$ subespacio cerrado. Por ser $\X$ localmente compacto para todo $x\in\F$ hay una base de entornos compactos, que denotaremos por $K$. Entonces, $\F\cup K$ es entorno de $x$ en $\F$. Además es compacto, ya que es un cerrado relativo de $K$ compacto. Por tanto, $\F$ es localmente compacto.
-
-Consideremos ahora $G\subset \X$ subespacio abierto. Para todo $x\in G$ existe
-\[\Va{x}=\{K:K\text{ es compacto },\}\]
-base de entornos compactos en $\X$. Entonces,
-\[\matheuler{W}_x=\{K\in \Va{x}:K\subset G\},\]
-es base de entornos compactos en $G$, siendo entonces $G$ localmente compacto.
-
-Así pues,los subespacios abiertos y cerrados de $\X$ son localmente compactos. Imaginemos ahora que tenemos la siguiente cadena, donde $\F$ es cerrado de $\X$ y $G$ es abierto de $\F$ (no necesariamente de $\X$)
+Comenzamos viendo el comportamiento de los subespacios cerrados.
+\begin{lem}[Cerrados y local--compacidad]
+	La local--compacidad se hereda a subespacios cerrados.
+\end{lem}
+\begin{proof}
+	Tomemos $\F\subset\X$ subespacio cerrado. Por ser $\X$ localmente compacto para todo $x\in\F$ hay una base de entornos compactos, a los cuales denotaremos por $K$. Entonces, $\F\cap K$ es entorno de $x$ en $\F$. Además es compacto, ya que es un cerrado relativo de $K$ compacto. Por tanto, $\F$ es localmente compacto.
+\end{proof}
+Estudiemos ahora los subespacios abiertos.
+\begin{lem}[Abiertos y local--compacidad]
+	La local--compacidad se hereda a subespacios abiertos.
+\end{lem}
+\begin{proof}
+	Consideremos ahora $G\subset \X$ subespacio abierto. Para todo $x\in G$ existe una base de entornos compactos $\Va{x}$.
+	
+	Entonces el conjunto $\matheuler{W}_x:=\{K\in \Va{x}\midc K\subset G\}$
+	es base de entornos compactos de $x$ en $G$ (la comprobación es inmediata, basta usar el lema \ref{etop_lem_otrasProp}), siendo entonces $G$ localmente compacto.
+\end{proof}
+Así pues,los subespacios abiertos y cerrados de $\X$ son localmente compactos. Imaginemos ahora que tenemos la siguiente cadena de inclusiones, donde $\F$ es cerrado de $\X$ y $G$ es abierto de $\F$ (no necesariamente de $\X$)
 \[G\subset\F\subset\X.\]
-Por lo que acabamos de ver, si $\X$ es localmente compacto, $\F$ también lo es. Entonces $G$ es subespacio abierto de $\F$ localmento compacto, luego $G$ lo es también. En este caso además podemos escribir $G=\F\cap W$, donde $W$ es abierto de $\X$. Lo mismo ocurre con la cadena
+Por lo que acabamos de ver, si $\X$ es localmente compacto, $\F$ también lo es. Entonces $G$ es subespacio abierto de $\F$ localmento compacto, luego $G$ lo es también. En este caso además podemos escribir (por topología relativa) $G=\F\cap W$, donde $W$ es abierto de $\X$. Lo mismo ocurre con la cadena
 \[\F\subset G\subset\X,\]
 donde podemos escribir $\F=G\cap H$, con $H$ cerrado de $\X$.
+\begin{obs}[Intersecciones mixtas]
+	Si el lector ha tenido la simpatía de leer la divagación anterior se habrá dado cuenta de que si un subespacio $\Y$ de $\X$ (siendo $\X$ localmente compacto) es intersección de un abierto y un cerrado, entonces es localmente compacto. Comprobémoslo.
+	
+	En efecto, si $\Y=G\cap H$ con $G$ abierto y $H$ cerrado, es claro que $\Y$ es un cerrado del subespacio abierto $G$. Como $G$ es abierto y $\X$ es localmente compacto, entonces $G$ es localmente compacto y como $\Y$ es cerrado en $G$, $\Y$ es localmente compacto.
+\end{obs}
+Veamos finalmente qué relación guarda ser intersección de un abierto y un cerrado y ser localmente cerrado.
+\begin{prop}[Caracterización de la local--clausura]
+	$\Y$ es localmente cerrado si y solo si $\Y$ puede escribirse como intersección de un abierto y un cerrado de $\X$.	
+\end{prop}
+\begin{proof}
+	Dado $\Y\subset\X$ localmente cerrado. Por definición, $\Y=\adher{\Y}\cap G$ con $G$ abierto de $\X$ e $\adher{\Y}$ cerrado de $\X$.
+	
+	Recíprocamente, sea $\Y=\F\cap G$ con $G$ abierto y $\F$ cerrado de $\X$. Entonces, como $\Y\subset\F$, se tiene que $\adher{\Y}\subset\F$. Además, como $\Y\subset\adher{\Y}$ e $\Y\subset G$, entonces $\Y\subset \adher{\Y}\cap G$. Así,
+	\[\Y\subset \adher{\Y}\cap G\subset \F\cap G=\Y\]
+	concluyéndose que $\Y=\adher{\Y}\cap G$, luego $\Y$ es localmente cerrado.
+\end{proof}
 
-Esto nos da lugar a subespacios de $\X$ que son intersección de un abierto y un cerrado y que son localmente compactos. Además, los primeros casos estudiados (subespacios abiertos de $\X$ y subespacios cerrados) son un caso particular de estos últimos. Veamos finalmente que se intersección de un abierto y un cerrado es equivalente a ser localmente cerrado.
+Queda demostrado así que los subespacios localmente cerrados son localmente compactos. Pero ¿se dará el recíproco? La respuesta corta es no. La respuesta larga es no pero\dots y la vemos en forma de proposición.
 
-Dado $\Y\subset\X$ localmente cerrado. Por definición, $\Y=\adher{\Y}\cap G$ con $G$ abierto e $\adher{\Y}$ cerrado de $\X$.
-
-Por otro lado, sea $\Y=\F\cap G$ con $G$ abierto y $\F$ cerrado de $\X$. Entonces, como $\Y\subset\F$, se tiene que $\adher{\Y}\subset\F$. Además, como $\Y\subset\adher{\Y}$ e $\Y\subset G$, entonces $\Y\subset \adher{\Y}\cap G$. Así,
-\[\Y\subset \adher{\Y}\cap G\subset \F\cap G=\Y\]
-concluyéndose que $\Y=\adher{\Y}\cap G$ es localmente cerrado.
-
-Queda demostrado así que los subespacios localmente cerrados son localmente compactos. Pero ¿se dará el recíproco?
-
-\begin{prop}
+\begin{prop}[Caracterización de la herencia]
 	Si $\X$ es un espacio topológico \hausdorff e $\Y\subset\X$ es localmente compacto. Entonces $\Y$ es localmente cerrado.
 \end{prop}
 \begin{proof}
-	Tenemos que probar que $\Y$ es abierto en su adherencia, es decir, que para todo $y\in\Y$ exite un abierto de la adherencia $G=U\cap\adher{\Y}$ (con $U$ abierto de $\X$ que contiene a $y$) tal que $y\in G\subset \Y$.
+	Tenemos que probar que $\Y$ es abierto en su adherencia, es decir, que para todo $y\in\Y$ exite un abierto de la adherencia $G=U\cap\adher{\Y}$ (con $U$ abierto de $\X$ que contiene a $y$) tal que $y\in G\subset \Y$. Dicho de otra forma, que es entorno de todos sus puntos en la adherencia.
 	
 	Sea $y\in\Y$. Como $\Y$ es localmente compacto existe un entorno compacto $K\subset\Y$ de $y$. Por ser entorno, existe un abierto $W\cap\Y$ de $\Y$ tal que $y\in W\cap\Y\subset K$. Veamos que basta con tomar $U=W$.
 	
@@ -473,9 +490,9 @@ Queda demostrado así que los subespacios localmente cerrados son localmente com
 	\[W\cap \Y\subset K=\adher{K}\ra \adher{W\cap\Y}\subset K\subset\Y\ra W\cap \adher{\Y}\subset\Y \]
 	siendo así $W\cap \adher{\Y}$ abierto de la adherencia tal que $Y\in W\cap \adher{\Y}\subset\Y$, quedando demostrada la proposición.
 	
-	Probemos pues que $W\cap \adher{\Y}\subset \adher{W\cap\Y}$. Dado $z\in W\cap \adher{\Y}$, entonces $z\in \adher{\Y}$, por lo que para todo entorno $V_z$ se tiene que $V_z\cap\Y\not=\emptyset$. Además, $z\in W$, así que $V_z\cap W$ es entorno de $z$. En particular para este entorno se tiene que
+	Probemos pues que $W\cap \adher{\Y}\subset \adher{W\cap\Y}$. Dado $z\in W\cap \adher{\Y}$, entonces $z\in \adher{\Y}$, por lo que para todo entorno abierto $V_z$ se tiene que $V_z\cap\Y\not=\emptyset$. Además, $z\in W$, así que $V_z\cap W$ es entorno de $z$. En particular para este entorno se tiene que
 	\[(V_z\cap W)\cap \Y\not=\emptyset\ra V_z\cap(W\cap\Y)\not=\emptyset\]
-	para todo entorno $V_z$ de $z$. Esto implica que $z\in \adher{W\cap\Y}$, como queríamos.
+	Esto implica que $z\in \adher{W\cap\Y}$, como queríamos.
 \end{proof}
 
 \section{Compacificación de Alexandroff}
