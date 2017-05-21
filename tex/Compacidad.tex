@@ -205,69 +205,76 @@ Ahora, presentamos un resultado sobre espacios secuencialmente compactos que va 
 	Entonces, $x_{n_i}\in A_{n_i}\cap\bola(x,\frac{r}{2})$. como el diámetro de $A_{n_i}$ es menor que $\frac{r}{2}$, es claro que  $A_{n_i}\subset\bola(x_{n_i},r)\subset U$, lo que contradice a la hipótesis.
 \end{proof}
 \section{Comportamiento topológico}
+En esta sección se estudiarán las distintas relaciones de la compacidad con las construcciones habituales (subespacios, cocientes, productos y sumas)
 
-En esta sección se estudiaran las distintas construcciones que ya se han detallado en casos anteriores (subespacios, cociente y productos y sumas finitas) en los que quedan espacios compactos. 
-
+La ventaja que tenemos en este caso es que gran parte del trabajo ya está hecho. Veámoslo rápidamente.
 \begin{itemize}
-	\item Los subespacios cerrados $\F$ de un espacio compacto son compactos. Obsérvese que este apartado no es más que la proposición~\ref{T6:prop_cerrado en compacto es compacto}.
+	\item La compacidad es hereditaria para subespacios cerrados como se vio en la proposición \ref{comp_prop_cerradoCompactoCompacto}. Esto no ocurre en general para subespacios abiertos. Para ello basta considerar $(0,1)$ como subespacio de $[0,1]$.
 	
-	\item Los espacios cocientes de compactos son compactos, puesto que un cociente es una aplicación continua suprayectiva y la imagen continua de un compacto es compacto. 
+	\item Los cocientes de compactos son compactos, de hecho, como vimos en la proposición \ref{comp_prop_compContComp}, la imagen continua de un espacio compacto es compacta. Nótese que los cocientes no son más que imágenes continuas ``drásticas''.
 	
-	\item Las sumas finitas de espacios compactos son compactos, ya que si se tiene un recubrimiento por abiertos de la suma, podemos extraer un subrecubrimiento finito de cada sumando. Dado que la suma es finita, la unión de todos ellos será un subrecubrimiento  finito para la suma. Nótese que si la suma es numerable esto ya no tiene por qué ser cierto. 
-	\item Los productos finitos de espacios compactos son compactos. Este resultado se conoce como el teorema de Tychonoff (que también vale para el producto infinito) y se demostrará a continuación. 
+	\item Las sumas finitas de espacios compactos son compactos, la demostración de esto es totalmente análoga a la del lema \ref{num_lem_lindelofSumas}.
+	\item Los productos finitos de espacios compactos son compactos. Este resultado se conoce como el teorema de Tychonoff, que también es valido para el productos infinitos, aunque con una demostración distinta a la que veremos aquí. 
 \end{itemize}
-
+Señoras y señores, presentamos sin más dilación, al único, al inigualable, al que probablemente sea uno de los teoremas más importantes que veremos en estas notas. El teorema de Tychonoff.
 \begin{theo}[Teorema de Tychonoff] Sean $\X$ e $\Y$ dos espacios topológicos y sea $\X \times \Y$ su espacio producto. Entonces $\X$ e $\Y$ son compactos si y solamente si $\X\times \Y$ lo es.
-	\begin{proof}
+\end{theo}
+\begin{proof}
+	Demostremos ambas implicaciones a palo seco.
+	\begin{itemize}[align=left, leftmargin=*]
+		\item[$\bla$] Si $\X\times \Y$ es compacto, consideremos la proyección $p_{\X}: \X\times \Y \to \X$. Al ser continua y como la imagen continua de un compacto es compacto, hemos terminado. El caso para $\Y$ es análogo. 
+		\item[$\bra$] Dado el producto $\X\times \Y$, podemos tomar un recubrimiento por abiertos suyo de modo que 
+		\[\X\times \Y=\bigcup_{i\in J}\W_i.\]
+		Nuestro objetivo es conseguir extraer una cantidad finita de esta familia de abiertos. Antes de comenzar, nótese que estos abiertos no tienen por qué ser básicos, y esto dificulta nuestra labor.
 		
-		$\Leftarrow )$ Si $\X\times \Y$ es compacto, consideremos la proyección $p_{\X}: \X\times \Y \to \X$. Al ser continua y como la imagen continua de un compacto es compacto, hemos terminado. El caso para $\Y$ es análogo. 
-		
-		$\Rightarrow )$ Dado el producto $\X\times \Y$, podemos tomar un recubrimiento por abiertos suyo de modo que 
-		\[\X\times \Y=\bigcup_{i}\W_i.\]
-		Nuestro objetivo es conseguir extraer una cantidad finita de esta familia de abiertos. Antes de comenzar, nótese que estos abiertos no tienen por qué ser productos y esto dificulta nuestra labor. Por tanto, trataremos de quedarnos con abiertos producto, utilizando el hecho de que son base de la topología producto, para obtener una cantidad finita de $\W_i$. Una vez realizado este comentario, ya podemos comenzar. 
-		
-		En primer lugar, para todo $(x,y)\in\X\times \Y$ existe $i$ de modo que $(x,y)\in \W_i$. Así, se pueden encontrar entornos abiertos $\U^y_x$ de $x$ (donde el superíndice denota que depende del $y$ tomado) y $\V_y^x$ de $y$ (que de nuevo depende del $x$ tomado) tales que
-		\begin{equation}\label{T6:tychonoff1}
-			(x,y)\in \U^y_x\times \V_y^x \subset \W_i,
-		\end{equation}
+		En primer lugar, para todo $(x,y)\in\X\times \Y$ existe $i\in J$ de modo que $(x,y)\in \W_i$. Así, se pueden encontrar entornos abiertos $\U^y_x$ de $x$ (donde el superíndice denota que depende del $y$ tomado) y $\V_y^x$ de $y$ (que de nuevo depende del $x$ tomado) tales que
+		\begin{equation*}
+		(x,y)\in \U^y_x\times \V_y^x \subset \W_i
+		\end{equation*}
 		puesto que son base de la topología. Nótese que para otro punto del producto con el mismo $x$ y distinto $y$ los dos abiertos cambian.
 		
-		Fijemos $x\in \X$ de forma que ocurrirá que $\Y=\bigcup_{y\in \Y} \V_y^x$. Por ser $Y$ compacto, existe un subrecubrimiento finito tal que 
-		\begin{equation}\label{T6:tychonoff4}
-			\Y=\V^x_{y_1}\cap \ldots \cap \V^x_{y_r}.
-		\end{equation}
-		Pese a que los puntos $y_l$ (tanto el valor de $y$ como la cantidad $r$) dependen de la elección de $x$, no se ha incluido en la notación con tal de no sobrecargarla. 
+		Fijemos $x\in \X$. De esta forma ocurrirá que $\Y=\bigcup_{y\in \Y} \V_y^x$. Por ser $\Y$ compacto, existe un subrecubrimiento finito tal que 
+		\begin{equation*}
+		\Y=\V^x_{y_1}\cup \dots \cup \V^x_{y_r}
+		\end{equation*}
+		Pese a que los puntos $y_l$ (y la cantidad de ellos, $r$) dependen de la elección de $x$, no se ha incluido en la notación con objeto de no sobrecargarla. 
 		
 		A continuación, para cada $x\in \X$ se puede considerar el abierto
-		\begin{equation}\label{T6:tychonoff2}
-			\U_x=\U_x^{y_1}\cap \ldots \cap \U_x^{y_r}.
-		\end{equation}
-		Sin embargo, al ser $X$ compacto, entonces se puede tomar un subrecubrimiento finito de él tal que
-		\begin{equation}\label{T6:tychonoff3}
-			\X=\bigcup_{x\in \X}\U_x\Rightarrow X=\U_{x_1}\cup \ldots \cup \U_{x_s}.
-		\end{equation}
+		\begin{equation*}
+		\U_x:=\U_x^{y_1}\cap \dots \cap \U_x^{y_r}
+		\end{equation*}
+		Consideramos el recubrimiento abierto de $\X$ formado por los $\U_x$, del cual, por ser $\X$ compacto, extraeremos un subrecubrimiento finito.
+		\begin{equation*}
+		\X=\bigcup_{x\in \X}\U_x\ra \X=\U_{x_1}\cup \dots \cup \U_{x_s}
+		\end{equation*}
 		
-		A estas alturas, podemos afirmar que, para cierto $k$ entre $1$ y $s$ y cierto $l$ entre $1$ y $r$,
-		\[(x,y)\in \U_{x_k}\times \V^{x_k}_{y_l}\stackrel{\eqref{T6:tychonoff2}}{\subset} \U^{y_l}_{x_k}\times \V^{x_k}_{y_l}\stackrel{\eqref{T6:tychonoff1}}{\subset} W_{i_{kl}}.\]
-		Estos $W_{i_{kl}}$ son una cantidad finita y solo queda comprobar que recubren a $\X\times \Y$. Para ello, tomemos un punto $(x,y)\in \X\times \Y$. Claramente, por la igualdad~\eqref{T6:tychonoff3}, existe un $k\in\{1,\cdots,s\}$ tal que $x\in \U_{x_k}$. Tomando en la igualdad~\eqref{T6:tychonoff4} $x=x_k$, existe un $l\in\{1,\cdots,r\}$ tal que $y\in  \V^{x_k}_{y_l}$, luego $(x,y)\in W_{i_{kl}}$, y hemos terminado. 
-	\end{proof}
-\end{theo}
-
-Del teorema anterior se pueden deducir ciertas consecuencias relevantes cuando el espacio topológico es $\mathbb{R}^n$.
-
-\begin{obs}
-	
-	(1) Los adoquines 
-	\[[a_1,b_1]\times \ldots \times [a_r,b_r]\]
-	son compactos, puesto que $[a_i,b_i]$ es compacto para todo $i\in \{1,\ldots, n\}$
-	
-	(2) Un conjunto es compacto si y solo si es cerrado y acotado.
-	
-	En efecto, ya sabemos que ser compacto implica ser cerrado, pues $\R^n$ es \hausdorff. Además, por la proposición~\ref{T6:prop_alcanza maximo y minimo}, las proyecciones continuas $p:\R^n\rightarrow\R$ alcanzan el máximo y el mínimo, luego es acotado.
-	
-	Por otro lado, si está acotado existe una bola $\bola(0,\rho)$ para algún $\rho >0$ y así mismo esta bola pertenece a $[-\rho,\rho]^n$. Si además es cerrado, se trataría de un cerrado contenido en un compacto, luego compacto. 
+		A estas alturas, podemos afirmar que, dado un punto $(x,y)$, para cierto $k$ entre $1$ y $s$ y cierto $l$ entre $1$ y $r$, se verifica que
+		\[(x,y)\in \U_{x_k}\times \V^{x_k}_{y_l}\subset \U^{y_l}_{x_k}\times \V^{x_k}_{y_l}\subset W_{kl}\]
+		
+		Esto se debe a que claramente, existe un $k\in\{1,\cdots,s\}$ tal que $x\in \U_{x_k}$. Además, tomando $x=x_k$, existe un $l\in\{1,\cdots,r\}$ tal que $y\in  \V^{x_k}_{y_l}$, luego $(x,y)\in W_{kl}$. Esto demuestra que los $W_{kl}$ son un subrecubrimiento de $\X\times \Y$.
+		
+		Como son una cantidad finita hemos terminado.
+	\end{itemize} 
+	Aunque hayamos enunciado y demostrado el teorema para dos factores, todo producto finito de compactos es compacto, esto es inmediato de ver por inducción.
+\end{proof}
+El teorema de Tychonoff tiene consecuencias sorprendentes en el ámbito de los espacios euclídeos usuales.
+\begin{obs}[Teorema de Heine--Borel] El grandioso y todopodedoroso teorema de Heine--Borel es consecuencia directa del teorema de Tychonoff.
+	\begin{enumerate}
+		\item Los \tbi{adoquines} 
+		$[a_1,b_1]\times \ldots \times [a_r,b_r]$
+		son compactos, puesto que $[a_i,b_i]$ es compacto para todo $i\in \{1,\ldots, n\}$
+		\item Un conjunto $K$ es compacto si y solo si es cerrado y acotado.
+		
+		Una implicación es evidente por ser $\R^n$ un espacio métrico.
+		
+		Recíprocamente, si está acotado existe una bola $\bola(0,\rho)$ para algún $\rho >0$ tal que $K\subset (0,\rho)$.
+		
+		Asimismo, esta bola está contenida en  $[-\rho,\rho]^n$, que es compacto por ser un adoquín.
+		
+		Además, $K$ es cerrado, luego se trataría de un cerrado contenido en un compacto, luego de un compacto.\qedhere
+	\end{enumerate} 
 \end{obs}
-
+Presentamos pues, como colofón nuestra típica tabla--resumen.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
@@ -279,6 +286,34 @@ Del teorema anterior se pueden deducir ciertas consecuencias relevantes cuando e
 	\label{Tabla_compacidad}
 \end{table}
 
+Sin dar tiempo a que el lector se recupere de una demostración de un teorema gordo, vamos a ser crueles y a meter capón una observación en forma de teorema que da que pensar, aunque no nos debemos dejar engañar.
+\begin{prop}[Suficiencia de la base]
+	\label{comp_prop_suficienciaBase}
+	$K$ es compacto si y solo si para todo recubrimiento $\mc{A}$ de abiertos de una base $\B$ hay un subrecubrimiento finito.
+\end{prop}
+\begin{proof}
+	La implicación a la derecha es evidente, probamos pues la otra.
+	
+	Sea $\mc{A}$ un recubrimiento arbitrario, consideremos el recubrimiento
+	\begin{equation*}
+		\mc{A}_\B:=\{B_i\subset A \midc A\in\mc{A},\ B_i\in\B\}
+	\end{equation*}
+	$\mc{A}_\B$ es un recubrimiento básico de $K$. Por hipótesis podremos extraer un subrecubrimiento finito $B_1,\dots,B_n$.
+	
+	De esta forma tenemos que, como cada $B_i$ está contenido en un $A\in\mc{A}$
+	\begin{equation*}
+		K=\bigcup_{i=1}^nB_i\subset \bigcup_{i=1}^n A_i
+	\end{equation*}
+	De manera que $K$ es compacto.
+\end{proof}
+\begin{obs}[Tychonoff]
+	Parece que la proposición \ref{comp_prop_suficienciaBase} nos hubiera venido al pelo para demostrar el teorema de Tychonoff de una patada, sin embargo, solo lo parece. Veamos esto en detalle.
+	
+	Si tomamos un recubrimiento básico de un espacio producto $\X\times \Y$, digamos $\{U_i\times V_i\}_{i\in J}$ y tomamos un recubrimiento finito $\{U_k\}_{k=1}^s$ y $\{V_l\}_{l=1}^r$, es claro que $\{U_k\times V_l\}$ es un recubrimiento de $\X \times \Y$, no obstante, no es un subrecubrimiento, ya que nadie nos asegura que todas las combinaciones $U_k\times V_l$ que necesitemos vayan a estar en el recubrimiento original.
+\end{obs}
+\begin{obs}[Simplificaciones]
+	A pesar del chasco inicial de la observación anterior, es bastante claro que la proposición \ref{comp_prop_suficienciaBase} es de enorme utilidad, además de ser extrapolable a otros contextos como Lindelöf (¡compruébese!). Algunos ejemplos de posible aplicación de esta proposición son una simplificación de la intricada demostración del teorema \ref{num_teo_2axioLindel} a una demostración trivial, entre otras.
+\end{obs}
 \section{Compacidad local}
 
 Hasta ahora no hemos hecho más que revisar lo que ya sabíamos de compacidad y traducirlo al nuevo lenguaje, exceptuando algún resultado como el Teorema de Tychonoff. Todo esto era de alguna manera ``global", pues se refería  a espacios topológicos. Ahora pasaremos a lo local, relacionado con entornos de puntos. Introduciremos esta noción de local con la compacidad y la extenderemos a conexión y conexión por caminos más adelante. Esto es algo novedoso y de gran importancia, por lo que se ruega al lector que lo estudie con detenimiento.
