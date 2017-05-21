@@ -132,12 +132,13 @@ Cavando en las tumbas de los teoremas muertos nos encontramos con el viejo y omn
 \begin{prop}[Bolzano--Weierstrass]
 		Sea $\X$ compacto e $\Y$ un subespacio infinito de $\X$.
 		
-		Entonces $\Y$ tiene algún punto de acumulación.
+		Entonces $\Y$ tiene algún punto de acumulación en $\X$.
 \end{prop}
 \begin{proof}
-	Si $\Y$ no tuviese ningún punto de acumulación, entonces todo punto de $\Y$ tendría un entorno que intersecado con $\Y$ fuera él mismo, es decir, todos los puntos de $\Y$ serían aislados, luego tendríamos la topología discreta.
+	Si $\Y$ no tuviese ningún punto de acumulación en $\X$, entonces todo punto de $\X$ tendría un entorno abierto $U_x$ que intersecado con $\Y$ fuera a lo sumo él mismo.
 	
-	Ahora, como $\Y$ es un cerrado dentro de un compacto, $\Y$ es compacto, y para ser compacto, un conjunto con la topología discreta tiene que ser finito, lo que produce una contradicción.
+	Consideramos el recubrimiento abierto formado por los $U_x$. Como $\X$ es compacto, podemos extraer un subrecubrimiento finito tal que $\Y\subset \X=\bigcup_{i=1}^nU_{x_i}$. Por tanto \[\Y=\Y\cap\bigcup_{i=1}^nU_{x_i}=\bigcup_{i=1}^n\Y\cap U_{x_i}\subset\{x_{i_1},\dots,x_{i_n}\}\]
+	Lo cual es absurdo por ser $\Y$ infinito.
 \end{proof}
 
 \begin{obs}[Recíproco]
@@ -274,8 +275,8 @@ El teorema de Tychonoff tiene consecuencias sorprendentes en el ámbito de los e
 		Además, $K$ es cerrado, luego se trataría de un cerrado contenido en un compacto, luego de un compacto.\qedhere
 	\end{enumerate} 
 \end{obs}
-Presentamos pues, como colofón nuestra típica tabla--resumen.
-\begin{table}[h]
+Presentamos pues, como colofón nuestra típica tabla--resumen (ver tabla \ref{Tabla_compacidad}).
+\begin{table}[h!]
 	\centering
 	\begin{tabular}{c|c|c|c|c|}
 		\cline{2-5}
@@ -324,34 +325,47 @@ Hasta ahora no hemos hecho más que revisar lo que ya sabíamos de compacidad y 
 
 Veamos algunos ejemplos para aclarar este concepto. 
 
-\begin{exa}
+\begin{exa}[Miscelánea de ejemplos]\
 	\begin{enumerate}
-		\item $\mathbb{R}^n$ con la topología usual lo es, ya que para cada punto existe una base de entornos de la forma
+		\item $\R^n$ con la topología usual es localmente compacto, ya que para cada punto existe una base de entornos de la forma
 		\[\Va{x}=\{\adher{\bola}(x,1/k):k\geq 1\}\]
-		Dado que $\R^n$ no es compacto, de este ejemplo se desprende que
-		\[\text{Localmente compacto }\cancel{\Rightarrow} \text{ Compacto}\]
+		Dado que $\R^n$ no es compacto, de este ejemplo se desprende que, como era de esperar, la local--compacidad es más débil que la compacidad.
+		\[\text{Localmente compacto }\centernot\implies \text{ Compacto}\]
 		
-		\item $\mathbb{Q}\subset \mathbb{R}$ con la topología usual no lo es. En efecto, tomemos un entorno compacto de $\mathbb{Q}$ del cero $K_0$. Este entorno, por definición, contiene un abierto $\U$ de la topología relativa de modo que $(-\varepsilon,\varepsilon)\cap \mathbb{Q}\subset K_0$ para cierto $\varepsilon>0$. A continuación, elijamos un irracional $\theta \in (-\varepsilon,\varepsilon)$ y una sucesión $\{q_k\}_{k=1}^\infty\in (-\varepsilon,\varepsilon)\cap \mathbb{Q}$ que converge a $\theta$. Claramente, $\{q_k:k\in \mathbb{N}\}$ es un conjunto infinito (ya que si fuese finito convergería a alguno de ellos, por lo que el límite sería racional) contenido en $K_0$ compacto. Por el teorema de Bolzano-Weierstrass, este conjunto tiene un punto de acumulación en $K_0$ o, equivalentemente, existe una subsucesión $\{q_{k_l}\}_{l=1}^\infty$ que converge a un punto de $K_0$ al que denotaremos $p$. No obstante, toda subsucesión de una sucesión converge al mismo punto que esta última, luego hemos probado que $p=\theta$. Esto es una contradicción, pues $K_0\subset \Q$, y hemos terminado. 
+		\item $\Q\subset\R$ con la topología usual no es localmente compacto. En efecto, tomemos un entorno compacto $0$ contenido en $\mathbb{Q}$, digamos $K_0$. Este entorno, por definición, contiene un abierto (sin pérdida de generalidad de la base) $\U$ de la topología relativa de modo que $(-\varepsilon,\varepsilon)\cap \mathbb{Q}\subset K_0$ para cierto $\varepsilon>0$.
+		
+		A continuación, elijamos un irracional $\theta \in (-\varepsilon,\varepsilon)$ y una sucesión $\{q_k\}_{k=1}^\infty\in (-\varepsilon,\varepsilon)\cap \mathbb{Q}$ que converge a $\theta$, lo cual siempre podemos hacer al ser $\R=\adher{\Q}$ y ser $\R$ I axioma (véase la observación \ref{num_obs_construccion}).
+		
+		Claramente, $\{q_k:k\in \mathbb{N}\}$ es un conjunto infinito (ya que si fuese finito convergería a alguno de ellos, por lo que el límite sería racional) contenido en $K_0$ compacto. Por el teorema de Bolzano--Weierstrass, este conjunto tiene un punto de acumulación en $K_0$ o, equivalentemente, existe una subsucesión $\{q_{k_l}\}_{l=1}^\infty$ que converge a un punto de $K_0$ al que denotaremos $p$.
+		
+		No obstante, toda subsucesión de una sucesión converge al mismo punto que esta última (¡compruébese!), luego hemos probado que $p=\theta$. Esto es una contradicción, pues $K_0\subset \Q$, y hemos terminado.\qedhere
 	\end{enumerate}
 \end{exa}
 
-Sin embargo, parece muy engorroso tener que demostrar que existe una base de entornos con todos ellos compactos para ver que un espacio topológico es localmente compacto. Sorprendentemente, si el espacio es \hausdorff, la tarea es mucho más sencilla.
+Sin embargo, parece muy engorroso tener que demostrar que existe una base de entornos con todos ellos compactos para ver que un espacio topológico es localmente compacto. Sorprendentemente, si el espacio es \hausdorff, la tarea es mucho más sencilla, no obstante, usaremos toda nuestra artillería pesada.
 
-\begin{prop}
+\begin{prop}[Local--Compacidad y \hausdorff]
 	Sea $\X$ un espacio \hausdorff. Si $x\in \X$ tiene un entorno compacto, entonces tiene una base de entornos compactos.
-	
-	\begin{proof}
-		Vamos a construir la base de compactos a partir del entorno compacto. Sea $K$ ese entorno, y entonces verifica que existe un abierto $U$ tal que $x\in U\subset K$. Entonces, tenemos que ver que para cada entorno $W$ arbitrario existe un $L\subset W$ que sea entorno compacto de $x$.
-		
-		Como $K\setminus W\subset K$ y es cerrado en él, entonces $K\setminus W$ es compacto. Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
-		
-		Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en la observación~\ref{T6:obs_compacto y punto en t2 disjuntos}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, $x\in V_x$ y $K\setminus W\subset G$. Podemos tomar $V_x$ además de forma que $V_x\subset U$. Si $V_x$ no cumpliera esto, tomamos en su lugar $V_x\cap U$ que también contiene a $x$. Entonces, $x\in V_x\subset \adher{V}_x\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ \hausdorff. Entonces $\adher{V}_x$ es un compacto (por ser cerrado en compacto) entorno de $x$.
-		
-		Ahora, solo queda comprobar que $\adher{V}_x\subset W$. Veamos para ello que $V_x\cap G=\emptyset\implies \adher{V}_x\cap G=\emptyset$. En efecto, sea $y\in \adher{V}_x\cap G$. Entonces $y\in\adher{V}_x$ e $y\in G$, que es entorno de $y$, y por definición de adherencia $V_x \cap G\neq\emptyset$, llegando así a un absurdo.
-	    
-	    Ahora, como $K\setminus W\subset G$, por lo anterior $\adher{V}_x\cap (K\setminus W)=\emptyset$, y como $\adher{V}_x\subset K$, entonces $\adher{V}_x\subset W$.
-	\end{proof}
 \end{prop}
+\begin{proof}
+	Vamos a construir la base de compactos a partir del entorno compacto. Denotemos por $K$ a dicho entorno compacto.
+	
+	Se verifica que existe un abierto $U$ tal que $x\in U\subset K$. Veamos que para cada entorno abierto $W$ arbitrario existe un $L\subset W$ que sea entorno compacto de $x$.
+	
+	Como $K\setminus W=K\setminus (W\cap K)\subset K$ y $K\setminus (W\cap K)$ es cerrado en $K$, entonces $K\setminus W$ es compacto.
+	
+	Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
+	
+	Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en la observación \ref{comp_obs_compSep}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, con $x\in V_x$ y $K\setminus W\subset G$.
+	
+	Podemos tomar $V_x$ además de forma que $V_x\subset U$. Si $V_x$ no cumpliera esto, tomamos en su lugar $V_x\cap U$ que también contiene a $x$. Entonces, $x\in V_x\subset \adher{V}_x\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ Hausdorff. Entonces $\adher{V}_x$ es un compacto (por ser cerrado en compacto) entorno de $x$.
+	
+	Ahora, solo queda comprobar que $\adher{V}_x\subset W$. Veamos para ello que se verifica el sifuiente aserto
+	\[V_x\cap G=\emptyset\implies \adher{V}_x\cap G=\emptyset\]
+	En efecto, si hubiera un $y\in \adher{V}_x\cap G$. Entonces $y\in\adher{V}_x$ e $y\in G$, como $G$ es abierto, será entorno de $y$, y por definición de adherencia $V_x \cap G\not=\emptyset$, llegando así a un absurdo.
+	
+	Ahora, como $K\setminus W\subset G$, por lo anterior $\adher{V}_x\cap (K\setminus W)=\emptyset$, y como $\adher{V}_x\subset K$, entonces es claro que $\adher{V}_x\subset W$.
+\end{proof}
 
 \section{Comportamiento topológico de la compacidad local}
 
@@ -360,39 +374,40 @@ Como hemos hecho en temas anteriores, estudiaremos como se comporta la compacida
 \begin{itemize}
 	\item La suma finita de espacios localmente compactos, es localmente compacta.
 	
-	En efecto, dado $x\in\sum_{i=1}^r \X_i$ entonces existe un $i\in\{1,\cdots,r\}$ tal que $x\in \{i\}\times \X_i$. Como $\X_i$ es localmente compacto, existe una base $\Va{x}^i$ de entornos compactos de $x$. Entonces $\{i\}\times \Va{x}^i=\{\{i\}\times V : V\in\Va{x}^i\}$ es base de entornos compactos de $x$ en $\sum_{i=1}^r \X_i$.
+	En efecto, dado $x\in\sum_{i=1}^r \X_i$ entonces existe un $i\in\{1,\cdots,r\}$ tal que $x\in \{i\}\times \X_i$. Como $\X_i$ es localmente compacto, existe una base $\Va{x}^i$ de entornos compactos de $x$. Entonces, pasándolo por la inclusión que corresponda (continua) $\{i\}\times \Va{x}^i=\{\{i\}\times V : V\in\Va{x}^i\}$ es base de entornos compactos de $x$ en $\sum_{i=1}^r \X_i$.
 	
 	\item El producto finito de espacios localmente compactos es localmente compacto.
 	
-	Dado $\prod_{i=1}^r\X_i$, como cada $\X_i$ es localmente compacto, exite $\Va{x}^i$ base de entornos compactos en cada uno de ellos. Entonces, 
+	Dado $x=(x_1,\dots,x_r)\in\prod_{i=1}^r\X_i$, como cada $\X_i$ es localmente compacto, exite $\Va{x}^i$ base de entornos compactos en cada uno de ellos. Entonces, 
 	\[\Va{x}=\{V_1\times\cdots\times V_r: V_i\in\Va{x}^i\}\]
 	es base de entornos compactos, por el teorema de Tychonoff.
 	
 	\item Si la identificación es abierta entonces el cociente de un espacio localmente compacto también lo es.
 	
-	Por ser abierta la identificación manda entornos a entornos. Por ser además continua, la imagen de compactos es compacto. Luego el cociente es localmente compacto. En el ejemplo~\ref{T6:exa_comportamiento_local_compacidad_cociente} se muestra que es imprescindible que sea abierta. Si esto no ocurre, el cociente no es necesariamente localmente compacto.
+	Por ser abierta la identificación manda entornos a entornos. Por ser además continua, la imagen de compactos es compacto. Luego el cociente es localmente compacto. En el ejemplo~\ref{comp_exa_RZ} se muestra que es imprescindible que sea abierta. Si esto no ocurre, el cociente no es necesariamente localmente compacto.
 	
-	\item Los subespacios localmente cerrados son localmente compactos. Haremos esto aparte.
+	\item Los subespacios ``localmente cerrados'' son localmente compactos. Haremos esto con detenimiento en la sección \ref{comp_localCerrado}.
 \end{itemize}
 
-\begin{exa}[Identificación cerrada]\label{T6:exa_comportamiento_local_compacidad_cociente}
+\begin{exa}[Identificación cerrada]\label{comp_exa_RZ}
 	Veamos un ejemplo en el cual el cociente de un espacio topológico localmente compacto no lo es. Esto se debe a que la identificación no es abierta.
 	
-	Sabemos que $\R$ es localmente compacto. Sin embardo, $\R/\Z$ no lo es. Veamos que el punto $\Z$ del cociente no tiene ningún entorno compacto.
+	Sabemos que $\R$ es localmente compacto. Sin embargo, la ya célebre rosa de infinitos pétalos $\R/\Z$ (ver ejemplo \ref{num_exa_RZ}) no lo es.
 	
-	Supongamos que sí. Entonces existe $K$ compacto de $\R/\Z$ tal que $\Z\in\U\subset K$, siendo $\U$ un abierto del cociente, es decir, es imagen por la proyección canónica $p$ de un abierto saturado $\W$ de $\R$ y, por tanto, $\Z\subset\W$. Entonces, para cada $k\in\Z$ podemos tomar $t_k\notin\Z$ tal que $t_k\in\W$ (pues $\W$ es abierto de $\R$ y, por tanto, es unión de intervalos abiertos). Así, $p(t_k)=t_k\in\U=p(\W)$ para todo $k\in\Z$. Consideramos entonces el conjunto de puntos aislados
+	Veamos que el punto $\Z$ del cociente no tiene ningún entorno compacto.
 	
-	\[\{t_k : k\ge 1\}\subset\U\subset K,\]
+	Supongamos que sí. Entonces existe $K$ compacto de $\R/\Z$ tal que $\Z\in\U\subset K$, siendo $\U$ un abierto del cociente, es decir, es imagen por la proyección canónica $p$ de un abierto saturado $\W$ de $\R$ y, por tanto, $\Z\subset\W$.
 	
+	Entonces, para cada $k\in\Z$ podemos tomar $t_k\notin\Z$ tal que $t_k\in\W$ (pues $\W$ es abierto de $\R$ y, por tanto, es unión de intervalos abiertos). Así, $p(t_k)=t_k\in\U=p(\W)$ para todo $k\in\Z$. Consideramos entonces el conjunto de puntos aislados
+	\[\{t_k : k\in\Z\}\subset\U\subset K,\]
 	que es un subespacio infinito en un compacto, por lo que tiene algún punto de acumulación $a\in K$ (que no es ninguno de ellos por ser todos aislados). Entonces hay dos posibilidades: $a=\Z$ o $a\not=\Z$.
+	\begin{itemize}
+		\item Si $a=\Z$, se llega a una contradicción ya que  $p(\R\setminus\{t_k:k\in\Z\})$ es un entorno de $\Z$ que no corta a $\{t_k : k\in\Z\}$, por lo que $\Z$ no puede ser el punto de acumulación.
+		\item Si $a\not=\Z$, y además $a\not\in\{t_k : k\in\Z\}$ se llega a un absurdo por el mismo procedimiento que en el apartado anterior. Si $a=t_{k_0}$ para cierto $k_0$ basta tomar el entorno $p(\R\setminus\{t_k:k\in\Z,\ k\not=k_0\})$.
+	\end{itemize}
+	Se concluye pues que el subespacio infinito $\{t_k : k\in\Z\}$ de $K$ compacto no tiene puntos de acumulación. Legamos así a un absurdo, por lo que no existen entornos compactos de $\Z$.
 	
-	Si $a=\Z$, entonces $p(\R\backslash\{t_k:k\ge 1\})$ es un entorno de $\Z$ que no corta a $\{t_k : k\ge 1\}$, por lo que $\Z$ no puede ser el punto de acumulación.
-	
-	Si $a\not=\Z$, entonces, por definición de punto de acumulación, para todo entorno $V_a$ de $a$ se tiene que $V_a\backslash\{a\}\cap \{t_k : k\ge 1\}\not=\emptyset$, lo cual no se da por ser los $t_k$ puntos aislados.
-	
-	Se concluye pues que el subespacio infinito $\{t_k : k\ge 1\}$ de $K$ compacto no tiene puntos de acumulación. Legamos así a un absurdo, por lo que no existen entornos compactos de $\Z$.
-	
-	Nótese que la identificación es cerrada. En efecto, sea $\F$ cerrado de $\R$, recordemos que los cerrados del cociente son las imágenes de cerrados saturados de $\R$. Así, si es saturado entonces $p(\F)$ es cerrado de $\R/\Z$. Si no es saturado es porque $\F\cap\Z\not=\emptyset$ pero $\Z$ no está contenido en él. Entonces, $\F\cup\Z$ es cerrado saturado de $\R$ y $p(F)=p(\F\cup\Z)$ es cerrado del cociente.
+	Nótese que la identificación es cerrada. En efecto, sea $\F$ cerrado de $\R$, recordemos que los cerrados del cociente son las imágenes de cerrados saturados de $\R$. Así, si es saturado entonces $p(\F)$ es cerrado de $\R/\Z$. Si no es saturado es porque $\emptyset\not=\F\cap\Z\not=\Z$. Entonces, $\F\cup\Z$ es cerrado saturado de $\R$ y $p(\F)=p(\F\cup\Z)$ es cerrado del cociente.
 	
 	Esto nos muestra que no vale con que tenga alguna propiedad igual de fuerte que ser abierta, sino que tiene que ser esta misma, no vale ninguna otra.
 \end{exa}
@@ -409,10 +424,10 @@ Como hemos hecho en temas anteriores, estudiaremos como se comporta la compacida
 \end{table}
 
 \subsection{Subespacios localmente cerrados}
-
+\label{comp_localCerrado}
 Antes de comenzar a elaborar el último apartado del estudio del comportamiento de la local compacidad conviene definir subespacio localmente cerrado.
 
-\begin{defi}
+\begin{defi}[Local--clausura]
 	Un subespacio $\Y\subset\X$ es \tbi{localmente cerrado} si es abierto en su adherencia,
 	\begin{equation*}
 		\Y=\adher{\Y}\cap G,
@@ -420,7 +435,7 @@ Antes de comenzar a elaborar el último apartado del estudio del comportamiento 
 	donde $G$ es abierto de $\X$.
 \end{defi}
 
-Vayamos estudiando que subespacios de $\X$ localmente compacto lo son también, hasta concluir que los localmente cerrados son localmente compactos.
+Vayamos estudiando qué subespacios de un espacio topológico $\X$ localmente compacto lo son también. Finalmente concluiremos que la compacidad local se hereda a los subespacios localmente cerrados (como ya adelantamos).
 
 Tomemos $\F\subset\X$ subespacio cerrado. Por ser $\X$ localmente compacto para todo $x\in\F$ hay una base de entornos compactos, que denotaremos por $K$. Entonces, $\F\cup K$ es entorno de $x$ en $\F$. Además es compacto, ya que es un cerrado relativo de $K$ compacto. Por tanto, $\F$ es localmente compacto.
 
