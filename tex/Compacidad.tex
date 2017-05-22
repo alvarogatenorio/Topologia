@@ -585,21 +585,29 @@ Sigamos con nuestra ardua tarea de demostrar que, efectivamente, la compactifica
 		Ahora bien, por hipótesis $X^*\setminus U = K$, luego complementando $U=(X^*\setminus K)$ con $K$ compacto de $X$, por lo que tiene que cortar a $X$. En caso contrario $X=K$, pero $X$ no es compacto.\qedhere
 	\end{enumerate}
 \end{proof}
-Continuamos con una pequeña observación.
+A modo de resumen podemos decir que la compactificación de Alexandroff es realmente compactificación. Continuemos con una pequeña observación, que nos, 
 \begin{obs}[Compactificaciones degeneradas]
 	La compactificación de Alexandroff está pensada para espacios $X$ no compactos. La razón de esto, aparte de porque no tiene sentido hacer compactificaciones de espacios ya compactos es que el resultado que obtenemos al ``forzar la máquina'' es feo, pues obtendríamos que $\infty$ es un punto abierto.
 	
 	Además el hecho de forzar la máquina rompe una propiedad importantísima de la compactificación de Alexandroff, la unicidad (que demostramos a continuación).
 \end{obs}
+
+Antes de ver que la compactificación de Alexandroff es, en cierto sentido, única, introduzcamos una definición.
+\begin{defi}[Compactificación unipuntual]
+	Si $X$ es un espacio no compacto e $Y$ es un espacio compacto en el que existe un homeomorfismo $f:X\to f(X)\subset Y$ con $f(X)$ denso en $Y$, es claro que $Y$ es una compactificación de $X$.
+	
+	No obstante, si además $X$ es \hausdorff, localmente compacto e $Y\setminus X$ es un único punto, se dice que $Y$ es una \tbi[compactificación!unipuntual]{compactificación unipuntual} de $X$.
+\end{defi}
+Tras esto ya podemos enunciar nuestro teorema de unicidad.
 \begin{theo}[Unicidad]
-	La compactificación de Alexandroff es única.
+	Sea $X$ un espacio \hausdorff no compacto y $(Y,\T')$ una compactificación unipuntual de $X$, entonces $X^*$ es homeomorfo a la compactificación de Alexandroff de $X$.
 \end{theo}
 \begin{proof}
-	$X^*$ es única, es decir, es homeomorfa a toda otra compactificación por un punto.
+	Si $Y$ es una compactificación unipuntual, por definición habrá un homeomorfismo $f:X\to f(X)\subset Y=f(X)\cup\{\omega\}$.
 	
-	Sea ahora $(Y,\T^{'})$  una compactificación por un punto de $X$, siendo $Y= f(X) \cup \{w\}$ con $Y$ compacto $T_2$ y $f$ inmersión, abierta, densa.
+	Definimos la aplicación $h : Y \to X^*$ mediante $h(w) = \infty$ y $h(f(x)) = x$ para todo $x \in X$. Veamos que esta aplicación es un homeomorfismo (como $f$ es homeomorfismo está bien definida).
 	
-	Definimos $h : Y \longrightarrow X^*$ mediante $h(w) = \infty$ y $h(f(x)) = x$ para todo $x \in X$. Evidentemente $h$ es biyectiva. Nos queda por ver que es continua, dado que al ser $Y$ compacto y $X^*$ ser \hausdorff, esto implica que es cerrada, y por lo tanto homeomorfismo.
+	Evidentemente $h$ es biyectiva. Además, al ser $Y$ compacto y $X^*$ ser \hausdorff $h$ es una aplicación cerrada, y por lo tanto homeomorfismo.
 	
 	Tomamos $U\subset X^*$, vayamos ahora por casos:
 	
@@ -607,7 +615,9 @@ Continuamos con una pequeña observación.
 	
 	Si $\infty\in U$, entonces $X\cap U=X\setminus K$ siendo $K$ compacto. Como $h^{-1}(U)=f(X\setminus K)\cup \{w\}=Y\setminus f(K)$, se tiene que $h^{-1}(U)=Y\setminus f(K)$, que es abierto dado que $f(K)$ es compacto en $Y$ que es \hausdorff, luego es cerrado.
 \end{proof}
-A modo de resumen podemos decir que la compactificación de Alexandroff es realmente compactificación y además, el hecho de hacer a un espacio compacto añadiendo un único punto caracteriza a la compactificación de Alexandroff. Para terminar esta sección vamos a ver unos pocos ejemplos de compactificaciones.
+Luego el hecho de hacer a un espacio compacto añadiendo un único punto caracteriza a la compactificación de Alexandroff.
+
+Para terminar esta sección vamos a ver unos pocos ejemplos de compactificaciones.
 \begin{exa}
 	Veremos ahora ejemplos de compactificaciones. Los primeros tendrán como objetivo entender el mecanismo de la misma. Después, pondremos ejemplos para aclarar que como hemos visto, dado un conjunto sus compactificaciones por un punto son homeomorfas, pero no sucede al contrario (dada una compactificación los conjuntos de los que puede provenir no tienen porque ser homeomorfos). 
 	\begin{enumerate}
