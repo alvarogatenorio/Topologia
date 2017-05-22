@@ -125,6 +125,18 @@ Por tanto, al ser $f$ continua y abierta, es \tb{homeomorfismo}. Esto es sorpren
 \begin{defi}[Inmersión o embebimiento]
 	A una función $f:(\Y,f^{-1}(\T))\to(\X,\T)$ inyectiva se la denomina \tbi{inmersión} o \tbi{embebimiento}.
 \end{defi}
+\begin{prop}
+	$f:(\Y,\T_\Y)\to(\X,\T)$ es inmersión si y solo si $f\restriction_{f(\Y)}$ es homeomorfismo.
+\end{prop}
+\begin{proof}
+	La implicación a la derecha ya la hemos visto.
+	
+	Recíprocamente basta con demostrar la igualdad $\T_\Y=f^{-1}(\T\restriction_{f(\Y)})$, para lo cual veremos ambas contenciones.
+	
+	Por un lado, si $\U\in\T_\Y$ entonces, habrá que demostrar que hay un $\W\in\T\restriction_{f(\Y)}$ tal que $\U=f^{-1}(\W)$. En efecto, como $f$ es homeomorfismo (y por tanto abierta) bastará tomar $\W:=f(\U)$. En efecto, $f^{-1}(f(\U))=\U$.
+	
+	Por otra parte, si $\U\in f^{-1}(\T\restriction_{f(\Y)})$ tendremos que ver que $\U\in \T_\Y$. En efecto, por ser $\U$ de la topología relativa de imágenes inversas $\U=f^{-1}(\W\cap f(\Y))$ para cierto $\W\in \T$. Luego $\U=f^{-1}(\W)\cap \Y$, como $f$ es continua $f^{-1}(\W)$ es abierto, luego el resultado se sigue.
+\end{proof}
 \section{Imágenes directas (cocientes e indentificaciones)}
 En esta sección formalizaremos la idea de ``pegar'' unos puntos con otros. Al final tendremos el superpoder de trabajar con espacios topológicos como si fueran recortables infantiles, lo cual es sorprendentemente útil.
 \subsection{Construcción de continuidad más fina}
@@ -158,7 +170,7 @@ El problema que nos planteamos es caracterizar a las aplicaciones continuas $g:\
 La solución a este problema no merece un premio a la originalidad.
 \begin{prop}[Propiedad universal de las identificaciones]
 	\label{const_universalIdentificaciones}
-	Una aplicación $g:\Y\to Z$ es continua si y solo si se verifica que $f$ es continua.
+	Una aplicación $g:\Y\to Z$ es continua si y solo si se verifica que $g\circ f$ es continua.
 \end{prop}
 \begin{proof}
 	Orientémonos en la oscuridad que nos envuelve con un bonito diagrama.
@@ -169,11 +181,11 @@ La solución a este problema no merece un premio a la originalidad.
 			&(Z,\T')
 		}
 	\end{equation*}
-	Como antes, es evidente que si $g$ es continua $g\circ f$ es continua.
+	Como antes, es evidente que si $g$ es continua, entonces $g\circ f$ es continua.
 	
-	Recíprocamente, queremos ver que $g$ transforma abiertos en abiertos por imágenes inversas. Que dado $\U\in\T'$ entonces $g^{-1}(\U)\in f(\T)$ es equivalente (por definición de $f(\T)$) a que
+	Recíprocamente, queremos ver que $g$ transforma abiertos en abiertos por imágenes inversas. El hecho de que si $\U\in\T'$ entonces $g^{-1}(\U)\in f(\T)$ es equivalente (por definición de $f(\T)$) a
 	\[f^{-1}(g^{-1}(\U))=(g\circ f)^{-1}(\U)\in\T\]
-	Como $\U\in\T'$ y por hipótesis $g\circ f$ es continua podemos irnos a casa, hemos ganado.
+	Como $\U\in\T'$ y, por hipótesis, $g\circ f$ es continua, podemos irnos a casa, hemos ganado.
 \end{proof}
 \subsection{Propiedad universal de las identificaciones}
 Si hacemos un poco de ``copy-paste'' de la sección anterior obtenemos lo siguiente. 
@@ -223,7 +235,7 @@ Así pues a partir de ahora nos centraremos en el caso sobreyectivo.
 Finalizamos la sección dando una última definición.
 \begin{defi}[Indentificación]
 	Una aplicación $f:(\X,\T)\to(\Y,\T_\Y)$ se dice \tbi{indentificación} si es sobreyectiva y $\T_Y=f(\T)$.
-\end{defi} 
+\end{defi}
 \subsection{Construcción de cocientes}
 En este apartado vamos a ver exactamente cuáles son las virtudes de trabajar con el caso sobreyectivo.
 
@@ -572,7 +584,7 @@ Como estamos haciendo una construcción bastante parecida a la de las inmersione
 	\[f^{-1}(W)=f^{-1}(U_1\times\dots\times U_r)=f^{-1}\left(\bigcap_{i=1}^r p_i^{-1}(U_i)\right)=\bigcap_{i=1}^r f_i^{-1}(U_i)\] será abierto dado que los $f_i^{-1}(U_i)$ son abiertos por ser $f_i$ continua.
 \end{proof}
 \begin{obs}[Extensión]
-	Esto viene a ser una extensión del teorema para aplicaciones que morían en $\R^n$ que decía que dicha aplicación era continua si y solo si lo era componente a componente. No obstante, la razón profunda es el lema anterior.
+	Esto viene a ser una extensión del teorema para aplicaciones que morían en $\R^n$ que decía que dicha aplicación era continua si y solo si lo era cada componente. No obstante, la razón profunda es el lema anterior.
 \end{obs} 
 \subsection{Propiedad universal del producto}
 
@@ -616,15 +628,16 @@ Vamos a ver ahora una serie de proposiciones relacionadas con la topología prod
 \begin{prop}[Inmersiones]
 	\label{const_prop_inmersion}
 	La aplicación $f : X_i\to\{a_1\}\times\cdots\times X_i\times\cdots\times \{a_r\}\subset X_1\times\cdots\times X_r$ tal que $x\mapsto (a_1,\dots,x,\dots,a_r)$ es una inmersión.
-	
-	\begin{proof}
-		Evidentemente, $f$ es inyectiva, luego solo queda demostrar que $X_i$ tiene la topología imágenes inversas $f^{-1}(\prod_{k=1}^r\T_k)$. En efecto, aunque un poco engorroso
-		\begin{equation*}
-			f^{-1}\left(\prod_{k=1}^r\T_k\right)=\left\{f^{-1}\left(\bigcup_{j\in J}\prod_{k=1}^r U_k\right)\midc U_k\in\T_k\right\}=\left\{\bigcup_{l\in L}U_i\midc U_i\in\T_i\right\}=\T_i
-		\end{equation*}
-		Nótese el cambio de índices arbitrarios de $j\in J$ a $l\in L$ con $L\subset J$ para recalcar que hay abiertos del producto cuya imagen inversa por $f$ es el vacío. 
-	\end{proof}
 \end{prop}
+
+\begin{proof}
+	Evidentemente, $f$ es inyectiva, luego solo queda demostrar que $X_i$ tiene la topología imágenes inversas $f^{-1}(\prod_{k=1}^r\T_k)$. En efecto, aunque un poco engorroso
+	\begin{equation*}
+	f^{-1}\left(\prod_{k=1}^r\T_k\right)=\left\{f^{-1}\left(\bigcup_{j\in J}\prod_{k=1}^r U_k\right)\midc U_k\in\T_k\right\}=\left\{\bigcup_{l\in L}U_i\midc U_i\in\T_i\right\}=\T_i
+	\end{equation*}
+	Nótese el cambio de índices arbitrarios de $j\in J$ a $l\in L$ con $L\subset J$ para recalcar que hay abiertos del producto cuya imagen inversa por $f$ es el vacío. 
+\end{proof}
+Una demostración alternativa (y quizá más contundente) consistiría en demostrar que $f$ es un homeomorfismo.
 \begin{obs}[Consecuencias]
 	La topología de $\{a_1\}\times\dots\times X_i \times \dots \times\{a_r\}$ es exactamente la de $X_i$, pues al ser una inmersión, la restricción es un homeomorfismo.
 	
@@ -713,7 +726,7 @@ Antes de continuar introducimos la siguiente definición.
 		\end{array}
 	\end{equation}
 \end{defi}
-Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T_Y$ más fina en $Y$ de modo que haga a todas las continuas simultáneamente.
+Ahora bien, nuestro objetivo en esta construcción será el de crear la topología $\T_Y$ más fina en $Y$ de modo que haga a todas las inclusiones continuas simultáneamente.
 
 Por definición de continuidad, podemos (y debemos, ya que buscamos que sea la más fina) incluir en $\T_Y$ todos los conjuntos de $Y$ cuya inversa vía todas las inclusiones sea abierta (tal y como hicimos en la construcción del cociente).
 

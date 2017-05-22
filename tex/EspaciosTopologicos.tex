@@ -870,7 +870,7 @@ Introducimos ahora el concepto de ``subespacio'' topológico, para lo cual, fija
 	Comprobemos que efectivamente la topología relativa es merecedora de su nombre (y por tanto no hemos hecho un pan como unas hostias).
 	\begin{enumerate}
 		\item La topología relativa contiene el vacío y el total (que en este caso es $\Y$). En efecto, $\emptyset \in \T\restriction_\mc{Y}$ pues $\emptyset \cap \mc{Y} = \emptyset$ y $\mc{Y} \in \T\restriction_\mc{Y}$ pues $\X \cap \mc{Y} = \mc{Y}$.
-		\item Es cerrado respecto de uniones arbitrarias. En efecto, $\bigcup_{i \in I}{(\U \cap \mc{Y})} = \big( \bigcup_{i \in I} \U \big) \cap \mc{Y}$.
+		\item Es cerrado respecto de uniones arbitrarias. En efecto, $\bigcup_{i \in I}{(\U_i \cap \mc{Y})} = \big( \bigcup_{i \in I} \U_i \big) \cap \mc{Y}$.
 		\item Es cerrado respecto de intersecciones finitas. Basta ver, $\bigcap_{i = 1}^{n}{(\U_i \cap \mc{Y})} = \big( \bigcap_{i=1}^{n} \U_i \big) \cap \mc{Y}$.
 	\end{enumerate}
 	Y por tanto ya podemos dormir tranquilos.
@@ -889,7 +889,7 @@ Veamos ahora cómo se comportan los cerrados, los entornos, las adherencias y la
 				\F = \Y\setminus(\Y\cap\U)=\Y\cap(\X\setminus(\Y\cap\U))=\Y\cap((\X\setminus\Y)\cup(\X\setminus\U))=\\
 				=\Y\cap(\X\setminus\Y)\cup\Y\cap(\X\setminus\U)=\emptyset\cup\Y\cap(\X\setminus\U)=\Y\cap(\X\setminus\U)
 			\end{multline*}
-			Como $\X\cap\U$ es cerrado hemos terminado.
+			Como $\X\setminus\U$ es cerrado hemos terminado.
 			\item[\bla] Sea $\U$ abierto de $\X$, veamos que $\Y\cap(\X \setminus\U)$ es cerrado relativo. Para ello complementamos respecto de $\Y$.
 			\begin{multline*}
 				\Y\setminus(\Y\cap(\X \setminus\U))=\Y\cap(\X \setminus (\Y\cap(\X \setminus \U)))=\\
