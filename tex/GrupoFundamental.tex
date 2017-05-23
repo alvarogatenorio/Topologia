@@ -8,9 +8,104 @@ La topología algebraica comprende métodos que son significativamente distintos
 
 En particular, introducimos la homotopía con el propósito de definir más adelante la noción de grupo fundamental. Dos caminos son, intuitivamente, homótopos si podemos deformar uno en el otro de forma continua.
 
-% FALTA LA MAYORÍA DE LA SECCIÓN, EXCEPTO ESTE ÚLTIMO EJEMPLO	
+\begin{defi}[Homotopía]
+	Una \tbi{homotopía} es una aplicación continua $H:\Y\times [0,1]\to \X$. Escribimos $H_s(y) \coloneqq H(y,s)$.
+\end{defi}
+
+\begin{defi}[Funciones homótopas]
+	Sean $f,g:\Y\to\X$ aplicaciones. Escribimos $H:f\homot g$ para denotar, si existe, una homotopía que verifica $H(y,0)=H_0(y)=f(y)$, $H(y,1)=H_1(y)=g(y)$. Si efectivamente existe, decimos que $f$ y $g$ son \tbi[aplicación!homótopa a otra]{homótopas}.
+\end{defi}
+
+\begin{obs}[Caminos homótopos]
+	\indexg{homotopía!de caminos}
+	Un caso particular importantísimo de homotopía es la homotopía de caminos. Como se sigue directamente de la definición de homotopía, dos caminos $\sigma,\tau:[0,1]\to\X$ son homótopos si existe una homotopía $H:[0,1]\times [0,1]\to\X$, de forma que $H_0\equiv\sigma$ y $H_1\equiv\tau$.
+\end{obs} 
+
+\begin{prop}
+	La homotopía ${\homot}$ es una relación de equivalencia.
+	
+	\begin{proof}
+		Basta ver que es reflexiva, simétrica y transitiva:
+		\begin{enumerate}
+			\item Es reflexiva, pues, dada una función $f$, la homotopía $H_s(y) = f(y)$ es, en efecto, homotopía entre $f$ y $f$.
+			\item Es simétrica, ya que dadas funciones $f\homot g$ relacionadas por una homotopía $H$, consideramos $H'_s(y)=H_{1-s}(y)$, que es una homotopía $g\homot f$.
+			\item Es transitiva, ya que, dadas funciones $f\homot g$, $g\homot h$, con homotopías $H^1, H^2$, definimos:
+			\[H_s(y) = \left\{\begin{array}{ll}
+			H^1_{2s}(y) & \text{ si } s\in [0,\frac{1}{2}] \\
+			H^2_{2s - 1}(y) & \text{ si } s\in [\frac{1}{2},1] 
+			\end{array}\right.\]
+			que está bien definida y es homotopía, de forma que $f\homot h$. \qedhere  
+		\end{enumerate}
+	\end{proof}
+\end{prop}
+
+\begin{defi}[Nulhomótopa]
+	Decimos que una aplicación $f:\Y\to\X$ es \tbi[aplicación!nulhomótopa]{nulhomótopa} si $f$ es homótopa a alguna aplicación constante.
+\end{defi}
+
+\begin{exa}[Nulhomotopías en convexos]
+	\label{grf_nulhomotopias_convexos}
+	Consideramos $\X\subset\R^n$ convexo. En este caso, cualquier aplicación $f:\Y\to\X$ continua es nulhomótopa.
+	
+	En efecto, sea $a\in X$. Consideramos la homotopía:
+	\[H_s=(1-s)f+sa\]
+	que está definida en $\X$, pues, al ser este convexo, $[f(y),a]\subset\X$ para cualquier $\Y$. Entonces, se verifica:
+	\[\begin{array}{l}
+	H_0(y)=f(y) \\
+	H_1(y)=a
+	\end{array}\]
+	que es precisamente lo que buscábamos. Nótese que si $\X$ es estrellado en lugar de convexo, se verifica la misma propiedad y la demostración es totalmente análoga, tomando $a$ el ``centro'' del estrellado.
+	
+	La homotopía definida de esta forma se llama \tbi{interpolación lineal}, y es asombrosamente útil teniendo en cuenta su sencillez. Merece la pena notar que, cuando está bien definida, es siempre homotopía. Sin embargo, habrá muchos contextos en los que no esté bien definida.
+\end{exa}
+
+\begin{defi}[Contráctil]
+	Decimos que un espacio topológico $\X$ es \tbi[espacio!contráctil]{contráctil} si $\Id_\X$ es nulhomótopa.
+\end{defi}
+
+\begin{obs}
+	Como, por el ejemplo \ref{grf_nulhomotopias_convexos}, sabemos que todas las aplicaciones que llegan a un espacio convexo o estrellado son nulhomótopas, entonces está claro que cualquier convexo o estrellado es contráctil.
+\end{obs}
+
+La siguiente proposición sirve al mismo tiempo como ejemplo y como enunciado de un resultado que nos será útil un poco más adelante.
+
+\begin{prop}
+	Si $f,g:\Y\to\Sfe^n$ continuas verifican que $f(y)\neq -g(y)\;\forall y\in\Y$ (es decir, $f$ y $g$ no tienen puntos antipodales), entonces $f\homot g$. En particular, si $f:\Y\to\Sfe^n$ no es sobreyectiva, entonces es nulhomótopa.
+	
+	\begin{proof}
+		Definimos la homotopía $H$ como:
+		\[H_s(y)=\frac{(1-s)f(y)+sg(y)}{\norm{(1-s)f(y)+sg(y)}}\]
+		Desde luego,está siempre en $\Sfe^n$ como debe ocurrir. Entonces, solo falta para ver que está bien definida probar que existe en todo punto, y para ello necesitaremos la hipótesis.
+		
+		En efecto, las imágenes de $f$ y $g$ son puntos de la esfera unidad, y por tanto son vectores de norma $1$. Si $f(y)$ y $g(y)$ no son puntos antipodales, entonces hay dos opciones:
+		\begin{itemize}
+			\item $f(y)=g(y)$, pero como $s>0$, $1-s>0$ es imposible que $(1-s)f(y)+sg(y) = 0$.
+			\item $f(y)$ y $g(y)$ son linealmente independientes, luego ninguna combinación lineal suya con coeficientes no nulos puede sumar $0$.
+		\end{itemize}
+	
+		Y ya hemos terminado, porque está bien definida y desde luego es continua (al ser $f$, $g$ continuas, y la norma una función continua, es continua por ser suma, producto y cociente de aplicaciones continuas en $\R^n$). Entonces es homotopía.
+		
+		Para el caso particular, consideramos $a$ tal que $-a\not\in f(\Y)$, lo cual podemos conseguir por no ser sobreyectiva. Solo queda definir la homotopía anterior con $g\equiv a$.
+	\end{proof}
+\end{prop}
+
+\begin{obs}
+	El hecho de que si $f:\Y\to\Sfe^n$ no es sobreyectiva entonces es nulhomótopa se puede plantear desde el punto de vista de la naturaleza topológica de la esfera. En efecto, $f(\Y)\subset\Sfe^n\setminus\{b\}$ para algún punto $b$, y resulta que hemos demostrado que esto es homeomorfo a $\R^n$, que es convexo y por tanto contráctil.
+\end{obs}
+
+A veces, nos interesará que la homotopía entre dos funciones mantenga invariante alguna propiedad extra. En particular, solemos necesitar que algunos puntos no se muevan de su posición al homotopar.
+\begin{defi}[Homotopía relativa]
+	Una homotopía $H:\Y\times[0,1]\to\X$ se llama \tbi[homotopía!relativa]{relativa} a un subconjunto $A\subset\Y$ cuando $H_s(a)=H_0(a)\;\forall a\in A$. En particular, $H_0\equiv H_1$ en $A$. Se suele escribir $H_s:f\homot[A]g$.
+\end{defi}
+
+La definición que sigue, caso particular de la anterior, es absolutamente imprescindible para el estudio del grupo fundamental que vamos a realizar a lo largo de esta sección.
+
+\begin{defi}[Homotopía de extremos fijos]
+	Decimos que dos caminos $\sigma,\tau:[0,1]\to\X$ son \tbi[homótopía!de extremos fijos]{homótopos con extremos fijos} si son homótopos relativos a $\{0,1\}$, es decir, si $\sigma\homot[\{0,1\}]\tau$.
+\end{defi}
 
 \begin{exa}
+	\indexg{interpolación lineal}
 	La interpolación lineal produce homotopías relativas. En efecto, consideramos la homotopía:
 	\[H_s = (1-s)f + sg\]
 	Si $f(a)=g(a)$ para algún $a\in\Y$, entonces resulta que:
