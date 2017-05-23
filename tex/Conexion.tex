@@ -98,7 +98,7 @@ Como a veces la visión espacial brilla por su ausencia brindamos dos dibujos co
 \end{figure}
 
 \begin{cor}[Cadenas]
-	Sea una cadena finita $\{A_i\}_{i=1}^n$ de conexos que verifica que $A_i\cap A_{i+1}\not=\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
+	Sea una cadena finita $\{A_i\}_{i=1}^n$ de conexos, es decir, que verifica que $A_i\cap A_{i+1}\not=\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
 \end{cor}
 \begin{proof}
 	Por inducción, es claro que aplicando el teorema del pivote la cadena de dos eslabones $A_1\cup A_2$ es conexa, si suponemos que la cadena de $n$ eslabones es conexa, por el teorema del pivote, la de $n+1$ eslabones $A_{k+1}\cup\bigcup_{i=1}^k A_i$ lo será también.
@@ -185,22 +185,37 @@ Recojamos los frutos de nuestra cosecha con un ejemplo, pero antes presentemos u
 
 Completamos esta sección con una propiedad interesante garantizada por la conexión.
 
-\begin{lem}
-	Sea $\X$ conexo y $\{U_i\}_{i\in I}$ una familia de abiertos, de forma que $\X=\bigcup_{i\in I} U_i$. Dos puntos cualesquiera $x,y\in\X$ se pueden conectar mediante una cadena finita $\{U_{i_k}\}_{k=1}^n$ de abiertos de la familia que verifique que $U_{i_k}\cap U_{i_{k+1}}\neq\emptyset$.
-	
-	\begin{proof}
-		Sea $A=\{z\in\X \midc \text{existe una cadena de } x \text{ a } z \}$. $A$ es claramente no vacío, puesto que $x\in A$. Entonces, una forma de ver que $\X=A$, que es lo que queremos encontrar, es comprobar que $A$ es abierto y cerrado, puesto que entonces solo puede ser el total (pues hemos visto que es no vacío y $\X$ es conexo).
-		
-		\begin{itemize}
-			\item Veamos que $A$ es abierto. En efecto, dado $z\in A$, queremos ver que existe un abierto $U$ tal que $z\in U\subset A$. Pero basta con tomar el último de la cadena, que ya cumple estas condiciones.
-			
-			\item Ahora veamos que es cerrado. En efecto, si $z\in\adher{A}$, existe un abierto $U_{i_0}$ tal que $U_{i_0}\cap A\neq\emptyset$. Entonces, tomamos un punto $y$ de la intersección, y como está en $A$ hay una cadena de $x$ a $y$. Uniendo $U_{i_0}$ a la cadena tenemos una cadena de $x$ a $z$, y por tanto $z\in A$, luego $A=\adher{A}$. \qedhere
-		\end{itemize}
-	\end{proof}
+\begin{lem}[Cadena]
+	Sea $\X$ conexo y $\{U_i\}_{i\in I}$ un recubrimiento por abiertos de $\X$. Dos puntos cualesquiera $x,y\in\X$ se pueden conectar mediante una cadena finita de abiertos del recubrimiento.
 \end{lem}
 
-\begin{obs}
-	En particular, puedo recubrir cualquier abierto conexo de $\R^n$ por bolas, y por tanto existe una cadena de bolas que une cualquier par de puntos. Si tomo un punto en cada intersección entre bolas consecutivas de la cadena y los uno, tengo una poligonal que conecta los dos puntos. Entonces, si $C\subset\R^n$ es abierto, $C$ es conexo si y solo si es conexo por poligonales (la definición de conexión por poligonales y la implicación inversa corresponden a cálculo diferencial).
+\begin{proof}
+	Sea $A=\{z\in\X \midc \text{existe una cadena de } x \text{ a } z \}$. $A$ es claramente no vacío, puesto que $x\in A$. Por ende, nuestro objetivo será ver que $\X=A$. Una forma de hacerlo será ver que $A$ es un clopen, ya que si lo fuera, por conexión de $\X$ y por ser $A$ no vacío $A$ tendría que ser el total.
+	\begin{itemize}
+		\item Veamos que $A$ es abierto. En efecto, dado $z\in A$, queremos ver que existe un abierto $U$ tal que $z\in U\subset A$. Si tomamos el último abierto $U$ de la cadena que une $x$ y $z$ hemos ganado, ya que $U\subset A$, ya que todo punto de $U$ queda unido con $x$ con la misma cadena que $z$.
+		
+		\item Ahora la clausura. En efecto, si $z\in\adher{A}$, entonces habrá un abierto $U_{i_0}$ tal que $U_{i_0}\cap A\not=\emptyset$. Considerando un punto $y$ de la intersección, como $y$ está en $A$, hay una cadena de $x$ a $y$. Uniendo $U_{i_0}$ a la cadena obtenemos una cadena de $x$ a $z$, y por tanto $z\in A$, luego $A=\adher{A}$. \qedhere
+	\end{itemize}
+\end{proof}
+Este último resultado tiene una aplicación muy importante en los espacios euclídeos usuales.
+\begin{defi}[Poligonal]
+	Una \tbi{poligonal} en $\R^n$ es un conjunto $\Gamma$ de la forma\begin{equation*}
+		\Gamma=[x_0,x_1]\cup[x_1,x_2]\cup\dots\cup[x_{n-2},x_{n-1}]\cup[x_{n-1},x_n]
+	\end{equation*}
+	Donde $[x_i,x_j]$ representa el segmento que une a los puntos $x_i$ y $x_j$. Nótese que por la variante de las cadenas del teorema del pivote una poligonal es conexa.
+\end{defi}
+\begin{defi}[Conexión por poligonales]
+	Un conjunto $A\subset\R^n$ se dice \tbi[conexo!por poligonales]{conexo por poligonales} si dados dos puntos cualesquiera $x,y\in A$, hay una poligonal $\Gamma$ contenida en $A$ que une a $x$ y a $y$.
+\end{defi}
+\begin{obs}[Conexión y conexión por poligonales]
+	Todo conjunto conexo por poligonales es conexo. En efecto, si tomamos un punto $a$ de $A$ y consideramos la familia de poligonales (conexos) que conectan a $a$ con el resto de puntos de $A$, tenemos que dicha familia tiene a $\{a\}$ por intersección, luego podemos aplicar el teorema del pivote, obteniendo que la unión de la familia, que es $A$, es conexa.
+\end{obs}
+\begin{obs}[Abiertos y conexión por poligonales]
+	Podemos recubrir cualquier abierto conexo de $\R^n$ con bolas (véase el lema \ref{etop_lem_otrasProp}), y, por tanto existe una cadena de bolas que une cualquier par de puntos.
+	
+	Si tomamos un punto en cada intersección entre bolas consecutivas de la cadena y consideramos los segmentos que los unen, tengo una poligonal que conecta los dos puntos.
+	
+	De esta forma, para abiertos de $\R^n$ la conexión y la conexión por poligonales son nociones equivalentes.
 \end{obs}
 
 \section{Componentes conexas}
