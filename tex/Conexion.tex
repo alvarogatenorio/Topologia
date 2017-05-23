@@ -1,148 +1,185 @@
 %Para este capítulo se usará la abreviatura "conex".
 \chapter{Conexión}
 \label{conex}
-
-La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n$ y espacios métricos en general y que pueden generalizarse a un espacio topológico arbitrario. En este capítulo formalizaremos la noción intuitiva de estar hecho ``de una sola pieza''. 
-
+La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n$ y espacios métricos en general y que pueden generalizarse a un espacio topológico arbitrario. En este capítulo formalizaremos la noción intuitiva de estar hecho ``de una sola pieza''. Asimismo también trabajaremos sobre el concepto de ``pieza indivisible'' de algo, o, dicho más finamente, ``componente conexa''. 
 \section{Definición y propiedades}
-
-Empezaremos viendo, por supuesto, la definición, y una serie de caracterizaciones equivalentes.
+Comencemos nuestra nueva andadura definiendo formalmente la idea de conexión y presentando algunos resultados bastante potentes.
 
 \begin{defi}[Conexión]
-	Un espacio topológico $\X$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no es unión de dos abiertos disjuntos no vacíos, esto es, no existen $U,V\neq\emptyset$, abiertos, tales que $U\cap V=\emptyset$ y $X=U\cup V$.
+	Un espacio topológico $(\X,\T)$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no lo podemos particionar con dos abiertos. Dicho de otra manera, un espacio es conexo si no unión de dos abiertos disjuntos no vacíos.
+	
+	Escrito de forma conjuntista, no existen $\U$ y $\V$ abiertos tales que $U\cap V=\emptyset$ y $\X=U\cup V$.
 \end{defi}
 
 \begin{obs}[Conexión en subespacios]
-	De nuevo, como con compacidad, la conexión en un subconjunto no necesita una definición alternativa. Dado $\mc{Y}\subset\X$, simplemente decimos que $\mc{Y}$ es conexo si lo es entendido como espacio equipado con la topología relativa. Nótese que esta definición es equivalente a la mucho más rebuscada que dábamos en $\R^n$, que involucraba abiertos relativos.
+	De nuevo, como ocurría con la compacidad, la conexión en un subconjunto no necesita una definición alternativa. En efecto, dado un subespacio $\Y\subset\X$, diremos que $\Y$ es conexo si lo es entendido como un espacio topológico equipado con la topología relativa.
 \end{obs}
-
-\begin{prop}[Definiciones equivalentes de conexión]
+La siguiente proposición bien podría ser una observación inmediata, no obstante es extremadamente útil y nos acerca a la idea que de vez en cuando hemos dejado caer acerca a la relación de los clopens con la conexión.
+\begin{prop}[Definiciones equivalentes]
 	Sea un espacio topológico $\X$. Las siguientes afirmaciones son equivalentes:
 	\begin{enumerate}
-		\item $\X$ es conexo.
-		\item $\X$ no es unión de dos cerrados disjuntos no vacíos, esto es, no existen $F,G\neq\emptyset$, cerrados, tales que $F\cap G=\emptyset$ y $X=F\cup G$.
-		\item No hay ningún conjunto abierto y cerrado no trivial, esto es, $\nexists U$ abierto y cerrado tal que $U\neq\emptyset$ y $U\neq\X$.
+		\item $\X$ no es conexo.
+		\item $\X$ es unión de dos cerrados disjuntos no vacíos.
+		\item $\X$ posee dos clopens no triviales.
 	\end{enumerate}
 \end{prop}
-
-Es inmediato, y se deja al lector, comprobar estas equivalencias.
-
-\begin{exa}
-	En $\R$, los conexos son los intervalos. En efecto, si $A\subset\R$ no es un intervalo, entonces por definición $\exists a\notin A$ tal que $\inf A< a < \sup A$. Entonces, $(-\infty, a)\cap A$ y $(a,\infty)\cap A$ son dos abiertos disjuntos no vacíos cuya unión contiene a $A$.
-\end{exa}
-
-Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos.
+\begin{proof}
+	Si $\X$ es disconexo es claro que podemos escribir $\X$ como unión disjunta de dos abiertos no triviales $\X=U\cup V$. Como $U$ es abierto, su complementario, $V$, será cerrado, luego $V$ será un clopen. Análogamente, como $V$ es abierto, su complementario, $U$, será cerrado, luego $U$ es también un clopen.
+\end{proof}
+Para ir calentando daremos una caracterización de los conexos de la recta real $\R$. La demostración de la siguiente proposición simplifica brutalmente a la que habitualmente se ve en la literatura y es debida a Diego Chicharro.
+\begin{defi}[Intervalo]
+	Un subconjunto no vacío $A\subset\R$ se dice \tbi{intervalo} si dados dos puntos $a,b\in A$ y un tercero $c\in\R$ que cumple que $a\leq c\leq b$, entonces $c\in A$. 
+\end{defi}
+\begin{prop}[Conexos de la recta]
+	Un conjunto $A\subset \R$ es conexo si y solo si es un intervalo. 
+\end{prop}
+\begin{proof}
+	Demostremos ambas implicaciones.
+	\begin{enumerate}
+		\item[\bra] Sea $A$ conexo de $\R$ que no sea un intervalo, entonces habrá dos puntos $a,b\in A$ para cuales podemos elegir un $c$ entre $a$ y $b$ tal que $c\not\in A$. Dicho esto, considerando los conjuntos $U:=(-\infty,c)\cap A$ y $V:=(c,\infty)\cap A$ es claro que son abiertos disjuntos de $A$ que cubren a $A$, luego $A$ no es conexo. 
+		\item[\bla] Sea $A$ un intervalo. Si no fuera conexo, podría particionarlo en dos cerrados $F$ y $H$. Tomemos pues dos puntos, uno en cada abierto de la partición $a\in F$ y $b\in H$, supongamos sin pérdida de generalidad que $a<b$. Como $A$ es un intervalo, dados dos puntos de $A$, contiene a todos los que haya en medio, en particular $[a,b]\subset A$.
+		
+		Consideremos pues $H\cap[a,b]\not=\emptyset$, que, al ser intersección de cerrados es cerrado, y, por tanto, contiene a todos sus puntos de acumulación, en particular, al ser acotado contiene a su ínfimo, al que llamaremos $\eta$.
+		
+		Llegados a este punto, si $\eta=a$ entonces $a$ estará en los dos cerrados de la partición a la vez, lo cual es absurdo, precisamente por ser una partición. Esto obliga a que $\eta > a$, luego $[a,\eta)\cap H=\emptyset$ asique $[a,\eta)\subset F$. Al ser $F$ cerrado es claro que $[a,\eta]\subset F$. Pero esto es absurdo porque entonces $\eta$ estaría tanto en $F$ como $H$, que son conjuntos disjuntos.\qedhere
+	\end{enumerate}
+\end{proof}
+Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos en espacios métricos que siguen siendo válidas en estos mundos abstrusos.
 
 \begin{prop}[Imagen continua]
 	\label{conex_prop_im_continua}
 	La imagen continua de un conexo es un conexo.
 \end{prop}
 \begin{proof}
-	Sea $\X$ conexo, $f:\X\to\Y=f(\X)$ continua. Entonces queremos ver que $\mc{Y}$ es conexo. Para ello vamos a ver el contrarrecíproco: si $\Y$ no es conexo $\X$ tampoco.
+	Sea $\X$ conexo y $f:\X\to f(\X)=:\Y$ continua. Veamos que $\Y$ es conexo. Razonemos pues por contradicción.
 	
-	Al no ser $\Y$ conexo, existe $A\subset\Y$ abierto y cerrado no trivial (esto es, que no es ni el vacío ni el total). Entonces por ser $f$ continua, $f^{-1}(A)$ es también abierto y cerrado, y por ser $f$ sobreyectiva $f^{-1}(A)$ no es el vacío ni el total. Por tanto $\X$ no es conexo.
+	Si $\Y$ no fuera conexo, tendría un clopen no trivial (ni el vacío ni el total), llamémoslo $A$. Entonces por ser $f$ continua, $f^{-1}(A)$ también es un clopen.
+	
+	Al ser $f$ sobreyectiva, $f(f^{-1}(A))=A\subsetneq f(\X)$, luego $f^{-1}(A)$ no puede ser ni el vacío ni el total, siendo así un clopen no trivial, entrando en contradicción con la conexión de $\X$.
 \end{proof}
 
-% NOTA: no he nombrado el teorema como teorema del pivote porque buscado en internet sólo salía en la página de Ruiz con ese nombre. En demás libros que he visto no tiene nombre.
-
-A continuación presentamos un teorema conocido en algunos lugares remotos como el teorema del pivote.
-
-\begin{theo}
+A continuación presentamos un teorema conocido en algunos lugares remotos como el teorema del pivote, aunque bien podría llamarse el teorema MacGyver.
+\begin{theo}[Teorema de pivote]
 	\label{conex_theo_pivote}
-	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ tales que existe $a\in\bigcap_{i\in I} A_i$. Entonces $\bigcup_{i\in I} A_i$ es conexo.
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos de $\X$ con intersección no vacía, es decir, hay un punto $a$ contenido en $\bigcap_{i\in I} A_i$.
+	
+	Entonces, la unión de la familia, $C:=\bigcup_{i\in I} A_i$ es conexo.
 \end{theo}
 \begin{proof}
-	Supongamos que existe $S\subset\bigcup_{i\in I} A_i$ abierto y cerrado de la unión. Vamos a ver que necesariamente es el vacío o el total.
+	Veamos que $C$ no tiene clopens no triviales, para ello, supongamos que $S$ es un clopen de $C$. Al ser $S$ un clopen de $C$, por topología relativa, $S\cap A_i$ es un clopen de $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$.
 	
-	Para cada $i\in I$ tenemos que $S\cap A_i\subset A_i$ es abierto y cerrado en $A_i$. Ahora, como $A_i$ es conexo, $S\cap A_i$ tiene que ser necesariamente el vacío o el total, para cada $i\in I$. Distinguimos pues dos casos:
-	\begin{enumerate}
-		\item Si $S\cap A_i=\emptyset$ para todo $i\in I$, entonces $S=\emptyset$ y ya está.
-		\item Si $\exists i_0\in I$ tal que $S\cap A_{i_0}=A_{i_0}$, entonces, como $a$ está en la intersección de la familia, en particular $a\in A_{i_0}= S\cap A_{i_0}$ y, por tanto, $a\in S$. Esto implica que $a\in S\cap A_i$ para todo $i\in I$, con lo que ninguno de los $S\cap A_i$ es vacío. Como necesariamente deben ser el vacío o el total, $S\cap A_i=A_i$ para todo $i\in I$. Con ello, $A_i=S\cap A_i\subset S$ para todo $i\in I$, lo cual implica que $\bigcup_{i\in I} A_i\subset S$. Es decir, $S=\bigcup_{i\in I} A_i$, con lo que hemos terminado.
-	\end{enumerate}
+	Si hubiera un $i_0\in I$ tal que $S\cap A_{i_0}=A_{i_0}$, como hay un $a$ en la intersección de la familia, $a\in A_{i_0}$, luego $a\in S$. Por tanto $S$ corta a todos los conjuntos de la familia, y, como dijimos antes, es un clopen en todos ellos, luego no queda más remedio que $S\cap A_i=A_i$ para todo $i\in I$. Siendo pues $S=C$.
+	
+	Por otra parte, si $S$ no corta a ninguno de los conjuntos de la familia es claro que es el vacío. 
 \end{proof}
 
-Este teorema es extremadamente útil para garantizar la conexión de un sinnúmero de conjuntos, y genera un gran abanico de corolarios y consecuencias. Aquí vamos a detallar algunos que se usan con frecuencia.
+Este teorema es extremadamente útil para garantizar la conexión de un sinnúmero de conjuntos, y genera un gran abanico de corolarios y consecuencias (de ahí que le hayamos bautizado como el teorema MacGyver). Detallemos algunas variantes y consecuencias de este fantástico teorema.
 
-\begin{cor}
+\begin{cor}[Intersecciones dos a dos]
 	\label{conex_cor_pivote_corte_comun}
-	Sea $\{A_i\}_{i\in I}$ una familia de conexos que cumple que $\exists i_0\in I$ tal que $A_{i_0}\cap A_i\neq\emptyset\;\;\forall i\in I$. Entonces $\bigcup_{i\in I} A_i$ es conexo. En particular, el resultado se verifica si la familia cumple que $A_i\cap A_j\neq\emptyset\;\;\forall i\neq j$.
+	Sea $\{A_i\}_{i\in I}$ una familia de conexos que cumple que uno de ellos, digamos $A_{i_0}$, corta a todos los demás. Es decir, $A_{i_0}\cap A_i\not=\emptyset$ para todo $i\in I$.
 	
-	\begin{proof}
-		Como $A_i\cap A_{i_0}\neq\emptyset$ por hipótesis, podemos aplicar el teorema \ref{conex_theo_pivote} para cada $i\in I$, y por tanto cada $A_{i_0}\cup A_i$ es conexo. Ahora, escribimos:
-		\[\bigcup_{i\in I} A_i = \bigcup_{i\in I} (A_i\cup A_{i_0})\]
-		y como todos comparten los elementos de $A_{i_0}$, podemos aplicar el teorema de nuevo.
-	\end{proof}
+	Entonces, la unión de la familia, $\bigcup_{i\in I} A_i$ es conexo.
 \end{cor}
+\begin{proof}
+	Como $A_i\cap A_{i_0}\neq\emptyset$ por hipótesis, podemos aplicar el teorema del pivote a la familia $\{A_i,A_{i_0}\}$ para cada $i\in I$, y por tanto cada $A_{i_0}\cup A_i$ es conexo. Ahora, escribiendo
+	\[\bigcup_{i\in I} A_i = \bigcup_{i\in I} (A_i\cup A_{i_0})\]
+	tenemos que como la familia $\{A_i\cup A_{i_0}\midc i\in I\}$ tiene a $A_{i_0}$ por intersección, su unión (que coincide con la que queremos), por el teorema del pivote es conexa.
+\end{proof}
+\begin{obs}[Intersecciones dos a dos]
+	En particular, la misma prueba del corolario \ref{conex_cor_pivote_corte_comun} tomando un $i_0\in I$ arbitrario sirve para una familia de conexos tal que su intersección dos a dos sea no vacía, es decir, $A_i\cap A_j\not=\emptyset$ para cualquier par de conjuntos de la familia.
+\end{obs}
+Como a veces la visión espacial brilla por su ausencia brindamos dos dibujos con ejemplos de familias de conexos que verifican las condiciones del corolario \ref{conex_cor_pivote_corte_comun}.
+\begin{figure}[h!]
+	\centering
+	\subfigure[El corro de la patata]{\includegraphics[scale = 0.4]{img/pivote_variante1}}
+	\subfigure[El símbolo anarquista]{\includegraphics[scale = 0.8]{img/pivote_variante2}}
+	\caption{Ilustración de conjuntos en las hipótesis de \ref{conex_cor_pivote_corte_comun}.}
+\end{figure}
 
-\begin{cor}
-	Sea una cadena $\{A_i\}_{i=1}^n$ de conexos que verifica que $A_i\cap A_{i+1}\neq\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
-	
-	\begin{proof}
-		Por inducción, se aplica el teorema \ref{conex_theo_pivote} a $A_1\cup A_2$, $(A_1\cup A_2)\cup A_3$, ..., $\left(\bigcup_{i=1}^k A_i\right)\cup A_{k+1}$.
-	\end{proof}
+\begin{cor}[Cadenas]
+	Sea una cadena finita $\{A_i\}_{i=1}^n$ de conexos que verifica que $A_i\cap A_{i+1}\not=\emptyset$. Entonces $\bigcup_{i=1}^n A_i$ es conexo.
 \end{cor}
-
+\begin{proof}
+	Por inducción, es claro que aplicando el teorema del pivote la cadena de dos eslabones $A_1\cup A_2$ es conexa, si suponemos que la cadena de $n$ eslabones es conexa, por el teorema del pivote, la de $n+1$ eslabones $A_{k+1}\cup\bigcup_{i=1}^k A_i$ lo será también.
+\end{proof}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.5]{img/pivote_variante3}
+	\caption{Ilustración de una cadena de conexos}
+\end{figure}
 \begin{obs}
 	El corolario anterior también se verifica si la sucesión de conjuntos es numerable, pero no lo vamos a probar aquí.
 	% AQUÍ VIENE PROBADO http://dbfin.com/topology/munkres/chapter-3/section-23-connected-spaces/problem-2-solution/
 \end{obs}
 
-El siguiente resultado, aunque también es consecuencia del teorema \ref{conex_theo_pivote}, es más que un mero corolario y merece la categoría de teorema por sí mismo.
+El siguiente resultado, aunque también es consecuencia del teorema del pivote \ref{conex_theo_pivote}, es más que un mero corolario y merece la categoría de teorema por sí mismo.
 
-\begin{theo}\label{T7:teo_adherencia_conexa}
-	Sea $A$ conexo y $B$ tal que $A\subset B\subset\adher{A}$. Entonces $B$ es conexo. En particular $\adher{A}$ es conexo.
-	
-	\begin{proof}
-		Como podemos escribir:
-		\[B=\bigcup_{b\in B\setminus A} (A\cup\{b\}) \]
-		y todos comparten un punto, entonces basta probar que cada $A\cup\{b\}\subset\adher{A}$ es conexo, pues en ese caso el teorema \ref{conex_theo_pivote} nos garantiza la conexión de $B$.
-		
-		Supongamos que $\exists C\subset A\cup\{b\}$ abierto y cerrado y no trivial. Entonces, $C\cap A\subset A$ y es abierto y cerrado en $A$. Como $A$ es conexo distinguimos dos casos:
-		
-		\begin{itemize}
-			\item Si $C\cap A=\emptyset$, entonces $C=\{b\}$ y por tanto $\{b\}$ es abierto, luego, como el entorno $\{b\}$ de sí mismo no corta con $A$, $b\notin\adher{A}$, lo cual es una contradicción.
-			\item Si $C\cap A=A$, $C=A$ y por tanto $A$ es cerrado, pero $b\notin A=\adher{A}$, que de nuevo es una contradicción. \qedhere
-		\end{itemize}
-	\end{proof}
+\begin{theo}[Sandwich]\label{conex_teo_adherencia_conexa}
+	Sea $A$ conexo y $B$ un conjunto emparedado entre $A$ y su adherencia, es decir, $A\subset B\subset\adher{A}$. Entonces $B$ es conexo. En particular, $\adher{A}$ es conexo.
 \end{theo}
+\begin{proof}
+	Podemos poner nuestro conjunto $B$ de forma amigable para usar el teorema del pivote.
+	\[B=\bigcup_{b\in B\setminus A} (A\cup\{b\}) \]
+	como la intersección de la familia es no vacía, entonces basta probar que cada $A\cup\{b\}\subset\adher{A}$ es conexo, pues en ese caso el teorema del pivote \ref{conex_theo_pivote} nos garantiza la conexión de $B$.
+	
+	Si hubiera un clopen no trivial $C\subset A\cup\{b\}$, entonces, $C\cap A$ sería un clopen en $A$. Como $A$ es conexo, $C\cap A$ debe ser el vacío o el total.
+	\begin{itemize}
+		\item Si es el vacío, entonces $C=\{b\}$ y por tanto $\{b\}$ es abierto, luego, como el entorno $\{b\}$ de sí mismo no corta con $A$, $b\not\in\adher{A}$, lo cual es una contradicción.
+		\item Si es el total, $C=A$ y por tanto $A$ es cerrado, pero $b\not\in A=\adher{A}$, que de nuevo es una contradicción. \qedhere
+	\end{itemize}
+\end{proof}
 
-Aprovechando los resultados anteriores podemos garantizar la conexión de un buen número de espacios.
+Recojamos los frutos de nuestra cosecha con un ejemplo, pero antes presentemos unas definiciones que harán más ágil nuestro discurrir.
+\begin{defi}[Segmento]
+	En $\R^n$ un segmento que une dos puntos $a$ y $b$ es el conjunto $\{ta+(1-t)b\midc t\in[0,1]\}$, que puede interpretarse como la imagen de la interpolación lineal entre $a$ y $b$, que definimos en la ecuación \eqref{interpolacion}.
+\end{defi}
+\begin{defi}[Convexo]
+	En $\R^n$, se dice que un conjunto es \tbi{convexo} si para cada par de puntos $a,b\in E$, el segmento que los une también está en el conjunto.
+\end{defi}
+\begin{defi}[Estrellado]
+	En $\R^n$ definimos conjunto \tbi{estrellado} como un conjunto en el que existe un punto tal que el segmento de él a cualquier otro está en el conjunto.
+\end{defi}
 
-\begin{exa} Veamos algunos ejemplos de conjuntos conexos:
+\begin{exa}[Miscelánea] Veamos algunos ejemplos de conjuntos conexos:
 	\begin{enumerate}
-		\item En $\R^n$, se dice que un conjunto es \tbi{convexo} si para cada par de puntos el segmento que los une también está en el conjunto; y se dice que es \tbi{estrellado} si existe un punto tal que el segmento de él a cualquier otro está en el conjunto. Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican.
+		\item Los segmentos son conexos por ser la imagén continua de $[0,1]$, que es conexo, por la interpolación lineal, que es continua.
+		\item Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican. En resumen
 		\[\text{Convexo}\ra\text{Estrellado}\ra \text{Conexo}\]
 		
-		En efecto, un conjunto $A$ estrellado se puede escribir como:
-		\[A=\bigcup_{a\in A} [a_0, a]\]
-		para cierto $a_0\in A$. Cada segmento $[a_0,a]$ es conexo por la proposición \ref{conex_prop_im_continua}, al ser la imagen del intervalo conexo $[0,1]$ por la aplicación:
-		\[t\mapsto (1-t)a_0+ta\]
-		y por tanto, por el teorema \ref{conex_theo_pivote}, como todos comparten el punto $a_0$, su unión es conexa.
+		En efecto, si $A$ es convexo tomando cualquier punto como ``centro de la estrella'' se deduce que $A$ es estrellado.
 		
-		Nótese que ni la convexidad ni ser estrellado son propiedades topológicas; ambas son propiedades métricas: su definición solo tiene sentido en un espacio que, al menos, tenga definida una distancia.
+		Asimismo, si $A$ es estrellado se puede escribir como
+		\[A=\bigcup_{a\in A} [a_0, a]\]
+		para cierto $a_0\in A$. Cada segmento $[a_0,a]$ es conexo, y, por tanto, por el teorema del pivote, como todos comparten el punto $a_0$, su unión es conexa.
+		
+		Nótese que ni la convexidad ni ser estrellado son propiedades topológicas; ambas son propiedades vectoriales: su definición solo tiene sentido en un espacio que, al menos, tenga estructura de espacio vectorial.
 		
 		\item Una circunferencia en $\R^2$ es conexa, pero no es estrellada. En efecto, es conexa por ser la imagen de $[0,2\pi]$ por la aplicación $t\mapsto (\cos t, \sen t)$.
 		
-		\item El grafo de la función $\sin\frac{1}{x}$ para $x>0$, que escribimos:
-		\[C = \left\{\left(x,\sin\frac{1}{x}\right)\midc x>0\right\}\]
+		\item El grafo de la función $\sen\frac{1}{x}$ para $x>0$, que escribimos:
+		\[C = \left\{\left(x,\sen\frac{1}{x}\right)\midc x>0\right\}\]
 		es conexo por ser la imagen continua de $(0,\infty)$ por la aplicación:
-		\[x\mapsto \left(x,\sin\frac{1}{x}\right)\]
+		\[x\mapsto \left(x,\sen\frac{1}{x}\right)\]
 		
-		Lo que es más interesante, para cualquier $a\in [-1,1]$ se verifica que $\{(0,a)\}$ es adherente a $C$ y por tanto que $C\cup\{(0,a)\}$ es conexo.
+		Lo que es más interesante, para cualquier $a\in [-1,1]$ se verifica que $\{(0,a)\}$ es adherente a $C$ (es relativamente fácil de comprobar) y por tanto que $C\cup\{(0,a)\}$ es conexo.
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale = 1.3]{img/funcionsen1x}
+			\includegraphics[scale = 0.8]{img/funcionsen1x}
+			\caption{Ilustración de la gráfica de $\sen(1/x)$}
 		\end{figure}
 		
 		\item Consideramos el conjunto:
-		\[C = \big(\{0\}\times (0,1]\big) \cup \left(\bigcup_{n\in\N} [0,1]\times\left\{\frac{1}{n}\right\}\right) \]
-		que es unión de segmentos horizontales cada vez más juntos y de un segmento vertical. Este es trivialmente conexo por el corolario \ref{conex_cor_pivote_corte_comun}. Lo particular es que si unimos a $C$ el segmento horizontal:
-		\[(0,1)\times\{0\}\]
-		sigue siendo conexo por ser adherencia de $C$. 
+		\begin{equation}\label{lineas}C = \big(\{0\}\times (0,1]\big) \cup \left(\bigcup_{n\in\N} [0,1]\times\left\{\frac{1}{n}\right\}\right) \end{equation}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale = 2.5]{img/lineas}
+			\includegraphics[scale = 0.2]{img/lineas}
+			\caption{Ilustración del conjunto de la ecuación \eqref{lineas}}
 		\end{figure}
+		que es unión de segmentos horizontales cada vez más juntos y de un segmento vertical. Este es trivialmente conexo por el corolario \ref{conex_cor_pivote_corte_comun}. Lo particular es que si unimos a $C$ el segmento horizontal:
+		\[(0,1)\times\{0\}\]
+		sigue siendo conexo por ser adherencia de $C$ (¡compruébese!). 
+\qedhere
 	\end{enumerate}
 \end{exa}
 
@@ -223,7 +260,8 @@ A continuación enunciamos y demostramos algunas propiedades de las componentes 
 
 %Tablas comportamiento topológico. Añado aquí también las de conexión por caminos, dado que no está aun el tema.
 
-\section{Comportamiento topológico}
+\section{Comportamiento de la conexión}
+\section{Comportamiento de la local--conexión}
 
 \begin{table}[h]
 	\centering

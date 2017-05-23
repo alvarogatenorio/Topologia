@@ -1,14 +1,15 @@
-%Provisional
-\chapter{Espacios Métricos}
-\label{met}
-En este apéndice veremos con detalle las relaciones entre los archiestudiados espacios métricos con los espacios topológicos.
-% Mazo Por Hacer (Algún Día)
-\section{Normas}
-En esta comentamos (entre otras cosas) algunos resultados interesantes (y bonitos) sobre normas que usualmente se usan como mantras satánicos (pues jamás se demuestran).
-\subsection{Conceptos Previos}
+\chapter{Equivalencia de normas}
+\label{norm}
+El objetivo de este apéndice es demostrar que todas las normas definidas en espacios vectoriales de dimensión finita sobre un cuerpo $\K$ completo son equivalentes, dando un contraejemplo para cuerpos no completos.
+
+Creemos que la lectura de este apéndice, aunque lejos de ser necesaria, es bonita, ya que siempre nos llena de una especial satisfacción comprender el por qué de los mantras satánicos que rara vez hay tiempo de demostrar.
+\section{Conceptos previos}
 A continuación introducimos la definición de norma y los conceptos que a ella subyacen.
+
+Sea $E$ un $\K$--espacio vectorial con $\K$ un cuerpo completo.
+
 \begin{defi}[Norma]
-	Es harto conocido que una \tbi[norma]{norma} es una aplicación $\norm{\cdot}:E\to\K$ que verifica
+	Una \tbi[norma]{norma} es una aplicación $\norm{\cdot}:E\to\K$ que verifica
 	\begin{enumerate}
 		\item \label{norma_vector_nulo} Es nula si y solo si el vector es nulo. Es decir, dado $u\in\R^n$
 		\begin{equation*}
@@ -25,25 +26,25 @@ A continuación introducimos la definición de norma y los conceptos que a ella 
 	\end{enumerate}
 \end{defi}
 Una definición que surge de forma automática es la de espacio vectorial normado.
-\begin{defi}[Espacio Vectorial Normado]
+\begin{defi}[Espacio vectorial normado]
 	Llamamos \tbi[espacio vectorial normado]{espacio vectorial normado} a un espacio vectorial $E$ equipado con una norma $\norm{\cdot}$, es decir, al par $(E,\norm{\cdot})$.
 \end{defi}
-\subsection{Topologización de un Espacio Vectorial Normado}
+\subsection{Topologización de un espacio vectorial normado}
 Todo espacio vectorial normado puede ser ``metrizado'' de forma canónica, tal y como muestra la siguiente definición.
-\begin{defi}[Métrica Procedente de la Norma]
+\begin{defi}[Métrica procedente de la norma]
 	Decimos que una métrica $d$ definida sobre un espacio vectorial $E$ \tbi[métrica!procedente de una norma]{procede de una norma} si existe una norma $\norm{\cdot}$ tal que cumple
 	\begin{equation*}
 		d(x,y)=\norm{x-y}
 	\end{equation*}
 \end{defi}
 Así, como todo espacio métrico\index[general]{espacio!métrico} es, a su vez, un espacio topológico (ver ejemplo \ref{etop_exa_topologias}), podemos preguntarnos qué relaciones hay entre las topologías engendradas por dos normas. En particular, cabe preguntarse cuándo dos normas generan la misma topología.
-\begin{defi}[Equivalencia de Normas]
+\begin{defi}[Equivalencia de normas]
 	Decimos que dos normas $\norm{\cdot}_1$ y $\norm{\cdot}_2$ son \tbi[norma!equivalente]{equivalentes} si engendran la misma topología.
 \end{defi}
-\subsection{Teorema General de Equivalencia}
+\subsection{Teorema general de equivalencia}
 Esta sección está dedicada a demostrar el siguiente teorema.
-\begin{theo}[Teorema General de Equivalencia]
-	Sea $E$ un espacio vectorial del dimensión finita $n$ sobre un cuerpo completo. Entonces, todas las normas definidas sobre $E$ son equivalentes.
+\begin{theo}[Teorema general de equivalencia]
+	Sea $E$ un espacio vectorial de dimensión finita $n$ sobre un cuerpo $\K$ completo. Entonces, todas las normas definidas sobre $E$ son equivalentes.
 \end{theo}
 Como la demostración del teorema es un poco larga (tampoco demasiado), la dotaremos de una sección propia. No vamos a demostrar el caso general para cualquier espacio vectorial sobre un cuerpo completo, nos limitaremos a probarlo para $\R^n$ (y es fácilmente generalizable a $\C^n$).
 
@@ -52,13 +53,9 @@ Nuestro objetivo es, dadas dos normas arbitrarias, $\norm{\cdot}_1$ y $\norm{\cd
 \begin{equation*}
 \T_{\norm{\cdot}_1}=\T_{\norm{\cdot}_2}
 \end{equation*}
-Para ello, estudiemos y repasemos algunas propiedades generales de las normas.
-
-Otra propiedad a tener en cuenta es la continuidad. Dado que esta será crucial en la demostración, nos detendremos un poco más en ella.
-
+Una propiedad a tener en cuenta es la continuidad de las normas, de hecho, esta será crucial en la demostración.
 
 Veamos que una norma $\norm{\cdot}$ es continua en la topología usual. Con esto último queremos decir que en $\R^n$ consideramos la topología definida por la distancia euclídea (que a su vez se define a partir de la norma euclídea $\norm{\cdot}_e$) y en $\R$ la topología definida por el valor absoluto.
-
 
 Por tanto, para demostrar que una norma es continua en la topología usual debemos probar que, dado $a\in\R^n$ y dado $\varepsilon>0$, existe un $\delta>0$ tal que si 
 
