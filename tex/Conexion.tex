@@ -41,9 +41,11 @@ Para ir calentando daremos una caracterización de los conexos de la recta real 
 		
 		Consideremos pues $H\cap[a,b]\not=\emptyset$, que, al ser intersección de cerrados es cerrado, y, por tanto, contiene a todos sus puntos de acumulación, en particular, al ser acotado contiene a su ínfimo, al que llamaremos $\eta$.
 		
-		Llegados a este punto, si $\eta=a$ entonces $a$ estará en los dos cerrados de la partición a la vez, lo cual es absurdo, precisamente por ser una partición. Esto obliga a que $\eta > a$, luego $[a,\eta)\cap H=\emptyset$ asique $[a,\eta)\subset F$. Al ser $F$ cerrado es claro que $[a,\eta]\subset F$. Pero esto es absurdo porque entonces $\eta$ estaría tanto en $F$ como $H$, que son conjuntos disjuntos.\qedhere
+		Llegados a este punto, si $\eta=a$ entonces $a$ estará en los dos cerrados de la partición a la vez, lo cual es absurdo, precisamente por ser una partición. Esto obliga a que $\eta > a$, luego $[a,\eta)\cap H=\emptyset$ así que $[a,\eta)\subset F$. Al ser $F$ cerrado es claro que $[a,\eta]\subset F$. Pero esto es absurdo porque entonces $\eta$ estaría tanto en $F$ como $H$, que son conjuntos disjuntos.\qedhere
 	\end{enumerate}
 \end{proof}
+Un corolario inmediato a esta proposición es que $\R$ es conexo, ya que $\R=(-\infty,\infty)$.
+
 Ahora, vamos a repasar brevemente las propiedades que ya conocíamos de conjuntos conexos en espacios métricos que siguen siendo válidas en estos mundos abstrusos.
 
 \begin{prop}[Imagen continua]
@@ -92,7 +94,7 @@ Este teorema es extremadamente útil para garantizar la conexión de un sinnúme
 Como a veces la visión espacial brilla por su ausencia brindamos dos dibujos con ejemplos de familias de conexos que verifican las condiciones del corolario \ref{conex_cor_pivote_corte_comun}.
 \begin{figure}[h!]
 	\centering
-	\subfigure[El corro de la patata]{\includegraphics[scale = 0.4]{img/pivote_variante1}}
+	\subfigure[El corro de la patata]{\includegraphics[scale = 0.4]{img/pivote_variante1}}\qquad\qquad
 	\subfigure[El símbolo anarquista]{\includegraphics[scale = 0.8]{img/pivote_variante2}}
 	\caption{Ilustración de conjuntos en las hipótesis de \ref{conex_cor_pivote_corte_comun}.}
 \end{figure}
@@ -220,65 +222,114 @@ Este último resultado tiene una aplicación muy importante en los espacios eucl
 
 \section{Componentes conexas}
 
-Al igual que ocurría con la compacidad, sería deseable que todos los espacios fuesen conexos. Dado que esto no se da, nos conformaremos con quedarnos con los subconjuntos conexos del espacio. Surge así la idea de componente conexa que definimos a continuación. Aunque parezca que esto no es una ventaja, es tremendamente útil a la hora de estudiar, por ejemplo, si dos espacios son homeomorfos.
+Al igual que ocurría con la compacidad, sería deseable que todos los espacios fuesen conexos. Dado que esto no se da, nos conformaremos con quedarnos con los subconjuntos conexos del espacio. Surge así la idea de componente conexa que definimos a continuación.
 
-\begin{defi}
-	Un subconjunto $\Co\subset\X$ es una \tbi{componente conexa} si es un conjunto conexo maximal.
+Aunque parezca que esto no es una ventaja, es tremendamente útil a la hora de estudiar, por ejemplo, si dos espacios son homeomorfos, ya que el número de componentes conexas se conserva por homeomorfismos (ver ejemplo \ref{etop_exa_homeomorfismos}).
+
+\begin{defi}[Componente conexa de un punto]
+	Se dice que un conjunto $\Co(x)\subset\X$ es una \tbi{componente conexa} de $x\in\Co(x)$ si es un conjunto conexo ``maximal''. Esto es, es el mayor conjunto conexo que contiene a $x$. En general, diremos que un conjunto $\Co$ es una componente conexa si lo es de alguno de sus puntos (y por tanto de todos, véase la observación \ref{conex_obs_compartido}).
 \end{defi}
 
-Una consecuencia inmediata de la definición es que, dado $x\in\X$,
-\begin{equation}
-	\Co(x)=\bigcup_{x\in A \text{ conexo}} A
-\end{equation}
-es una componente conexa, que denominaremos componente conexa de $x$.
+Análogamente a lo que hicimos con el interior y la adherencia en el capítulo \ref{etop}, veamos que la componente conexa de un punto tiene una caracterización conjuntista muy sencilla.
 
-En efecto, la unión no es vacía, pues el punto en sí es conexo. Además $x$ pertenece a la intersección de todos ellos. Como cada $A$ es conexo, basta aplicar el teorema del pivote para deducir que $\Co(x)$ es conexo. Por construcción es, además, maximal, ya que cualquier conexo que lo contenga, contiene a $x$ y, por tanto, está en la unión.
+\begin{lem}[Caracterización conjuntista]
+	Dado $x\in\X$, el conjunto 
+	$\Co(x)=\bigcup_{A\subset\X} A$ con $x\in A$ y $A$ conexo, es una componente conexa de $x$.
+\end{lem}
+\begin{proof}
+	En efecto, $\Co(x)$ es vacío, ya que $\{x\}$ es conexo. Además, la familia de conexos que conforma $\Co(x)$ tiene al menos a $\{x\}$ en la intersección, luego, por el teorema de pivote, $\Co(x)$ es conexo.
+	
+	Por construcción es, además, maximal, ya que, si hubiera un conexo que lo contuviera, este contendría a $x$, y, por tanto, estaría $\Co(x)$.
+\end{proof}
+\begin{obs}[Unicidad]
+	\label{conex_obs_unicidad}
+	Cabe destacar que $\Co(x)$ no es solo una componente conexa de $x$, sino \tb{la} componente conexa de $x$. 
+	
+	En efecto, si hubiera otra, digamos $E$, tanto $\Co(x)$ como $E$ deben contener a $x$, luego su intersección será no vacía $E\cap \Co(x)\not=\emptyset$. En tal caso, $A:=E\cup \Co(x)$ sería conexo por el teorema del pivote, y, como además $x\in A$, $A$ estará en la familia que conforma $\Co(x)$, luego $E\subset\Co(x)$. Como $E$ es una componente conexa se debe dar la igualdad.
+\end{obs}
+La observación \ref{conex_obs_unicidad}, a parte de darnos la unicidad de la componente conexa de un punto, nos viene a decir, que si un conexo corta a la componente conexa, este debe estar contenido en ella. Este hecho puede sacarnos de algún que otro apuro. 
 
-Cabe destacar que $\Co(x)$ es más que maximal, ya que cumple lo siguiente. Sea $E\subset\X$ conexo tal que $E\cap \Co(x)\not=\emptyset$. Entonces $E\cup \Co(x)$ es conexo y además $x\in E\cup \Co(x)$, por lo que $E\cup \Co(x)\subset \Co(x)$, es decir, $E\subset \Co(x)$.
-
-Esto será muy utilizado de aquí en adelante, cualquier conexo que interseque con una componente conexa está contenido en ella.
-
-\begin{obs}
-	Nótese que hay varios punto con la misma componente conexa y que si el espacio es conexo, entonces es la componente conexa de todos los puntos.
+\begin{obs}[Componente conexa compartida]
+	\label{conex_obs_compartido}
+	Nótese que pudiera haber varios puntos con la misma componente conexa, de hecho, todos los puntos de $\Co(x)$ tienen a $\Co(x)$ por componente conexa. En efecto, sea $y\in\Co(x)$, llamemos $\Co(y)$ a su componente conexa. Es claro que, por la caracterización conjuntista $\Co(x)\subset\Co(y)$, luego, $x\in\Co(y)$, $\Co(y)$ es un conexo que contiene a $x$, por tanto, debe estar contenido en su componente conexa, es decir $\Co(y)\subset\Co(x)$.
+	
+	En definitiva podemos concluir que una componente conexa lo es de todos sus puntos y de ninguno más (obviamente). En particular, si un espacio es conexo, es la componente conexa de todos sus puntos.
 \end{obs}
 
 A continuación enunciamos y demostramos algunas propiedades de las componentes conexas.
 
-\begin{lem}
+\begin{lem}[Propiedades varias]
 	Sea $\X$ un espacio topológico, entonces:
 	\begin{enumerate}
 		\item Las componentes conexas son cerradas.
 		
-		\item Las componentes conexas son una partición del espacio.
+		\item Las componentes conexas son una partición del espacio. Es decir, son disjuntas dos a dos y su unión es el total.
 		
-		\item Si $\X$ es la unión disjunta de las componentes conexas, siendo estas finitas, entonces las componentes conexas son abiertas.
-		
+		\item Si $\X$ tiene un número finito de componentes conexas, estas son abiertas.
 		\item Si en $\X$ todo punto tiene un entorno conexo, entonces las componentes conexas de $\X$ son abiertas.
 	\end{enumerate}
 \end{lem}
 \begin{proof}
-	Vayamos con la demostración:
+	Demostremos esto como si fuéramos a emparedar a alguien, ladrillo a ladrillo, en este caso, apartado a apartado.
 	\begin{enumerate}
-		\item Sea $\Co(x)$ componente conexa. Como es conexo, por el teorema~\ref{T7:teo_adherencia_conexa} su adherencia es conexa, y por ser maximal $\Co(x)=\adher{\Co(x)}$.
+		\item Sea $\Co(x)$ componente conexa. Como es conexo, su adherencia es conexa ( véase el teorema del sandwich \ref{conex_teo_adherencia_conexa}), y por ser maximal $\Co(x)=\adher{\Co(x)}$.
 		
 		\item Es claro que
 		\[\X=\bigcup_{x\in\X} \Co(x)\]
-		Además, dadas dos componentes conexas, $\Co_1$ y $\Co_2$, si $\Co_1\cap\Co_2\not=\emptyset$ entonces $\Co_1\subseteq\Co_2$ y por ser maximales se da la igualdad.
+		Además, dadas dos componentes conexas, $\Co_1$ y $\Co_2$, si $\Co_1\cap\Co_2\not=\emptyset$ entonces $\Co_1\subseteq\Co_2$ y por ser maximales se daría la igualdad.
 		
 		\item Por hipótesis $\X=\Co_1\cup\cdots\cup\Co_r$ siendo la unión disjunta. Entonces, para cada $i\in\{1,\cdots r\}$ se tiene que 
-		\[\Co_i=\X\backslash (\Co_1\cup\cdots\cup\Co_{i-1}\cup\Co_{i+1}\cup\cdots\cup\Co_r)=\X\backslash \Co\]
-		Como cada componente conexa es cerrada por 1, la unión finita es cerrada $\Co$, luego $C_i=\X\backslash \Co$ es abierto para todo $i$.
+		\[\Co_i=\X\setminus (\Co_1\cup\cdots\cup\Co_{i-1}\cup\Co_{i+1}\cup\cdots\cup\Co_r)=:\X\setminus \Co\]
+		Como cada componente conexa es cerrada, y además, la unión finita de cerrados es cerrada, $\Co$ es cerrado, luego como $\Co_i=\X\backslash \Co$, es claro que $\Co_i$ es abierto para todo $i$.
 		
-		\item Sea $\Co$ componente conexa de $\X$ y veamos que es entorno de todos sus puntos. Sea $x\in\Co$. Por hipótesis existe $\V$ entorno conexo de $x$, con lo cual $\V\cap\Co\not=\emptyset$. Esto implica que $x\in\V\subset\Co$, con lo que $\Co$ es entorno de $x$.
+		\item Sea $\Co$ componente conexa de $\X$, veamos que es entorno de todos sus puntos. Sea $x\in\Co$. Por hipótesis existe $\V$ entorno conexo de $x$, con lo cual $\V\cap\Co\not=\emptyset$. Esto implica que $x\in\V\subset\Co$, con lo que $\Co$ es entorno de $x$.\qedhere
 	\end{enumerate}
 \end{proof}
-
-%Tablas comportamiento topológico. Añado aquí también las de conexión por caminos, dado que no está aun el tema.
-
+Veamos ahora una serie de ejemplos para familiarizarnos con estos conceptos.
+\begin{exa}[Sucesión armónica]
+	Estudiemos las componentes conexas del espacio topológico compuesto por el rango de la sucesión armónica y su límite $\X:=\{0\}\cup\{1/n\midc n\in\N\}$.
+	
+	Evidentemente, los puntos son conexos, el reto será pues, ver si puede haber una componente conexa $\Co$ con dos puntos distintos, digamos $x$ e $y$, sin pérdida de generalidad $x<y$.
+	
+	Si $\Co$ fuera conexo, por la caracterización de los conexos de la recta, debería contener a todos sus puntos intermedios, no obstante es claro que $y=1/n_0$ para cierto $n_0\in\N$, luego tomando el punto medio $c$ entre $\frac{1}{n_0+1}$ e $y$ tenemos que $c$ es un punto entre $x$ e $y$ que no está en $\X$ y por tanto no está en $\Co$. Luego los únicos conexos de $\X$ son los puntos.
+	
+	Además, se comprueba fácilmente que las componentes conexas de $\{1/n\midc n\in\N\}$ son abiertas, no obstante la componente conexa $\{0\}$ no es abierta (¡compruébese!).
+\end{exa}
+Razonando de manera similar podemos estudiar las componentes conexas de $\Q$.
+\begin{exa}[Racionales] Por densidad de $\Q$ en $\R$ entre dos irracionales siempre hay un racional, luego las únicas componentes conexas de $\Q$ son los puntos. Además, ninguna de estas componentes es abierta. Esto último también se deduce de la densidad de $\Q$.
+\end{exa}
+Los dos ejemplos anteriores estudiaban las componentes conexas de espacios numerables, viendo que las únicas componentes conexas eran los propios puntos. Nos preguntaremos si pudiera ocurrir esto también con espacios no numerables.
+\begin{exa}[Discontinuo de Cantor]
+	Aunque no lo demostraremos aquí, el conjunto de Cantor $K$, que tantas propiedades nos esconde, es no numerable y sus componentes conexas son los puntos. 
+\end{exa}
+Veamos otro ejemplo (esta vez más sencillo) de este fenómeno.
+\begin{exa}[Sorgenfrey]
+	La recta de Sorgenfrey tiene por componentes conexas a los puntos, esto se debe, como veremos en el lema \ref{conex_baseClop}, a que la recta de Sorgenfrey es \kolmogorov (de hecho \hausdorff) y tiene una base de clopens (ver ejemplo \ref{etop_sorgenfrey}).  
+\end{exa}
+A la luz de este último ejemplo, brota cual tubérculo el siguiente lema.
+\begin{lem}[Bases de clopens]
+	\label{conex_baseClop}
+	Si $\X$ es \kolmogorov y tiene una base $\B$ de clopens, entonces sus componentes conexas son los puntos, es decir, es \tbi{totalmente disconexo}.
+\end{lem}
+\begin{proof}
+	Si hubiera un conexo $A$ con dos puntos distintos, digamos $a$ y $b$, al ser $\X$ \kolmogorov, habrá un entorno $B$ en $A$, sin pérdida de generalidad de $a$, que podremos tomar básico (luego clopen), tal que no contiene a $b$. Luego $b\in A\setminus B$. Como $B$ es clopen, $A\setminus B$ también lo será. Luego acabamos de particionar $A$ con dos clopens no triviales, en contra de su conexión.
+\end{proof}
 \section{Comportamiento de la conexión}
-\section{Comportamiento de la local--conexión}
-
-\begin{table}[h]
+Llegados a este punto, para estudiar el comportamiento topológico no tenemos que hacer prácticamente nada. En efecto, veámoslo punto por punto.
+\begin{itemize}
+	\item Es claro que la conexión no se traslada a subespacios (no todos los subconjuntos de $\R$ son intervalos).
+	\item Por su parte, como la imagen continua de conexos es conexa, los cocientes, que no son más que imágenes continuas drásticas, serán también conexos.
+	\item En cuanto a la suma, ya demostramos en la observación \ref{const_obs_propiedadesSuma} que cada sumando era un clopen, luego ya en el caso de espacios suma de dos sumandos obtenemos una partición del conjunto en dos clopens. Luego la suma nunca es conexa.
+\end{itemize}
+Demostremos ahora con más calma que el producto de espacios conexos es conexo, para lo cual usaremos a nuestro querido teorema del pivote.
+\begin{prop}[Conexión y productos]
+	Si $\X$ e $\Y$ son conexos, entonces $\X\times \Y$ es conexo.
+\end{prop}
+\begin{proof}
+	Para cualquier $x\in \X$ e $y\in \Y$ es claro que $A_y:=\X\times\{y\}$ y $B_x:=\{x\}\times \Y$ son conjuntos conexos por ser copias homeomorfas de $\X$ e $\Y$ respectivamente. Además, se tiene $A_y\cap B_x=(x,y)$, luego no vacía. Aplicando el teorema del pivote tenemos que $C_{(x,y)}=A_y\cup B_x$ es conexo. Tomando la familia de estos conjuntos, que es claro que se intersecan dos a dos y cubren el espacio, podemos aplicar el corolario \ref{conex_cor_pivote_corte_comun} para deducir que $\X\times \Y$ es conexo.
+\end{proof}
+Recapitulemos todo lo visto con una tabla.
+\begin{table}[H]
 	\centering
 	\begin{tabular}{l|l|l|l|l|}
 		\cline{2-5}
@@ -288,7 +339,23 @@ A continuación enunciamos y demostramos algunas propiedades de las componentes 
 	\caption{Tabla resumen de conexión.}
 	\label{Tabla_conexion}
 \end{table}
-
+\section{Local--conexión}
+Vamos a definir la conexión local basándonos en la filosofía de la compacidad local.
+\begin{defi}[Conexión local]
+	Un espacio $\X$ se dice localmente conexo si cada uno de sus puntos tiene una base de entornos conexos.
+\end{defi}
+Presentemos un criterio general que caracteriza a los espacios localmente conexos.
+\begin{prop}[Caracterización] Las siguientes afirmaciones son equivalentes
+	\begin{enumerate}
+		\item $\X$ es localmente conexo.
+		\item Las componentes conexas de todo abierto de $\X$ son abiertas.
+		\item Todo punto de $\X$ tiene una base de entornos abiertos conexos.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	contenidos...
+\end{proof}
+\section{Comportamiento de la local--conexión}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l|l|l|l|l|}
