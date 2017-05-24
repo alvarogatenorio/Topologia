@@ -247,8 +247,10 @@ Análogamente a lo que hicimos con el interior y la adherencia en el capítulo \
 	
 	En efecto, si hubiera otra, digamos $E$, tanto $\Co(x)$ como $E$ deben contener a $x$, luego su intersección será no vacía $E\cap \Co(x)\not=\emptyset$. En tal caso, $A:=E\cup \Co(x)$ sería conexo por el teorema del pivote, y, como además $x\in A$, $A$ estará en la familia que conforma $\Co(x)$, luego $E\subset\Co(x)$. Como $E$ es una componente conexa se debe dar la igualdad.
 \end{obs}
-La observación \ref{conex_obs_unicidad}, a parte de darnos la unicidad de la componente conexa de un punto, nos viene a decir, que si un conexo corta a la componente conexa, este debe estar contenido en ella. Este hecho puede sacarnos de algún que otro apuro. 
-
+\begin{obs}[Intersección y contención]
+	\label{conex_obs_inter}
+	La observación \ref{conex_obs_unicidad}, a parte de darnos la unicidad de la componente conexa de un punto, nos viene a decir, que si un conexo corta a la componente conexa, este debe estar contenido en ella. Este hecho puede sacarnos de algún que otro apuro. 
+\end{obs}
 \begin{obs}[Componente conexa compartida]
 	\label{conex_obs_compartido}
 	Nótese que pudiera haber varios puntos con la misma componente conexa, de hecho, todos los puntos de $\Co(x)$ tienen a $\Co(x)$ por componente conexa. En efecto, sea $y\in\Co(x)$, llamemos $\Co(y)$ a su componente conexa. Es claro que, por la caracterización conjuntista $\Co(x)\subset\Co(y)$, luego, $x\in\Co(y)$, $\Co(y)$ es un conexo que contiene a $x$, por tanto, debe estar contenido en su componente conexa, es decir $\Co(y)\subset\Co(x)$.
@@ -349,14 +351,53 @@ Presentemos un criterio general que caracteriza a los espacios localmente conexo
 	\begin{enumerate}
 		\item $\X$ es localmente conexo.
 		\item Las componentes conexas de todo abierto de $\X$ son abiertas.
-		\item Todo punto de $\X$ tiene una base de entornos abiertos conexos.
+		\item Todo punto de $\X$ tiene una base de entornos conexos y abiertos.
 	\end{enumerate}
 \end{prop}
-\begin{proof}
-	contenidos...
+\begin{proof}Realicemos el habitual círculo económico de implicaciones.
+	\begin{enumerate}[align=left, leftmargin=*]
+		\item[\fbox{$(1)\ra (2)$}] Sea $G$ un abierto de $\X$ y $\Co$ una componente conexa de $G$. Sea $x\in \Co$, al ser $G$ abierto, es entorno de todos sus puntos, y, por ser $\X$ localmente conexo, habrá un $\V$ entorno conexo de $x$ tal que $x\in \V\subset G$. Como $V\cap\Co\not=\emptyset$ ya que $x$ está en ambos conjuntos, y al ser $\Co$ la componente conexa de $x$ se tiene que $V\subset\Co$, con lo que se tiene el resultado.
+		\item[\fbox{$(2)\ra (3)$}] Dado $x\in\X$, consideremos el conjunto de sus entornos abiertos conexos $\Va{x}$, veamos que es una base de entornos. En efecto, dado un entorno abierto de $x$, digamos $U$, $x$ estará en alguna de las componentes conexas $\Co$ de $U$, que por hipótesis son abiertas, luego $\Co\in\Va{x}$.  
+		\item[\fbox{$(3)\ra (1)$}] Es evidente.\qedhere
+	\end{enumerate}
 \end{proof}
 \section{Comportamiento de la local--conexión}
-\begin{table}[h]
+Lamentablemente, el estudio del comportamiento topológico de la conexión local no será tan sencillo como el de la conexión. Sin embargo a estas alturas ya no debería importarnos mucho, el lector ya debería estar curado de espanto.
+
+En primer lugar cabe destacar que la imagen continua de un conjunto localmente conexo no necesariamente es localmente conexo. Sin embargo, la local--conexión se hereda a los cocientes.
+\begin{prop}[Local--conexión y cocientes]
+	Sea $\X$ localmente conexo y $f:\X\to\Y$ una identificación. Entonces, $\Y$ es localmente conexo.
+\end{prop}
+\begin{proof}
+	Para comprobar esto echaremos mano de la caracterización de la local--conexión y comprobaremos que las componentes conexas de los abiertos de $\Y$ son abiertas.
+	
+	Sea $G$ un abierto de $\Y$ y $\Co$ una componente conexa de $G$. Como $f$ es una identificación $\Co$ será abierta si y solo si $f^{-1}(\Co)$ es abierto. Sea pues $x\in f^{-1}(\Co)$.
+	
+	Al ser $f$ continua $f^{-1}(G)$ es abierto. Como $\X$ es localmente conexo, habrá un entorno conexo $V$ que verifique que $x\in V\subset f^{-1}(G)$. Si aplicamos $f$ a la última desigualdad, al ser $f$ sobreyectiva se tiene que $f(V)\subset G$, siendo $f(V)$ un conexo contenido en $G$ por ser $f$ continua.
+	
+	Como tanto $f(V)$ como $\Co$ contienen a $f(x)$ es claro que se cortan, luego por la observación \ref{conex_obs_inter} se verifica que $f(x)\in f(V)\subset \Co$, con lo que $\Co$ es entorno de todos sus puntos.
+\end{proof}
+Aunque la conexión local se comporta peor que la conexión con los cocientes, se comporta un poco mejor con los subespacios, no llegándose a heredar la local--conexión a todos ellos.
+\begin{lem}[Subespacios y local--conexión]
+	Si $A$ es un subespacio abierto de $\X$, siendo $\X$ localmente conexo, entonces $A$ es localmente conexo.
+\end{lem}
+\begin{proof}
+	Como $x$ tiene una base de entornos $\Va{x}$ conexos abiertos, tomando la base relativa $\Va{x}\cap A$, veamos que es de entornos conexos.
+	
+	Como $U$ es abierto en $A$ si y solo si lo es en $\X$ (véase el lema \ref{etop_lem_otrasProp}), si no hay dos abiertos en $\X$ que particionen a los entornos de $\Va{x}$, tampoco los habrá que partan a los entornos $\Va{x}\cap A$, ya que es la subfamilia de los entornos de $\Va{x}$ contenidos en $A$.
+\end{proof}
+\begin{obs}[Contraejemplo]
+	Para ver que la conexión local no se hereda en general, basta ver que $\R$ es localmente conexo ya que cada punto posee una base de intervalos, pero su subespacio $\{1/n\midc n\in\N\}\cup\{0\}$ no es localmente conexo al no tener $0$ una base de entornos conexos y abiertos. Esto es claro ya que el único conexo que es entorno de $0$ es el propio $\{0\}$, que no es abierto (¡compruébese!).
+\end{obs}
+Ahora le toca el turno a los productos y las sumas, que estudiaremos brevemente.
+\begin{itemize}
+	\item El producto de espacios localmente conexos es localmente conexo, esto se debe a que las bases de entorno del producto son productos de bases de entornos de los factores. Tomando la base de conexos correspondiente de cada factor, como el producto de conexos es conexo, se tiene el resultado.
+	\item La suma de espacios localmente conexos es localmente conexa.
+	
+	En efecto, tomando un punto cualquiera $x$ del espacio suma, este estará en alguno de los estantes, que son homeomorfos a los sumandos vía las inclusiones. Como los sumandos son localmente conexos, $p_i^{-1}(x)$ tiene una base de entornos conexos, que se transforma por $p_i$ en una base de entornos conexos de $x$ por ser $p_i$ continua. 
+\end{itemize}
+Condensando todo lo visto, presentamos el resumen en forma de tabla.
+\begin{table}[H]
 	\centering
 	\begin{tabular}{l|l|l|l|l|}
 		\cline{2-5}
@@ -366,20 +407,13 @@ Presentemos un criterio general que caracteriza a los espacios localmente conexo
 	\caption{Tabla resumen de local conexión}
 	\label{Tabla_localconexion}
 \end{table}
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|}
-		\cline{2-5}
-		\multicolumn{1}{l|}{}                                                                                  & \multicolumn{1}{l|}{\textbf{Subespacios}}                             & \multicolumn{1}{l|}{\textbf{Cociente}} & \multicolumn{1}{l|}{\textbf{Producto}} & \multicolumn{1}{l|}{\textbf{Suma}} \\ \hline
-		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Conexo por\\ caminos\end{tabular}}}            & No                                                                    & Sí                                     & Sí                                     & No                                 \\ \hline
-		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Localmente conexo\\ por caminos\end{tabular}}} & \begin{tabular}[c]{@{}c@{}}Sí, en el caso \\ de abiertos\end{tabular} & Sí                                     & Sí                                     & Sí                                 \\ \hline
-	\end{tabular}
-	\caption{Tabla resumen de conexión por caminos}
-	\label{Tabla_conexion_caminos}
-\end{table}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale = 1]{img/Comparacion_conexion}
-\end{figure}
+Presentamos para terminar un ejemplo con objeto de aumentar la curiosidad del lector.
+\begin{exa}[Conexión local y por poligonales]
+	El espacio $\X:=C\cup\{(0,0)\}$ donde $C$ es el conjunto definido en la ecuación \eqref{lineas} no es localmente conexo pero si es conexo por poligonales.
+	
+	La conexión por poligonales es evidente, dados dos puntos de $X$, si están en la misma recta horizontal basta con coger el segmento que los une.
+	
+	En caso contrario, bastaría con tomar el segmento horizontal que une al primer punto con $\{0\}\times [0,1]$, enlazándolo con el segmento vertical que llega hasta la altura del segundo punto, y, finalmente, enganchar este último al segmento horizontal que une $\{0\}\times [0,1]$ con el segundo punto. 
+	
+	La demostración de que no es localmente conexo es una adaptación de la demostración de que $\{1/n\midc n\in\N\}\cup\{0\}$ no es localmente conexo. Los detalles se dejan al lector.
+\end{exa}
