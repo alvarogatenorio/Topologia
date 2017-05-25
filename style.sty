@@ -67,6 +67,10 @@
 % Varias columnas
 \usepackage{multicol}
 
+% Tikz!
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings,calc}
+
 %Paquetes para Entornos.
 \usepackage{amsthm}
 %Entornos personalizados.
@@ -220,6 +224,7 @@
 \newcommand{\homeo}{\approx}
 % Sigma homótopo a tau. El argumento opcional son los extremos fijos si los hay.
 \newcommand{\homot}[1][]{\mathrel{\smash{\underset{#1}{\simeq}}}}
+\newcommand{\homotef}{\homot[\text{e.f.}]}
 % Producto de caminos
 \newcommand{\pathp}{\mathbin{*}}
 

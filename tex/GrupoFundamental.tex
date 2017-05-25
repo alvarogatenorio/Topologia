@@ -101,7 +101,7 @@ A veces, nos interesará que la homotopía entre dos funciones mantenga invarian
 La definición que sigue, caso particular de la anterior, es absolutamente imprescindible para el estudio del grupo fundamental que vamos a realizar a lo largo de esta sección.
 
 \begin{defi}[Homotopía de extremos fijos]
-	Decimos que dos caminos $\sigma,\tau:[0,1]\to\X$ son \tbi[homótopía!de extremos fijos]{homótopos con extremos fijos} si son homótopos relativos a $\{0,1\}$, es decir, si $\sigma\homot[\{0,1\}]\tau$.
+	Decimos que dos caminos $\sigma,\tau:[0,1]\to\X$ son \tbi[homótopía!de extremos fijos]{homótopos con extremos fijos} si son homótopos relativos a $\{0,1\}$, es decir, si $\sigma\homot[\{0,1\}]\tau$. A veces, cuando los extremos sean engorrosos de escribir, la denotaremos $\sigma\homotef\tau$
 \end{defi}
 
 \begin{exa}
@@ -173,6 +173,236 @@ La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es
 
 % TODO: Faltan las secciones 3 y 4 (producto de caminos y grupo fundamental)
 % TODO: En la sección del grupo fundamental, añadir la noción de simplemente conexo (dijo en clase que se le olvidó definirla, y esta sección es donde mejor cuadra)
+
+\section{Producto de caminos}
+
+El producto de caminos formaliza el concepto de ``unir'' dos caminos, de forma que consigamos un nuevo camino que recorra primero uno y luego el otro.
+
+A lo largo de las secciones que siguen, si no se afirma lo contrario, consideramos un espacio topológico $\X$ conexo y localmente conexo por caminos. Nótese que ya hemos visto que, entonces, $\X$ es también conexo por caminos.
+
+\begin{defi}[Yuxtaposición de caminos]
+	Sean $\sigma,\tau: [0,1]\to\X$ caminos, tales que $\sigma(1)=\tau(0)$. Entonces, llamamos \tbi{yuxtaposición}, o \tbi[producto de caminos|see{yuxtaposición}]{producto de caminos}, de $\sigma$ y $\tau$ a la operación ${\pathp}$ definida como:
+	\[(\sigma\pathp\tau)(t)=\left\{\begin{array}{ll}
+	\sigma(2t) & \text{si } 0\leq t\leq \frac{1}{2} \\
+	\tau(2t-1) & \text{si } \frac{1}{2}\leq t\leq 1
+	\end{array}\right.\]
+\end{defi}
+
+\begin{obs}
+	Desde luego, la operación ${\pathp}$ que acabamos de definir está bien definida y es cerrada en el conjunto de los caminos. Que está bien definida está claro, pues solo podría no estarlo en $t=\frac{1}{2}$, y ahí:
+	\[\sigma(2t)=\sigma(1)=\tau(0)=\tau(2t-1)\]
+	
+	Que es cerrada se verifica porque es una función de $[0,1]\to\X$, luego basta con ver que es continua. Pero está definida de forma que hay un recubrimiento cerrado de forma que cada restricción es continua, y entonces, desde luego, es continua, por la proposición \ref{cont_prop_caracterizacion}.
+\end{obs}
+
+\begin{obs}
+	Nótese que la operación ${\pathp}$ no parece, a priori, tener buenas propiedades. No es asociativa (pues cambiar el orden genera caminos con la misma imagen pero que son distintos), no tiene un elemento neutro, no tiene un elemento inverso... Sin embargo, el siguiente lema mostrará que, imponiendo ciertas condiciones, sí es todas estas cosas.
+\end{obs}
+
+\begin{lem}[Propiedades de ${\pathp}$]
+	La operación ${\pathp}$ verifica:
+	\begin{enumerate}
+		\item Asociatividad módulo homotopía con extremos fijos. Esto es, dados caminos $\alpha,\beta,\gamma$ tales que $\alpha(1)=\beta(0)$ y $\beta(1)=\gamma(0)$, entonces:
+		\[(\alpha\pathp\beta)\pathp\gamma\homotef\alpha\pathp(\beta\pathp\gamma)\]
+		
+		\item Existen elementos neutros por la izquierda y por la derecha módulo homotopía con extremos fijos, pero son distintos para caminos con distintos extremos. Es decir, dados $\sigma$, $\tau$ definimos $e_0\equiv\sigma(0)$ y $e_1 \equiv\tau(1)$, que son neutros por la izquierda y por la derecha respectivamente, es decir:
+		\begin{gather*}
+			e_0\pathp\sigma \homotef \sigma \\
+			\tau\pathp e_1\homotef\tau
+		\end{gather*}
+		
+		\item Dado un camino $\sigma$, existe un elemento inverso módulo homotopía con extremos fijos, que definimos como $\sigma'(t)=\sigma(1-t)$, y por tanto verifica:
+		\begin{gather*}
+		\sigma\pathp\sigma' \homotef e_0 \\
+		\sigma'\pathp\sigma \homotef e_1
+		\end{gather*}
+		
+		\item ${\pathp}$ es invariante por homotopía con extremos fijos. Esto es, considerando caminos $\alpha\homotef\sigma$, $\beta\homotef\tau$, entonces:
+		\[\alpha\pathp\beta\homotef \sigma\pathp\tau\]
+	\end{enumerate}
+
+	\begin{proof}
+		La demostración consiste simplemente en construir cada homotopía y verificar que, en efecto, son homotopías. Comprobamos cada caso:
+		
+		\begin{enumerate}
+			\item En este caso, los dos caminos $(\alpha\pathp\beta)\pathp\gamma$ y $\alpha\pathp(\beta\pathp\gamma)$ que estamos intentando homotopar solo cambian ``en su parametrización''. Veamos que, entonces, siguen siendo homótopos mediante una homotopía con esquema:
+			
+			\begin{figure}[h!]
+				\label{grf_fig_homot_1}
+				\centering
+				\begin{tikzpicture}[
+				decoration={markings,mark=at position 0.5 with {\arrow{>}}},
+				witharrow/.style={postaction={decorate}},
+				vdot/.style={rectangle, fill, inner sep=0pt, outer sep=0pt, minimum width=0.5pt, minimum height=6pt}
+				]
+				
+				\begin{scope}
+				\draw[very thick]
+				(0,0) coordinate (a1) -- node[left]{$\alpha(0)\equiv$} (0,2) coordinate (d1)
+				(2,0) coordinate (b1) -- node[right](q1){$\equiv\gamma(1)$} (2,2) coordinate (c1);
+
+				\node[vdot] (c2) at (1,2) {};
+				\node[vdot] (c3) at (1.5,2) {};
+				\draw[very thick] (d1) -- node[above]{$\alpha$} (c2)
+				(c2) -- node[above]{$\beta$} (c3)
+				(c3) -- node[above]{$\gamma$} (2,2) coordinate (c1);
+				
+				\node[vdot] (b2) at (0.5,0) {};
+				\node[vdot] (b3) at (1,0) {};
+				\draw[very thick] (a1) -- node[below]{$\alpha$} (b2)
+				(b2) -- node[below]{$\beta$} (b3)
+				(b3) -- node[below]{$\gamma$} (b1);
+				
+				\draw[thin] (b2) -- (c2);
+				\draw[thin] (b3) -- (c3);
+				
+				\draw[very thin] (0, 1.6) -- (2,1.6) coordinate (h);
+				\node[right, scale=0.8] at (h) {$H_s$};
+				
+				\node[below] at (b1) {$t$};
+				\node[left] at (d1) {$s$};
+				\end{scope}
+				\end{tikzpicture}
+				
+				\caption{Esquema de la homotopía entre $(\alpha\pathp\beta)\pathp\gamma$ y $\alpha\pathp(\beta\pathp\gamma)$.}
+			\end{figure}
+			
+			Esta, intuitivamente, lo que hace es cambiar en cada paso la parametrización ligeramente, de forma que cada camino $H_s$ comparte imagen con los caminos originales, pero las ``velocidades de recorrido'' cambian.
+			
+			Entonces, vamos a formalizar la homotopía de la figura \ref{grf_fig_homot_1}. Escribimos pues:
+			\[H_s(t)=\left\{\begin{array}{ll}
+			\alpha(\frac{4t}{1+s}) & \text{si } 0\leq t\leq\frac{1+s}{4} \\
+			\beta(4t-(1+s)) & \text{si } \frac{1+s}{4}\leq t\leq\frac{2+s}{4} \\
+			\gamma(\frac{4t-(2+s)}{2-s}) & \text{si } \frac{2+s}{4}\leq t\leq 1
+			\end{array}\right.\]
+			
+			Solo quedaría demostrar que esta está bien definida y es, en efecto, una homotopía. Pero ver que está bien definida es simplemente comprobar que en las rectas oblicuas de la figura \ref{grf_fig_homot_1} vale por los dos lados lo mismo, lo cual es directo porque los extremos de los caminos coinciden. Y para ver que es homotopía nos basta con la continuidad, que está garantizada porque podemos encontrar un recubrimiento de cerrados todas cuyas restricciones son continuas. Este recubrimiento consiste simplemente los trozos de definición, y las restricciones son continuas porque son composición de caminos con funciones continuas de $\R\to\R$.
+			
+			\item Consideraremos otra homotopía distinta, pero el argumento es el mismo que en el caso anterior, por lo que lo desarrollaremos con algo menos de detalle. Las dos homotopías correspondientes son:
+			
+			\begin{figure}[h!]
+				\label{grf_fig_homot_2}
+				\centering
+				\subfigure[Neutro por la izquierda]{
+				\begin{tikzpicture}[
+				decoration={markings,mark=at position 0.5 with {\arrow{>}}},
+				witharrow/.style={postaction={decorate}},
+				vdot/.style={rectangle, fill, inner sep=0pt, outer sep=0pt, minimum width=0.5pt, minimum height=6pt}
+				]
+				
+				\begin{scope}
+				\draw[very thick]
+				(0,0) coordinate (a1) -- node[left]{$e_0\equiv$} (0,2) coordinate (d1)
+				(2,0) coordinate (b1) -- node[right](q1){$\equiv\sigma(1)$} (2,2) coordinate (c1);
+				
+				\draw[very thick] (d1) -- node[above]{$\sigma$} (2,2) coordinate (c1);
+				
+				\node[vdot] (b2) at (1,0) {};
+				\draw[very thick] (a1) -- node[below]{$e_0$} (b2)
+				(b2) -- node[below]{$\sigma$} (b1);
+				
+				\draw[thin] (b2) -- (d1);
+				
+				\draw[very thin] (0, 1.6) -- (2,1.6) coordinate (h);
+				\node[right, scale=0.8] at (h) {$H_s$};
+				
+				\node[below] at (b1) {$t$};
+				\node[left] at (d1) {$s$};
+				\end{scope}
+				\end{tikzpicture}} \qquad
+			\subfigure[Neutro por la derecha]{
+				\begin{tikzpicture}[
+				witharrow/.style={postaction={decorate}},
+				vdot/.style={rectangle, fill, inner sep=0pt, outer sep=0pt, minimum width=0.5pt, minimum height=6pt}
+				]
+				
+				\begin{scope}
+				\draw[very thick]
+				(0,0) coordinate (a1) -- node[left]{$\tau(0)\equiv$} (0,2) coordinate (d1)
+				(2,0) coordinate (b1) -- node[right](q1){$\equiv e_1$} (2,2) coordinate (c1);
+				
+				\draw[very thick] (d1) -- node[above]{$\tau$} (2,2) coordinate (c1);
+				
+				\node[vdot] (b2) at (1,0) {};
+				\draw[very thick] (a1) -- node[below]{$\tau$} (b2)
+				(b2) -- node[below]{$e_1$} (b1);
+				
+				\draw[thin] (b2) -- (c1);
+				
+				\draw[very thin] (0, 1.6) -- (2,1.6) coordinate (h);
+				\node[right, scale=0.8] at (h) {$H_s$};
+				
+				\node[below] at (b1) {$t$};
+				\node[left] at (d1) {$s$};
+				\end{scope}
+				\end{tikzpicture}}
+				
+				\caption{Esquema de las homotopía para elementos neutros.}
+			\end{figure}
+		
+			De nuevo, la intuición detrás de esta construcción es la misma. Es un buen ejercicio escribir las homotopías al detalle, y no lo haremos aquí. Además, el argumento de buena definición y continuidad es idéntico al del apartado anterior.
+			
+			\item En este caso, basta con demostrar que $\sigma\pathp\sigma' \homot e_0$ con extremos fijos, puesto que $\sigma=\sigma''$, y entonces aplicando el argumento a $\sigma'$ hemos terminado. Aunque la intuición geométrica es muy similar, la homotopía que resulta es algo distinta a los casos anteriores, y vamos a verla con algo más de detalle.
+			
+			Geométricamente, $\sigma'$ es $\sigma$ recorrido ``a la misma velocidad'', pero en sentido contrario. Entonces, $\sigma\pathp\sigma'$ va de $\sigma(0)$ a $\sigma(1)$ y vuelve por el mismo recorrido hasta $\sigma(0)$. Por tanto, la homotopía que vamos a considerar lo que hace es ``acercar cada vez más el punto donde se da la vuelta'', y esto en el extremo es una constante.
+			
+			\begin{figure}[h!]
+				\label{grf_fig_homot_3}
+				\centering
+				\begin{tikzpicture}[
+				decoration={markings,mark=at position 0.5 with {\arrow{>}}},
+				witharrow/.style={postaction={decorate}},
+				vdot/.style={rectangle, fill, inner sep=0pt, outer sep=0pt, minimum width=0.5pt, minimum height=6pt},
+				dot/.style={draw,fill,circle,inner sep=1.5pt,minimum width=0pt, scale=0.45}
+				]
+				
+				\begin{scope}
+				\draw[very thick]
+				(0,0) coordinate (a1) -- node[left]{$\sigma(0)\equiv$} (0,2) coordinate (d1)
+				(2,0) coordinate (b1) -- node[right](q1){$\equiv\sigma'(1)$} (2,2) coordinate (c1);
+				
+				\draw[very thick] (d1) -- node[above]{$\sigma(0) = e_0$} (2,2) coordinate (c1);
+				
+				\node[vdot] (b3) at (1,0) {};
+				\draw[very thick] (a1) -- node[below]{$\sigma$} (b3)
+				(b3) -- node[below]{$\sigma\smash{'}$} (b1);
+				
+				\draw[thin] (b3) -- (d1);
+				\draw[thin] (b3) -- (c1);
+				
+				\draw[very thin] (0, 1.5) -- (2,1.5) coordinate (h);
+				\draw[thick] (0.25,1.5) coordinate (s1) -- (1.75,1.5) coordinate (s2);
+				\node[dot] at (s1) {};
+				\node[dot] at (s2) {};
+				\node[above, scale=0.65] at (s1) {$\;\;\;\;\;\sigma(t)$};
+				\node[above, scale=0.65] at (s2) {$\sigma(t)\;\;\;\;\;$};
+				\node[right, scale=0.8] at (h) {$H_s$};
+				
+				\node[below] at (b1) {$t$};
+				\node[left] at (d1) {$s$};
+				\end{scope}
+				\end{tikzpicture}
+				
+				\caption{Esquema de la homotopía entre $\sigma\pathp\sigma'$ y $e_0\equiv\sigma(0)$.}
+			\end{figure}
+		
+			En este caso, la homotopía queda:
+			\[H_s(t)=\left\{\begin{array}{ll}
+			\sigma(2t) & \text{si } 0\leq t\leq\frac{1-s}{2} \\
+			\sigma(1-s) & \text{si } \frac{1-s}{2}\leq t\leq\frac{1+s}{2} \\
+			\sigma'(2t-1) & \text{si } \frac{1+s}{2}\leq t\leq 1
+			\end{array}\right.\]
+			y la prueba de que está bien definida y es homotopía coincide con la de los casos anteriores.
+			
+			\item En las condiciones del enunciado, supongamos que $H_s:\alpha\homot\sigma$ y $F_s:\beta\homot\tau$, ambas con extremos fijos. Entonces, podemos construir directamente la homotopía con extremos fijos $\alpha\pathp\beta\homot\sigma\pathp\tau$ como la siguiente:
+			\[H_s(t)=\left\{\begin{array}{ll}
+			H_s(2t) & \text{si } 0\leq t\leq\frac{1}{2} \\
+			F_s(2t - 1) & \text{si } \frac{1}{2}\leq t\leq 0
+			\end{array}\right.\]
+			donde es interesante notar que se construye de forma muy similar al producto de dos caminos. Otra vez, la prueba de que está bien definida y es homotopía es la misma. \qedhere
+		\end{enumerate}
+	\end{proof}
+\end{lem}
 
 \section{\ti{General nonsense}. Funtorialidad}
 
