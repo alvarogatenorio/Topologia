@@ -70,6 +70,7 @@ En particular, introducimos la homotopía con el propósito de definir más adel
 La siguiente proposición sirve al mismo tiempo como ejemplo y como enunciado de un resultado que nos será útil un poco más adelante.
 
 \begin{prop}
+	\label{grf_prop_esfera_no_sobre_nulhomotopa}
 	Si $f,g:\Y\to\Sfe^n$ continuas verifican que $f(y)\neq -g(y)\;\forall y\in\Y$ (es decir, $f$ y $g$ no tienen puntos antipodales), entonces $f\homot g$. En particular, si $f:\Y\to\Sfe^n$ no es sobreyectiva, entonces es nulhomótopa.
 	
 	\begin{proof}
@@ -137,7 +138,7 @@ El resultado no trivial que mencionábamos en la introducción de esta sección 
 	Dos caminos en una esfera $\Sfe^n$, $n\geq 2$, que tengan los mismos extremos son homótopos con extremos fijos.
 
 	\begin{proof}
-		Consideramos los caminos $\sigma,\tau:[0,1]\to \Sfe^n$, tales que $\sigma(0)=\tau(0)$ y $\sigma(1)=\tau(1)$. Para probar que son homótopos con extremos fijos, basta con probar que existe un punto $a\in\Sfe^n$ tal que $a\not\in \sigma,\tau$. Ya hemos comprobado antes que esto es suficiente (FALTA CITA). % TODO: Cita
+		Consideramos los caminos $\sigma,\tau:[0,1]\to \Sfe^n$, tales que $\sigma(0)=\tau(0)$ y $\sigma(1)=\tau(1)$. Para probar que son homótopos con extremos fijos, basta con probar que existe un punto $a\in\Sfe^n$ tal que $a\not\in \sigma,\tau$. Ya hemos comprobado antes que esto es suficiente, en la proposición \ref{grf_prop_esfera_no_sobre_nulhomotopa}.
 		
 		Entonces, vamos a separar la esfera en dos abiertos $U$ y $V$, de forma que $\Sfe^n=U\cup V$. Para un cierto $a\in\Sfe^n$, tal que ni $a$ ni $-a$ es uno de los extremos del camino, elegimos $U$ y $V$ tales que:
 		\[\left\{\begin{array}{l}
@@ -159,6 +160,7 @@ El resultado no trivial que mencionábamos en la introducción de esta sección 
 Un resultado muy relacionado ha sido un problema abierto hasta hace muy poco tiempo:
 
 \begin{conjet}[Poincaré]
+	\label{grf_conjet_poincare}
 	La propiedad de la proposición \ref{grf_homotop_caminos_esfera} caracteriza a la esfera $\Sfe^3$. Esto es, si una variedad de dimensión 3 de $\R^4$ verifica que cualquier par de caminos en ella que tengan los mismos extremos son homótopos con extremos fijos, entonces es homeomorfa a la esfera unidad.
 \end{conjet}
 
@@ -200,6 +202,7 @@ A lo largo de las secciones que siguen, si no se afirma lo contrario, consideram
 \end{obs}
 
 \begin{lem}[Propiedades de ${\pathp}$]
+	\label{grf_lema_prop_pathp}
 	La operación ${\pathp}$ verifica:
 	\begin{enumerate}
 		\item Asociatividad módulo homotopía con extremos fijos. Esto es, dados caminos $\alpha,\beta,\gamma$ tales que $\alpha(1)=\beta(0)$ y $\beta(1)=\gamma(0)$, entonces:
@@ -403,6 +406,108 @@ A lo largo de las secciones que siguen, si no se afirma lo contrario, consideram
 		\end{enumerate}
 	\end{proof}
 \end{lem}
+
+\section{Grupo fundamental}
+
+Tras todas las preparaciones, por fin estamos en condiciones de afrontar el concepto que da nombre a este capítulo: el grupo fundamental.
+
+No está de más recordar que $\X$ es, si no se dice lo contrario, conexo y localmente conexo por caminos.
+
+\begin{defi}[Grupo fundamental]
+	Sea $x_0\in\X$. Definimos el \tbi{grupo fundamental} de $\X$ con base $x_0$ como:
+	\[\begin{split}
+	\pi(\X,x_0) &= \left\{\text{lazos de base } x_0\right\} / {\homotef} \\
+	&=\{\sigma:[0,1]\overset{\text{ cont.}}{\to}\X \mid \sigma(0)=\sigma(1)=x_0\} / {\homotef}
+	\end{split}\]
+	esto es, el conjunto de clases de homotopía de lazos, con la operación ${\pathp}$:
+	\[\class{\sigma}\pathp\class{\tau} = \class{\sigma\pathp\tau}\]
+\end{defi}
+
+\begin{lem}
+	El grupo fundamental está bien definido.
+	
+	\begin{proof}
+	Hay que ver, primero, que la operación ${\pathp}$ está bien definida, y después que efectivamente es un grupo.
+	
+	Ya vimos en el lema \ref{grf_lema_prop_pathp} que la operación ${\pathp}$ respeta homotopía de extremos fijos, y por tanto la operacion ${\pathp}$ entre clases de equivalencia está bien definida.
+	
+	Entonces, solo queda ver que es un grupo. Hay que comprobar que es asociativa, que existe un elemento neutro y que todo elemento tiene inverso. Todas ellas se siguen de la propiedad correspondiente del lema \ref{grf_lema_prop_pathp}. Lo único que merece la pena comentar es que, en el caso del elemento neutro, el hecho de restringir los caminos a lazos con un punto base común garantiza la unicidad, y este elemento neutro es precisamente $x_0$.
+	\end{proof}
+\end{lem}
+
+\begin{exa}[Grupos fundamentales]
+	Presentamos ahora una serie de ejemplos de grupos fundamentales. Muchos de ellos los iremos demostrando a lo largo del texto, aunque habrá algunos que no lleguemos a ver por su complicación.
+	
+	Nótese que a menudo omitimos el punto base, porque, como veremos pronto, los grupos fundamentales para el mismo espacio respecto de distintos puntos base son isomorfos.
+	
+	\begin{enumerate}
+		\item Dado $\X\subset\R^n$ estrellado, si tomamos como punto base el $x_0$ del ``centro'', ya vimos en el ejemplo \ref{grf_nulhomotopias_convexos} que todas las funciones son nulhomótopas, y entonces:
+		\[\pi(\X,x_0)=\{1\}\]
+		
+		\item También vimos, en la proposición \ref{grf_homotop_caminos_esfera}, que $\pi(\Sfe^n)=\{1\}$ si $n\geq 2$.
+		
+		\item Para $n=1$, la circunferencia, resulta que $\pi(\Sfe^1)=\Z$.
+		
+		\item Un ejemplo de espacio con grupo fundamental finito no trivial es el espacio proyectivo real: $\pi(\proy^n)=\Z_2$.
+		
+		\item Como veremos más adelante, el producto de espacios tiene como grupo fundamental el producto de los grupos. Entonces, $\pi(\toro)=\pi(\Sfe^1)\times\pi(\Sfe^1)=\Z^2$.
+		
+		\item Para $\toro_g$, el toro con $g$ agujeros, tenemos que existe un homomorfismo de grupos sobreyectivo $\pi(\toro_g)\twoheadrightarrow \Z^2$. De hecho, en general, $\pi(\toro_g)$ ni siquiera es abeliano.
+		
+		\item El grupo fundamental del bouquet $B_n$, una figura geométrica generada pegando $n$ circunferencias, es $\pi(B_n)=\Z\pathp\overset{n}{\dots}\pathp\Z$, donde ${\pathp}$ denota el producto libre de grupos. Más adelante entraremos en detalle en este tema.
+		
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[scale = 0.4]
+			\begin{polaraxis}[grid=none, axis lines=none]
+			\addplot[mark=none,domain=0:360,samples=300] {cos(x*3)};
+			\end{polaraxis}
+			\end{tikzpicture}
+			
+			\caption{Un bouquet de tres pétalos.}
+		\end{figure}
+	
+		\item $\pi(\Sfe^2\times\Sfe^2)=\{1\}$ y $\pi(\Sfe^4)=\{1\}$ pero $\Sfe^2\times\Sfe^2\centernot\homeo\Sfe^4$. Esto, que parece ser un contraejemplo a la versión generalizada para $n=4$ de la conjetura de Poincaré (\ref{grf_conjet_poincare}), no es tal; ya que para $n\geq 4$ se formula con condiciones adicionales. \qedhere
+	\end{enumerate}
+\end{exa}
+
+\begin{prop}
+	El grupo fundamental es independiente del punto base. Es decir, si $x_0,x_1\in\X$, entonces $\pi(\X,x_0)$ y $\pi(\X,x_1)$ son isomorfos.
+	
+	\begin{proof}
+		Como asumimos que $\X$ es conexo por caminos, entonces existe un camino de $x_0$ a $x_1$ que llamamos $\alpha$. Así, definimos la siguiente función:
+		\[\begin{split}
+		f:\pi(\X,x_0) &\to \pi(\X,x_1) \\
+		[\sigma]&\mapsto [\alpha'\pathp\sigma\pathp\alpha]
+		\end{split}\]
+		
+		Y queremos comprobar que es isomorfismo de grupos:
+		\begin{enumerate}
+			\item Desde luego, está bien definida (si dos caminos son homótopos con extremos fijos, multiplicarlos por $\alpha$ y $\alpha'$ conserva la homotopía). Nótese que siguen siendo homótopos por extremos fijos pero los extremos en sí son otros,
+			
+			\item Es homomorfismo de grupos. En efecto, queremos ver que la imagen del producto es el producto de las imágenes. Entonces:
+			\[f([\sigma]\pathp[\tau]) = f([\sigma\pathp\tau])=[\alpha'\pathp\sigma\pathp\tau\pathp\alpha]=[\alpha'\pathp\sigma\pathp\alpha\pathp\alpha'\pathp\tau\pathp\alpha] = [\alpha'\pathp\sigma\pathp\alpha]\pathp[\alpha'\pathp\tau\pathp\alpha=f([\sigma])\pathp f([\tau])\]
+			
+			\item Es isomorfismo, porque su inversa es $[\lambda]\mapsto[\alpha\times\lambda\times\alpha']$ y esto es, por el apartado anterior, un homomorfismo. \qedhere
+		\end{enumerate}
+	\end{proof}
+\end{prop}
+
+\begin{obs}
+	La proposición anterior parece dejar resuelto todo lo relativo al punto base: no solo nos garantiza que el grupo fundamental es independiente del punto base sino que además nos proporciona un isomorfismo explícito. Sin embargo, hay que tener cuidado con esto. Si pretendemos identificar todos los grupos fundamentales con uno solo, nos encontramos una dificultad: el isomorfismo depende del camino que escojamos. No hay una forma canónica de identificar uno por otro. 
+	
+	No es incorrecto hablar \ti{del} grupo fundamental de un espacio, pero siempre hay que tener en mente la consideración anterior. Como curiosidad, si el grupo fundamental es abeliano el isomorfismo sí es independiente del camino. 
+\end{obs}
+
+\begin{obs}
+	Nótese que hemos necesitado que el espacio sea conexo por caminos para llevar a cabo la prueba anterior. Este es, de hecho, uno de los principales motivos por los que hemos restringido de tal forma el espacio $\X$.
+\end{obs}
+
+Para terminar la sección, definimos un concepto que nos ayudará a tratar con espacios con grupo fundamental trivial.
+
+\begin{defi}[Simplemente conexo]
+	Decimos que un espacio $\X$ conexo por caminos es \tbi{simplemente conexo} cuando su grupo fundamental es trivial.
+\end{defi}
 
 \section{\ti{General nonsense}. Funtorialidad}
 
