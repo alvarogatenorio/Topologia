@@ -173,9 +173,6 @@ La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es
 	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields que se le intentó conceder por demostrar la conjetura.
 \end{itemize}
 
-% TODO: Faltan las secciones 3 y 4 (producto de caminos y grupo fundamental)
-% TODO: En la sección del grupo fundamental, añadir la noción de simplemente conexo (dijo en clase que se le olvidó definirla, y esta sección es donde mejor cuadra)
-
 \section{Producto de caminos}
 
 El producto de caminos formaliza el concepto de ``unir'' dos caminos, de forma que consigamos un nuevo camino que recorra primero uno y luego el otro.
@@ -677,7 +674,51 @@ Con esto, estamos ya en condiciones de formular el problema de elevación.
 	Aquí, $\widetilde{\X}$ es un espacio recubridor mediante la aplicación $p$. El problema de elevación pregunta por la existencia de la aplicación del diagrama $\widetilde{H}:\mc{Z}\to\X$, continua y que verifique que $p\circ\widetilde{H}=H$, es decir, que haga que el diagrama sea conmutativo. Una aplicación que verifique esto se llama \tbi{elevación}.
 \end{const}
 
-% TODO: Falta una buena parte de la sección de elevación
+\begin{lem}[Existencia y unicidad de elevación local]
+	\label{grf_lema_elevacion_local}
+	Sea $z_0\in\mc{Z}$, $x_0=H(z_0)\in U$ abierto. Si $\mc{Z}$ es conexo, entonces existe una única elevación local, esto es, una $\widetilde{H}:H^{-1}(U)\to U_\lambda$ que hace conmutativo el diagrama, con $U_\lambda$ uno de los conjuntos homeomorfos a $U$ cuya unión es $p^{-1}(U)$. Además, $\widetilde{H}=(p\restriction_{U_\lambda})^{-1}\circ H$.
+	
+	\begin{proof}
+		Para ver la existencia, hay que comprobar que efectivamente $\widehat{H}=(p\restriction_{U_\lambda})^{-1}\circ H$ es una elevación. En efecto, $\widetilde{H}(x_0)\in p^{-1}(x_0)$, pues $p\widetilde{H}(z_0)=H(z_0)=x_0$. Entonces, consideramos:
+		\[\widetilde{H}(z_0)\in p^{-1}(x_0)\subset p^{-1}(U)=\bigcup_\lambda U_\lambda\]
+		y como la unión es disjunta, existe un único $\lambda$ de forma que $\widetilde{H}(z_0)\in U_\lambda$.
+		
+		Ahora, consideramos dos elevaciones $\Phi$ y $\Psi$ que cumplan las condiciones anteriores. Queremos ver que ambas son la misma. Como $\mc{Z}$ es conexo, podemos comprobar que $\{\Phi(z)=\Psi(z)\}$, que es no vacío porque coinciden en un punto, es abierto y cerrado en $\mc{Z}$.
+		
+		\begin{itemize}
+			\item Veamos que es abierto. Sea $z\in\mc{Z}$, entonces existe un entorno $W$ de $z$ tal que $\Phi\restriction_{W}=(p\restriction_{U_\lambda})^{-1}\circ H$, y existe otro entorno $W'$ de $z$ tal que $\Psi\restriction_{W'}=(p\restriction_{U_\lambda})^{-1}\circ H$; con $\Phi(z)\in U_\lambda$ y $\Psi(z)\in U_\mu$. Como $\Phi(z)=\Psi(z)$, $U_\lambda = U_\mu$ (por ser la unión disjunta). Entonces $\Phi\restriction_{W\cap W'}=\Psi\restriction_{W\cap W'}$, y por tanto $W\cap W'\subset\{\Phi(z)=\Psi(z)\}$, y es entorno, luego este es abierto.
+			
+			\item Vamos a ver que el complementario $\{\Phi(z)\neq\Psi(z)\}$ es abierto. Primero, $\lambda\neq\mu$. En efecto, si estuvieran en el mismo $U_\lambda$, $p\Phi(z)\neq p\Psi(z)$, pero por ser elevaciones ambos son iguales a $H(z)$, lo cual es una contradicción. Entonces, si $\lambda\neq\mu$, definiendo $W$ y $W'$ como en el apartado anterior, $\Phi(W\cap W')\cap \Psi(W\cap W')\subset U_\lambda\cap U_\mu=\emptyset$. Entonces, $W\cap W'\subset \{\Phi(z)\neq\Psi(z)\}$, luego este es abierto. \qedhere
+		\end{itemize}
+	\end{proof}
+\end{lem}
+
+El lema que sigue tiene una importancia capital a la hora de demostrar cuál es el grupo fundamental de muchos espacios.
+
+\begin{lem}[De elevación de homotopías]
+	\label{grf_lema_elevacion_homotopias}
+	Dada una homotopía $H:\mc{Z}=\Y\times [0,1]\to\X$ y una elevación $\widetilde{f}$ de $f=H_0:\Y\to\X$, entonces existe una única elevación $\widetilde{H}$ de $H$ tal que $(\widetilde{H})_0=\widetilde{f}$.
+	
+	\begin{proof}
+		En proceso...
+		% TODO: dem
+	\end{proof}
+\end{lem}
+
+El siguiente resultado bien podría llamarse corolario, pues es un caso particular del lema de elevación de homotopías, pero dada la importancia que tiene lo consideramos un lema en sí mismo.
+
+\begin{lem}[De elevación de caminos]
+	\label{grf_lema_elevacion_caminos}
+	Dado un camino $\sigma:\mc{Z}= [0,1]\to\X$, de origen $x_0\in\X$, entonces existe una única elevación $\widetilde{\sigma}$ de $\sigma$ tal que el origen de $\widetilde{\sigma}$ sea $\widetilde{x_0}\in\widetilde{X}$.
+	
+	\begin{proof}
+		Si en el lema de elevación de homotopías tomamos $\Y=\{a\}$, y consideramos la función $\widetilde{f}:\Y\to \widetilde{\X}$ tal que $\widetilde{f}(a)=\widetilde{x_0}$, tenemos el resultado.
+	\end{proof}
+\end{lem}
+
+\begin{obs}
+	La elevación es un problema homotópico. En efecto, si $f:\Y\to\X$ tiene una elevación $\widetilde{f}:\Y\to\widetilde{\X}$, entonces toda $g\homot f$ tiene también elevación.  Basta con considerar la homotopía $H:f\homot g$, y por el lema de elevación existe $\widetilde{H}$, de forma que $\widetilde{g} = \widetilde{H}_1$ eleva a $g$.
+\end{obs}
 
 \section{El grupo fundamental del espacio proyectivo}
 
