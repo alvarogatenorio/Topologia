@@ -564,6 +564,7 @@ Visto todo lo necesario, podemos pasar a comprobar una serie de propiedades util
 \end{prop}
 
 \begin{prop}
+	\label{grf_prop_retractos_homo_sobreyectivo}
 	Un \index[general]{retracto}retracto, como veremos con detalle más adelante, es un subespacio tal que existe una aplicación continua que deforma el espacio en él, como se aprecia en el siguiente esquema:
 	\[\xymatrix @C=0.65pc {
 		A \ar@{}[r]|\subset \ar[dr]_{\rho\restriction_A = \Id} & \X \ar[d]^{\rho\text{ retracto}} \\
@@ -748,10 +749,10 @@ El lema que sigue tiene una importancia capital a la hora de demostrar cuál es 
 			\[\widetilde{H}_y\restriction_{V_y\times [t_i,t_{i+1}]} = (p\restriction_{U_\lambda^{x_{i+1}}})^{-1}\circ H \]
 			
 			Con lo anterior, solo necesitamos comprobar que la aplicación:
-			\[\widetilde{H}_y\restriction_{V_y\times [0,t_{i+1}]} = \begin{array}{ll}
+			\[\widetilde{H}_y\restriction_{V_y\times [0,t_{i+1}]} = \left\{\begin{array}{ll}
 			\widetilde{H}_y\restriction_{V_y\times [0,t_i]} & \text{si } 0\leq t \leq t_i \\
 			\widetilde{H}_y\restriction_{V_y\times [t_i,t_{i+1}]} & \text{si } t_i\leq t \leq t_{i+1} \\
-			\end{array}\]
+			\end{array}\right.\]
 			está bien definida, es continua y es elevación. 
 			
 			Que está bien definida se ve rápidamente a partir de las comprobaciones anteriores. En efecto, hay que comprobar que el valor de cada trozo en $V_y\times\{t_i\}$ coincide. Para ello, usaremos que ambas son elevaciones de $H$, de forma que, para cualquier $y'\in V_y$:
@@ -806,12 +807,12 @@ El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el e
 		
 		De esta forma, para $y\in\proy^n$, consideramos un hiperplano $\pi$ que no lo contenga. Como el plano $\pi$ es cerrado, $U=\proy^n\setminus\pi$ es abierto, y además contiene a $x$, luego es entorno. La imagen inversa del plano $\pi$ es, para la misma aplicación definida en todo $\R^{n+1}$, un hiperplano; y de esta manera la imagen inversa de $\proy^n\setminus\pi$ por $p:\Sfe^n\to\proy^n$ son dos casquetes de la esfera. Llamamos pues a estos $U_+$, $U_-$ y desde luego son abiertos. Como la imagen inversa de $x$ son dos puntos antipodales, que llamamos $p$ y $-p$, y no están en $p^{-1}(\pi)$, entonces está cada uno en un casquete. De esta forma, como los casquetes son entornos disjuntos, basta con comprobar que $U_+,U_-\homeo U_x$. Pero resulta que $U_x = \proy^n\setminus\pi\homeo\R^n$, y $U_+,U_-\homeo\R^n$ porque son homeomorfos a discos abiertos.
 		
-		Visto esto, podemos considerar la elevación de caminos que vamos a utilizar. Sea $a=(1:0:\dotsc:0)$ el punto base del grupo fundamental. Entonces, tenemos el diagrama:
+		Visto esto, planteamos la siguiente elevación de caminos. Sea $a=(1:0:\dotsc:0)$ el punto base del grupo fundamental. Entonces, tenemos el diagrama:
 		\[\xymatrix @C = 0.5pc {
 			&& \Sfe^n \ar[d]^p & (x_0,\dots,x_n) \ar@{|->}[d] \ar@{}[l]|-\ni \\
 			[0,1] \ar[rr]^\sigma \ar[rru]^{\widetilde{\sigma}} && \proy^n & (x_0,\dotsc,x_n) \ar@{}[l]|-\ni
 		}\]
-		de forma que $\sigma$ es un lazo en $\proy^n$ con base en $a$, y por tanto verifica $\sigma(0)=\sigma(1)=a$. Si llamamos $p^{-1}(a)=\{\widetilde{a},\widetilde{-a}\}$, por el lema de elevación de caminos [FALTA CITA], podemos elegir $\widetilde{\sigma}$ de forma que se verifique que $\widetilde{\sigma}(0)=\widetilde{a}$. Pero como tan solo sabemos que $p\circ\widetilde{\sigma}=\sigma$, entonces $\widetilde{\sigma}(1)$ no tiene por qué ser $\widetilde{a}$, puede ser también $-\widetilde{a}$. % TODO: cita
+		de forma que $\sigma$ es un lazo en $\proy^n$ con base en $a$, y por tanto verifica $\sigma(0)=\sigma(1)=a$. Si llamamos $p^{-1}(a)=\{\widetilde{a},-\widetilde{a}\}$, por el lema de elevación de caminos (\ref{grf_lema_elevacion_caminos}), podemos elegir $\widetilde{\sigma}$ de forma que se verifique que $\widetilde{\sigma}(0)=\widetilde{a}$. Pero como tan solo sabemos que $p\circ\widetilde{\sigma}=\sigma$, entonces $\widetilde{\sigma}(1)$ no tiene por qué ser $\widetilde{a}$, puede ser también $-\widetilde{a}$.
 		
 		Planteamos entonces dos casos:
 		\begin{enumerate}[label=\roman*]
@@ -830,14 +831,37 @@ El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el e
 			donde los extremos fijos son $p(\widetilde{a}),p(-\widetilde{a})$, y ambos son $a$. Por tanto es homotopía de lazos. Entonces, tenemos que $[\sigma] = [\alpha]\in\pi(\proy^n,a)$.
 		\end{enumerate}
 		
-		De esta forma, hemos comprobado que cualquier lazo de $\proy^n$ está en alguna de las dos clases de homotopía. De esta forma, podemos asegurar que $\card{\pi(\proy^n,a)}\leq 2$. Veamos pues que las clases $1$ y $[\alpha]$ son distintas.
+		De esta forma, hemos comprobado que cualquier lazo de $\proy^n$ está en alguna de las dos clases de homotopía. Con ello, podemos asegurar que $\card{\pi(\proy^n,a)}\leq 2$. Veamos pues que las clases $1$ y $[\alpha]$ son distintas.
 		
 		En efecto, si fueran iguales consideramos la homotopía $H_s:\alpha\homot[a] e$. Esta verifica $H_s(0)=H_s(1)\equiv a$, $H_0=\alpha$ y $H_1\equiv a$. Al elevarla, nos queda un diagrama como el siguiente:
+%		\[\xymatrix{
+%			& \Sfe^n \ar[d]^p \\
+%			[0,1]\times[0,1] \ar[r]^-H \ar[ru]^{\widetilde{H}} & \proy^n
+%		}\]
 		\[\xymatrix{
 			& \Sfe^n \ar[d]^p \\
-			[0,1]\times[0,1] \ar[r]^-H \ar[ru]^{\widetilde{H}} & \proy^n
+			\begin{tikzpicture}[baseline=-0.5ex,
+			scale=0.5,
+			vdot/.style={rectangle, fill, inner sep=0pt, outer sep=0pt, minimum width=0.5pt, minimum height=6pt},
+			dot/.style={draw,fill,circle,inner sep=1.5pt,minimum width=0pt, scale=0.45}
+			]
+			\draw[thick]
+			(0,0) coordinate (a1) -- node[left,scale=0.65]{$a\equiv$} (0,2) coordinate (d1)
+			(2,0) coordinate (b1) -- node[right,scale=0.65](q1){$\equiv a$} (2,2) coordinate (c1);
+			\draw[thick] (d1) -- node[above,scale=0.65] {$H_1=e\equiv a$} (2,2) coordinate (c1);
+			\draw[thick] (a1) -- node[below,scale=0.65] {$H_0=\alpha\quad\;$} (b1);
+			\node[below,scale=0.8] at (b1) {$t$};
+			\node[left,scale=0.8] at (d1) {$s$};
+			\end{tikzpicture} \ar[r]^-H \ar[ru]^-{\widetilde{H}} & \proy^n
 		}\]
-		donde la existencia de $\widetilde{H}$ está garantizada por el lema de elevación [FALTA CITA]. Además, podemos elegir que $\widetilde{H}_0=\widetilde{\alpha}$. Como ademas la homotopía es de extremos fijos, su elevación lo es, y están definidos también $\widetilde{H}_s(0) = \widetilde{a}$ y $\widetilde{H}_s(1) = -\widetilde{a}$. Pero necesariamente, por continuidad y por ser $H_1\equiv a$, $\widetilde{H}_1$ tiene que ser una constante, y tenemos $\widetilde{H}_1(0) = \widetilde{a}$ y $\widetilde{H}_1(1)=-\widetilde{a}$, lo cual es una contradicción. % TODO: cita
+		
+		donde la existencia de $\widetilde{H}$ está garantizada por el lema de elevación (\ref{grf_lema_elevacion_caminos}). 
+		
+		Ahora, considerando el subconjunto $Z$ formado por los tres lados superiores de $[0,1]\times [0,1]$, tenemos que $\widetilde{H}$ eleva a $e\equiv a$ (en efecto, $p\widetilde{H}=a$). Sin embargo, podemos considerar también la homotopía $\widetilde{H}'=\widetilde{a}$, que es constantemente $\widetilde{a}$. Esta también eleva en $Z$ a $e\equiv a$. Además, coinciden en un punto, pues:
+		\[\widetilde{H}_0(0)=\widetilde{\alpha}(0)=\widetilde{a}\]
+		y entonces, por la unicidad de la elevación (lema \ref{grf_lema_unicidad_elevacion}), tenemos que $\widetilde{H}=\widetilde{e}$ en $Z$. Pero entonces:
+		\[\widetilde{H}_0(1) = \widetilde{\alpha}(1) = \widetilde{e} = \widetilde{a}\]
+		pero esto claramente no ocurre por definición de $\widetilde{\alpha}$, luego ya tenemos nuestra contradicción.
 		
 		Entonces, el grupo fundamental de $\proy^n$ tiene dos elementos, y por tanto tiene que ser $\Z_2$.
 	\end{proof}
@@ -879,7 +903,7 @@ Para asegurar que está bien definida, también hace falta ver que $\indice$ no 
 & \R \ar[d]^p \\
 [0,1]^2 \ar[ru]^{\widetilde{H}} \ar[r]^-H & \Sfe^1
 }\]
-donde la existencia de la elevación $\widetilde{H}$ está garantizada por el lema de elevación de homotopías [FALTA CITA]. Está claro que $\widetilde{H}_0 = \widetilde{\sigma}$ y $\widetilde{H}_1 = \widetilde{\tau}$. Además, por ser $H$ homotopía con el extremo $a$ fijo, para todo $s$ $H_s$ es un lazo con base $a$.
+donde la existencia de la elevación $\widetilde{H}$ está garantizada por el lema de elevación de homotopías (\ref{grf_lema_elevacion_homotopias}). Está claro que $\widetilde{H}_0 = \widetilde{\sigma}$ y $\widetilde{H}_1 = \widetilde{\tau}$. Además, por ser $H$ homotopía con el extremo $a$ fijo, para todo $s$ $H_s$ es un lazo con base $a$.
 
 Ahora, como queremos ver que $\indice\sigma = \indice\tau$, consideramos la aplicación $s\mapsto \widetilde{H}_s(1)-\widetilde{H}_s(0)=\indice(H_s)$, que está bien definida por ser cada $H_s$ un lazo. Entonces, está claro que $\indice(H_s)\in\Z$, y por ser una aplicación de $[0,1]$ en $\Z$ continua, es constante. Entonces:
 \[\indice\sigma = \indice(H_0) = \indice(H_1) = \indice\tau\]
@@ -932,3 +956,92 @@ El grupo de rotaciones \indexg{SO(3)} $SO(3)$ no es homeomorfo a $\Sfe^1\times\S
 En efecto, se puede comprobar (aunque no lo haremos aquí) que $SO(3)\homeo\proy^3$. Por tanto, como ya vimos en el teorema \ref{grf_espacio_proyectivo}, tiene grupo fundamental $\Z_2$. Sin embargo, $\Sfe^1\times\Sfe^2$ tiene por grupo fundamental $\Z$, por el resultado anterior.
 \end{proof}
 \end{cor}
+
+\section{Retractos de deformación}
+
+Ya comentamos en su momento el concepto de retracto. En esta sección vamos a presentar un tipo especial de retracto, el retracto de deformación, que tiene una importancia capital, pues respeta el grupo fundamental.
+
+Empezamos dando formalmente la definición de retracto:
+
+\begin{defi}[Retracto]
+	Un \tbi{retracto} del espacio $\X$ es un subespacio $A\subset\X$ tal que existe una aplicación continua $\rho:\X\to A$ que deforma el espacio en él, de forma que $\rho\restriction_A = \Id_A$.
+\end{defi}
+
+Y pasamos directamente a definir lo que verdaderamente nos importa.
+
+\begin{defi}[Retracto de deformación]
+	Un subespacio $A\subset\X$ es un \tbi[retracto!de deformación]{retracto de deformación} si es un retracto, con aplicacion $\rho$, y existe una homotopía que verifique:
+	\[H_s:\X\to\X\left\{\begin{array}{l}
+	H_0 = \Id_\X \\
+	H_1 = \rho:\X\to A \\
+	H_s\restriction_A = \Id_A
+	\end{array}\right. \]
+\end{defi}
+
+Intuitivamente, un retracto de deformación es un subespacio $A\subset\X$ al que podemos deformar $\X$ ``sin salirnos'' del espacio, y, además, ``sin mover'' $A$.
+
+\begin{obs}[Interpolación lineal]
+	\label{grf_obs_interpolacion_retractos}
+	Dado un retracto con aplicación $\rho:\X\to A$, se define:
+	\[H_s(x) = (1-s)x+s\rho(x)\]
+	si es posible, es decir, si el segmento $[x,\rho(x)]\subset\X$ para cada $x\in\X$. En el caso de que se pueda definir, $A$ es retracto de deformación de $\X$.
+\end{obs}
+
+\begin{exa}
+	Listamos ahora una serie de retractos de deformación que podemos construir:
+	\begin{enumerate}
+		\item $\Sfe^{n-1}$ es retracto de $\R^n\setminus\{0\}$, a través de la aplicación:
+		\[\begin{split}
+		\rho: \R^n\setminus\{0\} &\to\Sfe^{n-1} \\
+		x &\mapsto\frac{x}{\norm{x}}
+		\end{split}\]
+		
+		Además, se verifica la condición de la observación \ref{grf_obs_interpolacion_retractos}, con lo cual es retracto de deformación.
+		
+		\item $\Sfe^1$ es retracto de deformación del cilindro $C$. En efecto, escribimos directamente la homotopía:
+		\[H_s(x,y,z)=(1-s)(x,y,z) + s(x,y,0)\]
+		que induce un retracto de deformación.
+		
+		\item Una circunferencia es retracto de deformación de una banda de Möbius.
+		% TODO: dibujo?
+		
+		\item La lemniscata (el bouquet con dos círculos) es retracto de deformación de $\R^2\setminus\{a,b\}$. \qedhere
+		% TODO: dibujo?
+	\end{enumerate}
+\end{exa}
+
+Los espacios que pueden retraerse a un punto son especialmente interesantes:
+
+\begin{defi}
+	Sea $a\in\X$. Decimos que $\X$ es \tbi{contráctil} si $\{a\}$ es retracto de deformación de $\X$.
+\end{defi}
+
+Pasamos pues al resultado fundamental de esta sección:
+
+\begin{theo}
+	Si $A\subset\X$ es un retracto de deformación con aplicación $\rho$, entonces:
+	\[\rho^*:\pi(\X,a)\to\pi(A,a)\]
+	es isomorfismo. En consecuencia, $\X$ y $A$ tienen el mismo grupo fundamental.
+	
+	\begin{proof}
+		Hay que comprobar que es isomorfismo:
+		\begin{itemize}
+			\item Es homomorfismo por definición de $\rho^*$.
+			\item Es sobreyectivo por ser retracto, como ya vimos en la proposición \ref{grf_prop_retractos_homo_sobreyectivo}.
+			\item Es inyectivo. En efecto, consideramos un lazo $\sigma$ con base $a$, y el esquema:
+			\[\xymatrix{
+				[0,1] \ar[r]^\sigma \ar[rd]_{\rho\circ\sigma} & \X \ar[d]^\rho \\
+				& A
+			}\]
+			
+			Como sabemos, el homomorfismo $\rho^*$ manda $[\sigma]\mapsto [\rho\circ\sigma]$. Para ver la inyectividad, basta ver que el núcleo es trivial. Entonces, si $[\rho\circ\sigma] = 1$, existe una homotopía $F_s:\rho\circ\sigma\homot[a] e$.
+			
+			Llamando $H_s$ a la deformación, definimos la homotopía $G_s=H_s\circ\sigma$. Entonces, se verifica:
+			\begin{gather*}
+				H_0\circ\sigma= \sigma \homot H_1\circ\sigma = \rho\circ\sigma \\
+				H_s\circ\sigma(0) = H_s\circ\sigma(1) = H_s(a) = a
+			\end{gather*}
+			y entonces $\sigma$ es homótopo a $\rho\circ\sigma$, pero este a su vez es homótopo a una constante. Entonces, el núcleo es trivial. \qedhere  
+		\end{itemize}
+	\end{proof}
+\end{theo}
