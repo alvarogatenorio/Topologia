@@ -55,6 +55,7 @@ Una de las incógnitas que nos surgen al plantearnos una nueva noción de cualqu
 \end{proof}
 Hay numerosos contraejemplos para ver que el recíproco no se cumple, veamos uno de ellos con todo lujo de detalles técnicos.
 \begin{exa}[Seno del topólogo]
+	\label{cam_exa_seno}
 	Consideremos el conjunto conexo (ver ejemplo \ref{conex_exa_miscel}) \[\adher{\Gamma}:=\left\{\left(x,\sen\left(\frac{1}{x}\right)\right)\midc x>0\right\}\cup\{0\}\times[-1,1]=:\Gamma\cup P\]
 	Evidentemente, el miembro de la izquierda de la unión es conexo, por caminos, por tanto los problemas podrán presentarse únicamente al tratar de unir un punto de $P$ con otro $\Gamma$.
 	
@@ -97,12 +98,21 @@ A continuación enunciamos las propiedades más básicas de las componentes cone
 		\item Una componente conexa por caminos de $x$ puede escribirse como $\Co(x)=\bigcup_{A\subset\X}A$ con $x\in A$ y $A$ conexo por caminos.
 		\item Se cumple que la componente por caminos conexa de un punto no es solo un conjunto conexo por caminos maximal, sino máximo. Esto se traduce en que un punto posee una única componente conexa por caminos $\Co(x)$.
 		\item Si un conjunto $D$ conexo por caminos corta a la componente conexa por caminos $\Co(x)$ de $x$ se verifica que $D\subset \Co(x)$.
-		\item $\Co(x)$ es la componente conexa por caminos de todos sus puntos (y de ninguno más). En particular, si un espacio es conexo por caminos, este consta de una única componente conexa por caminos.\qedhere
+		\item $\Co(x)$ es la componente conexa por caminos de todos sus puntos (y de ninguno más). En particular, si un espacio es conexo por caminos, este consta de una única componente conexa por caminos.
+		\item Las componentes conexas por caminos conforman una partición del espacio.
+		\item Si todo punto tiene un entorno conexo por caminos, entonces las componentes conexas por caminos son abiertas.\qedhere
 	\end{enumerate}
 \end{obs}
 Vistas las similitudes con la noción usual de conexión pasemos a las diferencias, que no son pocas, aunque si sutiles.
-
+\begin{obs}[Propiedades disonantes]
+	Como no todo es este mundo es alegría y color, pues entonces viviríamos en un panal y nos llamaríamos Maya, presentamos algunas propiedades que nos obstaculizarán el discurrir.
+	\begin{enumerate}
+		\item Sea $\Co(x)$ la componente conexa por caminos de $x$, como $\Co$ es conexa por caminos, es conexa, luego $\Co\subset E$, siendo $E$ la componente conexa de $x$. Este último contenido podría ser estricto, como ocurre con el seno del topólogo (ver ejemplo \ref{cam_exa_seno}), que consta de dos componentes conexas por caminos y una única componente conexa.
+		\item Las componentes conexas por caminos no son necesariamente cerradas, un ejemplo de esto es también el seno del topólogo, pues $\Gamma$ es una componente conexa por caminos y $\Gamma\not=\adher{\Gamma}$\qedhere
+	\end{enumerate}
+\end{obs}
 \section{Local--conexión por caminos}
+En esta sección trataremos de definir la versión local de la conexión por caminos de una forma totalmente simétrica a como lo hicimos en la sección \ref{conex_local}.
 \begin{defi}[Localmente conexo por caminos]
 	Un espacio $\X$ se dice \tbi{localmente conexo por caminos} si todo punto del espacio tiene una base de entornos conexos por caminos.
 \end{defi}
@@ -115,14 +125,17 @@ Sin más dilación vamos a caracterizar, como hicimos en el capítulo anterior, 
 		\item Cada punto de $\X$ tiene una base de entornos conexos por caminos y abiertos.
 	\end{enumerate}
 \end{lem}
-\begin{proof} Realicemos nuestro círculo virtuoso habitual.
+\begin{proof}
+	La prueba es exactamente la misma a la de la proposición \ref{conex_prop_caracLocal}, esto se debe a que las propiedades de las componentes conexas usadas en aquella prueba son heredadas por las componentes conexas por caminos.
 \end{proof}
 Esta vez, la local--conexión por caminos nos aporta algo más, una condición suficiente para que un conjunto sea conexo por caminos.
 \begin{prop}[Condición suficiente]
 	Si $\X$ es conexo y localmente conexo por caminos, entonces $\X$ es conexo por caminos.
 \end{prop}
 \begin{proof}
-	contenidos...
+	Consideremos la componente conexa por caminos de un punto $x$, digamos $\Co(x)$, y tratemos de ver que es el total.
+	
+	Por ser $\X$ localmente conexo por caminos $\Co(x)$ es un abierto no vacío. No obstante, resulta que $\X\setminus \Co(x)$ también es un abierto. Si fuera no vacío habríamos partido $\X$ con dos abiertos no triviales, entrando en contradicción con su conexión. 
 \end{proof}
 \section{Comportamiento topológico}
 Presentamos esta vez, para variar, la tabla--resumen al comienzo la sección. A continuación iremos estudiando caso por caso el comportamiento topológico de las diferentes nociones de conexión introducidas en este capítulo.
@@ -131,12 +144,18 @@ Presentamos esta vez, para variar, la tabla--resumen al comienzo la sección. A 
 	\begin{tabular}{c|c|c|c|c|}
 		\cline{2-5}
 		\multicolumn{1}{l|}{}                                                                                  & \multicolumn{1}{l|}{\textbf{Subespacios}}                             & \multicolumn{1}{l|}{\textbf{Cociente}} & \multicolumn{1}{l|}{\textbf{Producto}} & \multicolumn{1}{l|}{\textbf{Suma}} \\ \hline
-		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Conexo por\\ caminos\end{tabular}}}            & No                                                                    & Sí                                     & Sí                                     & No                                 \\ \hline
+		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Conexo por\\ caminos\end{tabular}}}            & No                                                                    & Sí*                                     & Sí                                     & No                                 \\ \hline
 		\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Localmente conexo\\ por caminos\end{tabular}}} & \begin{tabular}[c]{@{}c@{}}Sí, en el caso \\ de abiertos\end{tabular} & Sí                                     & Sí                                     & Sí                                 \\ \hline
 	\end{tabular}
 	\caption{Tabla resumen de conexión por caminos}
 	\label{Tabla_conexion_caminos}
 \end{table}
+En primer lugar pongamos en marca la cosechadora rápida y deduzcamos todo lo que podamos apoyándonos en resultados anteriores.
+\begin{itemize}
+	\item Es claro que la conexión por caminos no se traslada a subespacios, basta observar el plano $\R^2$ y el seno del topólogo.
+	\item La suma de espacios topológicos nunca es conexa, mucho menos conexa por caminos.
+\end{itemize}
+
 Veamos aquí de forma condensada las pintorescas relaciones entre las distintas formas de ver la conexión.
 \begin{figure}[h!]
 	\centering
