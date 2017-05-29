@@ -15,14 +15,32 @@ Antes de meternos en harina hay que recordar estamos trabajando en espacios topo
 \begin{obs}[Caminos densos]
 	Cuando uno se imagina un camino, se imagina que la imagen del camino es una curva suave que no hace cosas demasiado extrañas, sin embargo la imagen de un camino puede ser densa en el plano. Este es el caso de la \tbi{curva de peano}, que no estudiaremos en estas notas.
 \end{obs}
-Al fin y al cabo los caminos no son más que parametrizaciones de subconjuntos de un espacio $\X$. Por esta razón, en ocasiones nos interesará considerar varios caminos (parametrizaciones) con la misma imagen o \tbi{traza}. A raiz de este problema emergen las llamadas ``reparametrizaciones''
+Al fin y al cabo los caminos no son más que parametrizaciones de subconjuntos de un espacio $\X$. Por esta razón, en ocasiones nos interesará considerar varios caminos con la misma imagen o \tbi{traza}. Veamos un procedimiento rápido, sencillo, y para toda la familia para cambiar el dominio de definición de un camino.
 \begin{obs}[Reparametrización]
-	contenidos...
+	\label{cam_obs_reparam}
+	Si tenemos un camino $\sigma:[a,b]\to\X$ y queremos fabricarnos un camino $\tau:[c,d]\to\Y$ con la misma traza que $\sigma$ basta con ceñirse al siguiente diagrama.
+	\begin{equation*}
+		\xymatrix{
+			[a,b]\ar[r]^{\sigma}& \X\\
+			[c,d]\ar[u]^{\varphi}\ar[ur]_{\tau\equiv\sigma\circ\varphi}
+		}
+	\end{equation*}
+	Donde $\varphi$ es un homeomorfismo entre $[c,d]$ y $[a,b]$, en particular, suele usarse la interpolación lineal definida en el ejemplo \ref{etop_exa_homeomorfismos}. Nótese que $\tau$ es un camino por ser composición de funciones continuas. Además, tiene la misma imagen que $\sigma$ por ser $\varphi$ sobreyectiva.
 \end{obs}
 Otro problema importante es el de ``yuxtaponer'' o ``pegar'' caminos, es decir, si tenemos un camino que termina en un extremo y otro que empieza en ese mismo extremo, queremos definir un camino cuya traza sea la unión de las trazas de ambos caminos. A continuación presentamos un procedimiento para resolver este problema.
-\begin{exa}[Pegado de caminos]
-	contenidos...
-\end{exa}
+\begin{obs}[Pegado de caminos]
+	\label{cam_obs_pegado}
+	Supongamos que tenemos dos caminos $\sigma:[a,b]\to\X$ y $\tau:[c,d]\to\X$ tales que $\sigma(b)=\tau(c)$. Queremos ``soldar'' estos caminos como si fuéramos un herremos vikingo. Para ello, haremos uso de nuestro martillo, la observación \ref{cam_obs_reparam}.
+	
+	Observemos que bastaría con tomar, por ejemplo, las reparametrizaciones $\widehat{\sigma}:[0,\frac{1}{2}]\to\X$ y $\widehat{\tau}:[\frac{1}{2},1]\to\X$ y definir la aplicación
+	\begin{equation*}
+		\sigma\tau:=\left\{\begin{array}{cc}
+			t\mapsto \widehat{\sigma}(t)&\text{ si }t\in[0,\frac{1}{2}]\\
+			t\mapsto \widehat{\tau}(t)&\text{ si }t\in[\frac{1}{2},1]
+		\end{array}\right.
+	\end{equation*}
+	Nótese que $\sigma\tau$ es un camino. Para comprobarlo basta ver que tenemos un recubrimiento cerrado conformado por $[0,\frac{1}{2}]$ y $[\frac{1}{2},1]$ tal que la restricción $\sigma\tau$ a cada uno de los cerrados del recubrimiento es continua (al coincidir con $\sigma$ y con $\tau$).
+\end{obs}
 \section{Conexión por caminos}
 Comenzamos definiendo la noción de conexión por caminos.
 \begin{defi}[Conexo por caminos]
@@ -35,9 +53,24 @@ Una de las incógnitas que nos surgen al plantearnos una nueva noción de cualqu
 \begin{proof}
 	Evidentemente, si $\X$ es conexo por caminos podemos fijar un $x_0\in X$ y escribir $\X$ como $\X=\bigcup_{x\in\X}\Tr(\sigma_x)$, donde $\Tr(\sigma_x)$ denota a la traza del camino que conecta $x_0$ con $x$. Como los caminos son conexos por ser la imagen continua de un intervalo, la familia de conjuntos que conforma la unión es una familia de conexos, además, una familia de conexos cuya intersección contiene al menos a $x_0$. Luego, por el teorema del pivote $\X$ es conexo.
 \end{proof}
-Hay numerosos contraejemplos para ver que el recíproco no se cumple, veamos uno de ellos con todo detalle.
+Hay numerosos contraejemplos para ver que el recíproco no se cumple, veamos uno de ellos con todo lujo de detalles técnicos.
 \begin{exa}[Seno del topólogo]
-	contenidos...
+	Consideremos el conjunto conexo (ver ejemplo \ref{conex_exa_miscel}) \[\adher{\Gamma}:=\left\{\left(x,\sen\left(\frac{1}{x}\right)\right)\midc x>0\right\}\cup\{0\}\times[-1,1]=:\Gamma\cup P\]
+	Evidentemente, el miembro de la izquierda de la unión es conexo, por caminos, por tanto los problemas podrán presentarse únicamente al tratar de unir un punto de $P$ con otro $\Gamma$.
+	
+	Sean pues $a\in P$ y $b\in \Gamma$. Supongamos que hay un camino $\sigma\equiv(\sigma_1,\sigma_2):[0,1]\to\adher{\Gamma}$ que conecta $a$ y $b$. A continuación desarrollamos un argumento basado en sucesiones para ver que esto no es posible.
+	
+	Tomemos $t_0:=\sup\{t\in[0,1]\midc \sigma_1(t)=0\}$, es decir, intuitivamente, el último momento en el que el camino pasa por $P$. Este supremo está bien definido por ser $A:=\{t\in[0,1]\midc \sigma_1(t)=0\}$ un conjunto acotado. Además es cerrado, ya que $A=\sigma_1^{-1}(\{0\})$, luego $A$ contiene a todos sus puntos de acumulación, en particular a su supremo, por tanto $t_0=\max A$. Esto quiere decir, que para todo $t>t_0$ se cumplirá que $\sigma_1(t)>0$.
+	
+	Escogemos ahora un $(0,c)\in P$ de manera que $c\not=\sigma_2(t_0)$. Hecho esto, consideramos las intersecciones de la recta horizontal $y=c$ con $\Gamma$. la primera coordenada de estas intersecciones conforman el conjunto $S:=\{(k\arcsen(c))^{-1}\midc k\in\N\}$, que puede ser entendido como una sucesión $\{x_k\}_{k=1}^\infty$.
+	
+	Como $\{x_k\}_{k=1}^\infty$ converge a $0$ habrá un $k_0$ a partir del cual todos los términos de la sucesión estén ``a la izquierda'' de $b$.
+	
+	Consideramos pues la sucesión $\{t_k\}_{k=k_0}^\infty\subset[t_0,1]$ tal que $\sigma_1(t_k)=x_k$. Al ser esta sucesión un conjunto infinito en un compacto (y al encontrarnos en $\R$) por el teorema de Bolzano--Weierstrass deberá tener una subsucesión convergente, digamos $\{t_{k_l}\}_{l=1}^\infty$ tal que $\lim t_{k_l}=:t_1$.
+	
+	Por continuidad de $\sigma_1$, se tiene la subsucesión $\{\sigma_1(t_{k_l})\}_{l=1}^\infty=\{x_{k_l}\}_{l=1}^\infty$ convergerá a $\sigma_1(t_1)$. No obstante, como toda subsucesión de una sucesión convergente debe converger al límite de la sucesión original se tiene que $\sigma(t_1)=0$, luego, como $t_1\in[t_0,1]$ a la fuerza se tiene que dar la igualdad $t_1 = t_0$ (por la definición de $t_0$).
+	
+	Ahora, repidiendo el proceso anterior con $\sigma$ en luegar de con $\sigma_1$ obtenemos que, por continuidad de $\sigma$, la subsucesión $\{\sigma(t_{k_l})\}_{l=1}^\infty=\{(x_{k_l},c)\}_{l=1}^\infty$ convergerá tanto a $\sigma(t_0)=(0,\sigma_2(t_0))$ como a $(0,c)$. Sin embargo, como el límite es único en espacios métricos y $c\not=\sigma_2(t_0)$, acabamos de llegar a un absurdo, concluyendo al fin que el seno del topólogo no es conexo por caminos.
 \end{exa}
 Una de esas cosas que nos hace volver a creer en la especie humana son los teoremas bonitos. Y el siguiente, que es un análogo del teorema del pivote para la conexión por caminos, lo es sin duda alguna.
 \begin{theo}[Teorema del pivote]
@@ -50,18 +83,25 @@ Una de esas cosas que nos hace volver a creer en la especie humana son los teore
 	
 	Pegando $\sigma$ y $\tau$ conseguimos un camino que une $p$ y $q$, y, como la elección de estos dos es arbitraria, hemos terminado.
 \end{proof}
+Todos los corolarios y variantes del teorema del pivote válidas para la conexión ``normal'' siguen teniendo poder aquí, y las demostraciones son exactamente las mismas, por tanto, consideramos este un buen momento para ir atrás en el tiempo y recordarlas. 
 \section{Componentes conexas por caminos}
-En esta sección estudiaremos el concepto análogo al de las componentes conexas, pero para esta noción de conexión.
+En esta sección estudiaremos el concepto análogo al de las componentes conexas, pero para esta noción de conexión. La mayoría de las propiedades de las componentes conexas se heredan (gracias al análogo al teorema del pivote) para componentes conexas por caminos con exactamente la misma prueba. De este modo, aquí nos limitaremos a enunciarlas, recalcando únicamente las diferencias con respecto a la conexión.
 \begin{defi}[Componente conexa por caminos]
-	Dado un punto $x$ de un espacio $\X$ se dice que un conjunto $\Co(x)$ que contiene a $x$ es una \tbi[componente conexa!por caminos]{componente conexa por caminos} de $x$ si $\Co(x)$ es un conjunto conexo ``maximal''. Es decir, el mayor conjunto conexo por caminos que contiene a $x$. En general se dirá que $\Co(x)$ es una componente conexa si lo es de alguno de sus puntos (luego de todos, como veremos más adelante).
+	Dado un punto $x$ de un espacio $\X$ se dice que un conjunto $\Co(x)$ que contiene a $x$ es una \tbi[componente conexa!por caminos]{componente conexa por caminos} de $x$ si $\Co(x)$ es un conjunto conexo ``maximal''. Es decir, dado un conjunto $D$ conexo por caminos que contenga a $x$, se verifica que $\Co(x)\not\subset D$.
+	
+	En general, se dirá que $\Co$ es una componente conexa por caminos si lo es de alguno de sus puntos (luego de todos, como veremos más adelante).
 \end{defi}
-A continuación demostramos resultados análogos a los ya demostrados para la noción de conexión, haciendo hincapié en las relaciones entre las dos nociones.
-\begin{lem}[Caracterización conjuntista]
-	contenidos...
-\end{lem}
-\begin{proof}
-	contenidos...
-\end{proof}
+A continuación enunciamos las propiedades más básicas de las componentes conexas por caminos, propiedades compartidas con las componentes conexas.
+\begin{obs}[Propiedades compartidas]Del teorema del pivote se sigue
+	\begin{enumerate}
+		\item Una componente conexa por caminos de $x$ puede escribirse como $\Co(x)=\bigcup_{A\subset\X}A$ con $x\in A$ y $A$ conexo por caminos.
+		\item Se cumple que la componente por caminos conexa de un punto no es solo un conjunto conexo por caminos maximal, sino máximo. Esto se traduce en que un punto posee una única componente conexa por caminos $\Co(x)$.
+		\item Si un conjunto $D$ conexo por caminos corta a la componente conexa por caminos $\Co(x)$ de $x$ se verifica que $D\subset \Co(x)$.
+		\item $\Co(x)$ es la componente conexa por caminos de todos sus puntos (y de ninguno más). En particular, si un espacio es conexo por caminos, este consta de una única componente conexa por caminos.\qedhere
+	\end{enumerate}
+\end{obs}
+Vistas las similitudes con la noción usual de conexión pasemos a las diferencias, que no son pocas, aunque si sutiles.
+
 \section{Local--conexión por caminos}
 \begin{defi}[Localmente conexo por caminos]
 	Un espacio $\X$ se dice \tbi{localmente conexo por caminos} si todo punto del espacio tiene una base de entornos conexos por caminos.

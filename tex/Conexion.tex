@@ -143,7 +143,9 @@ Recojamos los frutos de nuestra cosecha con un ejemplo, pero antes presentemos u
 	En $\R^n$ definimos conjunto \tbi{estrellado} como un conjunto en el que existe un punto tal que el segmento de él a cualquier otro está en el conjunto.
 \end{defi}
 
-\begin{exa}[Miscelánea] Veamos algunos ejemplos de conjuntos conexos:
+\begin{exa}[Miscelánea]
+	\label{conex_exa_miscel}
+	Veamos algunos ejemplos de conjuntos conexos:
 	\begin{enumerate}
 		\item Los segmentos son conexos por ser la imagén continua de $[0,1]$, que es conexo, por la interpolación lineal, que es continua.
 		\item Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican. En resumen
@@ -227,7 +229,9 @@ Al igual que ocurría con la compacidad, sería deseable que todos los espacios 
 Aunque parezca que esto no es una ventaja, es tremendamente útil a la hora de estudiar, por ejemplo, si dos espacios son homeomorfos, ya que el número de componentes conexas se conserva por homeomorfismos (ver ejemplo \ref{etop_exa_homeomorfismos}).
 
 \begin{defi}[Componente conexa de un punto]
-	Se dice que un conjunto $\Co(x)\subset\X$ es una \tbi{componente conexa} de $x\in\Co(x)$ si es un conjunto conexo ``maximal''. Esto es, es el mayor conjunto conexo que contiene a $x$. En general, diremos que un conjunto $\Co$ es una componente conexa si lo es de alguno de sus puntos (y por tanto de todos, véase la observación \ref{conex_obs_compartido}).
+	Se dice que un conjunto $\Co(x)\subset\X$ es una \tbi{componente conexa} de $x\in\Co(x)$ si es un conjunto conexo ``maximal''. Esto es que, dado un conjunto $D$ conexo que contiene a $x$ se verifica que $\Co(x)\not\subset D$.
+	
+	En general, diremos que un conjunto $\Co$ es una componente conexa si lo es de alguno de sus puntos (y por tanto de todos, véase la observación \ref{conex_obs_compartido}).
 \end{defi}
 
 Análogamente a lo que hicimos con el interior y la adherencia en el capítulo \ref{etop}, veamos que la componente conexa de un punto tiene una caracterización conjuntista muy sencilla.
@@ -237,7 +241,7 @@ Análogamente a lo que hicimos con el interior y la adherencia en el capítulo \
 	$\Co(x)=\bigcup_{A\subset\X} A$ con $x\in A$ y $A$ conexo, es una componente conexa de $x$.
 \end{lem}
 \begin{proof}
-	En efecto, $\Co(x)$ es vacío, ya que $\{x\}$ es conexo. Además, la familia de conexos que conforma $\Co(x)$ tiene al menos a $\{x\}$ en la intersección, luego, por el teorema de pivote, $\Co(x)$ es conexo.
+	En efecto, $\Co(x)$ es no vacío, ya que $\{x\}$ es conexo. Además, la familia de conexos que conforma $\Co(x)$ tiene al menos a $\{x\}$ en la intersección, luego, por el teorema de pivote, $\Co(x)$ es conexo.
 	
 	Por construcción es, además, maximal, ya que, si hubiera un conexo que lo contuviera, este contendría a $x$, y, por tanto, estaría $\Co(x)$.
 \end{proof}
