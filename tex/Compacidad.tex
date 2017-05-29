@@ -105,11 +105,11 @@ Sin embargo, la idea de cerrado es perfectamente legítima en los espacios topol
 	
 	Sea un punto $a\in\X\setminus \Y$, veamos que hay un entorno abierto de $a$ contenido en $\X\setminus \Y$.
 	
-	En efecto, dado un punto $y \in \Y$, como $\X$ es \hausdorff podemos tomar entornos abiertos disjuntos $U_y$ y $V_y$ de los puntos $a$ e $y$ respectivamente.
+	En efecto, dado un punto $y \in \Y$, como $\X$ es \hausdorff podemos tomar entornos abiertos disjuntos $U_a^y$ y $V_y$ de los puntos $a$ e $y$ respectivamente.
 	
-	Es claro que la colección $\{V_y \midc y \in \Y\}$ es un recubrimiento abierto de $\Y$, y por ser este compacto existirá un subrecubrimiento finito $\{V_y^1,\dots,V_y^n\}$.
+	Es claro que la colección $\{V_y \midc y \in \Y\}$ es un recubrimiento abierto de $\Y$, y por ser este compacto existirá un subrecubrimiento finito $\{V_{y_1},\dots,V_{y_n}\}$.
 	
-	Es evidente que $V:=\bigcup_{i=1}^nV_{y_i}$ contiene a $\Y$. Además, $V$ y $U := \bigcap_{i=1}^nU_y^i$ son disjuntos.
+	Es evidente que $V:=\bigcup_{i=1}^nV_{y_i}$ contiene a $\Y$. Además, $V$ y $U := \bigcap_{i=1}^nU_a^{y_i}$ son disjuntos.
 	
 	Por lo tanto $U$ es entorno de $a$ contenido en $\X\setminus\Y$.
 \end{proof}
