@@ -71,7 +71,7 @@ Hay numerosos contraejemplos para ver que el recíproco no se cumple, veamos uno
 	
 	Por continuidad de $\sigma_1$, se tiene la subsucesión $\{\sigma_1(t_{k_l})\}_{l=1}^\infty=\{x_{k_l}\}_{l=1}^\infty$ convergerá a $\sigma_1(t_1)$. No obstante, como toda subsucesión de una sucesión convergente debe converger al límite de la sucesión original se tiene que $\sigma(t_1)=0$, luego, como $t_1\in[t_0,1]$ a la fuerza se tiene que dar la igualdad $t_1 = t_0$ (por la definición de $t_0$).
 	
-	Ahora, repidiendo el proceso anterior con $\sigma$ en luegar de con $\sigma_1$ obtenemos que, por continuidad de $\sigma$, la subsucesión $\{\sigma(t_{k_l})\}_{l=1}^\infty=\{(x_{k_l},c)\}_{l=1}^\infty$ convergerá tanto a $\sigma(t_0)=(0,\sigma_2(t_0))$ como a $(0,c)$. Sin embargo, como el límite es único en espacios métricos y $c\not=\sigma_2(t_0)$, acabamos de llegar a un absurdo, concluyendo al fin que el seno del topólogo no es conexo por caminos.
+	Ahora, repitiendo el proceso anterior con $\sigma$ en lugar de con $\sigma_1$ obtenemos que, por continuidad de $\sigma$, la subsucesión $\{\sigma(t_{k_l})\}_{l=1}^\infty=\{(x_{k_l},c)\}_{l=1}^\infty$ convergerá tanto a $\sigma(t_0)=(0,\sigma_2(t_0))$ como a $(0,c)$. Sin embargo, como el límite es único en espacios métricos y $c\not=\sigma_2(t_0)$, acabamos de llegar a un absurdo, concluyendo al fin que el seno del topólogo no es conexo por caminos.
 \end{exa}
 Una de esas cosas que nos hace volver a creer en la especie humana son los teoremas bonitos. Y el siguiente, que es un análogo del teorema del pivote para la conexión por caminos, lo es sin duda alguna.
 \begin{theo}[Teorema del pivote]
@@ -118,6 +118,7 @@ En esta sección trataremos de definir la versión local de la conexión por cam
 \end{defi}
 Sin más dilación vamos a caracterizar, como hicimos en el capítulo anterior, la versión local de esta noción de conexión.
 \begin{lem}[Caracterización]
+	\label{cam_lem_caracter}
 	Las siguientes afirmaciones son equivalentes.
 	\begin{enumerate}
 		\item $\X$ es localmente conexo por caminos.
@@ -130,6 +131,7 @@ Sin más dilación vamos a caracterizar, como hicimos en el capítulo anterior, 
 \end{proof}
 Esta vez, la local--conexión por caminos nos aporta algo más, una condición suficiente para que un conjunto sea conexo por caminos.
 \begin{prop}[Condición suficiente]
+	\label{cam_prop_condSuf}
 	Si $\X$ es conexo y localmente conexo por caminos, entonces $\X$ es conexo por caminos.
 \end{prop}
 \begin{proof}
@@ -154,11 +156,77 @@ En primer lugar pongamos en marca la cosechadora rápida y deduzcamos todo lo qu
 \begin{itemize}
 	\item Es claro que la conexión por caminos no se traslada a subespacios, basta observar el plano $\R^2$ y el seno del topólogo.
 	\item La suma de espacios topológicos nunca es conexa, mucho menos conexa por caminos.
+	\item La suma de espacios localmente conexos por caminos es localmente conexa por caminos. Esto se deja como ejercicio, ya que la demostración es, literalmente, copiar la demostración para el caso de la local--conexión.
+	\item La local--conexión por caminos se traslada a subespacios abiertos. La demostración de este hecho es exactamente la misma que la del lema \ref{conex_lem_subesLocal}.
+	\item La conexión local por caminos se hereda a cocientes, no obstante, la imagen continua de un localmente conexo por caminos no tendría por qué ser localmente conexa por caminos. La demostración de este hecho es la misma que la de la proposición \ref{conex_prop_cocientes}.
 \end{itemize}
-
+Tras haber recogido los frutos de nuestro trabajo nos toca trabajar de nuevo para deducir las propiedades que nos quedan. Prometemos que no será muy doloroso.
+\begin{prop}[Continuidad y conexión por caminos]
+	La imagen continua de un espacio conexo por caminos es conexo por caminos.
+\end{prop}
+\begin{proof}
+	Si $\X$ es conexo por caminos y $f$ es una aplicación continua, dados dos puntos $y$ e $y'$ que viven en $f(\X)$, habrá otros dos puntos $x$ y $x'$ de $\X$ tales que $f(x)=y$ y $f(x')=y'$. Como hay un camino $\sigma$ que conecta $x$ y $x'$, basta con considerar el camino $f\circ \sigma$ que conecta $y$ con $y'$.
+\end{proof}
+\begin{obs}[Conexión por caminos y cocientes]
+	Del hecho de que la imagen continua de conexos por caminos sea conexa por caminos se deduce, como ya hemos hecho en otras ocasiones, que el cociente de un espacio conexo por caminos es conexo por caminos.
+\end{obs}
+Pasemos a estudiar los productos.
+\begin{prop}[Conexión por caminos y productos]
+	El producto de espacios conexos por caminos es conexo por caminos.
+\end{prop}
+\begin{proof}
+	Sean los puntos $(x_0,y_0)$ y $(x_1,y_1)$ del espacio producto $\X\times \Y$. Es claro que habrá un camino $\sigma$ que conecte $x_0$ con $x_1$ en $\X$, y, análogamente, habrá un camino $\tau$ en $\Y$ que conecte $y_0$ con $y_1$. Sin pérdida de generalidad podemos suponer que ambos caminos tienen a $[0,1]$ por domino. 
+	
+	Considerando el camino $\gamma\equiv(\sigma,\tau)$ tenemos que $\gamma$ conecta a $(x_0,y_0)$ con $(x_1,y_1)$.
+\end{proof}
+\begin{cor}[Local--conexión por caminos y productos]
+	El producto de espacios localmente conexos por caminos es localmente conexo por caminos.
+\end{cor}
+\begin{proof}
+	Sea $(x,y)$ un punto del espacio producto, es claro que $x$ tiene una base de entornos conexos por caminos $\Va{x}$ en $\X$ mientras que $y$ tiene otra base de entornos conexos por caminos $\Va{y}$ en $\Y$. Como el producto de bases de entornos es base de entornos del producto, basta con tomar la base de entornos $\Va{x}\times\Va{y}$, cuyos entornos son conexos por caminos por la proposición anterior.
+\end{proof}
 Veamos aquí de forma condensada las pintorescas relaciones entre las distintas formas de ver la conexión.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale = 1]{img/Comparacion_conexion}
 	\caption{Ilustración de las relaciones entre las diferentes nociones de conexión.}
 \end{figure}
+Veamos un ejemplo de cada, asegurándonos de que hemos hecho bien el dibujo.
+\begin{exa}[Ejemplos y contraejemplos]\
+	\begin{enumerate}
+		\item En la proposición \ref{cam_prop_condSuf} demostramos que un conjunto conexo y localmente conexo por caminos debe ser conexo por caminos, con lo que el dibujo es un fiel reflejo de la realidad, al menos en ese punto.
+		\item A la hora de encontrar un espacio conexo por caminos y no localmente conexo nos bastará con coger el conjunto del ejemplo \ref{conex_exa_poliLocal}.
+		\item Si al conjunto del ejemplo  \ref{conex_exa_poliLocal} le quitamos el punto $(0,0)$ obtenemos un conjunto conexo, no conexo por caminos que no es localmente conexo.\qedhere
+	\end{enumerate}
+\end{exa}
+Encontrar los contraejemplos restantes requiere un poco más de valor, sangre, sudor, y, por supuesto, muchas lágrimas.
+\begin{exa}[Conexo, localmente conexo y no conexo por caminos]
+	La recta real con la topología de los complementarios numerables $(\R,\T_{\text{CN}})$ es claramente conexa, ya que dos abiertos cualesquiera se cortan, en efecto, si dos abiertos no triviales $U\cap V=\emptyset$ entonces, tomando complementarios tendríamos que $\R$ es numerable, lo cual es absurdo.
+	
+	Además, todo abierto $U$ es conexo, esto se debe a que los abiertos relativos de un abierto son los abiertos del espacio ambiente contenidos en $U$. De aquí se deduce que $(\R,\T_{\text{CN}})$ es localmente conexo, ya que basta tomar como base de entornos conexos de un punto $x$ a todos los abiertos que contienen a $x$.
+	
+	Para ver que no es conexo por caminos usaremos una forma de discurrir muy útil. Supongamos que hay una aplicación $\sigma:[0,1]\to\R$ que conecta dos puntos, digamos $x$ e $y$, y veamos qué debe cumplir para ser un camino.
+	
+	Si $\sigma$ fuera un camino, entonces $K:=\sigma([0,1])$ sería compacto y conexo. Si $K$ fuera infinito, tendría un subconjunto $F$ numerable, y por tanto cerrado, luego compacto, por ser un cerrado en un compacto. Sin embargo, la topología relativa de $F$ es la discreta por ser un conjunto numerable, lo cual entra en contradicción con su compacidad.
+	
+	Esto solo nos deja la salida de que $K$ sea finito, y por tanto, $K$ tiene inducida la topología discreta. Como $K$ debe ser también conexo, $K$ tendrá que ser unipuntual. Esto quiere decir que los caminos de $(\R,\T_{\text{CN}})$ únicamente pueden contener a un punto en su traza. Dicho de otra manera, $(\R,\T_{\text{CN}})$ es totalmente disconexo por caminos.
+\end{exa}
+Únicamente nos queda por encontrar un espacio conexo por caminos, localmente conexo, pero no localmente conexo por caminos. Para ello, de nuevo debemos dibujar un pentagrama en el suelo y rezar $n$ salmos en arameo antiguo.
+\begin{exa}[Productos y cocientes de Satán]
+	Veamos que el espacio $\X$, definido como sigue, cumple lo que queremos. \[\X:=\frac{[0,1]\times \R}{\{1\}\times \R}\] donde $[0,1]$ tiene la topología usual y $\R$ viene equipado con la topología de los complementarios numerables. La relación de equivalencia que induce este cociente no es más que la que hace corresponder a cada punto consigo mismo e identifica a todos los puntos del segmento $\{1\}\times\R$.
+	
+	Como los dos factores del producto son localmente conexos, el producto también lo será, así como su cociente. Luego $\X$ es localmente conexo.
+	
+	$\X$ es conexo por caminos, esto lo deducimos del teorema del pivote. Es claro que cada segmento $y=a$ con $a\in\R$ es un subespacio de $\X$ homeomorfo a $[0,1]$, luego un camino (¡compruébese!). Por tanto, los segmentos $y=a$ son conexos por caminos.
+	
+	Como la familia de todos estos segmentos cortan a $\{1\}\times \R$, que es un punto de $\X$, hemos encontrado una familia de conexos por caminos de intersección no vacía, que además, cubre el espacio. Esto, por el teorema del pivote quiere decir que $\X$ es conexos por caminos.
+	
+	Ahora veamos que $\X$ no es localmente conexo por caminos, para ello, tenemos una maravillosa caracterización que nos dice que si lo fuera, entonces los abiertos serían localmente conexos por caminos (ver el lema \ref{cam_lem_caracter} y reflexionar sobre él).
+	
+	Nuestra tarea pues es encontrar un abierto que no sea localmente conexo por caminos, con un poco de magia encontramos que $A:=\X\setminus (\{1\}\times \R)=[0,1)\times\R$ es un abierto de $\X$ por ser la proyección de un abierto saturado.
+	
+	$A$ no es localmente conexo por caminos, ya que, al considerar la proyección $p_1$, que es una identificación (por ser sobreyectiva y abierta), luego transforma conserva la local--conexión por caminos, tendríamos que $p_1(A)=\R$. De aquí se desprende que $\R$ con la topología de los complementarios numerables sería localmente conexo por caminos, lo cual es falso.
+	
+	En efecto, las únicas componentes conexas por caminos de $\R$ son los puntos, que son cerrados, entrando en contradicción con el lema \ref{cam_lem_caracter}.
+\end{exa}
+Dicho esto, nuestro viaje por la topología general ha concluido. Pero aun debemos cruzar una última frontera, adentrándonos en las entrañas del abstruso, pero a la vez maravilloso mundo de la topología algebraica.

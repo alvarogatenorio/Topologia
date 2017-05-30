@@ -113,12 +113,15 @@ Sin embargo, la idea de cerrado es perfectamente legítima en los espacios topol
 	
 	Por lo tanto $U$ es entorno de $a$ contenido en $\X\setminus\Y$.
 \end{proof}
-
-\begin{obs}[Compacidad y separación]\label{comp_obs_compSep}
-	Notemos que hemos demostrado más de lo que nos pedían. En la demostración anterior se prueba que un compacto $\Y$ y un punto $a\in \X\setminus \Y$, en un espacio topológico $\X$ que es \hausdorff, tienen entornos disjuntos.
+\begin{cor}[Compacidad y separación]
+	\label{comp_obs_compSep}
+	Un compacto $\Y$ y un punto $a\in \X\setminus \Y$, en un espacio topológico $\X$ que es \hausdorff, tienen entornos disjuntos.
+\end{cor}
+\begin{proof}
+	Es el contenido de la demostración de la proposición \ref{comp_prop_compCerrado}.
 	
-	Nótese además la importancia de que $\X$ sea \hausdorff. Obsérvese que en $\X=\{a,b\}$ con la topología del punto $\T_a$ todo es compacto por ser finito y, sin embargo, $\{a\}$ no es cerrado.
-\end{obs}
+	Nótese la importancia de que $\X$ sea \hausdorff. Obsérvese que en $\X=\{a,b\}$ con la topología del punto $\T_a$ todo es compacto por ser finito y, sin embargo, $\{a\}$ no es cerrado.
+\end{proof}
 Continuemos nuestra noble andadura por estos senderos que sin duda alguna nos llevarán o bien a la tumba o bien a la más profunda de las demencias.
 \begin{prop}[Weierstrass]\label{comp_prop_weierstrass}
 	Sea $\X$ compacto y $f:\X\to\R$ una aplicación continua entonces $f$ alcanza el máximo y el mínimo.
@@ -356,7 +359,7 @@ Sin embargo, parece muy engorroso tener que demostrar que existe una base de ent
 	
 	Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
 	
-	Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en la observación \ref{comp_obs_compSep}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, con $x\in V_x$ y $K\setminus W\subset G$.
+	Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en el corolario \ref{comp_obs_compSep}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, con $x\in V_x$ y $K\setminus W\subset G$.
 	
 	Podemos tomar $V_x$ además de forma que $V_x\subset U$. Si $V_x$ no cumpliera esto, tomamos en su lugar $V_x\cap U$ que también contiene a $x$. Entonces, $x\in V_x\subset \adher{V}_x\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ Hausdorff. Entonces $\adher{V}_x$ es un compacto (por ser cerrado en compacto) entorno de $x$.
 	

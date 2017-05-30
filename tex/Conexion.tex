@@ -6,7 +6,7 @@ La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n
 Comencemos nuestra nueva andadura definiendo formalmente la idea de conexión y presentando algunos resultados bastante potentes.
 
 \begin{defi}[Conexión]
-	Un espacio topológico $(\X,\T)$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no lo podemos particionar con dos abiertos. Dicho de otra manera, un espacio es conexo si no unión de dos abiertos disjuntos no vacíos.
+	Un espacio topológico $(\X,\T)$ es \tbi[espacio!conexo|see{conexo}]{conexo} \indexg{conexo} si no lo podemos particionar con dos abiertos no triviales. Dicho de otra manera, un espacio es conexo si no es unión de dos abiertos disjuntos no vacíos.
 	
 	Escrito de forma conjuntista, no existen $\U$ y $\V$ abiertos tales que $U\cap V=\emptyset$ y $\X=U\cup V$.
 \end{defi}
@@ -14,7 +14,7 @@ Comencemos nuestra nueva andadura definiendo formalmente la idea de conexión y 
 \begin{obs}[Conexión en subespacios]
 	De nuevo, como ocurría con la compacidad, la conexión en un subconjunto no necesita una definición alternativa. En efecto, dado un subespacio $\Y\subset\X$, diremos que $\Y$ es conexo si lo es entendido como un espacio topológico equipado con la topología relativa.
 \end{obs}
-La siguiente proposición bien podría ser una observación inmediata, no obstante es extremadamente útil y nos acerca a la idea que de vez en cuando hemos dejado caer acerca a la relación de los clopens con la conexión.
+La siguiente proposición bien podría ser una observación inmediata, no obstante, es extremadamente útil y nos acerca a la idea que de vez en cuando hemos dejado caer acerca a la relación de los clopens con la conexión.
 \begin{prop}[Definiciones equivalentes]
 	Sea un espacio topológico $\X$. Las siguientes afirmaciones son equivalentes:
 	\begin{enumerate}
@@ -36,10 +36,10 @@ Para ir calentando daremos una caracterización de los conexos de la recta real 
 \begin{proof}
 	Demostremos ambas implicaciones.
 	\begin{enumerate}
-		\item[\bra] Sea $A$ conexo de $\R$ que no sea un intervalo, entonces habrá dos puntos $a,b\in A$ para cuales podemos elegir un $c$ entre $a$ y $b$ tal que $c\not\in A$. Dicho esto, considerando los conjuntos $U:=(-\infty,c)\cap A$ y $V:=(c,\infty)\cap A$ es claro que son abiertos disjuntos de $A$ que cubren a $A$, luego $A$ no es conexo. 
-		\item[\bla] Sea $A$ un intervalo. Si no fuera conexo, podría particionarlo en dos cerrados $F$ y $H$. Tomemos pues dos puntos, uno en cada abierto de la partición $a\in F$ y $b\in H$, supongamos sin pérdida de generalidad que $a<b$. Como $A$ es un intervalo, dados dos puntos de $A$, contiene a todos los que haya en medio, en particular $[a,b]\subset A$.
+		\item[\bra] Sea $A$ conexo de $\R$ que no sea un intervalo, entonces habrá dos puntos $a,b\in A$ para los cuales podemos elegir un $c$ entre $a$ y $b$ tal que $c\not\in A$. Dicho esto, considerando los conjuntos $U:=(-\infty,c)\cap A$ y $V:=(c,\infty)\cap A$ es claro que son abiertos disjuntos de $A$ que cubren a $A$, luego $A$ no es conexo. 
+		\item[\bla] Sea $A$ un intervalo. Si no fuera conexo, podría particionarlo en dos cerrados $F$ y $H$. Tomemos pues dos puntos, uno en cada abierto de la partición $a\in F$ y $b\in H$, supongamos sin pérdida de generalidad que $a<b$. Como $A$ es un intervalo, dados dos puntos de $A$, $A$ contiene a todos los que haya en medio, en particular $[a,b]\subset A$.
 		
-		Consideremos pues $H\cap[a,b]\not=\emptyset$, que, al ser intersección de cerrados es cerrado, y, por tanto, contiene a todos sus puntos de acumulación, en particular, al ser acotado contiene a su ínfimo, al que llamaremos $\eta$.
+		Consideremos pues $H\cap[a,b]\not=\emptyset$, que, al ser intersección de cerrados, es cerrado, y, por tanto, contiene a todos sus puntos de acumulación, en particular, al ser acotado contiene a su ínfimo, al que llamaremos $\eta$.
 		
 		Llegados a este punto, si $\eta=a$ entonces $a$ estará en los dos cerrados de la partición a la vez, lo cual es absurdo, precisamente por ser una partición. Esto obliga a que $\eta > a$, luego $[a,\eta)\cap H=\emptyset$ así que $[a,\eta)\subset F$. Al ser $F$ cerrado es claro que $[a,\eta]\subset F$. Pero esto es absurdo porque entonces $\eta$ estaría tanto en $F$ como $H$, que son conjuntos disjuntos.\qedhere
 	\end{enumerate}
@@ -371,6 +371,7 @@ Lamentablemente, el estudio del comportamiento topológico de la conexión local
 
 En primer lugar cabe destacar que la imagen continua de un conjunto localmente conexo no necesariamente es localmente conexo. Sin embargo, la local--conexión se hereda a los cocientes.
 \begin{prop}[Local--conexión y cocientes]
+	\label{conex_prop_cocientes}
 	Sea $\X$ localmente conexo y $f:\X\to\Y$ una identificación. Entonces, $\Y$ es localmente conexo.
 \end{prop}
 \begin{proof}
@@ -384,6 +385,7 @@ En primer lugar cabe destacar que la imagen continua de un conjunto localmente c
 \end{proof}
 Aunque la conexión local se comporta peor que la conexión con los cocientes, se comporta un poco mejor con los subespacios, no llegándose a heredar la local--conexión a todos ellos.
 \begin{lem}[Subespacios y local--conexión]
+	\label{conex_lem_subesLocal}
 	Si $A$ es un subespacio abierto de $\X$, siendo $\X$ localmente conexo, entonces $A$ es localmente conexo.
 \end{lem}
 \begin{proof}
@@ -414,6 +416,7 @@ Condensando todo lo visto, presentamos el resumen en forma de tabla.
 \end{table}
 Presentamos para terminar un ejemplo con objeto de aumentar la curiosidad del lector.
 \begin{exa}[Conexión local y por poligonales]
+	\label{conex_exa_poliLocal}
 	El espacio $\X:=C\cup\{(0,0)\}$ donde $C$ es el conjunto definido en la ecuación \eqref{lineas} no es localmente conexo pero si es conexo por poligonales.
 	
 	La conexión por poligonales es evidente, dados dos puntos de $X$, si están en la misma recta horizontal basta con coger el segmento que los une.
