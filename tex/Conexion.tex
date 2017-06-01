@@ -1,7 +1,9 @@
 %Para este capítulo se usará la abreviatura "conex".
 \chapter{Conexión}
 \label{conex}
-La noción de conexión es otra más de las nociones que ya conocíamos en $\R^n$ y espacios métricos en general y que pueden generalizarse a un espacio topológico arbitrario. En este capítulo formalizaremos la noción intuitiva de estar hecho ``de una sola pieza''. Asimismo también trabajaremos sobre el concepto de ``pieza indivisible'' de algo, o, dicho más finamente, ``componente conexa''. 
+La noción de conexión es otra más de las nociones que ya conocíamos en para espacios métricos y que pueden generalizarse para espacios topológicos arbitrarios.
+
+En este capítulo formalizaremos la noción intuitiva de estar hecho ``de una sola pieza''. Asimismo trabajaremos sobre el concepto de ser una ``pieza indivisible'' de algo, o, dicho más finamente, ser una ``componente conexa''. 
 \section{Definición y propiedades}
 Comencemos nuestra nueva andadura definiendo formalmente la idea de conexión y presentando algunos resultados bastante potentes.
 
@@ -26,7 +28,7 @@ La siguiente proposición bien podría ser una observación inmediata, no obstan
 \begin{proof}
 	Si $\X$ es disconexo es claro que podemos escribir $\X$ como unión disjunta de dos abiertos no triviales $\X=U\cup V$. Como $U$ es abierto, su complementario, $V$, será cerrado, luego $V$ será un clopen. Análogamente, como $V$ es abierto, su complementario, $U$, será cerrado, luego $U$ es también un clopen.
 \end{proof}
-Para ir calentando daremos una caracterización de los conexos de la recta real $\R$. La demostración de la siguiente proposición simplifica brutalmente a la que habitualmente se ve en la literatura y es debida a Diego Chicharro.
+Para ir calentando daremos una caracterización de los conexos de la recta real $\R$. La demostración de la siguiente proposición simplifica brutalmente a la que habitualmente se ve en la literatura, y es debida a Diego Chicharro.
 \begin{defi}[Intervalo]
 	Un subconjunto no vacío $A\subset\R$ se dice \tbi{intervalo} si dados dos puntos $a,b\in A$ y un tercero $c\in\R$ que cumple que $a\leq c\leq b$, entonces $c\in A$. 
 \end{defi}
@@ -110,7 +112,7 @@ Como a veces la visión espacial brilla por su ausencia brindamos dos dibujos co
 	\includegraphics[scale = 0.5]{img/pivote_variante3}
 	\caption{Ilustración de una cadena de conexos}
 \end{figure}
-\begin{obs}
+\begin{obs}[Caso numerable]
 	El corolario anterior también se verifica si la sucesión de conjuntos es numerable, pero no lo vamos a probar aquí.
 	% AQUÍ VIENE PROBADO http://dbfin.com/topology/munkres/chapter-3/section-23-connected-spaces/problem-2-solution/
 \end{obs}
@@ -147,7 +149,7 @@ Recojamos los frutos de nuestra cosecha con un ejemplo, pero antes presentemos u
 	\label{conex_exa_miscel}
 	Veamos algunos ejemplos de conjuntos conexos:
 	\begin{enumerate}
-		\item Los segmentos son conexos por ser la imagén continua de $[0,1]$, que es conexo, por la interpolación lineal, que es continua.
+		\item Los segmentos son conexos por ser la imagen continua de $[0,1]$, que es conexo, por la interpolación lineal, que es continua.
 		\item Si un conjunto es convexo entonces es estrellado, y si es estrellado entonces es conexo. Además, las implicaciones recíprocas no se verifican. En resumen
 		\[\text{Convexo}\ra\text{Estrellado}\ra \text{Conexo}\]
 		
