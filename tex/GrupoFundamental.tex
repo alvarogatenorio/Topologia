@@ -6,149 +6,170 @@ La topología algebraica comprende métodos que son significativamente distintos
 
 \section{Homotopía}
 
-En particular, introducimos la homotopía con el propósito de definir más adelante la noción de grupo fundamental. Dos caminos son, intuitivamente, homótopos si podemos deformar uno en el otro de forma continua.
+En particular, introducimos la homotopía con el propósito de definir más adelante la noción de grupo fundamental. La idea que tratamos de modelizar con la homotopía es la de deformar continuamente un camino en otro. Sin embargo, definiremos algo bastante más general. 
 
 \begin{defi}[Homotopía]
-	Una \tbi{homotopía} es una aplicación continua $H:\Y\times [0,1]\to \X$. Escribimos $H_s(y) \coloneqq H(y,s)$.
+	Dados dos espacios topológicos, una \tbi{homotopía} es simplemente una aplicación continua $H:\Y\times [0,1]\to \X$. Normalmente escribiremos $H_s(y) \coloneqq H(y,s)$. 
 \end{defi}
-
+Un pequeño dibujo y una observación nos ayudarán a afianzar este nuevo concepto.
+\begin{figure}[h!]
+	\centering
+	\label{grf_homotopia1}
+	\includegraphics[scale = 1]{img/homotopia1}
+	\caption{Representación geométrica de una homotopía.}
+\end{figure}
+\begin{obs}[Familia continua]
+	Como una aplicación (en particular una homotopía) $H$ es continua si y solo si dado un recubrimiento cerrado (por ejemplo $\{s\}\times\Y$ con $s\in[0,1]$), su restricción continúa siendo continua en cada cerrado del recubrimiento, tenemos que una homotopía puede ser entendida como una ``familia continua'' de aplicaciones continuas $\Y\to\X$. Esto se debe a que, $\{s\}\times\Y$ es homeomorfo a $\Y$. Escrito de forma conjuntista.
+	\begin{equation*}
+		H\equiv\{H_s:\{s\}\times\Y\to\X\midc s\in[0,1]\}
+	\end{equation*}
+	Generalmente daremos nombres concretos a las aplicaciones $H_0$ y $H_1$, por ejemplo $f$ y $g$.
+\end{obs}
+Definimos a continuación la relación de homotopía entre funciones.
 \begin{defi}[Funciones homótopas]
-	Sean $f,g:\Y\to\X$ aplicaciones. Escribimos $H:f\homot g$ para denotar, si existe, una homotopía que verifica $H(y,0)=H_0(y)=f(y)$, $H(y,1)=H_1(y)=g(y)$. Si efectivamente existe, decimos que $f$ y $g$ son \tbi[aplicación!homótopa a otra]{homótopas}.
+	Sean $f,g:\Y\to\X$ aplicaciones. Diremos que $f$ y $g$ son \tbi[aplicación!homótopa a otra]{homótopas} si existe, una homotopía $H$ que verifica $H_0(y)=f(y)$, $H_1(y)=g(y)$. En tal caso se dirá que $H$ es una homotopía entre $f$ y $g$.
+	
+	Si $f$ y $g$ son homótopas escribiremos $f\homot g$.
 \end{defi}
-
+Hechas todas estas disquisiciones iniciales, paremos al caso que pretendíamos modelizar desde el principio (y el que se ajusta al dibujo de la figura \ref{grf_homotopia1})
 \begin{obs}[Caminos homótopos]
 	\indexg{homotopía!de caminos}
 	Un caso particular importantísimo de homotopía es la homotopía de caminos. Como se sigue directamente de la definición de homotopía, dos caminos $\sigma,\tau:[0,1]\to\X$ son homótopos si existe una homotopía $H:[0,1]\times [0,1]\to\X$, de forma que $H_0\equiv\sigma$ y $H_1\equiv\tau$.
 \end{obs} 
-
-\begin{prop}
-	La homotopía ${\homot}$ es una relación de equivalencia.
-	
-	\begin{proof}
-		Basta ver que es reflexiva, simétrica y transitiva:
-		\begin{enumerate}
-			\item Es reflexiva, pues, dada una función $f$, la homotopía $H_s(y) = f(y)$ es, en efecto, homotopía entre $f$ y $f$.
-			\item Es simétrica, ya que dadas funciones $f\homot g$ relacionadas por una homotopía $H$, consideramos $H'_s(y)=H_{1-s}(y)$, que es una homotopía $g\homot f$.
-			\item Es transitiva, ya que, dadas funciones $f\homot g$, $g\homot h$, con homotopías $H^1, H^2$, definimos:
-			\[H_s(y) = \left\{\begin{array}{ll}
-			H^1_{2s}(y) & \text{ si } s\in [0,\frac{1}{2}] \\
-			H^2_{2s - 1}(y) & \text{ si } s\in [\frac{1}{2},1] 
-			\end{array}\right.\]
-			que está bien definida y es homotopía, de forma que $f\homot h$. \qedhere  
-		\end{enumerate}
-	\end{proof}
+Un propiedad crucial de las homotopías es que inducen una relación de equivalencia, como demostramos a continuación.
+\begin{prop}[Equivalencia]
+	La relación de homotopía ${\homot}$ es una relación de equivalencia.
 \end{prop}
-
+\begin{proof}
+	Basta ver que es reflexiva, simétrica y transitiva:
+	\begin{enumerate}
+		\item Es reflexiva, pues, dada una función $f$, la homotopía definida por $H_s(y) = f(y)$ para todo $s\in[0,1]$ es, en efecto, homotopía entre $f$ y $f$.
+		\item Es simétrica, ya que dadas funciones $f\homot g$ relacionadas por una homotopía $H$, consideramos la aplicación $H'_s(y):=H(y,1-s)$, que es una homotopía $g\homot f$ por ser composición de funciones continuas. Intuitivamente, estamos recorriendo el cuadrado de la figura \ref{grf_homotopia1} de arriba hacia abajo.
+		\item Es transitiva, ya que, dadas funciones $f\homot g$, $g\homot h$, con sendas homotopías asociadas $H^1, H^2$, definimos
+		\[H_s(y) := \left\{\begin{array}{ll}
+		H^1_{2s}(y) & \text{ si } s\in [0,\frac{1}{2}] \\
+		H^2_{2s - 1}(y) & \text{ si } s\in [\frac{1}{2},1] 
+		\end{array}\right.\]
+		que está bien definida y es homotopía, además, se verifica que $f\homot h$ vía $H$. \qedhere  
+	\end{enumerate}
+\end{proof}
+Antes de continuar introduzcamos una pequeña definición.
 \begin{defi}[Nulhomótopa]
 	Decimos que una aplicación $f:\Y\to\X$ es \tbi[aplicación!nulhomótopa]{nulhomótopa} si $f$ es homótopa a alguna aplicación constante.
 \end{defi}
-
+Veamos un primer resultado referente a la nulhomotopía que nos puede dejar un poco consternados a primera vista, pero que con una visión geométrica resulta bastante natural.
 \begin{exa}[Nulhomotopías en convexos]
 	\label{grf_nulhomotopias_convexos}
 	Consideramos $\X\subset\R^n$ convexo. En este caso, cualquier aplicación $f:\Y\to\X$ continua es nulhomótopa.
 	
-	En efecto, sea $a\in X$. Consideramos la homotopía:
-	\[H_s=(1-s)f+sa\]
-	que está definida en $\X$, pues, al ser este convexo, $[f(y),a]\subset\X$ para cualquier $y\in \Y$. Entonces, se verifica:
+	En efecto, sea $a\in X$ (nuestra aplicación constante). Consideramos la homotopía
+	\[H_s\equiv(1-s)f+sa\]
+	que está definida en $\X$, pues, al ser este convexo, $[f(y),a]\subset\X$ para cualquier $y\in \Y$. Entonces, se verifica
 	\[\begin{array}{l}
 	H_0(y)=f(y) \\
 	H_1(y)=a
 	\end{array}\]
 	que es precisamente lo que buscábamos. Nótese que si $\X$ es estrellado en lugar de convexo, se verifica la misma propiedad y la demostración es totalmente análoga, tomando $a$ el ``centro'' del estrellado.
 	
-	La homotopía definida de esta forma se llama \tbi{interpolación lineal}, y es asombrosamente útil teniendo en cuenta su sencillez. Merece la pena notar que, cuando está bien definida, es siempre homotopía. Sin embargo, habrá muchos contextos en los que no esté bien definida.
+	La homotopía definida de esta forma se llama \tbi{interpolación lineal}, y es asombrosamente útil teniendo en cuenta su sencillez. Merece la pena notar que, cuando está bien definida, es siempre homotopía (por ser composición de funciones continuas). Sin embargo, habrá muchos contextos en los que no esté bien definida.
 \end{exa}
-
+Introducimos una nueva definición que nos será útil en el futuro inmediato.
 \begin{defi}[Contráctil]
 	Decimos que un espacio topológico $\X$ es \tbi[espacio!contráctil]{contráctil} si $\Id_\X$ es nulhomótopa.
 \end{defi}
 
-\begin{obs}
+\begin{obs}[Convexos y estrellados]
 	Como, por el ejemplo \ref{grf_nulhomotopias_convexos}, sabemos que todas las aplicaciones que llegan a un espacio convexo o estrellado son nulhomótopas, entonces está claro que cualquier convexo o estrellado es contráctil.
 \end{obs}
 
-La siguiente proposición sirve al mismo tiempo como ejemplo y como enunciado de un resultado que nos será útil un poco más adelante.
+La siguiente proposición sirve al mismo tiempo como ejemplo y como enunciado de un resultado que nos será útil un poco más adelante, cuando estudiemos las esferas.
 
-\begin{prop}
+En particular, buscamos condiciones suficientes para que dos aplicaciones sean homótopas en la esfera.
+\begin{prop}[La esfera $\esfera^n$]
 	\label{grf_prop_esfera_no_sobre_nulhomotopa}
-	Si $f,g:\Y\to\Sfe^n$ continuas verifican que $f(y)\neq -g(y)\;\forall y\in\Y$ (es decir, $f$ y $g$ no tienen puntos antipodales), entonces $f\homot g$. En particular, si $f:\Y\to\Sfe^n$ no es sobreyectiva, entonces es nulhomótopa.
+	Si $f,g:\Y\to\Sfe^n$ continuas tales que verifican que $f(y)\neq -g(y)$ para todo $y\in\Y$. Es decir, $f$ y $g$ no tienen puntos antipodales, entonces $f\homot g$.
 	
-	\begin{proof}
-		Definimos la homotopía $H$ como:
-		\[H_s(y)=\frac{(1-s)f(y)+sg(y)}{\norm{(1-s)f(y)+sg(y)}}\]
-		Desde luego, está siempre en $\Sfe^n$ como debe ocurrir. Entonces, solo falta para ver que está bien definida, probar que existe en todo punto, y para ello necesitaremos la hipótesis.
-		
-		En efecto, las imágenes de $f$ y $g$ son puntos de la esfera unidad, y por tanto son vectores de norma $1$. Si $f(y)$ y $g(y)$ no son puntos antipodales, entonces hay dos opciones:
-		\begin{itemize}
-			\item $f(y)=g(y)$, pero como $s>0$, $1-s>0$ es imposible que $(1-s)f(y)+sg(y) = 0$.
-			\item $f(y)$ y $g(y)$ son linealmente independientes, luego ninguna combinación lineal suya con coeficientes no nulos puede sumar $0$.
-		\end{itemize}
-	
-		Y ya hemos terminado, porque está bien definida y desde luego es continua (al ser $f$, $g$ continuas, y la norma una función continua, es continua por ser suma, producto y cociente de aplicaciones continuas en $\R^n$). Entonces es homotopía.
-		
-		Para el caso particular, consideramos $a$ tal que $-a\not\in f(\Y)$, lo cual podemos conseguir por no ser sobreyectiva. Solo queda definir la homotopía anterior con $g\equiv a$.
-	\end{proof}
+	En particular, si $f:\Y\to\Sfe^n$ no es sobreyectiva, entonces es nulhomótopa.
 \end{prop}
-
-\begin{obs}
-	El hecho de que si $f:\Y\to\Sfe^n$ no es sobreyectiva entonces es nulhomótopa se puede plantear desde el punto de vista de la naturaleza topológica de la esfera. En efecto, $f(\Y)\subset\Sfe^n\setminus\{b\}$ para algún punto $b$, y resulta que hemos demostrado que esto es homeomorfo a $\R^n$, que es convexo y por tanto contráctil.
+\begin{proof}
+	Nuestro corazón nos dice que la interpolación lineal es una buena idea, pero nuestra fría cabeza nos dice que en las esferas no está bien definida. Sin embargo, si ``unitarizamos'' la interpolación lineal podemos sacar algo de petróleo. Definimos la homotopía $H$ como
+	\[H_s(y)=\frac{(1-s)f(y)+sg(y)}{\norm{(1-s)f(y)+sg(y)}}\]
+	Desde luego, está siempre en $\Sfe^n$ como debe ocurrir. Entonces, solo falta para ver que está bien definida, probar que existe en todo punto, y para ello necesitaremos la hipótesis.
+	
+	En efecto, las imágenes de $f$ y $g$ son puntos de la esfera unidad, y por tanto son vectores de norma $1$. Si $f(y)$ y $g(y)$ no son puntos antipodales, entonces hay dos opciones:
+	\begin{itemize}
+		\item $f(y)=g(y)$, pero como $s>0$, $1-s>0$ es imposible que $(1-s)f(y)+sg(y) = 0$.
+		\item $f(y)$ y $g(y)$ son linealmente independientes, luego ninguna combinación lineal suya con coeficientes no nulos puede sumar $0$.
+	\end{itemize}
+	
+	Y ya hemos terminado, porque está bien definida y desde luego es continua (al ser $f$, $g$ continuas, y la norma una función continua, es continua por ser suma, producto y cociente de aplicaciones continuas en $\R^n$). Entonces es homotopía.
+	
+	Para el caso particular, consideramos $a$ tal que $-a\not\in f(\Y)$, lo cual podemos conseguir por no ser sobreyectiva. Solo queda definir la homotopía anterior con $g\equiv a$.
+\end{proof}
+La siguiente observación da una vuelta de tuerca a esto último.
+\begin{obs}[Visión alternativa]
+	El hecho de que si $f:\Y\to\Sfe^n$ no es sobreyectiva entonces es nulhomótopa se puede plantear desde el punto de vista de la naturaleza topológica de la esfera. En efecto, $f(\Y)\subset\Sfe^n\setminus\{b\}$ para algún punto $b$, y resulta que, con una modificación de la proyección estereográfica se puede demostrar que esto es homeomorfo a $\R^n$, que es convexo y por tanto $f$ es nulhomótopa. Lo mejor para entender esto es hacerse un dibujillo.
 \end{obs}
 
 A veces, nos interesará que la homotopía entre dos funciones mantenga invariante alguna propiedad extra. En particular, solemos necesitar que algunos puntos no se muevan de su posición al homotopar.
 \begin{defi}[Homotopía relativa]
-	Una homotopía $H:\Y\times[0,1]\to\X$ se llama \tbi[homotopía!relativa]{relativa} a un subconjunto $A\subset\Y$ cuando $H_s(a)=H_0(a)\;\forall a\in A$. En particular, $H_0\equiv H_1$ en $A$. Se suele escribir $H_s:f\homot[A]g$.
+	Una homotopía $H:\Y\times[0,1]\to\X$ se llama \tbi[homotopía!relativa]{relativa} a un subconjunto $A\subset\Y$ cuando $H_s(a)=H_0(a)$ para todo $a\in A$ y para todo $s\in [0,1]$. En particular, $H_0\equiv H_1$ en $A$. Se suele escribir $H_s:f\homot[A]g$.
 \end{defi}
 
-La definición que sigue, caso particular de la anterior, es absolutamente imprescindible para el estudio del grupo fundamental que vamos a realizar a lo largo de esta sección.
+La definición que sigue, caso particular de la anterior, es absolutamente imprescindible para el estudio del grupo fundamental que vamos a realizar a lo largo de este capítulo.
 
 \begin{defi}[Homotopía de extremos fijos]
 	Decimos que dos caminos $\sigma,\tau:[0,1]\to\X$ son \tbi[homótopía!de extremos fijos]{homótopos con extremos fijos} si son homótopos relativos a $\{0,1\}$, es decir, si $\sigma\homot[\{0,1\}]\tau$. A veces, cuando los extremos sean engorrosos de escribir, la denotaremos $\sigma\homotef\tau$
 \end{defi}
-
-\begin{exa}
+Para que los conceptos se vayan adentrando en nuestro ser como sanguijuelas hambrientas, pongamos un ejemplo paradigmático.
+\begin{exa}[Interpolación lineal]
+	\label{grf_exa_interpolacion}
 	\indexg{interpolación lineal}
-	La interpolación lineal produce homotopías relativas. En efecto, consideramos la homotopía:
+	La interpolación lineal produce homotopías relativas. En efecto, consideramos la homotopía (suponiendo que esté bien definida)
 	\[H_s = (1-s)f + sg\]
 	Si $f(a)=g(a)$ para algún $a\in\Y$, entonces resulta que:
 	\[H_s(a)=(1-s)f(a)+sg(a)=f(a)=g(a)\]
 	
-	En particular, en $\R^n$, cualquier par de caminos cuyos extremos coincidan son homótopos con extremos fijos. De esta forma, en cualquier espacio $\X$ homeomorfo a $\R^n$ por un homeomorfismo $h:\R^n\to \X$, cualesquiera dos caminos cuyos extremos coincidan son homótopos con extremos fijos. En efecto, podemos fabricar la homotopía fácilmente: sean $\sigma,\tau$ los caminos en $\X$. Consideramos $\alpha,\beta$ caminos en $\R^n$, de forma que verifiquen que $\sigma = h\circ\alpha$, $\tau = h\circ\beta$. Como $\alpha$ y $\beta$ comparten extremos y están en $\R^n$, son homótopos con extremos fijos, y dada la homotopía $H_s$, resulta que $h\circ H_s$ es homotopía entre $\sigma$ y $\tau$.
+	En particular, en $\R^n$, cualquier par de caminos cuyos extremos coincidan son homótopos con extremos fijos. De esta forma, en cualquier espacio $\X$ homeomorfo a $\R^n$ por un homeomorfismo $h:\R^n\to \X$, cualesquiera dos caminos cuyos extremos coincidan son homótopos con extremos fijos.
+	
+	En efecto, podemos fabricar la homotopía fácilmente: sean $\sigma,\tau$ los caminos en $\X$. Consideramos $\alpha,\beta$ caminos en $\R^n$, de forma que verifiquen que $\sigma = h\circ\alpha$, $\tau = h\circ\beta$. Como $\alpha$ y $\beta$ comparten extremos y están en $\R^n$, son homótopos con extremos fijos, y dada la homotopía $H_s$, resulta que $h\circ H_s$ es homotopía entre $\sigma$ y $\tau$ que verifica lo que tiene que verificar.
 \end{exa}
 
 \section{Esferas}
-
-El estudio de las homotopías en las esferas es interesante como ejemplo, y permite, basándose tan solo en lo visto en la anterior sección, demostrar un resultado no trivial.
+Las esferas son importantes\dots\ si no que se lo pregunten a los de Bola de Dragón. En concreto, el estudio de las homotopías en las esferas es interesante como ejemplo, y permite, basándose tan solo en lo visto en la anterior sección, demostrar un resultado no trivial.
 
 Empezamos definiendo formalmente la esfera, para aclarar la notación.
 
 \begin{defi}[Esfera]
-	Llamamos \tbi{esfera} de dimensión $n$ y denotamos $\Sfe^n$ al subconjunto de $\R^{n+1}$:
+	Llamamos $n$--\tbi{esfera} y denotamos por $\Sfe^n$ al subconjunto de $\R^{n+1}$
 	\[\Sfe^n = \{x\in\R^{n+1}\midc \norm{x}=1\}\subset\R^{n+1}\]
 	donde $\norm{\cdot}$ es la norma euclídea. Cuando se considera como espacio topológico es con la restricción de la topología usual, si no se especifica otra.
 \end{defi}
 
-\begin{obs}
-	Si bien la esfera de la definición anterior es la esfera unidad, nótese que todas las esferas de cualquier radio y centradas en cualquier punto de $\R^{n+1}$ son homeomorfas a la esfera que hemos definido.
+\begin{obs}[Otros radios]
+	Si bien la esfera de la definición anterior es la esfera unidad, nótese que todas las esferas de cualquier radio y centradas en cualquier punto de $\R^{n+1}$ son homeomorfas a la esfera que hemos definido ¡compruébese!.
 \end{obs}
 
-El resultado no trivial que mencionábamos en la introducción de esta sección es el siguiente:
+El resultado no trivial que mencionábamos en la introducción de esta sección es la siguiente condición suficiente de homotopía por extremos fijos.
 
-\begin{prop}
+\begin{prop}[Homotopía de extremos fijos en $\esfera^n$]
 	\label{grf_homotop_caminos_esfera}
 	Dos caminos en una esfera $\Sfe^n$, $n\geq 2$, que tengan los mismos extremos son homótopos con extremos fijos.
 
 	\begin{proof}
-		Consideramos los caminos $\sigma,\tau:[0,1]\to \Sfe^n$, tales que $\sigma(0)=\tau(0)$ y $\sigma(1)=\tau(1)$. Para probar que son homótopos con extremos fijos, basta con probar que existe un punto $a\in\Sfe^n$ tal que $a\not\in \sigma,\tau$. Ya hemos comprobado antes que esto es suficiente, en la proposición \ref{grf_prop_esfera_no_sobre_nulhomotopa}.
+		Consideramos los caminos $\sigma,\tau:[0,1]\to \Sfe^n$, tales que $\sigma(0)=\tau(0)$ y $\sigma(1)=\tau(1)$.
 		
-		Entonces, vamos a separar la esfera en dos abiertos $U$ y $V$, de forma que $\Sfe^n=U\cup V$. Para un cierto $a\in\Sfe^n$, tal que ni $a$ ni $-a$ es uno de los extremos del camino, elegimos $U$ y $V$ tales que:
+		El argumento de la demostración se base en aprovechar el hecho de que la esfera menos un punto es homeomorfa a $\R^n$. Con lo cual, si pudiéramos tomar un punto de la esfera que no estuviera en la traza de los dos caminos, podríamos aplicar la observación \ref{grf_exa_interpolacion}. Esto intuitivamente parece claro, pero los caminos pueden ser auténticas locuras, con lo cual la demostración es elaborada.
+		
+		Entonces, vamos a separar la esfera en dos abiertos $U$ y $V$, de forma que $\Sfe^n=U\cup V$. Para un cierto $a\in\Sfe^n$, tal que ni $a$ ni $-a$ es uno de los extremos de los caminos, elegimos $U$ y $V$ tales que
 		\[\left\{\begin{array}{l}
 			U = \Sfe^n\setminus\{a\} \\
 			V = \Sfe^n\setminus\{-a\}
 		\end{array}\right.\]
-		Es decir, $U$ es la esfera quitando un punto y $V$ es la esfera quitando el punto antipodal al anterior. De esta forma, ya hemos visto el hecho de que tanto $U$ como $V$ son homeomorfos a $\R^n$, por ser la esfera sin un punto (por la proyección estereográfica). De esta forma, $U\cap V\homeo\mathbb{R}^n\setminus\{0\}$, puesto que una esfera sin un punto es homeomorfa a $\R^n$, y por tanto una esfera sin dos puntos es homeomorfa a $\R^n$ sin un punto. Además, como $n\geq 2$, sabemos que $\R^n\setminus\{0\}$ es conexo por caminos, y entonces también lo es $U\cap V$. % TODO: cita
+		Es decir, $U$ es la esfera quitando un punto y $V$ es la esfera quitando el punto antipodal al anterior. De esta forma, ya hemos visto el hecho de que tanto $U$ como $V$ son homeomorfos a $\R^n$, por ser la esfera sin un punto (proyección estereográfica). De esta forma, $U\cap V\homeo\mathbb{R}^n\setminus\{0\}$, puesto que una esfera sin un punto es homeomorfa a $\R^n$, y por tanto una esfera sin dos puntos es homeomorfa a $\R^n$ sin un punto. Además, como $n\geq 2$, sabemos que $\R^n\setminus\{0\}$ es conexo por caminos (véase la observación \ref{conex_obs_polig}), y entonces también lo es $U\cap V$.
 		
-		Podemos encontrar una partición $0=t_0<t_1<\dots<t_r=1$ del intervalo $[0,1]$ que verifique que $\sigma([t_{i-1},t_i])\subset U\text{ o }V$ para cada $i$. En efecto, sabemos que $\{\sigma^{-1}(U), \sigma^{-1}(V)$ es recubrimiento abierto de $[0,1]$. Por el lema de Lebesgue (lema \ref{comp_lem_lebesgue}), que podemos aplicar por ser $[0,1]$ un espacio métrico compacto (y por tanto, por la observación \ref{comp_obs_relacion_defs_compacidad}, secuencialmente compacto), para cada $x\in [0,1]$ $\exists\epsilon>0$ que cumple que $\bola(x,\epsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)$. Con lo cual, tomamos la partición anterior de forma que $t_i-t_{i-1}<\epsilon\;\forall i$, y entonces tenemos que, para $x$ en el intervalo:
-		\[x\in [t_{i-1}, t_i]\subset B(x,\epsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)\]
+		Podemos encontrar una partición $0=t_0<t_1<\dots<t_r=1$ del intervalo $[0,1]$ que verifique que $\sigma([t_{i-1},t_i])\subset U\text{ o }V$ para cada $i$. En efecto, sabemos que $\{\sigma^{-1}(U), \sigma^{-1}(V)$ es recubrimiento abierto de $[0,1]$. Por el lema de Lebesgue (lema \ref{comp_lem_lebesgue}), que podemos aplicar por ser $[0,1]$ un espacio métrico compacto (y por tanto, por la observación \ref{comp_obs_relacion_defs_compacidad}, secuencialmente compacto), para cada $x\in [0,1]$ $\exists\varepsilon>0$ que cumple que $\bola(x,\varepsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)$. Con lo cual, tomamos la partición anterior de forma que $t_i-t_{i-1}<\varepsilon\;\forall i$, y entonces tenemos que, para $x$ en el intervalo:
+		\[x\in [t_{i-1}, t_i]\subset B(x,\varepsilon)\subset\sigma^{-1}(U)\text{ o }\sigma^{-1}(V)\]
 		Por tanto, cada intervalo de la partición está en $\sigma^{-1}(U)$ o $\sigma^{-1}(V)$. Además, eliminando las divisiones innecesarias tenemos una partición que alterna estar en $\sigma^{-1}(U)$ y en $\sigma^{-1}(V)$.
 		
 		Sea $x_0\in U\cap V$. Vamos a homotopar los segmentos en $V$ a segmentos en $U$. Para cada $i$ tal que $\sigma\restriction_{[t_{i-1},t_i]}\subset V$, definimos $x_{i-1} = \sigma(t_{i-1})$, $x_i=\sigma(t_i)$. Resulta que $x_{i-1},x_i\subset U\cap V\homeo \R^n\setminus\{0\}$. Como ya hemos visto que $\R^n\setminus \{0\}$ es conexo por caminos, entonces necesariamente existe $\sigma_i:[t_{i-1},t_i]\to U\cap V$ camino entre $x_{i-1}$ y $x_i$. De esta forma, los caminos $\sigma\restriction_{[t_{i-1},t_i]}$ y $\sigma_i$ son homótopos en $V\homeo\R^n$, con lo cual son homótopos con extremos fijos en $V\subset\Sfe^n$. Repitiendo el argumento para cada segmento de $V$, reemplazándolo por el correspondiente $\sigma_i$, obtenemos un nuevo camino $\widetilde{\sigma}\subset U$ y claramente $\sigma\homot\widetilde{\sigma}$ con extremos fijos.
@@ -170,7 +191,7 @@ La versión generalizada de esta conjetura, para la esfera $\Sfe^n$, también es
 	\item Para $n=5$, Zeeman lo demostró en 1961.
 	\item Para $n\geq 6$, Smale lo demostró en 1961.
 	\item Para $n=4$, Donaldson lo demostró en 1985.
-	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con 1.000.000\$. Perelman rechazó tanto este premio como la medalla Fields que se le intentó conceder por demostrar la conjetura.
+	\item Para $n=3$, la versión original de la conjetura, Perelman lo demostró en 2006. La conjetura era uno de los 7 problemas del milenio, dotados con \$1.000.000. Perelman rechazó tanto este premio como la medalla Fields que se le intentó conceder por demostrar la conjetura.
 \end{itemize}
 
 \section{Producto de caminos}
