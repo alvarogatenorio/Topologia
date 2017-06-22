@@ -1,49 +1,47 @@
-%Versión 1.1
-%Álvaro García Tenorio
-%Clara Isabel López González
-%Iván Prada Cazalla
-%Álvaro Rodríguez García
-%Clara Rodríguez Núñez
+%-----Por hacer-----
+%Math operators
+%Paired delimeters
+%Referencias de colores
+%Encabezados chachis
 
-%Las mejoras realizadas en este paquete han de ser, en la medida de lo posible, retrocompatibles (para mejorar la flexibilidad).
 
-%Paquete de Estilo
 \ProvidesPackage{style}
 
-%Paquetes de Márgenes
+%Margen personalizado.
 \usepackage[a4paper,margin=3cm]{geometry}
 
-%Paquetes de Idioma (es-tabla permite que los caption aparezcan como tabla y no como cuadro)
+%Idioma (el argumento es-tabla permite que los caption de tablas aparezcan como "tabla" y no como "cuadro").
 \usepackage[spanish, es-tabla]{babel}
 \usepackage[utf8]{inputenc}
 
-%Para las tablas e imágenes
+%Tablas e imágenes.
 \usepackage{float}
 
-% Generación de múltiples índices (revisar el issue correspondiente en github)
+%Generación de múltiples índices (ver wiki correspondiente).
 \usepackage{imakeidx}
 
+%Generación del índice general.
 \makeindex[name=general,title=Índice general,intoc,columns=2]
+
+%Generación del índice de topologías.
 \makeindex[name=topologias,title=Índice de topologías,intoc,columns=2]
 
-% Paquetes para Referencias Cruzadas
-% En la mayoría de casos, debe usarse _después_ del resto de paquetes que lo usen
+%Referencias cruzadas (declarar después del resto de paquetes que lo usen).
 \usepackage[linktoc=all]{hyperref}
 
-%Imagenes
+%Inserción de imágenes.
 \usepackage{graphicx}
 \usepackage{graphics}
-%Varias imagenes en una misma figura.
 \usepackage{subfigure}
 
-%Símbolos Adicionales y Mates
+%Símbolos adicionales.
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{latexsym}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
-\usepackage{marvosym} %rayos dificultad
+\usepackage{marvosym} %rayos de dificultad.
 
 %Cajas.
 \usepackage{fancybox}
@@ -51,36 +49,36 @@
 %Diagramas.
 \usepackage[all]{xy}
 
-%Color.
+%Colores.
 \usepackage{color}
 
-% Customización de enumeraciones
+%Enumeraciones customizadas.
 \usepackage{enumitem}
 
-% Condicionales
+%Condicionales. Habilita estructuras if-then-else dentro del propio código latex (nada visual). Ver el comando \tbi.
 \usepackage{ifthen}
 
-% Espacios para comandos sin argumentos
-% (http://tex.stackexchange.com/questions/17730/newcommand-and-spacing)
+%Espaciado de comandos sin argumentos. Mirar http://tex.stackexchange.com/questions/17730/newcommand-and-spacing
 \usepackage{xspace}
 
-% Varias columnas
+%Varias columnas.
 \usepackage{multicol}
 
-% Tikz!
+%Tikz (dibujos).
 \usepackage{tikz}
 \usetikzlibrary{decorations.markings,calc}
 
+%Tikz (cosas específicas).
 \usepackage{pgfplots}
 \usepgfplotslibrary{polar}
 \pgfplotsset{compat=newest}
 
-%Paquetes para Entornos.
+%Entornos.
 \usepackage{amsthm}
 %Entornos personalizados.
 \usepackage{thmtools}
 
-%Entornos especiales (Rombitos en los ejemplos y las observaciones).
+%Entornos especiales (con rombo al final).
 \declaretheoremstyle[
   spaceabove=\topsep, spacebelow=\topsep,
   notefont=\mdseries, notebraces={(}{)},
@@ -88,18 +86,31 @@
   postheadspace=1em,
   qed={$\diamondsuit$}]{examplestyle}
 
+%Ejemplos con rombo.
 \declaretheorem[style=examplestyle,name=Ejemplo,numberwithin=section]{exa}
+%Observaciones con rombo.
 \declaretheorem[style=examplestyle,name=Observación,numberwithin=section]{obs}
+%Construcciones con rombo.
 \declaretheorem[style=examplestyle,name=Construcción,numberwithin=section]{const}
 
-%Entornos sin Cursiva
+%Entornos especiales (con cuadrado blanco al final).
+\declaretheoremstyle[
+spaceabove=\topsep, spacebelow=\topsep,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+qed={$\square$}]{solustyle}
+%Soluciones a ejercicios con rombo.
+\declaretheorem[style=solustyle,name=Solución,numberwithin=section]{solu}
+
+%Entornos sin cursiva no especiales.
 \theoremstyle{definition}
 \newtheorem{defi}{Definición}[section]
 \newtheorem{prob}{Problema}[chapter]
 \newtheorem{exerc}{Ejercicio}[chapter]
 \newtheorem{impor}[defi]{Importante}
 
-%Entornos con Cursiva
+%Entornos con cursiva.
 \theoremstyle{plain}
 \newtheorem{theo}{Teorema}[section]
 \newtheorem{lem}[theo]{Lema}
@@ -107,43 +118,37 @@
 \newtheorem{cor}[theo]{Corolario}
 \newtheorem{conjet}[theo]{Conjetura}
 
-%Tachar
+%Tachar.
 \usepackage{cancel}
 \usepackage{centernot}
 
-%Cuadrado Negro Relleno
+%Cuadrado negro relleno como QED por defecto.
 \renewcommand\qedsymbol{$\blacksquare$}
 
-%Conjuntos Usuales
-\newcommand{\K}{\mathbb{K}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
+%Conjuntos usuales.
+\newcommand{\K}{\mathbb{K}} %cuerpo.
+\newcommand{\R}{\mathbb{R}} %reales.
+\newcommand{\N}{\mathbb{N}} %naturales.
+\newcommand{\C}{\mathbb{C}} %complejos.
+\newcommand{\Q}{\mathbb{Q}} %racionales.
+\newcommand{\Z}{\mathbb{Z}} %enteros.
 
-%Implicaciones
+%Implicaciones largas (solo usaremos estas).
 \newcommand{\ra}{\implies}
 \newcommand{\la}{\impliedby}
 \newcommand{\sii}{\iff}
 \newcommand{\siidef}{\stackrel{\textrm{def.}}{\sii}}
 
-%Igualdades Especiales
+%Igualdades espaciales (abreviatura \stackrel).
 \newcommand{\equals}[1]{\stackrel{\textrm{#1}}{=}}
 
-%Implicaciones y Contenidos con Recuadros
+%Implicaciones y contenidos con recuadros (para demostraciones de doble implicación/contención).
 \newcommand{\bra}{\fbox{$\ra$}}
 \newcommand{\bla}{\fbox{$\la$}}
 \newcommand{\bsubset}{\fbox{$\subset$}}
 \newcommand{\bsupset}{\fbox{$\supset$}}
 
-%Deprecated
-\newcommand{\bsetsub}{\fbox{$\supset$}}
-
-%Tal Que de Anibal (Deprecated)
-\newcommand{\tq}{\shortparallel}
-
-%Tipos de Letra
+%Diversos tipos de letra (abreviaturas).
 \newcommand{\tb}[1]{\textbf{#1}}
 \newcommand{\ti}[1]{\textit{#1}}
 \newcommand{\mc}[1]{\mathcal{#1}}
@@ -151,43 +156,52 @@
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 
-% Negrita y Cursiva (introducción de términos novedosos).
-% Modificado para añadirlos automáticamente al índice general
+%Negrita y cursiva a la vez para introducir términos novedosos. Además, añade el término automáticamente al índice general (mirar la wiki para más detalle).
 \newcommand{\tbi}[2][]{\ifthenelse{\equal{#1}{}}{\tb{\ti{#2}}\index[general]{#2}}{\tb{\ti{#2}}\index[general]{#1}}}
 \newcommand{\tbitop}[2][]{\tb{\ti{topología #2}}\indext[#1]{#2}}
-% Para añadir una topología al índice
+
+
+%Añadir topologías al índice de topologías (mirar la wiki para más detalle).
 \newcommand{\indext}[2][]{\index[general]{topología!#2}\index[topologias]{#2@#2\protect\ifthenelse{\protect\equal{#1}{}}{}{, \protect#1}}}
 \newcommand{\indexg}[1]{\index[general]{#1}}
 
-%Cero y Vacío.
+%Abreviaturas con el 0 y el conjunto vacío.
 \newcommand{\smz}{\setminus\{0\}}
 \newcommand{\zset}{\{0\}}
 
-% Nuevo alfabeto matemático (en el que está la T de topología y la B de base)
+%Nuevo alfabeto matemático (en el que está la T de topología, la B de base de abiertos y la V de base de entornos).
 \DeclareMathAlphabet{\matheuler}{U}{eus}{m}{n}
 
-% Arreglar el comando restriction para que no salga más separado de lo que debe
+%Restricción de funciones (para que quede bien pegadito).
 \renewcommand{\restriction}{\mathord{\upharpoonright}}
 
-% Valor absoluto y norma
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\card{\lvert}{\rvert}%
+%Valor absoluto y norma.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\card{\lvert}{\rvert}
 
-% : para definir conjuntos (más separado)
+% : para definir conjuntos (más separado, queda mejor).
 \newcommand{\midc}{\ensuremath\;:\;}
+\newcommand{\tq}{\midc}
 
-%Cosas Específicas (Geometría Lineal)
+%-----Cosas específicas (Geometría Lineal)-----
+
+%Clase de un vector.
 \newcommand{\class}[1]{	 \left [ #1 \right ]}
+%P de espacio proyectivo.
 \newcommand{\proy}{\mathbb{P}}
+%H de haz.
 \newcommand{\haz}{\mathscr{H}}
+%V de variedad proyectiva engendrada.
 \newcommand{\engen}[1]{\mc{V}(#1)}
+%L de variedad lineal engendrada.
 \newcommand{\lengen}[1]{\mc{L}(#1)}
+%an de anulador. (Consensuar una forma de hacer esto en general).
 \newcommand{\an}[1]{\text{an}(#1)}
+%A de espacio afín.
 \newcommand{\afin}{\mathcal{A}}
 
-%Cosas Específicas (Topología) (En previsión de que haya)
-%Comandos en pruebas.
+%-----Cosas específicas (Topología)-----
 
 %T de topología.
 \newcommand{\T}{\matheuler{T}}
@@ -199,7 +213,7 @@
 \newcommand{\Co}{\mc{C}}
 %X de espacios topológicos.
 \newcommand{\X}{\mc{X}}
-%Y de subespacios topológicos.
+%Y de subespacios topológicos (u otros espacios).
 \newcommand{\Y}{\mc{Y}}
 %U de abiertos.
 \newcommand{\U}{\mc{U}}
@@ -209,41 +223,43 @@
 \newcommand{\W}{\mc{W}}
 %F de cerrados.
 \newcommand{\F}{\mc{F}}
-%A de cubrimientos.
+%A de cubrimientos (suele usarse \Gamma también).
 \newcommand{\A}{\mc{A}}
 %S de esfera.
-\newcommand{\Sfe}{\esfera}
-%Hash de isomorfismo índice
-\newcommand{\indice}{\mathrm{\#}}
-
-\newcommand{\partes}{\mc{P}}
 \newcommand{\esfera}{\mb{S}}
+\newcommand{\Sfe}{\esfera}
+%Hash de isomorfismo índice.
+\newcommand{\indice}{\mathrm{\#}}
+%P de partes de un conjunto.
+\newcommand{\partes}{\mc{P}}
+%T de toro.
 \newcommand{\toro}{\mb{T}}
-
+%Tipos de separabilidad.
 \newcommand{\kolmogorov}{$\mathrm{T_0}$\xspace}
 \newcommand{\frechet}{$\mathrm{T_1}$\xspace}
 \newcommand{\hausdorff}{$\mathrm{T_2}$\xspace}
-
-% A homeomorfo a B
+%A homeomorfo a B
 \newcommand{\homeo}{\approx}
-% Sigma homótopo a tau. El argumento opcional son los extremos fijos si los hay.
+%\sigma homótopo a \tau. El argumento opcional son los extremos fijos si los hay. ¡Cuidado con el interlineado!
 \newcommand{\homot}[1][]{\mathrel{\smash{\underset{#1}{\simeq}}}}
+%Homotopía de extremos fijos.
 \newcommand{\homotef}{\homot[\text{e.f.}]}
-% Producto de caminos
+%Producto de caminos.
 \newcommand{\pathp}{\mathbin{*}}
-
+%Bolas.
 \DeclareMathOperator{\bola}{B}
-
+%Interior.
 \DeclareMathOperator{\Int}{\mathrm{Int}}
-\DeclareMathOperator{\Adh}{\mathrm{Adh}}
-\DeclareMathOperator{\Fr}{\mathrm{Fr}}
-\DeclareMathOperator{\Id}{Id}
-\DeclareMathOperator{\Tr}{\mathrm{tr}} %traza
-
 \newcommand{\inter}[1]{\mathring{#1}}
-
+%Adherencia.
+\DeclareMathOperator{\Adh}{\mathrm{Adh}}
 \newcommand{\adher}[1]{\overline{#1}}
-
-% Teoría de categorías
+%Frontera.
+\DeclareMathOperator{\Fr}{\mathrm{Fr}}
+%Identidad.
+\DeclareMathOperator{\Id}{\mathrm{id}}
+%Traza.
+\DeclareMathOperator{\Tr}{\mathrm{tr}}
+%Categorías.
 \newcommand{\Topp}{\ensuremath{\mathbf{Top}_\ast}}
 \newcommand{\Grp}{\ensuremath{\mathbf{Grp}}}
