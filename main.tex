@@ -7,15 +7,12 @@
 \date{\today}
 
 \begin{document}
-	%Título e Índice
+	\frontmatter
 	\maketitle
 	\tableofcontents
-		
-	%Capítulos
-	%Investigar para que el prefacio sea un capítulo distinguido.
 	\include{./tex/Prefacio}
-	%Capítulos.
-	
+	\addcontentsline{toc}{chapter}{Prefacio}
+	\mainmatter
 	\part{Topología general}	
 	\include{./tex/EspaciosTopologicos}
 	\include{./tex/Continuidad}
@@ -45,7 +42,7 @@
 	
 	%-----Mierdas Varias-----
 	%\include{./tmpTex/trash}
-	
+	\backmatter
 	\printindex[general]
 	\printindex[topologias]
 \end{document}
