@@ -8,7 +8,7 @@ La continuidad es la propiedad por excelencia que queremos que nuestras funcione
 
 Para empezar, tratamos de dar una justificación intuitiva del cómo se llegó a la definición que presentaremos a continuación.
 
-Hasta ahora conocíamos una definición de continuidad válida en el ámbito de los espacios métricos, que nos decía que si $(M,d)$ y $(N,d')$ eran espacios métricos arbitrarios y $f:M\to\N$ una aplicación entre ellos, era continua en un punto $x_0\in M$ si y solo si dado un $\varepsilon>0$ podíamos encontrar un $\delta>0$ de forma que $f(\bola_d(x_0,\delta))\subset\bola_{d'}(f(x_0),\varepsilon)$.
+Hasta ahora conocíamos una definición de continuidad válida en el ámbito de los espacios métricos, que nos decía que si $(M,d)$ y $(N,d')$ eran espacios métricos arbitrarios y $f:M\to N$ una aplicación entre ellos, era continua en un punto $x_0\in M$ si y solo si dado un $\varepsilon>0$ podíamos encontrar un $\delta>0$ de forma que $f(\bola_d(x_0,\delta))\subset\bola_{d'}(f(x_0),\varepsilon)$.
 
 Dicho de otra forma, si cierto punto dista de $x_0$ menos que $\delta$, entonces su imagen deberá distar menos que $\varepsilon$ de la imagen de $x_0$. Informalmente, una aplicación continua es la que manda puntos próximos a puntos próximos.
 
@@ -56,7 +56,7 @@ Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
 	Dada $f:\X\to\mc{Y}$, continua en $x_0\in\X$, si $A\subset\X$ tal que $x_0\in A$, entonces $f\restriction_A:A\to\mc{Y}$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Se verifica que $(f\restriction_A^{-1})(V_{f(x_0)}) = A\cap f^{-1}(V_{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $A$ (nótese que consideramos la topología relativa en $A$).
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$. Se verifica que $(f\restriction_A)^{-1}(V_{f(x_0)}) = A\cap f^{-1}(V_{f(x_0)})$. Pero como por la continuidad de $f$ en $x_0$ tenemos que $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$, entonces $A\cap f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $A$ (nótese que consideramos la topología relativa en $A$).
 	\end{proof}
 \end{prop}
 
@@ -64,10 +64,10 @@ Ahora, veremos un par de propiedades interesantes de la continuidad en un punto.
 	
 	La siguiente proposición es el recíproco de la anterior.
 
-\begin{prop}[Continuidad como propiedad local] Si hay un entorno $V_{x_0}$ de $x_0$ tal que $f\restriction_{V_{x_0}}$ es continua en $x_0$ entonces $f$ es continua.
+\begin{prop}[Continuidad como propiedad local] Si hay un entorno $V_{x_0}$ de $x_0$ tal que $f\restriction_{V_{x_0}}$ es continua en $x_0$ entonces $f$ es continua en $x_0$.
 	
 	\begin{proof}
-		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$, por continuidad de  $f\restriction_{V_{x_0}}$ en $x_0$ se cumple que $(f\restriction_{V_{x_0}})^{-1}(V_{f(x_0)}) = f^{-1}(V_{f(x_0)})\cap V_{x_0}$ es entorno de $x_0$ en $V_{x_0}$, luego, por topología relativa, $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$ y, por tanto, $f$ es continua.
+		Sea $V_{f(x_0)}$ un entorno de $f(x_0)$, por continuidad de  $f\restriction_{V_{x_0}}$ en $x_0$ se cumple que $(f\restriction_{V_{x_0}})^{-1}(V_{f(x_0)}) = f^{-1}(V_{f(x_0)})\cap V_{x_0}$ es entorno de $x_0$ en $V_{x_0}$, luego, por topología relativa, $f^{-1}(V_{f(x_0)})$ es entorno de $x_0$ en $\X$ y, por tanto, $f$ es continua en $x_0$.
 	\end{proof}
 \end{prop}
 
@@ -219,7 +219,7 @@ Ahora pasamos a observar una serie de funciones homeomorfas y no homeomorfas, pa
 		\label{interpolacion}
 			\begin{array}{cc}
 			f_{ab}:&[0,1]\to\R^2\\
-			& t\mapsto ta+(1-t)b
+			& (1-t)\mapsto ta+tb
 			\end{array}
 		\end{equation}
 		Que es un homeomorfismo (¡compruébese!) que transforma el intervalo $[0,1]$ en el segmento de $\R^2$ determinado por los puntos $a,b\in\R^2$, al que denotamos por $[a,b]$ con cierto abuso de notación.
@@ -269,9 +269,9 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 		\item 
 		Sea $f:X\rightarrow Y$ aplicación biyectiva.
 		
-		Que $f$ sea continua es equivalente a que si $U\in Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $F\in Y$ es cerrado, $f^{-1}(F)$ también lo será.
+		Que $f$ sea continua es equivalente a que si $U\subset Y$ es abierto, $f^{-1}(U)$ también lo será. Del mismo modo, es equivalente a que si $F\subset Y$ es cerrado, $f^{-1}(F)$ también lo será.
 		
-		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $F\in X$ es cerrado, entonces $f(F)$ es cerrado, asimismo si $U\in X$ es abierto, $f(U)$ también lo será.
+		Igualmente, que $f^{-1}$ sea continua es equivalente a que si $F\subset X$ es cerrado, entonces $f(F)$ es cerrado, asimismo si $U\subset X$ es abierto, $f(U)$ también lo será.
 		
 		Vemos como si se verifican ambas (la continuidad de $f$ y de su inversa) será homeomorfismo, de modo que $f$ es homeomorfismo si y solo si es continua, biyectiva y transforma abiertos en abiertos por imágenes directas.
 		
@@ -280,6 +280,7 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 		
 		Análogamente, una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de cerrados es un cerrado (es decir, cuando $f(F)$ es cerrado si $F$ es cerrado).
 		
-		Dejamos como ejercicio al lector ver que si una es aplicación no es abierta no tiene por qué ser cerrada (y viceversa) y que si una aplicación es abierta y cerrada no tiene por qué ser biyectiva.\qedhere
+		Dejamos como ejercicio al lector ver que si una es aplicación no es abierta no tiene por qué ser cerrada (y viceversa) y que si una aplicación es abierta y cerrada no tiene por qué ser biyectiva.
+		\item Evidentemente, una aplicación biyectiva continua y abierta es un homeomorfismo. Además, un homeomorfismo local es una aplicación abierta (¡compruébese!).\qedhere
 		\end{enumerate}
 \end{obs}

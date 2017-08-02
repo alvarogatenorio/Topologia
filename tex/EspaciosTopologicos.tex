@@ -45,7 +45,7 @@ Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la
 Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
 \begin{obs}[Sutilezas]
 	\label{etop_obs_sutilezas}
-	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \T)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (Espacios Vectoriales, Grupos, Anillos,...).
+	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \T)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (espacios vectoriales, grupos, anillos,...).
 \end{obs}
 Introducimos ahora un poco de terminología con la que el lector no tiene más remedio que hacerse familiar.
 \begin{obs}[Terminología]
@@ -54,7 +54,7 @@ Introducimos ahora un poco de terminología con la que el lector no tiene más r
 	
 	Asimismo, los conjuntos que constituyen los elementos de $\T$ reciben el nombre de \tbi[conjunto!abierto]{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
-	Como es evidente, nos referiremos a los elementos de $\X$ como \tbi[punto]{puntos}.
+	Como es natural, nos referiremos a los elementos de $\X$ como \tbi[punto]{puntos}.
 \end{obs}
 Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto de espacio topológico viendo lo general que puede llegar a ser.
 \begin{exa}[Topologías]
@@ -67,7 +67,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\label{etop_eq_topologiaRn}
 		\T = \{\U\subset M\midc \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
 		\end{equation}
-		A esta topología la llamamos \tbitop[$\T_u$]{usual}.
+		A esta topología la llamamos \tbitop[$\T_u$]{usual} o inducida por la métrica.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop[$\T_t$]{trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
 		\T=\{\emptyset, \X\}
@@ -123,13 +123,13 @@ Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe
 
 Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda.
 
-Dado $\V$ es un entorno de $a\in \X$ si existe un abierto $\U$ de forma que
+Dado $\V\subset \X$, se dice entorno de $a\in \X$ si existe un abierto $\U$ de forma que
 \begin{equation}
 \label{etop_eq_entorno}
 a\in\U\subset\V
 \end{equation}
 
-Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema.
+Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema, que será usado sin cesar a lo largo de estas notas.
 \begin{lem}[Caracterización de abiertos]
 	\label{etop_lem_caracterizacionAbiertos}
 	$\U$ es abierto si y solo si es entorno de todos sus puntos.
@@ -253,7 +253,7 @@ Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la 
 
 Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
 
-Usando propiedades básicas de teoría de conjuntos se obtienen algunas propiedades elementales de los conjuntos cerrados.
+Usando propiedades básicas de teoría de conjuntos (leyes de DeMorgan, distributividad,\dots) se obtienen algunas propiedades elementales de los conjuntos cerrados.
 \begin{lem}[Propiedades de los cerrados]
 	\label{etop_lem_propiedadesCerrados}
 	Dado un espacio topológico $\X$ se verifica
@@ -268,7 +268,7 @@ Usando propiedades básicas de teoría de conjuntos se obtienen algunas propieda
 		\item $\X$ es cerrado pues $\X\setminus\X=\emptyset$ es abierto.
 		
 		Asimismo, $\emptyset$ es cerrado pues $\X\setminus\emptyset=\X$ es abierto.
-		\item $\bigcap_{i\in I}\F_i$ es cerrado ya que
+		\item $\bigcap_{i\in I}\F_i$ es cerrado ya que, aplicando las leyes de DeMorgan
 		\begin{equation*}
 		\X\setminus\left(\bigcap_{i\in I}\F_i\right)=\bigcup_{i\in I}\X\setminus\F_i
 		\end{equation*}
@@ -453,6 +453,12 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 \end{proof}
 \begin{obs}[Demostración alternativa]
 	Una demostración alternativa y quizá más contundente de la proposición \ref{etop_prop_unionAdher} consistiría en usar las propiedades de distributividad de las operaciones conjuntistas.
+	
+	En efecto, $z\in\adher{A\cup B}$ si y solo si todo abierto $\U$ de $z$ cumple que
+	\begin{equation*}
+		\U\cap(A\cup B)\stackrel{!}{=}(\U\cap A)\cup(\U\cap B)\not=\emptyset
+	\end{equation*}
+	lo cual es equivalente a decir que o bien $\U\cap A$ o bien $\U\cap B$ son no vacíos, con lo que hemos terminado, es decir $z\in\adher{A}\cup\adher{B}$.
 \end{obs}
 Por supuesto, este resultado presenta un dual inmediato.
 \begin{cor}[Intersección de interiores]
@@ -494,7 +500,7 @@ Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Si $A$ es cerrado, como $\adher{A}$ es el mayor cerrado contenido en $A$, es claro que se tiene que dar la igualdad $A=\adher{A}$.
+	Si $A$ es cerrado, como $\adher{A}$ es el menor cerrado que contiene a $A$, es claro que se tiene que dar la igualdad $A=\adher{A}$.
 	
 	Recíprocamente, si se da la igualdad $A=\adher{A}$, como $\adher{A}$ es cerrado, también lo será $A$.
 \end{proof}
@@ -516,7 +522,7 @@ En esta sección presentamos el concepto de punto de acumulación, que es muy ú
 	\end{equation*}
 \end{defi}
 \begin{obs}[Definición equivalente]
-	Una observación análoga a \ref{etop_defi_equivalente} tienen vigencia aquí también.
+	Una observación análoga a \ref{etop_defi_equivalente} tiene vigencia aquí también.
 \end{obs}
 Presentemos un poco de terminología para el conjunto de los puntos de acumulación.
 \begin{defi}[Conjunto derivado]
@@ -558,7 +564,7 @@ Cabe señalar que, claramente, esta descomposición, en general, no es un partic
 	\begin{equation}
 	\adher{D}\setminus D \subsetneq D'
 	\end{equation}
-	En general (compruébese) se verifica que $\adher{A}\setminus A\subset A'$.
+	En general se verifica que $\adher{A}\setminus A\subset A'$, esto ya se hizo en el lema \ref{etop_lem_descomposicion}.
 \end{exa}
 Según uno echa un ojo a la definición \ref{etop_defi_puntoAcumulacion} le dan ganas de ver qué pasa con aquellos puntos que no cumplen esta definición por los pelos. Para esto introducimos la siguiente definición.
 \begin{defi}[Puntos aislados]
@@ -605,7 +611,7 @@ Para afianzar la idea de que en la topología la intuición no parará de tender
 \begin{exa}[Espacios separables]
 	Recordamos en primer lugar por qué $\R^n$ es separable y después presentamos un ejemplo contraintuitivo.
 	\begin{enumerate}
-		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (inducción). Asimismo, la densidad puede probarse fácilmente por inducción sobre $n$.
+		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (el producto numerable de conjuntos numerables es numerable). Asimismo, la densidad puede probarse fácilmente.
 		\item Dado un conjunto cualquiera $\X$ equipado con la topología de un punto $a\in X$, el espacio topológico $(\X,\T_a)$ es separable (nótese que $\{a\}$ es denso y finito).
 	\end{enumerate}
 	Así se ve que, en espacios topológicos puestos con un poco de mala baba, pasan cosas que nos descarajan la intuición.
@@ -648,7 +654,7 @@ Una última cosa que merece la pena observar es que la frontera de un conjunto p
 	\begin{equation*}
 		\adher{A}\cap\adher{\X \setminus A}=\adher{A}\cap(\X \setminus \inter{A})
 	\end{equation*}
-	Así pues basta comprobar que $\adher{A}\cap(\X \setminus \inter{A})=\adher{A}\setminus \inter{A}$, lo cual es evidente.
+	Así pues basta comprobar que $\adher{A}\cap(\X \setminus \inter{A})=\adher{A}\setminus \inter{A}$, lo cual es evidente, por definición de diferencia conjuntista.
 \end{proof}
 
 \section{Bases de entornos}
@@ -706,7 +712,7 @@ Visto lo visto salta a la vista que algunos de los espacios topológicos que hem
 	
 	Asimismo el ejemplo \ref{etop_exa_basePunto} nos dice que cualquier espacio topológico con la topología de un punto $a\in\X$ verifica el primer axioma de numerabilidad (de hecho podemos encontrar bases finitas de un único entorno).
 \end{exa}
-En general, los espacios primer axioma son importantes dado que en ellos podremos fabricar sucesiones (y todos los potentes argumentos que se derivan de este hecho).
+En general, los espacios primer axioma son importantes dado que en ellos podremos fabricar sucesiones con un comportamiento ``bueno'' (y todos los potentes argumentos que se derivan de este hecho).
 
 Por suerte o por desgracia, hay espacios que no verifican el primer axioma. Como veremos más adelante, el espacio topológico de las funciones continuas (con cierta topología) no es primer axioma.
 
@@ -742,21 +748,21 @@ Esto viene a ser una filosofía parecida a la del álgebra lineal, pero cambiand
 \begin{prop}[Caracterización de las bases de una topología]
 	\label{etop_prop_caracterizacionBases}
 	$\B$ es base de $\T$ si y solo si para cada $x \in \X$ el conjunto
-	$\V_x := \{ V \in \B \midc  x \in V\}$ es una base de entornos de $x$.
+	$\Va{x} := \{ \V \in \B \midc  x \in \V\}$ es una base de entornos de $x$.
 \end{prop}
 \begin{proof}
 	Procedemos por doble implicación.
 	\begin{itemize}
-		\item[\bra] Supongamos que $\B$ es base de $\T$. Veamos que $\V_x$ es base de entornos de $x$. Para ello, tomaremos $V$ entorno de $x$ y veremos que hay un elemento de $\V_x$ contenido en $V$.
+		\item[\bra] Supongamos que $\B$ es base de $\T$. Veamos que $\Va{x}$ es base de entornos de $x$. Para ello, tomaremos $\V$ entorno de $x$ y veremos que hay un elemento de $\Va{x}$ contenido en $\V$.
 		
-		Como $V$ es entorno, hay un $\U$ abierto de manera que $x \in \U \subset \V$. Como $\B$ es base de abiertos de $\T$, tenemos que $x \in \U = \bigcup_{V_i \in \B} V_i \subset V$.
+		Como $\V$ es entorno, hay un $\U$ abierto de manera que $x \in \U \subset \V$. Como $\B$ es base de abiertos de $\T$, tenemos que $x \in \U = \bigcup_{\V_i \in \B} \V_i \subset \V$.
 		
-		Por tanto, habrá un $V_i \in \B$ tal que $x \in V_i \subset \U \subset V$. Como por definición, $V_i\in\V_x$ se tiene el resultado.
-		\item[\bla] Recíprocamente supongamos que $\V_x$ es base de entornos de $x$. Veamos que $\B$ es base de abiertos. Sea $\U$ un abierto no vacío y $x \in \U$. 
+		Por tanto, habrá un $\V_i \in \B$ tal que $x \in \V_i \subset \U \subset \V$. Como por definición, $\V_i\in\Va{x}$ se tiene el resultado.
+		\item[\bla] Recíprocamente supongamos que $\Va{x}$ es base de entornos de $x$. Veamos que $\B$ es base de abiertos. Sea $\U$ un abierto no vacío y $x \in \U$. 
 		
-		Por ser $\V_x$ base de entornos de $x$ y $\U$ entorno de $x$, pues es un abierto que contiene a $x$, habrá un $V \in \V_x$ tal que $x \in V \subset \U$.
+		Por ser $\Va{x}$ base de entornos de $x$ y $\U$ entorno de $x$, pues es un abierto que contiene a $x$, habrá un $\V_x \in \Va{x}$ tal que $x \in \V_x \subset \U$.
 		
-		Como podemos hacer esto para cada $x \in \U$, es fácil deducir que $\U = \bigcup_{x \in \U} V_x$ con lo que ya hemos ganado.
+		Como podemos hacer esto para cada $x \in \U$, es fácil deducir que $\U = \bigcup_{x \in \U} \V_x$, con lo que ya hemos ganado.
 	\end{itemize}
 	Con lo que concluye la demostración.
 \end{proof}
@@ -818,7 +824,7 @@ La siguiente proposición es una caracterización muy útil de las bases de abie
 		
 		Si $X = \bigcup_{B \in \B}B$ es claro que $\Gamma$ cumple la primera propiedad de las topologías.
 		
-		Por definición de $\Gamma$ la unión arbitraria de elementos de $\Gamma$ está en gamma, cumpliéndose así la segunda propiedad de las topologías.
+		Por definición de $\Gamma$ la unión arbitraria de elementos de $\Gamma$ está en $\Gamma$, cumpliéndose así la segunda propiedad de las topologías.
 		
 		Además, si se cumple la segunda condición veamos que se cumplen la propiedad restante.
 		
@@ -859,7 +865,7 @@ La gran utilidad de la proposición \ref{etop_base_top} combinada con la unicida
 	
 	Ver esto es muy sencillo. Sea el abierto de la base $[a,b)$, demostremos que su complementario $(-\infty, a) \cup [b,\infty)$ es también abierto.
 	
-	Esto es debido a  que el intervalo $(-\infty, a)$ es un abierto usual, luego Sorgenfrey, y $[b,\infty)$ lo poedmos escribir como $[b,\infty) = \bigcup_{k\geq1} [b, b+k)$ luego es un abierto Sorgenfrey. Como la unión de abiertos es abierto se tiene el resultado.
+	Esto es debido a  que el intervalo $(-\infty, a)$ es un abierto usual, luego Sorgenfrey, y $[b,\infty)$ lo podemos escribir como $[b,\infty) = \bigcup_{k\geq1} [b, b+k)$ luego es un abierto Sorgenfrey. Como la unión de abiertos es abierto se tiene el resultado.
 	\item La recta de Sorgenfrey es separable.
 	
 	En efecto, $\Q$ es denso, ya que todo elemento de la base $[a,b)\supset(a,b)$ contiene algún racional.
@@ -877,7 +883,7 @@ Introducimos ahora el concepto de ``subespacio'' topológico, para lo cual, fija
 	Sea $(\X,\T)$ un espacio topológico, asimismo sea un subconjunto $\mc{Y}\subset\X \neq \emptyset$.
 	
 	Definimos la \tbitop{relativa} en $\mc{Y}$ como \begin{equation}
-		\T\restriction_\mc{Y} = \{U\cap\mc{Y}\midc U\in\T\}
+		\T\restriction_\mc{Y} = \{\U\cap\mc{Y}\midc U\in\T\}
 	\end{equation}
 	En general, decimos que $(\mc{Y},\T\restriction_\mc{Y})$ es un \tbi{subespacio topológico}. Y a los abiertos de $\mc{Y}$ se les denomina \tbi{abiertos relativos}.
 \end{defi}
@@ -959,7 +965,7 @@ Veamos ahora cómo se comportan los cerrados, los entornos, las adherencias y la
 	\begin{enumerate}
 		\item $\Y$ es abierto de $\X$ si y solo si todo abierto de $\Y$ es abierto de $\X$.
 		\item $\Y$ es cerrado de $\X$ si y solo si todo cerrado de $\Y$ es cerrado de $\X$.
-		\item $\Y$ es entorno de $x$ en $\X$ si y solo si todo entorno de $x$ en $Y$ es entorno de $x$ en $X$.
+		\item $\Y$ es entorno de $x$ en $\X$ si y solo si todo entorno de $x$ en $\Y$ es entorno de $x$ en $\X$.
 	\end{enumerate}
 \end{lem}
 \begin{proof}
