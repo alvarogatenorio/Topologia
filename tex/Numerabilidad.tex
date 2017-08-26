@@ -52,7 +52,7 @@ Para afianzar en el lector la idea de que la intuición que pudiera tener ya nos
 		\item[$\bla$] 
 		Evidentemente, si la sucesión es constantemente $x_0$ a partir de cierto término $k_0$, la sucesión converge a $x_0$ ya que todo entorno de $x_0$ contiene a $x_0$ y la sucesión es siempre $x_0$ a partir de término $k_0$, luego se cumple algo más fuerte de lo que nos pide la convergencia.
 		\item[$\bra$]
-		Si una sucesión converge a un punto $x_0$, el conjunto $A$ de los términos de la sucesión que no coinciden con $x_0$ es numerable (ya que el conjunto de términos de la sucesión es numerable en sí mismo). Luego su complementario, que contiene a $x_0$ es abierto, y, por tanto, entorno de $x_0$. Como $x_0$ es el límite habrá un cierto $k_0$ a partir del cual los términos de la sucesión queden confinados en $\X\setminus A$, no obstante, el único valor que puede tomar la sucesión en este conjunto es $x_0$.\qedhere
+		Si una sucesión converge a un punto $x_0$, el conjunto $A$ de los términos de la sucesión que no coinciden con $x_0$ es numerable (ya que el conjunto de términos de la sucesión es numerable en sí mismo). Luego su complementario, que contiene a $x_0$ es abierto por definición de la topología, y por tanto, entorno de $x_0$. Como por hipótesis la sucesión converge a $x_0$, habrá un cierto $k_0$ a partir del cual los términos de la sucesión queden confinados en $\X\setminus A$, no obstante, el único valor que puede tomar la sucesión en este conjunto es $x_0$.\qedhere
 	\end{enumerate}
 \end{proof}
 Para ver la potencia del resultado anterior hagamos una pequeña observación.
@@ -72,9 +72,9 @@ Para ver la potencia del resultado anterior hagamos una pequeña observación.
 Veamos que cuando le vamos exigiendo algunas cosas más al espacio vamos desbloqueando argumentos que usábamos con naturalidad en el contexto de los espacios métricos, haciendo de las sucesiones una herramienta cada vez más y más potente.
 \begin{obs}[Construcción de sucesiones convergentes]
 	\label{num_obs_construccion}
-	En un espacio $\X$ I axioma podemos construir sucesiones convergentes a cualquier punto $x_0$ del mismo. El procedimiento que veremos a continuación (con ligeras modificaciones quizá) puede resultarnos muy útil a la hora de elaborar argumentos como veremos en el lema \ref{num_obs_adherencia_limites}. Veamos cómo se hace.
+	En un espacio $\X$, I axioma podemos construir sucesiones convergentes a cualquier punto $x_0$ del mismo. El procedimiento que veremos a continuación (con ligeras modificaciones quizá) puede resultarnos muy útil a la hora de elaborar argumentos como veremos en el lema \ref{num_obs_adherencia_limites}. Veamos cómo se hace.
 	
-	Tomamos el punto $x_0$ al que queremos que nuestra sucesión converja. Asimismo tomamos una base numerable encajada $\{V_k\midc k\in\N\}$ del mismo. Y para cada $k\in\N$ tomamos un punto en $x_k\in V_k$.
+	Tomamos el punto $x_0$ al que queremos que nuestra sucesión converja. Asimismo tomamos una base numerable encajada $\{V_k\midc k\in\N\}$ del mismo. Y para cada $k\in\N$ tomamos un punto $x_k\in V_k$.
 	
 	Veamos que la sucesión $\{x_k\}_{k=1}^{\infty}$ converge a $x_0$. En efecto, dado un entorno de $x_0$, siempre podemos encontrar uno de la base $V_{k_0}$ contenido. Luego todos los términos de la sucesión a partir de $k_0$ se encuentran en el entorno inicial (por ser la base encajada).
 \end{obs}
@@ -93,7 +93,7 @@ Para ver las cosas con un poco de perspectiva vamos a demostrar desde un punto d
 	\label{num_exa_adher_topologia_punto}
 	Sea $\X$ un conjunto equipado con la topología $\T_a$ del punto $a\in\X$.
 	
-	Como la sucesión constantemente $a$ (y por tanto contenida en $\{a\}$) converge simultáneamente a todo el espacio, como vimos en la observación \ref{num_obs_adherencia_limites}, resulta que, por la observación \ref{num_obs_adherencia_limites}, el punto $a$ es denso en $\X$.
+	Como la sucesión constantemente $a$ (y por tanto contenida en $\{a\}$) converge simultáneamente a todo el espacio, como vimos en la observación \ref{num_obs_adherencia_limites}, resulta que el punto $a$ es denso en $\X$.
 \end{exa}
 
 El hecho de que el límite no sea único puede resultar perturbador para las mentes acostumbradas a los espacios métricos. Por esa razón a veces es buenos exigirle ciertas condiciones adicionales de separación a nuestro espacio.
