@@ -357,13 +357,13 @@ Sin embargo, parece muy engorroso tener que demostrar que existe una base de ent
 	
 	Como $K\setminus W=K\setminus (W\cap K)\subset K$ y $K\setminus (W\cap K)$ es cerrado en $K$, entonces $K\setminus W$ es compacto.
 	
-	Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $X$.
+	Sin embargo $x\notin K\setminus W$. Vamos a aprovechar este compacto para construir uno que sí sea entorno de $x$.
 	
 	Como $X$ es \hausdorff, dados un compacto y un punto podemos encontrar dos entornos disjuntos (como se recalcó en el corolario \ref{comp_obs_compSep}). Entonces, podemos encontrar dos abiertos $V_x$ y $G$ tales que $V_x\cap G=\emptyset$, con $x\in V_x$ y $K\setminus W\subset G$.
 	
 	Podemos tomar $V_x$ además de forma que $V_x\subset U$. Si $V_x$ no cumpliera esto, tomamos en su lugar $V_x\cap U$ que también contiene a $x$. Entonces, $x\in V_x\subset \adher{V}_x\subset \adher{K}=K$, donde la última igualdad se cumple por ser $X$ Hausdorff. Entonces $\adher{V}_x$ es un compacto (por ser cerrado en compacto) entorno de $x$.
 	
-	Ahora, solo queda comprobar que $\adher{V}_x\subset W$. Veamos para ello que se verifica el sifuiente aserto
+	Ahora, solo queda comprobar que $\adher{V}_x\subset W$. Veamos para ello que se verifica el siguiente aserto
 	\[V_x\cap G=\emptyset\implies \adher{V}_x\cap G=\emptyset\]
 	En efecto, si hubiera un $y\in \adher{V}_x\cap G$. Entonces $y\in\adher{V}_x$ e $y\in G$, como $G$ es abierto, será entorno de $y$, y por definición de adherencia $V_x \cap G\not=\emptyset$, llegando así a un absurdo.
 	
