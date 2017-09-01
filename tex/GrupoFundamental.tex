@@ -548,7 +548,7 @@ El objetivo principal de esta sección es aplicar las ideas de teoría de catego
 	Nótese que denotamos $f^\ast$ al homomorfismo de grupos que es imagen de una aplicación continua $f$ por el funtor $\pi$.
 	Como se aprecia en el diagrama, este homomorfismo $f^\ast$ se define, para una clase de equivalencia de caminos, de la siguiente forma:
 	\[\begin{split}
-	f^\ast:(\X, x_0) &\to (\Y, y_0) \\
+	f^\ast:\pi(\X, x_0) &\to \pi(\Y, y_0) \\
 	[\sigma] &\mapsto [f\circ\sigma]
 	\end{split}\]
 	Hay que comprobar, entonces, que está bien definido. En efecto, consideramos la aplicación $f^\ast$ que acabamos de definir. Desde luego, si $\sigma$ es un lazo con base $x_0$, $f\circ\sigma$ es un lazo con base $y_0$. Para ver si respeta la homotopía, consideramos $\tau:[0,1]\to (\X,x_0)$ homótopo con extremos fijos con $\sigma$ a través de la homotopía $H$. Entonces, $f\circ H$ es una homotopía entre $f\circ\sigma$ y $f\circ\tau$. Por último, comprobamos que es homomorfismo, lo cual es directo comprobando que $f\circ(\sigma\ast\tau)=(f\circ\sigma)\ast (f\circ\tau)$.
