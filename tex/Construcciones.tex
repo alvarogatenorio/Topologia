@@ -282,15 +282,29 @@ Nuestro objetivo ahora es ver qué relación hay entre los espacios $\frac{\X}{\
 	
 	Sabemos que $\adher{f}$ es una biyección entre $\frac{\X}{\sim}$ e $\Y$, luego únicamente queda demostrar la continuidad en ambos sentidos.
 	
-	La propiedad universal de $\frac{\X}{\sim}$ nos dice que $\adher{f}$ es continua si y solo si $\adher{f}\circ p$ es continua.
+	La propiedad universal de $p(\T)$ nos dice que $f$ es continua si y solo si $\adher{f} = f\circ p^{-1}$ es continua. Veamoslo en el diagrama:
 	
-	Teniendo en cuenta que $\adher{f}=f\circ p^{-1}$ tenemos que $\adher{f}\circ p=f\circ p^{-1}\circ p=f$,como $f$ es continua hemos terminado.
+		\begin{equation*}
+		\xymatrix{
+			(\X,\T) \ar[r]^p \ar[rd]_f &
+			(\frac{\X}{\sim}, p(\T)) \ar[d]^{\adher{f}=f\circ p^{-1}} & \\
+			&(\Y,f(\T))
+		}
+	\end{equation*}
 	
-	Para la continuidad de $\adher{f}^{-1}$ seguimos un argumento similar.
+	Por construcción sabemos que tanto $f$ como $p$ son continuas, por las topologías puestas en los espacios a los que llegan estas aplicaciones, cosa que ya se ha visto. Luego como $f$ es continua tenemos que $\adher{f}$ también lo es.
 	
-	Por la propiedad universal de $f(\T)$, $\adher{f}^{-1}$ es continua si y solo si $\adher{f}^{-1}\circ f$ es continua.
+	Veamos ahora si $\adher{f}^{-1}$ también lo es. Por la propiedad universal de $f(\T)$ tenemos que $p$ es continua si y solo si lo es $\adher{f}^{-1}$. Veamoslo en el diagrama:
 	
-	Pero $\adher{f}^{-1}\circ f=p\circ f^{-1}\circ f=p$, y $p$ es continua por definición.
+			\begin{equation*}
+		\xymatrix{
+			(\X,\T) \ar[r]^f \ar[rd]_p &
+			(\Y,f(\T)) \ar[d]^{\adher{f}^{-1}=p\circ f^{-1}} & \\
+			&(\frac{\X}{\sim}, p(\T))
+		}
+	\end{equation*}
+	
+	Pero también sabemos que tanto $f$ como $p$ son continuas, por las topologías puestas en los espacios a los que llegan estas aplicaciones. Luego como $p$ es continua tenemos que $\adher{f}$ también lo es.
 \end{proof}
 \subsection{Saturación}
 En este apartado estudiaremos en detalle la topología de $\frac{\X}{\sim}$. Al ser este espacio homeomorfo al espacio $\Y$, si comprendemos la topología del cociente comprenderemos de regalo la topología de $\Y$ (lo cual es una estrategia tremendamente fecunda).
