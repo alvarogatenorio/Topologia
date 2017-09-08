@@ -761,11 +761,11 @@ El lema que sigue tiene una importancia capital a la hora de demostrar cuál es 
 			\[\widetilde{H}_y\restriction_{V_y\times\{0\}}=\widetilde{f}\restriction_{V_y}\]
 			
 			\item Para el paso inductivo, supongamos dada $\widetilde{H}_y\restriction_{V_y\times [0,t_i]}$. Como se cumple que la homotopía $H\restriction_{V_y\times [t_i,t_{i+1}]}$ acaba en $U^{x_{i+1}}$, resulta que $H(y,t_i)\in U_{x_{i+1}}$. Entonces, se cumple:
-			\[\widetilde{H}^y(y, t_i)\in p^{-1}(U^x_{i+1})=\bigcup_\lambda U_\lambda^{x_{i+1}}\]
+			\[\widetilde{H}_y(y, t_i)\in p^{-1}(U_{x_{i+1}})=\bigcup_\lambda U_\lambda^{x_{i+1}}\]
 			donde la unión es disjunta. De esta forma, existe un (único) $\lambda$ tal que $\widetilde{H}_y(y, t_i)\in U_\lambda^{x_{i+1}}$. Así, $(y,t_i)\in (\widetilde{H}_y)^{-1}(U_\lambda^{x_{i+1}})$, que es abierto, y por tanto existe un entorno $W_y$ que cumple que $W_y\times \{t_i\}\subset (\widetilde{H}_y)^{-1}(U_\lambda^{x_{i+1}})$. Reducimos entonces el entorno original $V_y$ a $V_y\cap W_y$, que desde luego es entorno por ser intersección de entornos, y entonces $V_y\times\{t_i\}\subset (\widetilde{H}_y)^{-1}(U_\lambda^{x_{i+1}})$.
 			
 			Ahora, por el lema \ref{grf_lema_elevacion_local} de elevación local, ya que tenemos que:
-			\[V_y\times [t_i, t_{i+1}]\subset H^{-1} U^{x_{i+1}}\]
+			\[V_y\times [t_i, t_{i+1}]\subset H^{-1}(U^{x_{i+1}})\]
 			podemos encontrar una elevación:
 			\[\widetilde{H}_y\restriction_{V_y\times [t_i,t_{i+1}]} = (p\restriction_{U_\lambda^{x_{i+1}}})^{-1}\circ H \]
 			
@@ -801,7 +801,7 @@ El siguiente resultado bien podría llamarse corolario, pues es un caso particul
 	Dado un camino $\sigma:\mc{Z}= [0,1]\to\X$, de origen $x_0\in\X$, entonces existe una única elevación $\widetilde{\sigma}$ de $\sigma$ tal que el origen de $\widetilde{\sigma}$ sea $\widetilde{x_0}\in\widetilde{X}$.
 	
 	\begin{proof}
-		Si en el lema de elevación de homotopías tomamos $\Y=\{a\}$, y consideramos la función $\widetilde{f}:\Y\to \widetilde{\X}$ tal que $\widetilde{f}(a)=\widetilde{x_0}$, tenemos el resultado.
+		Si en el lema de elevación de homotopías tomamos $\Y=\{a\}$, y consideramos la función $\widetilde{\sigma_{0}}:\Y\to \widetilde{\X}$ tal que $\widetilde{\sigma_{0}}(a)=\widetilde{x_0}$, tenemos el resultado.
 	\end{proof}
 \end{lem}
 
