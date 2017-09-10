@@ -822,7 +822,7 @@ El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el e
 		Vamos a empezar demostrando que la esfera $\Sfe^n$ es un espacio recubridor del espacio proyectivo $\proy^n$. Vamos a repetir con un poco más de detalle el argumento que ya utilizamos en el ejemplo \ref{grf_exa_recubrimientos}. Consideramos pues la aplicación:
 		\[\begin{split}
 		p:\Sfe^n&\to\proy^n \\
-		(x_0,\dots,x_n)&\mapsto (x_0,\dotsc,x_n)
+		(x_0,\dots,x_n)&\mapsto (x_0:\dotsc:x_n)
 		\end{split}\]
 		Entonces, sea un punto $y\in\proy^n$. Tenemos que comprobar que para cada $x\in p^{-1}(y)$ existe un entorno $U_x$ tal que $p^{-1}(U_x)$ es union disjunta de conjuntos $U_\lambda$, donde cada $U_\lambda\homeo U_x$.
 		
@@ -831,7 +831,7 @@ El objetivo de esta sección es calcular el grupo fundamental de $\proy^n$, el e
 		Visto esto, planteamos la siguiente elevación de caminos. Sea $a=(1:0:\dotsc:0)$ el punto base del grupo fundamental. Entonces, tenemos el diagrama:
 		\[\xymatrix @C = 0.5pc {
 			&& \Sfe^n \ar[d]^p & (x_0,\dots,x_n) \ar@{|->}[d] \ar@{}[l]|-\ni \\
-			[0,1] \ar[rr]^\sigma \ar[rru]^{\widetilde{\sigma}} && \proy^n & (x_0,\dotsc,x_n) \ar@{}[l]|-\ni
+			[0,1] \ar[rr]^\sigma \ar[rru]^{\widetilde{\sigma}} && \proy^n & (x_0:\dotsc:x_n) \ar@{}[l]|-\ni
 		}\]
 		de forma que $\sigma$ es un lazo en $\proy^n$ con base en $a$, y por tanto verifica $\sigma(0)=\sigma(1)=a$. Si llamamos $p^{-1}(a)=\{\widetilde{a},-\widetilde{a}\}$, por el lema de elevación de caminos (\ref{grf_lema_elevacion_caminos}), podemos elegir $\widetilde{\sigma}$ de forma que se verifique que $\widetilde{\sigma}(0)=\widetilde{a}$. Pero como tan solo sabemos que $p\circ\widetilde{\sigma}=\sigma$, entonces $\widetilde{\sigma}(1)$ no tiene por qué ser $\widetilde{a}$, puede ser también $-\widetilde{a}$.
 		
