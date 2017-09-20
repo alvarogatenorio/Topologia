@@ -280,7 +280,33 @@ Una vez vistas ambas definiciones pasamos a ver una serie de propiedades y obser
 		
 		Análogamente, una aplicación $f$ no necesariamente biyectiva se llama \tbi[aplicación!cerrada]{cerrada} cuando la imagen de cerrados es un cerrado (es decir, cuando $f(F)$ es cerrado si $F$ es cerrado).
 		
-		Dejamos como ejercicio al lector ver que si una es aplicación no es abierta no tiene por qué ser cerrada (y viceversa) y que si una aplicación es abierta y cerrada no tiene por qué ser biyectiva.
+		Si una es aplicación no es abierta no tiene por qué ser cerrada (y viceversa) y que si una aplicación es abierta y cerrada no tiene por qué ser biyectiva.
+		Vamos a poner una serie de ejemplos que ilustren esto.
+		\begin{itemize}
+			\item Ejemplo de una aplicación que es abierta y no es continua. Si tomamos $\X = (\R, \T_{usual})$ e $\Y = (\{a, b\}, \T_{discreta})$, tal que $f : \X \rightarrow Y$:\\
+			\begin{equation}
+				f(x)= \left\{ \begin{array}{lcc}
+				a &   si  & x \geq 0 \\
+				\\ b  &  si  & x < 0
+				\end{array}
+				\right.
+			\end{equation}
+			Es abierta y no continua, ya que $f^{-1}(\{a\})$ no es abierto en $X$ (a su vez también es cerrada y tampoco continua).
+			\item Una aplicación que no es abierta ni cerrada. Si tomamos $\X = (\A, \T_{discreta})$ e $\Y = (\A, \T_{trivial})$ , con $\A$ un conjunto cualquiera, y $f$ la identidad.
+			\item Una aplicación que es abierta y no es cerrada. Si tomamos $\X = (\{a, b\}, \T_{discreta})$ e $\Y = (\{a, b\}, \T = \{\emptyset, \{a\}, \{a, b\})$, y $f$ la aplicación constante en $a \in \Y$.
+			\item Una aplicación que es cerrada y no es abierta. Si tomamos $\X = (\{a, b\}, \T_{discreta})$ e $\Y = (\R, \T_{usual})$, y $f: \X \rightarrow \Y$:\\
+			\begin{equation}
+			\left\{ \begin{array}{lcc}
+			f(a) = 0\\
+			\\ f(b) = 1
+			\end{array}
+			\right.
+			\end{equation}
+			\item Una aplicación que es abierta y cerrada. Si tomamos un espacio topológico arbitrario $\X = \Y$ y $f$ la aplicación identidad.
+			
+			Las demostyraciones de estos ejemplos se dejan al lector.
+			
+		\end{itemize}
 		\item Evidentemente, una aplicación biyectiva continua y abierta es un homeomorfismo. Además, un homeomorfismo local es una aplicación abierta (¡compruébese!).\qedhere
 		\end{enumerate}
 \end{obs}
