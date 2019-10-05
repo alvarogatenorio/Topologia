@@ -52,7 +52,7 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 		\end{equation}
 		Por otra parte, diremos que $\U\subset M$ es un \tbi[conjunto!abierto métrico]{abierto métrico} si para todo punto $x\in\U$ nos es posible encontrar una bola centrada en $x$ que esté contenida en $\U$.
 		
-		El par $(M,\T_d)$, donde $\T_d$ es la colección de todos los abiertos métricos de $(M,d)$, es un espacio topológico. A esta topología la llamaremos \tbitop[$\T_d$]{usual} o inducida por la métrica $d$.
+		El par $(M,\T_d)$, donde $\T_d$ es la colección de todos los abiertos métricos de $(M,d)$, es un espacio topológico. A esta topología la llamaremos \tbitop[$\T_u$]{usual} o \tbitop[$\T_d$]{inducida por la métrica} $d$.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop[$\T_t$]{trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
 		\T=\{\emptyset, \X\}
@@ -175,7 +175,7 @@ Presentamos aquí los primeros pasos de la demostración por ser especialmente �
 Como la unión de abiertos es abierto, es claro que una forma de construir el mayor abierto contenido en cierto conjunto es, coleccionar los abiertos contenidos en dicho conjunto y unirlos. Escrito formalmente, tomamos el conjunto
 \begin{equation}
 \label{etop_eq_mayorAbierto}
-B:=\bigcup_{\W\subset A}\W\text{ con $\W$ abierto.}
+B:=\bigcup_{\W\subset A}\W\text{ con }\W \text{ abierto.}
 \end{equation}
 Es claro que $B\subset A$, ya que es una unión de conjuntos contenidos en $A$, además, si hubiera un abierto más grande contenido en $A$ que $B$, este pertenecería a la familia de conjuntos que estamos uniendo, lo cual es absurdo.
 
@@ -206,7 +206,7 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 		\label{etop_eq_dobleInterior}
 		\inter{\inter{A}}=\inter{A}
 		\end{equation}
-		Esto es trivial ya que al ser $\inter{A}$ un abierto, el mayor abierto contenido en él es él mismo.
+		Esto es trivial, ya que, al ser $\inter{A}$ un abierto, el mayor abierto contenido en él es él mismo.
 		\item Un conjunto es abierto si y solo si coincide con su interior, es decir
 		\begin{equation}
 		\label{etop_eq_abiertoInterior}
@@ -225,15 +225,11 @@ El lema \ref{etop_lem_caracterizacionInterior} es bastante fuerte y produce algu
 Con esto podemos decir que ya hemos liquidado todo lo referente a conjuntos abiertos.
 \section{Conjuntos cerrados y adherencia}
 \label{etop_cerradosAdherencia}
-En esta sección estudiaremos los conjuntos cerrados.
-
-Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la de ser abierto, ya que, como veremos más adelante, hay conjuntos que no son ni abiertos ni cerrados así como conjuntos que son abiertos y cerrados a la vez.
+En esta sección estudiaremos los conjuntos cerrados. Cabe destacar que la noción de ser cerrado no es exactamente la contraria a la de ser abierto, ya que, como veremos más adelante, hay conjuntos que no son ni abiertos ni cerrados, así como conjuntos que son abiertos y cerrados a la vez, los famosos \emph{clopens}.
 
 \begin{defi}[Conjunto cerrado]
-	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi[conjunto!cerrado]{cerrado} si su complementario, $\X\setminus\F$, es abierto.
+	Un conjuto $\F$ de un espacio topológico $\X$ se dice \tbi[conjunto!cerrado]{cerrado} si su complementario, $\X\setminus\F$, es abierto. Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
 \end{defi}
-
-Usualmente denotaremos a los conjuntos cerrados con las letras $\F$ o $\mc{H}$.
 
 Usando propiedades básicas de teoría de conjuntos (leyes de DeMorgan, distributividad,\dots) se obtienen algunas propiedades elementales de los conjuntos cerrados.
 \begin{lem}[Propiedades de los cerrados]
@@ -247,14 +243,12 @@ Usando propiedades básicas de teoría de conjuntos (leyes de DeMorgan, distribu
 \end{lem}
 \begin{proof}Vayamos caso por caso.
 	\begin{enumerate}
-		\item $\X$ es cerrado pues $\X\setminus\X=\emptyset$ es abierto.
-		
-		Asimismo, $\emptyset$ es cerrado pues $\X\setminus\emptyset=\X$ es abierto.
-		\item $\bigcap_{i\in I}\F_i$ es cerrado ya que, aplicando las leyes de DeMorgan
+		\item $\X$ es cerrado pues $\X\setminus\X=\emptyset$ es abierto. Asimismo, $\emptyset$ es cerrado, pues $\X\setminus\emptyset=\X$ es abierto.
+		\item $\bigcap_{i\in I}\F_i$ es cerrado, ya que, aplicando las leyes de DeMorgan
 		\begin{equation*}
 		\X\setminus\left(\bigcap_{i\in I}\F_i\right)=\bigcup_{i\in I}\X\setminus\F_i
 		\end{equation*}
-		es abierto por ser la unión arbitraria de abiertos un abierto.
+		que es abierto, por ser la unión arbitraria de abiertos un abierto.
 		\item $\bigcup_{i=1}^n\F_i$ es cerrado, basta tomar el complementario y ver que es abierto por ser intersección finita de abiertos.
 		\begin{equation*}
 		\X\setminus\left(\bigcup_{i=1}^{n}\F_i\right)=\bigcap_{i=1}^n\X\setminus\F_i
@@ -264,9 +258,9 @@ Usando propiedades básicas de teoría de conjuntos (leyes de DeMorgan, distribu
 \end{proof}
 \begin{obs}[Abiertos y cerrados a la vez]
 	\label{etop_obs_abiertoCerrado}
-	Basta con mirar con atención este lema \ref{etop_lem_propiedadesCerrados} para darse cuenta de que hemos encontrado dos conjuntos que son abiertos y cerrados a la vez, el vacío y el total.
+	Basta con mirar con atención este lema \ref{etop_lem_propiedadesCerrados} para darse cuenta de que ya hemos encontrado dos conjuntos que son abiertos y cerrados a la vez, el vacío y el total.
 	
-	Estos conjuntos abiertos y cerrados a la vez (o ``\tbi[clopen]{clopens}'', del inglés close--open) son de vital importancia a la hora de estudiar la conexión, como veremos más adelante. 
+	Estos conjuntos abiertos y cerrados a la vez (o ``\tbi[clopen]{clopens}'', del inglés close-open) son de vital importancia a la hora de estudiar la noción de \emph{conexión}, como veremos más adelante. 
 \end{obs}
 %----DEJO ESTO COMENTADO HASTA QUE SE DE LA DEFINICIÓN DE COMPACTO----
 %Una breve anotación que nos será útil en el futuro. Para la comprobación de compacidad en un computo, nos será útil la utilización de cerrados. Veamos un ejemplo, introducido para motivar esta observación.\\
@@ -304,7 +298,7 @@ Usualmente denotaremos a la adherencia de alguna de las siguientes formas
 \Adh_{\X}(A)=\Adh(A)=\adher{A}
 \end{equation}
 
-Vamos a desgranar ahora una serie de resultados que nos van a hacer ver que adherencia e interior de un conjunto son, de alguna manera, conceptos duales.
+Vamos a desgranar ahora una serie de resultados que nos van a hacer ver que la adherencia y el interior de un conjunto son, de alguna manera, conceptos duales.
 
 Comenzamos en primer lugar con algo casi trivial.
 \begin{obs}[Adherencia y conjunto]
@@ -314,11 +308,9 @@ Comenzamos en primer lugar con algo casi trivial.
 	\label{etop_eq_adherenciaConjunto}
 	A\subset\adher{A}
 	\end{equation}
-	Esto es debido a que, evidentemente, cualquier entorno de $a$ contiene al punto $a$, luego, por definición, corta al conjunto $A$.
+	Esto es debido a que, evidentemente, cualquier entorno de un punto $a\in A$ contiene al punto $a$, luego, por definición, corta al conjunto $A$.
 	
-	Visto en perspectiva, esta desigualdad es de alguna manera la dual a la \eqref{etop_eq_desigualdadInterior1}.
-	
-	Además, combinando ambas desigualdades obtenemos que un conjunto siempre queda ``ensandwichado'' entre su interior y su adherencia.
+	Visto en perspectiva, esta desigualdad es de alguna manera la dual a la \eqref{etop_eq_desigualdadInterior1}. Además, combinando ambas desigualdades obtenemos que un conjunto siempre queda ``ensandwichado'' entre su interior y su adherencia.
 	\begin{equation*}
 		\inter{A}\subset A\subset\adher{A}
 	\end{equation*}
@@ -330,7 +322,7 @@ Comenzamos en primer lugar con algo casi trivial.
 	La adherencia de un conjunto $A$ es un cerrado.
 \end{lem}
 \begin{proof}
-	Usaremos lo único que tenemos, es decir, la definición de conjunto cerrado. Por ende, probaremos que $\X\setminus\adher{A}$ es abierto, para lo cual veremos que es entorno de todos sus puntos, haciendo buen uso del lema \ref{etop_lem_caracterizacionAbiertos}.
+	Usaremos lo único que tenemos, es decir, la definición de conjunto cerrado. Por ende, probaremos que $\X\setminus\adher{A}$ es abierto, para lo cual, veremos que es entorno de todos sus puntos, haciendo buen uso del lema \ref{etop_lem_caracterizacionAbiertos}.
 	
 	Dado $x\in\X\setminus\adher{A}$, como $x$ no es un punto adherente, entonces existirá un entorno $\V(\ni x)$, el cual podemos escoger abierto sin pérdida de generalidad tal que se verifica
 	\begin{equation*}
@@ -348,12 +340,12 @@ Comenzamos en primer lugar con algo casi trivial.
 \end{proof}
 Continuamos esta dualización de conceptos dándonos cuenta de que la adherencia es el menor cerrado que contiene a $A$. Como antes, parte de la demostración se basa en un procedimiento estándar que pasamos a explicar.
 
-Es fácil darse cuenta de que, como la intersección arbitraria de cerrados es un cerrado, el menor conjunto cerrado que contiene a uno dado puede ser construido de la siguiente manera
+Es fácil darse cuenta de que, como la intersección arbitraria de cerrados es un cerrado, el menor conjunto cerrado que contiene a uno dado puede ser construido coleccionando todos los cerrados que contienen a dicho conjunto y cortándolos. Es decir
 \begin{equation}
 \label{etop_eq_menorCerrado}
-B:=\bigcap_{\mc{H}\supset A}\mc{H}
+B:=\bigcap_{\mc{H}\supset A}\mc{H} \text{ con }\mc{H} \text{ cerrado.}
 \end{equation}
-En efecto es un conjunto que contiene a $A$ ya que todos los conjuntos de la familia a intersecar contienen a $A$, además, es el menor de ellos, ya que, de haber uno más pequeño, pertenecería a la familia que se está intersecando, lo cual es absurdo (¡compruébese!).
+En efecto es un conjunto que contiene a $A$ ya que todos los conjuntos de la familia a intersecar contienen a $A$, además, es el menor de ellos, ya que, de haber uno más pequeño, pertenecería a la familia que se está intersecando, lo cual es absurdo.
 
 Presentamos, otra vez, en forma de lema, el resto de la demostración.
 \begin{lem}[Caracterización de la adherencia]
@@ -391,7 +383,7 @@ Presentamos a continuación unas cuantas igualdades conjuntistas que pueden resu
 		\begin{equation*}
 		\U_z\cap A =\emptyset
 		\end{equation*}
-		Tratamos de demostrar que $z$ es punto interior de $\X\setminus A$, esto es, por definición \eqref{etop_def_puntoInterior}, que $\X\setminus A$ sea entorno de $z$, esto a su vez significa que hay un abierto $\U_z'$ contenido en $\X\setminus A$ de forma que $z\in\U_z'$. Así pues el problema se reduce a encontrar dicho entorno, sin embargo, es trivial comprobar el entorno $\U_z$ anteriormente definido cumple los requisitos.
+		Tratamos de demostrar que $z$ es punto interior de $\X\setminus A$, esto es, por definición \eqref{etop_def_puntoInterior}, que $\X\setminus A$ sea entorno de $z$, esto a su vez significa que hay un abierto $\U_z'$ contenido en $\X\setminus A$ de forma que $z\in\U_z'$. Así pues, el problema se reduce a encontrar dicho entorno, sin embargo, es trivial comprobar el entorno $\U_z$ anteriormente definido cumple los requisitos.
 		\item[\bsupset] Sea $z\in\Int(\X\setminus A)$, demostremos que $z$ no es adherente a $A$, para lo cual debemos encontrar un entorno de $z$, al que llamaremos $\V_z$, de manera que no corte al conjunto $A$. Esto es trivial, ya que $z$ es punto interior de $\X\setminus A$, luego el propio $\X\setminus A$ es entorno de $z$, y, evidentemente, no corta a $A$.
 	\end{enumerate}
 	Con lo que concluye la prueba.
@@ -427,16 +419,16 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 	Procedemos por doble contención.
 	\begin{enumerate}
 		\item[\bsubset] 
-		Dado $z\in \adher{A\cup B}$, todo entorno $\V_z$ de $z$ corta a $A\cup B$. Veamos que $z$ es, o bien adherente a $A$, o bien adherente a $B$ (quizá a ambos). Para ello supondremos que no es adherente a ninguno de ellos, es decir, que existe un entorno $\W_z$ de $z$ que no corta ni a $A$ ni a $B$. Si este entorno existiera tampoco cortaría a la unión (compruébese), lo cual es absurdo.
+		Dado $z\in \adher{A\cup B}$, todo entorno $\V_z$ de $z$ corta a $A\cup B$. Veamos que $z$ es, o bien adherente a $A$, o bien adherente a $B$ (quizá a ambos). Para ello supondremos que no es adherente a ninguno de ellos, es decir, que existe un entorno $\W_z$ de $z$ que no corta ni a $A$ ni a $B$. Si este entorno existiera tampoco cortaría a la unión, lo cual es absurdo.
 		\item[\bsupset]
 		Dado un punto $z\in\adher{A}\cup\adher{B}$, veamos que todo entorno de $\V_z$ de $z$ corta a $A\cup B$. Si no lo hiciera, para cada punto $x\in\V_z$, $x$ no estaría en $A$, luego $A\cap \V_z=\emptyset$. Análogamente ocurriría con $B$, lo cual contradice nuestra hipótesis.
 	\end{enumerate}
 	Con lo que finaliza la demostración.
 \end{proof}
 \begin{obs}[Demostración alternativa]
-	Una demostración alternativa y quizá más contundente de la proposición \ref{etop_prop_unionAdher} consistiría en usar las propiedades de distributividad de las operaciones conjuntistas.
+	Una demostración alternativa y quizá más contundente (psicológicamente hablando) de la proposición \ref{etop_prop_unionAdher} consistiría en usar las propiedades de distributividad de las operaciones conjuntistas.
 	
-	En efecto, $z\in\adher{A\cup B}$ si y solo si todo abierto $\U$ de $z$ cumple que
+	En efecto, $z\in\adher{A\cup B}$ si y solo si todo entorno abierto\footnote{Usualmente, en vez de decir que $\U$ es un entorno abierto de un punto $x\in\X$, diremos simplemente que $\U$ es un abierto de $x$.} $\U$ de $z$ cumple que
 	\begin{equation*}
 		\U\cap(A\cup B)\stackrel{!}{=}(\U\cap A)\cup(\U\cap B)\not=\emptyset
 	\end{equation*}
@@ -444,7 +436,7 @@ Una última identidad notable, un poco más profunda que las anteriores es la qu
 \end{obs}
 Por supuesto, este resultado presenta un dual inmediato.
 \begin{cor}[Intersección de interiores]
-	El interior de la intersección es la intersección de los anteriores.
+	El interior de la intersección es la intersección de los interiores.
 	\begin{equation*}
 	\Int(A\cap B)=\inter{A}\cap\inter{B}
 	\end{equation*}
@@ -454,12 +446,14 @@ Por supuesto, este resultado presenta un dual inmediato.
 	
 	Por un lado
 	\begin{equation*}
-	\X \setminus \Int(A\cap B)=\Adh(X\setminus (A\cap B))
+	\X \setminus \Int(A\cap B)=\Adh(\X\setminus (A\cap B))
 	\end{equation*}
 	Recíprocamente
-	\begin{multline*}
-	\X \setminus (\inter{A}\cap \inter{B})=(\X \setminus \inter{A})\cup(\X \setminus \inter{B})=\Adh(\X \setminus A)\cup \Adh(\X \setminus B))=\\=\Adh((\X \setminus A) \cup (\X \setminus B))=\Adh(X\setminus (A\cap B))
-	\end{multline*}
+	\begin{equation*}
+		\begin{aligned}
+			\X \setminus (\inter{A}\cap \inter{B})=&(\X \setminus \inter{A})\cup(\X \setminus \inter{B})=\Adh(\X \setminus A)\cup \Adh(\X \setminus B))=\\=&\Adh((\X \setminus A) \cup (\X \setminus B))=\Adh(\X\setminus (A\cap B))
+		\end{aligned}
+	\end{equation*}
 	Así, el resultado se sigue.
 \end{proof}
 El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la intersección no se da, tal y como muestra el siguiente ejemplo.
@@ -472,15 +466,15 @@ El resultado análogo a la proposición \ref{etop_prop_unionAdher} con la inters
 	\end{array}
 	\end{equation*}
 	En $\R^2$ con la topología usual, es fácil demostrar (se deja al lector) que $\adher{A\cap B}=\emptyset$ mientras que $\adher{A}\cap\adher{B}=\{1\}\times[0,1]$.
-\end{exa}
 	
-	Veamoslo con un dibujo. En el vemos en línea discontinua los conjuntos $A$ y $B$ en el de la izquierda, y cuya intersección dará vacía, y a la derecha sus adherencias, cuya intersección no es vacía, marcada con una línea roja continua.
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[scale = 0.20]{img/Intersecciones}
-		\caption{En el de la izquierda se ve $\adher{A\cap B}=\emptyset$ mientras que la de la derecha representa $\adher{A}\cap\adher{B}=\{1\}\times[0,1]$}
-	\end{figure}
+	Veámoslo con un dibujo. En la parte izquierda de la figura \ref{etop_img_cuadrados} vemos los conjuntos $A$ y $B$, cuya intersección es vacía. En la parte derecha de la figura quedan representadas sus adherencias, cuya intersección no es vacía, quedando esta marcada con una línea roja continua.
+\end{exa}	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale = 0.2]{img/intersecciones}
+	\caption{Ilustración del ejemplo \ref{etop_ejem_cuadradosAbiertos}}
+	\label{etop_img_cuadrados}
+\end{figure}
 
 Vistas todas estas igualdades, al igual que hicimos en la observación \ref{etop_obs_propiedadesInterior}, caractericemos los conjuntos cerrados a partir del concepto de adherencia.
 \begin{prop}[Cerrados y adherencia]
@@ -504,10 +498,10 @@ Añadimos una observación final trivial, simplemente por curiosidad.
 	Esto es inmediato ya que, como $\adher{A}$ es un cerrado, coincide con su adherencia.
 \end{obs}
 \section{Puntos de acumulación y conjuntos densos}
-En esta sección presentamos el concepto de punto de acumulación, que es muy útil para trabajar con sucesiones, como veremos más adelante. Además, definiremos la idea de que un conjunto sea denso de varias maneras que nos serán muy útiles a la hora de resolver problemas.
+En esta sección presentamos el concepto de \emph{punto de acumulación}, que es muy útil para trabajar con sucesiones, como veremos más adelante. Además, definiremos la idea de que un conjunto sea \emph{denso} de varias maneras que nos serán muy útiles a la hora de resolver problemas.
 \begin{defi}[Punto de acumulación]
 	\label{etop_defi_puntoAcumulacion}
-	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi[punto!de acumulación]{punto de acumulación} de $A$ si todo entorno de $\V_x$ de $x$ verifica que
+	Dado un conjunto $A$ en un espacio topológico $\X$, se dice que un punto $x\in\X$ es un \tbi[punto!de acumulación]{punto de acumulación} de $A$ si todo entorno $\V_x$ de $x$ verifica que
 	\begin{equation*}
 	(\V_x\setminus\{x\})\cap A\not=\emptyset
 	\end{equation*}
@@ -585,7 +579,7 @@ Esta definición es poco manejable en algunas circunstancias. Lo bueno que tiene
 \begin{proof} Veamos ambas implicaciones
 	\begin{enumerate}
 		\item[\bra] Sea $\U$ un abierto de $\X$. Por ser $\U$ abierto, es entorno de todos sus puntos. En particular, por ser $\U$ un abierto no vacío, es entorno de un $x \in \U \subset \X$. Ahora, por ser $A$ denso, $x \in \X = \adher{A}$, lo que implica por $x$ pertenecer a $\adher{A}$, que todo entorno de $x$ corta a $A$, por lo tanto $\U\cap A\not= \emptyset$.
-		\item[\bla] Sea $x\in X$ un punto cualquiera, tomemos un entorno arbitrario suyo $\V_x$, por definición de entorno, habrá un abierto $\U_x$ que verifique
+		\item[\bla] Sea $x\in \X$ un punto cualquiera, tomemos un entorno arbitrario suyo $\V_x$, por definición de entorno, habrá un abierto $\U_x$ que verifique
 		\begin{equation*}
 		x\in\U_x\subset\V_x
 		\end{equation*}
@@ -602,7 +596,7 @@ Para afianzar la idea de que en la topología la intuición no parará de tender
 \begin{exa}[Espacios separables]
 	Recordamos en primer lugar por qué $\R^n$ es separable y después presentamos un ejemplo contraintuitivo.
 	\begin{enumerate}
-		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (el producto numerable de conjuntos numerables es numerable). Asimismo, la densidad puede probarse fácilmente.
+		\item $\Q^n$ es un conjunto denso y numerable en $\R^n$ con la topología usual. La numerabilidad de $\Q^n$ es consecuencia de la numerabilidad de $\Q$ (recuérdese que el producto numerable de conjuntos numerables es numerable). Probar la densidad de $\Q^n$ ya es un poco más engorroso y se deja al lector como ejercicio.
 		\item Dado un conjunto cualquiera $\X$ equipado con la topología de un punto $a\in X$, el espacio topológico $(\X,\T_a)$ es separable (nótese que $\{a\}$ es denso y finito).
 	\end{enumerate}
 	Así se ve que, en espacios topológicos puestos con un poco de mala baba, pasan cosas que nos descarajan la intuición.
