@@ -1,51 +1,30 @@
-%---CAPITULO DOCUMENTADO CON PAUTAS Y PIJOTERÍAS DE ESTILO
-
-%Generalidades:
-%--Usar los entornos predefinidos en el style para teoremas y demás.
-%--Cuanto más cosas se etiqueten mejor.
-%--Nunca usar \\ para saltar de línea, en su lugar, dar a ENTER dos veces.
-%--Redactar.
 %Cuidado al usar interiores pues es algo que lamentablemente jode el interlineado. Usar el comando reducido \inter cuando se quiera poner un abierto en medio del texto.
-
-%Para este capítulo se usará la abreviatura "etop".
 \chapter{Espacios topológicos}
-%Todo capítulo será etiquetado con una abreviatura especificada al inicio del archivo.
 \label{etop}
-%Todo capítulo comienza con una breve introducción, ya sea a modo de breve motivación o a modo de resumen de contenidos (o ambas).
-La necesidad del estudio de la proximidad y continuidad, de la forma más abstracta posible, (absteniéndose del uso de la noción de distancia) dio origen a la Topología.
+La necesidad del estudio de la proximidad y la continuidad de la forma más abstracta posible, es decir, absteniéndose del uso de la noción de distancia, dio origen a la \emph{Topología}.
 
-La idea de espacio topológico se comenzó a desarrollar durante los siglos XIX y XX por matemáticos como Fréchet, Kuratowski, Alexandroff y Hausdorff entre otros.
-
-La definición inicial de estos espacios se puede encontrar en el libro \tb{\ti{``Grundzüge der Mengenlehre''}}\footnote{``Teoría abstracta de conjuntos'', publicado en $1914$ por \tb{\ti{Félix Hausdorff}}(1868-1942).} publicado por este último autor.
+La idea de \emph{espacio topológico} se comenzó a desarrollar durante los siglos XIX y XX por matemáticos como Fréchet, Kuratowski, Alexandroff y Hausdorff, entre otros. La definición original de estos espacios se puede encontrar en el libro \emph{``Grundzüge der Mengenlehre''}\footnote{\emph{``Teoría abstracta de conjuntos''}, publicado en $1914$ por Félix Hausdorff (1868-1942).}.
 
 
-Al comienzo de este capítulo introducimos la noción moderna de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos los conjuntos abiertos y cerrados y sus relaciones.%Continuará...
+Al comienzo de este capítulo introducimos la noción moderna de espacio topológico, añadiendo unos cuantos ejemplos, y posteriormente, presentaremos las propiedades elementales de los conjuntos abiertos y cerrados.
 \section{Espacios topológicos. Definición y ejemplos.}
-%Etiquetaremos tanto secciones como subsecciones.
 \label{etop_definicionEjemplos}
-%Es recomendable redactar un poco entre entorno y entorno y soltar un chascarrillo de vez en cuando para dejar reflexionar al lector y que no le parezca un ladrillo.
-Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la que trabajaremos a lo largo de todas estas notas, los llamados espacios topológicos.
-%Es recomendable titular cada entorno entre corchetes.
+Comenzamos, como no podía ser de otra manera, definiendo la estructura sobre la que trabajaremos a lo largo de todas estas notas, los espacios topológicos.
 \begin{defi}[Espacio topológico]
-	%Cada vez que comencemos un entorno potencialmente referenciable deberá ser etiquetado siguiendo un convenio similar a este.
 	\label{etop_def_espacioTopologico}
-	%Cada vez que introduzcamos un concepto nuevo es recomendable ponerlo en negrita y cursiva, se puede hacer usando estos comandos, probablemente haya que crear uno más corto porque la verdad que es un poco coñazo.
-	Un \tb{\ti{espacio topológico}} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades:
-	%Cuando se está en un entorno es recomendable poner algo de texto antes de un enmerate para que quede mejor.
+	Un \tbi[espacio!topológico]{espacio topológico} es un conjunto arbitrario no vacío $\mc{X}$ equipado con una colección $\T$ de subconjuntos $\mc{U}\subset\mc{X}$ que cumplen las siguientes propiedades:
 	\begin{enumerate}
-		%Cuando se definen axiomas importantes en el enumerate se sustituyen los números por cosas que llaman la atención (se suele hacer muy pocas veces).
 		\item El vacío y el total están en la colección $\T$, es decir, $\{\emptyset, \X\} \subset \T$
 		\item La unión arbitraria de conjuntos de $\T$ está en $\T$. Escrito de forma más rigurosa, pero desde luego, menos elegante, 
-		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$.
-		\item La intersección finita de conjuntos de $\T$ está en $\T$. O, dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
+		$\bigcup_{i\in I}\U_i\in\T$ donde cada $\U_i\in\T$, siendo $I$ un conjunto arbitrario de índices.
+		\item La intersección finita de conjuntos de $\T$ está en $\T$. Dicho de otra forma, $\bigcap_{i=1}^{n}\U_i\in\T$ donde cada $\U_i\in\T$.
 	\end{enumerate}
-	A menudo hablaremos tan solo de \tbi{espacio} para referirnos a los espacios topológicos.
+	A menudo hablaremos tan solo de \tbi[espacio!topológico]{espacio} para referirnos a los espacios topológicos.
 \end{defi}
-%Siempre viene bien algún chascarrillo para liberar tensiones.
-Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico--topológico.
+Hagamos un par de pequeñas observaciones antes de continuar con nuestro recién empezado viaje cósmico-topológico.
 \begin{obs}[Sutilezas]
 	\label{etop_obs_sutilezas}
-	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \T)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (espacios vectoriales, grupos, anillos,...).
+	Se desprende de la definición \ref{etop_def_espacioTopologico} que un espacio topológico no es más que un par $(\X, \T)$. Como es natural, salvo que sea necesario, nos referiremos a un espacio topológico por el conjunto que lo conforma, al igual que hacemos en casi todas las ramas de las matemáticas (espacios vectoriales, grupos, anillos,\ldots).
 \end{obs}
 Introducimos ahora un poco de terminología con la que el lector no tiene más remedio que hacerse familiar.
 \begin{obs}[Terminología]
@@ -54,20 +33,26 @@ Introducimos ahora un poco de terminología con la que el lector no tiene más r
 	
 	Asimismo, los conjuntos que constituyen los elementos de $\T$ reciben el nombre de \tbi[conjunto!abierto]{abiertos} de $\X$. Normalmente los denotaremos con las letras $\U$ o $\W$.
 	
-	Como es natural, nos referiremos a los elementos de $\X$ como \tbi[punto]{puntos}.
+	Como es natural, llamaremos \tbi[punto]{puntos} a los elementos de $\X$.
 \end{obs}
-Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto de espacio topológico viendo lo general que puede llegar a ser.
+Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto de espacio topológico, viendo lo general que puede llegar a ser.
 \begin{exa}[Topologías]
 	\label{etop_exa_topologias}
-	Las demostraciones de que, efectivamente, se cumplen las restricciones impuestas por la definición \ref{etop_def_espacioTopologico}, o bien ya se han hecho en cursos anteriores, o bien se dejan al lector como ejercicio inmediato.
+	Las demostraciones de que, efectivamente, se cumplen las restricciones impuestas por la definición \ref{etop_def_espacioTopologico} se dejan al lector como ejercicio inmediato.
 	\begin{enumerate}
-		\item Un espacio métrico $(M,d)$ es un espacio topológico con la topología definida por los conjuntos abiertos en el sentido de los espacios métricos, es decir
-		%Se pone una estrellita para que no introduzca número, si no ponemos la estrellita debemos etiquetar la ecuación.
+		\item Un \tbi[espacio!métrico]{espacio métrico} es un par $(M,d)$ donde $M$ es un conjunto arbitrario no vacío y $d$ es una \tbi[función!métrica]{métrica}, es decir, una función $d:M\times M\to[0,\infty)$ que verifica:
+		\begin{enumerate}
+			\item $d(x,y)=0$ si y solo si $x=y$. Esto es, $d$ es una función \tbi[función!definida positiva]{definida positiva}.
+			\item $d(x,y)=d(y,x)$. Es decir, $d$ es \tbi[función!simétrica]{simétrica}.
+			\item $d(x,y)\leq d(x,z)+d(z,y)$ para todo $x$,$y$,$z\in M$. A esta desigualdad se la conoce con el nombre de \tbi[desigualdad!triangular]{desigualdad triangular}.
+		\end{enumerate}
+		Llamaremos \tbi[bola]{bola} con centro en un punto $x\in M$ y radio $r\in(0,\infty)$ al conjunto de puntos de $M$ cuya distancia a $x$ es menor que $r$. Escrito formalmente
 		\begin{equation}
-		\label{etop_eq_topologiaRn}
-		\T = \{\U\subset M\midc \forall x\in\U\ \exists\  \bola_{d}(x,\varepsilon)\subset\U\}
+			\bola_{d}(x,r):=\{y\in M\tq d(x,y)<r\}
 		\end{equation}
-		A esta topología la llamamos \tbitop[$\T_u$]{usual} o inducida por la métrica.
+		Por otra parte, diremos que $\U\subset M$ es un \tbi[conjunto!abierto métrico]{abierto métrico} si para todo punto $x\in\U$ nos es posible encontrar una bola centrada en $x$ que esté contenida en $\U$.
+		
+		El par $(M,\T_d)$, donde $\T_d$ es la colección de todos los abiertos métricos de $(M,d)$, es un espacio topológico. A esta topología la llamaremos \tbitop[$\T_d$]{usual} o inducida por la métrica $d$.
 		\item Una topología interesante por su simpleza, y por que dota a cualquier conjunto no vacío $\X$ con estructura de espacio topológico, es la llamada \tbitop[$\T_t$]{trivial}, que viene definida por \begin{equation}
 		\label{etop_eq_topologiaTrivial}
 		\T=\{\emptyset, \X\}
@@ -105,29 +90,26 @@ Introducimos ahora unos pocos ejemplos para irnos familiarizando con el concepto
 	\end{enumerate}
 	Con lo que ya tenemos una gama lo suficientemente amplia de ejemplos como para ir tirando.
 \end{exa}
-Para finalizar la sección observamos que en un mismo conjunto $\X$ podemos definir diversas topologías. Dichas topologías pueden ``compararse'' en determinado contexto.
+Para finalizar la sección observamos que en un mismo conjunto $\X$ podemos definir diversas topologías, por ejemplo, podemos equipar a un mismo conjunto $\X$ con la topología discreta y la trivial. Dichas topologías pueden ``compararse'' en determinado contexto, tal y como vemos a continuación.
 \begin{defi}[Relación de orden entre topologías]
 	Consideremos $\T$ y $\T'$ dos topologías definidas sobre un conjunto $\X$.
 	
 	Si se verifica que $\T \subset \T'$ diremos que $\T$ es más \tbi[topología más gruesa]{gruesa} que $\T'$ y que $\T'$ es más \tbi[topología más fina]{fina} que $\T$.
 \end{defi}
-En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del curso.
+En lo que resta de capítulo iremos introduciendo algunos conceptos generales de los que haremos uso de forma constante a lo largo del texto.
 \section{Conjuntos abiertos e interior}
 \label{etop_entornos}
-En esta sección introducimos el concepto de entorno, cuya utilidad inmediata es caracterizar a los conjuntos abiertos de un espacio topológico $\X$.
+En esta sección introducimos el concepto de \emph{entorno}, cuya utilidad inmediata es caracterizar a los conjuntos abiertos de un espacio topológico $\X$.
 \begin{defi}[Entorno de un punto]
 	\label{etop_def_entorno}
-	Un \tbi{entorno} de un punto $a\in\X$ es un conjunto que contiene a un abierto que contiene al punto $a$.
+	Un \tbi{entorno} de un punto $a\in\X$ es un conjunto que contiene a un abierto que contiene al punto $a$. Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe a un galicismo\footnote{Aunque no estamos muy seguros de cuál.}. Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda.
+	
+	Dado un conjunto $\V\subset \X$, éste se dice entorno de un punto $a\in \X$ si existe un abierto $\U$ de forma que
+	\begin{equation}
+	\label{etop_eq_entorno}
+	a\in\U\subset\V
+	\end{equation}
 \end{defi}
-Normalmente denotaremos con la letra $\V$ a los entornos, esta costumbre se debe a un galicismo. %¿cuál?
-
-Escribamos la definición de entorno \ref{etop_def_entorno} de forma conjuntista para que no quede ninguna duda.
-
-Dado $\V\subset \X$, se dice entorno de $a\in \X$ si existe un abierto $\U$ de forma que
-\begin{equation}
-\label{etop_eq_entorno}
-a\in\U\subset\V
-\end{equation}
 
 Como ya adelantamos, se puede usar la noción de entorno para caracterizar a los abiertos, tal y como muestra el siguiente lema, que será usado sin cesar a lo largo de estas notas.
 \begin{lem}[Caracterización de abiertos]
@@ -159,7 +141,7 @@ En general, un conjunto será entorno de algunos de sus puntos, en principio no 
 
 Esto pretende modelizar matemáticamente la idea de ``estar muy metido dentro de algo''.
 
-Será algo habitual de ahora en adelante tratar de determinar el conjunto de puntos interiores de un determinado conjunto $A\subset\X$, a este conjunto se le denomina \tbi{interior} de $\X$.
+Será algo habitual, de ahora en adelante, tratar de determinar el conjunto de puntos interiores de un determinado conjunto $A\subset\X$, a este conjunto se le denomina \tbi{interior} de $\X$.
 
 Antes de continuar, fijemos unas cuantas notaciones que utilizaremos según el contexto para referirnos al interior de un conjunto.
 \begin{equation}
